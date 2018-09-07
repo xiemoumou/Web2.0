@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的工作台</title>
+    <script id="ver" src="../Common/Js/version.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("ver");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../Common/Css/base.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../Common/Lib/layer-v3.1.1/layer/theme/default/layer.css" rel="stylesheet" />');
+        document.write('<link href="../Common/Lib/viewer/viewer.min.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../Common/Lib/jqueryPagination/css/jquery.pagination.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../Css/workbench.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../Common/Components/library.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../Common/Lib/layDate-v5.0.9/laydate/theme/default/laydate.css' + VER + '" rel="stylesheet" />');
+        document.write('<script type="text/javascript" src="../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    </script>
+</head>
+<body>
+<div class="loading">
+</div>
+<script>
+    var height=$(window).height();
+    $('.loading').css('height',height);
+</script>
+<div id="createOrder" class="createOrder-btn hide">
+    <div class="plus"></div>
+    <span class="text">新建订单</span>
+</div> <!--新建订单-->
+<div class="header hide"> <!--头部-->
+    <div class="w clearfix">
+        <div class="logo fl">
+            <h1>
+                <a href="javascript:void(0);"></a>
+            </h1>
+        </div>
+        <div class="tab fl">
+            <ul>
+                <li>
+                    <span style="color:#E84B4C;">我的工作台</span>
+                    <i class="gradient active_o" style="left: 18px;"></i>
+                </li>
+                <li style="margin-right: 0;">
+                    <span>素材库</span>
+                    <i class="gradient" style="left: 4px;"></i>
+                </li>
+            </ul>
+        </div>
+        <div class="search fl">
+            <input type="text" placeholder="请输入您要搜索的旺旺或者订单号" class="fl" id="search" value="">
+            <button class="btn fr"><i></i></button>
+        </div>
+        <div class="account fr">
+            <span class="fl" id="mickName">超级用户</span><i class="click fl"></i>
+            <div class="account-dropList" style="display: none;">
+                <ul>
+                    <li class="exitSystem">退出系统</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--主体-->
+<div class="container w hide">
+    <!--导航-->
+    <div class="nav fl"></div>
+
+    <!--选项卡begin-->
+    <div class="tab-container">
+        <div class="line-shadow fl"></div>
+        <ul class="fixed">
+            <li id="tab_overview" data-index="overview" class="active">订单列表</li>
+        </ul>
+        <ul class="float"></ul>
+    </div>
+    <!--选项卡end-->
+
+    <!--内容区域begin-->
+    <div class="iframe-container fl">
+        <div id="iframe_box_overview" class="iframe overview">
+            <div class="overview-container"><!--概览数据-->
+                <div>
+                    <!--客服排序规则-->
+                    <div class="customer-service-table-sort hide">
+                        <div data-sorttype="desc" class="date-range fl">
+                            <span id="select-date-range1" class="select-date-range">------</span>
+                        </div>
+                        <div data-select="true" data-sorttype="desc" class="complex sortbox fl" >
+                            <span>综合排序<i class="sort-arrow"></i></span>
+                        </div>
+                        <div data-sorttype="desc" class="createtime sortbox fl">
+                            <span>创建时间<i class="sort-arrow"></i></span>
+                        </div>
+                        <div data-sorttype="desc" class="updatetime sortbox fl">
+                            <span>操作时间<i class="sort-arrow"></i></span>
+                        </div>
+                        <div data-sorttype="desc" class="ordermoney sortbox fl">
+                            <span>订单金额<i class="sort-arrow"></i></span>
+                        </div>
+                        <div class="anxious fl">
+                            <span><i></i>急单</span>
+                        </div>
+                        <div class="renew fl">
+                            <span><i></i>续订</span>
+                        </div>
+                    </div>
+                    <!--方案师排序规则-->
+                    <div class="designer-table-sort hide">
+                        <div class="date-range fl">
+                            <span id="select-date-range2" class="select-date-range">------</span>
+                        </div>
+                        <div data-select="true" data-sorttype="desc" class="complex sortbox fl">
+                            <span>综合排序<i class="sort-arrow"></i></span>
+                        </div>
+                        <div data-sorttype="desc" class="assigntime sortbox fl">
+                            <span>派单时间<i class="sort-arrow"></i></span>
+                        </div>
+                        <div data-sorttype="desc" class="designfee sortbox fl">
+                            <span style="padding-left: 10px;">设计费<i class="sort-arrow"></i></span>
+                        </div>
+                        <div class="anxious fl">
+                            <span><i></i>急单</span>
+                        </div>
+                        <div class="renew fl">
+                            <span><i></i>续订</span>
+                        </div>
+                    </div>
+                    <!--车间排序规则-->
+                    <div class="workshop-table-sort hide">
+                        <div class="date-range fl">
+                            <span id="select-date-range3" class="select-date-range">------</span>
+                        </div>
+                        <div data-select="true" data-sorttype="desc" class="complex sortbox fl">
+                            <span>综合排序<i class="sort-arrow"></i></span>
+                        </div>
+                        <div data-sorttype="desc" class="createtime sortbox fl">
+                            <span>创建时间<i class="sort-arrow"></i></span>
+                        </div>
+                        <div data-sorttype="desc" class="opertime sortbox fl">
+                            <span>操作时间<i class="sort-arrow"></i></span>
+                        </div>
+                        <div class="anxious fl">
+                            <span><i></i>急单</span>
+                        </div>
+                        <div class="renew fl">
+                            <span><i></i>续订</span>
+                        </div>
+                    </div>
+
+                    <!--客服表头-->
+                    <div class="customer-service-table-head hide">
+                        <span>产品图</span>
+                        <span>属性</span>
+                        <span>工艺</span>
+                        <span>数量</span>
+                        <span>长×宽×高/厚(mm)</span>
+                        <span>工期</span>
+                        <span>订单状态</span>
+                        <span>操作</span>
+                    </div>
+                    <!--方案师表头-->
+                    <div class="designer-table-head hide">
+                        <span>产品图</span>
+                        <span>属性</span>
+                        <span>工艺</span>
+                        <span>长×宽×高/厚(mm)</span>
+                        <span>设计费</span>
+                        <span>订单状态</span>
+                        <span>操作</span>
+                    </div>
+                    <!--车间表头-->
+                    <div class="workshop-table-head hide">
+                        <span>产品图</span>
+                        <span>属性</span>
+                        <span>工艺</span>
+                        <span>数量</span>
+                        <span>长×宽×高/厚(mm)</span>
+                        <span>金额/工期</span>
+                        <span>订单状态</span>
+                        <span>操作</span>
+                    </div>
+                </div>
+                <div id="datalist" class="data-list">
+                    <!--客服数据-->
+                    <div class="customer-service data-item hide clearfix">
+                        <!--数据头部-->
+                        <div class="item-head">
+                            <div class="item-head-left fl">
+                                <span class="time">2018-06-14  12:12:12</span>
+                                <span>订单号：<em>205177014313522</em></span>
+                                <span>客源：<em>多贝特</em></span>
+                                <span class="wangwang">旺旺：<em>文字文字文字文字文字</em></span>
+                                <span class="anxious">急单</span>
+                                <span class="renew">续订</span>
+                            </div>
+                            <div class="item-head-right fr">
+                                <span>核对订单</span>
+                                <span>查看订单</span>
+                                <span title="更多操作"><i class="more-icon"></i></span>
+                                <div class="operlist"> <!--更多下拉-->
+                                    <i class="arrow"></i>
+                                    <span>发票/收据</span>
+                                    <span>产品包装</span>
+                                    <span>订单备注</span>
+                                    <span style="border-bottom: none;">删除订单</span>
+                                </div>
+                            </div>
+                            <div class="item-head-left-manager hide fl"><!--经理角色-->
+                                <span>客服ID：<em>238388</em></span>
+                                <span>车间ID：<em>838888888448488</em></span>
+                                <span style="border-right: none;">方案师ID：<em>838888888448488</em></span>
+                            </div>
+                        </div>
+                        <!--数据体-->
+                        <div class="clearfix fl">
+                            <!--产品图-->
+                            <div class="photo">
+                                <img src="../temp/image/1534818399968.jpg">
+                            </div>
+                            <div class="clearfix fl" style="width: 645px; margin-left: 10px;">
+                                <!--5️要素信息-->
+                                <div class="info">
+                                    <div class="attributes">
+                                        <span>纪念币</span>
+                                        <span>国产不反光</span>
+                                        <span>蝴蝶扣</span>
+                                    </div>
+                                    <!--工艺-->
+                                    <div class="process">
+                                        <span>双面开模；2D冲压；3D冲压</span>
+                                        <span>烤漆；背膜；镶边；刻字；</span>
+                                        <span>金色；黑漆；古银色；玫瑰金；</span>
+                                    </div>
+                                    <div class="num">
+                                        <span><em>1000</em>个</span>
+                                    </div>
+                                    <div class="size">
+                                        <span><em>100.0×100.0×20.0</em> (mm)</span>
+                                    </div>
+                                    <div class="day">
+                                        <span><em>10</em>天</span>
+                                    </div>
+                                    <button class="edit red-h" onclick="classMain.initEvent.edit();">编辑参数</button>
+                                </div>
+                                <!--金额-->
+                                <div class="amount">
+                                    <div class="design-fee"><!--设计费-->
+                                        <span>设计费：¥ <em>200</em></span>
+                                        <span>引导费：¥ <em>200</em></span>
+                                        <i class="edit">编辑</i>
+                                    </div>
+                                    <!--预算-->
+                                    <div class="budget">
+                                        <i class="label fl">预算：</i>
+                                        <input class="input-money fl" value="1,000,00.00">
+                                        <button class="btn fl">确定</button>
+                                    </div>
+                                    <!--报价-->
+                                    <div class="quoted">
+                                        <div class="bargain"><!--议价-->
+                                            <span class="tax">不含税</span>
+                                            <span class="proposed-price">参考价 ¥10000 / 工期12天</span>
+                                            <span class="button">议价</span>
+                                            <i class="arrow"></i>
+                                        </div>
+                                        <i class="label fl">报价：</i>
+                                        <input class="input-money fl" value="1,000,00.00">
+                                        <button class="btn fl">确定</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--状态-->
+                            <div class="status">
+                                <span>已完成状态</span>
+                                <span>已完成状态</span>
+                                <span>已完成状态</span>
+                                <span>已完成状态</span>
+                            </div>
+                            <!--操作按钮-->
+                            <div class="operating">
+                                <button class="btn" style="width: 66px; height: 23px;">按钮按钮</button>
+                                <button class="btn" style="width: 66px; height: 23px;">按钮按钮</button>
+                                <button class="btn" style="width: 66px; height: 23px;">按钮按钮</button>
+                                <button class="btn" style="width: 66px; height: 23px;">按钮按钮</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--方案师数据-->
+                    <div class="designer data-item hide clearfix">
+                        <!--数据头部-->
+                        <div class="item-head">
+                            <div class="item-head-left fl">
+                                <span>派单时间：<em>2018-06-14  12:12:12</em></span>
+                                <span>订单号：<em>205177014313522</em></span>
+                                <span class="anxious">急单</span>
+                                <span class="renew">续订</span>
+                            </div>
+                            <div class="item-head-right fr">
+                                <span>查看订单</span>
+                                <span title="更多操作"></span>
+                            </div>
+                        </div>
+                        <!--数据体-->
+                        <div class="clearfix fl">
+                            <!--产品图-->
+                            <div class="photo">
+                                <img src="../temp/image/1534818399968.jpg">
+                            </div>
+                            <div class="clearfix fl" style="width: 645px; margin-left: 10px;">
+                                <!--5️要素信息-->
+                                <div class="info">
+                                    <div class="attributes">
+                                        <span>纪念币</span>
+                                        <span>国产不反光</span>
+                                        <span>蝴蝶扣</span>
+                                    </div>
+                                    <!--工艺-->
+                                    <div class="process">
+                                        <span>双面开模；2D冲压；3D冲压</span>
+                                        <span>烤漆；背膜；镶边；刻字；</span>
+                                        <span>金色；黑漆；古银色；玫瑰金；</span>
+                                    </div>
+                                    <div class="size">
+                                        <span><em>100.0×100.0×20.0</em> (mm)</span>
+                                    </div>
+                                    <div class="money">
+                                        <span>¥ <em>8,000.00</em></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--状态-->
+                            <div class="status">
+                                <span>待修改</span>
+                            </div>
+                            <!--操作按钮-->
+                            <div class="operating">
+                                <button class="btn" style="width: 66px; height: 23px;">立即抢单</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--车间数据-->
+                    <div class="workshop data-item hide clearfix">
+                        <!--数据头部-->
+                        <div class="item-head">
+                            <div class="item-head-left fl">
+                                <span>创建时间：<em>2018-06-14  12:12:12</em></span>
+                                <span>订单号：<em>205177014313522</em></span>
+                                <span class="anxious">急单</span>
+                                <span class="renew">续订</span>
+                                <span class="timeleft"><i class="clock-icon"></i>剩余发货时间：<em>12  天  12  小时  23  分钟</em></span>
+                            </div>
+                            <div class="item-head-right fr">
+                                <span>查看订单</span>
+                                <span title="更多操作"></span>
+                            </div>
+                        </div>
+                        <!--数据体-->
+                        <div class="clearfix fl">
+                            <!--产品图-->
+                            <div class="photo">
+                                <img src="../temp/image/1534818399968.jpg">
+                            </div>
+                            <div class="clearfix fl" style="width: 666px; margin-left: 10px;">
+                                <!--5️要素信息-->
+                                <div class="info">
+                                    <div class="attributes">
+                                        <span>纪念币</span>
+                                        <span>国产不反光</span>
+                                        <span>蝴蝶扣</span>
+                                    </div>
+                                    <!--工艺-->
+                                    <div class="process">
+                                        <span>双面开模；2D冲压；3D冲压</span>
+                                        <span>烤漆；背膜；镶边；刻字；</span>
+                                        <span>金色；黑漆；古银色；玫瑰金；</span>
+                                    </div>
+                                    <div class="num">
+                                        <span><em>1000</em>个</span>
+                                    </div>
+                                    <div class="size">
+                                        <span><em>100.0×100.0×20.0</em> (mm)</span>
+                                    </div>
+                                    <div class="day">
+                                        <span>¥ <em class="c-red">1,000.00</em>/<em>99</em>天</span>
+                                    </div>
+                                </div>
+                                <!--金额-->
+                                <div class="amount">
+                                    <div class="quoted"><!--报价-->
+                                        <span>上次报价：¥ <em> 80000000 / 8</em>天</span>
+                                    </div>
+                                    <!--预算-->
+                                    <div class="budget">
+                                        <span>客户预算：<em>¥1,000.00</em></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--状态-->
+                            <div class="status">
+                                <span>已完成状态</span>
+                            </div>
+                            <!--操作按钮-->
+                            <div class="operating">
+                                <button class="btn" style="width: 66px; height: 23px;">接受生产</button>
+                                <button class="btn" style="width: 66px; height: 23px;">发货</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-box"><!--分页--></div>
+        </div>
+    </div>
+    <!--内容区域end-->
+</div>
+<script>
+    document.write('<script type="text/javascript" src="../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../Common/Lib/viewer/viewer.min.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../Common/Js/global.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../Common/Lib/jqueryPagination/js/jquery.pagination.min.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../Js/workbench.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../Common/Components/library.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../Common/Lib/layDate-v5.0.9/laydate/laydate.js' + VER + '" ><\/script>');
+</script>
+<script>
+//    测试代码
+   // popUps.tranOrder();
+</script>
+</body>
+</html>

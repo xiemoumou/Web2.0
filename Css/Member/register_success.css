@@ -1,0 +1,163 @@
+body{
+    background-color: #FAFBFB;
+}
+.header{
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    box-shadow: 0px -10px 20px #000;
+}
+.header-contnet{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+.header-contnet img{
+    width: 80px;
+    height: 28px;
+    margin-top: 11px;
+}
+.header-right{
+    float: right;
+    margin-top: 10px;
+
+}
+.header-right p{
+    display: inline-block;
+    font-size: 14px;
+    color: #E84B4C;
+    margin-right: 60px;
+}
+.header-right a{
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+.login-btn{
+    background-color: #e84b4c;
+    color: #fff;
+    margin-right: 60px;
+}
+.register-btn{
+    border: 1px solid #E84B4C;
+    color: #E84B4C;
+    background-color: #fff;
+}
+.content-box{
+    width: 1000px;
+    height: 551px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 5px 13px 66px -16px #AFBDD4;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 190px;
+    position: relative;
+}
+.foot{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    background: #1B1C20;
+    font-size: 12px;
+    color: #999999;
+    letter-spacing: 0;
+    position: fixed;
+    bottom: 0;
+}
+.round{
+    width: 332px;
+    height: 314px;
+    padding: 92px 68px;
+    position: relative;
+    display: inline-block;
+}
+.round img{
+    width: 332px;
+    height: 314px;
+}
+.round-title{
+    position: absolute;
+    font-size: 16px;
+    color: #333333;
+    height: 28px;
+    line-height: 28px;
+    letter-spacing: 0;
+    left: 46.5%;
+    text-align: center;
+    top: 38%;
+}
+.round-title span{
+    display: block;
+    width: 40px;
+    border-bottom: 1px solid #D5D5D5;
+    margin: 0 auto;
+}
+.round-text{
+    position: absolute;
+    font-size: 14px;
+    color: #666666;
+    line-height: 26px;
+    letter-spacing: 0.14px;
+    text-align: center;
+    line-height: 26px;
+    top: 52%;
+    left: 32%;
+    width: 171px;
+    height: 79px;
+}
+.set-line{
+    display: inline-block;
+    border: 1px solid #d5d5d5;
+    height: 310px;
+    position: absolute;
+    margin-top: 115px;
+}
+.contnet-right-box{
+    height: 342px;
+    width: 326px;
+    float: right;
+    margin-top: 80px;
+    margin-right: 102px;
+}
+.register-img{
+    width: 326px;
+    height: 262px;
+    background-image: url("../../image/Member/true_status.png");
+    background-size: 100% 100%;
+    margin: 0 auto;
+    position: relative;
+}
+.register-img span{
+    bottom: 72px;
+    position: absolute;
+    font-size: 18px;
+    color: #E84B4C;
+    left: 134px;
+}
+.register-img a{
+    bottom: 10px;
+    position: absolute;
+    font-size: 18px;
+    color: #FFFFFF;
+    left: 147px;
+}
+.register-locaiton{
+    margin: 0 auto;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 0;
+    text-align: center;
+    margin-top: 66px;
+}
+.register-locaiton a{
+    margin-left: 7px;
+    font-size: 16px;
+    color: #E84B4C;
+}

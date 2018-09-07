@@ -1,0 +1,242 @@
+/*公共样式*/
+.ml-30{
+    margin-left: 14px;
+}
+
+.bg-color{
+    background-color: #FAFBFB;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+body{
+    background-color:#fff;
+    color:#333333;
+}
+
+.container{
+    margin: 16px 0 0 0px;
+}
+
+.layout .row{
+    margin-bottom: 8px;
+    /*height: 30px;*/
+    position: relative;
+    padding: 0 48px;
+}
+
+.layout .row label.label-1{
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    margin-left: 16px;
+    float: left;
+    font-weight: 500;
+}
+
+.layout .row label.label-2{
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    margin-left: 16px;
+    float: left;
+    font-weight: 500;
+}
+
+/*必填项 星号（*）*/
+.asterisk{
+    background: url("../../Image/createOrder/createOrder.png") no-repeat -33px -9px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top:10px;
+}
+
+
+/*新建订单下拉框*/
+.co-dropList{
+    width: 110px;
+    height: 26px;
+    line-height: 26px;
+    display: inline-block;
+    float: left;
+}
+
+/*新建订单数值输入框*/
+.inputBox{
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    width: 110px;
+    height: 26px;
+    float: left;
+    background-color: #ffffff;
+}
+
+.inputBox .input-number{
+    width: calc(100% - 20px);
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 26px;
+    border-radius: 4px;
+    text-align: right;
+    font-size: 12px;
+}
+
+/*产品属性*/
+.product-attribute-2{
+  margin-left: 15px;
+}
+
+/*工艺属性*/
+.technology-attribute-2,.technology-attribute-3{
+    margin-left: 16px;
+}
+
+
+
+/*尺寸*/
+.input-box-label{
+    display: inline-block;
+    width: 30px;
+    height: 26px;
+    background-color: #D5D5D5;
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 26px;
+    text-align: center;
+    font-weight: 100;
+    float: left;
+    border-radius: 2px 0 0 2px;
+}
+
+.size-input{
+    display: inline-block;
+    float: left;
+    width: calc(100% - 52px);
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 26px;
+    text-align: right;
+    font-size: 12px;
+    color: #333333;
+}
+
+/*旺旺号*/
+.input-text{
+    display: inline-block;
+    float: left;
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 26px;
+    text-align: left;
+    font-size: 12px;
+    color:#333333;
+}
+
+
+/*估价与预算*/
+.input-money{
+    display: inline-block;
+    float: left;
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 26px;
+    text-align: right;
+    font-size: 12px;
+    color:#333333;
+}
+
+
+/*参考图*/
+#reference_diagram{
+    width: 398px;
+    height: 110px;
+    border-right: 2px solid #F5F5F5;
+    float: left;
+}
+
+/*附件*/
+#accessory{
+    width: 320px;
+    height: 110px;
+    float: left;
+    position: relative;
+}
+
+
+.design-note{
+    width: 298px;
+    height: 66px;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    float: left;
+}
+
+.production-note{
+    width: 298px;
+    height: 66px;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    float: left;
+}
+
+
+
+/*确定取消*/
+.footer{
+    margin-top: 28px;
+    /*margin-bottom: 40px;*/
+    text-align: center;
+}
+
+.footer button{
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+}
+.footer button:nth-of-type(1)
+{
+    margin-right: 129px;
+}
+
+
+/*编辑状态时*/
+
+.layout .edit label.label-1{
+    margin-left: 0;
+    width: inherit;
+    color: #666666;
+}
+.layout .edit label.label-2{
+    color: #666666;
+}
+
+.layout .edit span{
+    float: left;
+    font-size: 14px;
+    color: #666666;
+    line-height: 30px;
+}
+
+.layout .edit div{
+  border-bottom:1px solid #F5F5F5;
+
+}
+/*自动报价*/
+.evaluate-mask.active{
+    width: 110px;
+    height: 27px;
+    position: absolute;
+    border-radius: 4px;
+    z-index: 1000;
+    background: url(../../Common/Lib/layer-v3.1.1/layer/theme/default/loading-2.gif) no-repeat;
+    background-color: #f1f1f16e;
+    background-size: 20%;
+    background-position: center;
+}

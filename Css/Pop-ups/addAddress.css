@@ -1,0 +1,116 @@
+body {
+    background-color: #fff;
+
+}
+
+.title {
+    font: 500 18px/65px "微软雅黑";
+    height: 65px;
+    text-align: center;
+    color: #444444;
+}
+
+.add-address {
+    padding: 0 66px;
+    width: 350px;
+}
+
+.add-address>div {
+    margin-top: 15px;
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+}
+
+.add-address>div.recipient {
+    margin-top: 12px;
+}
+
+.add-address>div>label {
+    font: 12px "微软雅黑";
+    color: #444444;
+}
+
+.add-address>div>input {
+    font: 12px "微软雅黑";
+    color: #444444;
+    width: 248px;
+    height: 28px;
+    border: 1px solid #d7d7d7;
+    position: absolute;
+    right: 0px;
+    border-radius: 15px;
+    padding: 0 10px;
+}
+
+.province {
+    width: 84px;
+    height: 30px;
+    background-color: #fff;
+    margin-left: 20px;
+}
+
+.city {
+    width: 84px;
+    height: 30px;
+    background-color: #fff;
+    margin-left: 6px;
+}
+
+.block {
+    width: 84px;
+    height: 30px;
+    background-color: #fff;
+    margin-left: 6px;
+}
+
+.red-button {
+    width: 104px;
+    height: 36px;
+    position: absolute;
+    left: 37%;
+    margin-left: -68px;
+    margin-top: 22px;
+    border: none;
+}
+
+.add-address>div.address {
+    width: 269px;
+    height: 57px;
+    border: 1px solid #d7d7d7;
+    margin-left: 71px;
+}
+
+.border-red{
+    border-color: #ff4159 !important;
+    box-shadow: 0px 0px 5px #ff4159;
+}
+
+.hollow-button{
+    width: 104px;
+    height: 36px;
+    position: absolute;
+    left: 74%;
+    margin-left: -68px;
+    margin-top: 22px;
+}
+.red-button {
+    /*display: block;*/
+    /*width: 70px;*/
+    /*height: 30px;*/
+    background-color: #e84b4c;
+    border-radius: 4px;
+    color: #fff;
+    font: 12px "微软雅黑";
+    cursor: pointer;
+    font-weight: 400;
+}
+.hollow-button {
+    border: 1px solid #e84b4b;
+    color: #e84b4b;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    font: 12px "微软雅黑";
+    font-weight: 400;
+}

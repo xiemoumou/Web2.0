@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./SlideRuleOS.css">
+    <style type="text/css">
+        .container {
+            height: 100px;
+            width: 100%;
+            position: absolute;
+            top: 100px;
+            left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="container">
+        <div class="slide-rule-os" data-up-min="0" data-up-max="1000" data-down-min="20" data-down-max="800" data-up-name="产品费" data-down-name="设计费" data-step="10"
+             islock-red-point data-red-point-val="100" data-red-point-show
+             islock-yellow-point data-yellow-point-val="300" data-yellow-point-show
+             islock-blue-point data-blue-point-val="500" data-blue-point-show
+             data-yellow-darrow-val="200" data-yellow-darrow-show data-yellow-darrow-name="预算金额"
+             data-red-darrow-val="400" data-red-darrow-show data-red-darrow-name="定价金额" guide-fee-value="240" guide-fee-show>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="./jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="./SlideRuleOS.js"></script>
+<script>
+    $(function () {
+        priceSlider.initSlideRuleOS({
+            redCallback:function () {
+
+                return true;
+            },
+            blueCallback:function () {
+                return true;
+            },
+            yellowCallback:function () {
+                return true;
+            }
+        });
+
+       // priceSlider.initSlideRuleOS();
+    });
+</script>
+</html>

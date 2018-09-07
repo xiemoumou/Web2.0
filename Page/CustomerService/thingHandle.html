@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>结算发货</title>
+    <script id="ver" src="../../Common/Js/version.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("ver");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Css/CustomerService/thing_handle.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Common/Lib/birthday/birthday.css' + VER + '" rel="stylesheet" />');
+        document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    </script>
+</head>
+<body>
+<div class="container">
+<div class="head">
+    <ul>
+        <li><span>事务处理</span><!--<i id="redDot" class="redDot-none"></i>--></li>
+    </ul>
+</div>
+    <div class="body">
+        <div class="deliver">
+            <div class="title ">
+                <span class="span-1">发货处理</span>
+                <span class="span-2">导出发货单</span>
+            </div>
+            <div class="body">
+                <div class="begin-time">
+                    <section>起始时间:</section>
+                    <section>&nbsp;&nbsp;&nbsp;年<div id="begin_year" class="sel_year datepicker fl"></div></section>
+                    <section>&nbsp;&nbsp;&nbsp;月<div id="begin_month" class="sel_month datepicker fl"></div></section>
+                    <section>&nbsp;&nbsp;&nbsp;日<div id="begin_day" class="sel_day datepicker fl"></div></section>
+                </div>
+                <div class="begin-time-next">
+                    <section>结束时间:</section>
+                    <section>&nbsp;&nbsp;&nbsp;年<div id="end_year" class="sel_year datepicker fl"></div></section>
+                    <section>&nbsp;&nbsp;&nbsp;月<div id="end_month" class="sel_month datepicker fl"></div></section>
+                    <section>&nbsp;&nbsp;&nbsp;日<div id="end_day" class="sel_day datepicker fl"></div></section>
+                </div>
+            </div>
+            <div class="deliver-btn">导出发货单</div>
+        </div>
+
+        <div class="deliver">
+            <div class="title ">
+                <span class="span-1">业务奖金</span>
+                <span class="span-2">导出奖金单</span>
+            </div>
+            <div class="body">
+                <div class="end-time">
+                    <section>结算月份:</section>
+                    <section>&nbsp;&nbsp;&nbsp;年<div id="bonus_year" class="sel_year datepicker fl"></div></section>
+                    <section>&nbsp;&nbsp;&nbsp;月<div id="bonus_month" class="sel_month sel_second datepicker fl"></div></section>
+                </div>
+            </div>
+            <div class="deliver-next-btn">导出奖金单</div>
+        </div>
+
+        <div class="deliver">
+            <div class="title">
+                <span class="span-1">车间结算</span>
+                <span class="span-2">导出车间结算单</span>
+            </div>
+            <div class="body">
+                <div class="end-time">
+                    <section>结算月份:</section>
+                    <section>&nbsp;&nbsp;&nbsp;年<div id="work_year" class="sel_year datepicker fl"></div></section>
+                    <section>&nbsp;&nbsp;&nbsp;月<div id="work_month" class="sel_month sel_second datepicker fl"></div></section>
+                </div>
+            </div>
+            <div class="deliver-work" id="deliver_work">导出车间结算单</div>
+        </div>
+
+    </div>
+</div>
+<script>
+    document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Lib/birthday/birthday.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Js/CustomerService/thingHandle.js' + VER + '" ><\/script>');
+</script>
+</body>
+</html>

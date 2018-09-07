@@ -1,0 +1,339 @@
+body {
+    background-color: #fff;
+    padding: 0 20px;
+}
+
+.hollow-button, .red-button {
+    width: 112px;
+    height: 35px;
+    display: inline-block;
+}
+
+.title {
+    height: 53px;
+    line-height: 53px;
+    border-bottom: 2px solid #D5D5D5;
+    text-align: center;
+    font-size: 14px;
+    line-height: 55px;
+    color: #444444;
+}
+
+.floor {
+    text-align: center;
+    margin-top: 22px;
+    margin-bottom: 20px;
+}
+
+.js-icon {
+    background: url("../../../Image/Pop-ups/selectempty.png") no-repeat center;
+
+}
+.invoice-content{
+    width: 729px;
+    margin: 0 auto;
+}
+
+.active {
+    background: url("../../../Image/Pop-ups/selected.png") no-repeat center;
+}
+.select-box{
+    font-size: 14px;
+    color: #444444;
+    padding-top: 15px;
+}
+.select-box p{
+    display: inline-block;
+}
+.select-box ul li{
+    float: left;
+    position: relative;
+    margin-left: 20px;
+}
+.select-box ul{
+    display: inline-block;
+    vertical-align: sub;
+}
+.select-box ul li span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0px;
+    left: -4px;
+    background-color: #fff;
+    cursor: pointer;
+
+}
+.select-box ul li label{
+    vertical-align: middle;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.tax-rate{
+    font-size: 14px;
+    color: #444444;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 6px;
+    position: relative;
+}
+
+.red-rate{
+    font-size: 18px;
+    color: #E84B4C;
+    vertical-align: sub;
+}
+.tax-rate select{
+    width: 120px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 14px;
+    color: #444;
+    margin-left: 13px;
+    border: 1px solid #d5d5d5;
+}
+.first{
+    color: #d5d5d5!important;
+}
+.tax-rate-title{
+    display: inline-block;
+}
+.rise{
+    font-size: 14px;
+    color: #444444;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 6px;
+}
+.rise-text{
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    height: 24px;
+    line-height: 24px;
+    width: 636px;
+    vertical-align: bottom;
+    margin-left: 13px;
+    padding-left: 10px;
+}
+.count{
+    font-size: 12px;
+    color: #D5D5D5;
+    float: right;
+    line-height: 1;
+}
+.money{
+    font-size: 14px;
+    color: #444444;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 6px;
+}
+.money-text{
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    height: 24px;
+    line-height: 24px;
+    width: 110px;
+    vertical-align: bottom;
+    margin-left: 13px;
+    padding-left: 10px;
+}
+.invoice-text {
+    font-size: 14px;
+    color: #444444;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 6px;
+}
+.invoice-text select{
+    width: 114px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 14px;
+    color: #444;
+    margin-left: 20px;
+    border: 1px solid #d5d5d5;
+}
+.mech{
+    padding-top: 15px;
+    font-size: 14px;
+    color: #444444;
+    position: relative;
+}
+.mech span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 14px;
+    left: -1px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.mech label{
+    margin-left: 10px;
+    cursor: pointer;
+}
+.dist{
+    font-size: 14px;
+    color: #444444;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 6px;
+}
+.dist input{
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    height: 24px;
+    line-height: 24px;
+    width: 610px;
+    vertical-align: bottom;
+    padding-left: 10px;
+}
+.address{
+    font-size: 14px;
+    color: #444444;
+    height: 24px;
+    margin-top: 6px;
+    height: 45px;
+}
+.address-text{
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    height: 39px;
+    width: 608px;
+    vertical-align: bottom;
+    margin-left: 28px;
+    padding-left: 10px;
+}
+.address div{
+    vertical-align: top;
+}
+.phone{
+    font-size: 14px;
+    color: #444444;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 6px;
+}
+.phone-text{
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    height: 24px;
+    line-height: 24px;
+    width: 180px;
+    vertical-align: bottom;
+    margin-left: 28px;
+    padding-left: 10px;
+}
+.account{
+    font-size: 14px;
+    color: #444444;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 6px;
+}
+.account-text{
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    height: 24px;
+    line-height: 24px;
+    width: 610px;
+    vertical-align: bottom;
+    margin-left: 28px;
+    padding-left: 10px;
+}
+.account-num{
+    font-size: 14px;
+    color: #444444;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 6px;
+}
+.account-num-text{
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    height: 24px;
+    line-height: 24px;
+    width: 610px;
+    vertical-align: bottom;
+    margin-left: 28px;
+    padding-left: 10px;
+}
+.aob{
+    border:1px solid #f00!important;
+}
+
+.raxr-lock{
+    z-index: 1000;
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.all-lock{
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    position: absolute;
+}
+.remarks{
+    font-size: 14px;
+    color: #444444;
+    margin-top: 6px;
+}
+.remarks-text{
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    height: 70px;
+    line-height: 15px;
+    width: 608px;
+    vertical-align: bottom;
+    margin-left: 56px;
+    padding-left: 10px;
+}
+.remarks-title{
+    vertical-align: top;
+}
+.receipt-active{
+    font-size: 14px;
+    color: #444444;
+    display: inline-block;
+}
+.receipt-input{
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    height: 24px;
+    line-height: 24px;
+    width: 406px;
+    margin-left: 33px;
+    padding-left: 10px;
+}
+.receipt-box{
+    margin-top: 6px;
+}
+.receipt-cate{
+    margin-top: 6px;
+}
+.receipt-cate select{
+    width: 114px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 14px;
+    color: #444;
+    margin-left: 53px;
+    border: 1px solid #d5d5d5;
+}
+.receipt-num,.receipt-unit,.receipt-money{
+    margin-top: 6px;
+}
+.active-none{
+    display: none;
+}
+
+.ml-30{
+    margin-left: 32px;
+}

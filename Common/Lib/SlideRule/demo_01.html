@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./SlideRuleOS.css">
+    <script type="text/javascript" src="./jquery-1.11.0.min.js"></script>
+</head>
+
+<body>
+    <div class="scroll scroll-Bar">
+        <div class="design_bar zb-scroll-bar">
+            <i class="design">
+                设计费
+                <input type="text" class="design_value" value="¥ 0.00" />
+            </i>
+        </div>
+        <div class="customer_bar zb-scroll-bar">
+            <i class="customer">
+                客户价
+                <input type="text" class="customer_value" value="¥ 0.00" />
+            </i>
+        </div>
+        <div class="offer_bar zb-scroll-bar">
+            <i class="offer">
+                报价
+                <input type="text" class="offer_value" value="¥ 0.00" />
+            </i>
+        </div>
+        <!-- <div class="mask"></div> -->
+    </div>
+
+</body>
+
+</html>
+<script>
+
+    (function (window) {
+        function getElementByClassName(TagName, classname) {
+            var tags = document.getElementsByTagName(TagName);
+            var list = [];
+            for (var i=0;i<tags.length;i++) {
+                var tag = tags[i];
+                if (tag.className.indexOf(classname)>=0) 
+                {
+                     list.push(tag);
+                }
+            }
+            return list;
+        }
+
+        var slidPost = { "design": { "left": 0, "right": 0, "top": 1 }, "customer": { "left": 0, "right": 0, "top": 1 }, "offer": { "left": 0, "right": 0, "top": 1 } };//存储每个滑块的左右边x坐标
+        var scrollBar = getElementByClassName("div", "scroll-Bar")[0];
+        var design_bar = scrollBar.children[0];
+        var customer_bar = scrollBar.children[1];
+        var offer_bar = scrollBar.children[2];
+
+        var setval={"customer":{"min":0,"max":1000},"design":{"min":0,"max":200},"offer":{"min":0,"max":1000}};//滑动轴区间
+
+        var priceSlider = function () {
+            this.init();//滑动块绑定事件
+            this.setSlidYaxis(slidPost);//刷新滑块
+        }
+        priceSlider.prototype = {
+            setSlidYaxis: function (slidPost, obj) {
+                var c_post = parseInt(customer_bar.style.left) || 0;
+                var c_width = customer_bar.children[0].clientWidth;
+                slidPost.customer.left = c_post - c_width / 2;
+                slidPost.customer.right = c_post + c_width / 2;
+
+                var o_post = parseInt(offer_bar.style.left) || 0;
+                var o_width = offer_bar.children[0].clientWidth;
+                slidPost.offer.left = o_post - o_width / 2;
+                slidPost.offer.right = o_post + o_width / 2;
+
+
+                var cl = slidPost.customer.left, cr = slidPost.customer.right;//客户报价
+                var ol = slidPost.offer.left, or = slidPost.offer.right;//报价
+
+                console.log("cl:" + cl + "cr:" + cr + "ol:" + ol + "or" + or);
+
+                var intersection = [];//存储相交的滑块
+                if (cl >= ol && cl <= or || cr >= ol && cr <= or) {
+                    if (!this.common.exists(intersection, "customer")) {
+                        intersection.push("customer");
+                    }
+                    if (!this.common.exists(intersection, "offer")) {
+                        intersection.push("offer");
+                    }
+                }
+
+                //将没有叠加得滑块归位
+                for (var i = 0; i < ["offer", "customer"].length; i++) {
+                    if (!this.common.exists(intersection, "offer")) {
+                        offer_bar.children[0].style.top = -31 + "px";
+                    }
+                    if (!this.common.exists(intersection, "customer")) {
+                        customer_bar.children[0].style.top = -31 + "px";
+                    }
+                }
+
+
+                //设置滑块叠加层级
+                for (var i = 0; i < intersection.length; i++) {
+
+                    if (offer_bar.children[0].style.top == customer_bar.children[0].style.top && this.common.exists(intersection, "offer")) {
+                        if (obj == null || obj.className.indexOf("customer") > -1) {
+                            offer_bar.children[0].style.top = (i + 1) * -58 + "px";
+                        }
+                        else if (obj == null || obj.className.indexOf("offer") > -1) {
+                            customer_bar.children[0].style.top = (i + 1) * -58 + "px";
+                        }
+                    }
+                }
+
+                intersection.length = 0;
+            },
+            init: function () {
+                design_bar.addEventListener('mousedown',function (event) {
+                    var event = event || window.event;
+                    //点击消息区不触发拖拽事件
+                    if (event.target.className == "design" || event.target.className == "design_value") {
+                        return;
+                    }
+                    setPointStatus(event);
+                });
+
+                customer_bar.addEventListener('mousedown',function (event) {
+                    var event = event || window.event;
+                    //点击消息区不触发拖拽事件
+                    if (event.target.className == "offer" || event.target.className == "customer_value") {
+                        return;
+                    }
+                    setPointStatus(event);
+                });
+
+                offer_bar.addEventListener('mousedown',function (event) {
+                    var event = event || window.event;
+                    //点击消息区不触发拖拽事件
+                    if (event.target.className == "offer" || event.target.className == "offer_value") {
+                        return;
+                    }
+                    setPointStatus(event);
+                });
+
+
+                function setPointStatus(event){
+                    var point = getElementByClassName('div', 'zb-scroll-bar');
+                    for(var i=0;i<point.length;i++)
+                    {
+                        var item=point[i];
+                        item.style.backgroundColor="#ffffff";
+                    }
+                    event.target.style.backgroundColor="#e84b4c";
+
+                    // setTimeout(function(){
+                    //     event.target.style.backgroundColor="#ffffff";
+                    // },5000);
+                }
+
+                // 设计费滑块
+                var design_value = getElementByClassName('input', 'design_value')[0];
+                design_bar.onmousedown = function (event) {
+                    var event = event || window.event;
+                    var leftVal = event.clientX - this.offsetLeft;
+
+                    //点击消息区不触发拖拽事件
+                    if (event.target.className == "design" || event.target.className == "design_value") {
+                        return;
+                    }
+
+                    // 拖动一定写到 down 里面才可以
+                    var obj = this;
+                    document.onmousemove = function (event) {
+                        var event = event || window.event;
+                        priceSlider.compute(obj, event, leftVal, design_value, 0, scrollBar.clientWidth-1, setval.design.max);
+                        priceSlider.setSlidYaxis(slidPost, obj);
+                        window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                    }
+                    document.onmouseup = function () {
+                        document.onmousemove = null;   // 弹起鼠标不做任何操作
+                    }
+                }
+
+                // 客户价滑块
+                var customer_value = getElementByClassName('input', 'customer_value')[0];
+                customer_bar.onmousedown = function (event) {
+                    var event = event || window.event;
+                    var leftVal = event.clientX - this.offsetLeft;
+
+                    //点击消息区不触发拖拽事件
+                    if (event.target.className == "customer" || event.target.className == "customer_value") {
+                        return;
+                    }
+
+                    // 拖动一定写到 down 里面才可以
+                    var obj = this;
+                    document.onmousemove = function (event) {
+                        var event = event || window.event;
+                        priceSlider.compute(obj, event, leftVal, customer_value, 0, scrollBar.clientWidth-1, setval.customer.max);
+                        priceSlider.setSlidYaxis(slidPost, obj);
+                        window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                    }
+                    document.onmouseup = function () {
+                        document.onmousemove = null;   // 弹起鼠标不做任何操作
+                    }
+                }
+
+                // 报价滑块
+                var offer_value = getElementByClassName('input', 'offer_value')[0];
+                offer_bar.onmousedown = function (event) {
+                    var event = event || window.event;
+                    var leftVal = event.clientX - this.offsetLeft;
+
+                    //点击消息区不触发拖拽事件
+                    if (event.target.className == "offer" || event.target.className == "offer_value") {
+                        return;
+                    }
+
+                    // 拖动一定写到 down 里面才可以
+                    var obj = this;
+                    document.onmousemove = function (event) {
+                        var event = event || window.event;
+                        priceSlider.compute(obj, event, leftVal, offer_value, 0, scrollBar.clientWidth-1, setval.offer.max);
+                        priceSlider.setSlidYaxis(slidPost, obj);
+                        window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                    }
+                    document.onmouseup = function () {
+                        document.onmousemove = null;   // 弹起鼠标不做任何操作
+                    }
+                }
+            },
+            compute: function (obj, event, curleftVal, valObj, setValue, axisWidth, axisMaxVal) {//
+                obj.style.left = event.clientX - curleftVal + 'px';
+                var val = parseInt(obj.style.left);
+                if (val < 0) {
+                    obj.style.left = 0;
+                } else if (val > axisWidth) {
+                    obj.style.left = axisWidth + "px";
+                }
+                var currentValue = parseInt(parseInt(obj.style.left) / axisWidth * axisMaxVal);
+                valObj.value = "¥ " + currentValue.toFixed(2);
+            },
+            common: {
+                exists: function (array, value) {
+                    for (var i = 0; i < array.length; i++) {
+                        if (array[i] == value) {
+                            return true;
+                        }
+                    }
+                    return false
+                }
+            },
+            set:function(data){
+                
+            }
+        }
+
+        priceSlider = new priceSlider();
+        window.priceSlider = priceSlider;
+    })(window)
+</script>

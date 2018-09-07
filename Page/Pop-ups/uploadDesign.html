@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客服上传设计稿</title>
+    <script id="ver" src="../../../Common/Js/version.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("ver");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../../Common/Components/library.css' + VER + '" rel="stylesheet" />');
+        document.write('<script type="text/javascript" src="../../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    </script>
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        .container {
+            padding: 10px 40px;
+        }
+
+        .center {
+            margin: 0 auto;
+        }
+
+        .info {
+            background-color: #FFF1F0;
+            height: 45px;
+            border: 1px solid #EC7171;
+            padding: 10px 10px 10px 15px;
+            box-shadow: 0 0 2px 0 #EC7171;
+            border-radius: 3px;
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        .icon-warning {
+            font-size: 14px;
+            color: #E84B4C;
+        }
+
+        .info p {
+            color: #E84B4C;
+            font-size: 14px;
+            line-height: 14px;
+            display: inline-block;
+        }
+
+        .upload {
+            position: relative;
+        }
+
+        /*remarks*/
+        .requirements-content {
+            height: 84px;
+            border: 1px solid #d7d7d7;
+            border-radius: 4px;
+            padding: 3px;
+        }
+
+        .design-annex,.other-annex{
+            position: relative;
+        }
+
+        #accessory{
+            width: 240px;
+            border: 1px dashed #D5D5D5;
+            padding-bottom: 10px;
+            margin-right: 10px;
+        }
+
+        /*设计师备注附件*/
+        #reference .addDiagram .dia-icon{
+            width: 18px;
+            height: 16px;
+            position: absolute;
+            top: -58px;
+            left: -22px;
+            background: url(../../../Image/Designer/desiDesigner.png) no-repeat -56px -5px !important;
+        }
+        #reference .addDiagram .dia-icon:before{
+            content: '点击上传';
+            position: absolute;
+            display: inline-block;
+            width: 48px;
+            color: #E84B4C;
+            font-size: 12px;
+            line-height: 11px;
+            left: 26px;
+            border-bottom: 1px solid;
+        }
+        #reference .addDiagram .dia-icon:after{
+            content: '备注图片(最多3张)';
+            position: absolute;
+            display: inline-block;
+            width: 100px;
+            color: #D5D5D5;
+            font-size: 12px;
+            line-height: 11px;
+            left: 80px;
+            cursor: auto;
+        }
+
+        #reference .diagram{
+            width: 48px;
+            height: 48px;
+        }
+
+        #reference .diagram img{
+            max-width: 48px;
+            max-height: 48px;
+        }
+
+        #reference .diagram .progress span{
+            font-size: 12px;
+        }
+
+        #reference .diagram .handle .oper
+        {
+            margin: 0 !important;
+        }
+
+        #reference .dia-remind-1,#reference .dia-remind-2{
+            display: none;
+        }
+
+        #reference .diagram{
+            z-index: 2;
+        }
+        #reference .addDiagram{
+            position: absolute;
+            background-color: transparent;
+            box-shadow: none;
+            z-index: 1;
+        }
+        #reference .addDiagram:hover {
+            box-shadow: none;
+        }
+
+        .requirements-content textarea{
+            height: 46px !important;
+        }
+
+        .requirements-content .textarea .remark
+        {
+            line-height: 60px;
+        }
+
+
+        #accessory .accessory-container .filelist .fileitem{
+            margin-left: 26px;
+        }
+
+        #otherAccessory{
+            width: 240px;
+            border: 1px dashed #D5D5D5;
+            padding-bottom: 10px;
+            margin-top: 18px;
+        }
+
+        #otherAccessory .accessory-container .filelist .fileitem{
+            margin-left: 26px;
+        }
+
+        .production-requirements {
+            height: 100px;
+            width: 100%;
+            margin-top: 15px;
+            position: relative;
+        }
+
+        .ok {
+            width: 114px;
+            height: 38px;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .hollow-button {
+            width: 114px;
+            height: 38px;
+            display: inline-block;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="info center">
+        <span class="icon-warning">提示信息：</span>
+        <p>此订单尚未完成设计，继续分配生产将忽略本订单的设计师方案，如果您确认有可以生产的设计方案文件，请将方案提交到下方区域。</p>
+    </div>
+    <div class="main">
+        <div class="upload">
+            <!-- 上传图片 -->
+            <div class="upload-photo clearfix">
+                <div class="design-photo fl" style="width: 252px;">
+                    <span class="label">设计图：</span>
+                    <div id="reference_diagram" class="clearfix" style="height: 109px;" data-type="design_image"> </div>
+                </div>
+                <div class="design-annex fl">
+                    <span class="label">附件：</span>
+                    <span class="label" style="position: absolute; right: 15px; top: 20px; color: #999999; padding: 0 2px; background-color: #F5F5F5;" >设计附件</span>
+                    <div id="accessory" class="clearfix" data-type="design_accessory"> </div>
+                </div>
+                <div class="other-annex fl">
+                    <span class="label" style="position: absolute; right: 4px; top: 20px; color: #999999; padding: 0 2px; background-color: #F5F5F5;">其它附件</span>
+                    <div id="otherAccessory" class="clearfix" data-type="other_accessory"> </div>
+                </div>
+            </div>
+            <div class="production-requirements">
+                <label class="upload-photo-label">设计备注：</label>
+                <div class="requirements-content">
+                </div>
+            </div>
+            <div class="remarks clearfix">
+                <div id="reference" class="clearfix" data-type="design_image" style="margin-top: 30px;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer center">
+        <button class="ok red-button btn" onclick="uploadDesign.submit()">确认</button>
+        <button class="hollow-button btn-h"
+                onclick="parent.layer.closeAll();">取消
+        </button>
+    </div>
+</div>
+<script>
+    document.write('<script type="text/javascript" src="../../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../../Common/Js/global.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../../Common/Components/library.js' + VER + '" ><\/script>');
+</script>
+<script>
+    var customid = "";//客户id
+    $(function () {
+        //初始化上传操作
+        customid = top.Helper.getUrlParam("customid");
+        uploadfile.uploadPhoto('reference_diagram', 1);//图片上传
+        uploadfile.uploadFile('accessory', 1, null, true, null);//附件上传
+        uploadfile.uploadFile('otherAccessory', 1, null, true, null,false);//附件上传
+        textArea.init('.requirements-content', 300, '', '请输入设计备注，请留意：备注不允许出现产品价格，参数和旺旺等各种联系方式', '备注不允许出现产品价格、参数和旺旺等各种联系方式');
+
+        uploadfile.uploadPhoto('reference',3);//图片上传
+
+        uploadfile.initDrag('reference_diagram');//拖拽支持
+        uploadfile.initDrag('accessory');//拖拽支持
+        uploadfile.initDrag('otherAccessory');
+    });
+
+</script>
+</body>
+</html>

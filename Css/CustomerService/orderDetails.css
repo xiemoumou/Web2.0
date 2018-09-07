@@ -1,0 +1,1093 @@
+
+.workshop-content{
+    width: 1005px;
+    height: 100%;
+}
+.details-title ul{
+    width: 1005px;
+    height: 40px;
+    background: #fff;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,0.02);
+}
+.details-title ul li {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #666666;
+}
+.tit-1{
+    padding-left: 35px;
+}
+.tit-2,.tit-5{
+    padding-left: 60px;
+}
+.tit-3{
+    padding-left: 65px;
+}
+.tit-4{
+    padding-left: 180px;
+}
+.tit-6{
+    padding-left: 60px;
+}
+.tit-7{
+    padding-left: 60px;
+}
+.tit-8{
+    padding-left: 87px;
+}
+.order-time{
+    width: 975px;
+    height: 34px;
+    line-height: 34px;
+    background: #F5F5F5;
+    margin: 12px 15px;
+    position: relative;
+    z-index: 1000;
+}
+.esta-time,.order-num,.order-status,.order-cust,.order-ww,.check-order,.view-order,.check-img{
+    display: inline-block;
+    font-size: 12px;
+    color: #333333;
+}
+.check-order,.view-order,.check-img{
+    float: right;
+    font-size: 12px;
+    color: #666666;
+}
+.check-order,.view-order{
+    margin-right: 12px;
+}
+.check-img{
+    margin-right: 20px;
+    width: 17px;
+    height: 13px;
+    background: url(../../Image/orderDetails/customerServiceDetails.png) no-repeat -109px -58px;
+    margin-top: 9px;
+    cursor: pointer;
+}
+.check-img:hover{
+    background: url(../../Image/orderDetails/customerServiceDetails.png) no-repeat -135px -58px;
+}
+.esta-time,.order-status,.order-ww{
+    padding-left: 12px;
+}
+.order-num,.order-cust{
+    padding-left: 12px;
+}
+.workshop-box{
+    background: #fff;
+    width: 1005px;
+}
+.details-contnet{
+    width: 1005px;
+}
+.emer{
+    font-size: 11px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(180,51,15,0.50);
+    display: inline-block;
+    width: 26px;
+    height: 24px;
+    line-height: 24px;
+    background: url("../../Image/WorkShop/workShopDetails.png") no-repeat -26px -1px;
+}
+.renew{
+    font-size: 11px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(18,46,128,0.50);
+    margin-left: 12px;
+    display: inline-block;
+    width: 26px;
+    height: 24px;
+    line-height: 24px;
+    background: url("../../Image/WorkShop/workShopDetails.png") no-repeat 0px -1px;
+}
+
+.order-msg{
+    width: 975px;
+    height: 98px;
+    margin: 12px 15px;
+    position: relative;
+}
+.order-img{
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    display: inline-block;
+    box-shadow:0px 0px 4px rgba(0,0,0,.4);
+
+}
+.order-img img{
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+
+}
+.attr{
+    display: inline-block;
+    margin-left: 17px;
+    width: 88px;
+}
+.attr p{
+    font-size: 12px;
+    color: #666666;
+    line-height: 19px;
+}
+.tech{
+    display: inline-block;
+    width: 168px;
+    vertical-align: top;
+}
+.tech p{
+    font-size: 12px;
+    color: #666666;
+}
+.number{
+    display: inline-block;
+    vertical-align: top;
+    width: 67px;
+    text-align: right;
+}
+.ordNum{
+    font-size: 12px;
+    color: #666666;
+}
+.size-box{
+    display: inline-block;
+    vertical-align: top;
+    width: 180px;
+    text-align: right;
+}
+.money-time{
+    display: inline-block;
+    vertical-align: top;
+    width: 82px;
+    text-align: right;
+}
+.amou,.limit{
+    display: inline-block;
+}
+.amou{
+    font-size: 12px;
+    color: #E84B4C;
+}
+.limit{
+    font-size: 12px;
+
+    line-height: 18px;
+}
+.orderstatus{
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    float: right;
+    margin-right: 20px;
+}
+.orderstatus p{
+    font-size: 12px;
+    margin-top: 5px;
+    color: #999999;
+}
+.orderComp{
+    color: #5298FF!important;
+}
+.operation{
+    float: right;
+    margin-right: 20px;
+    height: 100px;
+    display: flex;
+    flex-flow: wrap;
+    vertical-align: middle;
+    justify-content: space-around;
+    align-items: center;
+    width: 63px;
+
+}
+.upimg,.deli{
+    display: inline-block;
+    width: 66px;
+    height: 23px;
+    text-align: center;
+    line-height: 23px;
+    border-radius: 2px;
+}
+.deli{
+    border-radius: 2px;
+    font-size: 12px;
+    color: #fff;
+    margin-top: 12px;
+    cursor: pointer;
+    background-image: linear-gradient(-109deg, #5ABCFF 3%, #5298FF 87%);
+}
+.deli:hover{
+    background: #5298FF;
+}
+.offer{
+    position: absolute;
+    display: inline-block;
+    width: 182px;
+    height: 21px;
+    line-height: 21px;
+    background: #FAFBFB;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.20);
+    border-radius: 2px;
+    text-align: center;
+    left: 123px;
+    bottom: 0px;
+    color: #999;
+}
+.budget{
+    font-size: 12px;
+    color: #999999;
+    position: absolute;
+    left: 385px;
+    bottom: 0px;
+}
+.budget-text{
+    display: inline-block;
+}
+.budget-text input{
+    width: 64px;
+    text-align: center;
+    border: 1px solid #d5d5d5;
+    border-radius: 2px 0px 0px 2px;
+    border-right: none;
+    height: 19px;
+    line-height: 19px;
+}
+.budget-text span{
+    display: inline-block;
+    width: 32px;
+    height: 21px;
+    line-height: 21px;
+    font-size: 12px;
+    color: #FFFFFF;
+    border-radius: 0px 2px 2px 0px;
+    text-align: center;
+    float: right;
+}
+
+.quote{
+    font-size: 12px;
+    color: #999999;
+    position: absolute;
+    left: 585px;
+    bottom: 0px;
+}
+.quote-text{
+    display: inline-block;
+}
+.quote-text input{
+    width: 64px;
+    text-align: center;
+    border: 1px solid #d5d5d5;
+    border-radius: 2px 0px 0px 2px;
+    border-right: none;
+    height: 19px;
+    line-height: 19px;
+}
+.quote-text span{
+    display: inline-block;
+    width: 32px;
+    height: 21px;
+    line-height: 21px;
+    font-size: 12px;
+    color: #FFFFFF;
+    border-radius: 0px 2px 2px 0px;
+    text-align: center;
+    float: right;
+}
+.quote-tips{
+    position: absolute;
+    width: 190px;
+    height: 24px;
+    line-height: 24px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10);
+    border-radius: 2px;
+    top: -34px;
+    left: -56px;
+    background-color: #fff;
+    border: 1px solid #00000010;
+}
+.quote-tips span{
+    background: #FFFFFF;
+    border: 1px solid #FF7853;
+    border-radius: 2px;
+    font-size: 12px;
+    color: #FF7853;
+    margin-left: 5px;
+    display: inline-block;
+    width: 38px;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+}
+.quoteTips{
+    display: inline-block;
+    font-size: 12px;
+    color: #E84B4C;
+}
+.quoteTips a{
+    color: #E84B4C;
+}
+.bottom-tria{
+    width: 0;
+    height: 0;
+    border-width: 5px 5px 0px 0px;
+    border-style: solid;
+    border-color: #ffffff #ffffff00 transparent;
+    position: absolute;
+    bottom: -5px;
+    right: 33px;
+
+
+}
+/****头部结束***/
+
+
+
+
+
+
+.design-rele{
+    /*margin-top: 10px;*/
+    width: 500px;
+    height: 767px;
+    background-color: #fff;
+    display: inline-block;
+}
+.design-box{
+    width: 420px;
+    margin: 0 auto;
+}
+.design-title{
+    padding: 32px 0px 0px 40px;
+}
+.design-title b{
+    display: inline-block;
+    vertical-align: top;
+    font-size: 18px;
+    color: #333333;
+    font-weight: 400;
+    margin-left: 5px;
+}
+.design-title span{
+    display: inline-block;
+    width: 6px;
+    height: 18px;
+    background: #5298FF;
+}
+#details_diagram{
+    width: 420px;
+    height: 110px;
+    float: left;
+    /*margin-left: 16px;*/
+    margin-top: 15px;
+}
+.label-1{
+    font-size: 14px;
+    color: #666666;
+}
+.label-3{
+    font-size: 14px;
+    color: #666666;
+}
+.label-2{
+    font-size: 14px;
+    color: #D5D5D5;
+    font-weight: 300;
+    letter-spacing: 0;
+    text-align: right;
+    float: right;
+}
+.label-4{
+    font-size: 14px;
+    color: #D5D5D5;
+    font-weight: 300;
+    letter-spacing: 0;
+    text-align: right;
+    float: right;
+}
+.diagram{
+    margin-right: 30px!important;
+}
+#details_encl {
+    width: 100%;
+    height: 125px;
+    float: left;
+    position: relative;
+    margin-top: 15px;
+}
+.design-uploadPhoto{
+    height: 145px;
+    margin-top: 25px;
+}
+.design-uploadFile{
+    margin-top: 22px;
+}
+.details-encl-box{
+    width: 100%;
+    height: 140px;
+    border: 1px dotted #d5d5d5;
+    margin-top: 15px;
+}
+.design-rema textarea{
+    height: 143px;
+    border: 1px solid #d5d5d5!important;
+}
+.details-rema-box{
+    margin-top: 29px;
+}
+.design-rema{
+    margin-top: 10px;
+}
+.details-rema-box p{
+    font-size: 12px;
+    color: #D5D5D5;
+    letter-spacing: 0;
+}
+.deails-btn{
+    width: 160px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
+
+}
+.accessory-container .filelist .fileitem{
+    margin-left: 113px!important;
+}
+.offer-rele{
+    /*margin-top: 10px;*/
+    width: 500px;
+    height: 767px;
+    background-color: #fff;
+    display: inline-block;
+    vertical-align: bottom;
+    /*margin-left: 3px;*/
+    float: right;
+}
+.offer-box{
+    width: 420px;
+    margin: 0 auto;
+}
+#prod_refe{
+    height: 110px;
+    /*margin-left: 152px;*/
+    margin-top: 15px;
+}
+.offer-rema textarea{
+    height: 123px!important;
+    border: 1px solid #d5d5d5!important;
+}
+.offer-rele-box p{
+    font-size: 12px;
+    color: #D5D5D5;
+    letter-spacing: 0;
+}
+.offer-rele-box{
+    margin-top: 22px;
+}
+.offer-rema{
+    margin-top: 15px;
+}
+.address-content{
+    width: 420px;
+    height: 165px;
+    background-color: #f5f5f5;
+    margin-top: 20px;
+}
+.address-box{
+    margin-top: 7px;
+}
+.modify-addr{
+    display: inline-block;
+    width: 60px;
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+    border: 1px solid #E84B4C;
+    border-radius: 2px;
+    font-size: 12px;
+    color: #E84B4C;
+    cursor: pointer;
+    float: right;
+}
+.address-empty span{
+    display: inline-block;
+    width: 16px;
+    height: 18px;
+    background: url("../../Image/orderDetails/customerServiceDetails.png") no-repeat -161px -57px;
+    vertical-align: sub;
+}
+.address-add{
+    font-size: 14px;
+    color: #E84B4C;
+    line-height: 21px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.address-empty em{
+    font-size: 14px;
+    color: #666666;
+    line-height: 21px;
+}
+.address-empty{
+    text-align: center;
+    padding-top: 65px;
+}
+.offer-btn{
+    width: 160px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0 auto;
+    display: block;
+    margin-top: 36px;
+}
+.hide{
+    display: none;
+}
+.address-text-box{
+    padding: 15px 20px;
+    font-size: 12px;
+    color: #666666;
+}
+.detailed{
+    width: 283px;
+    display: inline-block;
+    vertical-align: text-top;
+    line-height: 14px;
+    margin-left: 28px;
+}
+.area{
+    margin-left: 28px;
+}
+.zip-code{
+    margin-left: 53px;
+}
+.phone{
+    margin-left: 24px;
+}
+.cont{
+    margin-left: 42px;
+}
+.copy-box{
+    display: inline-block;
+    float: right;
+    font-size: 12px;
+    color: #999;
+}
+.copy{
+    color: #E84B4C;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.address-text-box p{
+    color: #666;
+}
+.cont-box,.phone-box,.zip-code-box,.area-box,.detailed-box{
+    color: #999;
+}
+
+.hover:hover{
+    color: #E84B4C;
+    cursor: pointer;
+}
+.operation button{
+    width: 66px;
+    height: 23px;
+    border-radius: 2px;
+    display: block;
+}
+.operlist {
+    position: absolute;
+    width: 96px;
+    height: 112px;
+    box-shadow: 0 0 16px #00000006;
+    background-color: #ffffff;
+    border-radius: 4px;
+    display: flex;
+    flex-flow: wrap;
+    vertical-align: middle;
+    justify-content: space-around;
+    align-items: center;
+    top: 30px;
+    right: 14px;
+}
+.arrow {
+    width: 0;
+    height: 0;
+    border-width: 10px 11px 0px 0px;
+    border-style: solid;
+    border-color: #f1020200 #ffffff transparent;
+    position: absolute;
+    top: -6px;
+    right: 12px;
+}
+.operlist span {
+    height: 22px;
+    line-height: 22px;
+    border-bottom: 1px solid #FAFBFB;
+    width: 60px;
+    text-align: center;
+    margin-left: 0;
+}
+.operlist span:hover{
+    color: #E84B4C;
+    background-color: #FAFBFB;
+    cursor: pointer;
+}
+.design-rema .textarea textarea{
+    width: 404px!important;
+    height: 150px!important;
+}
+.offer-rema .textarea textarea{
+    width: 404px!important;
+    height: 130px!important;
+}
+
+.edit{
+    position: absolute;
+    cursor: pointer;
+    right: -30px;
+    top: 0px;
+    color: #5298FF;
+}
+.order-msg-box{
+    position: relative;
+}
+.order-msg-box:hover{
+    box-shadow: 0 0 10px #00000010;
+    z-index: 3;
+}
+.order-msg-box .Edit {
+    width: 66px;
+    height: 23px;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+.red-h {
+    width: 66px;
+    height: 23px;
+    border: 1px solid #E84B4C;
+    background-color: #ffffff;
+    color: #E84B4C;
+    border-radius: 2px;
+}
+.desi-offer-box{
+    margin-top: 10px;
+}
+
+
+
+/***设计稿**/
+.design-man .design-title{
+    padding: 32px 0px 0px 40px;
+    display: inline-block;
+}
+
+.design-man .design-title span{
+    display: inline-block;
+    width: 6px;
+    height: 18px;
+    background: #5298FF;
+}
+.planner-leav-last{
+    height: 110px;
+}
+.design-man .design-title b{
+    display: inline-block;
+    vertical-align: top;
+    font-size: 18px;
+    color: #333333;
+    font-weight: 400;
+    margin-left: 5px;
+}
+.design-man{
+    margin-top: 10px;
+    background-color: #fff;
+    position: relative;
+}
+.edit-left{
+    width: 406px;
+    display: inline-block;
+}
+.design-next-title{
+    width: 925px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.design-next-title h3{
+    display: inline-block;
+    font-size: 22px;
+    color: #333333;
+    letter-spacing: 0.14px;
+}
+.design-content{
+    width: 874px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.planner{
+    font-size: 18px;
+    color: #999999;
+}
+.time-status span{
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    background: url("../../Image/orderDetails/customerServiceDetails.png") no-repeat -189px -59px;
+    vertical-align: text-top;
+}
+.time-status{
+    font-size: 12px;
+    color: #999999;
+    margin-top: 8px;
+}
+.time-status a{
+    margin-left: 10px;
+    font-size: 12px;
+    color: #999999;
+}
+.for-design{
+    height: 660px;
+}
+.list-1{
+    font-size: 14px;
+    color: #666666;
+}
+.desi-box{
+    height: 124px;
+    margin-top: 20px;
+}
+#edit_desi,#desi_encl,#other_encl{
+    margin-top: 10px;
+}
+.desi-encl-box,.other-encl-box{
+    height: 44px;
+    margin-top: 20px;
+}
+.planner-leav{
+    width: 406px;
+    /*height: 217px;*/
+    background-color: #fafbfb;
+    margin-left: -20px;
+    margin-top: 20px;
+}
+.planner-leav-content{
+    padding: 10px 20px;
+}
+.planner-leav-text{
+    font-size: 12px;
+    color: #333333;
+}
+#planner_leav{
+    margin-top: 10px;
+}
+.desi-encl-box .filelist{
+    margin-left: -112px;
+    margin-top: 5px;
+}
+.other-encl-box .filelist{
+    margin-left: -112px;
+    margin-top: 5px;
+}
+.planner-leav-content .diagram-container .diagram{
+    margin-right: 12px!important;
+}
+
+
+/***留言板***/
+.edit-right{
+    display: inline-block;
+    vertical-align: top;
+    width: 437px;
+    position: absolute;
+    top: 136px;
+    right: 66px;
+}
+.edit-right-button{
+    float: right;
+    height: 34px;
+}
+.edit-right-button span{
+    font-size: 12px;
+    color: #E84B4C;
+    letter-spacing: 0;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-right: 30px;
+}
+.leav-title-right-text{
+    display: inline-block;
+}
+.EditButton{
+    background: #FFFFFF;
+    border: 1px solid #E84B4C;
+    border-radius: 4px;
+    width: 126px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    color: #E84B4C;
+    letter-spacing: 0;
+    cursor: pointer;
+}
+/****留言板内容***/
+.leav-box{
+    width: 437px;
+    height: 540px;
+    background: #FFFFFF;
+    box-shadow: 0 0 16px 0 rgba(0,0,0,0.06);
+    border-radius: 4px;
+    clear: both;
+    margin-top: 55px;
+}
+.leav-title{
+    height: 36px;
+    line-height: 36px;
+    width: 357px;
+    margin: 0 auto;
+    padding-top: 20px;
+    border-bottom: 1px solid #f5f5f5;
+}
+.leav-title span{
+    font-size: 16px;
+    color: #333333;
+    letter-spacing: 0.1px;
+    text-align: center;
+}
+.leav-title-right{
+    display: inline-block;
+    float: right;
+    font-size: 12px;
+    color: #999999;
+}
+.leav-reg-img{
+    height: 48px;
+    margin-top: 10px;
+}
+.leav-reg-img .diagram .handle .dia-zoom{
+    margin: 0 -1px;
+}
+.leav-reg-file{
+    margin-top: 10px;
+}
+.leav-reg-img .diagram{
+    width: 48px;
+    height: 48px;
+}
+.leav-reg-file .accessory-container{
+    margin-left: -112px;
+}
+.leav-title-right a{
+    display: inline-block;
+    width: 14px;
+    height: 12px;
+    background: url(../../Image/orderDetails/customerServiceDetails.png) no-repeat -59px -111px;
+    vertical-align: middle;
+}
+.leav-content{
+    width: 357px;
+    height: 341px;
+    overflow: scroll;
+    /*padding-top: 30px;*/
+    margin: 0 auto;
+}
+.leav-text-first {
+    height: 14px;
+    font-size: 14px;
+    color: #999999;
+}
+#leav_bottom_img .diagram .handle .oper{
+    margin: 0 -1px;
+}
+.TextList-left,.TextList-right{
+    display: inline-block;
+}
+.TextList-right{
+    float: right;
+}
+.TextList-left span{
+    color: #333;
+}
+.TextList-right span{
+    font-size: 12px;
+    color: #999999;
+}
+.leav-text-second{
+    width: 323px;
+    margin-top: 10px;
+    background: #FAFBFB;
+    padding: 6px 15px;
+}
+.leav-reg-title{
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.leav-reg-title .line {
+    display: inline-block;
+    width: 128px;
+    border-top: 2px solid #d5d5d5 ;
+}
+.leav-reg-title .txt {
+    font-size: 14px;
+    color: #333333;
+    vertical-align: middle;
+    display: inline-block;
+    width: 63px;
+}
+#details_reg .diagram-container .diagram img{
+    max-width: 48px;
+    max-height: 48px;
+}
+#details_reg .diagram {
+    width: 48px;
+    height: 48px;
+}
+#details_reg .addDiagram{
+    width: 48px;
+    height: 48px;
+}
+.leav-show{
+    height: 43px;
+    background-color: #fafbfb;
+    margin-top: 53px;
+}
+.leav-show-left{
+    display: inline-block;
+    float: right;
+    line-height: 43px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #666666;
+}
+.leav-show-left input{
+   vertical-align: unset;
+}
+.leav-bottom-box{
+    height: 46px;
+}
+.leav-bottom-up,.leav-bottom-input,.leav-btn{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#leav_bottom_img .diagram{
+    width: 38px;
+    height: 38px;
+}
+#leav_bottom_img .diagram img{
+    width: 38px;
+    height: 38px;
+}
+#leav_bottom_img .diagram img{
+    max-width: 38px;
+    max-height: 38px;
+}
+#leav_bottom_img .diagram .progress span{
+    font-size: 12px;
+    color: #fff;
+}
+#leav_bottom_img .diagram-container{
+    margin-top: -38px;
+    position: absolute;
+}
+#leav_bottom_img .addDiagram{
+    width: 45px;
+    height: 45px;
+    box-shadow: inherit;
+    border-radius: inherit;
+    background-color: initial;
+    border-right: 1px solid #f5f5f5;
+}
+#leav_bottom_img .addDiagram .dia-icon{
+    display: block;
+    width: 16px;
+    height: 14px;
+    margin: 15px 15px 0;
+    background: url("../../Image/orderDetails/customerServiceDetails.png") no-repeat -5px -84px;
+}
+#leav_bottom_img .addDiagram .dia-remind-1{
+   display: none;
+}
+#leav_bottom_img .addDiagram .dia-remind-2{
+    display: none;
+}
+#leav_bottom_file .accessory-icon{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin: 15px 0px;
+    background: url("../../Image/orderDetails/customerServiceDetails.png") no-repeat -31px -83px;
+}
+#leav_bottom_file .addAccessory{
+    position: absolute;
+    top: -42px;
+    cursor: pointer;
+}
+#leav_bottom_file .addAccessory-title{
+    display: none;
+}
+#leav_bottom_file .accessory-message{
+    display: none;
+}
+
+#leav_bottom_file .addAccessory-btn{
+    visibility: hidden;
+}
+#leav_bottom_file{
+    margin-left: 47px;
+    width: 45px;
+    height: 45px;
+    border-right: 1px solid #f5f5f5;
+
+}
+
+.leav-bottom-input input{
+    height: 45px;
+    padding-left: 10px;
+}
+.leav-btn button{
+    width: 88px;
+    height: 34px;
+    line-height: 34px;
+}
+.leav-btn{
+    float: right;
+    margin-top: 6px;
+    margin-right: 10px;
+}
+#leav_bottom_img .diagram{
+    margin-right: 16px!important;
+}
+
+#leav_bottom_file .accessory-container{
+    position: relative;
+}
+#leav_bottom_file .accessory-container .filelist{
+    position: absolute;
+    top: -86px;
+}
+

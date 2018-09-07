@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单管理</title>
+    <script id="ver" src="../../Common/Js/version.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("ver");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Css/CustomerService/thing_handle.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Common/Lib/jqueryPagination/css/jquery.pagination.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Css/CustomerService/orderManager.css' + VER + '" rel="stylesheet" />');
+        document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    </script>
+</head>
+
+<body>
+    <div class="content-box">
+        <input type="hidden" id="showtype" value="1">
+        <div class="nav">
+            <ul>
+                <li class="active" data-status="1">
+                    <span>生产单管理</span>
+                    <!--<i class="reddot" id="replace"></i>-->
+                </li>
+                <li data-status="2">
+                    <span>设计单管理</span>
+                    <!--<i id="alre" class="reddot"></i>-->
+                </li>
+            </ul>
+        </div>
+
+        <div class="order-list-num">
+            <p class="order-list-text">
+                <span class="order-list-msg">待接受生产订单总数：</span>
+                <span id="order_num"></span>
+            </p>
+            <div class="btn-list">拉取列表</div>
+        </div>
+
+        <div class="order-tran">
+            <p>转接订单：</p>
+            <div class="order-tran-search">
+                <input class="order-search-input input-number" id="search" type="text" maxlength="30" placeholder="输入需要转接订单的订单号">
+                <div onclick="orderAdmin.search();" class="btn-search">搜索</div>
+            </div>
+        </div>
+    </div>
+
+        <div class="order-admin-content">
+            <div id="datalist" class="order-box">
+                <!--<div class="order-model">-->
+                    <!--<div class="order-modu-content">-->
+                        <!--<div class="order-img-box">-->
+                            <!--<img src="../../images/images/073928257.jpg" class="order-img">-->
+                        <!--</div>-->
+                        <!--<div class="order-text">-->
+                            <!--<div class="order-first">-->
+                                <!--<p class="first-left">订单号：<span>748596847362768</span></p>-->
+                                <!--<p class="first-right">车间：<span>车间1</span></p>-->
+                            <!--</div>-->
+                            <!--<div class="order-second">-->
+                                <!--<p>旺旺号：<span>89248921</span></p>-->
+                            <!--</div>-->
+                            <!--<div class="order-third">-->
+                                <!--<p>客服：<span>23894982</span></p>-->
+                            <!--</div>-->
+                            <!--<div class="order-fourth">-->
+                                <!--<p class="fourth-left">设计师：<span>892374927</span></p>-->
+                                <!--<div class="btn-tran">转接订单</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+        </div>
+
+    <!--<div class="page-box"></div>-->
+    <script>
+        document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
+        document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
+        document.write('<script type="text/javascript" src="../../Js/CustomerService/orderManager.js' + VER + '" ><\/script>');
+    </script>
+</body>
+</html>

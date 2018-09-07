@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>待接受生产列表</title>
+    <link href="../../css/common/base.css" rel="stylesheet">
+    <link href="../../css/service/stay_prod.css" rel="stylesheet">
+    <style type="text/css">
+        html{
+            overflow-y: hidden;
+        }
+        #datalist{
+            height: 180px;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+<div class="stay-content">
+
+    <div class="stay-list-box">
+        <p>
+            <span class="stay-left"></span>
+            <span class="stay-right">订单数</span>
+        </p>
+        <ul id="datalist">
+
+        </ul>
+    </div>
+    <div class="floor">
+        <button onclick="parent.layer.closeAll()" style="margin-left: 10px" class="hollow-button">确定</button>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="../../lib/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../lib/jquery.cookie.js"></script>
+<script type="text/javascript" src="../../js/common/common.js"></script>
+<script type="text/javascript" src="../../lib/layer/2.4/layer.js"></script>
+</body>
+<script type="text/javascript">
+    $(function () {
+        var url = Common.getUrl()['order'] + Common.getDataInterface()["managerOrder"];
+        var status=Common.getUrlParam("status",true);
+        if(status=="1")
+        {
+            $(".stay-left").text("车间");
+        }else if(status=="2")
+        {
+            $(".stay-left").text("方案师");
+        }
+        var data={
+            "commandCode":100,
+            "userId":$.cookie("userid"),
+            "token":$.cookie("token"),
+            "roleType":$.cookie("roletype"),
+            "status":status,
+        };
+        Common.ajax(url, data, true, function (data) {
+            var data=data.data;
+            //var data=$.parseJSON(data);
+            var dom_datalist=$("#datalist");
+            var datalist=data.workshop?data.workshop:data.list;
+            for(var i=0;i<datalist.length;i++)
+            {
+                var item=datalist[i];
+                var li=$('<li> <span class="work-text">'+item.name+'</span> <span class="order-num">'+item.num+'</span> </li>');
+                dom_datalist.append(li);
+            }
+        });
+    });
+</script>
+</html>

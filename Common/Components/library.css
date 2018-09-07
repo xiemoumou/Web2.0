@@ -1,0 +1,691 @@
+/*****************************文件上传-begin********************************/
+/*参考图附件*/
+.diagram{
+    width: 110px;
+    height: 110px;
+    box-shadow: 0 0 6px #00000030;
+    float: left;
+    border-radius:6px;
+    background-color: #FAFBFB;
+    margin-right: 16px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.diagram:hover{
+    box-shadow: 0 0 6px #00000060;
+}
+
+.diagram img{
+    max-width: 110px;
+    max-height: 110px;
+}
+
+.diagram .handle{
+    height: 20px;
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+}
+
+.diagram .handle .oper{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-color: #00000050;
+    border-radius: 2px;
+    margin: 0 5px;
+}
+
+.diagram .handle .oper:hover{
+    background-color: #00000080;
+}
+
+.diagram .handle .dia-del{
+    background-image: url(../../Image/createOrder/createOrder.png);
+    background-repeat: no-repeat;
+    background-position: -81px -2px;
+}
+
+.diagram .handle .dia-zoom{
+    background-image: url(../../Image/createOrder/createOrder.png);
+    background-repeat: no-repeat;
+    background-position: -211px -2px;
+}
+
+.diagram .progress{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #00000050;
+    border-radius: 6px;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.diagram .progress span{
+    font-size: 22px;
+    color:#fff;
+}
+
+.addDiagram{
+    width: 110px;
+    height: 110px;
+    box-shadow: 0 0 6px #00000030;
+    float: left;
+    border-radius:6px;
+    background-color: #FAFBFB;
+    margin-right: 16px;
+    position: relative;
+}
+
+.addDiagram:hover{
+    box-shadow: 0 0 6px #00000060;
+}
+
+.addDiagram .dia-icon{
+    display: block;
+    width: 38px;
+    height: 32px;
+    margin: 19px 36px 0;
+    background: url(../../Image/createOrder/createOrder.png) no-repeat -7px -36px;
+}
+
+.addDiagram .dia-remind-1{
+    color: #666666;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.addDiagram .dia-remind-2{
+    display: block;
+    width: 100%;
+    color: #999999;
+    text-align: center;
+}
+
+/*添加附件*/
+.accessory-icon{
+    display: block;
+    width: 38px;
+    height: 38px;
+    margin: 12px auto;
+    background: url(../../Image/createOrder/createOrder.png) no-repeat -59px -33px;
+}
+
+.accessory-container .addAccessory{
+    text-align: center;
+}
+
+.addAccessory-title{
+    display: inline-block;
+    color: #666666;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.addAccessory-btn{
+    display: inline-block;
+    color: #E84B4C;
+    font-size: 14px;
+    border-bottom: 1px solid;
+    line-height: 14px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.accessory-message{
+    display: block;
+    color: #999999;
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 4px;
+}
+
+.accessory-container .filelist{
+    width: 100%;
+}
+
+.accessory-container .filelist .fileitem {
+    display: inline-block;
+    height: 30px;
+    border-radius: 4px;
+    line-height: 30px;
+    box-shadow: 0 2px 6px #00000030;
+    margin-left: 62px;
+    position: relative;
+    padding-right: 26px;
+}
+
+.accessory-container .filelist .fileitem .progress{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #00000080;
+    border-radius: 6px;
+    display: flex;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+}
+
+.accessory-container .filelist .fileitem .filetype{
+    display: inline-block;
+    font-size: 14px;
+    color: #ffffff;
+    width: 48px;
+    height: 100%;
+    text-align: center;
+    background: url(../../Image/createOrder/createOrder.png) no-repeat -106px -37px;
+    border-radius: 4px 0 0 4px;
+    position: relative;
+}
+
+.accessory-container .filelist .fileitem .filename{
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-size: 14px;
+    color: #333333;
+    width: 98px;
+    margin-left: 20px;
+}
+
+.accessory-container .filelist .fileitem .del-icon{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: url(../../Image/createOrder/createOrder.png) no-repeat -164px -8px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.accessory-container .filelist .fileitem .del-icon:hover{
+    background: url(../../Image/createOrder/createOrder.png) no-repeat -138px -8px;
+}
+
+.accessory-container .filelist .fileitem .download{
+    display: inline-block;
+    color: #666666;
+    cursor: pointer;
+    width: 28px;
+    text-align: center;
+    font-size: 12px;
+    border-bottom: 1px solid;
+    line-height: 12px;
+    margin: 8px 5px 0 5px;
+}
+
+.accessory-container .filelist .fileitem .download:hover{
+    color: #ec5253;
+}
+
+
+/*****************************文件上传-end********************************/
+
+/*============================================================================================================*/
+/*============================================================================================================*/
+/*============================================================================================================*/
+/*============================================================================================================*/
+/*============================================================================================================*/
+/*============================================================================================================*/
+
+
+/***************************************下拉菜单-begin*/
+.lg-dropdownlist {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+
+.lg-dropdownlist span.val {
+    display: block;
+    padding-left: 8px;
+    height: 100%;
+    width: calc(100% - 36px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    color: #333333;
+}
+
+.lg-dropdownlist i.select{
+    position: absolute;
+    display: block;
+    width: 12px;
+    height: 12px;
+    right: 8px;
+    top: 30%;
+    background: url("./image/triangle.png") no-repeat center;
+}
+
+.lg-dropdownlist ul{
+    display: none;
+    border: 1px solid #D5D5D5;
+    border-top: navajowhite;
+    box-shadow: 0 2px 4px #00000020;
+    max-height: 140px;
+    border-radius: 0 0 4px 4px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+    z-index: 1000;
+    margin-top: 1px;
+    background-color: #fff;
+}
+
+.lg-dropdownlist ul li{
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    cursor: pointer;
+    color: #333333;
+    font-size: 12px;
+}
+
+.lg-dropdownlist ul li:hover{
+    background-color: #D5D5D5;
+}
+
+/*下拉各行变色颜色*/
+.odd{
+    background-color: #ffffff;
+}
+.even{
+    background-color: #FAFBFB;
+}
+
+/***************************************下拉菜单-end*/
+
+
+/***************************************下拉复选框-begin*/
+.lg-dropdownbox {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+}
+
+.lg-dropdownbox .div-body{
+    border: 1px solid #D5D5D5;
+    border-radius: 4px 4px 0 0;
+    border-bottom: none;
+}
+
+.mode-container{
+    box-shadow: 0 0 8px #0000004f;
+    background-color: #FFFFFF;
+    /*border: 1px solid #D5D5D5;*/
+    border-radius: 4px;
+    display: block;
+    position: absolute;
+    left: -1px;
+    z-index: 1000;
+}
+
+.lg-dropdownbox span.val {
+    display: block;
+    padding-left: 8px;
+    width: calc(100% - 36px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    color: #333333;
+}
+
+.lg-dropdownbox i.select{
+    position: absolute;
+    display: block;
+    width: 12px;
+    height: 12px;
+    right: 8px;
+    top: 30%;
+    background: url("./image/triangle.png") no-repeat center;
+}
+
+.lg-dropdownbox .drop-box{
+    border: 1px solid #D5D5D5;
+    border-top: navajowhite;
+    box-shadow: 0 2px 4px #00000020;
+    border-radius: 0 0 4px 4px;
+    position: relative;
+    z-index: 1000;
+    margin-top: 1px;
+}
+
+.lg-dropdownbox .div-body .s-btn .item i.active{
+    background: url(../../Image/createOrder/createOrder.png) no-repeat -2px -2px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+
+
+.lg-dropdownbox .ok-btn{
+    width: 50%;
+    height: 100%;
+    border-radius: 0 0 0 4px;
+}
+
+.lg-dropdownbox .cancel-btn{
+    width: 50%;
+    height: 100%;
+    border-radius: 0 0 4px 0;
+}
+
+/***************************************下拉复选框-end*/
+
+/***************************************开模方式下拉复选框-begin*/
+.mode-container .div-body {
+    overflow-y: auto;
+}
+
+.mode-container .div-body ul{
+    margin-left: 2px;
+    margin-top: 10px;
+}
+
+.mode-container .div-body ul li{
+    margin-top: 10px;
+}
+
+.mode-container .div-body ul li div{
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #FAFBFB;
+    box-shadow: 0 0 8px #00000030;
+    text-align: center;
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    cursor:pointer;
+    position: relative;
+}
+
+.mode-container .div-body ul li div:hover{
+    background-color: #D5D5D5;
+}
+
+
+.mode-container .div-body ul li.row1 div{
+    width: 42px;
+    margin-left: 7px;
+}
+
+.mode-container .div-body ul li div i.active{
+    background: url(../../Image/createOrder/createOrder.png) no-repeat -2px -2px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.mode-container .div-body ul li.row2{
+    text-align: center;
+}
+
+.mode-container .div-body ul li.row2 div{
+    padding: 0 7px;
+    float: none;
+}
+
+.mode-container .div-body ul li.row3
+{
+    margin-left: 8px;
+}
+
+.mode-container .div-body ul li.row3 div{
+    width: 62px;
+    margin-bottom: 10px;
+}
+
+.mode-container .div-body ul li.row3 .mr{
+    margin-right: 16px;
+}
+
+/***************************************开模方式下拉复选框-end*/
+
+/***************************************下拉复选框-begin*/
+.s-btn-container .div-body {
+    overflow-y: auto;
+    position: relative;
+    background-color: #fff;
+    z-index: 1000;
+}
+
+
+.s-btn-container .div-body div.s-btn{
+    text-align: left;
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    cursor: pointer;
+    position: relative;
+    width: 60px;
+    margin: 5px;
+}
+
+.s-btn-container .div-body .s-btn .item{
+    border-radius: 4px;
+    background-color: #FAFBFB;
+    box-shadow: 0 0 8px #00000030;
+    text-align: center;
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    cursor: pointer;
+    position: relative;
+    width: 60px;
+}
+
+.s-btn-container .div-body ul li div:hover{
+    background-color: #D5D5D5;
+}
+
+
+.s-btn-container .div-body ul li.row1 div{
+    width: 42px;
+    margin-left: 7px;
+}
+
+.s-btn-container .div-body ul li div i.active{
+    background: url(../../Image/createOrder/createOrder.png) no-repeat -2px -2px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.s-btn-container .div-body ul li.row2{
+    text-align: center;
+}
+
+.s-btn-container .div-body ul li.row2 div{
+    padding: 0 7px;
+    float: none;
+}
+
+.s-btn-container .div-body ul li.row3
+{
+    margin-left: 8px;
+}
+
+.s-btn-container .div-body ul li.row3 div{
+    width: 62px;
+    margin-bottom: 10px;
+}
+
+.s-btn-container .div-body ul li.row3 .mr{
+    margin-right: 16px;
+}
+
+/***************************************下拉复选框-end*/
+
+
+/*============================================================================================================*/
+/*============================================================================================================*/
+/*============================================================================================================*/
+/*============================================================================================================*/
+/*============================================================================================================*/
+/*============================================================================================================*/
+
+/*!***************************************文本域-begin*/
+.textarea{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.textarea textarea{
+    border-radius: 4px;
+    border: none;
+    padding: 8px;
+}
+
+.wordCount{
+    float: right;
+    color: #999999;
+}
+
+/*!***************************************文本域-end*/
+
+/*============================================================================================================*/
+/*============================================================================================================*/
+/*============================================================================================================*/
+/*============================================================================================================*/
+/*============================================================================================================*/
+/*============================================================================================================*/
+
+/*!***************************************时间选择-begin*/
+.lg-date-select{
+    width: 170px;
+    height: 228px;
+    background: #FFFFFF;
+    box-shadow: 0 0 16px 0 rgba(0,0,0,0.06);
+    border-radius: 4px;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    border: 1px solid #ececec;
+    color:#666666;
+    cursor: auto;
+    z-index: 6;
+}
+
+.lg-date-select i.arrow{
+    width: 0;
+    height: 0;
+    border-width: 0px 5px 5px 5px;
+    border-style: solid;
+    border-color: #ffffff #00000000 white;
+    position: absolute;
+    top: -5px;
+    right: 33px;
+}
+
+.lg-date-range {
+    margin-top: 18px;
+    width: 100%;
+    line-height: 17px;
+}
+
+.lg-date-range .label{
+    margin-left: 10px;
+    display: block;
+    text-align: left;
+
+}
+
+.lg-date-range input{
+    width: 65px;
+    height: 17px;
+    color: #666666;
+    padding-left: 4px;
+    background-color: #FAFBFB;
+    border: none;
+    border-radius: 3px;
+    display: inline-block;
+    box-shadow: 0 0 2px #00000015;
+    cursor: pointer;
+}
+
+.lg-fast-select {
+    margin-top: 22px;
+    width: 100%;
+    height:109px;
+}
+
+.lg-fast-select .label{
+    display: block;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.lg-fast-select .lg-select span{
+    display: block;
+    width: 44px;
+    height: 19px;
+    box-shadow: 0 0 2px #00000015;
+    background-color: #FAFBFB;
+    line-height: 19px;
+    border-radius: 3px;
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.lg-fast-select .lg-select span i.active{
+    background: url(../../Image/createOrder/createOrder.png) no-repeat -2px -2px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.lg-fast-select .lg-select span:hover{
+    background-color: #c5c5c5;
+}
+
+.lg-date-select button{
+    width: 66px;
+    height: 23px;
+    border-radius: 3px;
+    margin: 0 5px;
+}
+
+

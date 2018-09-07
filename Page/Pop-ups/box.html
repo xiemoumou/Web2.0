@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子</title>
+    <script id="ver" src="../../../Common/Js/version.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("ver");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../../Css/Pop-ups/box.css' + VER + '" rel="stylesheet" />');
+        document.write('<script type="text/javascript" src="../../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    </script>
+</head>
+<body>
+<div class="container">
+    <div>
+        <div class="table-head">
+            <span style="width: 70px;">盒子</span>
+            <span style="width: 68px;">缩略图</span>
+            <span style="width: 37px;">颜色</span>
+            <span style="width: 96px;">材质</span>
+            <span style="width: 67px;">尺寸(mm)</span>
+            <span style="width: 40px;">数量</span>
+            <span style="width: 92px;">单价(元/个)</span>
+        </div>
+        <ul id="datalist" class="list">
+
+        </ul>
+        <a class="fr add" href="javascript:void(0);">添加盒子</a>
+        <span class="lab-remarks">备注:</span>
+        <div class="remarks">
+            <textarea maxlength="300" id="remarks"></textarea>
+            <span class="fr text-count">0/300</span>
+        </div>
+    </div>
+    <div class="floor">
+        <button class="red-button btn" onclick="box.save();">确定</button>
+        <button class="hollow-button btn-h" onclick="parent.layer.closeAll()">取消</button>
+    </div>
+</div>
+<div class="add-box-list hide">
+    <div class="box-list">
+        <div class="title">
+            <span>请选择:</span>
+            <span class="add-close fr">X关闭</span>
+        </div>
+        <div class="box-container">
+
+        </div>
+    </div>
+</div>
+<script>
+    document.write('<script type="text/javascript" src="../../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../../Common/Js/global.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../../Js/Pop-ups/box.js' + VER + '" ><\/script>');
+</script>
+</body>
+</html>

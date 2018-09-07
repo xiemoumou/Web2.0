@@ -1,0 +1,58 @@
+.ui-pagination-container {
+	height: 34px;
+	line-height: 34px;
+}
+
+.ui-pagination-container .ui-pagination-page-item {
+	font-size: 14px;
+	padding: 0 5px;
+	background: #F5F5F5;
+	border-radius: 4px;
+	color: #999999;
+	margin: 0 3px;
+	text-decoration: none;
+	position: relative;
+	min-width: 20px;
+	height: 30px;
+	display: inline-block;
+	line-height: 30px;
+	text-align: center;
+}
+
+.ui-pagination-container .ui-pagination-page-item:hover {
+	border-color: #e84b4b;
+	color: #e84b4b;
+	text-decoration: none;
+}
+
+.ui-pagination-container .ui-pagination-page-item.active {
+	background: -webkit-linear-gradient(left , #FF6565,#E84B4C); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(right, #FF6565,#E84B4C); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(right, #FF6565,#E84B4C); /* Firefox 3.6 - 15 */
+	background: linear-gradient(to right, #FF6565,#E84B4C); /* 标准的语法 */
+    border-color: #e84b4b;
+    color: #fff;
+    cursor: default;
+}
+
+.ui-pagination-container .ui-pagination-page-item i.previous{
+	display: inline-block;
+	background: url(../image/pageTurning.png) no-repeat -8px -8px;
+	width: 10px;
+	height: 10px;
+}
+
+.ui-pagination-container .ui-pagination-page-item i.previous:hover{
+	background: url(../image/pageTurning.png) no-repeat -60px -8px;
+}
+
+.ui-pagination-container .ui-pagination-page-item i.next{
+	display: inline-block;
+	background: url(../image/pageTurning.png) no-repeat -34px -8px;
+	width: 10px;
+	height: 10px;
+}
+
+.ui-pagination-container .ui-pagination-page-item i.next:hover{
+	background: url(../image/pageTurning.png) no-repeat -86px -8px;
+}

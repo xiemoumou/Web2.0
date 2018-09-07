@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发票明细</title>
+    <script id="ver" src="../../../Common/Js/version.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("ver");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
+        document.write('<script type="text/javascript" src="../../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    </script>
+
+</head>
+<style>
+    body{
+        background-color: #fff;
+    }
+    .sure-button{
+        width: 104px;
+        height: 36px;
+        position: absolute;
+        left: 37%;
+        margin-left: -55px;
+        display: block;
+        background-color: #e84b4c;
+        border-radius: 4px;
+        color: #fff;
+        font: 12px "微软雅黑";
+        cursor: pointer;
+        font-weight: 400;
+    }
+    .cancel-button{
+        width: 104px;
+        height: 36px;
+        position: absolute;
+        left: 74%;
+        margin-left: -81px;
+        border: 1px solid #e84b4b;
+        color: #e84b4b;
+        border-radius: 4px;
+        background-color: #fff;
+        cursor: pointer;
+        font: 12px "微软雅黑";
+        font-weight: 400;
+    }
+    .modify-content{
+        width: 500px;
+        margin: 0 auto;
+        font-family: "微软雅黑";
+        position: relative;
+    }
+    .modify-title{
+        height: 55px;
+        line-height: 55px;
+        font-size: 14px;
+        color: #444444;
+        border-bottom:1px solid #d5d5d5;
+        text-align: center;
+    }
+    .modify-text{
+        font-size: 14px;
+        color: #444;
+
+    }
+    .modify-text p{
+        padding-top: 10px;
+    }
+    .modify-text h4{
+        font-size: 14px;
+        color: #5d5d5d;
+        padding-top: 15px;
+    }
+    .copy{
+        padding-top: 25px;
+        font-size: 14px;
+        color: #E84B4C;
+        cursor: pointer;
+        display: inline-block;
+    }
+    .open-img{
+        width: 80px;
+        height: 80px;
+        background-image: url("../../images/icon/open_img.png");
+        background-size: 100% 100%;
+        position: absolute;
+        top: 35px;
+        right: 0px;
+    }
+    .tax{
+        margin-left: 37px;
+    }
+    .num{
+        margin-left: 37px;
+    }
+    .money,.invoice-content{
+        width: 180px;
+        display: inline-block;
+    }
+    .address{
+        display:-webkit-box;
+        display:-webkit-flex;
+        display:-ms-flexbox;
+        display:flex;
+        -webkit-box-pack:justify;
+        -webkit-justify-content:space-between;
+        -ms-flex-pack:justify;
+        justify-content:space-between;
+    }
+    .detailed-address{
+        display: inline-block;
+        width: 430px;
+        vertical-align: top;
+    }
+    .addstyle{
+        display: none;
+    }
+    .btn-add{
+        background: #D5D5D5;
+    }
+    .floor{
+        height: 36px;
+    }
+</style>
+<body>
+<div class="modify-content">
+    <textarea type="text" style="height: 0px; width: 0px; border: none;" id="copyContent" value="" ></textarea>
+    <div class="modify-text">
+        <h4 class="invo-info">开票信息内容</h4>
+        <p class="invoice-type-box">发票类型：<span class="invoice-type"></span></p>
+        <p class="rese-box">抬头：<span class="rise"></span></p>
+        <p class="tax-invoice">
+            <span class="invoice-content">发票内容：<span class="invoice-text"></span></span>
+            <span class="tax">税率：<b class="tax-text"></b>%</span>
+        </p>
+        <p class="num-money">
+            <span class="money">金额：¥<span class="money-text"></span></span>
+            <span class="num">数量：<span class="num-text"></span></span>
+        </p>
+        <p class="pay-taxes-box">纳税人识别号：<span class="pay_taxes"></span></p>
+        <p class="company-box">公司地址：<span class="company"></span></p>
+        <p class="contact-phone-box">联系电话：+86 <spam class="contact-phone"></spam></p>
+        <p class="account-num-box">开户账号：<span class="account-num"></span></p>
+        <p class="account-bank-box">开户行：<span class="account-bank"></span></p>
+        <h4 class="mail">邮寄地址：</h4>
+        <p class="address">
+            <span class="harvest-box">收货人：<span class="harvest"></span></span>
+            <span class="phone-box">电话/手机：<span class="phone"></span></span>
+            <span class="zip-code-box">邮编：<span class="zip-code"></span></span>
+        </p>
+        <p class="detailed-address-box">详细地址：<span class="detailed-address"></span></p>
+        <p class="receipt">备注：<span class="receipt-text"></span></p>
+    </div>
+    <section data-clipboard-target="#copyContent" class="copy">一键复制</section>
+    <div class="floor">
+        <button class="sure-button" disabled onclick="sign.submit();">标记已开</button>
+        <button class="cancel-button" onclick="parent.layer.closeAll()">取消</button>
+    </div>
+
+    <section class="open-img addstyle"></section>
+</div>
+</body>
+<script>
+    document.write('<script type="text/javascript" src="../../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../../Common/Js/global.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../../Common/Lib/clipboard.js' + VER + '" ><\/script>');
+</script>
+<script>
+   $(document).ready(function () {
+       var url = Common.getUrl()['order'] + Common.getDataInterface()["invoiceDetail"];
+       var docHeight= $(".modify-content").height();
+       top.setPopSize(0,docHeight);
+
+               var data = {
+                   "orderid": Common.getUrlParam("orderid", true),
+                   "userId": $.cookie('userid'),
+                   "roleType": $.cookie('roletype'),
+               };
+              // var add = {
+              //     incotype: function () {
+              //         if (invoicetype==0){//发票类型
+              //             $(".invoice-type").text("增值税普通发票");
+              //         }else if(invoicetype==1) {
+              //             $(".invoice-type").text("增值税专用发票");
+              //         }
+              //     }
+              //
+              //  }
+       Common.ajax(url, data, true, function (data) {
+           if (data) {
+               if (data.status.code == 0) {
+                   var invoicestatus=data.invoce.invoicestatus;//代开票或已开票
+                   if(invoicestatus==2)
+                   {
+                       $(".sure-button").attr("disabled",true);
+                       $(".sure-button").css("background-color",'#00000059');
+                       $(".sure-button").css("color",'#ffffff');
+                   }
+                   else
+                   {
+                       $(".sure-button").attr("disabled",false);
+                   }
+
+                   var invoicetype  = data.invoce.invoicetype||"";
+                   var invoicetitle = data.invoce.invoicetitle||"";
+                   var detailsinvoice1 = data.invoce.detailsinvoice1||"";
+                   var taxrate = data.invoce.taxrate||"";
+                   var detailsvalue1 = data.invoce.detailsvalue1||"";
+                   var amount = data.amount.amount||"";
+                   var customerduty = data.invoce.customerduty||"";
+                   var customeraddress =data.invoce.customeraddress||"";
+                   var customertele = data.invoce.customertele||"";
+                   var customeraccount = data.invoce.customeraccount||"";
+                   var customerbank = data.invoce.customerbank||"";
+                   var recipient = data.logistics.recipient||"";
+                   var recipienttele = data.logistics.recipienttele||"";
+                   var postcode = data.logistics.logisticsaddress2||"";
+                   var address = data.logistics.province||"";
+                   var invoicestatus = data.invoce.invoicestatus||"";
+                   var receipttext = data.invoce.remark||"";
+                   address+=data.logistics.city||"";
+                   address+=data.logistics.county||"";
+                   address+=data.logistics.address||"";
+                   address+=data.logistics.logisticsaddress1||"";
+
+                   if(invoicestatus>3){
+                       $(".sure-button").addClass("btn-add").attr("disabled","disabled");
+                       $(".open-img").removeClass("addstyle");
+                   }
+                   if (invoicetype==1){//发票类型
+                       $(".invoice-type").text("增值税普通发票");
+                   }else if(invoicetype==2) {
+                       $(".invoice-type").text("增值税专用发票");
+                   }
+                   $(".rise").text(invoicetitle);//抬头
+                   $(".invoice-text").text(detailsinvoice1);//发票内容
+                   $(".tax-text").text(taxrate);//税率
+                   $(".money-text").text(detailsvalue1);//金额
+                   $(".num-text").text(amount);//数量
+                   $(".pay_taxes").text(customerduty);//纳税人识别号
+                   $(".company").text(customeraddress);//公司地址
+                   $(".contact-phone").text(customertele);//联系电话
+                   $(".account-num").text(customeraccount);//开户账号
+                   $(".account-bank").text(customerbank);//开户行
+                   $(".harvest").text(recipient);//收货人
+                   $(".phone").text(recipienttele);//电话
+                   $(".zip-code").text(postcode);//邮编
+                   $(".detailed-address").text(address)//详细地址
+                   $(".receipt-text").text(receipttext)//备注
+
+                   //内容填充到剪贴板
+                    var invoice_type_box = $(".invoice-type-box").text()||"";
+                    var rese_box = $(".rese-box").text()||"";
+                    var invoice_content = $(".invoice-content").text()||"";
+                    var tax = $(".tax").text()||"";
+                    var money = $(".money").text()||"";
+                    var num = $(".num").text()||"";
+                    var pay_taxes_box = $(".pay-taxes-box").text()||"";
+                    var company_box = $(".company-box").text()||"";
+                    var contact_phone_box = $(".contact-phone-box").text()||"";
+                    var account_num_box = $(".account-num-box").text()||"";
+                    var account_bank_box = $(".account-bank-box").text()||"";
+                    var mail = $(".mail").text()||"";
+                    var harvest_box = $(".harvest-box").text()||"";
+                    var phone_box = $(".phone-box").text()||"";
+                    var zip_code_box = $(".zip-code-box").text()||"";
+                    var detailed_address_box = $(".detailed-address-box").text()||"";
+                    var receipt = $(".receipt").text()||"";
+                    var copy_code =invoice_type_box+"\n"+rese_box+"\n"+invoice_content+"\n"+tax+"\n"+money+"\n"+num+"\n"+pay_taxes_box+"\n"+company_box+"\n"+contact_phone_box+"\n"+account_num_box+"\n"+account_bank_box+"\n"+mail+"\n"+harvest_box+"\n"+phone_box+"\n"+zip_code_box+"\n"+detailed_address_box+"\n"+receipt;
+                    $("#copyContent").val(copy_code);
+               }
+           }
+       }, function (err) {
+           $(".ok").attr("disabled", false);
+       });
+   });
+
+
+   var sign = {
+       submit : function () {
+           var url = Common.getUrl()['order'] + Common.getDataInterface()["markInvoiced"];
+           var data = {
+               "orderid": Common.getUrlParam("orderid", true),
+               "userId": $.cookie('userid'),
+               "roleType": $.cookie('roletype'),
+           };
+           Common.ajax(url, data, true, function (data) {
+               if (data) {
+                   if (data.status.code == 0) {
+
+                       Common.msg(data.status.msg, 200, 2000, function () {
+                           parent.document.getElementById("cont_iframe").contentWindow.invoList.getDataList();
+                           parent.layer.closeAll();
+                       });
+
+                   }
+                   else {
+                       Common.msg(data.status.msg, null, 2000, function () {
+                           $(".ok").attr("disabled", false);
+                       });
+                   }
+               }
+           }, function (err) {
+               $(".ok").attr("disabled", false);
+           });
+       }
+   }
+
+   //复制
+    $(function () {
+        var clipboard = new ClipboardJS('.copy');
+        clipboard.on('success', function(e) {
+            console.info('Action:', e.action);
+            console.info('Text:', e.text);
+            console.info('Trigger:', e.trigger);
+
+            e.clearSelection();
+        });
+
+        clipboard.on('error', function(e) {
+            console.error('Action:', e.action);
+            console.error('Trigger:', e.trigger);
+        });
+
+    });
+
+   var docHeight= $(".modify-content").height();
+   top.setPopSize(0,docHeight);
+
+</script>
+
+</html>

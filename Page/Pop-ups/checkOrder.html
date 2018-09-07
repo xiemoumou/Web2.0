@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>核对订单</title>
+    <script id="ver" src="../../../Common/Js/version.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("ver");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../../Css/Pop-ups/checkOrder.css' + VER + '" rel="stylesheet" />');
+        document.write('<script type="text/javascript" src="../../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    </script>
+</head>
+<body>
+<div class="container">
+   <div class="check-content">
+       <div class="product pad_top">
+           <p>产品类型：<span class="type"></span></p>
+           <p>配件：<span class="parts"></span></p>
+           <p>数量：<span class="num"></span></p>
+           <p class="size">
+               产品尺寸：
+               <span class="check-length"></span>mm ×
+               <span class="check-width"></span>mm ×
+               <span class="check-height"></span>mm
+           </p>
+       </div>
+
+       <div class="product-attr pad_top_min">
+           产品材质属性：
+           <p>
+               <span class="texture"></span>
+               <span class="tech-attr"></span>
+               <span class="tech"></span>
+               <span class="elec-color"></span>
+           </p>
+       </div>
+
+       <div class="product-size pad_top_min">
+           最迟发货日期：
+           <p><span class="deliver-time"></span></p>
+
+       </div>
+
+       <!--<div class="deliver pad_top_min">-->
+
+       <!--</div>-->
+
+       <hr style="height:1px;width:100%;border:none;border-top:1px dashed #d5d5d5;" />
+
+       <div class="order-money pad_top_div">
+           <span class="fl">订单金额：</span><p class="money redsize"></p>
+       </div>
+
+       <div class="design-requ pad_top_min">
+           <span class="fl">设计要求：</span><p class="requ"></p>
+       </div>
+
+       <div class="prod-requ pad_top_min">
+           <span class="fl">生产要求：</span><p class="prod"></p>
+       </div>
+
+       <div class="draw-invoice pad_top_min">
+           发票：<p class="invoice">开发票</p>
+           <p class="see">查看详情</p>
+       </div>
+
+       <div class="invoice-text acvive_none">
+           <span class="invoice-type">增值税普通发票</span>
+           <span class="invoice-money active-left">发票金额：<p class="invoice-money-text"></p></span>
+           <span class="invoice-tax active-left">税率：<p class="invoice-tax-text"></p>%</span>
+           <span class="invoice-title active-left">抬头：<p class="invoice-title-text"></p></span>
+       </div>
+
+       <div class="refe-img">
+           <div class="clearfix">
+               <span class="fl">参考图：</span>
+               <div class="img-box">
+                   <img id="refe-first" src="../../images/icon/nothing.png">
+                   <span class="zoon"></span>
+               </div>
+               <div class="img-box">
+                   <img id="refe-second" src="../../images/icon/nothing.png">
+                   <span class="zoon"></span>
+               </div>
+               <div class="img-box">
+                   <img id="refe-third" src="../../images/icon/nothing.png">
+                   <span class="zoon"></span>
+               </div>
+               <div>
+                   <div class="sc">生产参考图：</div>
+                   <div class="img-box">
+                       <img id="refe-fourth" src="../../images/icon/nothing.png">
+                       <span class="zoon"></span>
+                   </div>
+               </div>
+
+               <div>
+                   <span class="design-text">设计图：</span>
+                   <div class="design-img-box">
+                       <img id="design-first" src="../../images/icon/nothing.png">
+                       <span class="zoon"></span>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+       <div class="address">邮寄地址：</div>
+
+       <div class="collect-info pad_top_min">
+           <span class="collect-user">收货人：<p class="collect-user-text"></p></span>
+           <span class="collect-phone">电话／手机：<p class="collect-phone-text"></p></span>
+           <span class="collect-code">邮编：<p class="collect-code-text"></p></span>
+       </div>
+
+       <div class="detailed-address pad_top_min">
+           <span>详细地址：</span>
+           <p class="address-text"></p>
+       </div>
+
+       <div class="box-mas pad_top_min">
+           <span>包装要求：</span>
+           <p class="box-text"></p>
+       </div>
+
+       <div class="floor">
+           <button class="btn ok hide" style="margin-right: 10px">继续分配</button>
+           <button onclick="parent.layer.closeAll()" style="margin-left: 10px" class="btn-h">取消</button>
+       </div>
+   </div>
+
+</div>
+<script>
+    document.write('<script type="text/javascript" src="../../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../../Common/Lib/viewer/viewer.min.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../../Common/Js/global.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../../Common/Components/library.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../../Js/Pop-ups/checkOrder.js' + VER + '" ><\/script>');
+</script>
+</body>
+</html>

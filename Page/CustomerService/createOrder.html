@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新建订单</title>
+    <script id="ver" src="../../Common/Js/version.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("ver");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Css/CustomerService/createOrder.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Common/Components/library.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Common/Lib/layDate-v5.0.9/laydate/theme/default/laydate.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Common/Lib/layer-v3.1.1/layer/theme/default/layer.css' + VER + '" rel="stylesheet" />');
+    </script>
+</head>
+<body>
+<div class="container hide">
+    <ul class="layout">
+        <li class="row clearfix edit">
+            <div class="clearfix">
+                <label class="label-1">订单号：</label>
+                <span class="orderId">----------------</span>
+                <!--<label class="label-2">客户旺旺：</label>-->
+                <!--<span class="customerwang">&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</span>-->
+            </div>
+        </li>
+        <li class="row clearfix">
+            <i class="asterisk"></i>
+            <label class="label-1">客源：</label>
+            <div data-val="" class="ordersource co-dropList"></div>
+            <label class="label-2">订单类型：</label>
+            <div data-val="0" class="ordertype co-dropList"></div>
+            <label class="label-2 edit" style="height: 32px; line-height: 32px;">旺旺：</label>
+            <div class="inputBox wangwang edit">
+                <input type="text" class="input-text" placeholder="请输入旺旺号" maxlength="16" />
+            </div>
+        </li>
+
+        <li class="row clearfix">
+            <i class="asterisk"></i>
+            <label class="label-1">产品类型：</label>
+            <div data-val="" class="producttype co-dropList"></div>
+            <label class="label-2">产品数量：</label>
+            <div class="inputBox productNum"><input type="text" maxlength="8" class="input-number autoPrice" placeholder="填写产品数量" id="productNum"/></div>
+            <label class="label-2">产品属性：</label>
+            <div data-val="" class="product-attribute-1 co-dropList"></div>
+            <div data-val="" class="product-attribute-2 co-dropList"></div>
+        </li>
+
+        <li class="row clearfix">
+            <i class="asterisk"></i>
+            <label class="label-1">工艺属性：</label>
+            <div data-width="160" data-height="180" data-val="" class="technology-attribute-1 co-dropList"></div>
+            <div data-width="356" data-height="172"  data-val="" class="technology-attribute-2 co-dropList"></div>
+            <div data-width="356" data-height="172"  data-val="" class="technology-attribute-3 co-dropList"></div>
+        </li>
+
+        <li class="row clearfix">
+            <i class="asterisk"></i>
+            <label class="label-1">尺寸（mm)：</label>
+            <div data-val="1" data-val="1" class="sizeType co-dropList"></div>
+            <div class="inputBox ml-30 size-length">
+                <span class="input-box-label">长</span>
+                <input type="text" data-default="30" maxlength="7" value="30" class="input-float-2 size-input autoPrice"/>
+            </div>
+            <div class="inputBox ml-30 size-width">
+                <span class="input-box-label">宽</span>
+                <input type="text" data-default="30" maxlength="7" value="30" class="input-float-2 size-input autoPrice"/>
+            </div>
+            <div class="inputBox ml-30 size-height">
+                <span class="input-box-label" style="width: 46px;">高(厚)</span>
+                <input type="text" data-default="2" maxlength="7" value="2" class="input-float-2 size-input autoPrice" style="width: calc(100% - 66px);"/>
+            </div>
+        </li>
+
+        <li class="row clearfix bg-color" style="padding:5px 50px;">
+            <i class="asterisk" style="top:15px;"></i>
+            <label class="label-1 create" style="height: 32px; line-height: 32px;">旺旺：</label>
+            <div class="inputBox wangwang create">
+                <input type="text" class="input-text" placeholder="请输入旺旺号" maxlength="16" />
+            </div>
+            <label class="label-2 create">估价：</label>
+            <div class="inputBox appraisal create">
+                <div class="evaluate-mask"></div>
+                <input type="text" maxlength="12" class="input-money" value="0.00" id="evaluate"/></div>
+            <label class="label-2 create">客户预算：</label>
+            <div class="inputBox budget create"><input type="text" maxlength="12" class="input-money" value="0.00" id="customer_budget"/></div>
+            <label class="label-2">截止工期：</label>
+            <div class="inputBox endDay" style="text-align: center"><input id="endlimit" style="width: 86px; text-align: right; height: 100%;" type="text"> </div>
+        </li>
+        <li class="row clearfix create" style="margin-bottom: 0; ">
+            <label class="label-1">参考图：</label>
+            <div id="reference_diagram" data-type="reference_image">
+
+            </div>
+            <!--附件上传-->
+            <span style=" position: absolute; top: 6px; left: 576px; font-weight: 500; font-size: 14px;">附件：</span>
+            <div id="accessory" data-type="order_accessory">
+
+            </div>
+        </li>
+        <li class="clearfix row create" style="margin-top: 16px;">
+            <label class="label-1">设计备注：</label>
+            <div class="design-note">
+
+            </div>
+            <label class="label-2" style="margin-left: 28px;">生产备注：</label>
+            <div class="production-note">
+
+            </div>
+        </li>
+        <li class="footer">
+            <button class="btn" onclick="createOrder.save();">确定</button>
+            <button id="js_close" class="btn-h">取消</button>
+        </li>
+    </ul>
+</div>
+<script>
+    document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Js/CustomerService/createOrder.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Components/library.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Lib/layDate-v5.0.9/laydate/laydate.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
+</script>
+</body>
+</html>

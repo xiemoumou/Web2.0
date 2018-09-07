@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>票据列表</title>
+    <script id="ver" src="../../Common/Js/version.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("ver");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Css/CustomerService/thing_handle.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Common/Lib/jqueryPagination/css/jquery.pagination.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Css/CustomerService/invoiceList.css' + VER + '" rel="stylesheet" />');
+        document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    </script>
+</head>
+
+<body>
+  <div class="content-box">
+      <input type="hidden" id="showtype" value="1">
+      <div class="nav">
+          <ul>
+              <li class="active" data-status="1">
+                  <span>待开票据</span>
+                  <!--<i class="reddot" id="replace">123</i>-->
+              </li>
+              <li data-status="2">
+                  <span>已开票据</span>
+                  <!--<i id="alre" class="reddot">123</i>-->
+              </li>
+          </ul>
+      </div>
+      <div class="table">
+          <table>
+              <thead class="th-title">
+                  <tr>
+                      <th>下单日期</th>
+                      <th>订单号</th>
+                      <th>发票抬头</th>
+                      <th style="text-align: right">操作</th>
+                  </tr>
+              </thead>
+              <tbody id="datalist" class="table-content">
+
+              </tbody>
+          </table>
+      </div>
+      <div class="page-box"></div>
+  </div>
+      <script>
+          document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
+          document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
+          document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
+          document.write('<script type="text/javascript" src="../../Common/Lib/jqueryPagination/js/jquery.pagination.min.js' + VER + '" ><\/script>');
+          document.write('<script type="text/javascript" src="../../Js/CustomerService/invoiceList.js' + VER + '" ><\/script>');
+      </script>
+</body>
+</html>
