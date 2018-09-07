@@ -710,10 +710,16 @@ var createOrder = {
                     Message.show('提示', message, MsgState.Success, 2000, function () {
                         //更新概览列表
                         if (top.classMain.loadOverview) {
-                            top.classMain.loadOverview();
+                            if(operType == "edit")
+                            {
+                                top.classMain.loadOverview(null,null,null,customid);
+                            }
+                            else
+                            {
+                                top.classMain.loadOverview();
+                            }
                         }
                         //更新详情内容
-
                         top.Popup.close('新建订单');
                         top.Popup.close('产品生产参数编辑');
                     });

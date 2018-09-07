@@ -18,6 +18,8 @@ var config = {
             "createOrderId": that.Domain.systemApi + "/dynamo/order/createCustomid",//创建订单id
             "orderSummaryInfo_Insert": that.Domain.systemApi + "/dynamo/order/orderSummaryInfo_Insert",//新建订单
             "autoPrice":that.Domain.systemApi + "/dynamo/order/auto_price",//自动报价
+            "sendDesign":that.Domain.systemApi + "/dynamo/order/sendDesign",//分配设计
+            "order_Finally":"/dynamo/order/order_Finally",//定价
             "updateOrderQuoteItem":that.Domain.systemApi +"/dynamo/order/updateOrderQuoteItem",//影响报价数据编辑
             "orderSupplementary_Query": that.Domain.systemApi + "/dynamo/order/orderSupplementary_Query",//订单概览
             "business_Query":that.Domain.systemApi + "/dynamo/order/business_Query",//左侧业务栏
@@ -737,6 +739,10 @@ var OPER={
                 }
             });
         });
+    },
+    pricing:function (customid,currentPeriod,currentPrice,quote,userPeriod,inquiryStatus) {
+        //定价
+        Popup.open("订单定价", 407, 290, "./Pop-ups/orderPrice.html?customid="+customid+"&currentPeriod="+currentPeriod+"&currentPrice="+currentPrice+"&quote="+quote+"&userPeriod="+userPeriod+"&inquiryStatus="+inquiryStatus);
     }
 };
 

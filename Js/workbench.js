@@ -1030,8 +1030,8 @@ var classMain = {
                         //按钮
                         function operating() {
                             var operating = $('<div class="operating"></div>');
-                            var buttonShow = item.command.split(',');
-                            if (buttonShow.indexOf('INQUIRY') >= 0) {
+                            // 发起询价
+                            if (item.inquiryStatus==0) {
                                 var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">发起询价</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
@@ -1039,23 +1039,62 @@ var classMain = {
                                 });
                                 operating.append(btn);
                             }
-                            if (buttonShow.indexOf('PAYOFF') >= 0) {
-                                operating.append('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '"  data-customid="' + item.customid + '" style="width: 66px; height: 23px;">确认支付</button>');
-                            }
-                            if (buttonShow.indexOf('SEND_DESIGN') >= 0) {
+                            //分配设计
+                            if (item.designStatus==0) {
                                 var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配设计</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
                                     var orderid = $(this).attr('data-orderid');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
-                                    debugger
                                     var designPrice= $($(this).parent().parent()).find('.amount').find('.design-fee').find('span').eq(0).find('em');
                                     OPER.distributionDesign(ordersummaryId,orderid,customid,$(designPrice).text());
                                 });
                                 operating.append(btn);
                             }
-                            if (buttonShow.indexOf('SEND_PRODUCE') >= 0) {
-                                operating.append('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配生产</button>');
+                            //定价
+                            if (item.produceStatus<=1) {
+                                var btn=$('<button data-inquiryStatus="'+item.inquiryStatus+'" data-userPeriod="'+item.userPeriod+'" data-prePrice="'+parseFloat(item.prePrice).formatMoney(2, "", ",", ".")+'" data-currentPeriod="'+item.currentPeriod+'" data-currentPrice="'+parseFloat(item.currentPrice).formatMoney(2, "", ",", ".")+'" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">定价</button>');
+                                btn.on('click',function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var dataUserPeriod = $(this).attr('data-userPeriod');//客户要求工期
+                                    var currentPeriod = $(this).attr('data-currentPeriod');//当前车间工期
+                                    var currentPrice = $(this).attr('data-currentPrice');//当前车间报价
+                                    var quotePrice= $(this).attr('data-prePrice');//客服报价
+                                    var inquiryStatus= $(this).attr('data-inquiryStatus');//询价状态
+                                    if(parseInt(inquiryStatus)==4)
+                                    {
+                                        Confirm("注意","订单已经支付，确定要重新定价？",423,235,null,function () {
+                                            OPER.pricing(customid,currentPeriod,currentPrice,quotePrice,dataUserPeriod,inquiryStatus);
+                                        });
+                                    }
+                                    else
+                                    {
+                                        OPER.pricing(customid,currentPeriod,currentPrice,quotePrice,dataUserPeriod,inquiryStatus);
+                                    }
+                                });
+                                operating.append(btn);
+                            }
+                            //确认支付
+                            if (item.inquiryStatus==3) {
+                                operating.append('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '"  data-customid="' + item.customid + '" style="width: 66px; height: 23px;">确认支付</button>');
+                            }
+                            //分配生产
+                            if (item.inquiryStatus==4 && item.produceStatus<1) {
+                                operating.append('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '"  data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配生产</button>');
+                            }
+                            //查看物流
+                            if (item.produceStatus==4) {
+                                operating.append('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '"  data-customid="' + item.customid + '" style="width: 66px; height: 23px;">查看物流</button>');
+                            }
+
+                            //查看成品
+                            // if (buttonShow.indexOf('PAYOFF') >= 0) {
+                            //     operating.append('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '"  data-customid="' + item.customid + '" style="width: 66px; height: 23px;">查看成品</button>');
+                            // }
+
+                            //邮寄中
+                            if (item.produceStatus==4) {
+                                operating.append('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '"  data-customid="' + item.customid + '" style="width: 66px; height: 23px;">确认支付</button>');
                             }
 
                             itemBody.append(operating);
