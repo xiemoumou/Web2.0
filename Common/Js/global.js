@@ -18,8 +18,6 @@ var config = {
             "createOrderId": that.Domain.systemApi + "/dynamo/order/createCustomid",//创建订单id
             "orderSummaryInfo_Insert": that.Domain.systemApi + "/dynamo/order/orderSummaryInfo_Insert",//新建订单
             "autoPrice":that.Domain.systemApi + "/dynamo/order/auto_price",//自动报价
-            "sendDesign":that.Domain.systemApi + "/dynamo/order/sendDesign",//分配设计
-
             "updateOrderQuoteItem":that.Domain.systemApi +"/dynamo/order/updateOrderQuoteItem",//影响报价数据编辑
             "orderSupplementary_Query": that.Domain.systemApi + "/dynamo/order/orderSupplementary_Query",//订单概览
             "business_Query":that.Domain.systemApi + "/dynamo/order/business_Query",//左侧业务栏
@@ -46,6 +44,8 @@ var config = {
             "orderDesignPattern_Insert":that.Domain.systemApi +"/dynamo/order/orderDesignPattern_Insert",//提交设计单
             "orderDesignMessage_Query":that.Domain.systemApi +"/dynamo/order/orderDesignMessage_Query",//显示留言
             "orderDesignMessage_Insert":that.Domain.systemApi +"/dynamo/order/orderDesignMessage_Insert",//提交留言
+            "chooseDesign":that.Domain.systemApi +"/dynamo/order/chooseDesign",//选定设计稿
+            "orderDesignInfo_Update":that.Domain.systemApi +"/dynamo/order/orderDesignInfo_Update",//设计师接单
         }
     }
 };

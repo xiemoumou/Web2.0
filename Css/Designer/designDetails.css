@@ -31,6 +31,14 @@
     display: inline-block;
     vertical-align: top;
 }
+.design-attr-btn{
+    width: 160px;
+    height: 38px;
+    line-height: 38px;
+    display: inherit;
+    margin: 0 auto;
+    margin-top: 30px;
+}
 .order-status{
     display: inline-block;
     font-size: 12px;
@@ -162,20 +170,21 @@
 }
 
 .design-rema textarea {
-    height: 143px;
+    height: 143px!important;
+    width: 402px!important;
     border: 1px solid #d5d5d5!important;
 }
 #details_encl_textarea .addDiagram{
-     width: inherit;
-     height: inherit;
-     box-shadow:inherit;
-     float: inherit;
-     border-radius: inherit;
-     background-color: inherit;
-     margin-right: inherit;
-     position: absolute;
-     bottom: 30px;
-     left: 10px;
+    width: inherit;
+    height: inherit;
+    box-shadow:inherit;
+    float: inherit;
+    border-radius: inherit;
+    background-color: inherit;
+    margin-right: inherit;
+    position: absolute;
+    bottom: 30px;
+    left: 10px;
 }
 #details_encl_textarea .dia-icon{
     width: 16px;
@@ -213,6 +222,15 @@
 #details_encl_textarea .diagram .progress span{
     font-size: 15px;
 }
+.details-encl-type{
+    display: inline-block;
+    float: right;
+    width: 61px;
+    height: 18px;
+    line-height: 18px;
+    background: #F5F5F5;
+    text-align: center;
+}
 .dest-btn{
     width: 160px;
     height: 38px;
@@ -230,7 +248,7 @@
 
 }
 .dest-btn-text-on{
- color: #E84B4C;
+    color: #E84B4C;
     text-decoration: underline;
     cursor: pointer;
 }
@@ -268,18 +286,18 @@
 }
 
 
-
-/****留言板内容***/
-.leav-box{
+.leav-box {
     width: 437px;
     height: 540px;
     background: #FFFFFF;
     box-shadow: 0 0 16px 0 rgba(0,0,0,0.06);
     border-radius: 4px;
     clear: both;
-    margin-top: 20px;
-    margin-left: 20px;
+    /* margin-top: 55px; */
+    margin-left: 30px;
 }
+
+
 .leav-title{
     height: 36px;
     line-height: 36px;
@@ -300,24 +318,44 @@
     font-size: 12px;
     color: #999999;
 }
+.leav-reg-img{
+    height: 48px;
+    margin-top: 10px;
+}
+.leav-reg-img .diagram .handle .dia-zoom{
+    margin: 0 -1px;
+}
+.leav-reg-file{
+    margin-top: 10px;
+}
+.leav-reg-img .diagram{
+    width: 48px;
+    height: 48px;
+}
+.leav-reg-file .accessory-container{
+    margin-left: -112px;
+}
 .leav-title-right a{
     display: inline-block;
-    width: 13px;
+    width: 14px;
     height: 12px;
-    background-color: #d5d5d5;
+    background: url(../../Image/orderDetails/customerServiceDetails.png) no-repeat -59px -111px;
     vertical-align: middle;
 }
 .leav-content{
     width: 357px;
-    height: 310px;
+    height: 341px;
     overflow: scroll;
-    padding-top: 30px;
+    /*padding-top: 30px;*/
     margin: 0 auto;
 }
 .leav-text-first {
     height: 14px;
     font-size: 14px;
     color: #999999;
+}
+#leav_bottom_img .diagram .handle .oper{
+    margin: 0 -1px;
 }
 .TextList-left,.TextList-right{
     display: inline-block;
@@ -337,6 +375,23 @@
     margin-top: 10px;
     background: #FAFBFB;
     padding: 6px 15px;
+}
+.leav-reg-title{
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.leav-reg-title .line {
+    display: inline-block;
+    width: 128px;
+    border-top: 2px solid #d5d5d5 ;
+}
+.leav-reg-title .txt {
+    font-size: 14px;
+    color: #333333;
+    vertical-align: middle;
+    display: inline-block;
+    width: 63px;
 }
 #details_reg .diagram-container .diagram img{
     max-width: 48px;
@@ -376,10 +431,25 @@
 }
 
 #leav_bottom_img .diagram{
-    width: 45px;
-    height: 45px;
+    width: 38px;
+    height: 38px;
 }
-
+#leav_bottom_img .diagram img{
+    width: 38px;
+    height: 38px;
+}
+#leav_bottom_img .diagram img{
+    max-width: 38px;
+    max-height: 38px;
+}
+#leav_bottom_img .diagram .progress span{
+    font-size: 12px;
+    color: #fff;
+}
+#leav_bottom_img .diagram-container{
+    margin-top: -38px;
+    position: absolute;
+}
 #leav_bottom_img .addDiagram{
     width: 45px;
     height: 45px;
@@ -393,8 +463,7 @@
     width: 16px;
     height: 14px;
     margin: 15px 15px 0;
-    /*background: url(../../Image/createOrder/createOrder.png) no-repeat -7px -36px;*/
-    background-color: #f5f5f5;
+    background: url("../../Image/orderDetails/customerServiceDetails.png") no-repeat -5px -84px;
 }
 #leav_bottom_img .addDiagram .dia-remind-1{
     display: none;
@@ -407,9 +476,12 @@
     height: 16px;
     display: inline-block;
     margin: 15px 0px;
-    background-color: #f5f5f5;
-
-
+    background: url("../../Image/orderDetails/customerServiceDetails.png") no-repeat -31px -83px;
+}
+#leav_bottom_file .addAccessory{
+    position: absolute;
+    top: -42px;
+    cursor: pointer;
 }
 #leav_bottom_file .addAccessory-title{
     display: none;
@@ -419,7 +491,7 @@
 }
 
 #leav_bottom_file .addAccessory-btn{
-    display: none;
+    visibility: hidden;
 }
 #leav_bottom_file{
     margin-left: 47px;
@@ -428,6 +500,7 @@
     border-right: 1px solid #f5f5f5;
 
 }
+
 .leav-bottom-input input{
     height: 45px;
     padding-left: 10px;
@@ -442,15 +515,172 @@
     margin-top: 6px;
     margin-right: 10px;
 }
-.details-encl-type{
+#leav_bottom_img .diagram{
+    margin-right: 16px!important;
+}
+
+#leav_bottom_file .accessory-container{
+    position: relative;
+}
+#leav_bottom_file .accessory-container .filelist{
+    position: absolute;
+    top: -86px;
+}
+
+
+
+
+
+/***设计稿**/
+.design-man .design-title{
+    padding: 32px 0px 0px 40px;
     display: inline-block;
-    width: 61px;
+}
+
+.design-man .design-title span{
+    display: inline-block;
+    width: 6px;
     height: 18px;
-    line-height: 18px;
-    background: #F5F5F5;
-    font-size: 14px;
+    background: #5298FF;
+}
+.planner-leav-last{
+    height: 110px;
+}
+.design-man .design-title b{
+    display: inline-block;
+    vertical-align: top;
+    font-size: 18px;
+    color: #333333;
+    font-weight: 400;
+    margin-left: 5px;
+}
+.design-man{
+    margin-top: 10px;
+    background-color: #fff;
+    position: relative;
+}
+.edit-left{
+    width: 406px;
+    display: inline-block;
+}
+.design-bg{
+    width: 155px;
+    height: 71px;
+    background: url(../../Image/orderDetails/customerServiceDetails.png)no-repeat -65px -186px;
+    position: absolute;
+    top: 0px;
+    left: 260px;
+}
+.design-next-title{
+    width: 925px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.design-next-title h3{
+    display: inline-block;
+    font-size: 22px;
+    color: #333333;
+    letter-spacing: 0.14px;
+}
+.design-content{
+    width: 874px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.planner{
+    font-size: 18px;
     color: #999999;
-    letter-spacing: 0.09px;
-    text-align: center;
+}
+.time-status span{
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    background: url("../../Image/orderDetails/customerServiceDetails.png") no-repeat -189px -59px;
+    vertical-align: text-top;
+}
+.time-status{
+    font-size: 12px;
+    color: #999999;
+    margin-top: 8px;
+}
+.time-status a{
+    margin-left: 10px;
+    font-size: 12px;
+    color: #999999;
+}
+.for-design{
+    height: 660px;
+    position: relative;
+}
+.list-1{
+    font-size: 14px;
+    color: #666666;
+}
+.desi-box{
+    height: 124px;
+    margin-top: 20px;
+}
+#edit_desi,#desi_encl,#other_encl{
+    margin-top: 10px;
+}
+.desi-encl-box,.other-encl-box{
+    height: 44px;
+    margin-top: 20px;
+}
+.planner-leav{
+    width: 406px;
+    /*height: 217px;*/
+    background-color: #fafbfb;
+    margin-left: -20px;
+    margin-top: 20px;
+}
+.planner-leav-content{
+    padding: 10px 20px;
+}
+.planner-leav-text{
+    font-size: 12px;
+    color: #333333;
+}
+#planner_leav{
+    margin-top: 10px;
+}
+.desi-encl-box .filelist{
+    margin-left: -112px;
+    margin-top: 5px;
+}
+.other-encl-box .filelist{
+    margin-left: -112px;
+    margin-top: 5px;
+}
+.planner-leav-content .diagram-container .diagram{
+    margin-right: 12px!important;
+}
+.edit-right-button{
     float: right;
+    height: 34px;
+}
+.edit-right-button span{
+    font-size: 12px;
+    color: #E84B4C;
+    letter-spacing: 0;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-right: 30px;
+}
+.leav-title-right-text{
+    display: inline-block;
+}
+.EditButton{
+    background: #FFFFFF;
+    border: 1px solid #E84B4C;
+    border-radius: 4px;
+    width: 126px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    color: #E84B4C;
+    letter-spacing: 0;
+    cursor: pointer;
 }
