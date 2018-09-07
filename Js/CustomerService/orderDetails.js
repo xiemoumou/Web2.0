@@ -5,7 +5,6 @@
 var customid = Helper.getUrlParam('customid') || "";//获取订单号
 
 $(function () {
-    details.leavShow();
 
     $(".address-add").on('click', function () {//添加地址弹窗
         details.openress();
@@ -74,7 +73,7 @@ $(function () {
     textArea.init('.offer-rema', 300, '', '请输入订单设计要求，请留意：备注不允许出现产品价格，参数和旺旺等\n' +
         '各种联系方式', '');
 
-
+    details.leavShow();
 });
 
 var orderInfo = {
@@ -103,7 +102,7 @@ var details = {
         details.saveAddress();
     },
     edit: function () {
-        var url = encodeURI('../CustomerService/Pop-ups/adjustDesi.html');
+        var url = encodeURI('./Page/Pop-ups/adjustDesi.html');
         Popup.open('订单定价', 423, 286, url);
     },
     saveAddress: function (name, mobilephone, postcode, province, city, county, address, customid) {//保存收获地址
@@ -443,6 +442,7 @@ var details = {
         }
 
         Requst.ajaxGet(url, data, true, function (data) {
+            $(".leav-content").html('');//清空
             that.messageNo = data.data[0].messageNo;
             that.targetId = data.data[0].targetId;//设计师Id
             $(".leav-title-right-text em").text(data.data[0].version);//版本号沟通中
@@ -451,8 +451,8 @@ var details = {
                 var messageFile = [];//留言显示附件
                 if (data.data[i].initialMessageImage1) {
                     srcMan.push({
-                        "orgSrc": data.data[i].smallMessageImage1,
-                        "thumbnail": data.data[i].smallDesignImage1,
+                        "orgSrc": 'http://'+data.data[i].middleMessageImage1,
+                        "thumbnail": 'http://'+data.data[i].smallMessageImage1,
                     });
 
                 }
@@ -463,7 +463,7 @@ var details = {
                     });
                 }
 
-                var str = "<div class='leav-reg'>" +
+                 str = "<div class='leav-reg'>" +
                     "<div class='leav-reg-title'>" +
                     "<span class='line'></span>" +
                     "<span class='txt'>版本" + "<a class='txt-num'>" + data.data[i].version + "</a>" + "</span>" +
