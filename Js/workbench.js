@@ -1048,7 +1048,9 @@ var classMain = {
                                     var customid = $(this).attr('data-customid');
                                     var orderid = $(this).attr('data-orderid');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
-                                    OPER.distributionDesign(ordersummaryId,orderid,customid,item.designPrice.formatMoney(2, "", ",", "."));
+                                    debugger
+                                    var designPrice= $($(this).parent().parent()).find('.amount').find('.design-fee').find('span').eq(0).find('em');
+                                    OPER.distributionDesign(ordersummaryId,orderid,customid,$(designPrice).text());
                                 });
                                 operating.append(btn);
                             }
