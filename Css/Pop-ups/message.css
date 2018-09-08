@@ -1,0 +1,119 @@
+.message-box{
+    width: 929px;
+    background-color: #fff;
+}
+.message-content{
+    width: 879px;
+    margin:  0 auto;
+}
+.message-title{
+    height: 63px;
+    border-bottom: 2px solid #f5f5f5;
+}
+.message-title ul{
+    height: 33px;
+    line-height: 33px;
+    font-size: 14px;
+    color: #999999;
+    display: inline-block;
+    margin: 20px 40px;
+}
+.message-title ul li{
+    float: left;
+    width: 100px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.sign{
+    float: right;
+    font-size: 12px;
+    color: #E84B4C;
+    cursor: pointer;
+    margin: 22px 40px;
+}
+.sign:hover{
+    text-decoration: underline;
+}
+.top{
+    width: 0;
+    height: 0;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #E84B4C transparent transparent transparent;
+    position: absolute;
+    bottom: -6px;
+    right: 48px;
+}
+.msg-1,.msg-2{
+    position: relative;
+}
+.msg-2{
+    margin-left: 20px;
+}
+.addstyle{
+    background-image: linear-gradient(69deg, #E84B4C 12%, #FF6565 100%);
+    color: #fff;
+}
+.title-text{
+    height: 53px;
+    line-height: 53px;
+}
+.title-text ul li{
+    float: left;
+    font-size: 14px;
+    color: #999999;
+    padding-left: 14px;
+}
+.msg-title-1{
+    width: 124px;
+}
+.msg-title-2{
+    width: 442px;
+}
+.msg-title-3{
+    width: 199px;
+}
+.msg-title-4{
+    padding-left: 2px!important;
+}
+.message-msg-box{
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+    color: #666666;
+    cursor: pointer;
+}
+.message-msg-box:hover{
+    background: #F5F5F5!important;
+}
+.message-msg-box span{
+    padding-left: 15px;
+    display: inline-block;
+}
+.message-msg-1{
+    width: 118px;
+}
+.message-msg-2{
+    width: 438px;
+}
+.message-msg-3{
+    width: 118px;
+}
+.one{
+    background: #FAFBFB;
+}
+.two{
+    background: #fff;
+}
+.hollow-button{
+    width: 104px;
+    height: 36px;
+    margin-bottom: 20px;
+}
+.button-box{
+    text-align:center;
+    margin-top: 30px;
+}

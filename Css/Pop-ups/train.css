@@ -1,0 +1,139 @@
+
+
+.train-content-box{
+    width: 623px;
+    background-color: #fff;
+}
+.train-pre-box{
+    background: #FAFBFB;
+    width: 623px;
+    height: 122px;
+    border-bottom: 1px solid #fafbfb;
+}
+.train-title-box{
+    width: 543px;
+    margin: 0 auto;
+
+}
+.train-title-box h3{
+    font-size: 12px;
+    color: #333333;
+    padding-top: 5px;
+}
+.train-text-box{
+    margin-top: 12px;
+}
+.train-attr-box,.tran-tech-box,.tran-date-box,.tran-size-box{
+    font-size: 12px;
+    color: #999999;
+}
+.train-attr-text,.tran-tech,.tran-date,.tran-num,.tran-size,.tran-mey{
+    font-size: 12px;
+    color: #2A2A2A;
+    line-height: 18px;
+}
+.size-box{
+    margin-left: 40px;
+}
+.mey-box{
+    margin-left: 40px;
+}
+.train-text-ul{
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    color: #999999;
+    width: 543px;
+    margin: 0 auto;
+}
+.train-text-content{
+    margin-top: 4px;
+}
+.train-text-content ul li{
+    float: left;
+}
+
+.train-list-box-pre{
+    width: 409px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    color: #333333;
+    margin-left: 30px;
+    display: inline-block;
+}
+.train-list span{
+    display: inline-block;
+}
+
+.train-list{
+    padding-left: 10px;
+}
+.train-list-1{
+    width: 70px;
+}
+.train-list-2{
+    width: 93px;
+    text-align: right;
+}
+.train-list-3{
+    width: 210px;
+    text-align: right;
+}
+.train-input{
+    display: inline-block;
+    width: 135px;
+    vertical-align: top;
+
+}
+.train-input input{
+    width: 100px;
+    height: 17px;
+    line-height: 17px;
+    padding-left: 10px;
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 2px;
+    float: right;
+    font-size: 12px;
+    color: #333333;
+}
+.train-list-box{
+    margin-top: 3px;
+}
+.hollow-button{
+    width: 104px;
+    height: 36px;
+}
+
+.hollow-button {
+    border: 1px solid #e84b4b;
+    color: #e84b4b;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    font: 12px "微软雅黑";
+    font-weight: 400;
+    margin-left: 80px;
+}
+.red-button {
+    display: inline-block;
+    width: 104px;
+    height: 36px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e84b4c;
+    color: #fff;
+    font: 12px "微软雅黑";
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+.button-box{
+    text-align: center;
+    margin-top: 30px;
+}
+.train-list-rend{
+    height: 307px;
+    overflow: scroll;
+}

@@ -694,6 +694,7 @@ var OPER={
         title=title?title:"发票收据";
         // 流程弹窗
         var scrollH = top.Helper.getClientHeight();
+        var scrollW = top.Helper.getClientWidth();
         var popH = scrollH - 100 > 360 ? 360 : scrollH - 100;
         Popup.open(title, 818, popH, "./CustomerService/Pop-ups/invoice.html?customid="+customid);
     },
@@ -701,6 +702,7 @@ var OPER={
         title=title?title:"包装";
         // 流程弹窗
         var scrollH = top.Helper.getClientHeight();
+        var scrollW = top.Helper.getClientWidth();
         var popH = scrollH - 100 > 550 ? 550 : scrollH - 100;
         Popup.open(title, 939, popH, "./CustomerService/Pop-ups/box.html?customid="+customid);
     },
@@ -745,44 +747,6 @@ var OPER={
     pricing:function (customid,currentPeriod,currentPrice,quote,userPeriod,inquiryStatus) {
         //定价
         Popup.open("订单定价", 407, 290, "./Pop-ups/orderPrice.html?customid="+customid+"&currentPeriod="+currentPeriod+"&currentPrice="+currentPrice+"&quote="+quote+"&userPeriod="+userPeriod+"&inquiryStatus="+inquiryStatus);
-    },
-    orderPrice:function (customid,finalPrice) {
-        Popup.open("订单支付", 407, 240, "./Pop-ups/orderPay.html?customid="+customid+"&finalPrice="+finalPrice);
-    },
-    distributionProduction:function (customid) {
-        //分配生产
-        var url=config.WebService()['distribut_Production'];
-        Requst.ajaxGet(url,{"customid":customid},true,function (data) {
-            if(data.code==3000)
-            {
-                Popup.open("收货地址", 482, 380, "./Pop-ups/addAddress.html?customid="+customid);
-            }
-            else if(data.code==3001){
-                //发票收据不全,请补充发票收据
-                OPER.invoice(customid);
-            }
-            else if(data.code==3002)
-            {
-                //设计稿未定稿,请先定稿
-                OPER.uploadDesign(customid);
-            }
-            else
-            {
-                //核对订单
-                OPER.checkOrder(customid,true);//第二个参数告诉核对订单页面分配生产
-            }
-        });
-    },
-    productPicture:function (customid,operType) {
-        //成品图
-        if(operType=="prev")
-        {
-            Popup.open("查看成品图", 482, 380, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
-        }
-        else if(operType=="edit")
-        {
-            Popup.open("编辑成品图", 482, 380, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
-        }
     }
 };
 

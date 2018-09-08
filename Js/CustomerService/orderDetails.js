@@ -6,11 +6,17 @@ var customid = Helper.getUrlParam('customid') || "";//获取订单号
 
 $(function () {
 
+    $(".Edit").on('click',function () {//添加编辑弹窗
+        var scrollH = top.Helper.getClientHeight();
+        var popH = scrollH - 100 > 410 ? 410 : scrollH - 100;
+        top.Popup.open("产品生产参数编辑", 900, popH, "./CustomerService/createOrder.html?operType=edit&customid=" + customid);
+    })
+    
     $(".address-add").on('click', function () {//添加地址弹窗
         details.openress();
     });
 
-    $(".edit").on('click', function () {
+    $(".edit").on('click', function () {//编辑设计费
         details.edit();
     })
 
@@ -31,6 +37,8 @@ $(function () {
     });
 
     details.detailsDetdata();
+
+    details.editDetails();
 
     //粘贴复制
     var contbox = $(".cont-box").text();
@@ -93,7 +101,7 @@ var orderInfo = {
 
 var details = {
     openress: function () {//添加地址弹窗
-        var url = encodeURI('../CustomerService/Pop-ups/addAddress.html?name=' + orderInfo.shippingAddress.name + '&mobilephone=' + orderInfo.shippingAddress.mobilephone + '&postcode=' + orderInfo.shippingAddress.postcode + '&province=' + orderInfo.shippingAddress.province + '&city=' + orderInfo.shippingAddress.city + '&county=' + orderInfo.shippingAddress.county + '&address=' + orderInfo.shippingAddress.address + '&customid=' + customid)
+        var url = encodeURI('../Pop-ups/addAddress.html?name=' + orderInfo.shippingAddress.name + '&mobilephone=' + orderInfo.shippingAddress.mobilephone + '&postcode=' + orderInfo.shippingAddress.postcode + '&province=' + orderInfo.shippingAddress.province + '&city=' + orderInfo.shippingAddress.city + '&county=' + orderInfo.shippingAddress.county + '&address=' + orderInfo.shippingAddress.address + '&customid=' + customid)
         var scrollH = document.documentElement.scrollHeight - 20;
         if (scrollH > 380) {
             scrollH = 380;
@@ -102,8 +110,31 @@ var details = {
         details.saveAddress();
     },
     edit: function () {
-        var url = encodeURI('./Page/Pop-ups/adjustDesi.html');
+        var url = encodeURI('../Pop-ups/adjustDesi.html');
         Popup.open('订单定价', 423, 286, url);
+    },
+    editDetails: function () {
+        $(".order-msg-box").mouseover(function (){
+            $(".Edit").removeClass('hide');
+        }).mouseout(function (){
+            $(".Edit").addClass('hide');
+        });
+
+
+        $(".offer").hover(function(){
+            $(".offer p").removeClass('hide');
+        },function(){
+            $(".offer p").addClass('hide');
+        });
+
+        $(".edit").hover(function(){
+            $(".offer p").removeClass('hide');
+        },function(){
+            $(".offer p").addClass('hide');
+        });
+
+
+
     },
     saveAddress: function (name, mobilephone, postcode, province, city, county, address, customid) {//保存收获地址
         orderInfo.shippingAddress.name = name;
@@ -171,6 +202,21 @@ var details = {
             that.version = data.data.designInfo[0].version;//设计方案版本号
 
 
+             if (top.SysParam.inquiryStatus[data.data.inquiryStatus]) {
+                $(".orderComp").text(top.SysParam.inquiryStatus[data.data.inquiryStatus]);
+            }
+             if (top.SysParam.designStatus[data.data.designStatus]) {
+                $(".orderStat").text(top.SysParam.designStatus[data.data.designStatus]);
+            }
+             if (top.SysParam.produceStatus[data.data.produceStatus]) {
+                $(".orderNew").text(top.SysParam.produceStatus[data.data.produceStatus]);
+            }
+             var payStatus = data.data.inquiryStatus == 4 ? "" : "未支付";
+             if(payStatus)
+            {
+                $(".orderNewNext").text(payStatus);
+            }
+
             $(".time-num").text(createTime);//订单创建时间
             $(".orderNum").text(orderid);//订单号
             $(".orderWw").text(customerWang);//旺旺号
@@ -198,13 +244,13 @@ var details = {
 
 
             //if (data.data.name){
-            orderInfo.shippingAddress.name = 1//data.data.name;//收货人姓名
-            orderInfo.shippingAddress.mobilephone = 2//data.data.mobilephone;//收货联系电话
-            orderInfo.shippingAddress.postcode = 150000//data.data.postcode;//邮编
-            orderInfo.shippingAddress.province = '内蒙古自治区'//data.data.province;//省
-            orderInfo.shippingAddress.city = '赤峰市'//data.data.city;//市
-            orderInfo.shippingAddress.county = '红山区'//data.data.county;//县
-            orderInfo.shippingAddress.address = 87687//data.data.detail_address;//详细地址
+            orderInfo.shippingAddress.name = data.data.name;//收货人姓名
+            orderInfo.shippingAddress.mobilephone = data.data.mobilephone;//收货联系电话
+            orderInfo.shippingAddress.postcode = data.data.postcode;//邮编
+            orderInfo.shippingAddress.province = data.data.province;//省
+            orderInfo.shippingAddress.city = data.data.city;//市
+            orderInfo.shippingAddress.county = data.data.county;//县
+            orderInfo.shippingAddress.address = data.data.detail_address;//详细地址
             //}
 
 
@@ -226,7 +272,7 @@ var details = {
                 var srcFile = [];//设计稿版本附件
                 var otherFile = [];//设计稿版本其他附件
                 var remaMan = [];//设计稿版本备注图片
-                // if (data.data.designInfo[i].status==3){
+                // if (data.data.designInfo[i].status==3){//判断是否显示设计稿留言
                 //     $(".design-bg").removeClass('hide');
                 //     $(".EditButton").attr('disabled',"true").addClass('bg_color');
                 //

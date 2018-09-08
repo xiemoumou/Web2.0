@@ -673,6 +673,7 @@
     right: -30px;
     top: 0px;
     color: #5298FF;
+    width: 30px;
 }
 .order-msg-box{
     position: relative;
@@ -942,6 +943,10 @@
 }
 .TextList-right{
     float: right;
+}
+.leav-reg-img .diagram-container img{
+    max-width: 48px;
+    max-height: 48px;
 }
 .TextList-left span{
     color: #333;
