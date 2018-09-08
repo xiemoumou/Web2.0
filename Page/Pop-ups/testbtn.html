@@ -24,6 +24,8 @@
     <button class="btn invoice">票据</button>
     <button class="btn box">盒子</button>
     <button class="btn uploadDesign">客服上传设计稿</button>
+    <button class="btn msg">消息</button>
+    <button class="btn train">训练库</button>
 </div>
 
 
@@ -148,6 +150,34 @@
         Popup.open(title, 830, popH, "./uploadDesign.html?customid="+customid);
     });
 
+
+    $(".msg").on('click',function () {//消息
+        //orderid = $(this).parent().attr("data-orderid");
+
+        var url = encodeURI('../../Page/Pop-ups/message.html');
+        // var scrollH= document.documentElement.scrollHeight-20;
+        // if(scrollH>380)
+        // {
+        //     scrollH=380;
+        // }
+        var scrollH = top.Helper.getClientHeight();
+        var popH = scrollH - 100 > 332 ? 518 : scrollH - 100;
+        Popup.open( '订单定价',929, popH,url);
+    })
+
+    $(".train").on('click',function () {//训练
+        //orderid = $(this).parent().attr("data-orderid");
+
+        var url = encodeURI('../../Page/Pop-ups/train.html');
+        // var scrollH= document.documentElement.scrollHeight-20;
+        // if(scrollH>380)
+        // {
+        //     scrollH=380;
+        // }
+        var scrollH = top.Helper.getClientHeight();
+        var popH = scrollH - 100 > 626 ? 626 : scrollH - 100;
+        Popup.open( '训练库报价',623, popH,url);
+    })
 </script>
 </body>
 </html>

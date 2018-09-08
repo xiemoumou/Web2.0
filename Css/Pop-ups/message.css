@@ -34,6 +34,9 @@
     cursor: pointer;
     margin: 22px 40px;
 }
+.sign:hover{
+    text-decoration: underline;
+}
 .top{
     width: 0;
     height: 0;
@@ -84,7 +87,7 @@
     cursor: pointer;
 }
 .message-msg-box:hover{
-    background: #F5F5F5;
+    background: #F5F5F5!important;
 }
 .message-msg-box span{
     padding-left: 15px;
@@ -104,4 +107,13 @@
 }
 .two{
     background: #fff;
+}
+.hollow-button{
+    width: 104px;
+    height: 36px;
+    margin-bottom: 20px;
+}
+.button-box{
+    text-align:center;
+    margin-top: 30px;
 }
