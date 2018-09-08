@@ -1,8 +1,13 @@
 
-//var customid = Helper.getUrlParam('customid') || "";//获取订单号
+var customid = Helper.getUrlParam('customid') || "";//获取订单号
 
-var customid = '2051774640610011';
+//var customid = '2051774640610011';
 $(function () {
+
+    desigDetails.desiGet();//显示详情
+    desigDetails.leavShow();//留言显示
+    //desigDetails.suatusDesi();//显示是否接单
+
     uploadfile.uploadPhoto('prod_refe',1);//设计稿
     uploadfile.uploadPhoto('details_encl_textarea',3);//设计备注上传
     uploadfile.uploadFile('details_encl',1,null,true,null);//附件上传
@@ -15,7 +20,6 @@ $(function () {
     uploadfile.initDrag('details_encl_next');//附件拖拽
 
 
-    desigDetails.leavShow();//留言显示
 
     $("#leav_bottom_img").attr("data-customid", customid);
     $("#leav_bottom_file").attr("data-customid", customid);
@@ -29,7 +33,6 @@ $(function () {
     $("#details_encl_textarea .dia-remind-1").text('点击上传')
     $("#details_encl_textarea .dia-remind-2").text('备注图片(最多3张）')
 
-    desigDetails.desiGet();
 
 
     $(".dest-btn").on('click',function () {
@@ -47,13 +50,15 @@ $(function () {
     $(".file-details_encl_textarea").attr("data-customid", customid);
 
 
+
+
 })
 
 var desigDetails = {
     desiGet: function () {
         var that = this;
         data = {
-            "customId": 2051774640610011,
+            "customId": customid,
         }
         var url = config.WebService()["orderSummaryInfo_Query"];
         Requst.ajaxGet(url, data, true, function (data) {
@@ -76,9 +81,19 @@ var desigDetails = {
             var produceMemo = data.data.produceMemo || "";//生产备注
             var orderid = data.data.orderid || "";//订单id
             that.orderid = data.data.orderid || "";//orderid
-            that.designId = data.data.designId || "";//设计表id
+            that.designId = data.data.designId || "";//设计单id
             that.id = data.data.id || "";//订单表
-            that.ordersummaryId = data.data.ordersummaryId || "";//
+            that.ordersummaryId = data.data.ordersummaryId || "";
+            that.designStatus = data.data.designStatus || "";//判断接单状态
+
+            if (data.data.designStatus<=1){//已分配设计，尚无方案师接单
+                debugger
+                $(".desiDeta-title").addClass('hide');
+                $(".prod-details").removeClass('hide');
+            }if (data.data.designStatus==2){//方案师正在设计中
+                $(".desiDeta-title").removeClass('hide');
+                $(".prod-details").addClass('hide');
+            }
 
             if (data.data.designInfo!=''){
 
@@ -87,11 +102,14 @@ var desigDetails = {
                 that.version = data.data.designInfo[0].version;//设计方案版本号
             }
 
+
+
             if (deadline <= 5) {//急单
                 $(".emer").removeClass('hide');
             } else {
                 $(".emer").addClass('hide');
             }
+            
 
 
             $(".order-time").text(createTime);//订单创建时间
@@ -159,6 +177,10 @@ var desigDetails = {
 
         })
     },
+    //suatusDesi: function () {
+
+
+   // },
     desiSub: function () {//提交设计单
         var url = config.WebService()["orderDesignPattern_Insert"];
         data = {
@@ -175,7 +197,7 @@ var desigDetails = {
             "otherFile": $("#details_encl_next .accessory-container .fileitem").attr("data-url"),//其他附件
             "designMemo": $(".design-rema textarea").val(),//设计备注
             "designId" : 1,
-            "customid": 2051774640610011,
+            "customid": customid,
             "ordersummaryId":this.id,
             "orderid": this.orderid,
             "status":1,
@@ -206,7 +228,7 @@ var desigDetails = {
     robbBtn: function () {//抢单
         var url = config.WebService()["orderDesignInfo_Update"];
         data = {
-            "wId":this.id,
+            "wId":this.designId,
         }
         Requst.ajaxPost(url, data, true, function (data) {
 
