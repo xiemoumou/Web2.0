@@ -18,7 +18,7 @@ var config = {
             "createOrderId": that.Domain.systemApi + "/dynamo/order/createCustomid",//创建订单id
             "orderSummaryInfo_Insert": that.Domain.systemApi + "/dynamo/order/orderSummaryInfo_Insert",//新建订单
             "autoPrice":that.Domain.systemApi + "/dynamo/order/auto_price",//自动报价
-            "sendDesign":that.Domain.systemApi + "/dynamo/order/sendDesign",//分配设计
+            "sendDesign":that.Domain.systemApi + "/design/sendDesign",//分配设计
             "order_Finally":"/dynamo/order/order_Finally",//定价
             "updateOrderQuoteItem":that.Domain.systemApi +"/dynamo/order/updateOrderQuoteItem",//影响报价数据编辑
             "orderSupplementary_Query": that.Domain.systemApi + "/dynamo/order/orderSupplementary_Query",//订单概览
@@ -32,7 +32,6 @@ var config = {
             "orderInquiryInfo_Query":that.Domain.systemApi + "/dynamo/order/orderInquiryInfo_Query",//发起询价
             "orderBargin_Query":that.Domain.systemApi + "/dynamo/order/orderBargin_Query",//发起议价
             "orderBargin_Doit":that.Domain.systemApi + "/dynamo/order/orderBargin_Doit",//处理议价
-            "order_Finally":that.Domain.systemApi + "/dynamo/order/order_Finally",//定价
             "logisticsCompany_Query":that.Domain.systemApi + "/dynamo/order/logisticsCompany_Query",//获取快递公司列表
             "order_PayFinally":that.Domain.systemApi + "/dynamo/order/order_PayFinally",//支付
             "designFee_Init":that.Domain.systemApi + "/dynamo/order/designFee_Init",//设计费编辑初始化

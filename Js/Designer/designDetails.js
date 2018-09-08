@@ -165,33 +165,39 @@ var desigDetails = {
             "initialDesignImage1": $("#prod_refe .diagram-container .diagram").attr("data-oimageurl"),//设计单原图
             "smallDesignImage1": $("#prod_refe .diagram-container .diagram").attr("data-simageurl"),//设计单图小
             "middleDesignImage1": $("#prod_refe .diagram-container .diagram").attr("data-mimageurl"),//设计单图中
+            "initialDesignImage2":'',
+            "smallDesignImage2":'',
+            "middleDesignImage2":'',
+            "initialDesignImage3":'',
+            "smallDesignImage3":'',
+            "middleDesignImage3":'',
             "designFile": $("#details_encl .accessory-container .fileitem").attr("data-url"),//上传附件
             "otherFile": $("#details_encl_next .accessory-container .fileitem").attr("data-url"),//其他附件
             "designMemo": $(".design-rema textarea").val(),//设计备注
-            "designId" : '',
+            "designId" : 1,
             "customid": 2051774640610011,
-            "ordersummaryId":'',
+            "ordersummaryId":this.id,
             "orderid": this.orderid,
-            "initialReferenceImage1":'',
-            "middleReferenceImage1":'',
-            "smallReferenceImage1":'',
-            "initialReferenceImage2":'',
-            "middleReferenceImage2":'',
-            "smallReferenceImage2":'',
-            "initialReferenceImage3":'',
-            "middleReferenceImage3":'',
-            "smallReferenceImage3":'',
+            "status":1,
+            "initialRemarkImage1":'',
+            "smallRemarkImage1":'',
+            "middleRemarkImage1":'',
+            "initialRemarkImage2":'',
+            "smallRemarkImage2":'',
+            "middleRemarkImage2":'',
+            "initialRemarkImage3":'',
+            "smallRemarkImage3":'',
+            "middleRemarkImage3":'',
         }
-        debugger
+
         var imgContainer = $("#details_encl_textarea .diagram-container").children();
         var imgleng =  imgContainer.length;
 
         for (var i = 0; i < imgleng; i++ ){// 添加设计备注图片
-            data['initialReferenceImage'+(i+1)]= imgContainer[i].getAttribute('data-oimageurl');
-            data['middleReferenceImage'+(i+1)] = imgContainer[i].getAttribute('data-mimageurl');
-            data['smallReferenceImage'+(i+1)] = imgContainer[i].getAttribute('data-simageurl');
+            data['initialRemarkImage'+(i+1)]= imgContainer[i].getAttribute('data-oimageurl');
+            data['smallRemarkImage'+(i+1)] = imgContainer[i].getAttribute('data-simageurl');
+            data['middleRemarkImage'+(i+1)] = imgContainer[i].getAttribute('data-mimageurl');
         }
-console.log(data);
         Requst.ajaxPost(url, data, true, function (data) {
 
         });
