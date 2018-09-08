@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上传物流信息</title>
+    <script id="ver" src="../../Common/Js/version.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("ver");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Common/Components/library.css' + VER + '" rel="stylesheet" />');
+    </script>
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        .container {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+        .row {
+            height: 40px;
+            font-size: 14px;
+            line-height: 40px;
+        }
+
+        .expressCom_val {
+            height: 30px;
+            width: 303px;
+            margin-top: 4px;
+            line-height: 30px;
+        }
+
+        .expressNum_val {
+            border-radius: 3px;
+            border: 1px solid #d5d5d5;
+            height: 30px;
+            width: 295px;
+            padding-left: 8px;
+        }
+
+        .floor {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .lg-dropdownlist ul {
+            max-height: 100px !important;
+        }
+
+        button {
+            width: 80px;
+            height: 34px;
+            margin: 0 10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <span class="label fl">快递公司:</span>
+        <div data-val="" class="expressCom_val fl"></div>
+    </div>
+    <div class="row">
+        <span class="label fl">快递单号:</span>
+        <input class="expressNum_val" maxlength="20" placeholder="请输入发货的快递单号"/>
+    </div>
+    <div class="row floor">
+        <button class="btn ok">确认</button>
+        <button class="btn-h" onclick="top.Popup.close('编辑物流信息');top.Popup.close('上传物流信息');">取消</button>
+    </div>
+</div>
+
+
+<!-- 测试用开始 -->
+<script>
+    document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Components/library.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
+</script>
+<script>
+    $(function () {
+        var company = Helper.getUrlParam("company", true);//快递公司
+        var number = Helper.getUrlParam("number", true);//运单号
+        var customid = Helper.getUrlParam("customid");//定制号
+
+        if (company) {
+            $(".expressCom_val").attr("data-val", courier);
+            $(".expressNum_val").val(number);
+        }
+
+        //获取快递公司列表
+        var url = config.WebService()["logisticsCompany_Query"];
+        top.Requst.ajaxGet(url, "", false, function (data) {
+            if (data.code == 200) {
+                var temp = [];
+                for (var i = 0; i < data.data.length; i++) {
+                    temp.push({"id": data.data[i].code, "name": data.data[i].logisticscompany});
+                }
+
+                $(".expressCom_val").DropDownList(temp);
+            }
+        });
+
+        $('.ok').on('click', function () {
+            var expressCom_val = $('.expressCom_val .val').attr('data-value');
+            var expressNum_val = $('.expressNum_val').val();
+            if (!$.trim(expressCom_val) || !$.trim(expressNum_val)) {
+                top.Message.show("提示", "物流公司与快递单号均不能为空。", MsgState.Warning, 2000);
+                return;
+            }
+            var url = config.WebService()['logistics_Upload'];
+            top.Requst.ajaxGet(url, {
+                "customid": customid,
+                "company": expressCom_val,
+                "logisticsid": expressNum_val
+            },true, function (data) {
+                if(data.code==200) {
+                    top.Message.show("提示", data.message, MsgState.Success, 2000,function () {
+                        if (parent.logistics.getData)
+                        {
+                            parent.logistics.getData();
+                        }
+                    });
+                }
+                else
+                {
+                    top.Message.show("提示", data.message, MsgState.Fail, 2000);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
+

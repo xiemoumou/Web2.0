@@ -1,0 +1,38 @@
+body{
+    background-color: #ffffff;
+}
+.container{
+    margin-top: 10px;
+}
+#receiptChannel{
+    width: 270px;
+    height: 28px;
+}
+#payPrice{
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    height: 28px;
+    line-height: 28px;
+    width: 204px;
+    text-align: right;
+    padding-right: 10px;
+}
+.row{
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    padding-left: 32px;
+    margin-top: 10px;
+}
+
+.floor{
+    text-align: center;
+    margin-top: 20px;
+    margin-left: -30px;
+}
+
+.floor button{
+    height: 30px;
+    width: 70px;
+    margin: 0 10px;
+}

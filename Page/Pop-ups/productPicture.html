@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>成品图</title>
+    <script id="ver" src="../../Common/Js/version.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("ver");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Css/Pop-ups/productPicture.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Common/Components/library.css' + VER + '" rel="stylesheet" />');
+        document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    </script>
+</head>
+<body>
+<div class="container">
+    <div id="productPicture" data-type="product_image"> </div>
+    <div class="floor">
+        <button class="red-button ok hide" style="margin-right: 10px" onclick="modifyDesign.submitDate();">保存</button>
+        <button onclick="parent.layer.closeAll()" style="margin-left: 10px" class="hollow-button">关闭</button>
+    </div>
+</div>
+<script>
+    document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Components/library.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Js/Pop-ups/productPicture.js' + VER + '" ><\/script>');
+</script>
+</body>
+</html>

@@ -19,7 +19,14 @@ var config = {
             "orderSummaryInfo_Insert": that.Domain.systemApi + "/dynamo/order/orderSummaryInfo_Insert",//新建订单
             "autoPrice":that.Domain.systemApi + "/dynamo/order/auto_price",//自动报价
             "sendDesign":that.Domain.systemApi + "/dynamo/order/sendDesign",//分配设计
-            "order_Finally":"/dynamo/order/order_Finally",//定价
+            "order_Finally":that.Domain.systemApi + "/dynamo/order/order_Finally",//定价
+            "order_PayFinally":that.Domain.systemApi + "/dynamo/order/order_PayFinally",//确认支付
+            "logisticsCompany_Query":that.Domain.systemApi + "/dynamo/order/logisticsCompany_Query",//获取快递公司列表
+            "orderProductInfoImages_Query":that.Domain.systemApi +"/dynamo/order/orderProductInfoImages_Query",//查看成品图
+            "logistics_Upload":that.Domain.systemApi +"/dynamo/order/logistics_Upload",//编辑物流信息
+            "select_Logistics":that.Domain.systemApi + "/dynamo/order/select_Logistics",//查看物流信息
+            "continue_Production":that.Domain.systemApi + "/dynamo/order/continue_Production",//继续分配
+            "distribut_Production":that.Domain.systemApi + "/dynamo/order/distribut_Production",//分配生产前检查
             "updateOrderQuoteItem":that.Domain.systemApi +"/dynamo/order/updateOrderQuoteItem",//影响报价数据编辑
             "orderSupplementary_Query": that.Domain.systemApi + "/dynamo/order/orderSupplementary_Query",//订单概览
             "business_Query":that.Domain.systemApi + "/dynamo/order/business_Query",//左侧业务栏
@@ -32,9 +39,6 @@ var config = {
             "orderInquiryInfo_Query":that.Domain.systemApi + "/dynamo/order/orderInquiryInfo_Query",//发起询价
             "orderBargin_Query":that.Domain.systemApi + "/dynamo/order/orderBargin_Query",//发起议价
             "orderBargin_Doit":that.Domain.systemApi + "/dynamo/order/orderBargin_Doit",//处理议价
-            "order_Finally":that.Domain.systemApi + "/dynamo/order/order_Finally",//定价
-            "logisticsCompany_Query":that.Domain.systemApi + "/dynamo/order/logisticsCompany_Query",//获取快递公司列表
-            "order_PayFinally":that.Domain.systemApi + "/dynamo/order/order_PayFinally",//支付
             "designFee_Init":that.Domain.systemApi + "/dynamo/order/designFee_Init",//设计费编辑初始化
             "designFee_Submit":that.Domain.systemApi + "/dynamo/order/designFee_Submit",//设计费点确定按钮
             "orderSummaryInfo_Query":that.Domain.systemApi + "/dynamo/order/orderSummaryInfo_Query",//订单详情
@@ -690,7 +694,6 @@ var OPER={
         title=title?title:"发票收据";
         // 流程弹窗
         var scrollH = top.Helper.getClientHeight();
-        var scrollW = top.Helper.getClientWidth();
         var popH = scrollH - 100 > 360 ? 360 : scrollH - 100;
         Popup.open(title, 818, popH, "./CustomerService/Pop-ups/invoice.html?customid="+customid);
     },
@@ -698,7 +701,6 @@ var OPER={
         title=title?title:"包装";
         // 流程弹窗
         var scrollH = top.Helper.getClientHeight();
-        var scrollW = top.Helper.getClientWidth();
         var popH = scrollH - 100 > 550 ? 550 : scrollH - 100;
         Popup.open(title, 939, popH, "./CustomerService/Pop-ups/box.html?customid="+customid);
     },
@@ -743,6 +745,44 @@ var OPER={
     pricing:function (customid,currentPeriod,currentPrice,quote,userPeriod,inquiryStatus) {
         //定价
         Popup.open("订单定价", 407, 290, "./Pop-ups/orderPrice.html?customid="+customid+"&currentPeriod="+currentPeriod+"&currentPrice="+currentPrice+"&quote="+quote+"&userPeriod="+userPeriod+"&inquiryStatus="+inquiryStatus);
+    },
+    orderPrice:function (customid,finalPrice) {
+        Popup.open("订单支付", 407, 240, "./Pop-ups/orderPay.html?customid="+customid+"&finalPrice="+finalPrice);
+    },
+    distributionProduction:function (customid) {
+        //分配生产
+        var url=config.WebService()['distribut_Production'];
+        Requst.ajaxGet(url,{"customid":customid},true,function (data) {
+            if(data.code==3000)
+            {
+                Popup.open("收货地址", 482, 380, "./Pop-ups/addAddress.html?customid="+customid);
+            }
+            else if(data.code==3001){
+                //发票收据不全,请补充发票收据
+                OPER.invoice(customid);
+            }
+            else if(data.code==3002)
+            {
+                //设计稿未定稿,请先定稿
+                OPER.uploadDesign(customid);
+            }
+            else
+            {
+                //核对订单
+                OPER.checkOrder(customid,true);//第二个参数告诉核对订单页面分配生产
+            }
+        });
+    },
+    productPicture:function (customid,operType) {
+        //成品图
+        if(operType=="prev")
+        {
+            Popup.open("查看成品图", 482, 380, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
+        }
+        else if(operType=="edit")
+        {
+            Popup.open("编辑成品图", 482, 380, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
+        }
     }
 };
 
