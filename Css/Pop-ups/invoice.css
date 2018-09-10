@@ -26,7 +26,7 @@ body {
 }
 
 .js-icon {
-    background: url("../../../Image/Pop-ups/selectempty.png") no-repeat center;
+    background: url("../../Image/Pop-ups/selectempty.png") no-repeat center;
 
 }
 .invoice-content{
@@ -35,7 +35,7 @@ body {
 }
 
 .active {
-    background: url("../../../Image/Pop-ups/selected.png") no-repeat center;
+    background: url("../../Image/Pop-ups/selected.png") no-repeat center;
 }
 .select-box{
     font-size: 14px;

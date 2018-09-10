@@ -30,7 +30,7 @@ var config = {
             "updateOrderQuoteItem":that.Domain.systemApi +"/dynamo/order/updateOrderQuoteItem",//影响报价数据编辑
             "orderSupplementary_Query": that.Domain.systemApi + "/dynamo/order/orderSupplementary_Query",//订单概览
             "business_Query":that.Domain.systemApi + "/dynamo/order/business_Query",//左侧业务栏
-            "orderProductInfoUpdateImages":"/dynamo/order/orderProductInfoUpdateImages",//编辑上传成品图
+            "orderProductInfoUpdateImages":that.Domain.systemApi + "/dynamo/order/orderProductInfoUpdateImages",//编辑上传成品图
 
 
 

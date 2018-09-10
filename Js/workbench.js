@@ -1095,7 +1095,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //查看物流
-                            if (true || item.produceStatus==4) {
+                            if (item.produceStatus==4) {
                                 var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">查看物流</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
@@ -1106,11 +1106,11 @@ var classMain = {
                             }
 
                             //查看成品
-                            if (true || item.smallFinishedProductsImage1||item.smallFinishedProductsImage2||item.smallFinishedProductsImage3) {
+                            if (item.smallFinishedProductsImage1||item.smallFinishedProductsImage2||item.smallFinishedProductsImage3) {
                                 var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">查看成品</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
-                                    OPER.productPicture(customid,'edit');
+                                    OPER.productPicture(customid,'prev');
                                 });
                                 operating.append(btn);
                             }

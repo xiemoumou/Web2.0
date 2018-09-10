@@ -15,7 +15,7 @@ var logistics = {
             {"customid":that.customid },
             true,
             function (data) {//成功之后的回调
-                if(data.code==200)
+                if(data.code==200 && data.data)
                 {
                     data=data.data;
                     var li = data.ArrayList[0];
