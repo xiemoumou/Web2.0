@@ -30,6 +30,10 @@ var config = {
             "updateOrderQuoteItem":that.Domain.systemApi +"/dynamo/order/updateOrderQuoteItem",//影响报价数据编辑
             "orderSupplementary_Query": that.Domain.systemApi + "/dynamo/order/orderSupplementary_Query",//订单概览
             "business_Query":that.Domain.systemApi + "/dynamo/order/business_Query",//左侧业务栏
+            "orderProductInfoUpdateImages":"/dynamo/order/orderProductInfoUpdateImages",//编辑上传成品图
+
+
+
             "AccountInfo_Insert": that.Domain.systemApi + "/dynamo/user/userAccountInfo_Insert",//注册
             "userAccountInfo_Query": that.Domain.systemApi + "/dynamo/user/userAccountInfo_Query",//登陆
             "userPassword_Update": that.Domain.systemApi + "/dynamo/user/userPassword_Update",//修改密码
@@ -779,11 +783,11 @@ var OPER={
         //成品图
         if(operType=="prev")
         {
-            Popup.open("查看成品图", 482, 380, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
+            Popup.open("查看成品图", 482, 246, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
         }
         else if(operType=="edit")
         {
-            Popup.open("编辑成品图", 482, 380, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
+            Popup.open("编辑成品图", 482, 246, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
         }
     }
 };

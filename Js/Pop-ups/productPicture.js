@@ -1,7 +1,7 @@
 $(function () {
     var operType=Helper.getUrlParam('operType');
     var customid=Helper.getUrlParam('customid');
-    debugger
+
     $('#productPicture').attr('data-customid',customid);
     var url=config.WebService()['orderProductInfoImages_Query'];
     var photoArray=[];
@@ -22,7 +22,7 @@ $(function () {
             }
         }
         render();
-    })
+    });
 
     function render() {
         if(photoArray.length==0)
@@ -35,7 +35,12 @@ $(function () {
         }
         else if(operType=="edit")
         {
+            $('.red-button').removeClass('hide');
             uploadfile.uploadPhoto("productPicture",3,photoArray,true);
+            uploadfile.initDrag("productPicture");
         }
     }
+    $(".ok").on('click',function () {
+        
+    });
 });
