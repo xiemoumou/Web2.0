@@ -3,6 +3,17 @@ body {
     background-color: #fff;
 
 }
+
+.slide-rule-os{
+    width: 330px !important;
+    margin-left: 8px;
+    margin-top: 35px;
+}
+.slide-rule-os .lu,.slide-rule-os .ru{
+    display: none;
+}
+
+
 .orderOffer{
     width: 343px;
     margin: 0 auto;

@@ -705,6 +705,9 @@ var classMain = {
         },
         buttonClick: {}
     },
+    search:function () {
+
+    },
     requstParams: {"sortCategory": "synthesize", "sortType": "desc"},
     loadOverview: function (type, pageIndex, isInitPage,customid) {//加载概览数据 initPage是否初始化分页
         var that = this;
@@ -830,27 +833,35 @@ var classMain = {
                             //更多操作列表
                             var moreList = $('<div class="operlist" style="display: none;"><i class="arrow"></i></div>');
                             //发票收据
-                            var moreItem_1 = $('<span>发票/收据</span>');
+                            var moreItem_1 = $('<span data-customid="'+item.customid+'">发票/收据</span>');
                             moreItem_1.on('click', function () {
-                                alert('弹出发票收据');
+                                var customid = $(this).attr('data-customid');
+                                var scrollH = top.Helper.getClientHeight();
+                                var popH = scrollH - 100 > 680 ? 680 : scrollH - 100;
+                                top.Popup.open("发票/收据",818,popH,"./Pop-ups/invoice.html?customid="+customid);
                             });
                             moreList.append(moreItem_1);
 
-                            var moreItem_2 = $('<span>产品包装</span>');
+                            var moreItem_2 = $('<span data-customid="'+item.customid+'">产品包装</span>');
                             moreItem_2.on('click', function () {
-                                alert('弹出产品包装');
+                                var customid = $(this).attr('data-customid');
+                                var scrollH = top.Helper.getClientHeight();
+                                var popH = scrollH - 100 > 510 ? 510 : scrollH - 100;
+                                top.Popup.open("产品包装",545, popH,"./Pop-ups/box.html?customid="+customid);
                             });
                             moreList.append(moreItem_2);
 
-                            var moreItem_3 = $('<span>订单备注</span>');
-                            moreItem_3.on('click', function () {
-                                alert('弹出订单备注');
-                            });
-                            moreList.append(moreItem_3);
+                            // var moreItem_3 = $('<span>订单备注</span>');
+                            // moreItem_3.on('click', function () {
+                            //     alert('弹出订单备注');
+                            // });
+                            // moreList.append(moreItem_3);
 
                             var moreItem_4 = $('<span style="border-bottom: none;">删除订单</span>');
                             moreItem_4.on('click', function () {
-                                alert('弹出删除订单');
+                                Confirm("删除订单","您确定要删除该订单吗？",423,203,null,function () {
+                                   //执行删除订单操作
+                                });
                             });
                             moreList.append(moreItem_4);
 
@@ -939,12 +950,12 @@ var classMain = {
                                 '<div class="design-fee"><!--设计费-->' +
                                 '<span>设计费：¥ <em>' + item.designPrice.formatMoney(2, "", ",", ".") + ' </em></span>' +
                                 '<span>引导费：¥ <em>' + item.introducePrice.formatMoney(2, "", ",", ".") + '</em></span>' +
-                                '<i class="edit hide" data-customid="' + item.customid + '">编辑</i>' +
+                                '<i class="edit hide" data-designPrice="'+item.designPrice.formatMoney(2, "", ",", ".")+'" data-introducePrice="'+item.introducePrice.formatMoney(2, "", ",", ".")+'" data-customid="' + item.customid + '">编辑</i>' +
                                 '</div>' +
                                 '<!--预算-->' +
                                 '<div class="budget">' +
                                 '<i class="label fl">预算：</i>' +
-                                '<input class="fl" value="' + item.userPrice.formatMoney(2, "", ",", ".") + '">' +
+                                '<input class="fl input-money" value="' + item.userPrice.formatMoney(2, "", ",", ".") + '">' +
                                 '<button data-customid="' + item.customid + '" class="btn edit fl">确定</button>' +
                                 '</div>' +
                                 '<!--报价-->' +
@@ -952,20 +963,44 @@ var classMain = {
                                 '<div class="bargain"><!--议价-->' +
                                 '<span class="tax">' + tax + '</span>' +
                                 '<span class="proposed-price">' + proposed + '</span>' +
-                                '<span data-customid="' + item.customid + '" class="button hide">议价</span>' +
+                                '<span data-tax="'+tax+'" data-userPeriod="'+item.userPeriod+'" data-lastQuote="'+item.lastQuote+'" data-customid="' + item.customid + '" class="button hide">议价</span>' +
                                 '<i class="arrow"></i>' +
                                 '</div>' +
                                 '<i class="label fl">报价：</i>' +
-                                '<input class="fl" value="' + item.prePrice.formatMoney(2, "", ",", ".") + '">' +
+                                '<input class="fl input-money" value="' + item.prePrice.formatMoney(2, "", ",", ".") + '">' +
                                 '<button data-customid="' + item.customid + '" class="btn edit fl">确定</button>' +
                                 '</div>' +
                                 '</div>');
 
-                            if (item.inquiryStatus >= 2 && item.inquiryStatus <= 4)//是否显示议价
+                            if(item.inquiryStatus==6)//议价达成
+                            {
+                                var bargain = $(money.find('.quoted').find('.button'));
+                                $(money.find('.quoted').find('.proposed-price')).css('color', ' #E84B4C');
+                                $(bargain).text("议价达成");
+                                $(bargain.parent()).css('width', '238px');
+                                bargain.removeClass('hide');
+                            }
+                            else if(item.inquiryStatus==5)
+                            {
+                                var bargain = $(money.find('.quoted').find('.button'));
+                                $(money.find('.quoted').find('.proposed-price')).css('color', ' #5298FF');
+                                $(bargain).text("议价中");
+                                $(bargain.parent()).css('width', '230px');
+                                bargain.removeClass('hide');
+                            }
+                            else if (item.inquiryStatus >= 2 && item.inquiryStatus <= 4)
                             {
                                 var bargain = $(money.find('.quoted').find('.button'));
                                 $(money.find('.quoted').find('.proposed-price')).css('color', ' #5298FF');
                                 bargain.removeClass('hide');
+                                //议价
+                                $(money.find('.quoted').find('.button')).on('click', function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var lastQuote=$(this).attr('data-lastQuote');
+                                    var userPeriod=$(this).attr('data-userPeriod');
+                                    var tax=$(this).attr("data-tax");
+                                    top.Popup.open("发起议价",423,235,"./Pop-ups/launBarg.html?customid="+customid+"&tax="+tax+"&lastQuote="+lastQuote+"&userPeriod="+userPeriod);
+                                });
                             }
                             else {
                                 var bargain = $(money.find('.quoted').find('.bargain'));
@@ -973,21 +1008,28 @@ var classMain = {
                                 bargain.css('width', '185px');
                             }
 
-                            //议价
-                            $(money.find('.quoted').find('.button')).on('click', function () {
-                                var customid = $(this).attr('data-customid');
-                                alert('发起议价');
-                            });
+
 
                             // 编辑设计费
                             $(money.find('.design-fee').find('.edit')).on('click', function () {
                                 var customid = $(this).attr('data-customid');
-                                alert('编辑设计费');
+                                var introduceprice=$(this).attr('data-introduceprice');
+                                var designPrice=$(this).attr("data-designPrice");
+                                top.Popup.open("调整设计费",423,286,"./Pop-ups/adjustDesi.html?customid="+customid+"&introduceprice="+introduceprice+"&designPrice="+designPrice);
                             });
                             // 编辑预算
                             $(money.find('.budget').find('.edit')).on('click', function () {
                                 var customid = $(this).attr('data-customid');
-                                alert('编辑预算' + customid);
+                                var url=config.WebService()["updatePrice"];
+                                var userPrice=$($(this).prev()).val().replace(/[^0-9-.]/g, '');
+
+                                Requst.ajaxPost(url,{"price":parseFloat(userPrice),"wCustomid":customid,"type":"userPrice"},true,function (data) {
+                                    if(data.code!=200)
+                                    {
+                                        top.Message.show("提示",data.message, MsgState.Warning, 2000);
+                                    }
+                                    classMain.loadOverview(null,null,null,customid);
+                                });
                             });
 
                             $(money.find('.design-fee')).hover(function () {
@@ -999,7 +1041,15 @@ var classMain = {
                             // 编辑报价
                             $(money.find('.quoted').find('.edit')).on('click', function () {
                                 var customid = $(this).attr('data-customid');
-                                alert('编辑报价' + customid);
+                                var url=config.WebService()["custom_Quotation"];
+                                var prePrice=$($(this).prev()).val().replace(/[^0-9-.]/g, '');
+                                Requst.ajaxGet(url,{"prePrice":parseFloat(prePrice),"customid":customid},true,function (data) {
+                                    if(data.code!=200)
+                                    {
+                                        top.Message.show("提示",data.message, MsgState.Warning, 2000);
+                                    }
+                                    classMain.loadOverview(null,null,null,customid);
+                                });
                             });
 
                             infoContainer.append(money);
@@ -1117,7 +1167,24 @@ var classMain = {
 
                             //确认收货
                             if (item.produceStatus==4) {
-                                operating.append('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '"  data-customid="' + item.customid + '" style="width: 66px; height: 23px;">确认支付</button>');
+                                var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">确认收货</button>');
+                                btn.on('click',function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var url=config.WebService()["orderLogisticsStatus_Update"];
+                                    top.Requst.ajaxPost(url,{"customid":customid},true,function (data) {
+                                        if(data.code==200)
+                                        {
+                                            top.Message.show("提示", data.message, MsgState.Success, 2000);
+                                            if (top.classMain.loadOverview) {
+                                                top.classMain.loadOverview(null, null, null, customid);
+                                            }
+                                        }
+                                        else{
+                                            top.Message.show("提示", data.message, MsgState.Warning, 2000);
+                                        }
+                                    })
+                                });
+                                operating.append(btn);
                             }
 
                             itemBody.append(operating);
@@ -1413,6 +1480,7 @@ var classMain = {
                         operating();
                     }
                 }
+                inputCheck();//input输入框校验
                 //分页
                 classMain.pagePrams.totalPage = Math.ceil(data.data.pageMessage.rowCount / classMain.pagePrams.pageSize);
                 classMain.initPage();

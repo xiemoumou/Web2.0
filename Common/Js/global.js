@@ -31,6 +31,9 @@ var config = {
             "orderSupplementary_Query": that.Domain.systemApi + "/dynamo/order/orderSupplementary_Query",//订单概览
             "business_Query":that.Domain.systemApi + "/dynamo/order/business_Query",//左侧业务栏
             "orderProductInfoUpdateImages":that.Domain.systemApi + "/dynamo/order/orderProductInfoUpdateImages",//编辑上传成品图
+            "orderLogisticsStatus_Update":that.Domain.systemApi + "/dynamo/order/orderLogisticsStatus_Update",//确认收货
+            
+
 
 
 
@@ -132,6 +135,11 @@ Number.prototype.toFixed = function (d) {
 //*********************************输入框验证-begin
 $(function () {
 
+    inputCheck();
+
+});
+
+function inputCheck() {
     //阻止选择网页内容
     // document.onselectstart = function () {
     //     return false;
@@ -241,8 +249,7 @@ $(function () {
 
     //金额类型中提取浮点形数据
     //.replace(/[^0-9-.]/g, '');
-
-});
+}
 
 
 // *************************************************************
