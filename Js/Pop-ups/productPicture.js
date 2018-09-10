@@ -57,12 +57,13 @@ $(function () {
         }
         top.Requst.ajaxPost(url, data, true, function (data) {
             if (data.code == 200) {
-                top.Message.show("提示", data.message, MsgState.Success, 2000);
-                if (top.classMain.loadOverview) {
-                    top.classMain.loadOverview(null, null, null, customid);
-                }
-                top.Popup.close("查看成品图");
-                top.Popup.close("编辑成品图");
+                top.Message.show("提示", data.message, MsgState.Success, 2000,function () {
+                    if (top.classMain.loadOverview) {
+                        top.classMain.loadOverview(null, null, null, customid);
+                    }
+                    top.Popup.close("查看成品图");
+                    top.Popup.close("编辑成品图");
+                });
             }
             else {
                 top.Message.show("提示", data.message, MsgState.Fail, 2000);

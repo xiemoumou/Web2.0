@@ -88,12 +88,13 @@ var priceSlider = {
                 $(item).find('.show-value .blue').show();
                 if(!$(item).is('[islock-blue-point]'))//蓝点是否可拖拽
                 {
-                    priceSlider.init(item, $(item).find('.blue-point'), down_min_val, down_max_val, scrollBar,$(item).find('.show-value .blue-value'),function (item) {
-                        $(item).attr('data-blue-point-val',$(item).find('.show-value .blue-value').val());
+                    priceSlider.init(item, $(item).find('.blue-point'), down_min_val, down_max_val, scrollBar,$("#designPrice"),function (item) {
+                        $(item).attr('data-blue-point-val',$("#designPrice").val().replace(/[^0-9-.]/g, ''));
                         priceSlider.changeGuideFee(item);//改变引导费
                     },1);
-                    $(item).find('.show-value .blue-btn').on('click',function () {//蓝按钮事件
-                        priceSlider.btnClick.blueBtn(item, scrollBar)
+
+                    $("#designPrice").on('blur',function () {
+                        priceSlider.change(item,scrollBar,true);
                     });
                 }
                 else
@@ -123,7 +124,7 @@ var priceSlider = {
             $(item).find('.show-value .guide-fee-value').html("¥"+$(item).attr('guide-fee-value'));//设计引导费费
 
             $(item).find('.blue-point').attr('cur_val',$(item).attr('data-blue-point-val'));
-            $(item).find('.show-value .blue-value').val($(item).attr('data-blue-point-val'));
+            $("#designPrice").val(parseFloat($(item).attr('data-blue-point-val')).formatMoney(2, "", ",", "."));
 
 
             $(item).find('.yellow-point').attr('cur_val',$(item).attr('data-yellow-point-val'));
@@ -177,7 +178,7 @@ var priceSlider = {
         var up_max = $(item).attr('data-up-max'); up_max = parseFloat(up_max);
 
         //蓝色点
-        var blue_point_cur = $(item).find('.show-value .blue-value').val();blue_point_cur = parseFloat(blue_point_cur);
+        var blue_point_cur = $("#designPrice").val().replace(/[^0-9-.]/g, '');blue_point_cur = parseFloat(blue_point_cur);
         if(blue_point_cur>down_max)
         {
             blue_point_cur=down_max;
@@ -186,7 +187,7 @@ var priceSlider = {
         {
             blue_point_cur=down_min;
         }
-        $(item).find('.show-value .blue-value').val(blue_point_cur);
+        $("#designPrice").val(blue_point_cur.formatMoney(2, "", ",", "."));
         blue_point_cur = (blue_point_cur - down_min) * ($(scrollBar)[0].clientWidth - 10) / down_max;
         blue_point_cur=Math.ceil(blue_point_cur);
         $(item).find('.blue-point').css('left', blue_point_cur + "px")
@@ -307,7 +308,7 @@ var priceSlider = {
         {
             val=currentValue;
         }
-        showValObj.val(val);
+        showValObj.val(val.formatMoney(2, "", ",", "."));
         obj.attr('cur_val',val);
     },
     btnClick:{
@@ -358,13 +359,13 @@ var priceSlider = {
             $(item).attr('data-yellow-point-val',yellowpointval);
             $(item).find('.yellow-darrow').attr('cur_val',yellowpointval);
             //蓝点
-            $(item).find('.blue-point').attr('cur_val',$(item).find('.show-value .blue-value').val());
-            $(item).attr('data-blue-point-val',$(item).find('.show-value .blue-value').val());
+            $(item).find('.blue-point').attr('cur_val',parseFloat($("#designPrice").val().replace(/[^0-9-.]/g, '')));
+            $(item).attr('data-blue-point-val',parseFloat($("#designPrice").val().replace(/[^0-9-.]/g, '')));
             priceSlider.valueChange(item, scrollBar);
         }
         else
         {
-            $(item).find('.show-value .blue-value').val($(item).find('.blue-point').attr('cur_val'));
+            $(item).find('.show-value .blue-value').val(parseFloat($("#designPrice").val()).formatMoney(2, "", ",", "."));
             $(item).find('.show-value .yellow-value').val($(item).find('.yellow-point').attr('cur_val'));
             $(item).find('.show-value .red-value').val($(item).find('.red-point').attr('cur_val'));
         }
@@ -373,10 +374,18 @@ var priceSlider = {
         //此处为改变蓝点位置后的回掉
         //计算设计引导费
         var down_max=parseInt($(item).attr('data-down-max'));//设计费上线
-        var design_fee=parseInt($(item).find('.show-value .blue-value').val());//设计费
+        var design_fee=parseInt($("#designPrice").val().replace(/[^0-9-.]/g, ''));//设计费
         var guide_fee=(down_max-design_fee)*(30/100);guide_fee=parseInt(guide_fee);
 
         $(item).attr('guide-fee-value',guide_fee);//主轴上的设计引导费值
-        $(item).find('.show-value .guide-fee-value').html("¥"+guide_fee);//设计引导费费
+        if($("#introduceprice"))
+        {
+            $("#introduceprice").text(guide_fee.formatMoney(2, "", ",", "."));//设计引导费费
+        }
+        else
+        {
+            $(item).find('.show-value .guide-fee-value').html("¥"+guide_fee);//设计引导费费
+        }
+
     }
 }

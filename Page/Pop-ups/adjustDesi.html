@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>订单报价</title>
+    <title>修改设计费</title>
     <script id="ver" src="../../Common/Js/version.js" type="text/javascript"></script>
     <script>
         var random = Math.random();
@@ -11,29 +11,34 @@
         document.write('<link href="../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
         document.write('<link href="../../Common/Lib/layer-v3.1.1/layer/theme/default/layer.css" rel="stylesheet" />');
         document.write('<link href="../../Css/Pop-ups/adjustDesi.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Common/Lib/SlideRule/SlideRuleOS.css' + VER + '" rel="stylesheet" />');
     </script>
 </head>
 <body>
 <div class="orderOffer-content">
     <div class="orderOffer">
-        <div class="orderOffer-top"></div>
+        <div class="orderOffer-top">
+            <div class="slide-rule-os" data-up-min="0" data-up-max="0" data-down-min="0" data-down-max="0" data-up-name="" data-down-name="" data-step="10"
+                 data-blue-point-val="0" data-blue-point-show guide-fee-value="240" guide-fee-show>
+            </div>
+        </div>
         <div class="offer-money">
             <span>设计费：</span>
             <div class="offer-money-left">
-                <input placeholder="填写设计费">
+                <input id="designPrice" placeholder="填写设计费" maxlength="10" style="text-align: right; padding-right: 10px;" value="0.00" class="input-money">
                 <span>元</span>
             </div>
         </div>
         <div class="offer-money-next">
             <span>引导费：</span>
             <div class="left-next">
-                ¥<span class="guid">22</span>
+                ¥<span id="introduceprice" class="guid">22</span>
             </div>
         </div>
     </div>
     <button class="red-button btn">确认</button>
-    <button class="hollow-button"
-            onclick="parent.layer.closeAll();">取消
+    <button class="hollow-button btn-h"
+            onclick="top.Popup.close()">取消
     </button>
 </div>
 
@@ -45,6 +50,7 @@
     document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Js/Pop-ups/adjustDesi.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Lib/SlideRule/SlideRuleOS.js' + VER + '" ><\/script>');
 </script>
 </body>
 </html>
