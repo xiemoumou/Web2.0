@@ -136,7 +136,7 @@ var details = {
 
 
     },
-    saveAddress: function (name, mobilephone, postcode, province, city, county, address, customid) {//保存收获地址
+    saveAddress: function (name, mobilephone, postcode, province, city, county, address) {//保存收获地址
         orderInfo.shippingAddress.name = name;
         orderInfo.shippingAddress.mobilephone = mobilephone;
         orderInfo.shippingAddress.province = province;
@@ -144,7 +144,7 @@ var details = {
         orderInfo.shippingAddress.city = city;
         orderInfo.shippingAddress.county = county;
         orderInfo.shippingAddress.address = address;
-        orderInfo.shippingAddress.customid = customid;
+        //orderInfo.shippingAddress.customid = customid;
         details.initAddress();//初始化收件地址
     },
     initAddress: function () {
@@ -266,8 +266,8 @@ var details = {
 
 
             for (var i = 0; i < data.data.designInfo.length; i++) {
-                var commit_time = data.data.designInfo[i].commitTime || "";
-                var design_memo = data.data.designInfo[i].designMemo || "";
+               // var commit_time = data.data.designInfo[i].commitTime || "";
+                //var design_memo = data.data.designInfo[i].designMemo || "";
                 var srcMan = [];//设计稿版本图片
                 var srcFile = [];//设计稿版本附件
                 var otherFile = [];//设计稿版本其他附件
@@ -489,9 +489,9 @@ var details = {
 
         Requst.ajaxGet(url, data, true, function (data) {
             $(".leav-content").html('');//清空
-            that.messageNo = data.data[0].messageNo;
+           that.messageNo = data.data[0].messageNo;
             that.targetId = data.data[0].targetId;//设计师Id
-            $(".leav-title-right-text em").text(data.data[0].version);//版本号沟通中
+           $(".leav-title-right-text em").text(data.data[0].version);//版本号沟通中
             for (var i = 0; i < data.data.length; i++) {
                 var srcMan = [];//留言显示图片
                 var messageFile = [];//留言显示附件
@@ -611,5 +611,14 @@ var details = {
 
 }
 
+
+
+$('.invoice').on('click',function (title) {
+    title=title?title:"发票收据";
+    // 流程弹窗
+    var scrollH = top.Helper.getClientHeight();
+    var popH = scrollH - 100 > 680 ? 680 : scrollH - 100;
+    Popup.open(title, 818, popH, "../Pop-ups/invoice.html?customid="+customid);
+});
 
 

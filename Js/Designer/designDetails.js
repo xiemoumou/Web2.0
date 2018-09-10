@@ -344,4 +344,3 @@ var desigDetails = {
         });
     }
 }
-
