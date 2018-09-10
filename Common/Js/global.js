@@ -32,7 +32,8 @@ var config = {
             "business_Query":that.Domain.systemApi + "/dynamo/order/business_Query",//左侧业务栏
             "orderProductInfoUpdateImages":that.Domain.systemApi + "/dynamo/order/orderProductInfoUpdateImages",//编辑上传成品图
             "orderLogisticsStatus_Update":that.Domain.systemApi + "/dynamo/order/orderLogisticsStatus_Update",//确认收货
-            
+            "orderSupplementary_Search":that.Domain.systemApi +"/dynamo/order/orderSupplementary_Search",//搜索
+
 
 
 
@@ -415,6 +416,21 @@ var Helper = {
         if (callback) {
             callback();
         }
+    },
+    getStrLeng:function (str){
+        var realLength = 0;
+        var len = str.length;
+        var charCode = -1;
+        for(var i = 0; i < len; i++){
+            charCode = str.charCodeAt(i);
+            if (charCode >= 0 && charCode <= 128) {
+                realLength += 1;
+            }else{
+                // 如果是中文则长度加2
+                realLength += 2;
+            }
+        }
+        return realLength;
     },
     CopyToClipboard: function (content, triggerId) {//content：内容,triggerObj:触发复制事件的对象Id
         if (!$("#copyContent")) {

@@ -317,9 +317,11 @@ var classMain = {
                                     }
                                     else //业务流程
                                     {
+                                        debugger
                                         var identity = thisObj.attr('data-identity');//过去概览数据标识
                                         that.loadOverview(identity, 1, true);//加载概览
                                         SelectedTab('overview');//切换到订单概览选项卡
+                                        $("#tab_overview").text("订单列表");
                                     }
                                 });
                                 domChild.append(domLi);
@@ -706,10 +708,24 @@ var classMain = {
         buttonClick: {}
     },
     search:function () {
-
+        //搜索
+        var searchContent=$("#search_content").val();//搜索框输入的内容
+        var contentLength=Helper.getStrLeng(searchContent);
+        if(contentLength==0)
+        {
+            Message.show("提醒","请输入要搜索的内容。",MsgState.Warning,2000);
+            return ;
+        }
+        else if(contentLength<3)
+        {
+            Message.show("提醒","输入的信息过于简短，请补充。",MsgState.Warning,2000);
+            return ;
+        }
+        debugger
+        classMain.loadOverview(null,1,true,null,searchContent);
     },
     requstParams: {"sortCategory": "synthesize", "sortType": "desc"},
-    loadOverview: function (type, pageIndex, isInitPage,customid) {//加载概览数据 initPage是否初始化分页
+    loadOverview: function (type, pageIndex, isInitPage,customid,searchContent) {//加载概览数据 initPage是否初始化分页
         var that = this;
         if (isInitPage)//分页初始化
         {
@@ -747,7 +763,25 @@ var classMain = {
 
         //查询数据
         var getNavListUrl = top.config.WebService()['orderSupplementary_Query'];
-        top.Requst.ajaxGet(getNavListUrl, classMain.requstParams, true, function (data) {
+
+        debugger
+        //搜索
+        var searchParams=null;
+        if(searchContent)
+        {
+            getNavListUrl= top.config.WebService()['orderSupplementary_Search'];
+            searchParams={};
+            searchParams["startTime"]=0;
+            searchParams["endTime"]=0;
+            searchParams["word"]=searchContent;
+            searchParams["pageNum"]=classMain.requstParams.pageNum;
+            searchParams["pageSize"]=classMain.requstParams.pageSize;
+            $("#tab_overview").text("搜索结果");
+        }
+
+        var reqPara=searchParams||classMain.requstParams;//搜索取前面参数
+
+        top.Requst.ajaxGet(getNavListUrl,reqPara, true, function (data) {
 
             var datalist = $('#datalist');
             if(!customid)
@@ -813,9 +847,12 @@ var classMain = {
                             }
 
                             // 数据头右侧
-                            var check = $('<span>核对订单</span>');
+                            var check = $('<span data-customid="' + item.customid + '">核对订单</span>');
                             check.on('click', function () {
-                                alert('触发核对订单');
+                                var customid = $(this).attr('data-customid');
+                                var scrollH = top.Helper.getClientHeight();
+                                var popH = scrollH - 100 > 680 ? 680 : scrollH - 100;
+                                top.Popup.open("核对订单",818,popH,"./Pop-ups/checkOrder.html?customid="+customid);
                             });
                             itemHead_r.append(check);
 
@@ -1533,3 +1570,20 @@ var setPopSize = function (width, height) {
     iframe.css("height", height + 73 + "px");
     iframe.find('iframe').css("height", height + 28 + "px");
 }
+
+//图片预览
+var previewImg={
+    insert:function (url) {
+        $('#previewImg').html("");
+        var li=$('<li style="display: none;"><img src="'+url+'" data-original="'+url+'"/></li>');
+        $('#previewImg').append(li);
+        $('#previewImg').viewer({
+            url: 'data-original',
+        });
+        $("#previewImg").viewer('update');
+    },
+    show:function () {
+        var img=$('#previewImg').find('li').find('img');
+        $(img[0]).click();
+    }
+};
