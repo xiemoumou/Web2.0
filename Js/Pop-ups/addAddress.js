@@ -1,3 +1,5 @@
+var customid = Helper.getUrlParam('customid') || "";//获取订单号
+
 $(function () {
     dist.Address();
 
@@ -6,8 +8,7 @@ $(function () {
     });
 
 
-})
-
+});
 
 //回填信息
 var dist = {
@@ -21,9 +22,7 @@ var dist = {
         var address = Helper.getUrlParam("address", true);//详细地址
 
         var orderid = Helper.getUrlParam("orderid", true);//订单id
-        customid = Helper.getUrlParam("customid", true);//
         var goodsid = Helper.getUrlParam("goodsid", true);//
-
 
         $('#recipient').val(name == "undefined" ? "" : name);
         $('#tel').val(mobilephone == "undefined" ? "" : mobilephone);
@@ -85,22 +84,41 @@ var dist = {
             $('#address_content').focus();
             return false
         }
-        var data = {
-            "customid": customid,
-            "name": name,
-            "mobilephone": mobilephone,
-            "postcode": postcode,
-            "province": province,
-            "city": city,
-            "county": county,
-            "address": address,
-        };
 
-        var url = config.WebService()["logistics_Info"];
-        top.Requst.ajaxGet(url, data, true, function (data) {
 
-            //parent.layer.closeAll();
+        //else {
+           // if(parent.Invoice.Controller.saveAddress)
+           // {
 
-        });
+           // }
+           // else if(parent.Invoice.Controller)
+          //  {
+             //   parent.Invoice.Controller.saveAddress(name, mobilephone, postcode, province, city, county, address);
+          //  }
+          //  else//分配生产时保存
+          //  {
+
+                var data = {
+                    "customid": customid,
+                    "name": name,
+                    "mobilephone": mobilephone,
+                    "postcode": postcode,
+                    "province": province,
+                    "city": city,
+                    "county": county,
+                    "address": address,
+                };
+                var url = config.WebService()["logistics_Info"];
+                Requst.ajaxGet(url, data, true, function (data) {
+
+
+
+                });
+                    //}
+          //  }
+        }
+
+
+
+
     }
-}

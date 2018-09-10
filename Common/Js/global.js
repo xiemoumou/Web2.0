@@ -51,7 +51,7 @@ var config = {
             "designFee_Submit":that.Domain.systemApi + "/dynamo/order/designFee_Submit",//设计费点确定按钮
             "orderSummaryInfo_Query":that.Domain.systemApi + "/dynamo/order/orderSummaryInfo_Query",//订单详情
             "orderSummaryInfoAccessory_Update":that.Domain.systemApi + "/dynamo/order/orderSummaryInfoAccessory_Update",//提交修改
-            "logistics_Info":that.Domain.systemApi + "/dynamo/order/logistics_Info",//编辑收货地址
+            "logistics_Info":that.Domain.systemApi + "/dynamo/order/logistics_Info",//编辑添加收货地址
             "custom_Quotation":that.Domain.systemApi + "/dynamo/order/custom_Quotation",//客服报价接口
             "updatePrice":that.Domain.systemApi + "/dynamo/order/updatePrice",//修改价格
             "orderDesignPattern_Query":that.Domain.systemApi +"/dynamo/order/orderDesignPattern_Query",//查询设计方案
@@ -60,6 +60,10 @@ var config = {
             "orderDesignMessage_Insert":that.Domain.systemApi +"/dynamo/order/orderDesignMessage_Insert",//提交留言
             "chooseDesign":that.Domain.systemApi +"/dynamo/order/chooseDesign",//选定设计稿
             "orderDesignInfo_Update":that.Domain.systemApi +"/dynamo/order/orderDesignInfo_Update",//设计师接单
+            "invoice_Update":that.Domain.systemApi +"/dynamo/order/invoice_Update",//发票编辑新增
+            "invoice_Init":that.Domain.systemApi +"/dynamo/order/invoice_Init",//票据明细初始化
+            "logistics_Check":that.Domain.systemApi +"/dynamo/order/logistics_Check",//核对订单
+
         }
     }
 };

@@ -1,7 +1,7 @@
 /**
  * Created by inshijie on 2018/7/10.
  */
-
+var customid = Helper.getUrlParam('customid') || "";//获取订单号
 $(function () {
     Invoice.NoneInvoice($('.radio-select-first'));//默认选中不开发票
      
@@ -11,6 +11,9 @@ $(function () {
     //     $(".allocation").show();
     //     $(".ok").hide();
     // }//判断是否是分配生产过来的
+    $(".add-ress").on('click',function () {
+        Invoice.Controller.invoiceAddress();
+    })
 
     //选择发票类型
     $(".select-box ul li").on('click', function () {
@@ -62,10 +65,25 @@ $(function () {
         }
 
     });
-    //Invoice.getData();//回显数据
+    Invoice.getData();//回显数据
 
 
 });
+
+
+var orderInfo = {
+    shippingAddress: {//收货地址
+        customid: customid,//定制号customid
+        name: '',  //收件人
+        mobilephone: '', //收件人电话
+        postcode: '', //	邮编
+        province: '', //省份
+        city: '',  //城市
+        county: '',  //县区
+        address: '', //  收货地址
+    },
+    data: null,
+};
 
 
 
@@ -128,6 +146,38 @@ var Invoice = {
                 $('.mech-checkbox,.mech-img').attr('disabled', 'false');
                 $(".mech-checkbox").prop("checked", false);
                 $(".mech span").removeClass("active").addClass("js-icon");
+            }
+        },
+        invoiceAddress: function () {
+            var url = encodeURI('../Pop-ups/addAddress.html?name=' + orderInfo.shippingAddress.name + '&mobilephone=' + orderInfo.shippingAddress.mobilephone + '&postcode=' + orderInfo.shippingAddress.postcode + '&province=' + orderInfo.shippingAddress.province + '&city=' + orderInfo.shippingAddress.city + '&county=' + orderInfo.shippingAddress.county + '&address=' + orderInfo.shippingAddress.address + '&customid=' + customid)
+            var scrollH = document.documentElement.scrollHeight - 20;
+            if (scrollH > 380) {
+                scrollH = 380;
+            }
+            Popup.open('添加收货地址', 480, scrollH, url);
+
+
+        },
+        saveAddress: function (name, mobilephone, postcode, province, city, county, address) {//保存收获地址
+            orderInfo.shippingAddress.name = name;
+            orderInfo.shippingAddress.mobilephone = mobilephone;
+            orderInfo.shippingAddress.province = province;
+            orderInfo.shippingAddress.postcode = postcode;
+            orderInfo.shippingAddress.city = city;
+            orderInfo.shippingAddress.county = county;
+            orderInfo.shippingAddress.address = address;
+            Invoice.Controller.initAddress();//初始化收件地址
+        },
+        initAddress: function () {
+            $(".cons").html(orderInfo.shippingAddress.name);
+            $(".code").html(orderInfo.shippingAddress.postcode);
+           //$(".deta-add").html(orderInfo.shippingAddress.address);
+            $(".tele").html(orderInfo.shippingAddress.mobilephone);
+            $(".deta-add").html(orderInfo.shippingAddress.address+orderInfo.shippingAddress.province + orderInfo.shippingAddress.city + orderInfo.shippingAddress.county);
+            if (orderInfo.shippingAddress.name) {
+                $('.address-empty').addClass('hide');
+                $('.address-text-box').removeClass('hide');
+                // layer.closeAll();
             }
         },
         basedata: function (islock) { //基础输入框锁定
@@ -386,15 +436,17 @@ var Invoice = {
         return true;
     },
     getData: function () {
+        debugger
         var that = this;
 
-        var url = Common.getUrl()['order'] + Common.getDataInterface()["getInvoiceInfo"];
+        var url = config.WebService()["invoice_Init"];
+
         var data = {
-            "orderid": Common.getUrlParam("orderid", true),
+            "customid": customid,
         }
-        Common.ajax(url, data, true, function (data) {
+        Requst.ajaxGet(url, data, true, function (data) {
             if (data) {
-                
+                Invoice.Controller.saveAddress(1,1,1,1,1,1,1);
                 if (data.code == 1) {
                     var isPay = data.invoice.paystate;
                     if (isPay == 6)//锁住税率
@@ -410,7 +462,7 @@ var Invoice = {
                         $(".tax-rate .msg-rate").addClass('hide');
                     }
                     var $invoicetype = data.invoice.invoicetype;//发票类型
-                    if ($invoicetype == 2) {//转票
+                    if ($invoicetype == 2) {//专票
                         $("#mech-invoice").attr("data-disabled", "true");//锁住非盈利机构按钮
                     }
 
@@ -428,6 +480,8 @@ var Invoice = {
                     var $remark = data.invoice.remark;
                     var $detailsvalue2 = data.invoice.detailsvalue2;
                     var $detailsvalue3 = data.invoice.detailsvalue3;
+
+
 
                     $("#rate-select").val($taxrate);
 
@@ -476,11 +530,11 @@ var Invoice = {
     Submit: function () {
         var that = this;
         var flag = that.CheckData();
-        var strict = Common.getUrlParam("strict");//分配生产
+        //var strict = Common.getUrlParam("strict");//分配生产
         if (flag) {
             $(".allocation").attr('disabled', true);
-            var url = Common.getUrl()['order'] + Common.getDataInterface()["newInvoice"];
-            Common.ajax(url, that.data, true, function (data) {
+            var url = config.WebService()["invoice_Update"];
+            Requst.ajaxGet(url, that.data, true, function (data) {
                 console.info(data.msg + "   Code:" + data.code);
                 if (data.code == 1) {
                     Common.msg(data.msg, 200, 2000, function () {
@@ -488,21 +542,21 @@ var Invoice = {
                         parent.layer.closeAll();
                     });
                 }
-                else if (data.code == 3 && strict) {
-                    callback();
-                    parent.layer.closeAll();
-                }
-                else if (data.code == 3 && !strict) {
-                    Common.msg("更新成功", 200, 2000, function () {
-                        callback();
-                        parent.layer.closeAll();
-                    });
-                }
-                else {
-                    Common.msg(data.msg, 400, 2000, function () {
-                        window.location.reload();
-                    });
-                }
+                // else if (data.code == 3 && strict) {
+                //     callback();
+                //     parent.layer.closeAll();
+                // }
+                // else if (data.code == 3 && !strict) {
+                //     Common.msg("更新成功", 200, 2000, function () {
+                //         callback();
+                //         parent.layer.closeAll();
+                //     });
+                // }
+                // else {
+                //     Common.msg(data.msg, 400, 2000, function () {
+                //         window.location.reload();
+                //     });
+                // }
             });
             function callback() {
                 //分配生产

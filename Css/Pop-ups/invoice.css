@@ -337,3 +337,77 @@ body {
 .ml-30{
     margin-left: 32px;
 }
+.Rece-box{
+    margin-top: 20px;
+}
+.Rece-type-box{
+    display: inline-block;
+    margin-left: 50px;
+}
+.add-ress{
+    display: inline-block;
+    cursor: pointer;
+    color: #E84B4C;
+    text-decoration: underline;
+}
+.rece-type{
+    font-size: 14px;
+}
+.rece-first,.rece-second{
+    display: inline-block;
+}
+.rece-second{
+    margin-left: 40px;
+}
+.rece-type label{
+    vertical-align: text-bottom;
+    margin-left: 5px;
+}
+.rece-first span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0px;
+    left: -4px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.rece-second span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0px;
+    left: -4px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.rece-first{
+     position: relative;
+ }
+.rece-second{
+    position: relative;
+}
+.rece-text-content{
+    background-color: #f5f5f5;
+    border: 1px solid #d5d5d5;
+    padding: 5px 6px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.cons-box{
+    display: inline-block;
+}
+.tele-box,.code-box{
+    margin-left: 80px;
+    display: inline-block;
+}
+.deta-add{
+    display: inline-block;
+    width: 610px;
+    vertical-align: top;
+}
+.desi-ress{
+    margin-top: 3px;
+}
