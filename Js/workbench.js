@@ -18,8 +18,6 @@ $(function () {
     }
     classMain.init();
 
-    classMain.getStatistics();//获取统计数据
-
 });
 
 var classMain = {
@@ -29,7 +27,6 @@ var classMain = {
         Requst.ajaxGet(url,{},true,function (data) {
             if(data.code==200)
             {
-                debugger
                 for(var i=0;i<data.data.length;i++)
                 {
                     var item=data.data[i];
@@ -253,7 +250,7 @@ var classMain = {
                             var domDl = $('#column_' + item.navPid);
                             if (domDl.length && domDl.length > 0) {
                                 var arrow = item.isLast == 0 ? '<i class="icon-arrow fr"></i>' : "";
-                                var domDt = $('<dt data-iconUrl1="http://' + item.iconurl1 + '" data-iconUrl2="http://' + item.iconurl2 + '" data-type="' + item.identity + '" data-identity="' + item.navId + '" data-isLast="' + item.isLast + '"><i class="icon" style="background-image: url(http://' + item.iconurl1 + ');"></i> <span>' + item.name + '</span>' + arrow + ' <s class="statistics gradient fr hide identity_' + item.identity + '">0</s> </dt>');
+                                var domDt = $('<dt data-iconUrl1="http://' + item.iconurl1 + '" data-iconUrl2="http://' + item.iconurl2 + '" data-type="' + item.identity + '" data-identity="' + item.navId + '" data-isLast="' + item.isLast + '"><i class="icon" style="background-image: url(http://' + item.iconurl1 + ');"></i> <span>' + item.name + '</span>' + arrow + ' <s class="statistics gradient fr hide identity_' + item.navId + '">0</s> </dt>');
 
                                 domDt.hover(function () {
                                     var icon2 = $(this).attr('data-iconUrl2');
@@ -311,7 +308,7 @@ var classMain = {
                         {
                             var domChild = $('#child_' + item.navPid);
                             if (domChild.length && domChild.length > 0) {
-                                var domLi = $('<li data-type="' + item.identity + '" data-identity="' + item.navId + '" class="secondary"><span>' + item.name + '</span> <s class="statistics gradient fr hide identity_' + item.identity + '">0</s></li>');
+                                var domLi = $('<li data-type="' + item.identity + '" data-identity="' + item.navId + '" class="secondary"><span>' + item.name + '</span> <s class="statistics gradient fr hide identity_' + item.navId + '">0</s></li>');
                                 domLi.on('click', function () {
                                     var thisObj = $(this);
                                     $('.nav dt').removeClass('active');//取消其他所有选中项目
