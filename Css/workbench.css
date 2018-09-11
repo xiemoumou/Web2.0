@@ -1010,7 +1010,7 @@ body {
     width: 96px;
     height: 88px;
     padding-top: 10px;
-    margin-left: 10px;
+    margin-left: 32px;
     margin-top: 10px;
     border-left: 2px solid #F5F5F5;
     border-right: 2px solid #F5F5F5;
@@ -1117,12 +1117,34 @@ body {
 .workshop.data-item .photo{
     width: 80px;
     height: 80px;
+    position: relative;
 }
 
 .workshop.data-item .photo img {
     max-width: 80px;
     max-height: 80px;
 }
+
+.workshop.data-item .photo .mark1,.workshop.data-item .photo .mark2,.workshop.data-item .photo .mark3{
+    display: block;
+    width: 42px;
+    height: 20px;
+    z-index: 10;
+    position: absolute;
+    left: -4px;
+    top: 8px;
+    text-align: center;
+    background: url(../Image/workbench.png) no-repeat -109px -133px;
+}
+
+.workshop.data-item .photo .mark2{
+    background-position: -109px -159px;
+}
+
+.workshop.data-item .photo .mark3{
+    background-position: -161px -133px;
+}
+
 
 
 /*报价*/

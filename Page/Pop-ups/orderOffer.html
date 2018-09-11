@@ -16,25 +16,25 @@
 <body>
   <div class="orderOffer-content">
       <div class="orderOffer">
-          <div class="orderOffer-top">您上次对该订单的报价：¥ <span>1000</span></div>
+          <div class="orderOffer-top">您上次对该订单的报价：¥ <span id="lastQuote">----</span></div>
           <div class="offer-money">
               <span>对该订单进行报价：</span>
               <div class="offer-money-left">
-                  <input placeholder="填写报价金额">
+                  <input id="quotePrice" class="input-money" maxlength="12" placeholder="填写报价金额" value="0.00">
                   <span>元</span>
               </div>
           </div>
           <div class="offer-money-next">
               <span>订单生产周期：</span>
               <div class="left-next">
-                  <input placeholder="填写天数">
+                  <input id="quotePeriod" class="input-number" maxlength="6" placeholder="填写天数" >
                   <span>天</span>
               </div>
           </div>
       </div>
-      <button class="red-button btn">确认</button>
-      <button class="hollow-button"
-              onclick="parent.layer.closeAll();">取消
+      <button class="red-button ok btn">确认</button>
+      <button class="hollow-button btn-h"
+              onclick="top.Popup.close('报价');top.Popup.close('重新报价');">取消
       </button>
   </div>
 
@@ -46,7 +46,7 @@
       document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
       document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
       document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
-      document.write('<script type="text/javascript" src="../../Js/CustomerService/Pop-ups/orderOffer.js' + VER + '" ><\/script>');
+      document.write('<script type="text/javascript" src="../../Js/Pop-ups/orderOffer.js' + VER + '" ><\/script>');
   </script>
 </body>
 </html>

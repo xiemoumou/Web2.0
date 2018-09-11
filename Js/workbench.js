@@ -17,9 +17,38 @@ $(function () {
         }
     }
     classMain.init();
+
+    classMain.getStatistics();//获取统计数据
+
 });
 
 var classMain = {
+    getStatistics:function () {
+      //获取统计
+        var url=config.WebService()["orderSupplementaryCount_Query"];
+        Requst.ajaxGet(url,{},true,function (data) {
+            if(data.code==200)
+            {
+                debugger
+                for(var i=0;i<data.data.length;i++)
+                {
+                    var item=data.data[i];
+                    var staObj=$(".nav .identity_"+item.nviId);
+                    if(staObj.length && staObj.length>0 && item.count>0)
+                    {
+                        staObj.removeClass('hide');
+                        staObj.text(item.count);
+                    }
+                    else
+                    {
+                        staObj.addClass('hide');
+                    }
+                }
+            }
+        },function (error) {
+            console.log("获取统计数据失败");
+        },true);
+    },
     pagePrams: {'curIndex': 1, 'totalPage': 1, 'pageSize': 10, 'isInit': -1, 'dataType': ''},//分页参数
     initPage: function () {//初始化分页插件
         var that = this;
@@ -733,6 +762,8 @@ var classMain = {
             classMain.pagePrams.isInit = -1;
         }
 
+        classMain.getStatistics();//更新统计数据
+
         //请求参数创建
         function requstPrams() {
             classMain.requstParams['navId'] = type ? parseInt(type) : classMain.requstParams['navId'];
@@ -1173,7 +1204,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //分配生产
-                            if (item.inquiryStatus==4 && item.produceStatus<1) {
+                            if (item.produceStatus==1) {
                                 var btn=$('<button data-inquiryStatus="'+item.inquiryStatus+'" data-finalPrice="'+parseFloat(item.finalPrice).formatMoney(2, "", ",", ".")+'" data-prePrice="'+parseFloat(item.prePrice).formatMoney(2, "", ",", ".")+'" data-currentPeriod="'+item.currentPeriod+'" data-currentPrice="'+parseFloat(item.currentPrice).formatMoney(2, "", ",", ".")+'" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配生产</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
@@ -1482,6 +1513,20 @@ var classMain = {
                             });
                         }
 
+                        if(item.lastQuote>item.userPrice)
+                        {
+                            prodImage.append($("<i class='mark1'><s style='font-size: 12px; color:#ffffff; text-shadow: 1px 1px 1px rgba(135,18,18,0.50);'>超预算</s></i>"));
+                        }
+                        else if(item.lastPeriod>item.userPeriod)
+                        {
+                            prodImage.append($("<i class='mark2'><s style='font-size: 12px; color:#ffffff; text-shadow: 1px 1px 1px rgba(174,64,16,0.50);'>超工期</s></i>"));
+                        }
+                        else if(item.inquiryStatus==5||item.inquiryStatus==6)
+                        {
+                            prodImage.append($("<i class='mark3'><s style='font-size: 12px; color:#ffffff; text-shadow: 1px 1px 1px rgba(24,38,111,0.50);'>议价中</s></i>"));
+                        }
+
+
                         addProductPhoto();
 
                         //5要素
@@ -1492,6 +1537,7 @@ var classMain = {
                             var model = ConvertIdToName(element.model, item.model).join(';');
                             var technology = ConvertIdToName(element.technology, item.technology).join(';');
                             var color = ConvertIdToName(element.color, item.color).join(';');
+                            var producePrice=item.lastQuote>0?item.producePrice.formatMoney(2, "", ",", "."):"----";
 
                             var info = $('<div class="info">' +
                                 '<div class="attributes">' +
@@ -1512,7 +1558,7 @@ var classMain = {
                                 '<span><em>' + item.length + '×' + item.width + '×' + item.height + '</em> (mm)</span>' +
                                 '</div>' +
                                 '<div class="day">' +
-                                '<span>¥ <em class="c-red">1,000.00</em>/<em>99</em>天</span>' +
+                                '<span>¥ <em class="c-red">'+producePrice+'</em>/<em>'+item.userPeriod+'</em>天</span>' +
                                 '</div>' +
                                 '</div>');
                             infoContainer.append(info);
@@ -1522,16 +1568,23 @@ var classMain = {
 
                         //金额区域
                         function addMoney() {
+                            var lastQuote=item.lastQuote?item.lastQuote.formatMoney(2, "", ",", "."):"----";
+                            var lastPeriod=item.lastPeriod?item.lastPeriod:"--";
                             var money = $('<div class="amount">' +
                                 '<div class="quoted"><!--报价-->' +
-                                '<span>上次报价：¥ <em> 80000000 / 8</em>天</span>' +
+                                '<span>上次报价：¥ <em> '+lastQuote+' / '+lastPeriod+'</em>天</span>' +
                                 '</div>' +
                                 '<!--预算-->' +
-                                '<div class="budget">' +
+                                '<div class="budget hide">' +
                                 '<span>客户预算：<em>¥' + item.userPrice.formatMoney(2, "", ",", ".") + '</em></span>' +
                                 '</div>' +
                                 '</div>');
                             infoContainer.append(money);
+
+                            if(item.lastQuote>item.userPrice)//报价高于客户预算
+                            {
+                                $($(money).find('.budget')).removeClass('hide');
+                            }
                         }
 
                         addMoney();
@@ -1539,8 +1592,8 @@ var classMain = {
                         //状态
                         function addStatus() {
                             var status = $('<div class="status">' +
-                                '<span>' + item.produceStatus + '</span>' +
-                                '</div>')
+                                '<span>' + item.produceMessage + '</span>' +
+                                '</div>');
                             itemBody.append(status);
                         }
 
@@ -1549,18 +1602,114 @@ var classMain = {
                         //按钮
                         function operating() {
                             var operating = $('<div class="operating"></div>');
-                            var buttonShow = item.command.split(',');
-                            if (buttonShow.indexOf('INQUIRY') >= 0) {
-                                operating.append('<button class="btn" style="width: 66px; height: 23px;">发起询价</button>');
+                            //未报价
+                            if((item.inquiryStatus==1||item.inquiryStatus==2)&& item.lastQuote==0)
+                            {
+                                var btn=$('<button class="btn" data-lastQuote="'+item.lastQuote+'" style="width: 66px; height: 23px;" data-inquiryRound="'+item.inquiryRound+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">报价</button>');
+                                btn.on('click',function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var orderid = $(this).attr('data-orderid');
+                                    var ordersummaryId = $(this).attr('data-ordersummaryId');
+                                    var inquiryRound=$(this).attr('data-inquiryRound');//询价轮次
+                                    var lastQuote=$(this).attr("data-lastQuote");//上次报价
+
+                                    top.Popup.open("报价",423,266,"./Pop-ups/orderOffer.html?customid="+customid+"&inquiryRound="+inquiryRound+"&lastQuote="+lastQuote);
+
+                                });
+                                operating.append(btn);
                             }
-                            if (buttonShow.indexOf('PAYOFF') >= 0) {
-                                operating.append('<button class="btn" style="width: 66px; height: 23px;">确认支付</button>');
+                            //重新报价
+                            if(true ||item.inquiryStatus==2 && item.lastQuote>0)
+                            {
+                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">重新报价</button>');
+                                btn.on('click',function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var orderid = $(this).attr('data-orderid');
+                                    var ordersummaryId = $(this).attr('data-ordersummaryId');
+                                    var inquiryRound=$(this).attr('data-inquiryRound');//询价轮次
+                                    var lastQuote=$(this).attr("data-lastQuote");//上次报价
+
+                                    top.Popup.open("重新报价",423,266,"./Pop-ups/orderOffer.html?customid="+customid+"&inquiryRound="+inquiryRound+"&lastQuote="+lastQuote);
+
+                                });
+                                operating.append(btn);
                             }
-                            if (buttonShow.indexOf('SEND_DESIGN') >= 0) {
-                                operating.append('<button class="btn" style="width: 66px; height: 23px;">分配设计</button>');
+                            //处理议价
+                            if(item.inquiryStatus==5 || (item.inquiryStatus==6 && item.lastQuote==0))
+                            {
+                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">处理议价</button>');
+                                btn.on('click',function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var orderid = $(this).attr('data-orderid');
+                                    var ordersummaryId = $(this).attr('data-ordersummaryId');
+
+                                });
+                                operating.append(btn);
                             }
-                            if (buttonShow.indexOf('SEND_PRODUCE') >= 0) {
-                                operating.append('<button class="btn" style="width: 66px; height: 23px;">分配生产</button>');
+                            //接受生产
+                            if(item.produceStatus==2)
+                            {
+                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">接受生产</button>');
+                                btn.on('click',function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var orderid = $(this).attr('data-orderid');
+                                    var ordersummaryId = $(this).attr('data-ordersummaryId');
+
+                                });
+                                operating.append(btn);
+                            }
+                            //发货
+                            if(item.produceStatus==3)
+                            {
+                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">发货</button>');
+                                btn.on('click',function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var orderid = $(this).attr('data-orderid');
+                                    var ordersummaryId = $(this).attr('data-ordersummaryId');
+
+                                });
+                                operating.append(btn);
+                            }
+
+                            //查看物流
+                            if(item.produceStatus==4)
+                            {
+                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">查看物流</button>');
+                                btn.on('click',function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var orderid = $(this).attr('data-orderid');
+                                    var ordersummaryId = $(this).attr('data-ordersummaryId');
+
+                                });
+                                operating.append(btn);
+                            }
+
+                            //上传成品图
+                            if(item.produceStatus==3 || item.produceStatus==4)
+                            {
+
+                                if (item.smallFinishedProductsImage1||item.smallFinishedProductsImage2||item.smallFinishedProductsImage3)
+                                {
+                                    var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">编辑成品图</button>');
+                                    btn.on('click',function () {
+                                        var customid = $(this).attr('data-customid');
+                                        var orderid = $(this).attr('data-orderid');
+                                        var ordersummaryId = $(this).attr('data-ordersummaryId');
+
+                                    });
+                                    operating.append(btn);
+                                }
+                                else
+                                {
+                                    var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">上传成品图</button>');
+                                    btn.on('click',function () {
+                                        var customid = $(this).attr('data-customid');
+                                        var orderid = $(this).attr('data-orderid');
+                                        var ordersummaryId = $(this).attr('data-ordersummaryId');
+                                    });
+                                    operating.append(btn);
+                                }
+
                             }
 
                             itemBody.append(operating);

@@ -34,6 +34,7 @@ var config = {
             "orderLogisticsStatus_Update":that.Domain.systemApi + "/dynamo/order/orderLogisticsStatus_Update",//确认收货
             "orderSupplementary_Search":that.Domain.systemApi +"/dynamo/order/orderSupplementary_Search",//搜索
             "orderDesignInfo_Update":that.Domain.systemApi +"/dynamo/order/orderDesignInfo_Update",//设计师抢单
+            "orderSupplementaryCount_Query":that.Domain.systemApi +"/dynamo/order/orderSupplementaryCount_Query",//统计
 
 
 
