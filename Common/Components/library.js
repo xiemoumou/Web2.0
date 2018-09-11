@@ -211,7 +211,7 @@
                     var result={'id':[],'name':[]};
                     var $btnContainer= $($(this).parent().prev());
                     var $btnList=$($btnContainer.find('.s-btn'));
-                    debugger
+                    
                     for(var i=0;i<$btnList.length;i++)
                     {
                         var $item=$($btnList[i]);
@@ -1053,7 +1053,7 @@ var textArea = {
                                 $(spanObj).text($(item).text());
                                 break;
                             case 'week'://本周
-                                debugger
+                                
                                 var date=new Date();
                                 var day=date.getDay();//获取星期几
                                 dateRange_begin=top.Helper.Date.getNdayDate(-day+1,'yyyy-MM-dd');//开始时间

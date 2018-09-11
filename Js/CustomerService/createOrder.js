@@ -6,7 +6,7 @@ var customid = '';//定制号
 var operType = '';//操作类型
 var createOrder = {
     init: function () {
-        debugger
+        
         operType = Helper.getUrlParam('operType');//新建还是编辑
         if (operType == 'edit') {
             //编辑5要素
@@ -698,7 +698,7 @@ var createOrder = {
     },
     allowSave: true,
     save: function () {//保存
-        debugger
+        
         var that = this;
         var submitData = that.checkAndGetData();//获得提交的数据
         if (that.allowSave && submitData) {

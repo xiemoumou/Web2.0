@@ -21,7 +21,7 @@ var pricing = {
         });
     },
     save:function () {
-        debugger
+        
         var url=config.WebService()["order_Finally"];
         var data={};
         data["producrPeriod"]=parseInt($("#inputPeriod").val());//客户要求工期

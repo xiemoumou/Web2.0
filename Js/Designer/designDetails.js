@@ -87,7 +87,7 @@ var desigDetails = {
             that.designStatus = data.data.designStatus || "";//判断接单状态
 
             if (data.data.designStatus<=1){//已分配设计，尚无方案师接单
-                debugger
+                
                 $(".desiDeta-title").addClass('hide');
                 $(".prod-details").removeClass('hide');
             }if (data.data.designStatus==2){//方案师正在设计中
@@ -302,7 +302,7 @@ var desigDetails = {
     },
     leavBtn: function () { //提交留言
 
-        debugger
+        
         var url = config.WebService()["orderDesignMessage_Insert"];
 
         var messageContent = $(".leav-bottom-input input").text();//留言内容

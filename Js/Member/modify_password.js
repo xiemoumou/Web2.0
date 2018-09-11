@@ -65,7 +65,7 @@ var Veri ={
         return modes;
     },
     PostUser: function () {
-        debugger
+        
         var old_pass = $("#old_pass").val();
         var newpass = $("#new_pass").val();
         var PassWord = $("#again_pass").val();

@@ -86,7 +86,7 @@ OrderCheck = {
                 $(".tech-attr").text(data.data.model);//工艺属性
                 $(".elec-color").text(data.data.color);//电镀色
                 //***$(".box-text").text(data.orderboxs.packing);//包装详情
-                debugger
+                
                 $("#refe-first").attr('src',(data.data.referencepictureurl==''?imgsrc:('http://' + data.data.referencepictureurl)));//参考图1
                 $("#refe-second").attr('src',(data.data.referencepictureurl2==''?imgsrc:('http://' + data.data.referencepictureurl2)));//参考图2
                 $("#refe-third").attr('src',(data.data.referencepictureurl3==''?imgsrc:('http://' + data.data.referencepictureurl3)));//参考图3
@@ -156,7 +156,7 @@ OrderCheck = {
                     $(".address-text").text('');
                 }
 
-                debugger
+                
                 var docHeight= $(".check-content").height();
                 top.setPopSize(0,docHeight);
             }

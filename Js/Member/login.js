@@ -100,7 +100,7 @@ var mail = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
      },
 
      BtnUser: function () {//验证账号密码
-         debugger
+         
          var phone = $(".phone").val();
          var password = $(".password").val();
          if (phone==''){
@@ -145,7 +145,7 @@ var mail = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
          });
      },
      GetUser: function () {//登录用户
-         debugger
+         
          var phone = $(".phone").val();
          var PassWord = $(".password").val();
          data = {

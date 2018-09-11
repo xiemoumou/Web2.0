@@ -33,6 +33,7 @@ var config = {
             "orderProductInfoUpdateImages":that.Domain.systemApi + "/dynamo/order/orderProductInfoUpdateImages",//编辑上传成品图
             "orderLogisticsStatus_Update":that.Domain.systemApi + "/dynamo/order/orderLogisticsStatus_Update",//确认收货
             "orderSupplementary_Search":that.Domain.systemApi +"/dynamo/order/orderSupplementary_Search",//搜索
+            "orderDesignInfo_Update":that.Domain.systemApi +"/dynamo/order/orderDesignInfo_Update",//设计师抢单
 
 
 
@@ -158,6 +159,7 @@ function inputCheck() {
     }
 
     // *************验证只允许输入正整数-begin
+    $(".input-number").unbind("keyup");
     $(".input-number").keyup(function () {
         ConvertToInt($(this)[0]);
     });
@@ -168,6 +170,7 @@ function inputCheck() {
     // ************* 验证只允许输入正整数-end
 
     // *************验证只允许输入保留一位小数的浮点型数据-begin
+    $(".input-float-1").unbind("keyup");
     $(".input-float-1").keyup(function () {
         var curobj = $(this);
         var reg = curobj.val().match(/(-?\d+\.?\d{0,1})|-/);
@@ -178,6 +181,7 @@ function inputCheck() {
         curobj.val(txt);
     });
 
+    $(".input-float-1").unbind("blur");
     $(".input-float-1").blur(function () {
         var curobj = $(this);
         var val = parseFloat(curobj.val()).toFixed(1);
@@ -197,6 +201,7 @@ function inputCheck() {
     // *************验证只允许输入保留一位小数的浮点型数据-begin
 
     // *************验证只允许输入保留两位小数的浮点型数据-begin
+    $(".input-float-2").unbind("keyup");
     $(".input-float-2").keyup(function () {
         var curobj = $(this);
         var reg = curobj.val().match(/(-?\d+\.?\d{0,2})|-/);
@@ -207,6 +212,7 @@ function inputCheck() {
         curobj.val(txt);
     });
 
+    $(".input-float-2").unbind("blur");
     $(".input-float-2").blur(function () {
         var curobj = $(this);
         var val = parseFloat(curobj.val())/*.toFixed(2)*/;
@@ -226,6 +232,7 @@ function inputCheck() {
     // *************验证只允许输入保留两位小数的浮点型数据-begin
 
     // *************验证只允许输入金额格式-begin
+    $(".input-money").unbind("focus");
     $(".input-money").focus(function () {
         var stringVal = $(this);
         var floatVal = MoneyToFloat(stringVal.val());
@@ -234,6 +241,7 @@ function inputCheck() {
         stringVal.val(floatVal);
     });
 
+    $(".input-money").unbind("keyup");
     $(".input-money").keyup(function () {
         var curobj = $(this);
         var reg = curobj.val().match(/(-?\d+\.?\d{0,2})|-/);
@@ -244,6 +252,7 @@ function inputCheck() {
         curobj.val(txt);
     });
 
+    $(".input-money").unbind("blur");
     $(".input-money").blur(function () {
         var curobj = $(this);
         var val = parseFloat(curobj.val());

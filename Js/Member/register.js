@@ -146,7 +146,7 @@ $(function () {
             return modes;
         },
         PostRegi: function () {//注册请求
-            debugger
+            
             var PhonVal = localStorage.getItem('phone');
             var PassWord = $(".again-pass").val();
             var content = '该手机号已被注册';

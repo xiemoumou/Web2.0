@@ -586,10 +586,10 @@ body {
     margin-left: 224px;
 }
 .designer-table-head span:nth-of-type(5){
-    margin-left: 84px;
+    margin-left: 94px;
 }
 .designer-table-head span:nth-of-type(6){
-    margin-left: 99px;
+    margin-left: 85px;
 }
 .designer-table-head span:nth-of-type(7){
     margin-left: 75px;
@@ -1062,7 +1062,10 @@ body {
 }
 
 .designer.data-item .info .money{
+    float: left;
     color: #E84B4C;
+    width: 84px;
+    text-align: center;
 }
 
 .designer.data-item .operating{

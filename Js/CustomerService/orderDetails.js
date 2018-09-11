@@ -412,7 +412,7 @@ var details = {
         });
     },
     btnModify: function () {//设计提交修改
-        debugger
+        
         var url = config.WebService()["orderSummaryInfoAccessory_Update"];
         data = {
             "initialProducerefImage": $("#prod_refe .diagram-container .diagram").attr("data-oimageurl"),//生产参考图原图
@@ -463,7 +463,7 @@ var details = {
 
     },
     userValen: function () {//用户心理预算
-        debugger
+        
         var url = config.WebService()["updatePrice"];
         var money = $(".budget-text input").val();
         data = {
@@ -544,7 +544,7 @@ var details = {
         });
     },
     leavBtn: function () { //提交留言
-        debugger
+        
         var url = config.WebService()["orderDesignMessage_Insert"];
 
         var messageContent = $(".leav-bottom-input input").val();//留言内容

@@ -6,7 +6,7 @@ var roleType = -1;//获取角色
 
 $(function () {
     roleType = top.Helper.Cache.get('roleType');
-    roleType = parseInt(roleType);//获取角色
+    roleType =3;//parseInt(roleType);//获取角色
     if (localStorage.getItem('SysParam'))//从缓存获取字典
     {
         try {
@@ -123,9 +123,9 @@ var classMain = {
                 formatElement(dict['shop'], 'shop');
 
                 // 订单状态
-                dict['inquiryStatus'] = formatOrderState(SysParam.orderStatus.inquiryStatus);
-                dict['designStatus'] = formatOrderState(SysParam.orderStatus.designStatus);
-                dict['produceStatus'] = formatOrderState(SysParam.orderStatus.produceStatus);
+                dict['inquiryStatus'] = formatOrderState(data.orderStatus.inquiryStatus);
+                dict['designStatus'] = formatOrderState(data.orderStatus.designStatus);
+                dict['produceStatus'] = formatOrderState(data.orderStatus.produceStatus);
 
                 dict['sysParam'] = {};//系统字典
                 for (var i = 0; i < data.sysParam.length; i++) {
@@ -143,7 +143,7 @@ var classMain = {
                 function formatOrderState(dataSource) {
                     var temp = {};
                     for (var i = 0; i < dataSource.length; i++) {
-                        temp[dataSource[i].code] = dataSource[i].servicerTag;
+                        temp[dataSource[i].code] = dataSource[i];
                     }
                     return temp;
                 }
@@ -317,7 +317,7 @@ var classMain = {
                                     }
                                     else //业务流程
                                     {
-                                        debugger
+                                        
                                         var identity = thisObj.attr('data-identity');//过去概览数据标识
                                         that.loadOverview(identity, 1, true);//加载概览
                                         SelectedTab('overview');//切换到订单概览选项卡
@@ -721,7 +721,8 @@ var classMain = {
             Message.show("提醒","输入的信息过于简短，请补充。",MsgState.Warning,2000);
             return ;
         }
-        debugger
+        SelectedTab('overview');//切换到订单概览选项卡
+        //thisObj.addClass('active');
         classMain.loadOverview(null,1,true,null,searchContent);
     },
     requstParams: {"sortCategory": "synthesize", "sortType": "desc"},
@@ -764,7 +765,6 @@ var classMain = {
         //查询数据
         var getNavListUrl = top.config.WebService()['orderSupplementary_Query'];
 
-        debugger
         //搜索
         var searchParams=null;
         if(searchContent)
@@ -1099,13 +1099,13 @@ var classMain = {
                         function addStatus() {
                             var status = $('<div class="status"></div>');
                             if (SysParam.inquiryStatus[item.inquiryStatus]) {
-                                status.append($('<span>' + SysParam.inquiryStatus[item.inquiryStatus] + '</span>'));
+                                status.append($('<span>' + SysParam.inquiryStatus[item.inquiryStatus].servicerTag + '</span>'));
                             }
                             if (SysParam.designStatus[item.designStatus]) {
-                                status.append($('<span>' + SysParam.designStatus[item.designStatus] + '</span>'));
+                                status.append($('<span>' + SysParam.designStatus[item.designStatus].servicerTag + '</span>'));
                             }
                             if (SysParam.produceStatus[item.produceStatus]) {
-                                status.append($('<span>' + SysParam.produceStatus[item.produceStatus] + '</span>'));
+                                status.append($('<span>' + SysParam.produceStatus[item.produceStatus].servicerTag + '</span>'));
                             }
                             if(payStatus)
                             {
@@ -1265,7 +1265,7 @@ var classMain = {
                         // 数据头
                         function addHead() {
                             // 数据头左侧
-                            itemHead_l.append($('<span>派单时间：<em>' + item.sendDesignTime || "------------" + '</em></span>'));
+                            itemHead_l.append($('<span>派单时间：<em>' + item.sendDesignTime + '</em></span>'));
                             itemHead_l.append($('<span>订单号：<em>' + item.orderid + '</em></span>'));
 
                             //是否急单
@@ -1284,7 +1284,7 @@ var classMain = {
                                 that.addTab(customid, './Designer/designDetails.html?customid=' + customid);
                             });
                             itemHead_r.append(view);
-                            itemHead_r.append($('<span title="更多操作"><i class="more-icon"></i></span>'));
+                            itemHead_r.append($('<span title="更多操作"></span>'));
                         }
 
                         addHead();
@@ -1306,17 +1306,22 @@ var classMain = {
                         var infoContainer = $('<div class="clearfix fl" style="width: 645px; margin-left: 10px;"></div>');
                         itemBody.append(infoContainer);
                         function addInfo() {
+                            var element = SysParam.element;//元素
+                            var model = ConvertIdToName(element.model, item.model).join(';');
+                            var technology = ConvertIdToName(element.technology, item.technology).join(';');
+                            var color = ConvertIdToName(element.color, item.color).join(';');
+
                             var info = $('<div class="info">' +
                                 '<div class="attributes">' +
-                                '<span>' + item.goodsClass + '</span>' +
-                                '<span>' + item.material + '</span>' +
-                                '<span>' + item.accessories + '</span>' +
+                                '<span>' + SysParam.element.goodsClass[item.goodsClass].name + '</span>' +
+                                '<span>' + SysParam.element.material[item.material].name + '</span>' +
+                                '<span>' + SysParam.element.accessories[item.accessories].name + '</span>' +
                                 '</div>' +
                                 '<!--工艺-->' +
                                 '<div class="process">' +
-                                '<span>' + item.model + '</span>' +
-                                '<span>' + item.technology + '</span>' +
-                                '<span>' + item.color + '</span>' +
+                                '<span>' + model + '</span>' +
+                                '<span>' + technology + '</span>' +
+                                '<span>' + color + '</span>' +
                                 '</div>' +
                                 '<div class="size">' +
                                 '<span><em>' + item.length + '×' + item.width + '×' + item.height + '</em> (mm)</span>' +
@@ -1333,7 +1338,7 @@ var classMain = {
                         //状态
                         function addStatus() {
                             var status = $('<div class="status">' +
-                                '<span>' + item.designStatus + '</span>' +
+                                '<span>' + SysParam.designStatus[item.designStatus].designerTag +'</span>' +
                                 '</div>')
                             itemBody.append(status);
                         }
@@ -1343,18 +1348,60 @@ var classMain = {
                         //按钮
                         function operating() {
                             var operating = $('<div class="operating"></div>');
-                            var buttonShow = item.command.split(',');
-                            if (buttonShow.indexOf('INQUIRY') >= 0) {
-                                operating.append('<button class="btn" style="width: 66px; height: 23px;">立即抢单</button>');
+                            //立即抢单
+                            if (item.designStatus==0||item.designStatus==1) {
+                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">立即抢单</button>');
+                                btn.on('click',function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var orderid = $(this).attr('data-orderid');
+                                    var ordersummaryId = $(this).attr('data-ordersummaryId');
+                                    var url=config.WebService()["orderDesignInfo_Update"];
+                                    Requst.ajaxPost(url,{"wId":customid},true,function (data) {
+                                        if(data.code==200)
+                                        {
+                                           Message.show('提示',data.message,MsgState.Success,2000,function () {
+                                                classMain.loadOverview(null,null,null,customid);
+                                           });
+                                        }
+                                        else {
+                                            Message.show('提示',data.message,MsgState.Warning,2000);
+                                        }
+                                    });
+                                });
+                                operating.append(btn);
                             }
-                            if (buttonShow.indexOf('PAYOFF') >= 0) {
-                                operating.append('<button class="btn" style="width: 66px; height: 23px;">确认支付</button>');
+                            //提交设计
+                            if (item.designStatus==2) {
+                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">提交设计</button>');
+                                btn.on('click',function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var orderid = $(this).attr('data-orderid');
+                                    var ordersummaryId = $(this).attr('data-ordersummaryId');
+                                    that.addTab(customid, './Designer/designDetails.html?customid=' + customid+"&operType=submit");
+                                });
+                                operating.append(btn);
                             }
-                            if (buttonShow.indexOf('SEND_DESIGN') >= 0) {
-                                operating.append('<button class="btn" style="width: 66px; height: 23px;">分配设计</button>');
+                            //修改设计
+                            if (item.designStatus==4) {
+                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">修改设计</button>');
+                                btn.on('click',function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var orderid = $(this).attr('data-orderid');
+                                    var ordersummaryId = $(this).attr('data-ordersummaryId');
+                                    that.addTab(customid, './Designer/designDetails.html?customid=' + customid+"&operType=modify");
+                                });
+                                operating.append(btn);
                             }
-                            if (buttonShow.indexOf('SEND_PRODUCE') >= 0) {
-                                operating.append('<button class="btn" style="width: 66px; height: 23px;">分配生产</button>');
+                            //查看设计
+                            if (item.designStatus==5||item.designStatus==3) {
+                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">查看设计</button>');
+                                btn.on('click',function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var orderid = $(this).attr('data-orderid');
+                                    var ordersummaryId = $(this).attr('data-ordersummaryId');
+                                    that.addTab(customid, './Designer/designDetails.html?customid=' + customid+"&operType=view");
+                                });
+                                operating.append(btn);
                             }
 
                             itemBody.append(operating);
@@ -1409,7 +1456,7 @@ var classMain = {
                                 itemHead_l.append($('<span class="renew">续订</span>'));
                             }
 
-                            var timeleft = $('<span class="timeleft"><i class="clock-icon"></i>剩余发货时间：<em>12  天  12  小时  23  分钟</em></span>');
+                            var timeleft = $('<span class="timeleft"><i class="clock-icon"></i>剩余发货时间：<em>--  天  --  小时  --  分钟</em></span>');
                             itemHead_l.append(timeleft);
                             // 数据头右侧
 
@@ -1419,7 +1466,7 @@ var classMain = {
                                 that.addTab(customid, './WorkShop/shopDetails.html?customid=' + customid);
                             });
                             itemHead_r.append(view);
-                            itemHead_r.append($('<span title="更多操作"><i class="more-icon"></i></span>'));
+                            itemHead_r.append($('<span title="更多操作"></span>'));
                         }
 
                         addHead();
@@ -1441,17 +1488,22 @@ var classMain = {
                         var infoContainer = $('<div class="clearfix fl" style="width: 645px; margin-left: 10px;"></div>');
                         itemBody.append(infoContainer);
                         function addInfo() {
+                            var element = SysParam.element;//元素
+                            var model = ConvertIdToName(element.model, item.model).join(';');
+                            var technology = ConvertIdToName(element.technology, item.technology).join(';');
+                            var color = ConvertIdToName(element.color, item.color).join(';');
+
                             var info = $('<div class="info">' +
                                 '<div class="attributes">' +
-                                '<span>' + item.goodsClass + '</span>' +
-                                '<span>' + item.material + '</span>' +
-                                '<span>' + item.accessories + '</span>' +
+                                '<span>' + SysParam.element.goodsClass[item.goodsClass].name + '</span>' +
+                                '<span>' + SysParam.element.material[item.material].name + '</span>' +
+                                '<span>' + SysParam.element.accessories[item.accessories].name + '</span>' +
                                 '</div>' +
                                 '<!--工艺-->' +
                                 '<div class="process">' +
-                                '<span>' + item.model + '</span>' +
-                                '<span>' + item.technology + '</span>' +
-                                '<span>' + item.color + '</span>' +
+                                '<span>' + model + '</span>' +
+                                '<span>' + technology + '</span>' +
+                                '<span>' + color + '</span>' +
                                 '</div>' +
                                 '<div class="num">' +
                                 '<span><em>' + item.number + '</em>个</span>' +
@@ -1570,20 +1622,3 @@ var setPopSize = function (width, height) {
     iframe.css("height", height + 73 + "px");
     iframe.find('iframe').css("height", height + 28 + "px");
 }
-
-//图片预览
-var previewImg={
-    insert:function (url) {
-        $('#previewImg').html("");
-        var li=$('<li style="display: none;"><img src="'+url+'" data-original="'+url+'"/></li>');
-        $('#previewImg').append(li);
-        $('#previewImg').viewer({
-            url: 'data-original',
-        });
-        $("#previewImg").viewer('update');
-    },
-    show:function () {
-        var img=$('#previewImg').find('li').find('img');
-        $(img[0]).click();
-    }
-};

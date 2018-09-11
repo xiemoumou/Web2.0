@@ -436,7 +436,7 @@ var Invoice = {
         return true;
     },
     getData: function () {
-        debugger
+        
         var that = this;
 
         var url = config.WebService()["invoice_Init"];

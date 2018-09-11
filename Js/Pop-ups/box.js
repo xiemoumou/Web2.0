@@ -254,7 +254,7 @@ var box = {
         Common.ajax(url,data,false,function (data) {
             if(data.status.code==1)
             {
-                debugger
+                
                 var list=data.data;
                 for(var i=0;i<list.length;i++)
                 {

@@ -62,7 +62,7 @@
         window.location.href = 'modify_password.html';
     })
     $(".sign-out").on('click',function () {
-        debugger
+
         $.cookie("phone", '', { expires: -1 , path: '/'});
         $.cookie("password", '', { expires: -1 , path: '/'});
         window.location.href = 'login.html';
