@@ -44,20 +44,20 @@
             <div class="deliver-btn">导出发货单</div>
         </div>
 
-        <div class="deliver">
-            <div class="title ">
-                <span class="span-1">业务奖金</span>
-                <span class="span-2">导出奖金单</span>
-            </div>
-            <div class="body">
-                <div class="end-time">
-                    <section>结算月份:</section>
-                    <section>&nbsp;&nbsp;&nbsp;年<div id="bonus_year" class="sel_year datepicker fl"></div></section>
-                    <section>&nbsp;&nbsp;&nbsp;月<div id="bonus_month" class="sel_month sel_second datepicker fl"></div></section>
-                </div>
-            </div>
-            <div class="deliver-next-btn">导出奖金单</div>
-        </div>
+        <!--<div class="deliver">-->
+            <!--<div class="title ">-->
+                <!--<span class="span-1">业务奖金</span>-->
+                <!--<span class="span-2">导出奖金单</span>-->
+            <!--</div>-->
+            <!--<div class="body">-->
+                <!--<div class="end-time">-->
+                    <!--<section>结算月份:</section>-->
+                    <!--<section>&nbsp;&nbsp;&nbsp;年<div id="bonus_year" class="sel_year datepicker fl"></div></section>-->
+                    <!--<section>&nbsp;&nbsp;&nbsp;月<div id="bonus_month" class="sel_month sel_second datepicker fl"></div></section>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="deliver-next-btn">导出奖金单</div>-->
+        <!--</div>-->
 
         <div class="deliver">
             <div class="title">
@@ -65,11 +65,20 @@
                 <span class="span-2">导出车间结算单</span>
             </div>
             <div class="body">
+                <div class="user-type">
+                    <section style="margin-left: 281px;">选择角色:</section>
+                    <section><div id="user_type" class="datepicker fl"></div></section>
+                </div>
                 <div class="end-time">
                     <section>结算月份:</section>
                     <section>&nbsp;&nbsp;&nbsp;年<div id="work_year" class="sel_year datepicker fl"></div></section>
                     <section>&nbsp;&nbsp;&nbsp;月<div id="work_month" class="sel_month sel_second datepicker fl"></div></section>
                 </div>
+                <!--<div class="begin-time-next">-->
+                    <!--<section>结束时间:</section>-->
+                    <!--<section>&nbsp;&nbsp;&nbsp;年<div id="end_year" class="sel_year datepicker fl"></div></section>-->
+                    <!--<section>&nbsp;&nbsp;&nbsp;月<div id="end_month" class="sel_month datepicker fl"></div></section>-->
+                <!--</div>-->
             </div>
             <div class="deliver-work" id="deliver_work">导出车间结算单</div>
         </div>
@@ -77,6 +86,8 @@
     </div>
 </div>
 <script>
+    document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Lib/birthday/birthday.js' + VER + '" ><\/script>');

@@ -1,8 +1,8 @@
 
 var customid = Helper.getUrlParam('customid') || "";//获取订单号
+
 //分配生产检查
 $(function () {
-
 
     OrderCheck.getData();
 
@@ -59,39 +59,40 @@ OrderCheck = {
         };
 
         var url = config.WebService()["logistics_Check"];
-        Requst.ajaxGet(url, data, true, function (data) {
+        top.Requst.ajaxGet(url, data, true, function (data) {
             if (data) {
-                var imgsrc = '../../images/icon/nothing.png';
+                var imgsrc = '../../Image/Pop-ups/nothing.png';
 
                 var invoice_val =  $(".invoice-type");//发票类型
-                   
-                $(".type").text(data.data.goodsclass);//产品类型
+                 var dict=  top.SysParam.element;
+                 debugger
+                $(".type").text(dict.goodsClass[data.data.goodsClass].name);//产品类型
                 $(".check-length").text(data.data.size);//张宽高
                 // $(".check-width").text(data.data.width);//宽
                 // $(".check-height").text(data.data.height);//高
-                $(".parts").text(data.data.accessories);//配件名称
-                $(".deliver-time").text(data.data.lastestDate)//最迟发货时间
+                $(".parts").text(dict.accessories[data.data.accessories].name);//配件名称
+                $(".deliver-time").text(data.data.lastestDate);//最迟发货时间
                 $(".num").text(data.data.number);//数量
                 $(".money").text(data.data.finalprice==0?'还未定价':data.data.finalprice)//订单金额
-                $(".requ").text(data.data.designmemo);//设计要求
+                $(".requ").text(data.data.designMemo);//设计要求
                 $(".prod").text(data.data.produceMemo);//生产要求
-                $(".collect-user-text").text(data.logistics.name);//收件人
-                $(".collect-phone-text").text(data.logistics.mobilephone);//收件人电话
-                $(".collect-code-text").text(data.logistics.postcode);//邮编
+                $(".collect-user-text").text(data.data.name);//收件人
+                $(".collect-phone-text").text(data.data.mobilephone);//收件人电话
+                $(".collect-code-text").text(data.data.postcode);//邮编
                 $(".invoice-money-text").text(data.data.detailsValue1);//发票金额
                 $(".invoice-tax-text").text(data.data.taxRate*100);//税率
                 $(".invoice-title-text").text(data.data.invoiceTitle);//抬头
                 $(".texture").text(data.data.material);//材质
                 $(".tech").text(data.data.technology);//工艺
-                $(".tech-attr").text(data.data.model);//工艺属性
+                $(".tech-attr").text(data.data.model);//开模方式
                 $(".elec-color").text(data.data.color);//电镀色
                 //***$(".box-text").text(data.orderboxs.packing);//包装详情
                 
-                $("#refe-first").attr('src',(data.data.referencepictureurl==''?imgsrc:('http://' + data.data.referencepictureurl)));//参考图1
-                $("#refe-second").attr('src',(data.data.referencepictureurl2==''?imgsrc:('http://' + data.data.referencepictureurl2)));//参考图2
-                $("#refe-third").attr('src',(data.data.referencepictureurl3==''?imgsrc:('http://' + data.data.referencepictureurl3)));//参考图3
-                $("#design-first").attr('src',(data.data.patternimageurl==''?imgsrc:('http://' + data.data.patternimageurl)));//设计图
-                $("#refe-fourth").attr('src',(data.data.factorypictureurl1==''?imgsrc:( data.data.factorypictureurl1)))//生产前参考图
+                $("#refe-first").attr('src',(data.data.initialReferenceImage1==''?imgsrc:('http://' + data.data.initialReferenceImage1)));//参考图1
+                $("#refe-second").attr('src',(data.data.initialReferenceImage2==''?imgsrc:('http://' + data.data.initialReferenceImage2)));//参考图2
+                $("#refe-third").attr('src',(data.data.initialReferenceImage3==''?imgsrc:('http://' + data.data.initialReferenceImage3)));//参考图3
+                $("#design-first").attr('src',(data.data.f_middleDesignImage1==''?imgsrc:('http://' + data.data.f_middleDesignImage1)));//设计图
+                $("#refe-fourth").attr('src',(data.data.f_initialWorkShopImage1==''?imgsrc:( data.data.f_initialWorkShopImage1)))//生产前参考图
                 $(".address-text").text(data.data.address);//详细地址
 
                 //参考图与设计图放大
@@ -159,6 +160,8 @@ OrderCheck = {
                 
                 var docHeight= $(".check-content").height();
                 top.setPopSize(0,docHeight);
+
+
             }
         });
     }

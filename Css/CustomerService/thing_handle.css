@@ -71,7 +71,7 @@ body{
     height: 31px;
     display: block;
     text-align: center;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 .begin-time section{
     display: inline-block;
@@ -133,6 +133,18 @@ body{
     font-size: 14px;
     color: #FFFFFF;
     margin: 0 auto;
-    margin-top: 56px;
+    margin-top: 30px;
     cursor: pointer;
+}
+.user-type section{
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    vertical-align: top;
+}
+.user-type{
+    margin-top: 30px;
+}
+#user_type{
+    margin-left: 31px;
 }

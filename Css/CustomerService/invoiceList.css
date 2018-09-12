@@ -81,14 +81,14 @@ table{
     display: inline-block;
     width: 14px;
     height: 14px;
-    background:url("../../images/icon/view.png") no-repeat -26px -26px;
+    background:url("../../Image/createOrder/view.png") no-repeat -26px -26px;
     vertical-align: sub;
 }
 .ticket-details span{
     display: inline-block;
     width: 16px;
     height: 14px;
-    background:url("../../images/icon/view.png") no-repeat -3px -26px;
+    background:url("../../Image/createOrder/view.png") no-repeat -3px -26px;
     vertical-align: sub;
 }
 

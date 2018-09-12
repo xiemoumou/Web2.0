@@ -20,13 +20,12 @@ var invoList={
         var that=this;
         var data={
             "orderid":orderid,
-            "userId":$.cookie("userid"),
-            "roleType":$.cookie("roletype"),
         };
-        Common.ajax(Common.getUrl()['order']+Common.getDataInterface()['markBox'],data,true,function (data) {
-            if(data.status.code==1)
+        var url = config.WebService()["orderInvoiceSign_Update"];
+        Requst.ajaxPost(url,data,true,function (data) {
+            if(data.code==200)
             {
-                Common.msg(data.status.msg,200,2000,function () {
+                Message.show('提示','标记成功',1,2000,function () {
                     that.getDataList();
                 });
             }
@@ -37,11 +36,11 @@ var invoList={
     },
     popDetail:function (orderid) {//包装盒详情
         var scrollH= parent.$(window).height();
-        if(scrollH>400)
+        if(scrollH>500)
         {
-            scrollH=400;
+            scrollH=500;
         }
-        var url = encodeURI('./service/packing_preview.html?orderid='+orderid);
+        var url = encodeURI('./CustomerService/packing_preview.html?orderid='+orderid);
         parent.layer.open({
             type: 2,
             title: '包装盒详情',
@@ -61,28 +60,31 @@ var invoList={
         var that=this;
         var state=$("#showtype").val();
         var data={
-            "state":state,
-            "pageNo":currIndex,
-            "pageSize":20,
-            "userId":$.cookie("userid"),
-            "roleType":$.cookie("roletype"),
+            "sortField": "sendtime",
+            "sortType": "desc",
+            "state": 1,
+            "pageNum": 1,
+            "pageSize": 10,
         };
 
-        Common.ajax(Common.getUrl()['order']+Common.getDataInterface()['orderBox'],data,true,function (data) {
-            var status=data.status;
-            var orderBoxs=data.orderBox;
+        var url = config.WebService()["orderBoxInfoPage_Query"];
+        Requst.ajaxGet(url,data,true,function (data) {
+             var status=data.code;
+             var orderBoxs=data.data;
              var datalist= $("#datalist");
              datalist.html('');
-             if(status.code==1&&orderBoxs!=null&&orderBoxs.length>0)
+             if(status==200&&orderBoxs!=null&&orderBoxs.length>0)
             {
                 that.pagePrams.totalPage= Math.ceil(data.totalNum / that.pagePrams.pageSize);
                 for(var i=0;i<orderBoxs.length;i++)
                 {
                     var item=orderBoxs[i];
                     var tr=$('<tr></tr>');
-                    var orderDatetime=item.orderTime?item.orderTime:'';
+                    var orderDatetime=item.sendtime?item.sendtime:'';
                     tr.append($('<td style="min-width: 130px;">'+orderDatetime+'</td>'));
                     tr.append($('<td style="min-width: 102px;">'+item.orderid+'</td>'));
+                    tr.append($('<td style="min-width: 102px;">'+item.wangid+'</td>'));
+                    tr.append($('<td style="min-width: 102px;">'+item.shop+'</td>'));
                     // tr.append($('<td><span class="text">'+item.invoicetitle+'</span></td>'));
                     if(state==2)
                     {
@@ -123,3 +125,5 @@ var invoList={
         });
     },
 }
+
+

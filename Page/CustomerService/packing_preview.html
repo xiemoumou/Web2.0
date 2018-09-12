@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>包装盒详情</title>
+    <script id="ver" src="../../Common/Js/version.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("ver");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
+        document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    </script>
+
+</head>
+<style>
+    body{
+        background-color: #fff;
+    }
+    .sure-button{
+        width: 104px;
+        height: 36px;
+        position: absolute;
+        left: 37%;
+        margin-left: -55px;
+        display: block;
+        background-color: #e84b4c;
+        border-radius: 4px;
+        color: #fff;
+        font: 12px "微软雅黑";
+        cursor: pointer;
+        font-weight: 400;
+    }
+    .cancel-button{
+        width: 104px;
+        height: 36px;
+        position: absolute;
+        left: 74%;
+        margin-left: -81px;
+        border: 1px solid #e84b4b;
+        color: #e84b4b;
+        border-radius: 4px;
+        background-color: #fff;
+        cursor: pointer;
+        font: 12px "微软雅黑";
+        font-weight: 400;
+    }
+    .modify-content{
+        width: 500px;
+        margin: 0 auto;
+        font-family: "微软雅黑";
+        position: relative;
+    }
+
+    .modify-text{
+        font-size: 14px;
+        color: #444;
+
+    }
+    .modify-text p{
+        padding-top: 10px;
+    }
+    .modify-text h4{
+        font-size: 14px;
+        color: #5d5d5d;
+        padding-top: 15px;
+    }
+    .copy{
+        padding-top: 25px;
+        font-size: 14px;
+        color: #E84B4C;
+        cursor: pointer;
+        display: inline-block;
+    }
+    .open-img{
+        width: 80px;
+        height: 80px;
+        background-image: url("../../images/icon/open_img.png");
+        background-size: 100% 100%;
+        position: absolute;
+        top: 35px;
+        right: 0px;
+    }
+    .address{
+        display:-webkit-box;
+        display:-webkit-flex;
+        display:-ms-flexbox;
+        display:flex;
+        -webkit-box-pack:justify;
+        -webkit-justify-content:space-between;
+        -ms-flex-pack:justify;
+        justify-content:space-between;
+    }
+    .detailed-address{
+        display: inline-block;
+        width: 430px;
+        vertical-align: top;
+    }
+    .addstyle{
+        display: none;
+    }
+    .btn-add{
+        background: #D5D5D5;
+    }
+    .floor{
+        height: 36px;
+    }
+    .box-type span{
+        display: inline-block;
+        width: 57px;
+    }
+    .box-type,.box-content{
+        margin-top: 10px;
+    }
+    .box-list{
+        margin-top: 5px;
+    }
+    .box-list span{
+        display: inline-block;
+        /*width: 70px;*/
+    }
+    .box-content{
+        height: 130px;
+        overflow: scroll;
+    }
+    .receipt_text{
+        vertical-align: top;
+    }
+    .receipt-text{
+        display: inline-block;
+        width: 395px;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+</style>
+<body>
+
+<div class="modify-content">
+    <textarea type="text" style="height: 0px; width: 0px; border: none;" id="copyContent" value="" ></textarea>
+    <div class="modify-text">
+        <h4 class="invo-info">包装信息内容</h4>
+        <div class="box-type">
+            <span class="res-type">盒子类型</span>
+            <span class="box-color" style="width: 50px;">颜色</span>
+            <span class="box-quality" style="width: 100px;">材质</span>
+            <span class="box-size" style="width: 100px;margin-left: 10px;">尺寸</span>
+            <span class="box-num" style="margin-left: 20px;">数量</span>
+            <span class="box-mon">单价</span>
+        </div>
+        <div class="box-content">
+            <!--<div class="box-list">-->
+                <!--<span>类型1</span>-->
+                <!--<span style="width: 50px;">蓝色</span>-->
+                <!--<span>PVC</span>-->
+                <!--<span style="width: 100px;">20*10*11(mm)</span>-->
+                <!--<span>200</span>-->
+                <!--<span>6元/个</span>-->
+            <!--</div>-->
+        </div>
+
+        <h4 class="mail">邮寄地址：</h4>
+        <p class="address">
+            <span class="harvest-box">收货人：<span class="harvest"></span></span>
+            <span class="phone-box">电话/手机：<span class="phone"></span></span>
+            <span class="zip-code-box">邮编：<span class="zip-code"></span></span>
+        </p>
+        <p class="detailed-address-box">详细地址：<span class="detailed-address"></span></p>
+        <div class="receipt"><a class="receipt_text">备注：</a><span class="receipt-text"></span></div>
+    </div>
+    <section data-clipboard-target="#copyContent" class="copy">一键复制</section>
+    <div class="floor">
+        <button class="sure-button" onclick="sign.submit();">标记已开</button>
+        <button class="cancel-button" onclick="parent.layer.closeAll()">取消</button>
+    </div>
+
+    <section class="open-img addstyle"></section>
+</div>
+
+
+
+<script>
+    document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
+</script>
+
+<script>
+
+
+    $(document).ready(function () {
+        var orderid = Helper.getUrlParam('orderid') || "";//获取订单号
+
+        var url = config.WebService()["orderBoxDetail_Query"];
+        var data = {
+            "orderid": orderid,
+        };
+
+        Requst.ajaxGet(url, data, true, function (data) {
+            var copyContext="盒子类型\t颜色\t材质\t尺寸\t数量\t单价\r";
+            for (var i = 0; i<data.data.length; i++){
+                copyContext+="类型"+data.data[i].boxtype+"\t"+data.data[i].boxcolor+"\t"+data.data[i].quality+"\t"
+                    +data.data[i].size+"(mm)\t"+data.data[i].amount+"\t"+data.data[i].price+"元/个\r";
+                str = "<div class=box-list>"+
+                    "<span class='box_type' style='width: 61px;'>类型"+data.data[i].boxtype+"</span>"+
+                    "<span class='box_color' style='width: 45px;'>"+data.data[i].boxcolor+"</span>"+
+                    "<span class='box_quality' style='width: 115px;margin-left: 12px'>"+data.data[i].quality+"</span>"+
+                    "<span class='box_size' style='width: 100px;'>"+data.data[i].size+"(mm)</span>"+
+                    "<span class='box_num' style='margin-left: 22px;'>"+data.data[i].amount+"</span>"+
+                    "<span class='box_mon' style='margin-left: 41px'>"+data.data[i].price+"元/个</span>"+
+                    "</div>"
+                $(".box-content").append(str)
+
+            }
+
+                if (data.data[0].state == 1) {
+                    var invoicestatus=data.data[0].state;//代开票或已开票
+                    if(invoicestatus==2)
+                    {
+                        $(".sure-button").attr("disabled",true);
+                        $(".sure-button").css("background-color",'#00000059');
+                        $(".sure-button").css("color",'#ffffff');
+                    }
+                    else
+                    {
+                        $(".sure-button").attr("disabled",false);
+                    }
+
+
+                     var receipttext  = data.data[0].remark||"";
+                     var name = data.data[0].name||"";
+                     var mobilephone = data.data[0].mobilephone||"";
+                     var postcode = data.data[0].postcode||"";
+                     var address = data.data[0].province||"";
+                    address+=data.data[0].city||"";
+                    address+=data.data[0].county||"";
+                    address+=data.data[0].detailAddress||"";
+                    //address+=data.data.logisticsaddress1||"";
+
+
+                    $(".harvest").text(name);//收货人
+                    $(".detailed-address").text(address)//详细地址
+                    $(".phone").text(mobilephone);//电话
+                    $(".zip-code").text(postcode);//邮编
+                    $('.receipt-text').text(receipttext)//备注
+
+
+                     //内容填充到剪贴板
+                     var mail = $(".mail").text()||"";
+                     var harvest_box = $(".harvest-box").text()||"";
+                     var phone_box = $(".phone-box").text()||"";
+                     var zip_code_box = $(".zip-code-box").text()||"";
+                     var detailed_address_box = $(".detailed-address-box").text()||"";
+                     var receipt = $(".receipt").text()||"";
+
+                     copyContext+= mail+"\n"+harvest_box+"\t"+phone_box+"\t"+zip_code_box+"\n"+detailed_address_box+"\n"+receipt+"\n";
+
+                     $("#copyContent").val(copyContext);
+
+                    //复制
+                    $(function () {
+                        var clipboard = new ClipboardJS('.copy');
+                        clipboard.on('success', function(e) {
+                            console.info('Action:', e.action);
+                            console.info('Text:', e.text);
+                            console.info('Trigger:', e.trigger);
+
+                            e.clearSelection();
+                        });
+
+                        clipboard.on('error', function(e) {
+                            console.error('Action:', e.action);
+                            console.error('Trigger:', e.trigger);
+                        });
+
+                    });
+
+                }
+            var docHeight= $(".modify-content").height();
+            top.setPopSize(0,docHeight);
+
+         });
+
+
+
+    });
+
+    var sign = {
+        submit : function () {
+            var url = Common.getUrl()['order'] + Common.getDataInterface()["markBox"];
+            var data = {
+                "orderid": Common.getUrlParam("orderid", true),
+                "userId": $.cookie('userid'),
+                "roleType": $.cookie('roletype'),
+            };
+            Common.ajax(url, data, true, function (data) {
+                if (data) {
+                    if (data.status.code == 1) {
+
+                        Common.msg(data.status.msg, 200, 2000, function () {
+                            parent.document.getElementById("cont_iframe").contentWindow.invoList.getDataList();
+                            parent.layer.closeAll();
+                        });
+
+                    }
+                    else {
+                        Common.msg(data.status.msg, null, 2000, function () {
+                            $(".ok").attr("disabled", false);
+                        });
+                    }
+                }
+            }, function (err) {
+                $(".ok").attr("disabled", false);
+            });
+        }
+    }
+</script>
+</body>
+</html>

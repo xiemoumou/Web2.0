@@ -62,6 +62,10 @@ $(function () {
     });
 });
 
+temp=[{id:1,name:"aaaa"},{id:1,name:"aaaa"}]
+$("#user_type").DropDownList(temp);
+
+
 
 var thingHandle={
     init:function () {
@@ -113,27 +117,24 @@ var thingHandle={
 };
 var rofitSingle= {
     getDataList: function () {
-        rofitSingle.getUrl = parent.Common.getUrl();//获取请求接口的URL
-        rofitSingle.getDataInterface = parent.Common.getDataInterface();//获取请求数据的接口
-        rofitSingle.functionalInterface = parent.Common.functionalInterface();//获取操作功能的接口
-        var url = rofitSingle.getUrl["order"] + rofitSingle.getDataInterface["downDesginrofit"];//导出奖金单地址
+        var url = config.WebService()["exportYieldList"];
         //请求数据
         var bonus_year = $("#bonus_year input").val();//获取年
         var bonus_month = $("#bonus_month input").val();//获取月份
         var bonus_date = bonus_year+"-"+bonus_month;
-        Common.ajax(url, {
-                "rofitTime": bonus_date
-            },
-            true,
-            function (data) {
-                if (data&&data.map.code==0) {
-                    Common.download(data.map.addRess);
-                }
-                else if(data.map.code!=0) {
-                    Common.msg(data.map.msg,null,2000);
-                }
 
-            });
+        data = {
+           "year": bonus_year,
+            "month": bonus_month,
+            "roletype": 1,
+        }
+
+        Requst.ajaxGet(url, data, true, function (data) {
+             if (data.code ==200){
+                 Helper.download(data.data);
+                 }
+
+        });
 
 
 
@@ -158,7 +159,7 @@ var rofitSingle= {
             "commandCode":300,
         }
         Common.ajax(url, data, true, function (data) {
-            
+
             if (data) {
                     Common.download(data.addRess);
 
@@ -178,12 +179,8 @@ var rofitSingle= {
 }
 
 var giveSingle= {
-    getDataList: function () {
-        giveSingle.getUrl = parent.Common.getUrl();//获取请求接口的URL
-        giveSingle.getDataInterface = parent.Common.getDataInterface();//获取请求数据的接口
-        giveSingle.functionalInterface = parent.Common.functionalInterface();//获取操作功能的接口
-        var url = giveSingle.getUrl["order"] + giveSingle.getDataInterface["exportCsv"];//导出发货单地址
-        //请求数据
+    getDataList: function () {//导出发货单
+        var url = config.WebService()["orderLogisticsBillOrder_Query"];
 
         //开始时间
         var begin_year = $("#begin_year input").val();//获取年
@@ -196,21 +193,16 @@ var giveSingle= {
         var end_day = $("#end_day input").val();//获取日
         var enddate = end_year+"-"+end_month+"-"+end_day;
 
-        Common.ajax(url, {
-                "startdate": startdate,
-                "enddate": enddate
-            },
-            true,
-            function (data) {
+        data = {
+            "enddate":enddate,
+            "startdate":startdate,
+        }
+        Requst.ajaxGet(url, data, true, function (data) {
+            if (data.code == 200){
+                Helper.download(data.data);
+            }
 
-                if (data&&data.status.code==0) {
-                    Common.download(data.status.addRess);
-                }
-                else if(data.map.status!=0) {
-                    Common.msg(data.status.msg,null,2000);
-                }
-
-            });
+        });
 
 
     }

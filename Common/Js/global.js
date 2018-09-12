@@ -69,10 +69,14 @@ var config = {
             "orderDesignMessage_Query":that.Domain.systemApi +"/dynamo/order/orderDesignMessage_Query",//显示留言
             "orderDesignMessage_Insert":that.Domain.systemApi +"/dynamo/order/orderDesignMessage_Insert",//提交留言
             "chooseDesign":that.Domain.systemApi +"/dynamo/order/chooseDesign",//选定设计稿
-            "orderDesignInfo_Update":that.Domain.systemApi +"/dynamo/order/orderDesignInfo_Update",//设计师接单
             "invoice_Update":that.Domain.systemApi +"/dynamo/order/invoice_Update",//发票编辑新增
             "invoice_Init":that.Domain.systemApi +"/dynamo/order/invoice_Init",//票据明细初始化
             "logistics_Check":that.Domain.systemApi +"/dynamo/order/logistics_Check",//核对订单
+            "orderBoxInfoPage_Query":that.Domain.systemApi +"/dynamo/order/orderBoxInfoPage_Query",//经理包装盒代开已开
+            "orderInvoiceSign_Update":that.Domain.systemApi +"/dynamo/order/orderInvoiceSign_Update",//经理标记已开
+            "orderBoxDetail_Query":that.Domain.systemApi +"/dynamo/order/orderBoxDetail_Query",//包装盒详情
+            "orderLogisticsBillOrder_Query":that.Domain.systemApi +"/dynamo/order/orderLogisticsBillOrder_Query",//经理导出发货单
+            "exportYieldList":that.Domain.systemApi +"/dynamo/order/exportYieldList",//经理导出结算收益单
 
         }
     }
