@@ -36,6 +36,13 @@ var config = {
             "orderDesignInfo_Update":that.Domain.systemApi +"/dynamo/order/orderDesignInfo_Update",//设计师抢单
             "orderSupplementaryCount_Query":that.Domain.systemApi +"/dynamo/order/orderSupplementaryCount_Query",//统计
             "orderProductInfoAccept_Update":that.Domain.systemApi +"/dynamo/order/orderProductInfoAccept_Update",//接受生产
+            "messageCount":that.Domain.systemApi +"/dynamo/message/messageCount",//获取消息条数
+            "messageSummary_Query":that.Domain.systemApi +"/dynamo/message/messageSummary_Query",//获取消息信息
+            "orderSummaryInfo_Update":that.Domain.systemApi +"/dynamo/order/orderSummaryInfo_Update",//删除订单
+            "markedUpRead":that.Domain.systemApi +"/dynamo/message/markedUpRead",//标记已读
+            "batchMarkedUpRead":that.Domain.systemApi +"/dynamo/message/batchMarkedUpRead",//全部标记已读
+            
+
 
 
 

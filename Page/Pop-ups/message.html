@@ -10,9 +10,9 @@
         versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
         document.write('<link href="../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
         document.write('<link href="../../Common/Components/library.css' + VER + '" rel="stylesheet" />');
-        document.write('<link href="../../Css/Pop-ups/message.css' + VER + '" rel="stylesheet" />');
-        document.write('<link href="../../Common/Lib/layDate-v5.0.9/laydate/theme/default/laydate.css' + VER + '" rel="stylesheet" />');
         document.write('<link href="../../Common/Lib/layer-v3.1.1/layer/theme/default/layer.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Common/Lib/jqueryPagination/css/jquery.pagination.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Css/Pop-ups/message.css' + VER + '" rel="stylesheet" />');
     </script>
 </head>
 <body>
@@ -20,8 +20,8 @@
     <div class="message-box">
         <div class="message-title">
             <ul>
-                <li class="msg-1 addstyle">未读消息<span class="top"></span></li>
-                <li class="msg-2">已读消息<span class="top hide"></span></li>
+                <li data-read="0" class="tab active">未读消息<span class="top"></span></li>
+                <li data-read="1" class="tab msg-2">已读消息<span class="top hide"></span></li>
             </ul>
             <span class="sign">标记已读</span>
         </div>
@@ -34,26 +34,26 @@
                     <li class="msg-title-4">创建时间</li>
                 </ul>
             </div>
-            <div class="message-msg-box-pre">
-                <div class="message-msg-box">
+            <div id="dataList" class="message-msg-box-pre">
+                <div class="message-msg-box hide">
                     <span class="message-msg-1">发起询价</span>
                     <span class="message-msg-2">您有一条新的询价消息</span>
                     <span class="message-msg-3">123456789108888</span>
                     <span class="message-msg-4">2018-06-12  18:20:20</span>
                 </div>
-                <div class="message-msg-box">
+                <div class="message-msg-box hide">
                     <span class="message-msg-1">发起询价</span>
                     <span class="message-msg-2">您有一条新的询价消息</span>
                     <span class="message-msg-3">123456789108888</span>
                     <span class="message-msg-4">2018-06-12  18:20:20</span>
                 </div>
-                <div class="message-msg-box">
+                <div class="message-msg-box hide">
                     <span class="message-msg-1">发起询价</span>
                     <span class="message-msg-2">您有一条新的询价消息</span>
                     <span class="message-msg-3">123456789108888</span>
                     <span class="message-msg-4">2018-06-12  18:20:20</span>
                 </div>
-                <div class="message-msg-box">
+                <div class="message-msg-box hide">
                     <span class="message-msg-1">发起询价</span>
                     <span class="message-msg-2">您有一条新的询价消息</span>
                     <span class="message-msg-3">123456789108888</span>
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-        <div class="page-box"><!--分页--></div>
+        <div class="page-box clearfix"><!--分页--></div>
         <div class="button-box">
             <button class="hollow-button btn-h"
                     onclick="parent.layer.closeAll();">取消
@@ -76,9 +76,9 @@
     document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Components/library.js' + VER + '" ><\/script>');
-    document.write('<script type="text/javascript" src="../../Js/Pop-ups/message.js' + VER + '" ><\/script>');
-    document.write('<script type="text/javascript" src="../../Common/Lib/layDate-v5.0.9/laydate/laydate.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Lib/jqueryPagination/js/jquery.pagination.min.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Js/Pop-ups/message.js' + VER + '" ><\/script>');
 </script>
 </body>
 </html>

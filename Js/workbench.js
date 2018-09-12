@@ -3,6 +3,7 @@
  */
 var SysParam = "";
 var roleType = -1;//获取角色
+var isMessage=false;//是否有消息
 
 $(function () {
     roleType = top.Helper.Cache.get('roleType');
@@ -18,6 +19,7 @@ $(function () {
     }
     classMain.init();
 
+    classMain.message();//获取消息
 });
 
 var classMain = {
@@ -46,6 +48,51 @@ var classMain = {
             console.log("获取统计数据失败");
         },true);
     },
+    message:function () {
+        var playSound=$("#playSound");
+
+        //定时轮询消息
+        getMessage();
+        setInterval(function () {
+            getMessage();
+        },6000);
+
+        function getMessage() {
+            var url=config.WebService()["messageCount"];
+            top.Requst.ajaxGet(url,{},true,function (data) {
+                if(data.code==200)
+                {
+                    var orderMessage=$(".order-message");
+                    var data=data.data;
+                    var totalCount=data.all;//总条数
+                    var didntRead=data.didntRead;//未读条数
+                    var hasRead=data.hasRead;//已读条数
+                    if(didntRead>0)//有未读消息
+                    {
+                        orderMessage.removeClass("hide");
+                        $("#didntReadCount").text(didntRead);
+                        playSound.html('');
+                        isMessage=true;
+                    }
+                    else if(!orderMessage.hasClass('hide'))//没有未读消息
+                    {
+                        isMessage=false;
+                        orderMessage.addClass("hide");
+                    }
+                    pageHeightSet();
+                }
+            },function (error) {
+                console.log("获取消息条数失败");
+            },true);
+        }
+
+        //点击进入消息列表
+        $("#enterMessageList").on('click',function () {
+            var scrollH = top.Helper.getClientHeight();
+            var popH = scrollH - 100 > 580 ? 580 : scrollH - 100;
+            top.Popup.open( '消息列表',929, popH,'./Pop-ups/message.html');
+        });
+    },
     pagePrams: {'curIndex': 1, 'totalPage': 1, 'pageSize': 10, 'isInit': -1, 'dataType': ''},//分页参数
     initPage: function () {//初始化分页插件
         var that = this;
@@ -67,7 +114,6 @@ var classMain = {
         });
     },
     init: function () {
-        var scrollH = top.Helper.getClientHeight(); //浏览器显示区域高度
         $("body").append($('<ul id="previewImg"></ul>'));//图片预览用
         var that = this;
 
@@ -81,23 +127,6 @@ var classMain = {
 
         //页面高度初始化
         pageHeightSet();
-        function pageHeightSet() {
-            //******导航区域设置-begin
-            var domNav = $('.nav');
-            // 设置导航菜单的最大高度
-            domNav.css('max-height', scrollH - 70 + 'px');
-            //******导航区域设置-end
-
-            // 主体区域
-            var domMain = $('.container .iframe-container');
-            domMain.css('height', scrollH - 90 + 'px');
-
-            $(window).resize(function () {
-                scrollH = top.Helper.getClientHeight(); //浏览器显示区域高度
-                domNav.css('max-height', scrollH - 70 + 'px');//导航
-                domMain.css('height', scrollH - 90 + 'px');//主体区域
-            });
-        }
 
         // 加载系统字典
         function loadSystemParams(async) {
@@ -424,7 +453,10 @@ var classMain = {
             co.style.left = x + "px";
             co.style.top = y + "px";
             that.initEvent.creatOrderBtn();
-            $('#createOrder').removeClass('hide');
+            if(roleType==1)
+            {
+                $('#createOrder').removeClass('hide');
+            }
         }
 
         //个人中心
@@ -752,7 +784,8 @@ var classMain = {
         classMain.loadOverview(null,1,true,null,searchContent);
     },
     requstParams: {"sortCategory": "synthesize", "sortType": "desc"},
-    loadOverview: function (type, pageIndex, isInitPage,customid,searchContent) {//加载概览数据 initPage是否初始化分页
+    loadOverview: function (type, pageIndex, isInitPage,customid,searchContent) {
+        //加载概览数据 initPage是否初始化分页
         var that = this;
         if (isInitPage)//分页初始化
         {
@@ -922,10 +955,19 @@ var classMain = {
                             // });
                             // moreList.append(moreItem_3);
 
-                            var moreItem_4 = $('<span style="border-bottom: none;">删除订单</span>');
+                            var moreItem_4 = $('<span data-customid="'+item.customid+'" style="border-bottom: none;">删除订单</span>');
                             moreItem_4.on('click', function () {
+                                var customid = $(this).attr('data-customid');
                                 Confirm("删除订单","您确定要删除该订单吗？",423,203,null,function () {
-                                   //执行删除订单操作
+                                   var url=config.WebService()['orderSummaryInfo_Update'];
+                                    top.Requst.ajaxPost(url,{"customid":customid},true,function (data) {
+                                        if(data.code==200)
+                                        {
+                                            top.Message.show("提示",data.message,MsgState.Success,2000,function () {
+                                                classMain.loadOverview();
+                                            });
+                                        }
+                                    })
                                 });
                             });
                             moreList.append(moreItem_4);
@@ -1779,10 +1821,35 @@ var previewImg = {
     }
 };
 
-
 //设置弹出窗体高度
 var setPopSize = function (width, height) {
     var iframe = $(".layui-layer-iframe");
     iframe.css("height", height + 73 + "px");
     iframe.find('iframe').css("height", height + 28 + "px");
+}
+
+// 设置主界面高度
+var isSetPageHeight=false;
+function pageHeightSet() {
+    var scrollH = top.Helper.getClientHeight(); //浏览器显示区域高度
+    //******导航区域设置-begin
+    var domNav = $('.nav');
+    // 设置导航菜单的最大高度
+    domNav.css('max-height', scrollH - 70 + 'px');
+    //******导航区域设置-end
+
+    // 主体区域
+    var domMain = $('.container .iframe-container');
+    domMain.css('height', (isMessage?-34:0)+scrollH - 90 + 'px');
+
+    if(!isSetPageHeight)
+    {
+        $(window).resize(function () {
+            scrollH = top.Helper.getClientHeight(); //浏览器显示区域高度
+            domNav.css('max-height', scrollH - 70 + 'px');//导航
+
+            domMain.css('height', (isMessage?-34:0)+scrollH - 90 + 'px');//主体区域
+        });
+        isSetPageHeight=true;
+    }
 }
