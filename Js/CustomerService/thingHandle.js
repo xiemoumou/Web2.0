@@ -60,10 +60,10 @@ $(function () {
     $("#work_year ul li").on("click",function () {
         thingHandle.init();
     });
+    debugger
+    var rolelist=[{"id":1,name:"客服"},{"id":2,name:"设计师"},{"id":3,name:"车间"}]
+    $("#user_type").DropDownList(rolelist);
 });
-
-temp=[{id:1,name:"aaaa"},{id:1,name:"aaaa"}]
-$("#user_type").DropDownList(temp);
 
 
 
