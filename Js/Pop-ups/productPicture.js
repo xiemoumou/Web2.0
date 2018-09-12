@@ -63,6 +63,7 @@ $(function () {
                     }
                     top.Popup.close("查看成品图");
                     top.Popup.close("编辑成品图");
+                    top.Popup.close("上传成品图");
                 });
             }
             else {

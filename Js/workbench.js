@@ -6,7 +6,7 @@ var roleType = -1;//获取角色
 
 $(function () {
     roleType = top.Helper.Cache.get('roleType');
-    roleType =3;//parseInt(roleType);//获取角色
+    roleType =parseInt(roleType);//获取角色
     if (localStorage.getItem('SysParam'))//从缓存获取字典
     {
         try {
@@ -1125,7 +1125,7 @@ var classMain = {
                         var payStatus = item.inquiryStatus == 4 ? "" : "未支付";
                         //状态
                         function addStatus() {
-                            var status = $('<div class="status"></div>');
+                            var status = $('<div style="margin-left: 8px;" class="status"></div>');
                             if (SysParam.inquiryStatus[item.inquiryStatus]) {
                                 status.append($('<span>' + SysParam.inquiryStatus[item.inquiryStatus].servicerTag + '</span>'));
                             }
@@ -1365,7 +1365,7 @@ var classMain = {
 
                         //状态
                         function addStatus() {
-                            var status = $('<div class="status">' +
+                            var status = $('<div style="margin-left: 8px;" class="status">' +
                                 '<span>' + SysParam.designStatus[item.designStatus].designerTag +'</span>' +
                                 '</div>')
                             itemBody.append(status);
@@ -1616,7 +1616,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //重新报价
-                            if(true ||item.inquiryStatus==2 && item.lastQuote>0)
+                            if(item.inquiryStatus==2 && item.lastQuote>0)
                             {
                                 var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">重新报价</button>');
                                 btn.on('click',function () {
@@ -1634,11 +1634,15 @@ var classMain = {
                             //处理议价
                             if(item.inquiryStatus==5 || (item.inquiryStatus==6 && item.lastQuote==0))
                             {
-                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">处理议价</button>');
+                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-userPeriod="'+item.workshopUserPeriod+'" data-basePrice="'+item.workshopBasePrice+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">处理议价</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
                                     var orderid = $(this).attr('data-orderid');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
+                                    var userPeriod=$(this).attr("data-userPeriod");//客户期望工期
+                                    var basePrice=$(this).attr("data-basePrice");//客户低价
+
+                                    top.Popup.open("处理议价",423,266,"./Pop-ups/handBarg.html?customid="+customid+"&userPeriod="+userPeriod+"&basePrice="+basePrice);
 
                                 });
                                 operating.append(btn);
@@ -1652,6 +1656,19 @@ var classMain = {
                                     var orderid = $(this).attr('data-orderid');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
 
+                                    var url=config.WebService()["orderProductInfoAccept_Update"];
+                                    top.Requst.ajaxPost(url,{"customid":customid},true,function (data) {
+                                        if(data.code==200)
+                                        {
+                                            top.Message.show("提示",data.message,MsgState.Success,2000,function () {
+                                                top.classMain.loadOverview(null,null,null,customid);
+                                            });
+                                        }
+                                        else
+                                        {
+                                            top.Message.show("提示",data.message,MsgState.Warning,2000);
+                                        }
+                                    });
                                 });
                                 operating.append(btn);
                             }
@@ -1663,7 +1680,7 @@ var classMain = {
                                     var customid = $(this).attr('data-customid');
                                     var orderid = $(this).attr('data-orderid');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
-
+                                    top.Popup.open("发货",423,230,"./Pop-ups/uploadLogist.html?customid="+customid);
                                 });
                                 operating.append(btn);
                             }
@@ -1676,7 +1693,7 @@ var classMain = {
                                     var customid = $(this).attr('data-customid');
                                     var orderid = $(this).attr('data-orderid');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
-
+                                    window.open("./Pop-ups/logisticsInfo.html?customid="+customid+"&orderid="+orderid);
                                 });
                                 operating.append(btn);
                             }
@@ -1692,7 +1709,7 @@ var classMain = {
                                         var customid = $(this).attr('data-customid');
                                         var orderid = $(this).attr('data-orderid');
                                         var ordersummaryId = $(this).attr('data-ordersummaryId');
-
+                                        OPER.productPicture(customid,'edit');
                                     });
                                     operating.append(btn);
                                 }
@@ -1703,6 +1720,7 @@ var classMain = {
                                         var customid = $(this).attr('data-customid');
                                         var orderid = $(this).attr('data-orderid');
                                         var ordersummaryId = $(this).attr('data-ordersummaryId');
+                                        OPER.productPicture(customid,'edit',"上传成品图");
                                     });
                                     operating.append(btn);
                                 }

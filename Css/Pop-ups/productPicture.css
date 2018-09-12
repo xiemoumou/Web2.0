@@ -16,7 +16,8 @@
 }
 
 #productPicture{
-    margin-left: 62px;
+    display: flex;
+    justify-content: center;
     padding-top: 12px;
 }
 

@@ -17,27 +17,27 @@
 <div class="orderOffer-content">
     <div class="orderOffer">
         <div class="orderOffer-top">
-            <div class="refe-price">客户低价预算：¥ <span>1000000</span></div>
-            <div class="time-limit">客户期望工期： <span>50</span>天</div>
+            <div class="refe-price">客户低价预算：¥ <span id="basePrice">----</span></div>
+            <div class="time-limit">客户期望工期： <span id="userPeriod">--</span>天</div>
         </div>
         <div class="offer-money">
             <span>回应金额：</span>
             <div class="offer-money-left">
-                <input placeholder="填写金额">
+                <input id="price" class="input-money" value="0.00" placeholder="填写金额">
                 <span>元</span>
             </div>
         </div>
         <div class="offer-money-next">
             <span>回应工期：</span>
             <div class="left-next">
-                <input placeholder="填写工期">
+                <input id="period" class="input-number" placeholder="填写工期">
                 <span>天</span>
             </div>
         </div>
     </div>
-    <button class="red-button btn">确认</button>
-    <button class="hollow-button"
-            onclick="parent.layer.closeAll();">取消
+    <button class="red-button btn ok">确认</button>
+    <button class="hollow-button btn-h"
+            onclick="top.Popup.close('处理议价');">取消
     </button>
 </div>
 
@@ -49,7 +49,7 @@
     document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
-    document.write('<script type="text/javascript" src="../../Js/CustomerService/Pop-ups/handBarg.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Js/Pop-ups/handBarg.js' + VER + '" ><\/script>');
 </script>
 </body>
 </html>

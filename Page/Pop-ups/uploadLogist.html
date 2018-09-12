@@ -76,7 +76,7 @@
     </div>
     <div class="row floor">
         <button class="btn ok">确认</button>
-        <button class="btn-h" onclick="top.Popup.close('编辑物流信息');top.Popup.close('上传物流信息');">取消</button>
+        <button class="btn-h" onclick="top.Popup.close('编辑物流信息');top.Popup.close('上传物流信息');top.Popup.close('发货');">取消</button>
     </div>
 </div>
 
@@ -126,17 +126,19 @@
                 "company": expressCom_val,
                 "logisticsid": expressNum_val
             },true, function (data) {
-                if(data.code==200) {
-                    top.Message.show("提示", data.message, MsgState.Success, 2000,function () {
-                        if (parent.logistics.getData)
-                        {
-                            parent.logistics.getData();
-                        }
+                if(data.code==200)
+                {
+                    top.Message.show("提示",data.message,MsgState.Success,2000,function () {
+                        top.classMain.loadOverview(null,null,null,customid);
+
+                        top.Popup.close('编辑物流信息');
+                        top.Popup.close('上传物流信息');
+                        top.Popup.close('发货');
                     });
                 }
                 else
                 {
-                    top.Message.show("提示", data.message, MsgState.Fail, 2000);
+                    top.Message.show("提示",data.message,MsgState.Warning,2000);
                 }
             });
         });

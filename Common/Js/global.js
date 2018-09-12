@@ -35,6 +35,7 @@ var config = {
             "orderSupplementary_Search":that.Domain.systemApi +"/dynamo/order/orderSupplementary_Search",//搜索
             "orderDesignInfo_Update":that.Domain.systemApi +"/dynamo/order/orderDesignInfo_Update",//设计师抢单
             "orderSupplementaryCount_Query":that.Domain.systemApi +"/dynamo/order/orderSupplementaryCount_Query",//统计
+            "orderProductInfoAccept_Update":that.Domain.systemApi +"/dynamo/order/orderProductInfoAccept_Update",//接受生产
 
 
 
@@ -816,7 +817,7 @@ var OPER={
             }
         });
     },
-    productPicture:function (customid,operType) {
+    productPicture:function (customid,operType,title) {
         //成品图
         if(operType=="prev")
         {
@@ -824,7 +825,8 @@ var OPER={
         }
         else if(operType=="edit")
         {
-            Popup.open("编辑成品图", 482, 246, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
+            title=title?title:"编辑成品图";
+            Popup.open(title, 482, 246, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
         }
     }
 };
