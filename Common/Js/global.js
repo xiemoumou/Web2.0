@@ -182,7 +182,7 @@ function inputCheck() {
         ConvertToInt($(this)[0]);
     });
     function ConvertToInt(ob) {
-        ob.value = ob.value.replace(/[^0-9]/g, '');
+        ob.value = ob.value.replace(/[^0-9.]/g, '');
     }
 
     // ************* 验证只允许输入正整数-end

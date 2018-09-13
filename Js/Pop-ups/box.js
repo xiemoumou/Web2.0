@@ -464,5 +464,5 @@ var box = {
 };
 
 function ConvertToInt(ob) {
-    ob.value = ob.value.replace(/[^0-9]/g, '');
+    ob.value = ob.value.replace(/[^0-9.]/g, '');
 }

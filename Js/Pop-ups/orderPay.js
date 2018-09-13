@@ -20,7 +20,7 @@ var pricing = {
     },
     save:function () {
         var data={};
-        var payPrice=$("#payPrice").val().replace(/[^0-9]/g, '');
+        var payPrice=$("#payPrice").val().replace(/[^0-9.]/g, '');
         payPrice=parseFloat(payPrice);
 
         data["payPrice"]=payPrice;//支付金额

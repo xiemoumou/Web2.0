@@ -1671,9 +1671,7 @@ var classMain = {
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
                                     var inquiryRound=$(this).attr('data-inquiryRound');//询价轮次
                                     var lastQuote=$(this).attr("data-lastQuote");//上次报价
-
                                     top.Popup.open("报价",423,266,"./Pop-ups/orderOffer.html?customid="+customid+"&inquiryRound="+inquiryRound+"&lastQuote="+lastQuote);
-
                                 });
                                 operating.append(btn);
                             }

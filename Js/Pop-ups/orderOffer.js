@@ -10,7 +10,7 @@ $(function () {
 
     $('.ok').on('click', function () {
         var quotePrice = $("#quotePrice").val() || 0;
-        quotePrice = parseFloat(quotePrice.replace(/[^0-9]/g, ''));//报价
+        quotePrice = parseFloat(quotePrice.replace(/[^0-9.]/g, ''));//报价
         var quotePeriod = $("#quotePeriod").val() || 0;
         quotePeriod = parseInt(quotePeriod);//工期
 
