@@ -11,7 +11,8 @@ $(function () {
         var popH = scrollH - 100 > 410 ? 410 : scrollH - 100;
         top.Popup.open("产品生产参数编辑", 900, popH, "./CustomerService/createOrder.html?operType=edit&customid=" + customid);
     })
-    
+
+
     $(".address-add").on('click', function () {//添加地址弹窗
         details.openress();
     });
@@ -36,7 +37,7 @@ $(function () {
         details.leavBtn();
     });
 
-    details.detailsDetdata();
+    details.detailsDetdata();//请求详情
 
     details.editDetails();
 
@@ -165,9 +166,10 @@ var details = {
             "customId": customid,
         }
 
-
         var url = config.WebService()["orderSummaryInfo_Query"];
         Requst.ajaxGet(url, data, true, function (data) {
+            if (data.data!=''){
+
             var createTime = data.data.createTime || "";//订单创建时间
             var customerWang = data.data.customerWang || "";//旺旺号
             var shop = data.data.shop || "";//客源
@@ -196,11 +198,12 @@ var details = {
             var currentPrice = data.data.currentPrice || "";//参考价格
             var currentPeriod = data.data.currentPeriod || "";//参考工期
             var orderid = data.data.orderid || "";//订单ID
-            that.orderid = data.data.designInfo[0].orderid;//订单id
-            that.id = data.data.designInfo[0].id;//设计方案表id
-            that.ordersummaryId = data.data.designInfo[0].ordersummaryId;//订单表id
-            that.version = data.data.designInfo[0].version;//设计方案版本号
-
+            if (data.data.designInfo!=''){
+                that.orderid = data.data.designInfo[0].orderid;//订单id
+                that.id = data.data.designInfo[0].id;//设计方案表id
+                that.ordersummaryId = data.data.designInfo[0].ordersummaryId;//订单表id
+                that.version = data.data.designInfo[0].version;//设计方案版本号
+            }
 
              if (top.SysParam.inquiryStatus[data.data.inquiryStatus]) {
                 $(".orderComp").text(top.SysParam.inquiryStatus[data.data.inquiryStatus]);
@@ -409,6 +412,9 @@ var details = {
             uploadfile.uploadPhoto('prod_refe', 1, srcArry.srcArryProd());//生产参考图回显
             uploadfile.uploadFile('details_encl', 1, srcArry.accessoryFile(), true)//设计附件回显
 
+
+
+     }
         });
     },
     btnModify: function () {//设计提交修改
@@ -489,55 +495,58 @@ var details = {
 
         Requst.ajaxGet(url, data, true, function (data) {
             $(".leav-content").html('');//清空
-           that.messageNo = data.data[0].messageNo;
-            that.targetId = data.data[0].targetId;//设计师Id
-           $(".leav-title-right-text em").text(data.data[0].version);//版本号沟通中
-            for (var i = 0; i < data.data.length; i++) {
-                var srcMan = [];//留言显示图片
-                var messageFile = [];//留言显示附件
-                if (data.data[i].initialMessageImage1) {
-                    srcMan.push({
-                        "orgSrc": 'http://'+data.data[i].middleMessageImage1,
-                        "thumbnail": 'http://'+data.data[i].smallMessageImage1,
-                    });
+            if (data.data!=''){
+                that.messageNo = data.data[0].messageNo;
+                that.targetId = data.data[0].targetId;//设计师Id
+                $(".leav-title-right-text em").text(data.data[0].version);//版本号沟通中
+                for (var i = 0; i < data.data.length; i++) {
+                    var srcMan = [];//留言显示图片
+                    var messageFile = [];//留言显示附件
+                    if (data.data[i].initialMessageImage1) {
+                        srcMan.push({
+                            "orgSrc": 'http://'+data.data[i].middleMessageImage1,
+                            "thumbnail": 'http://'+data.data[i].smallMessageImage1,
+                        });
 
+                    }
+                    if (data.data[i].messageFile) {
+                        messageFile.push({
+                            "uri": 'http://' + data.data[i].messageFile,
+                            "name": data.data[i].messageFile,
+                        });
+                    }
+
+                    str = "<div class='leav-reg'>" +
+                        "<div class='leav-reg-title'>" +
+                        "<span class='line'></span>" +
+                        "<span class='txt'>版本" + "<a class='txt-num'>" + data.data[i].version + "</a>" + "</span>" +
+                        "<span class='line'></span>" +
+                        "</div>" +
+                        "<div class='leav-text-first'>" +
+                        "<div class='TextList-left'>" +
+                        "<span>我</span>回复" +
+                        "<a>方案师</a>：" +
+                        "</div>" +
+                        "<div class='TextList-right'>" +
+                        "<span>" + data.data[i].leaveTime + "</span>" +
+                        "</div>" +
+                        "</div>" +
+                        "<div class='leav-text-second'>" + data.data[i].messageContent + "</div>" +
+                        "<div class='leav-reg-img'>" +
+                        "<div id='leav_img_" + i + "' data-type='reference_image' data-customid='" + customid + "'>" +
+                        "</div>" +
+                        "</div>" +
+                        "<div class='leav-reg-file'>" +
+                        "<div id='leav_file_" + i + "' data-type='' data-customid='" + customid + "'>" +
+                        "</div>" +
+                        "</div>" +
+                        "</div>"
+
+                    $(".leav-content").append(str);
+                    uploadfile.uploadPhoto('leav_img_' + i, 1, srcMan, false);//留言显示图片
+                    uploadfile.uploadFile('leav_file_' + i, 1, messageFile, false, "", "", true);//留言附件回显
                 }
-                if (data.data[i].messageFile) {
-                    messageFile.push({
-                        "uri": 'http://' + data.data[i].messageFile,
-                        "name": data.data[i].messageFile,
-                    });
-                }
 
-                 str = "<div class='leav-reg'>" +
-                    "<div class='leav-reg-title'>" +
-                    "<span class='line'></span>" +
-                    "<span class='txt'>版本" + "<a class='txt-num'>" + data.data[i].version + "</a>" + "</span>" +
-                    "<span class='line'></span>" +
-                    "</div>" +
-                    "<div class='leav-text-first'>" +
-                    "<div class='TextList-left'>" +
-                    "<span>我</span>回复" +
-                    "<a>方案师</a>：" +
-                    "</div>" +
-                    "<div class='TextList-right'>" +
-                    "<span>" + data.data[i].leaveTime + "</span>" +
-                    "</div>" +
-                    "</div>" +
-                    "<div class='leav-text-second'>" + data.data[i].messageContent + "</div>" +
-                    "<div class='leav-reg-img'>" +
-                    "<div id='leav_img_" + i + "' data-type='reference_image' data-customid='" + customid + "'>" +
-                    "</div>" +
-                    "</div>" +
-                    "<div class='leav-reg-file'>" +
-                    "<div id='leav_file_" + i + "' data-type='' data-customid='" + customid + "'>" +
-                    "</div>" +
-                    "</div>" +
-                    "</div>"
-
-                $(".leav-content").append(str);
-                uploadfile.uploadPhoto('leav_img_' + i, 1, srcMan, false);//留言显示图片
-                uploadfile.uploadFile('leav_file_' + i, 1, messageFile, false, "", "", true);//留言附件回显
             }
 
 
@@ -604,13 +613,11 @@ var details = {
 
         Requst.ajaxPost(url, data, true, function (data) {
 
-
         });
     }
 
 
 }
-
 
 
 $('.invoice').on('click',function (title) {

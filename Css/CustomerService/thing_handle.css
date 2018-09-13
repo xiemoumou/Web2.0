@@ -144,10 +144,11 @@ body{
 }
 .user-type{
     margin-top: 30px;
+    text-align: center;
 }
-#user_type{
-    margin-left: 31px;
-}
+/*#user_type{*/
+    /*margin-left: 31px;*/
+/*}*/
 #user_type .lg-dropdownlist{
     border: none;
 }
@@ -156,4 +157,7 @@ body{
 }
 #user_type .lg-dropdownlist span.val{
     text-align: center;
+}
+#user_type  .lg-dropdownlist ul{
+    overflow-y: initial;
 }

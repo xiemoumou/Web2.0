@@ -56,6 +56,7 @@ $(function () {
 
 var desigDetails = {
     desiGet: function () {
+        debugger
         var that = this;
         data = {
             "customId": customid,

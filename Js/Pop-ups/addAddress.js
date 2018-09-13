@@ -54,6 +54,7 @@ var dist = {
         });
     },
     Ressget: function () {
+        debugger
 
         var name = $('#recipient').val();
         var mobilephone = $('#tel').val();
@@ -111,7 +112,7 @@ var dist = {
                 var url = config.WebService()["logistics_Info"];
                 Requst.ajaxGet(url, data, true, function (data) {
 
-
+s
 
                 });
                     //}
