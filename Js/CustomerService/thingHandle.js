@@ -14,15 +14,13 @@ $(function () {
         DaySelector: "#end_day"
     });
 
-    $(".deliver-next-btn").on("click",function () {
+    $(".deliver-work").on("click",function () {
         rofitSingle.getDataList();
     })
     $(".deliver-btn").on("click",function () {
         giveSingle.getDataList();
     })
-    $("#deliver_work").on('click',function () {
-        rofitSingle.getWorkShop();
-    })
+
     // //设置红点数值
     // var redDot = $("#redDot");
     // parent.Main.redDot(function (data) {
@@ -60,7 +58,7 @@ $(function () {
     $("#work_year ul li").on("click",function () {
         thingHandle.init();
     });
-    debugger
+
     var rolelist=[{"id":1,name:"客服"},{"id":2,name:"设计师"},{"id":3,name:"车间"}]
     $("#user_type").DropDownList(rolelist);
 });
@@ -117,16 +115,18 @@ var thingHandle={
 };
 var rofitSingle= {
     getDataList: function () {
+        debugger
         var url = config.WebService()["exportYieldList"];
         //请求数据
-        var bonus_year = $("#bonus_year input").val();//获取年
-        var bonus_month = $("#bonus_month input").val();//获取月份
+        var bonus_year = $("#work_year input").val();//获取年
+        var bonus_month = $("#work_month input").val();//获取月份
         var bonus_date = bonus_year+"-"+bonus_month;
+        var val_data = $("#user_type .lg-dropdownlist span").attr('data-value');
 
         data = {
            "year": bonus_year,
             "month": bonus_month,
-            "roletype": 1,
+            "roletype": val_data,
         }
 
         Requst.ajaxGet(url, data, true, function (data) {
@@ -139,42 +139,42 @@ var rofitSingle= {
 
 
    },
-    getWorkShop: function () {
-        var userInfo = top.Main.userInfo;//获取用户信息
-        rofitSingle.getUrl = parent.Common.getUrl();//获取请求接口的URL
-        rofitSingle.getDataInterface = parent.Common.getDataInterface();//获取请求数据的接口
-        rofitSingle.functionalInterface = parent.Common.functionalInterface();//获取操作功能的接口
-        var url = rofitSingle.getUrl["order"] + rofitSingle.getDataInterface["exportIncomeList"];//导出车间收益单
-        //请求数据
-        var bonus_year = parseInt($("#work_year input").val());//获取年
-        var bonus_month = parseInt($("#work_month input").val());//获取月份
-        //var bonus_date = bonus_year+"-"+bonus_month;
-        
-        data = {
-            "year": bonus_year,
-            "month": bonus_month,
-            "userid": userInfo.userid,
-            "token": userInfo.token,
-            "roleType":parseInt(userInfo.roletype),
-            "commandCode":300,
-        }
-        Common.ajax(url, data, true, function (data) {
-
-            if (data) {
-                    Common.download(data.addRess);
-
-                if(data.code!=0) {
-                    Common.msg(data.msg,null,2000);
-                }
-
-            }
-        });
-
-
-
-
-
-    }
+    // getWorkShop: function () {
+    //     var userInfo = top.Main.userInfo;//获取用户信息
+    //     rofitSingle.getUrl = parent.Common.getUrl();//获取请求接口的URL
+    //     rofitSingle.getDataInterface = parent.Common.getDataInterface();//获取请求数据的接口
+    //     rofitSingle.functionalInterface = parent.Common.functionalInterface();//获取操作功能的接口
+    //     var url = rofitSingle.getUrl["order"] + rofitSingle.getDataInterface["exportIncomeList"];//导出车间收益单
+    //     //请求数据
+    //     var bonus_year = parseInt($("#work_year input").val());//获取年
+    //     var bonus_month = parseInt($("#work_month input").val());//获取月份
+    //     //var bonus_date = bonus_year+"-"+bonus_month;
+    //
+    //     data = {
+    //         "year": bonus_year,
+    //         "month": bonus_month,
+    //         "userid": userInfo.userid,
+    //         "token": userInfo.token,
+    //         "roleType":parseInt(userInfo.roletype),
+    //         "commandCode":300,
+    //     }
+    //     Common.ajax(url, data, true, function (data) {
+    //
+    //         if (data) {
+    //                 Common.download(data.addRess);
+    //
+    //             if(data.code!=0) {
+    //                 Common.msg(data.msg,null,2000);
+    //             }
+    //
+    //         }
+    //     });
+    //
+    //
+    //
+    //
+    //
+    // }
 
 }
 

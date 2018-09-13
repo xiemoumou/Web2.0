@@ -148,3 +148,12 @@ body{
 #user_type{
     margin-left: 31px;
 }
+#user_type .lg-dropdownlist{
+    border: none;
+}
+#user_type .lg-dropdownlist i.select{
+    background: initial;
+}
+#user_type .lg-dropdownlist span.val{
+    text-align: center;
+}
