@@ -557,7 +557,7 @@ var uploadfile = {
                     var progress = diagram.find('.progress');
                     $(progress).find('span').text(percentVal + "%...");
                     if (percentVal == 100) {
-                        $(progress).find('span').text('完成');
+                        $(progress).find('span').text('上传中');
                     }
                 }, function (diagram, data) {
                     //上传成功

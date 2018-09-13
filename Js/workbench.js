@@ -4,6 +4,7 @@
 var SysParam = "";
 var roleType = -1;//获取角色
 var isMessage=false;//是否有消息
+var Cache={};//全局缓存
 
 $(function () {
     roleType = top.Helper.Cache.get('roleType');
@@ -486,12 +487,17 @@ var classMain = {
 
         // 刷新车间的剩余发货时间
         if (roleType == 3) {
-            var t = setInterval(function () {
+            setInterval(function () {
                 var timeleft = $('.timeleft');
                 for (var i = 0; i < timeleft.length; i++) {
-                    ////////////////////// ////////////////////// ////////////////////// //////////////////////
+                   var domItem=timeleft.attr('data-deadlineTime');
+                    if(domItem && domItem!='null')
+                    {
+                        var countdown=Helper.Date.countdown(domItem);
+                        $(timeleft.find('em')).text(countdown);
+                    }
                 }
-            }, 60000)
+            }, 60000);
         }
 
         //旋转图标
@@ -1423,13 +1429,14 @@ var classMain = {
                             var operating = $('<div class="operating"></div>');
                             //立即抢单
                             if (item.designStatus==0||item.designStatus==1) {
-                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">立即抢单</button>');
+                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-designId="'+item.designId+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">立即抢单</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
-                                    var orderid = $(this).attr('data-orderid');
+                                    var designId = $(this).attr('data-designId');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
+
                                     var url=config.WebService()["orderDesignInfo_Update"];
-                                    Requst.ajaxPost(url,{"wId":customid},true,function (data) {
+                                    Requst.ajaxPost(url,{"wId":designId},true,function (data) {
                                         if(data.code==200)
                                         {
                                            Message.show('提示',data.message,MsgState.Success,2000,function () {
@@ -1529,7 +1536,17 @@ var classMain = {
                                 itemHead_l.append($('<span class="renew">续订</span>'));
                             }
 
-                            var timeleft = $('<span class="timeleft"><i class="clock-icon"></i>剩余发货时间：<em>--  天  --  小时  --  分钟</em></span>');
+                            var deadlineTime=item.deadlineTime;
+                            if(deadlineTime)
+                            {
+                                deadlineTime= top.Helper.Date.countdown(deadlineTime);
+                            }
+                            else
+                            {
+                                deadlineTime="--  天  --  小时  --  分钟";
+                            }
+
+                            var timeleft = $('<span data-deadlineTime="'+item.deadlineTime+'" class="timeleft"><i class="clock-icon"></i>剩余发货时间：<em>'+deadlineTime+'</em></span>');
                             itemHead_l.append(timeleft);
                             // 数据头右侧
 

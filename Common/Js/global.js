@@ -18,7 +18,7 @@ var config = {
             "createOrderId": that.Domain.systemApi + "/dynamo/order/createCustomid",//创建订单id
             "orderSummaryInfo_Insert": that.Domain.systemApi + "/dynamo/order/orderSummaryInfo_Insert",//新建订单
             "autoPrice":that.Domain.systemApi + "/dynamo/order/auto_price",//自动报价
-            "sendDesign":that.Domain.systemApi + "/dynamo/order/sendDesign",//分配设计
+            "sendDesign":that.Domain.systemApi + "/design/sendDesign",//分配设计
             "order_Finally":that.Domain.systemApi + "/dynamo/order/order_Finally",//定价
             "order_PayFinally":that.Domain.systemApi + "/dynamo/order/order_PayFinally",//确认支付
             "logisticsCompany_Query":that.Domain.systemApi + "/dynamo/order/logisticsCompany_Query",//获取快递公司列表
@@ -43,7 +43,10 @@ var config = {
             "batchMarkedUpRead":that.Domain.systemApi +"/dynamo/message/batchMarkedUpRead",//全部标记已读
             "orderBoxInsert_Insert":that.Domain.systemApi +"/dynamo/order/orderBoxInsert_Insert",//保存盒子
             "orderBoxAll_Query":that.Domain.systemApi +"/dynamo/order/orderBoxAll_Query",//获取盒子信息
-
+            "orderProductInfoWaitProduct":that.Domain.systemApi +"/dynamo/order/orderProductInfoWaitProduct",//拉取列表与数量统计
+            "orderDesignInfoSearch_Query":that.Domain.systemApi +"/dynamo/order/orderDesignInfoSearch_Query",//查询转接订单
+            "orderSummaryInfoByOrderid":that.Domain.systemApi +"/dynamo/order/orderSummaryInfoByOrderid",//转接到列表
+            "orderDesignInfoDesignTransfer_Update":that.Domain.systemApi +"/dynamo/order/orderDesignInfoDesignTransfer_Update",//转接操作
 
 
 
@@ -287,6 +290,30 @@ function inputCheck() {
 //工具类
 var Helper = {
     Date: {
+        countdown:function (tagDate) {
+            //倒计时
+            var now = new Date();
+            var endDate = new Date(tagDate);
+            var leftTime=endDate.getTime()-now.getTime();
+            var dd = parseInt(leftTime / 1000 / 60 / 60 / 24, 10);//计算剩余的天数
+            var hh = parseInt(leftTime / 1000 / 60 / 60 % 24, 10);//计算剩余的小时数
+            var mm = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟数
+            var ss = parseInt(leftTime / 1000 % 60, 10);//计算剩余的秒数
+            dd = checkTime(dd);
+            hh = checkTime(hh);
+            mm = checkTime(mm);
+            ss = checkTime(ss);//小于10的话加0
+
+            function checkTime(i)
+            {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+            
+            return dd+"天 "+hh+" 小时 "+mm+" 分钟";
+        },
         getDate: function (format) {
             format=format?format:'yyyy-MM-dd hh:mm:ss';
             var date = new Date();

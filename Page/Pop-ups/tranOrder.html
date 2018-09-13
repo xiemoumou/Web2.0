@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>转接订单</title>
-    <script id="ver" src="../../../Common/Js/version.js" type="text/javascript"></script>
+    <script id="ver" src="../../Common/Js/version.js" type="text/javascript"></script>
     <script>
         var random = Math.random();
         var versionDoc = document.getElementById("ver");
         versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
-        document.write('<link href="../../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
-        document.write('<link href="../../../Css/CustomerService/tranOrder.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Css/Pop-ups/tranOrder.css' + VER + '" rel="stylesheet" />');
         document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
     </script>
 </head>
@@ -34,7 +34,7 @@
         </div>
         <div class="floor">
             <button class="red-button ok btn" style="margin-right: 10px" onclick="submit();">确定</button>
-            <button onclick="parent.layer.closeAll()" style="margin-left: 10px" class="hollow-button btn-h">取消</button>
+            <button onclick="top.Popup.close('转接订单');" style="margin-left: 10px" class="hollow-button btn-h">取消</button>
         </div>
     </div>
  </div>
@@ -43,17 +43,16 @@
 
 
  <script>
-     document.write('<script type="text/javascript" src="../../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
-     document.write('<script type="text/javascript" src="../../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
-     document.write('<script type="text/javascript" src="../../../Common/Js/global.js' + VER + '" ><\/script>');
-     document.write('<script type="text/javascript" src="../../../Common/Lib/jqueryPagination/js/jquery.pagination.min.js' + VER + '" ><\/script>');
+     document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
+     document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
+     document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
  </script>
 <script type="text/javascript">
     var status=0;
-    var data=null;
+    var data=top.Cache["orderAdmin"];
     $(function () {
-        status=top.Helper.getUrlParam("tabstatus");
-        if(status=="1")//车间
+        status=Helper.getUrlParam("tabstatus");
+        if(status=="3")//车间
         {
             $(".ord-label").text("源车间");
             $(".trans-name").text("接受转接的车间：");
@@ -67,22 +66,39 @@
             $("#select_name").text("请选择方案师");
             $(".select-mag").text("请选择转接的方案师");
         }
+        else if(status=="1")//客服
+        {
+            $(".ord-label").text("源客服");
+            $(".trans-name").text("接受转接的客服：");
+            $("#select_name").text("请选择客服");
+            $(".select-mag").text("请选择转接的客服");
+        }
 
-        data=parent.document.getElementById("cont_iframe").contentWindow.orderAdmin.data;
-        var index=Common.getUrlParam('index',true);
+        var index=Helper.getUrlParam('index');
         index=parseInt(index);
         data=data[index];
 
-        var orgName=data.workshopname||data.disignername;//原名称
+        var orgName=data.workshopname||data.disignername||"----";//原名称
         $("#org_nikename").text(orgName);
-        var account=data.account;//账号
+        var account=data.mobilePhone||data.email;//账号
         $("#org_account").text(account);
-        var transList=data.translist;//转接到列表
+
+        var transList=null;//转接到列表
+        var url=config.WebService()["orderSummaryInfoByOrderid"];
+        top.Requst.ajaxGet(url,{"orderid":data.orderid,"roletype":parseInt(status)},false,function (data) {
+            if(data.code==200)
+            {
+                transList=data.data;
+            }
+        });
+
+
+
         var transSelect=$("#translist");
         for(var i=0;i<transList.length;i++)
         {
             var item=transList[i];
-            var option=$("<option value='"+item.transaccount+"'>"+item.transname+"</option>");
+            var option=$("<option value='"+item.id+"'>"+item.nickName+"</option>");
             transSelect.append(option);
         }
     });
@@ -92,7 +108,7 @@
         if(selVal=="-1")
         {
             var msg="";
-            if(status=="1")//车间
+            if(status=="3")//车间
             {
                 msg="请选择转接的车间";
             }
@@ -100,42 +116,35 @@
             {
                 msg="请选择转接的方案师";
             }
-            Common.msg(msg,null,2000);
+            else if(status=="1")//客服
+            {
+                msg="请选择转接的客服";
+            }
+            top.Message.show("提示",msg,MsgState.Warning,2000);
             return;
         }
-        var userInfo = top.Main.userInfo;//获取用户信息
+
         var params = {
             "orderid": data.orderid,
-            "userId": userInfo.userid,
-            "token": userInfo.token,
-            "roleType": parseInt(userInfo.roletype),
-            "commandCode":1,
-            "status":status,
-            "transaccount":selVal,
+            "id": selVal
         }
+
+        top.Cache["tranOrder_orderid"]=data.orderid;
         //获取订单列表
-        var url = Common.getUrl()['order'] + Common.getDataInterface()["managerOrderRevice"];
-
-        Common.ajax(url, params,true, function (response) {
-            if (response) {
-
-                if(response.status.code==0)
-                {
-                    Common.msg(response.status.msg,200,2000,function () {
-                        if (parent.document.getElementById("cont_iframe").contentWindow.orderAdmin) {
-                            parent.document.getElementById("cont_iframe").contentWindow.orderAdmin.getData(data.orderid);
-
-                        }
-                        parent.layer.closeAll();
-
-                    });
-
-                }
-                else
-                {
-                    Common.msg(response.status.msg,null,2000);
-                    parent.layer.closeAll();
-                }
+        var url=config.WebService()["orderDesignInfoDesignTransfer_Update"];
+        top.Requst.ajaxPost(url, params,true, function (data) {
+            if(data.code==200)
+            {
+                top.Message.show("提示",data.message,MsgState.Success,2000,function () {
+                    if (parent.document.getElementById("iframe_订单管理").contentWindow.orderAdmin) {
+                        parent.document.getElementById("iframe_订单管理").contentWindow.orderAdmin.getData(top.Cache["tranOrder_orderid"]);
+                    }
+                    top.Popup.close('转接订单');
+                });
+            }
+            else
+            {
+                top.Message.show("提示",data.message,MsgState.Warning,2000);
             }
         });
     }

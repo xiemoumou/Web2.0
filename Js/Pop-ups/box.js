@@ -320,8 +320,9 @@ var box = {
             tag.find('.img img').attr('src', "../../Image/box/thumbnail/" + item.tumbnail2);
             tag.find('.color span').text(item.color);
             tag.find('.texture span').text(item.name);
-            tag.find('.num input').text(item.amount||1);//数量
+            //tag.find('.num input').text(item.amount||1);//数量
             tag.find('.size span').text(item.length + '*' + item.weight + '*' + item.height);
+            tag.find('.money input').val(item.price);
             $(".add-box-list").addClass('hide');
         }
 
@@ -342,7 +343,6 @@ var box = {
         item.append(img);
         img.on('click', function () {
             var obj = $(this);
-            debugger
             parent.previewImg.create(obj.attr('data-src'));
             parent.previewImg.show();
         });
