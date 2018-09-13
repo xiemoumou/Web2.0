@@ -1,9 +1,9 @@
 $(function () {
    $(".red-button").on('clcik',function () {
-       
+       train.Trainbtn();
    });
 
-    train.Trainbtn();
+    train.Traindata();
 });
 
 
@@ -37,10 +37,7 @@ var train = {
     },
     Trainbtn: function () {
 
-
-
         var Data_code =  JSON.stringify(top.Cache['train-data']);
-
         var data ={
             "datas":Data_code,
         }
@@ -50,8 +47,6 @@ var train = {
         });
 
     }
-
-
 
 
 
