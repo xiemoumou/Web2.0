@@ -352,6 +352,7 @@ body {
 }
 .rece-type{
     font-size: 14px;
+    display: inline-block;
 }
 .rece-first,.rece-second{
     display: inline-block;

@@ -1,11 +1,20 @@
+var customid = Helper.getUrlParam('customid') || "";//获取订单号
+
 $(function () {
-   workShop.workGet();
+    //workShop.workGet();
+
+    $(".draft-title-left").on('click', function () {
+        workShop.Exportsing();
+    })
+
+    //workShop.code();
 });
+
 
 var workShop = {
     workGet: function () {
         data = {
-            "customId": 26,
+            "customId": customid,
         }
 
 
@@ -36,10 +45,11 @@ var workShop = {
             var produceMemo = data.data.produceMemo || "";//生产备注
             var currentPrice = data.data.currentPrice || "";//参考价格
             var currentPeriod = data.data.currentPeriod || "";//参考工期
+            var orderid = data.data.orderid || "";//订单号
 
 
             $(".time-num").text(createTime);//订单创建时间
-            $(".orderNum").text('2051777045010001');//订单号
+            $(".orderNum").text(orderid);//订单号
             $(".order-img img").attr('src', initialGoodsImage);//产品图
             $(".attr-1").text(goodsClass);//属性 产品类别
             $(".attr-2").text(material);//属性 产品材质
@@ -57,16 +67,16 @@ var workShop = {
             $(".offer-money").text(lastQuote);//上次报价
             $(".offertime").text(lastPeriod);//工期
             $(".design-rema textarea").text(designMemo);//设计备注
-            $(".dist-text").text(produceMemo==''?'暂无':true);//生产要求
+            $(".dist-text").text(produceMemo == '' ? '暂无' : true);//生产要求
             $(".quot-num").text(currentPrice);//参考价格
             $(".quot-day").text(currentPeriod);//参考工期
-            $(".cont").text(data.data.name||"");//收货人姓名
-            $(".phone").text(data.data.mobilephone||"");//收货联系电话
-            $(".zip-code").text(data.data.postcode||"");//邮编
-            $(".area").text(data.data.province+data.data.city+data.data.county||"");//省市县
-            $(".detailed").text(data.data.detail_address||"");//详细地址
-            $(".distRefe").attr('src',data.data.initialGoodsImage)//生产参考图
-            $(".prod-text").text(produceMemo==''?'暂无':true);//点详情显示生产要求
+            $(".cont").text(data.data.name || "");//收货人姓名
+            $(".phone").text(data.data.mobilephone || "");//收货联系电话
+            $(".zip-code").text(data.data.postcode || "");//邮编
+            $(".area").text(data.data.province + data.data.city + data.data.county || "");//省市县
+            $(".detailed").text(data.data.detail_address || "");//详细地址
+            $(".distRefe").attr('src', data.data.initialGoodsImage)//生产参考图
+            $(".prod-text").text(produceMemo == '' ? '暂无' : true);//点详情显示生产要求
 
             if (deadline <= 5) {//急单
                 $(".emer").removeClass('hide');
@@ -74,13 +84,13 @@ var workShop = {
                 $(".emer").addClass('hide');
             }
 
-            function details (srcArray) {
+            function details(srcArray) {
                 srcArray = [];//参考图
                 for (var i = 1; i <= 3; i++) {
                     if (data.data['initialReferenceImage' + i]) {
                         srcArray.push({
-                            "orgSrc": 'http://'+data.data['initialReferenceImage' + i],
-                            "thumbnail": 'http://'+data.data['smallReferenceImage' + i]
+                            "orgSrc": 'http://' + data.data['initialReferenceImage' + i],
+                            "thumbnail": 'http://' + data.data['smallReferenceImage' + i]
                         });
 
                     }
@@ -89,13 +99,13 @@ var workShop = {
 
             }
 
-            function detailsProd (srcArray) {
+            function detailsProd(srcArray) {
                 srcArray = [];//生产参考图
                 for (var i = 1; i <= 3; i++) {
                     if (data.data['initialReferenceImage' + i]) {
                         srcArray.push({
-                            "orgSrc": 'http://'+data.data['initialReferenceImage' + i],
-                            "thumbnail": 'http://'+data.data['smallReferenceImage' + i]
+                            "orgSrc": 'http://' + data.data['initialReferenceImage' + i],
+                            "thumbnail": 'http://' + data.data['smallReferenceImage' + i]
                         });
 
                     }
@@ -104,13 +114,13 @@ var workShop = {
 
             }
 
-            function detaProd (srcArray) {
+            function detaProd(srcArray) {
                 srcArray = [];//详情参考图
                 for (var i = 1; i <= 3; i++) {
                     if (data.data['initialReferenceImage' + i]) {
                         srcArray.push({
-                            "orgSrc": 'http://'+data.data['initialReferenceImage' + i],
-                            "thumbnail": 'http://'+data.data['smallReferenceImage' + i]
+                            "orgSrc": 'http://' + data.data['initialReferenceImage' + i],
+                            "thumbnail": 'http://' + data.data['smallReferenceImage' + i]
                         });
 
                     }
@@ -119,13 +129,13 @@ var workShop = {
 
             }
 
-            function detaProdRefe (srcArray) {
+            function detaProdRefe(srcArray) {
                 srcArray = [];//详情生产参考图
                 for (var i = 1; i <= 3; i++) {
                     if (data.data['initialReferenceImage' + i]) {
                         srcArray.push({
-                            "orgSrc": 'http://'+data.data['initialReferenceImage' + i],
-                            "thumbnail": 'http://'+data.data['smallReferenceImage' + i]
+                            "orgSrc": 'http://' + data.data['initialReferenceImage' + i],
+                            "thumbnail": 'http://' + data.data['smallReferenceImage' + i]
                         });
 
                     }
@@ -133,11 +143,36 @@ var workShop = {
                 }
 
             }
+
             uploadfile.uploadPhoto('details_diagram', '', details(), true);//参考图回显
             uploadfile.uploadPhoto('details_prod', '', detailsProd(), true);//生产参考图回显
             uploadfile.uploadPhoto('deta_prod', '', detaProd(), true);//点详情显示参考图
             uploadfile.uploadPhoto('deta_prod_refe', '', detaProdRefe(), true);//点详情显示生产参考图
 
         })
+    },
+    Exportsing: function () {//下载生产单
+        data = {
+            "customId": customid,
+        }
+        var url = config.WebService()["downManOrder"];
+        Requst.ajaxGet(url, data, true, function (data) {
+            if (data.code == 200) {
+                Helper.download(data.data);
+            }
+        });
+    },
+    code: function () {//测试报价返回自动报价训练库
+        data = {
+            "customid": 2051778645010001,
+            "quotePrice": 1000,
+            "quotePeriod": 10,
+            "rounds": 1,
+        }
+
+        var url = config.WebService()["orderQuoteInfo_Insert"];
+        Requst.ajaxGet(url, data, true, function (data) {
+
+        });
     }
 }

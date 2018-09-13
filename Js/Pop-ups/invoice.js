@@ -4,7 +4,11 @@
 var customid = Helper.getUrlParam('customid') || "";//获取订单号
 $(function () {
     Invoice.NoneInvoice($('.radio-select-first'));//默认选中不开发票
-     
+
+     $(".list-1").prop("checked", true);//默认选中地址保持一致
+     $(".list-1,.list-2").on('click',function () {
+         Invoice.Detailsrece();
+     })
 
     //var isallocation = Common.getUrlParam("allocationProduce");
     // if (isallocation) {
@@ -103,8 +107,6 @@ function clearNoNum(obj){//文本框验证
         }
     }
 }
-
-
 
 
 
@@ -259,6 +261,22 @@ var Invoice = {
         that.Controller.basedata(false);
 
     },
+    Detailsrece: function () {
+        $(".rece-type div").on('click',function () {
+            var val_payPlatform = $('.rece-type input[name="sex"]:checked ').attr('data-val');
+            if (val_payPlatform==0){
+                $(".rece-text-content").addClass('hide');
+            }else{
+                $(".rece-text-content").removeClass('hide');
+            }
+            $(this).children().first().prop("checked", true);
+            $(this).children().last().removeClass("js-icon").addClass("active");
+            $(this).siblings().children("span").removeClass("active").addClass("js-icon");
+        })
+        // //$(".list-1").parent().find('.list-1').prop("checked", true);
+        // $(".list-1").parent().children().last().removeClass("js-icon").addClass("active");
+        // $(".list-1").parent().siblings().children("span").removeClass("active").addClass("js-icon");
+    },
     HeightAuto: function () {//高度自适应
         var docHeight= $(".container").height();
         top.setPopSize(0,docHeight);
@@ -287,28 +305,27 @@ var Invoice = {
         var radio_single = $("input[name='invoice']:checked").attr("data-val");
         var check = $("input[type='checkbox']").is(':checked');
         var idstatus = $("#typestatus").val();
-        var detailsvalue3 = parseInt($("#re_num").val())|| 0;
-        var detailsvalue2 = parseInt($("#re_mon").val())|| 0;
+        var amount1 = parseInt($("#re_num").val())|| 0;
+        var unitPrice1 = parseInt($("#re_mon").val())|| 0;
         var remark = $(".remarks-text").val();
 
         that.data = {
-            "orderid": Common.getUrlParam("orderid", true),
-            "invoicetype": invoicetype,
-            "taxrate": taxrate,
-            "invoicetitle": invoicetitle,
-            "detailsvalue1": detailsvalue1,
-            "detailsinvoice1": detailsinvoice1,
-            "ispersonal": check == true ? 1 : 0,
+            "customid": customid,
+            "invoiceType": invoicetype,
+            "taxRate": taxrate,
+            "invoiceTitle": invoicetitle,
+            "detailsValue1": detailsvalue1,
+            "detailsInvoice1": detailsinvoice1,
+            "isPersonal": check == true ? 1 : 0,
+            "taxIdentification":'',
             "customerduty": customerduty,
-            "customeraddress": customeraddress,
-            "customertele": customertele,
-            "customerbank": customerbank,
-            "customeraccount": customeraccount,
-            "existblank": 0,
+            "customerAddress": customeraddress,
+            "customerTele": customertele,
+            "customerBank": customerbank,
+            "customerAccount": customeraccount,
             "operateType": $("#operateType").val() == "create" ? 1 : 2,
-            "id": idstatus == '' ? '' : parseInt($("#typestatus").val()),
-            "detailsvalue3": detailsvalue3,
-            "detailsvalue2": detailsvalue2,
+            "amount1":amount1,
+            "unitPrice1":unitPrice1,
             "remark": remark,
         };
 
@@ -336,65 +353,65 @@ var Invoice = {
         var open_num = $(".account-num-text").val();
 
 
-        var strict = Common.getUrlParam("strict");
+        //var strict = Common.getUrlParam("strict");
 
 
 
-        if ((radio_single == 2 || radio_single == 3) && strict) {
+        if ((radio_single == 2 || radio_single == 3)) {
             if (check) {//勾选非盈利机构
 
                 if (!attrval) {
-                    Common.shake($(".rate-select"), "border-red", 10);
+                    Helper.shake($(".rate-select"), "border-red", 10);
                     return false;
                 }
                 else if (!title) {
-                    Common.shake($(".rise-text"), "border-red", 10);
+                    Helper.shake($(".rise-text"), "border-red", 10);
                     return false;
                 }
                 else if (!money || money <= 0) {
-                    Common.shake($(".money-text"), "border-red", 10);
+                    Helper.shake($(".money-text"), "border-red", 10);
                     return false;
                 }
                 else if (!invcontent) {
-                    Common.shake($(".invoice-select"), "border-red", 10);
+                    Helper.shake($(".invoice-select"), "border-red", 10);
                     return false;
                 }
             } else {//未勾选非盈利机构
 
                 if (attrval == 0 || attrval == '' || attrval == null) {
-                    Common.shake($(".rate-select"), "border-red", 10);
+                    Helper.shake($(".rate-select"), "border-red", 10);
                     return false;
                 }
                 else if (title == '') {
-                    Common.shake($(".rise-text"), "border-red", 10);
+                    Helper.shake($(".rise-text"), "border-red", 10);
                     return false;
                 }
                 else if (money == '' || money <= 0) {
-                    Common.shake($(".money-text"), "border-red", 10);
+                    Helper.shake($(".money-text"), "border-red", 10);
                     return false;
                 }
                 else if (invcontent == 1 || invcontent == '' || invcontent == null) {
-                    Common.shake($(".invoice-select"), "border-red", 10);
+                    Helper.shake($(".invoice-select"), "border-red", 10);
                     return false;
                 }
                 else if (pay_taxes == '') {
-                    Common.shake($(".dist-text"), "border-red", 10);
+                    Helper.shake($(".dist-text"), "border-red", 10);
                     return false;
                 }
                 else if (register == '') {
-                    Common.shake($(".address-text"), "border-red", 10);
+                    Helper.shake($(".address-text"), "border-red", 10);
                     return false;
                 }
                 else if (phone == '') {
-                    Common.shake($(".phone-text"), "border-red", 10);
+                    Helper.shake($(".phone-text"), "border-red", 10);
                     return false;
                 }
                 else if (open_account == '') {
-                    Common.shake($(".account-text"), "border-red", 10);
+                    Helper.shake($(".account-text"), "border-red", 10);
                     return false;
                 }
                 else if (open_num == '') {
-                    Common.shake($(".account-num-text"), "border-red", 10);
+                    Helper.shake($(".account-num-text"), "border-red", 10);
                     return false;
                 }
 
@@ -403,88 +420,82 @@ var Invoice = {
 
         if (radio_single ==4&& strict){//票据
             if (!title) {
-                Common.shake($(".rise-text"), "border-red", 10);
+                Helper.shake($(".rise-text"), "border-red", 10);
                 return false;
             }else if (!invcontent) {
-                Common.shake($(".invoice-select"), "border-red", 10);
+                Helper.shake($(".invoice-select"), "border-red", 10);
                 return false;
             }
 
         }
 
 
-        if (check && (!attrval || !title || !money || !invcontent )) {
-            that.data.existblank = 1;
-        }
-        else if (!check && (!attrval || !title || !money || !invcontent || !pay_taxes || !register || !phone || !open_account || !open_num )) {
-            that.data.existblank = 1;
-        }
-        else {
-            that.data.existblank = 0;
-        }
+        // if (check && (!attrval || !title || !money || !invcontent )) {
+        //     that.data.existblank = 1;
+        // }
+        // else if (!check && (!attrval || !title || !money || !invcontent || !pay_taxes || !register || !phone || !open_account || !open_num )) {
+        //     that.data.existblank = 1;
+        // }
 
         //收据
-        if(radio_single ==4&&(attrval&&invcontent)){
-            that.data.existblank = 0;
-        }
-
-
-        if (invoicetype == 0) {
-            that.data.existblank = 0;
-        }
+        // if(radio_single ==4&&(attrval&&invcontent)){
+        //     that.data.existblank = 0;
+        // }
+        //
+        //
+        // if (invoicetype == 0) {
+        //     that.data.existblank = 0;
+        // }
 
         return true;
     },
     getData: function () {
-        
         var that = this;
-
         var url = config.WebService()["invoice_Init"];
-
         var data = {
-            "customid": customid,
+            "customid": 2051776840104031,
         }
+
         Requst.ajaxGet(url, data, true, function (data) {
             if (data) {
                 Invoice.Controller.saveAddress(1,1,1,1,1,1,1);
-                if (data.code == 1) {
-                    var isPay = data.invoice.paystate;
-                    if (isPay == 6)//锁住税率
-                    {
-                        $(".raxr-lock").removeClass('hide');
-                        $(".tax-rate .msg-rate").removeClass('hide');
-                    }
-                    if (data.invoice.orderstate >= 7)//锁住全部
-                    {
-                        $(".all-lock").removeClass("hide");
-                        $(".ok").attr("disabled", true);
-                        $(".ok").css("background-color", "#aaa");
-                        $(".tax-rate .msg-rate").addClass('hide');
-                    }
-                    var $invoicetype = data.invoice.invoicetype;//发票类型
+                if (data.code == 200) {
+                    // var isPay = data.data.paystate;
+                    // if (isPay == 6)//锁住税率
+                    // {
+                    //     $(".raxr-lock").removeClass('hide');
+                    //     $(".tax-rate .msg-rate").removeClass('hide');
+                    // }
+                    // if (data.data.orderstate >= 7)//锁住全部
+                    // {
+                    //     $(".all-lock").removeClass("hide");
+                    //     $(".ok").attr("disabled", true);
+                    //     $(".ok").css("background-color", "#aaa");
+                    //     $(".tax-rate .msg-rate").addClass('hide');
+                    // }
+                    var $invoicetype = data.data.invoiceType;//发票类型
                     if ($invoicetype == 2) {//专票
                         $("#mech-invoice").attr("data-disabled", "true");//锁住非盈利机构按钮
                     }
 
-                    var $taxrate = data.invoice.taxrate;
-                    var $invoicetitle = data.invoice.invoicetitle;
-                    var $detailsvalue1 = data.invoice.detailsvalue1;
-                    var $detailsinvoice1 = data.invoice.detailsinvoice1;
-                    var $ispersonal = data.invoice.ispersonal;
-                    var $customerduty = data.invoice.customerduty;
-                    var $customeraddress = data.invoice.customeraddress;
-                    var $customertele = data.invoice.customertele;
-                    var $customerbank = data.invoice.customerbank;
-                    var $customeraccount = data.invoice.customeraccount;
-                    var $invoice = data.invoice.id;
-                    var $remark = data.invoice.remark;
-                    var $detailsvalue2 = data.invoice.detailsvalue2;
-                    var $detailsvalue3 = data.invoice.detailsvalue3;
+                    var $taxrate = data.data.taxRate;
+                    var $invoicetitle = data.data.invoiceTitle;
+                    var $detailsvalue1 = data.data.detailsValue1;
+                    var $detailsinvoice1 = data.data.detailsInvoice1;
+                    var $ispersonal = data.data.isPersonal;
+                    var $customerduty = data.data.customerduty;
+                    var $customeraddress = data.data.customerAddress;
+                    var $customertele = data.data.customerTele;
+                    var $customerbank = data.data.customerBank;
+                    var $customeraccount = data.data.customerAccount;
+                    //var $invoice = data.invoice.id;
+                    var $remark = data.data.remark;
+                    //var $detailsvalue2 = data.data.detailsvalue2;
+                    //var $detailsvalue3 = data.data.detailsvalue3;
 
 
 
                     $("#rate-select").val($taxrate);
-
                     $(".invoice-select").find("option[value='" + $detailsinvoice1 + "']").attr("selected", "selected");
                     $(".dist-text").val($customerduty);
                     $(".address-text").val($customeraddress);
@@ -492,12 +503,12 @@ var Invoice = {
                     $(".account-text").val($customerbank);
                     $(".account-num-text").val($customeraccount);
                     $(".remarks-text").val($remark);
-                    $("#re_mon").val($detailsvalue2);
-                    $("#re_num").val($detailsvalue3);
+                    //$("#re_mon").val($detailsvalue2);
+                    //$("#re_num").val($detailsvalue3);
 
                     $("#operateType").attr("value", "edit");
                     that.data.operateType = 2;
-                    $("#typestatus").val($invoice);
+                    //$("#typestatus").val($invoice);
 
 
                     if ($invoicetype == 0) {//判断开票类型
@@ -507,7 +518,7 @@ var Invoice = {
                     } else if ($invoicetype == 2) {
                         Invoice.Special($("#spec-invoice"));//专用发票
                     } else if ($invoicetype == 3){
-                        Invoice.Receipt($("#receipt"))//收据
+                        Invoice.Receipt($("#receipt"));//收据
 
                         $(".tax-rate").addClass('active-none');
                         $(".mech").addClass('active-none');

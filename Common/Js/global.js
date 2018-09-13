@@ -78,6 +78,7 @@ var config = {
             "orderBoxDetail_Query":that.Domain.systemApi +"/dynamo/order/orderBoxDetail_Query",//包装盒详情
             "orderLogisticsBillOrder_Query":that.Domain.systemApi +"/dynamo/order/orderLogisticsBillOrder_Query",//经理导出发货单
             "exportYieldList":that.Domain.systemApi +"/dynamo/order/exportYieldList",//经理导出结算收益单
+            "downManOrder":that.Domain.systemApi +"/dynamo/order/downManOrder",//下载生产单
 
         }
     }

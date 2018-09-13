@@ -180,7 +180,7 @@ var rofitSingle= {
 
 var giveSingle= {
     getDataList: function () {//导出发货单
-        var url = config.WebService()["orderLogisticsBillOrder_Query"];
+        var url = config.WebService()["downManOrder"];
 
         //开始时间
         var begin_year = $("#begin_year input").val();//获取年
