@@ -82,6 +82,7 @@ var config = {
             "orderLogisticsBillOrder_Query":that.Domain.systemApi +"/dynamo/order/orderLogisticsBillOrder_Query",//经理导出发货单
             "exportYieldList":that.Domain.systemApi +"/dynamo/order/exportYieldList",//经理导出结算收益单
             "downManOrder":that.Domain.systemApi +"/dynamo/order/downManOrder",//下载生产单
+            "algorithmTrainningInsert":that.Domain.systemApi +"/dynamo/order/algorithmTrainningInsert",//新增自动报价
 
         }
     }
