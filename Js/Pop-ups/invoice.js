@@ -297,7 +297,7 @@ var Invoice = {
         var invoicetitle = $(".rise-text").val();
         var detailsvalue1 = parseInt($(".money-text").val()) || 0;
         var detailsinvoice1 = $(".invoice-select").val();
-        var customerduty = $(".dist-text").val();
+        var taxIdentification = $(".dist-text").val();
         var customeraddress = $(".address-text").val();
         var customertele = $(".phone-text").val();
         var customerbank = $(".account-text").val();
@@ -308,6 +308,7 @@ var Invoice = {
         var amount1 = parseInt($("#re_num").val())|| 0;
         var unitPrice1 = parseInt($("#re_mon").val())|| 0;
         var remark = $(".remarks-text").val();
+        var val_payPlatform = $('.rece-type input[name="sex"]:checked ').attr('data-val');
 
         that.data = {
             "customid": customid,
@@ -317,16 +318,15 @@ var Invoice = {
             "detailsValue1": detailsvalue1,
             "detailsInvoice1": detailsinvoice1,
             "isPersonal": check == true ? 1 : 0,
-            "taxIdentification":'',
-            "customerduty": customerduty,
+            "taxIdentification": taxIdentification,
             "customerAddress": customeraddress,
             "customerTele": customertele,
             "customerBank": customerbank,
             "customerAccount": customeraccount,
-            "operateType": $("#operateType").val() == "create" ? 1 : 2,
-            "amount1":amount1,
+            "amount1": amount1,
             "unitPrice1":unitPrice1,
             "remark": remark,
+            "isConsistent":val_payPlatform,
         };
 
 
@@ -418,7 +418,7 @@ var Invoice = {
             }
         }
 
-        if (radio_single ==4&& strict){//票据
+        if (radio_single ==4){//票据
             if (!title) {
                 Helper.shake($(".rise-text"), "border-red", 10);
                 return false;
@@ -453,7 +453,7 @@ var Invoice = {
         var that = this;
         var url = config.WebService()["invoice_Init"];
         var data = {
-            "customid": 2051776840104031,
+            "customid": customid,
         }
 
         Requst.ajaxGet(url, data, true, function (data) {
@@ -483,12 +483,13 @@ var Invoice = {
                     var $detailsvalue1 = data.data.detailsValue1;
                     var $detailsinvoice1 = data.data.detailsInvoice1;
                     var $ispersonal = data.data.isPersonal;
-                    var $customerduty = data.data.customerduty;
+                    //var $customerduty = data.data.customerduty;
                     var $customeraddress = data.data.customerAddress;
                     var $customertele = data.data.customerTele;
                     var $customerbank = data.data.customerBank;
                     var $customeraccount = data.data.customerAccount;
                     //var $invoice = data.invoice.id;
+                    var $taxIdentification = data.data.taxIdentification;
                     var $remark = data.data.remark;
                     //var $detailsvalue2 = data.data.detailsvalue2;
                     //var $detailsvalue3 = data.data.detailsvalue3;
@@ -497,12 +498,13 @@ var Invoice = {
 
                     $("#rate-select").val($taxrate);
                     $(".invoice-select").find("option[value='" + $detailsinvoice1 + "']").attr("selected", "selected");
-                    $(".dist-text").val($customerduty);
+                    //$(".dist-text").val($customerduty);
                     $(".address-text").val($customeraddress);
                     $(".phone-text").val($customertele);
                     $(".account-text").val($customerbank);
                     $(".account-num-text").val($customeraccount);
                     $(".remarks-text").val($remark);
+                    $(".dist-text").val($taxIdentification);
                     //$("#re_mon").val($detailsvalue2);
                     //$("#re_num").val($detailsvalue3);
 
@@ -547,11 +549,9 @@ var Invoice = {
             var url = config.WebService()["invoice_Update"];
             Requst.ajaxGet(url, that.data, true, function (data) {
                 console.info(data.msg + "   Code:" + data.code);
-                if (data.code == 1) {
-                    Common.msg(data.msg, 200, 2000, function () {
-                        callback();
+                if (data.code == 200) {
+
                         parent.layer.closeAll();
-                    });
                 }
                 // else if (data.code == 3 && strict) {
                 //     callback();

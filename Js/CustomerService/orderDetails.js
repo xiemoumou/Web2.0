@@ -168,7 +168,7 @@ var details = {
 
         var url = config.WebService()["orderSummaryInfo_Query"];
         Requst.ajaxGet(url, data, true, function (data) {
-            if (data.data!=''){
+            if (data.data){
 
             var createTime = data.data.createTime || "";//订单创建时间
             var customerWang = data.data.customerWang || "";//旺旺号
@@ -495,7 +495,7 @@ var details = {
 
         Requst.ajaxGet(url, data, true, function (data) {
             $(".leav-content").html('');//清空
-            if (data.data!=''){
+            if (data.data){
                 that.messageNo = data.data[0].messageNo;
                 that.targetId = data.data[0].targetId;//设计师Id
                 $(".leav-title-right-text em").text(data.data[0].version);//版本号沟通中

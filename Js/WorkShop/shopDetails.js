@@ -1,13 +1,13 @@
 var customid = Helper.getUrlParam('customid') || "";//获取订单号
 
 $(function () {
-    //workShop.workGet();
+    workShop.workGet();
 
     $(".draft-title-left").on('click', function () {
         workShop.Exportsing();
     })
 
-    //workShop.code();
+    workShop.code();
 });
 
 
@@ -36,9 +36,9 @@ var workShop = {
             var length = data.data.length || "";//长
             var width = data.data.width || "";//宽
             var height = data.data.height || "";//高
-            var deadline = data.data.deadline || "";//要求工期
+            var userPeriod = data.data.userPeriod || "";//要求工期
             var producePrice = data.data.producePrice || "";//生产费用
-            var user_period = data.data.user_period || "";//客服工期
+           // var lastPeriod = data.data.lastPeriod || "";//客服工期
             var lastQuote = data.data.lastQuote || "";//上次报价
             var lastPeriod = data.data.lastPeriod || "";//工期
             var designMemo = data.data.designMemo || "";//设计备注
@@ -63,9 +63,9 @@ var workShop = {
             $(".height").text(height);//高
             //$(".limit").text(deadline);//工期
             $(".Money").text(producePrice);//生产费用
-            $(".limit").text(user_period);//客服工期
+            $(".limit").text(userPeriod);//客服工期
             $(".offer-money").text(lastQuote);//上次报价
-            $(".offertime").text(lastPeriod);//工期
+            $(".offertime").text(lastPeriod);//上次工期
             $(".design-rema textarea").text(designMemo);//设计备注
             $(".dist-text").text(produceMemo == '' ? '暂无' : true);//生产要求
             $(".quot-num").text(currentPrice);//参考价格
@@ -166,7 +166,7 @@ var workShop = {
         data = {
             "customid": 2051778645010001,
             "quotePrice": 1000,
-            "quotePeriod": 10,
+            "quotePeriod": 12,
             "rounds": 1,
         }
 

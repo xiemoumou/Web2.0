@@ -30,6 +30,12 @@ $(function () {
             {
                 top.Message.show("提示",data.message,MsgState.Success,2000,function () {
                    top.classMain.loadOverview(null,null,null,customid);
+                   if (data.data) {
+                       var code =  data.data;
+                       top.Cache["train-data"]=code;
+                       top.Popup.open("请输入",623,626,'./Pop-ups/train.html');
+                   }
+
                 });
             }
             else
