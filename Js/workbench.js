@@ -1680,7 +1680,8 @@ var classMain = {
                             //重新报价
                             if(item.inquiryStatus==2 && item.lastQuote>0)
                             {
-                                var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">重新报价</button>');
+                                debugger
+                                var btn=$('<button class="btn" data-lastQuote="'+item.lastQuote+'" style="width: 66px; height: 23px;" data-inquiryRound="'+item.inquiryRound+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">重新报价</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
                                     var orderid = $(this).attr('data-orderid');

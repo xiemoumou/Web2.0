@@ -600,7 +600,7 @@
     border: 1px solid #ececec;
     color:#666666;
     cursor: auto;
-    z-index: 6;
+    z-index: 12;
 }
 
 .lg-date-select i.arrow{
