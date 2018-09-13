@@ -64,6 +64,9 @@ OrderCheck = {
                 var imgsrc = '../../Image/Pop-ups/nothing.png';
 
                 var invoice_val =  $(".invoice-type");//发票类型
+                for (var i=0; i<data.data.boxData.length; i++){
+                    $(".box-text").text(data.data[i].boxData);//包装详情
+                }
                  var dict=  top.SysParam.element;
                  debugger
                 $(".type").text(dict.goodsClass[data.data.goodsClass].name);//产品类型
@@ -86,7 +89,7 @@ OrderCheck = {
                 $(".tech").text(data.data.technology);//工艺
                 $(".tech-attr").text(data.data.model);//开模方式
                 $(".elec-color").text(data.data.color);//电镀色
-                //***$(".box-text").text(data.orderboxs.packing);//包装详情
+
                 
                 $("#refe-first").attr('src',(data.data.initialReferenceImage1==''?imgsrc:('http://' + data.data.initialReferenceImage1)));//参考图1
                 $("#refe-second").attr('src',(data.data.initialReferenceImage2==''?imgsrc:('http://' + data.data.initialReferenceImage2)));//参考图2
