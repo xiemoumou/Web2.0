@@ -41,7 +41,8 @@ var config = {
             "orderSummaryInfo_Update":that.Domain.systemApi +"/dynamo/order/orderSummaryInfo_Update",//删除订单
             "markedUpRead":that.Domain.systemApi +"/dynamo/message/markedUpRead",//标记已读
             "batchMarkedUpRead":that.Domain.systemApi +"/dynamo/message/batchMarkedUpRead",//全部标记已读
-            
+            "orderBoxInsert_Insert":that.Domain.systemApi +"/dynamo/order/orderBoxInsert_Insert",//保存盒子
+            "orderBoxAll_Query":that.Domain.systemApi +"/dynamo/order/orderBoxAll_Query",//获取盒子信息
 
 
 

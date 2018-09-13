@@ -636,7 +636,7 @@ var classMain = {
         sort: function () {//概览排序
 
             $('.complex i').css('background', 'url(../Image/workbench.png) no-repeat -34px -85px');//默认综合排序
-
+            $('.complex').css('color',"#e84a4b");
             $('#select-date-range1').DateSelectRange(function () {
                 classMain.loadOverview(null, null, true);
             });
@@ -743,6 +743,7 @@ var classMain = {
 
             function setSortType(thisObj) {
                 var sortArrow = thisObj.find('.sort-arrow');
+                $('.sortbox').css('color',"#666b6b");
                 $('.sortbox .sort-arrow').css('background', 'url(../Image/workbench.png) no-repeat -164px -59px');
                 $('.sortbox').attr('data-select', 'false');
                 if (thisObj.attr('data-sortType') == 'desc') {
@@ -756,6 +757,7 @@ var classMain = {
                     thisObj.attr('data-sortType', 'desc')
                     $(sortArrow).css('background', 'url(../Image/workbench.png) no-repeat -34px -85px');
                 }
+                thisObj.css("color","#e84a4b");
             }
         },
         edit: function (customid) {
@@ -940,12 +942,13 @@ var classMain = {
                             });
                             moreList.append(moreItem_1);
 
-                            var moreItem_2 = $('<span data-customid="'+item.customid+'">产品包装</span>');
+                            var moreItem_2 = $('<span data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">产品包装</span>');
                             moreItem_2.on('click', function () {
-                                var customid = $(this).attr('data-customid');
+                                var orderid = $(this).attr('data-orderid');
+                                var customid=$(this).attr('data-customid');
                                 var scrollH = top.Helper.getClientHeight();
                                 var popH = scrollH - 100 > 510 ? 510 : scrollH - 100;
-                                top.Popup.open("产品包装",545, popH,"./Pop-ups/box.html?customid="+customid);
+                                top.Popup.open("产品包装",545, popH,"./Pop-ups/box.html?orderid="+orderid+"&customid="+customid);
                             });
                             moreList.append(moreItem_2);
 

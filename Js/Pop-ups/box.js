@@ -246,15 +246,12 @@ var box = {
     getData: function () {
         var that = this;
         var data={
-            "orderid":Common.getUrlParam('orderid'),
-            "userId":$.cookie('userid'),
-            "roleType":$.cookie('roletype')
+            "customid":Helper.getUrlParam('customid')
         };
-        var url=Common.getUrl()['order']+Common.getDataInterface()['getBoxInfo'];
-        Common.ajax(url,data,false,function (data) {
-            if(data.status.code==1)
+        var url=config.WebService()["orderBoxAll_Query"];
+        top.Requst.ajaxGet(url,data,false,function (data) {
+            if(data.code==200 && data.data.length>0)
             {
-                
                 var list=data.data;
                 for(var i=0;i<list.length;i++)
                 {
@@ -299,7 +296,7 @@ var box = {
             {
                 continue;
             }
-            var item = $('<div data-id="' + datasource[i].id + '" title="' + datasource[i].name + '" data-src="../images/Archive/oringnalPic/' + datasource[i].filename + '" class="item"> <div class="img"> <img src="../../images/Archive/thumbnail/' + datasource[i].tumbnail2 + '" > </div> <span>' + datasource[i].type + '</span> </div>');
+            var item = $('<div data-id="' + datasource[i].id + '" title="' + datasource[i].name + '" data-src="../../Image/box/oringnalPic/' + datasource[i].filename + '" class="item"> <div class="img"> <img src="../../Image/box/thumbnail/' + datasource[i].tumbnail2 + '" > </div> <span>' + datasource[i].type + '</span> </div>');
             item.on('click', function () {//选中
                 if (obj)//编辑
                 {
@@ -319,8 +316,8 @@ var box = {
             var tag = $(obj);
             tag.attr('data-id', item.id);
             tag.find('.type-name').text(item.type);
-            tag.find('.img').attr('data-src', "../images/Archive/oringnalPic/" + item.filename);
-            tag.find('.img img').attr('src', "../../images/Archive/thumbnail/" + item.tumbnail2);
+            tag.find('.img').attr('data-src', "../../Image/box/oringnalPic/" + item.filename);
+            tag.find('.img img').attr('src', "../../Image/box/thumbnail/" + item.tumbnail2);
             tag.find('.color span').text(item.color);
             tag.find('.texture span').text(item.name);
             tag.find('.num input').text(item.amount||1);//数量
@@ -341,11 +338,12 @@ var box = {
         });//改变盒子类型
 
         item.append(select);
-        var img = $('<div data-src="../images/Archive/oringnalPic/' + datasource.filename + '" class="img fl"><img style="max-width: 60px; max-height: 60px;" src="../../images/Archive/thumbnail/' + datasource.tumbnail2 + '"/></div>');
+        var img = $('<div data-src="../Image/box/oringnalPic/' + datasource.filename + '" class="img fl"><img style="max-width: 60px; max-height: 60px;" src="../../Image/box/thumbnail/' + datasource.tumbnail2 + '"/></div>');
         item.append(img);
         img.on('click', function () {
             var obj = $(this);
-            parent.previewImg.insert(obj.attr('data-src'));
+            debugger
+            parent.previewImg.create(obj.attr('data-src'));
             parent.previewImg.show();
         });
         item.append($('<div class="color fl"> <span>' + datasource.color + '</span> </div>'));
@@ -409,9 +407,9 @@ var box = {
         datalist.append(item);
     },
     save: function () {
-        var result = {"datas":[],"orderid":""};
-        result["roleType"]=$.cookie('roletype');
-        result.orderid=Common.getUrlParam('orderid');
+        var result = {"datas":[],"customid":""};
+        //result["roleType"]=Helper.getUrlParam('customid');
+        result.customid=Helper.getUrlParam('customid');
         var lis = $("#datalist").find('li');
         // if (lis.length <= 0) {
         //     parent.Common.msg("没有需要保存的数据", 400, 2000);
@@ -449,21 +447,22 @@ var box = {
             result.datas[0].remark=$('#remarks').val();//备注
         }
 
-
-        var url=Common.getUrl()['order']+Common.getDataInterface()['newBox'];
+        var url=config.WebService()["orderBoxInsert_Insert"];
         result.datas=JSON.stringify(result.datas);
-        Common.ajax(url,result,false,function (data) {
-            if(data.status.code==1)
+        top.Requst.ajaxPost(url,result,true,function (data) {
+            if(data.code==200)
             {
-                top.Common.msg("操作成功",200,2000,function () {
-                   parent.layer.closeAll();
+                top.Message.show("提示",data.message,MsgState.Success,2000,function () {
+                    top.Popup.close("产品包装");
                 });
             }
             else {
-                top.Common.msg(data.status.msg||"失败",400,2000,function () {
-                    parent.layer.closeAll();
-                });
+                console.log(data.message);
             }
         })
     }
 };
+
+function ConvertToInt(ob) {
+    ob.value = ob.value.replace(/[^0-9]/g, '');
+}
