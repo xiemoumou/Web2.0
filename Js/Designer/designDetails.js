@@ -91,6 +91,7 @@ var desigDetails = {
             that.id = data.data.id || "";//订单表
             that.ordersummaryId = data.data.ordersummaryId || "";
             that.designStatus = data.data.designStatus || "";//判断接单状态
+            that.producestatus = data.data.producestatus || "";//生产状态	
 
             if (data.data.designStatus==1){//已分配设计，尚无方案师接单
                 
@@ -197,6 +198,10 @@ var desigDetails = {
    // },
     desiSub: function () {//提交设计单
         debugger
+        if (this.producestatus>=3){
+            Message.show('提示','订单已经发起生产，设计稿相关内容不可使用',3,2000);
+            return false;
+        }
         var url = config.WebService()["orderDesignPattern_Insert"];
         data = {
             "initialDesignImage1": $("#prod_refe .diagram-container .diagram").attr("data-oimageurl"),//设计单原图
@@ -208,8 +213,8 @@ var desigDetails = {
             "initialDesignImage3":'',
             "smallDesignImage3":'',
             "middleDesignImage3":'',
-            "designFile": $("#details_encl .accessory-container .fileitem").attr('http://'+"data-url")||"",//上传附件
-            "otherFile": $(".details-encl-box .accessory-container .fileitem").attr('http://'+"data-url")||"",//其他附件
+            "designFile": 'http://'+$("#details_encl .accessory-container .fileitem").attr("data-url")||"",//上传附件
+            "otherFile": 'http://'+$(".details-encl-box .accessory-container .fileitem").attr('http://'+"data-url")||"",//其他附件
             "designMemo": $(".design-rema textarea").val(),//设计备注
             "designId" : 1,
             "customid": customid,
@@ -235,6 +240,11 @@ var desigDetails = {
             data['middleRemarkImage'+(i+1)] = imgContainer[i].getAttribute('data-mimageurl');
         }
         Requst.ajaxPost(url, data, true, function (data) {
+             if (data.code ==200){
+                 Message.show('提示',data.message,MsgState.Success,2000,function () {
+
+                 });
+             }
 
         });
 

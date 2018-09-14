@@ -573,12 +573,13 @@ var details = {
         });
     },
     btnModify: function () {//设计提交修改
+        debugger
         var url = config.WebService()["orderSummaryInfoAccessory_Update"];
         data = {
             "initialProducerefImage": $("#prod_refe .diagram-container .diagram").attr("data-mimageurl"),//生产参考图原图
             "smallProducerefImage": $("#prod_refe .diagram-container .diagram").attr("data-simageurl"),//生产参考图小
             "middleProducerefImage": $("#prod_refe .diagram-container .diagram").attr("data-mimageurl"),//生产参考图中
-            "accessoryFile": $("#details_encl .accessory-container .fileitem").attr('http://' + "data-url")||"",//上传附件
+            "accessoryFile": $("#details_encl .accessory-container .fileitem").attr("data-url")||"",//上传附件
             "designMemo": $(".design-rema textarea").text(),//设计备注
             "produceMemo": $(".offer-rema .textarea textarea").text(),//生产要求
             "wCustomid": customid,
@@ -595,7 +596,6 @@ var details = {
         //console.log(data);
         var diagramArray = $("#details_diagram .diagram-container .diagram");
         for (var i = 0; i < diagramArray.length; i++) {// 添加设计图片
-            debugger
             data['initialReferenceImage' + (i + 1)] = diagramArray[i].getAttribute('data-mimageurl');
             data['middleReferenceImage' + (i + 1)] = diagramArray[i].getAttribute('data-mimageurl');
             data['smallReferenceImage' + (i + 1)] = diagramArray[i].getAttribute('data-simageurl');
