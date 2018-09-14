@@ -684,3 +684,31 @@
     letter-spacing: 0;
     cursor: pointer;
 }
+.design-attr-btn-box{
+    margin-bottom: 20px;
+}
+#details_encl .accessory-container .fileitem{
+    margin-left: 28px;
+}
+#details_encl .accessory-container .filename{
+    width: 79px;
+}
+#details_encl .accessory-container .filelist{
+    width: 100%;
+    margin-right: 20px;
+    margin-left: -13px;
+}
+
+#details_encl_next .accessory-container .fileitem{
+    margin-left: 28px;
+}
+#details_encl_next .accessory-container .filename{
+    width: 79px;
+}
+#details_encl_next .accessory-container .filelist{
+    width: 100%;
+    margin-right: 20px;
+    margin-left: -13px;
+}
+
+
