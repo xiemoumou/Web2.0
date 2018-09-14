@@ -213,8 +213,8 @@ var desigDetails = {
             "initialDesignImage3":'',
             "smallDesignImage3":'',
             "middleDesignImage3":'',
-            "designFile": 'http://'+$("#details_encl .accessory-container .fileitem").attr("data-url")||"",//上传附件
-            "otherFile": 'http://'+$(".details-encl-box .accessory-container .fileitem").attr('http://'+"data-url")||"",//其他附件
+            "designFile": $("#details_encl .accessory-container .fileitem").attr("data-url")||"",//上传附件
+            "otherFile": $(".details-encl-box .accessory-container .fileitem").attr("data-url")||"",//其他附件
             "designMemo": $(".design-rema textarea").val(),//设计备注
             "designId" : 1,
             "customid": customid,
@@ -269,7 +269,7 @@ var desigDetails = {
         }
 
         Requst.ajaxGet(url, data, true, function (data) {
-            if (data.data!=''){
+            if (data.data.length>=1){
                 that.messageNo = data.data[0].messageNo||"";
                 that.targetId = data.data[0].targetId||"";//设计师Id
                 $(".leav-title-right-text em").text(data.data[0].version);//版本号沟通中
@@ -278,8 +278,8 @@ var desigDetails = {
                     var messageFile = [];//留言显示附件
                     if (data.data[i].initialMessageImage1) {
                         srcMan.push({
-                            "orgSrc": data.data[i].smallMessageImage1,
-                            "thumbnail": data.data[i].smallDesignImage1,
+                            "orgSrc": 'http://' +data.data[i].smallMessageImage +'i',
+                            "thumbnail": 'http://' +data.data[i].smallDesignImage +'i',
                         });
 
                     }

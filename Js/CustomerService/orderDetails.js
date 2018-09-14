@@ -181,10 +181,6 @@ var details = {
 
 
 
-
-
-
-
                 var createTime = data.data.createTime || "";//订单创建时间
                 var customerWang = data.data.customerWang || "";//旺旺号
                 var shop = data.data.shop || "";//客源
@@ -413,8 +409,8 @@ var details = {
                 } else {
                     $(".emer").addClass('hide');
                 }
-
-                if (data.data.designstatus >= 2) {
+                 debugger
+                if (data.data.designStatus >= 2) {
                     $(".design-man").removeClass('hide');
                     $(".edit-right").removeClass('hide');
                 }else{
@@ -424,8 +420,8 @@ var details = {
 
 
                 for (var i = 0; i < data.data.designInfo.length; i++) {
-                    // var commit_time = data.data.designInfo[i].commitTime || "";
-                    //var design_memo = data.data.designInfo[i].designMemo || "";
+                     var commit_time = data.data.designInfo[i].commitTime || "";
+                     var design_memo = data.data.designInfo[i].designMemo || "";
                     var srcMan = [];//设计稿版本图片
                     var srcFile = [];//设计稿版本附件
                     var otherFile = [];//设计稿版本其他附件
@@ -437,8 +433,8 @@ var details = {
                     // }
                     if (data.data.designInfo[i].initialDesignImage1) {
                         srcMan.push({
-                            "orgSrc": data.data.designInfo[i].initialDesignImage1,
-                            "thumbnail": data.data.designInfo[i].smallDesignImage1,
+                            "orgSrc": 'http://'+data.data.designInfo[i].initialDesignImage1,
+                            "thumbnail": 'http://'+data.data.designInfo[i].smallDesignImage1,
                         });
 
                     }
@@ -456,18 +452,18 @@ var details = {
                     }
                     if (data.data.designInfo[i].initialRemarkImage1) {
                         remaMan.push({
-                            "orgSrc": data.data.designInfo[i].middleDesignImage1,
-                            "thumbnail": data.data.designInfo[i].smallDesignImage1,
+                            "orgSrc": 'http://'+data.data.designInfo[i].middleDesignImage1,
+                            "thumbnail": 'http://'+data.data.designInfo[i].smallDesignImage1,
                         });
 
                         remaMan.push({
-                            "orgSrc": data.data.designInfo[i].middleDesignImage2,
-                            "thumbnail": data.data.designInfo[i].smallDesignImage2,
+                            "orgSrc": 'http://'+data.data.designInfo[i].middleDesignImage2,
+                            "thumbnail": 'http://'+data.data.designInfo[i].smallDesignImage2,
                         });
 
                         remaMan.push({
-                            "orgSrc": data.data.designInfo[i].middleDesignImage3,
-                            "thumbnail": data.data.designInfo[i].smallDesignImage3,
+                            "orgSrc": 'http://'+data.data.designInfo[i].middleDesignImage3,
+                            "thumbnail": 'http://'+data.data.designInfo[i].smallDesignImage3,
                         });
 
                     }
@@ -509,7 +505,7 @@ var details = {
                         "</div>" +
                         "</div>" +
                         "<div class='edit-right-button'>" +
-                        "<span>修正设计稿</span>" +
+                        "<span class='hide'>修正设计稿</span>" +
                         "<button class='EditButton'>选定设计方案</button>" +
                         "</div>" +
                         "</div>" +
