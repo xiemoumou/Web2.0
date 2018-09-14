@@ -1341,7 +1341,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //分配生产
-                            if (item.produceStatus==1) {
+                            if (item.inquiryStatus==4 && item.produceStatus<=1) {
                                 var btn=$('<button data-inquiryStatus="'+item.inquiryStatus+'" data-finalPrice="'+parseFloat(item.finalPrice).formatMoney(2, "", ",", ".")+'" data-prePrice="'+parseFloat(item.prePrice).formatMoney(2, "", ",", ".")+'" data-currentPeriod="'+item.currentPeriod+'" data-currentPrice="'+parseFloat(item.currentPrice).formatMoney(2, "", ",", ".")+'" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配生产</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
