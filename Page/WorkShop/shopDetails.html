@@ -37,10 +37,10 @@
                  <span class="emer">急单</span>
                  <span class="renew">续订</span>
              </div>
-             <div class="deliver">
+             <div class="deliver" data-deadlineTime="">
                  <span></span>
                  <em>剩余发货时间： </em>
-                 <b>12  天  12  小时  23  分钟</b>
+                 <b>--天  --  小时  --  分钟</b>
              </div>
          </div>
          <div class="order-msg">
@@ -72,8 +72,8 @@
              </div>
 
              <div class="operation">
-                 <span class="upimg btn">上传成品图</span></br>
-                 <span class="deli">发货</span>
+                 <!--<span class="upimg btn">上传成品图</span></br>-->
+                 <!--<span class="deli">发货</span>-->
              </div>
              <div style="float: right;width: 2px;height: 98px; background: #f5f5f5;margin-right: 20px;"></div>
              <div class="offer">
@@ -200,15 +200,19 @@
          <hr style="height:1px;border:none;border-top:2px solid #f5f5f5;">
          <div class="desi-annex">
              <span>设计附件：</span>
-             <div class="desiAnnex"></div>
+             <div class="desiAnnex">
+                 <div id="details_encl" data-type="design_accessory"></div>
+             </div>
          </div>
          <div class="other-annex">
              <span>其它附件：</span>
-             <div class="otherAnnex"></div>
+             <div class="otherAnnex">
+                 <div id="details_encl_next" data-type="design_accessory"></div>
+             </div>
          </div>
          <div class="disi-draft-img">
              <span>设计图：</span>
-             <img class="draftImg" src="../../Image/Message/Fail.png">
+             <img class="draftImg" src="">
          </div>
          <div class="prog-rema">
              <span>方案师备注：</span>

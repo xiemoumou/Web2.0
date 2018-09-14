@@ -32,9 +32,11 @@ $(function () {
             if (data.code == 200) {
                 top.Message.show("提示", data.message, MsgState.Success, 2000, function () {
                     top.classMain.loadOverview(null, null, null, customid);
+                    debugger
                     if (data.data) {
                         var code = data.data;
                         top.Cache["train-data"] = code;
+                        console.log(code);
                         top.Popup.open("请输入", 623, 626, './Pop-ups/train.html');
                     }
                     top.Popup.close("重新报价");
