@@ -49,7 +49,7 @@ var pricing = {
                     if(data.code==200)
                     {
                         top.Message.show("提示",data.message,MsgState.Success,2000,function () {
-                            top.loadOverview(null,null,null,customid);
+                            top.classMain.loadOverview(null,null,null,customid);
                             top.Popup.close("订单支付");
                         });
                     }

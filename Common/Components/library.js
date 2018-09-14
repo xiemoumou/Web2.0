@@ -753,6 +753,11 @@ var uploadfile = {
             type = type.toUpperCase();
             var accessoryItem = $('<div title="' + name + '" data-url="'+uri+'" class="fileitem"><div class="progress hide"><span>0%</span></div></div>');
             accessoryItem.append($('<span class="filetype fl">' + type + '</span>'));
+            var lastIndex=name.lastIndexOf('/');
+            if(lastIndex>=0)
+            {
+                name=name.slice(lastIndex,name.length-lastIndex);
+            }
             accessoryItem.append($('<span class="filename fl">' + name + '</span>'));
             if (isDownload) {
                 var download = $('<span data-download-url="' + uri + '" class="download fl">下载</span>');

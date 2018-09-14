@@ -25,12 +25,12 @@ $(function () {
     });
 
     $(".sign").on('click',function () {
-        debugger
         var url=config.WebService()["batchMarkedUpRead"];
         top.Requst.ajaxPost(url,{},true,function (data) {
          if(data.code==200)
          {
              top.Message.show("提示",data.message,MsgState.Success,2000,function () {
+                 message.pagePrams.isInit=-1;
                  message.getData(1);
              });
          }

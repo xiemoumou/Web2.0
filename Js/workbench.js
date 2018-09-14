@@ -694,24 +694,28 @@ var classMain = {
                 setSortType($(this));
                 classMain.requstParams['sortCategory'] = 'synthesize'; //综合排序
                 classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.pagePrams.isInit = -1;
                 classMain.loadOverview();
             });
             $('.customer-service-table-sort .createtime').on('click', function () {
                 setSortType($(this));
                 classMain.requstParams['sortCategory'] = 'createTime';//创建时间
                 classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.pagePrams.isInit = -1;
                 classMain.loadOverview();
             });
             $('.customer-service-table-sort .updatetime').on('click', function () {
                 setSortType($(this));
                 classMain.requstParams['sortCategory'] = 'updateTime';//操作时间
                 classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.pagePrams.isInit = -1;
                 classMain.loadOverview();
             });
             $('.customer-service-table-sort .ordermoney').on('click', function () {
                 setSortType($(this));
                 classMain.requstParams['sortCategory'] = 'orderPrice';//订单金额
                 classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.pagePrams.isInit = -1;
                 classMain.loadOverview();
             });
 
@@ -720,18 +724,21 @@ var classMain = {
                 setSortType($(this));
                 classMain.requstParams['sortCategory'] = 'synthesize'; //综合排序
                 classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.pagePrams.isInit = -1;
                 classMain.loadOverview();
             });
             $('.designer-table-sort .assigntime').on('click', function () {
                 setSortType($(this));
                 classMain.requstParams['sortCategory'] = 'createTime';//派单时间
                 classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.pagePrams.isInit = -1;
                 classMain.loadOverview();
             });
             $('.designer-table-sort .designfee').on('click', function () {
                 setSortType($(this));
                 classMain.requstParams['sortCategory'] = 'designPrice';//设计费
                 classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.pagePrams.isInit = -1;
                 classMain.loadOverview();
             });
 
@@ -740,18 +747,21 @@ var classMain = {
                 setSortType($(this));
                 classMain.requstParams['sortCategory'] = 'synthesize'; //综合排序
                 classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.pagePrams.isInit = -1;
                 classMain.loadOverview();
             });
             $('.workshop-table-sort .createtime').on('click', function () {
                 setSortType($(this));
                 classMain.requstParams['sortCategory'] = 'createTime';//创建时间
                 classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.pagePrams.isInit = -1;
                 classMain.loadOverview();
             });
             $('.workshop-table-sort .opertime').on('click', function () {
                 setSortType($(this));
                 classMain.requstParams['sortCategory'] = 'updateTime';//操作时间
                 classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.pagePrams.isInit = -1;
                 classMain.loadOverview();
             });
 
@@ -1154,21 +1164,21 @@ var classMain = {
                             //议价
                             if(item.inquiryStatus==6)//议价达成
                             {
-                                var bargain = $(money.find('.quoted').find('.button'));
+                                var bargain = $(money.find('.bargain').find('.button'));
                                 $(money.find('.bargain').find('.proposed-price')).css('color', ' #E84B4C');
                                 $(bargain).text("议价达成");
                                 // $(bargain.parent()).css('width', '238px');
                                 bargain.removeClass('hide');
                             }
-                            else if(item.inquiryStatus==5)
-                            {
-                                var bargain = $(money.find('.bargain').find('.button'));
-                                $(money.find('.bargain').find('.proposed-price')).css('color', ' #5298FF');
-                                $(bargain).text("议价中");
-                                // $(bargain.parent()).css('width', '230px');
-                                bargain.removeClass('hide');
-                            }
-                            else if (item.inquiryStatus >= 2 && item.inquiryStatus <= 4)
+                            // else if(item.inquiryStatus==5)
+                            // {
+                            //     var bargain = $(money.find('.bargain').find('.button'));
+                            //     $(money.find('.bargain').find('.proposed-price')).css('color', ' #5298FF');
+                            //     $(bargain).text("议价中");
+                            //     // $(bargain.parent()).css('width', '230px');
+                            //     bargain.removeClass('hide');
+                            // }
+                            else if (item.inquiryStatus >= 2 && item.inquiryStatus <= 4 || item.inquiryStatus==5)
                             {
                                 var bargain = $(money.find('.bargain').find('.button'));
                                 $(money.find('.bargain').find('.proposed-price')).css('color', ' #5298FF');
@@ -1204,11 +1214,19 @@ var classMain = {
                                 var userPrice=$($(this).prev()).val().replace(/[^0-9-.]/g, '');
 
                                 Requst.ajaxPost(url,{"price":parseFloat(userPrice),"wCustomid":customid,"type":"userPrice"},true,function (data) {
-                                    if(data.code!=200)
+                                    debugger
+                                    if(data.code==200)
                                     {
-                                        top.Message.show("提示",data.message, MsgState.Warning, 2000);
+                                        top.Message.show("提示",data.message, MsgState.Success, 2000,function () {
+                                            classMain.loadOverview(null,null,null,customid);
+                                        });
                                     }
-                                    classMain.loadOverview(null,null,null,customid);
+                                    else
+                                    {
+                                        top.Message.show("提示",data.message, MsgState.Fail, 2000,function () {
+                                            classMain.loadOverview(null,null,null,customid);
+                                        });
+                                    }
                                 });
                             });
 
@@ -1224,11 +1242,18 @@ var classMain = {
                                 var url=config.WebService()["custom_Quotation"];
                                 var prePrice=$($(this).prev()).val().replace(/[^0-9-.]/g, '');
                                 Requst.ajaxGet(url,{"prePrice":parseFloat(prePrice),"customid":customid},true,function (data) {
-                                    if(data.code!=200)
+                                    if(data.code==200)
                                     {
-                                        top.Message.show("提示",data.message, MsgState.Warning, 2000);
+                                        top.Message.show("提示",data.message, MsgState.Success, 2000,function () {
+                                            classMain.loadOverview(null,null,null,customid);
+                                        });
                                     }
-                                    classMain.loadOverview(null,null,null,customid);
+                                    else
+                                    {
+                                        top.Message.show("提示",data.message, MsgState.Fail, 2000,function () {
+                                            classMain.loadOverview(null,null,null,customid);
+                                        });
+                                    }
                                 });
                             });
 
@@ -1762,7 +1787,6 @@ var classMain = {
                                     var customid = $(this).attr('data-customid');
                                     var orderid = $(this).attr('data-orderid');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
-                                    debugger
                                     var userPeriod=$(this).attr("data-userPeriod");//客户期望工期
                                     var basePrice=$(this).attr("data-basePrice");//客户低价
 

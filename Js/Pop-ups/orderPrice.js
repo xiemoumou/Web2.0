@@ -33,6 +33,7 @@ var pricing = {
             {
                 top.Message.show("提示",data.message,MsgState.Success,200,function () {
                     top.loadOverview(null,null,null,customid);
+                    top.Popup.close("订单定价");
                 });
             }
             else

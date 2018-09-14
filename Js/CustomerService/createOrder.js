@@ -46,7 +46,7 @@ var createOrder = {
         that.initDropDownList();
 
         uploadfile.uploadPhoto('reference_diagram', 3);//图片上传
-        uploadfile.uploadFile('accessory', 1, null, true, null);//附件上传
+        uploadfile.uploadFile('accessory', 1, null, true,null,false);//附件上传
 
         textArea.init('.design-note', 300, '', '注：备注不允许出现产品价格，参数和旺旺等各种联系方式。', '');
         textArea.init('.production-note', 300, '', '注：备注不允许出现产品价格，参数和旺旺等各种联系方式。', '');

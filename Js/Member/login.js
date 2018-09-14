@@ -9,6 +9,12 @@ $(function () {
 
     })
 
+    $(window).bind('keyup', function(event) {
+        if (event.keyCode == "13") {
+            login.BtnUser();
+        }
+    });
+
     $(".pass-del").on('click',function () {
         $(".password").val('');
     })
@@ -122,7 +128,7 @@ var mail = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
          }
          else if (password.length<6){
              $(".pass-error").removeClass("hide");
-             return false
+             return false;
          }
          login.GetUser();
 
@@ -172,16 +178,15 @@ var mail = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
 
            if (data.code ==99999){
                $(".btn-err").removeClass('hide');
-               return false
+               return false;
            } else if (data.code ==100001){
                $(".user-err").removeClass('hide');
                if (data.data.errorNum>10){
                   //人机验证
                }
-               return false
+               return false;
            }
            else{
-               debugger
                //$.cookie('token', data.data.token, {path: "/"});
                Helper.Cache.set('token',data.data.token,7);//token
                Helper.Cache.set('mickName',data.data.mickName,7);//mickName
@@ -189,9 +194,7 @@ var mail = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
                Helper.Cache.set('userId',data.data.userId,7);//userId
                window.location.href = '../workbench.html';
            }
-
-
-         })
+         });
      }
      
  }
