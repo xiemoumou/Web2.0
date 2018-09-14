@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>我的工作台</title>
+    <link rel="stylesheet" href="./css/reset.css"/>
+    <link rel="stylesheet" href="./css/iconfont.css"/>
+    <link rel="stylesheet" href="./css/iconfont1.css"/>
+    <link rel="stylesheet" href="./css/iconfont2.css"/>
+    <!--<link rel="stylesheet" href="./css/layui.css" />-->
+    <!--<link rel="stylesheet" href="./css/layer.css" />-->
+    <link rel="stylesheet" href="./css/workstage.css"/>
+
+    <script type="text/javascript" src="./js/flexible.js"></script>
+    <script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="./js/baiduTemplate.js"></script>
+    <script type="text/javascript" src="./js/jquery.cookie.js"></script>
+
+    <!--<script type="text/javascript" src="./js/layui.js" ></script>
+    <script type="text/javascript" src="./js/laypage.js" ></script>-->
+    <script type="text/javascript" src="./js/layer.js"></script>
+</head>
+<body>
+<div class="wrap-outer">
+    <div id="header">
+        <div>
+            <img src="./images/icon/logo.png" alt="logo"/>
+            <h4>
+                <p class="active myWorkstage">我的工作台</p>
+                <p class="myResource" onclick="getResource()">素材库</p>
+
+            </h4>
+
+            <div class="searchbar">
+                <div class="mod_select searSort">
+                    <div class="select_box">
+                        <span class="select_txt">订单号</span>
+                        <ul class="option_">
+                            <!--<li>分类</li>-->
+                            <li>旺旺号</li>
+                            <li>订单号</li>
+                            <!--<li>分类</li>
+                            <li>用户名</li>
+                            <li>客服号</li>-->
+                        </ul>
+                    </div>
+                </div>
+
+                <input type="text" id="searchCon" value="" placeholder="请输入您要搜索的订单号等"/>
+                <button class="searBtn_workstage"><i class="icon iconfont icon-sousuo"></i></button>
+            </div>
+            <dl>
+                <dt class="ddstyle"><span class="user_nickname"></span><img class="imgcol" src="./images/icon/arr.svg"/>
+                </dt>
+                <!--<dd class="ddstyle center hid" >个人中心</dd>-->
+                <dd class="ddstyle exitLoginBtn hid">退出</dd>
+            </dl>
+        </div>
+    </div>
+
+    <!--主内容-->
+    <div id="content">
+        <!--左侧  导航区-->
+        <div id="nav">
+
+        </div>
+
+        <!--右侧  主内容-->
+        <div class="cont_right">
+            <p class="notice_rig notice_task" style="display: none;"><!--  -->
+                <i class="icon iconfont icon-tongzhi"></i>
+                <span>您有<a href="taskList.html" data-user="" target="_blank" id="todealtaskNum"></a>条未处理的任务，请点击<a
+                        href="taskList.html">进入任务列表</a>进行处理</span>
+                <i class="icon iconfont icon-error-20170103"></i>
+            </p>
+            <p class="notice_rig newMessage_workstage">
+                <i class="icon iconfont icon-tongzhi"></i>
+                <span><a data-user="" target="_blank" class="newMessageNum">您有0条新消息</a>，请点击<a>进入消息列表</a>进行处理</span>
+                <i class="icon iconfont icon-error-20170103"></i>
+            </p>
+            <div class="surmarize_con" id="baidu_workstage_surmarize">
+                <ul>
+                    <li><em class="monthturnover">￥10000.00</em>
+                        <p>本月成交金额</p></li>
+                    <li><em class="monthordernum">100</em>
+                        <p>本月接待</p></li>
+                    <li><em class="monthdealnum">99</em>
+                        <p>本月成交</p></li> <!--本月成交单数 -->
+                    <li><em class="monthconversion">34.5%</em>
+                        <p>综合转化率</p></li>
+                    <li><em class="monthincome">￥10000.00</em>
+                        <p>本月收入</p></li>
+                    <li><em class="allincome">￥33399.70</em>
+                        <p>累计收入</p></li>
+                    <li><em class="monthrank">3</em>
+                        <p>综合排名</p></li>
+                </ul>
+                <ol>
+                    <li>
+                        <i class="icon iconfont icon-daijiedan"></i>
+                        <span>今日接待：</span><em class="dayordernum">345</em>
+                    </li>
+                    <li>
+                        <i class="icon iconfont icon-chengjiao"></i>
+                        <span>今日成交：</span><em class="daydealnum">199</em>
+                    </li>
+                    <li>
+                        <i class="icon iconfont icon-money"></i>
+                        <span>今日成交额：</span><em class="dayturnover">￥3309.00</em>
+                    </li>
+                    <li>
+                        <i class="icon iconfont icon-shouru"></i>
+                        <span>今日收入：</span><em class="dayincome">￥3339.00</em>
+                    </li>
+                    <li>
+                        <i class="icon iconfont icon-paiming"></i>
+                        <span>今日排名：</span><em class="dayrank">3</em>
+                    </li>
+                </ol>
+            </div>
+
+            <!--所有订单的显示-->
+            <div class="order_box">
+                <p class="overview overview_workstage">
+                        <span>
+                            <strong class="order_prograssState">全部订单</strong>
+                            <em class="baccred prograssState_num"></em>
+                        </span>
+                        <span class="borderRed" data-code="19">
+                            <strong class="order_prograssTodeal">待处理</strong><em
+                                class="baccred prograssTodeal_num"></em>
+                        </span>
+                        <span class="borderRed searOrder_work">
+                            <strong class="order_prograssState">搜索到的订单</strong>
+                            <em class="baccred searOrder_num"></em>
+                        </span>
+                </p>
+                <dl class="order_all" id="workstage_orderview">
+                    <!-- 没有订单时  显示图片 -->
+                    <!--<div class="noorder_workstage">
+                        <p><img src="images/icon/bj_ico.jpg" /></p>
+                        <p style="color: #858585">您还没有相关订单！</p>
+                    </div>-->
+                </dl>
+
+                <!-- 新建任务模块 -->
+                <div class="newTask popup_style">
+                    <p>
+                        <span style="font-size: 0.3333rem;">新建任务</span><i class="icon iconfont icon-guanbi"></i>
+                    </p>
+                    <dl>
+                        <dt>
+                        <p>订单号：</p>
+                        <p>处理期限：</p>
+                        <p>任务类型：</p>
+                        <p>发送给：</p>
+                        <p>上传图片：</p>
+                        <p>任务内容：</p>
+                        </dt>
+                        <dd>
+                            <form>
+
+                                <p><input type="text" class="newTask_orderId" name="orderId"/></p>
+                                <p class="deadline_contbox">
+                                    <input type="text" class="newTask_deadline" name="deadline"/>
+                                    <em>分钟</em><i class="icon iconfont icon-shijian"></i>
+                                </p>
+
+                                <!-- 任务类型 -->
+                                <p class="newTasktype_box" style="padding-left: 0.1481rem;">标准</p>
+
+                                <!-- 发送给 -->
+                                <div class="mod_select toReceiver_newTask">
+                                    <div class="select_box">
+                                        <span class="select_txt toReceiver_cont">发送给</span>
+                                        <ul class="option_ toReceiver_ul">
+                                            <li>1111</li>
+                                            <li>2222</li>
+                                            <li>3333</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--<p><input type="text" class="newTask_recipient" name="recipient"/></p>-->
+                                <!--新建任务的上传图片模块 -->
+                                <h6 class="newTask_uppic">
+                                    <p style="border:none;color: #e95758;width: 6.5222rem;margin: -0.1481rem 0 0 ;">
+                                        上传图片不能超过2M</p>
+                                    <div class="piclist" data-num="1">
+                                        <img src="" class="upload_img"/>
+                                        <label class="upload_label">
+                                            <input type="file" id="upload_pic1_task" class="upload_input"
+                                                   style="display: none;" accept="image/*"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                        </label>
+                                        <p class="upload_float">
+                                            <i class="icon iconfont icon-shanchu"></i>
+                                        </p>
+                                    </div>
+
+                                    <div class="piclist" data-num="2">
+                                        <img src="" class="upload_img"/>
+                                        <label class="upload_label">
+                                            <input type="file" id="upload_pic2_task" class="upload_input"
+                                                   style="display: none;" accept="image/*"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                        </label>
+                                        <p class="upload_float">
+                                            <i class="icon iconfont icon-shanchu"></i>
+                                        </p>
+                                    </div>
+
+                                    <div class="piclist" data-num="3">
+                                        <img src="" class="upload_img"/>
+                                        <label class="upload_label">
+                                            <input type="file" id="upload_pic3_task" class="upload_input"
+                                                   style="display: none;" accept="image/*"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                        </label>
+                                        <p class="upload_float">
+                                            <i class="icon iconfont icon-shanchu"></i>
+                                        </p>
+                                    </div>
+
+
+                                </h6>
+                                <textarea class="newTask_text" onmousedown="toTextFirst(event,this)"
+                                          name="newtasktxt"></textarea>
+                                <button class="newTaskBtn">确定</button>
+
+                            </form>
+                        </dd>
+                    </dl>
+                </div>
+                <!-- 模拟alert弹出框的模块 -->
+                <div class="popup_style pop_copyAlert">
+                    <p>
+                        <span style="font-size: 0.3333rem;">操作提示信息</span><i class="icon iconfont icon-guanbi"></i>
+                    </p>
+
+                    <ul>
+                        <li><span class="message_copyAlert"></span></li>
+
+                    </ul>
+                    <h5>
+                        <button class="emptyMessage redbutton">确定</button> <!-- 确定清空信息 -->
+                        <button class="continueEnquiry_copyAlert redbutton">继续</button><!--继续询价-->
+                        <button class="continuePay_copyAlert redbutton">继续</button>
+                        <button class="close_copyAlert redbutton">关闭</button>
+                    </h5>
+                </div>
+
+                <!-- 接受生产  的  模块   -->
+                <div class="popup_style acceptProduction_box">
+                    <p>
+                        <span style="font-size: 0.3333rem;">接受生产</span><i class="icon iconfont icon-guanbi"></i>
+                    </p>
+
+                    <ul>
+                        <li><b>订单定价：</b><em class="price_acceptProduction"></em></li>
+                        <li><b>生产周期：</b><input type="text" class="cycle_acceptProduction"
+                                               onkeyup="value=value.replace(/[^\d]/g,'')"
+                                               ng-pattern="/[^a-zA-Z]/"/>天
+                        </li>
+                    </ul>
+                    <h5>
+                        <button class="continueProductionBtn redbutton">确定</button>
+                    </h5>
+                </div>
+
+                <!-- 发货清单  模块 -->
+                <div class="popup_style shippingList_add">
+                    <p>
+                        <span style="font-size: 0.3333rem;">发货清单</span><i class="icon iconfont icon-guanbi"></i>
+                    </p>
+                    <div>
+                        <h5>起始时间:
+                            <select id="select_year3" rel="2017" name="year"></select>年
+                            <select id="select_month3" rel="12" name="month"></select>月
+                            <select id="select_day3" rel="20" name="day"></select>日
+                        </h5>
+                        <h5>截止时间:
+                            <select id="select_year4" rel="2017" name="year"></select>年
+                            <select id="select_month4" rel="12" name="month"></select>月
+                            <select id="select_day4" rel="20" name="day"></select>日
+                        </h5>
+
+                    </div>
+                    <h4 class="shippingList_add_tip"></h4>
+                    <button class="downloadShippingList">下载发货清单</button>
+                </div>
+
+                <!-- 工厂报价  模块 -->
+                <div class="popup_style offer_factory_add">
+                    <p>
+                        <span style="font-size: 0.3333rem;">订单报价</span><i class="icon iconfont icon-guanbi"></i>
+                    </p>
+                    <dl>
+                        <dt>
+                        <p>您上次对该订单的报价: </p>
+                        <p>对该订单进行报价: </p>
+                        <p>订单生产周期: </p>
+                        </dt>
+                        <dd>
+                            <p class="prevOffer_factory"></p>
+                            <p><input class="offerVal_factory" onkeyup="value=value.replace(/[^\d]/g,'')"
+                                      placeholder="请对该订单进行报价" ng-pattern="/[^a-zA-Z]/"/></p>
+                            <p><input class="productionCycle_factory" onkeyup="value=value.replace(/[^\d]/g,'')"
+                                      placeholder="请输入您需要多长时间完成生产、发货" ng-pattern="/[^a-zA-Z]/"/>天</p>
+                        </dd>
+                    </dl>
+                    <!--<h4 class="shippingList_add_tip"></h4>-->
+                    <button class="confirmOffer_work redbutton">确定</button>
+                </div>
+
+                <!-- 客服发起生产  模块  apportDesign-->
+                <div class="popup_style production_service_box">
+                    <p>
+                        <span style="font-size: 0.3333rem;">发起生产</span><i class="icon iconfont icon-guanbi"></i>
+                    </p>
+                    <h5>
+                        <i class="icon iconfont icon-gantanhao"></i>
+                            <span>此订单尚未完成设计，继续分配生产将忽略本订单的设计师方案。如果您确认有
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以生产的的设计方案文件，请将方案提交到下方。</span>
+                    </h5>
+                    <h4 class="production_service">
+                        <div>
+                            <p>参考图：</p>
+                            <h6 class="newOrder_uppic">
+                                <div>
+                                    <label>
+                                        <strong>上传图片</strong>
+                                        <input type="file" multiple="multiple" class="order_upload_pic"
+                                               id="uploadPic_service"
+                                               accept="image/gif, image/jpeg, image/jpg, image/png"
+                                               style="display: none;" maxlength="3"/>
+                                    </label>
+                                    <p style="border:none;color: #ea0600;">上传的图片不能超过2M</p>
+                                </div>
+                                <ol class="show_uppic">
+                                </ol>
+                            </h6>
+                        </div>
+                        <div>
+                            <p>备注：</p>
+                            <textarea class="neworder_remark_service" placeholder="请输入设计备注"
+                                      onmousedown="toTextFirst(event,this)"></textarea>
+                        </div>
+                        <div id="">
+                            <p>上传附件：</p>
+                            <h6 class="newOrder_upaccessory">
+                                <div>
+                                    <label>
+                                        <strong class="upaccessory_btn">上传附件</strong>
+
+                                        <input type="file" class="upload_accessory"
+                                               id="uploadAccessory_service" data-type="2"
+                                               style="display: none;"/>
+                                    </label>
+                                    <span style="border:none;color: #ea0600;">只能一个附件且不能超过50M</span>
+                                </div>
+                                <ol class="show_upaccessory">
+                                </ol>
+                            </h6>
+                        </div>
+                        </h6>
+                        <!--<h4 class="shippingList_add_tip"></h4>-->
+                        <button class="confirmOffer_work redbutton">确定</button>
+                </div>
+
+                <!-- 客户截至工期的选择 -->
+                <div class="popup_style newtask_addTime">
+                    <p>
+                        <span style="font-size: 0.3333rem;">选择截止期限</span><i class="icon iconfont icon-guanbi"></i>
+                    </p>
+                    <div>
+                        <select id="select_year2" rel="2017" name="year"></select>年
+                        <select id="select_month2" rel="12" name="month"></select>月
+                        <select id="select_day2" rel="20" name="day"></select>日
+                        <select id="select_hour" name=""></select>时
+                        <select id="select_minute" name=""></select>分
+                    </div>
+                    <h4 class="newtask_addTime_tip"></h4>
+                    <button class="addTimeBtn">提交日期</button>
+                </div>
+
+                <!-- 添加确认支付的价格信息的模块 -->
+                <div class="popup_style uploadPayPrice_orderDetail">
+                    <p>
+                        <span style="font-size: 0.3333rem;">添加客户支付的金额</span><i class="icon iconfont icon-guanbi"></i>
+                    </p>
+
+                    <div>
+                        <span style="margin:0 0.1111rem;">客户支付的金额:</span>
+                        <input class="payPrice_orderDetail" maxlength="10" placeholder="请输入客户支付的金额"
+                               onkeyup="value=value.replace(/[^\d]/g,'')" ng-pattern="/[^a-zA-Z]/"/>元
+                    </div>
+
+                    <button class="confirmBtn_PayPrice redbutton">确认上传</button>
+                </div>
+
+                <!-- 取消订单的模块 -->
+                <div class="popup_style cancel_order">
+                    <p>
+                        <span style="font-size: 0.3333rem;">取消订单</span><i class="icon iconfont icon-guanbi"></i>
+                    </p>
+                    <dl>
+                        <dt>
+                            <i class="icon iconfont icon-gantanhao"></i>
+                                <span>退款金额需根据厂商生产进度协商，如果订单已进入生产中，需要支付设计师设
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计费￥</span>
+                            <em>4.00</em><span>（设计费的50%）</span>
+                        </dt>
+                        <dd>
+                            <p>取消订单原因：</p>
+                            <h4 class="cancel_order_content">
+                                <div class="select_box">
+                                    <span class="select_txt ">请选择取消原因</span>
+                                    <ul class="option_">
+                                        <li>拍错了/订单信息错误</li>
+                                        <li>不想买了</li>
+                                        <li>未按照约定时间发货</li>
+                                        <li>商品错发/漏发</li>
+                                        <li>发票问题</li>
+                                        <li>退运费</li>
+                                        <li>收到商品描述不符</li>
+                                        <li>未收到货</li>
+                                    </ul>
+                                </div>
+                                <p>
+                                    <button class="redbgc cancel_order_confirm">继续</button>
+                                    <button class="continueBtn_order">取消</button>
+                                </p>
+                            </h4>
+                        </dd>
+                    </dl>
+
+                </div>
+                <!--分页功能模块-->
+                <div class="page page_workstage">
+                    <div id="page_workstage">
+                        <!--<span>首页</span>
+                        <span>上一页</span>
+                        <span class="spanRed">1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>下一页</span>
+                        <span>末页</span>-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--回到顶部模块-->
+        <div class="totop_box">
+            <a onclick="show_newTask()">
+                <i class="icon iconfont icon-xinjianrenwu"></i>
+                <p>新建任务</p>
+            </a>
+            <a class="newOrderBtn">
+                <i class="icon iconfont icon-dingdan"></i>
+                <p>新建订单</p>
+            </a>
+            <a class="shippingListBtn">   <!-- 发货清单 -->
+                <i class="icon iconfont icon-dingdan"></i>
+                <p>发货清单</p>
+            </a>
+            <a class="reminderBtn" onclick="getFeednack()">   <!-- 意见反馈 -->
+                <i class="icon iconfont icon-dingdan"></i>
+                <p>意见反馈</p>
+            </a>
+            <button>
+                <img style="width: 24px" src="./images/icon/toTop.svg"/>
+                <p>顶部</p>
+            </button>
+        </div>
+
+
+    </div>
+
+    <footer>Copyright&copy;&nbsp;2017-2018&nbsp;&nbsp;制宝科技&nbsp;&nbsp;版权所有</footer>
+</div>
+
+<!-- 工作台 导航区的百度模板 -->
+<script id="baidu_workstage_nav" type="text/html">
+    <ul class="workstage_prograss">
+        <h3><i class="icon iconfont icon-liuchengxiangdao"></i>业务流程</h3>
+        <%for(i=0;i
+        <workflow.length
+        ;i++){%>
+        <%if(i == 0){%>
+        <li class="borderCol allorder_work" data-index="<%=i%>" data-code="<%=workflow[i].code%>">
+            <%=workflow[i].name%>
+            <%if( workflow[i].num != 0 ){%>
+            <em class="baccred"><%=workflow[i].num%></em>
+            <%}%>
+        </li>
+        <%}else{%>
+        <li data-index="<%=i%>" data-code="<%=workflow[i].code%>"><%=workflow[i].name%>
+            <%if( workflow[i].num != 0 ){%>
+            <em>(<%=workflow[i].num%>)</em>
+            <%}%>
+        </li>
+        <%}%>
+        <%}%>
+    </ul>
+    <ul>
+        <h3><i class="icon iconfont icon-daibanshixiang"></i>待办事项</h3>
+        <h4 class="" onclick="getTaskList()">任务列表</h4>
+        <!--<h4 onclick="getDraft()">草稿箱</h4>-->
+    </ul>
+</script>
+
+<!-- 订单详情的模板 -->
+<script id="baidu_workstage_orderview" type="text/html">
+    <dt>
+        <span>产品详情</span>
+        <span>产品属性</span>
+        <span>工艺</span>
+        <span>数量</span>
+        <span>规格(长×宽×厚 mm)</span>
+        <%if( userinfo.roleType == 1){%>
+        <span>订单金额</span>
+        <%}%>
+        <span>订单状态</span>
+        <span>操作</span>
+    </dt>
+    <!--订单的详细内容-->
+    <%if(ordersummary.orderarray.length>=1){%>
+    <%for(var i=0;i
+    <ordersummary.orderarray.length;i++){%>
+    <dd class="orderContent">
+        <p class="orderContent_header">
+            <b>
+                <%if( userinfo.roleType == 1){%>
+                <span style="color: #E95758;">客户旺旺号:<strong style="color: #E95758;"><%=ordersummary.orderarray[i].orderinfo.customerid%></strong></span>
+                <%}%>
+	                                <span style="margin: 0 0.2222rem;">订单号：<strong class="workstage_orderid"
+                                                                                   data-customid="<%=ordersummary.orderarray[i].orderinfo.customid%>"><%=ordersummary.orderarray[i].orderinfo.orderid%>
+                                    </strong></span>
+                <time><%=ordersummary.orderarray[i].orderinfo.createtime%></time>
+	                                
+	                                <span style="float: right;"><%if( false ){%>
+	                                    <a class="workstage_contract" onclick=""
+                                           data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>">
+                                            <i class="icon iconfont icon-fapiao"></i>发票
+                                        </a>
+	                                    <a class="workstage_invoice">
+                                            <i class="icon iconfont icon-hetong"
+                                               data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>"></i>合同
+                                        </a>
+	                                    <a class="workstage_cancelOrder"
+                                           data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>"
+                                           data-customid="<%=ordersummary.orderarray[i].orderinfo.customid%>">取消订单</a>
+	                                <%}%>
+	                                <%if( userinfo.roleType == 1 ){%>
+	                                    <a class="figure_orederCont"
+                                           data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>"
+                                           data-customid="<%=ordersummary.orderarray[i].orderinfo.customid%>">编辑</a>
+	                                    <%}%>
+	                                </span>
+            </b>
+            <b>
+                                	<span>设计师：
+                                		<span class="designername_orderDetail"><%=ordersummary.orderarray[i].nickname.designernickname%></span>
+                                	</span>
+                                	<span style="margin-left: 0.2851rem;">车间：
+                                		<span class="factoryname_orderDetail"><%=ordersummary.orderarray[i].nickname.factorynickname%></span>
+                                	</span>
+                                	<span style="margin-left: 0.2851rem;">客服：
+                                		<span class="customnickname_orderDetail"><%=ordersummary.orderarray[i].nickname.customnickname%></span>
+                                	</span>
+            </b>
+        </p>
+        <div class="orderContent_cont">
+            <figure class="figure_orederCont" data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>"
+                    data-customid="<%=ordersummary.orderarray[i].orderinfo.customid%>">
+                <%if(ordersummary.orderarray[i].orderinfo.goodsimage){%>
+                <p>
+                    <img src="http://test-1255653994.cos.ap-chengdu.myqcloud.com/<%=ordersummary.orderarray[i].orderinfo.goodsimage%>"/>
+                </p>
+                <%}else{%>
+                <p><img src="./images/images/mr.png"/></p>
+                <%}%>
+
+                <figcaption title=""><%=ordersummary.orderarray[i].orderinfo.goodsclass%></figcaption>
+            </figure>
+            <!---->
+            <ol>
+                <li class="orderCont1"
+                    data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>"
+                    data-customid="<%=ordersummary.orderarray[i].orderinfo.customid%>"
+                    data-goodsid="<%=ordersummary.orderarray[i].orderinfo.goodsid%>">
+                    <!-- 类别选择 -->
+                    <%if( userinfo.roleType == 1){%>
+                    <div class="mod_select">
+                        <div class="select_box">
+                                                        <span class="select_txt">
+                                                        	<%if(ordersummary.orderarray[i].orderinfo.goodsclass){%>
+		                                                		<%=ordersummary.orderarray[i].orderinfo.goodsclass%>
+		                                                	<%}else{%>
+		                                                		请选择
+		                                                	<%}%>
+                                                        	
+                                                        </span>
+
+                            <ul class="option_  workstage_classify">
+                                <li>徽章</li>
+                                <li>纪念币</li>
+                                <li>奖牌</li>
+                                <li>奖章</li>
+                                <li>姓名牌</li>
+                                <li>胸针</li>
+                                <li>书签</li>
+                                <li>车标</li>
+                                <li>铭牌</li>
+                                <li>门牌</li>
+                                <li>授权牌</li>
+                                <li>奖杯</li>
+                                <li>印章</li>
+                                <li>车贴</li>
+                                <li>不干胶</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- 材质选择 -->
+                    <div class="mod_select">
+                        <div class="select_box">
+                                                        <span class="select_txt workstage_textureBtn">
+                                                        	
+                                                        	<%if(ordersummary.orderarray[i].goodsinfo.texturename){%>
+		                                                		<%=ordersummary.orderarray[i].goodsinfo.texturename%>
+		                                                	<%}else{%>
+		                                                		请选择
+		                                                	<%}%>
+                                                        </span>
+
+                            <ul class="option_ workstage_texture">
+                                <li>锌合金</li>
+                                <li>铜合金</li>
+                                <li>铁合金</li>
+                                <li>铝合金</li>
+                                <li>不锈钢</li>
+                                <li>不锈铁</li>
+                                <li>亚克力</li>
+                                <li>ABS塑料</li>
+                                <li>贴纸</li>
+                                <li>水晶</li>
+                                <li>软硅胶</li>
+                                <li>PVC背胶</li>
+                                <li>不干胶</li>
+                                <li>马口铁</li>
+                                <li>三维软标</li>
+                                <li>软硅胶</li>
+                                <li>纯金</li>
+                                <li>纯银</li>
+                                <li>木制金箔</li>
+                                <li>925银</li>
+                                <li>18K金</li>
+                                <li>24K金</li>
+                                <li>薄金属</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- 配件选择 -->
+                    <div class="mod_select">
+                        <div class="select_box">
+                                                        <span class="select_txt" class="workstage_accessoriesBtn">
+                                                        	<%if(ordersummary.orderarray[i].goodsinfo.accessoriesname){%>
+		                                                		<%=ordersummary.orderarray[i].goodsinfo.accessoriesname%>
+		                                                	<%}else{%>
+		                                                		请选择
+		                                                	<%}%>
+                                                        </span>
+
+                            <ul class="option_  workstage_accessories">
+                                <li>无</li>
+                                <li>蝴蝶扣</li>
+                                <li>螺杆</li>
+                                <li>高卡扣</li>
+                                <li>背胶</li>
+                                <li>别针</li>
+                                <li>PVC别针</li>
+                                <li>平顶扣</li>
+                                <li>磁扣</li>
+                                <li>钥匙链</li>
+                                <li>袖扣</li>
+                                <li>领带夹</li>
+                                <li>塑料帽</li>
+                                <li>旋转件</li>
+                                <li>组合件</li>
+                                <li>带弹簧</li>
+                                <li>带滑块</li>
+                                <li>带铰链</li>
+                                <li>标准彩带</li>
+                                <li>定制彩带</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <%} if( userinfo.roleType != 1){%>
+                    <p class="figure_orederCont" data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>"
+                       data-customid="<%=ordersummary.orderarray[i].orderinfo.customid%>">
+                        <%=ordersummary.orderarray[i].orderinfo.goodsclass%>
+                        <%=ordersummary.orderarray[i].goodsinfo.texturename%>
+                        <%=ordersummary.orderarray[i].goodsinfo.accessoriesname%>
+                    </p>
+                    <%}%>
+                </li>
+                <!-- 工艺选择 -->
+                <li class="orderCont1"
+                    data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>"
+                    data-customid="<%=ordersummary.orderarray[i].orderinfo.customid%>"
+                    data-goodsid="<%=ordersummary.orderarray[i].orderinfo.goodsid%>">
+                    <!-- 选择开模  多选 -->
+                    <%if( userinfo.roleType == 1){%>
+                    <div class="moldOpen_box type_tech">
+                                                <span class="moldOpenBtn techTypeBtn">
+                                                	<%if(ordersummary.orderarray[i].goodsinfo.shape){%>
+                                                		<%=ordersummary.orderarray[i].goodsinfo.shape%>
+                                                	<%}else{%>
+                                                		请选择
+                                                	<%}%>
+                                                	
+                                                </span>
+
+                        <h5 class="tech_label_box">
+                            <div>
+                                <label><input type="checkbox"/>无</label> <label><input type="checkbox"/>双面开模</label>
+                                <label><input type="checkbox"/>2D</label>
+                                <label><input type="checkbox"/>3D</label>
+                                <label><input type="checkbox"/>冲压</label>
+                                <label><input type="checkbox"/>压铸</label>
+                                <label><input type="checkbox"/>镂空</label>
+                                <label><input type="checkbox"/>液压</label>
+                                <label><input type="checkbox"/>浇铸</label>
+                                <p>
+                                    <button class="confirm_addTech confirm_addMold_work">确定</button>
+                                    <button class="cancel_addTech">取消</button>
+                                </p>
+                            </div>
+                        </h5>
+
+                    </div>
+                    <!-- 选择工艺 多选 -->
+                    <div class="craft_box type_tech">
+                                                <span class="craftBtn techTypeBtn">
+                                                	<%if(ordersummary.orderarray[i].goodsinfo.technology){%>
+                                                		<%=ordersummary.orderarray[i].goodsinfo.technology%>
+                                                	<%}else{%>
+                                                		请选择
+                                                	<%}%>
+                                                </span>
+
+                        <h5 class="tech_label_box">
+                            <div>
+                                <label><input type="checkbox"/>无</label><label><input type="checkbox"/>柯氏</label>
+                                <label><input type="checkbox"/>纯色电镀</label><label><input type="checkbox"/>镶钻</label>
+                                <label><input type="checkbox"/>腐蚀</label><label><input type="checkbox"/>烤漆</label>
+                                <label><input type="checkbox"/>仿珐琅</label><label><input type="checkbox"/>滴胶</label>
+                                <label><input type="checkbox"/>贴纸</label><label><input type="checkbox"/>珐琅印</label>
+                                <label><input type="checkbox"/>金葱粉</label><label><input type="checkbox"/>夜光漆</label>
+                                <label><input type="checkbox"/>透明漆</label><label><input type="checkbox"/>背模</label>
+                                <label><input type="checkbox"/>刻字</label><label><input type="checkbox"/>镶边</label>
+                                <label><input type="checkbox"/>抛光</label><label><input type="checkbox"/>丝印</label>
+                                <label><input type="checkbox"/>喷绘</label>
+                                <p>
+                                    <button class="confirm_addTech confirm_addCraft_work">确定</button>
+                                    <button class="cancel_addTech">取消</button>
+                                </p>
+                            </div>
+                        </h5>
+
+                    </div>
+                    <!-- 选择电镀色 多选 -->
+                    <div class="electroplate_box type_tech">
+                                                <span class="electroplateBtn techTypeBtn">
+                                                	<%if(ordersummary.orderarray[i].goodsinfo.color){%>
+                                                		<%=ordersummary.orderarray[i].goodsinfo.color%>
+                                                	<%}else{%>
+                                                		请选择
+                                                	<%}%>
+                                                	
+                                                </span>
+
+                        <h5 class="tech_label_box">
+                            <div>
+                                <label><input type="checkbox"/>金色</label>
+                                <label><input type="checkbox"/>银色(镍)</label>
+                                <label><input type="checkbox"/>古青铜</label>
+                                <label><input type="checkbox"/>古红铜</label>
+                                <label><input type="checkbox"/>浅金色</label>
+                                <label><input type="checkbox"/>古银色</label>
+                                <label><input type="checkbox"/>黑镍色</label>
+                                <label><input type="checkbox"/>黑漆</label>
+                                <label><input type="checkbox"/>玫瑰金</label>
+                                <p>
+                                    <button class="confirm_addTech confirm_addColor_work">确定</button>
+                                    <button class="cancel_addTech">取消</button>
+                                </p>
+                            </div>
+                        </h5>
+
+                    </div>
+                    <%} if( userinfo.roleType != 1){%>
+                    <%=ordersummary.orderarray[i].goodsinfo.shape%>
+                    <%=ordersummary.orderarray[i].goodsinfo.technology%>
+                    <%=ordersummary.orderarray[i].goodsinfo.color%>
+                    <%}%>
+                </li>
+                <%if( userinfo.roleType != 2){%>
+                <li class="orderCont2">
+
+                    <input type="text" placeholder="数量" class="ordernum_workstage"
+                           onkeyup="value=value.replace(/[^\d]/g,'')"
+                           ng-pattern="/[^a-zA-Z]/" data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>"
+                           data-customid="<%=ordersummary.orderarray[i].orderinfo.customid%>"
+                    <%if( userinfo.roleType > 1){%> readonly = "true"<%}%>
+                    value="<%=ordersummary.orderarray[i].goodsinfo.number%>"/>
+
+                </li>
+                <%}%>                <!-- /^[\d]+([.]{1}[\d]{1})?$/  /^(\-)\d+(\.\d)$/-->
+                <li class="orderCont3" data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>">
+                    <input type="text" placeholder="长(mm)" onkeyup="clearNoNum(this)"
+                           class="orderLength_workstage" <%if( userinfo.roleType > 1){%> readonly = "true"<%}%>
+                    value="<%=ordersummary.orderarray[i].goodsinfo.size.length%>"/>×
+                    <input type="text" placeholder="宽(mm)" onkeyup="clearNoNum(this)"
+                           class="orderWidth_workstage" <%if( userinfo.roleType > 1){%> readonly = "true"<%}%>
+                    value="<%=ordersummary.orderarray[i].goodsinfo.size.width%>"/>×
+                    <input type="text" placeholder="厚(mm)" onkeyup="clearNoNum(this)"
+                           class="orderHeight_workstage" <%if( userinfo.roleType > 1){%> readonly = "true"<%}%>
+                    value="<%=ordersummary.orderarray[i].goodsinfo.size.height%>"/>
+                </li>
+                <%if( userinfo.roleType == 1){%>
+                <li class="orderCont4 pricing_workstage fontRed">
+                    <p><%if( ordersummary.orderarray[i].price.finalprice
+                        ){%>￥<%=ordersummary.orderarray[i].price.finalprice%><%}%></p>
+                    <h5 style="cursor: pointer;" class="figure_orederCont"
+                        data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>"
+                        data-customid="<%=ordersummary.orderarray[i].orderinfo.customid%>">订单详情</h5>
+                </li>
+                <%}%>
+                <li class="orderCont5">
+                    <em><%=ordersummary.orderarray[i].state.ordersheetstate.msg%></em>
+                    <em class="fontRed"><%=ordersummary.orderarray[i].state.designstate.msg%></em>
+                    <em class="fontRed"><%=ordersummary.orderarray[i].state.quotestate.msg%></em>
+                    <em class="fontRed"><%=ordersummary.orderarray[i].state.payoffstate.msg%></em>
+                </li>
+                <li class="orderCont6">
+
+                    <p data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>"
+                       data-customid="<%=ordersummary.orderarray[i].orderinfo.customid%>"
+                       data-goodsid="<%=ordersummary.orderarray[i].orderinfo.goodsid%>"
+                       data-paystate="<%=ordersummary.orderarray[i].state.quotestate.code%>"
+                       data-finalprice="<%=ordersummary.orderarray[i].price.finalprice%>"
+                       data-deadline="<%=ordersummary.orderarray[i].orderinfo.deadline%>">
+                        <%if( userinfo.roleType == 1){%>
+                        <%if(ordersummary.orderarray[i].state.payoffstate.code == 0 ){%>
+
+                        <%} if((ordersummary.orderarray[i].state.quotestate.code != 3 ||
+                        ordersummary.orderarray[i].state.orderstate.orderstate < 6)&&
+                        ordersummary.orderarray[i].state.payoffstate.code != 1){%>
+                        <em class="workstage_enquiryBtn">发起询价</em>
+                        <%} if(ordersummary.orderarray[i].state.orderstate.orderstate < 2 ){%>
+                        <em class="workstage_designBtn">分配设计</em>
+                        <%} if(ordersummary.orderarray[i].state.orderstate.orderstate >= 2 &&
+                        ordersummary.orderarray[i].state.orderstate.orderstate <6 ){%>
+                        <em class="workstage_reminderBtn">催设计稿</em>
+                        <%} if(ordersummary.orderarray[i].state.payoffstate.code == 0 &&
+                        ordersummary.orderarray[i].state.quotestate.code == 3){%>
+                        <em class="workstage_confirmPayBtn">确认支付</em>
+                        <%} if(ordersummary.orderarray[i].state.payoffstate.code == 1){%>
+                        <!--<em class="workstage_productionBtn" data-orderState="<%=ordersummary.orderarray[i].state.ordersheetstate.code%>">分配生产</em>-->
+                        <%} if(ordersummary.orderarray[i].state.ordersheetstate.code == 7 ){%>
+                        <em class="workstage_confirmDeliveryBtn">确认收货</em>
+                        <%}%>
+                        <%}else if( userinfo.roleType == 2){%>
+                        <%if(ordersummary.orderarray[i].state.orderstate.orderstate == 2 ){%>
+                        <em class="workstage_acceptDesignBtn">接受设计</em>
+
+                        <%}%>
+
+                        <%}else if( userinfo.roleType == 3){%>
+                        <% if(ordersummary.orderarray[i].state.quotestate.code != 3 ){%>
+
+                        <%} if(ordersummary.orderarray[i].state.orderstate.orderstate == 7 ){%>
+                        <em class="workstage_acceptProductionBtn">接受生产</em>
+                        <%} }%>
+
+                    </p>
+
+                </li>
+            </ol>
+            <div class="orderCont7" data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>"
+                 data-customid="<%=ordersummary.orderarray[i].orderinfo.customid%>">
+
+                <div data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>"
+                     data-customid="<%=ordersummary.orderarray[i].orderinfo.customid%>">
+                    <%if( false ){%>
+                    <em class="upRuler0">0</em><em class="upRuler1">5000</em>
+                    <em class="upRuler2">10000</em><em class="upRuler3">15000</em>
+                    <%} if( userinfo.roleType == 1 || userinfo.roleType == 2 ){%>
+                    <% if( ordersummary.orderarray[i].price.finalprice > 270){%>
+                    <strong class="downRuler0">8</strong>
+                    <!--<strong class="downRuler1"><%=( parseInt(((ordersummary.orderarray[i].price.finalprice)*0.03-8)/3)+8 )%></strong>
+                    <strong class="downRuler2"><%=( parseInt(((ordersummary.orderarray[i].price.finalprice)*0.03-8)*2/3)+8 )%></strong>-->
+                    <strong class="downRuler3"><%=(
+                        parseInt(((ordersummary.orderarray[i].price.finalprice)*0.03)))%></strong>
+                    <%}else if( parseInt(ordersummary.orderarray[i].price.extent1) >270 ){%>
+                    <strong class="downRuler0">8</strong>
+                    <!--<strong class="downRuler1"><%=(( parseInt(ordersummary.orderarray[i].price.extent1))*0.03 )%></strong>
+                    <strong class="downRuler2"><%=(( parseInt(ordersummary.orderarray[i].price.extent1))*0.03 )%></strong>-->
+                    <strong class="downRuler3"><%=( parseInt( parseInt(ordersummary.orderarray[i].price.extent1)*0.03)
+                        )%></strong>
+                    <%}else{%>
+                    <strong class="downRuler0">8</strong>
+                    <strong class="downRuler3">8</strong>
+                    <%}%>
+                    <%} if( userinfo.roleType == 1 || userinfo.roleType == 2 ){%>
+                    <ul class="zhiyin design_ruler drag"><!--设计费-->
+                        <li>
+                            <span>设计费</span>
+                            <input type="text" class="designFee" onkeyup="value=value.replace(/[^\d]/g,'')"
+                                   ng-pattern="/[^a-zA-Z]/" readonly="readonly"
+                            <%if( userinfo.roleType == 2 ){%>
+                            disabled="disabled" style="cursor: default;"
+                            <%}%>
+                            value="￥<%=ordersummary.orderarray[i].price.designprice%>">
+                            <button class="designFee_btn">确定</button>
+                        </li>
+                        <li><img src="./images/icon/tranrigle_green.svg"/></li>
+
+                    </ul>
+                    <%}%>
+
+                </div>
+                <%if( userinfo.roleType == 1 ){%>
+                <ul class="deadline_workstage">
+                    <li data-orderid="<%=ordersummary.orderarray[i].orderinfo.orderid%>"
+                        data-customid="<%=ordersummary.orderarray[i].orderinfo.customid%>">
+                        工期：<input type="text" id="deadline_val" onkeyup="value=value.replace(/[^\d]/g,'')"
+                                  ng-pattern="/[^a-zA-Z]/" value="<%=ordersummary.orderarray[i].orderinfo.deadline%>"/>
+                    </li>
+                </ul>
+                <%} if( userinfo.roleType == 1 || ( userinfo.roleType == 3 && ordersummary.orderarray[i].price.mindprice
+                < ordersummary.orderarray[i].price.returnprice) ){%>
+
+                <ul class="zhiyin custom_ruler drag"><!--客户价-->
+                    <li>
+                        <span>预算</span>
+                        <input type="text" class="customFee" style="color: #d74a49"
+                               onkeyup="value=value.replace(/[^\d]/g,'')"
+                               ng-pattern="/[^a-zA-Z]/" value="￥<%=ordersummary.orderarray[i].price.mindprice%>">
+                        <button class="customFee_btn">确定</button>
+                    </li>
+                    <li><img src="./images/icon/tranrigle_red.svg"/></li>
+
+                </ul>
+                <%} if( userinfo.roleType == 1 ){%>
+                <ul class="zhiyin offer_ruler drag"><!--报价-->
+                    <li>
+                        <%if( ordersummary.orderarray[i].state.payoffstate == 6 ){%> <%}%>
+                        <%if( userinfo.roleType == 1 ){%><span>估价</span><%}%>
+
+                        <%if( ordersummary.orderarray[i].price.finalprice != 0 ){%>
+                        <input type="text" class="offerFee" style="color: #3a8ecc"
+                               onkeyup="value=value.replace(/[^\d]/g,'')"
+                               ng-pattern="/[^a-zA-Z]/"
+                               value="￥<%=ordersummary.orderarray[i].price.finalprice%>"/>
+                        <%} else{%>
+                        <input type="text" class="offerFee" style="color: #3a8ecc"
+                               onkeyup="value=value.replace(/[^\d]/g,'')"
+                               ng-pattern="/[^a-zA-Z]/"
+                               value="￥<%=ordersummary.orderarray[i].price.returnprice%>"/>
+                        <%}%>
+                        <button class="offerFee_btn">定价</button>
+                    </li>
+                    <li><img src="./images/icon/tranrigle_blue.svg"/></li>
+
+                </ul>
+
+                <%} if( userinfo.roleType == 3 ){%>
+                <ul class="zhiyin offer_ruler drag"><!--报价-->
+                    <li class="offerFee_btn" data-deadline="<%=ordersummary.orderarray[i].orderinfo.deadline%>"
+                        data-paystate="<%=ordersummary.orderarray[i].state.payoffstate.code%>">
+                        <%if( ordersummary.orderarray[i].state.payoffstate == 6 ){%> <%}%>
+                        <span>上次</span>
+                        <input type="text" class="offerFee" style="color: #3a8ecc"
+                               onkeyup="value=value.replace(/[^\d]/g,'')"
+                               ng-pattern="/[^a-zA-Z]/" disabled="disabled"
+                        <%if(ordersummary.orderarray[i].price.finalprice != 0){%>
+                        value="￥<%=ordersummary.orderarray[i].price.finalprice%>"
+                        <%}else{%>
+                        value="￥<%=ordersummary.orderarray[i].price.returnprice%>"
+                        <%}%>
+                        >
+                        <button>报价</button>
+                    </li>
+                    <li><img src="./images/icon/tranrigle_blue.svg"/></li>
+
+                </ul>
+                <%}%>
+            </div>
+        </div>
+    </dd>
+    <%}%>
+    <%}%>
+</script>
+
+<script type="text/javascript" src="./js/common.js"></script>
+
+<script type="text/javascript" src="./js/workstage.js"></script>
+
+</body>
+
+</html>

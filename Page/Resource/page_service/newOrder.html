@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新建订单页面</title>
+    <script id="version" src="../js/common/vesion.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("version");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../css/common/base.css?v=' + VESION + '" rel="stylesheet" />');
+        document.write('<link href="../css/design/design_draft.css?v=' + VESION + '" rel="stylesheet" />');
+        document.write('<link href="../lib/viewer/viewer.css?v=' + VESION + '" rel="stylesheet" />');
+        document.write('<link href="../css/newOrder_service.css?v=' + VESION + '" rel="stylesheet" />');
+    </script>
+    <script src="../lib/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../js/common/data.js" type="text/javascript"></script>
+    <style>
+        #uploadedList .img .x{
+            background: url("../images/icon/X.png");
+        }
+
+        #uploadedList {
+            left: 76px;
+        }
+
+        .pl_10_new {
+            width: 71px;
+        }
+
+        .sm {
+            padding-left: 1px;
+            margin-right: 8px;
+        }
+
+        #filelist {
+            margin-left: 77px;
+        }
+        #filelist .progress{
+            left: 359px !important;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!--右侧  主内容-->
+<div class="cont_right">
+    <!-- 新建订单的内容 -->
+    <div class="orderhead">新建订单</div>
+    <div class="neworder_content">
+        <ul>
+
+            <li class="litop">
+                <i class="icon iconfont icon-asterisk">*</i>
+
+                <p>产品类型：</p>
+                <div class="mod_select">
+                    <div class="select_box ordertype_div">
+                        <span id="goodsclass" class="select_txt ordertype_span border_gray ">徽章</span>
+                        <ul class="option">
+                            <script>
+
+                                document.write(commonData.productType);
+                            </script>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <!-- 填写产品数量 -->
+            <li class="litop" style="margin-left:1rem">
+                <i class="icon iconfont icon-asterisk">*</i>
+                <p>产品数量：</p>
+                <input id="number" type="text" class="borderGray orderNum" name="" onkeyup="value=value.replace(/[^\d]/g,'')"
+                       ng-pattern="/[^a-zA-Z]/" style="width: 5.3518rem;"/>
+            </li>
+            <!-- 选择产品属性 -->
+            <li class="libottom" style="position: relative;top:.7rem;left:1rem">
+                <i class="icon iconfont icon-asterisk">*</i>
+                <p>产品属性：</p>
+                <div class="mod_select">
+                    <div class="select_box typeselect borderGray">
+                        <span id="texturename" class="select_txt order_material workstage_textureBtn">锌合金</span>
+                        <ul class="option workstage_texture">
+                            <script>
+                                document.write(commonData.texturename);
+                            </script>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mod_select">
+                    <div class="select_box typeselect borderGray">
+                        <span id="accessoriesname" class="select_txt order_parts ">蝴蝶扣</span>
+                        <ul class="option">
+                            <script>
+                                document.write(commonData.accessoriesname);
+                            </script>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="limiddle">
+                            <span class="productName_tip">
+
+                            </span>
+
+                <span style="width: 2.3888rem;" class="productNum_tip">
+                                <embed type="image/svg+xml" src="./images/icon/error.svg"></embed>产品数量不能为空
+                            </span>
+                <span class="productName_tip" style="width: 1.1111rem;">
+
+                            </span>
+            </li>
+            <!-- 选择工艺属性 -->
+            <li class="libottom">
+                <i class="icon iconfont icon-asterisk">*</i>
+                <p>工艺属性：</p>
+                <!-- 开模方式 -->
+                <div class="moldOpen_box zb-dorpdownbox type_tech borderGray">
+                    <span id="shape" class="moldOpenBtn techTypeBtn ">2D冲压</span>
+                    <h5 class="tech_label_box newOrder_change">
+                        <div class="zb-box">
+                            <script>
+                                document.write(commonData.technology);
+                            </script>
+                            <p class="newOrder_p">
+                                <button class="confirm_addTech newOrder_changeL">确定</button>
+                                <button class="cancel_addTech newOrder_changeR">取消</button>
+                            </p>
+                        </div>
+                    </h5>
+                </div>
+                <!-- 选择工艺 -->
+                <div class="craft_box type_tech borderGray  moldOpen_box zb-dorpdownbox ">
+                    <span id="technology" class="craftBtn techTypeBtn">烤漆</span><!--order_craft-->
+                    <h5 class="tech_label_box tech_label_box newOrder_chang">
+                        <div class="zb-box">
+                            <script>
+                                document.write(commonData.machining);
+                            </script>
+                            <p class="newOrder_p">
+                                <button class="confirm_addTech newOrder_changeL">确定</button>
+                                <button class="cancel_addTech newOrder_changeR">取消</button>
+                            </p>
+                        </div>
+                    </h5>
+                </div>
+                <!-- 选择电镀色 -->
+                <div class="electroplate_box type_tech borderGray moldOpen_box zb-dorpdownbox">
+                    <span id="color" class="electroplateBtn techTypeBtn">金色;</span>
+                    <h5 class="tech_label_box newOrder_chang">
+                        <div class="zb-box">
+                            <script>
+                                document.write(commonData.color);
+                            </script>
+                            <p class="newOrder_p">
+                                <button class="confirm_addTech newOrder_changeL">确定</button>
+                                <button class="cancel_addTech newOrder_changeR">取消</button>
+                            </p>
+                        </div>
+                    </h5>
+                </div>
+            </li>
+            <li class="libottom" style="position: relative;">
+                <i class="icon iconfont icon-asterisk">*</i>
+                <p>订单来源：</p>
+                <div class="mod_select">
+                    <div class="select_box source typeselect borderGray">
+                        <span id="source" style="box-shadow: none;" class="select_txt source">请选择</span>
+                        <ul class="option none_offer" style="max-height: 150px;">
+                            <!--<script>-->
+                                <!--document.write(commonData.texturename);-->
+                            <!--</script>-->
+                            <li>多贝特</li>
+                            <li>天达</li>
+                            <li>GEORG</li>
+                            <li>多百特</li>
+                            <li>wallsticker</li>
+                            <li>线下付款</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="libottom" style="margin-left: 130px; color: #e84b4c;">
+                <input type="checkbox" id="append"><label for="append">续订产品</label>
+            </li>
+            <!-- 输入尺寸    长、宽、高 -->
+            <li class="libottom">
+                <i class="icon iconfont icon-asterisk ">*</i>
+                <p>&nbsp;尺寸：&nbsp;</p>
+                <div class="sizediv" style="margin: 0 0.1481rem;left:1rem;">
+                    <span>长</span><input id="length" type="text" maxlength="6" class="productLength js_checkout"
+
+                                         value="30.0"/>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mm
+                <div class="sizediv">
+                    <span>宽</span><input id="width" type="text" maxlength="6" class="productWidth js_checkout"
+
+                                         value="30.0"/>
+                </div>
+                mm
+                <div class="sizediv">
+                    <span>高(厚度)</span><input id="height" type="text" maxlength="6" class="productHeight js_checkout"
+                                             value="2.0"/>
+                </div>
+                mm
+            </li>
+
+
+        </ul>
+        <ul>
+            <li class="lihead">
+                <i class="icon iconfont icon-asterisk">*</i>
+                <p style="margin-right: 14px;">旺旺号：</p>
+                <input type="text" placeholder="客户旺旺名" name="" class="borderGray order_contact"/>
+            </li>
+            <li class="lihead" style="padding-left:1rem;">
+                <i class="icon iconfont icon-asterisk">*</i>
+                <p>估价：</p>
+                <div class="evaluation"></div>
+                <input id="evaluation" type="text" placeholder="" name="" onkeyup="value=value.replace(/[^\d]/g,'')"
+                       ng-pattern="/[^a-zA-Z]/" class="borderGray order_customerprice"/>
+
+                <span></span>
+            </li>
+            <li class="lihead">
+                <!--<i class="icon iconfont icon-asterisk">*</i>-->
+                <p>客户预算：</p>
+                <input type="text" placeholder="" onkeyup="value=value.replace(/[^\d]/g,'')"
+                       ng-pattern="/[^a-zA-Z]/" name="order_evaluate" class="borderGray order_evaluate"/>
+                <span></span>
+            </li>
+            <li class="lihead">
+                <!--<i class="icon iconfont icon-asterisk">*</i>-->
+                <p>截止工期：</p>
+                <div class="order_limittimebox">
+                    <input type="text" placeholder="" name=""
+
+                           class="borderGray order_deadline timer_icon" id="stop_time"/>
+                    <i class="icon iconfont icon-shijian"></i>
+                    <!-- <div class="timer_icon stop_time2"></div>-->
+                </div>
+            </li>
+            <li class="limiddle" style="margin-top: -10px;">
+                            <span class="contact_tip" style="padding: 0 0.2222rem;">
+                            	<embed type="image/svg+xml" src="./images/icon/error.svg"></embed>客户旺旺名不能为空
+                            </span>
+                            <span class="productName_tip">
+                            </span>
+                            <span class="evaluate_tip"> <!-- 估价提示消息 -->
+                            	<embed type="image/svg+xml" src="./images/icon/error.svg"></embed>估价不能为空
+                            </span>
+                            <span style="width: 2.4rem;" class="productNum_tip">
+                            </span>
+            </li>
+        </ul>
+        <ul class="upload_pic_remark">
+            <!-- 参考图、参考附件 给设计师   -->
+            <li class="toDesigner_cont">
+
+                <div class="upload" style="display: inline-block;">
+                    <div class="updesign clearfix" style="position: relative;">
+                        <span class="pl-10 pl_10_new"><!--<i class="war">*</i>-->参考图:</span>
+                        <div id="uploadedList">
+                            <div id="upload_btn">
+                                <input id="input_file" style="display:none;" class="hidden" type="file"
+                                       name="input_file" multiple="">
+                                <span class="icon-plus"></span>
+                                <span class="text">点击上传图片</span>
+                                <span class="format"></span>
+                            </div>
+                        </div>
+                        <span class="upload-msg" style="bottom: 20px;">将图片拖拽至此区域</span>
+                    </div>
+                    <div class="upfile" style="border: 2px dashed #eee; padding-bottom: 10px;">
+                        <span class="pl-10 pl_10_new"><!--<i class="war">*</i>-->上传文件:</span>
+                        <input id="input_file_1" style="display:none;" class="hidden" type="file" name="input_file">
+                        <button id="upfile">上传附件</button>
+                        <span class="upload-file-msg">将附件拖拽至此区域</span>
+                    </div>
+                    <ul id="filelist" class="pl-10 pl_10_new">
+                        <!-- 附件 -->
+                    </ul>
+                    <div class="upfile settings_flex">
+                        <span class="sm"> 设计备注:</span>
+                        <input class="explain" id="remark_desig" placeholder="请输入设计备注说明">
+                    </div>
+                    <div class="upfile settings_flex">
+                        <span class="sm"> 生产备注:</span>
+                        <input class="explain" id="remark_fact" placeholder="请输入生产备注说明">
+                    </div>
+                    <button id="submit" class="js_submit">确定</button>
+                </div>
+
+                </li>
+            </ul>
+</div>
+
+</div>
+
+<script>
+    var neworder="true";
+    document.write('<script src="../lib/layer/2.4/layer.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+    document.write('<script src="../lib/viewer/viewer-liugang.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+    document.write('<script src="../lib/jquery.cookie.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+    document.write('<script src="../js/common/common.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+    document.write('<script src="../js/common/cos_upload_file.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+    document.write('<script src="../js/common/pullDown_menu.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+    document.write('<script src="../js/service/createOrderUpload.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+    document.write('<script src="../js/newOrder_service.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+</script>
+
+
+<script type="text/javascript" src="../lib/laydate/laydate.js"></script>
+<script>
+    $(function () {
+        var result = null;
+        $('#stop_time').val(OrderDetails.end_data.addDate(new Date(), 13))
+        laydate.render({
+            elem: '#stop_time'
+            , min: 0
+            , showBottom: false
+            , done: function (value, date) {
+                var sDate = Common.date.getDate();
+                var eDate = value;
+                var sArr = sDate.split("-");
+                var eArr = eDate.split("-");
+                var sRDate = new Date(sArr[0], sArr[1], sArr[2]);
+                var eRDate = new Date(eArr[0], eArr[1], eArr[2]);
+                result = (eRDate - sRDate) / (24 * 60 * 60 * 1000);
+                $('.js_time_step').text(result);
+                $(document).attr('timeStep', result);
+            }
+        });
+
+
+        // ==>>验证长度，宽度和高度 格式
+        $('.js_checkout').on('keydown', function (evt) {
+            var iKeyCode = window.event?evt.keyCode:evt.which;
+                /*
+                 ascii码说明：
+                 8：退格键
+                 46：delete
+                 37-40： 方向键
+                 48-57：小键盘区的数字
+                 96-105：主键盘区的数字
+                 110、190：小键盘区和主键盘区的小数点
+                 189、109：小键盘区和主键盘区的负号
+
+                 13：回车
+                 9： Tab 就是那个把焦点移到下一个文本框的东东。
+                 */
+
+                if((iKeyCode>=48) && (iKeyCode<=57) || (iKeyCode>=96) && (iKeyCode<=105) || (iKeyCode>=37) && (iKeyCode<=40) ||iKeyCode===8|| iKeyCode==46|| iKeyCode==190) {
+
+                } else {
+                    if (window.event) {
+                        //IE
+                        event.returnValue = false;
+                    } else {
+                        //Firefox
+                        evt.preventDefault();
+                    }
+                }
+            });
+    });
+
+
+</script>
+</body>
+</html>

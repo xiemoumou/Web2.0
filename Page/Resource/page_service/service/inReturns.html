@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>退货中订单</title>
+    <link rel="stylesheet" href="../../lib/loading/css/global.css">
+    <link href="../../css/common/base.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../lib/SlideRuleOS/SlideRuleOS.css"/>
+    <link href="../../css/service/all_order.css" rel="stylesheet"/>
+    <link href="../../lib/jqueryPagination/css/jquery.pagination.css" rel="stylesheet"/>
+    <script src="../../lib/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../js/common/data.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+<div class="content">
+    <div class="header clearfix">
+        <div class="tab"><!--tab -->
+            <ul id="tabmode">
+                <li id="afterProcessing_ord" onclick="window.location.href='./after_processing.html'">
+                    <a href="#">售后处理中</a> <i class="reddot" id="afterProcessing_i">0</i></li>
+                <li id="inReturns_click" class="active">
+                    <a href="#">退货中<i id="inReturns_i" class="reddot">0</i></a></li>
+                <li id="inReimburse_click" onclick="window.location.href='./inReimburse.html'">
+                    <a href="#">退款中<i id="inReimburse_i" class="reddot">0</i></a></li>
+            </ul>
+        </div>
+        <!-- <div class="sort">
+            <ul>
+                <li class="hideRborder">综合</li>
+                <li class="hideRborder">发布时间</li>
+                <li class="hideRborder">设计周期</li>
+                <li>设计费</li>
+            </ul>
+            <div class="urgent">
+                <input type="checkbox" id="urgent" />
+                <label for="urgent">急单</label>
+            </div>
+        </div> -->
+        <div class="thead hide">
+            <ul>
+                <li>
+                    <span>产品图</span>
+                </li>
+                <li>
+                    <span>属性</span>
+                </li>
+                <li>
+                    <span>工艺</span>
+                </li>
+                <li>
+                    <span>数量</span>
+                </li>
+                <li>
+                    <span>长x宽×厚(mm)</span>
+                </li>
+
+                <li>
+                    <span>客户工期(天)</span>
+                </li>
+                <li>
+                    <span>订单状态</span>
+                </li>
+                <li>
+                    <span>操作</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="order" id="orderList">
+
+
+    </div>
+    <div class="page-box">
+    </div>
+</div>
+
+<!-- 订单概览的百度模板 -->
+<script id="baidu_workstage_order" type="text/html">
+    <%for(var i =0;i
+    <orderarray.length;i++){%>
+    <!-- 订单概览信息---客服角色   -->
+    <dl class="order_cont_service">
+        <dt class="order_service_top">
+        <p data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+           data-taxrate="<%=orderarray[i].price.taxrate%>"
+           data-customid="<%=orderarray[i].orderinfo.customid%>">
+            <time style="display: inline-block;width: 120px;"><%=orderarray[i].orderinfo.createtime%></time>
+            <span class="redfont" style="display: inline-block;width: 200px;">客户旺旺号:<em><%=orderarray[i].orderinfo.customerid%></em></span>
+            <span style="display: inline-block;width: 120px;">订单来源:<em><%=orderarray[i].orderinfo.fromplatform||"未指定"%></em></span>
+            <span style="display: inline-block;width: 150px;">订单号:<em><%=orderarray[i].orderinfo.orderid%></em></span>
+            <span class="figure_orderCont" style="float: right;cursor: pointer;color: #e84b4c;">查看订单</span>
+        <%if(orderarray[i].orderinfo.renew==1){%>
+        <span style="display: inline-block;" class="renew">续订</span>
+        <%}%>
+        <span class="js-invoice" style="float: right;color: #e84b4c;cursor: pointer; margin-right: 10px;">发票</span>
+        <span class="js-delete" style="float: right;color: #e84b4c;cursor: pointer; margin-right: 10px;">删除</span>
+        <span style="float: right;color: #e84b4c;cursor: pointer; margin-right: 10px;" class="order_check">核对订单</span>
+        <span style="float: right;color: #e84b4c;cursor: pointer; margin-right: 10px;" class="box">包装</span>
+        </p>
+        <%if(roleType==4){%>
+        <p>
+            <span style="display: inline-block;width: 150px;">客服:<em><%=orderarray[i].nickname.customnickname%></em></span>
+            <span style="display: inline-block;width: 220px;">设计师:<em><%=orderarray[i].nickname.designernickname%></em></span>
+            <span style="display: inline-block;width: 220px;">工厂:<em><%=orderarray[i].nickname.factorynickname%></em></span>
+        </p>
+        <%}%>
+        </dt>
+        <dd class="order_service_middle">
+
+
+            <figure class="pic_order" data-orderid="<%=orderarray[i].orderinfo.orderid%>" ordersheetstate="<%=orderarray[i].state.ordersheetstate.code%>"
+                    data-customid="<%=orderarray[i].orderinfo.customid%>"><img
+                    onerror="this.src='../../images/images/mr.png'" class="figure_orderCont"
+                <%if( orderarray[i].orderinfo.goodsimage ){%>
+                src="<%=cosImgUrl%><%=orderarray[i].orderinfo.goodsimage %>"
+                <%}else{%>
+                src="../../images/images/mr.png"
+                <%}%>
+                />
+            </figure>
+
+            <div>
+                <!-- 订单参数  信息   -->
+                <ul class="order_parameter" data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+                    data-customid="<%=orderarray[i].orderinfo.customid%>" ordersheetstate="<%=orderarray[i].state.ordersheetstate.code%>">
+                    <li class="order_li_single">
+                        <!-- 下拉  单选   -->
+
+                        <!-- 选择产品类型  -->
+                        <div class="mod_select borderGray">
+                            <div class="select_box">
+			                                    <span class="select_txt productTypeBtn_service">
+			                                    	<%if( orderarray[i].orderinfo.goodsclass ){%>
+			                                    		<%=orderarray[i].orderinfo.goodsclass%>
+			                                    	<%}else{%>
+			                                    		请选择
+			                                    	<%}%>
+			                                    </span>
+                                <ul class="option productType_service">
+                                    <!--徽章-->
+                                    <%=productType%>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 选择材质 -->
+                        <div class="mod_select borderGray">
+                            <div class="select_box ">
+			                                    <span class="select_txt textureBtn_service">
+			                                    	<%if( orderarray[i].goodsinfo.texturename ){%>
+			                                    		<%=orderarray[i].goodsinfo.texturename%>
+			                                    	<%}else{%>
+			                                    		请选择
+			                                    	<%}%>
+			                                    </span>
+                                <ul class="option texture_service">
+                                    <!--锌合金-->
+                                    <%=texturename%>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 选择配件 -->
+                        <div class="mod_select borderGray">
+                            <div class="select_box">
+			                                    <span class="select_txt partsBtn_service">
+			                                    	<%if( orderarray[i].goodsinfo.accessoriesname ){%>
+			                                    		<%=orderarray[i].goodsinfo.accessoriesname%>
+			                                    	<%}else{%>
+			                                    		请选择
+			                                    	<%}%>
+			                                    </span>
+                                <ul class="option parts_service">
+                                    <!--蝴蝶扣-->
+                                    <%=accessoriesname%>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="order_li_more">
+                        <!-- 下拉  多选 -->
+                        <!-- 开模方式 -->
+                        <div class="moldOpen_box type_tech borderGray">
+                                                <span class="moldOpenBtn techTypeBtn">
+                                                	<%if( orderarray[i].goodsinfo.shape ){%>
+			                                    		<%=orderarray[i].goodsinfo.shape%>
+			                                    	<%}else{%>
+			                                    		请选择
+			                                    	<%}%>
+			                                    </span>
+                            <h5 class="tech_label_box">
+                                <div class="zb-box">
+                                    <%=ordersummary%>
+                                    <p>
+                                        <button class="confirm_addTech confirm_addMold_work">确定</button>
+                                        <button class="cancel_addTech">取消</button>
+                                    </p>
+                                </div>
+                            </h5>
+                        </div>
+                        <!-- 选择工艺 -->
+                        <div class="craft_box type_tech borderGray">
+                                                <span class="craftBtn techTypeBtn">
+                                                	<%if( orderarray[i].goodsinfo.technology ){%>
+			                                    		<%=orderarray[i].goodsinfo.technology%>
+			                                    	<%}else{%>
+			                                    		请选择
+			                                    	<%}%>
+			                                    </span><!--order_craft-->
+                            <h5 class="tech_label_box">
+                                <div class="zb-box">
+                                    <%=machining%>
+                                    <p>
+                                        <button class="confirm_addTech confirm_addCraft_work">确定</button>
+                                        <button class="cancel_addTech">取消</button>
+                                    </p>
+                                </div>
+                            </h5>
+                        </div>
+                        <!-- 选择电镀色 -->
+                        <div class="electroplate_box type_tech borderGray">
+                                                <span class="electroplateBtn techTypeBtn">
+                                                	<%if( orderarray[i].goodsinfo.color ){%>
+			                                    		<%=orderarray[i].goodsinfo.color %>
+			                                    	<%}else{%>
+			                                    		请选择
+			                                    	<%}%>
+                                                </span>
+                            <h5 class="tech_label_box">
+                                <div class="zb-box">
+                                    <%=color%>
+                                    <p>
+                                        <button class="confirm_addTech confirm_addColor_work">确定</button>
+                                        <button class="cancel_addTech">取消</button>
+                                    </p>
+                                </div>
+                            </h5>
+                        </div>
+                    </li>
+                    <!-- 产品  数量 -->
+                    <li class="order_li_first">
+                        <p class="borderGray">
+                            <input type="text" class="prdNum" onkeyup="value=value.replace(/[^\d]/g,'')"
+                                   ng-pattern="/[^a-zA-Z]/" value="<%=orderarray[i].goodsinfo.number %>"/>
+                            <!--<b style="color: #e84b4c;">个</b>-->
+                        </p>
+                    </li>
+                    <!-- 长宽高 -->
+                    <li class="order_li_second">
+                        <p>
+                            <input type="text" class="prdLength borderGray"
+                                   onkeyup="clearNoNum(this)"
+                                   value="<%=orderarray[i].goodsinfo.size.length %>"/><b>×</b>
+                            <input type="text" class="prdWidth borderGray"
+                                   onkeyup="clearNoNum(this)" value="<%=orderarray[i].goodsinfo.size.width %>"/><b>×</b>
+                            <input type="text" class="prdHeight borderGray"
+                                   onkeyup="clearNoNum(this)" value="<%=orderarray[i].goodsinfo.size.height %>"/>
+                        </p>
+
+                    </li>
+                    <!-- 产品  周期  -->
+                    <li class="order_li_first" style="width: 34px;">
+                        <p class="borderGray" style="width: 32px;">
+                            <input type="text" class="prdDeadline" onkeyup="value=value.replace(/[^\d]/g,'')"
+                                   ng-pattern="/[^a-zA-Z]/" value="<%=orderarray[i].orderinfo.deadline %>"
+                                   style="width: 30px;"/>
+                        </p>
+                    </li>
+
+                    <li class="order_li_third">
+                        <span><%=orderarray[i].state.ordersheetstate.msg%></span>
+                        <span style="color: #e84b4c;"><%=orderarray[i].state.designstate.msg%></span>
+                        <span style="color: #e84b4c;"><%=orderarray[i].state.quotestate.msg%></span>
+                        <span style="color: #e84b4c;"><%=orderarray[i].state.payoffstate.msg%></span>
+
+                    </li>
+
+                    <li class="order_li_last" data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+                        data-customid="<%=orderarray[i].orderinfo.customid%>"
+                        data-goodsid="<%=orderarray[i].orderinfo.goodsid%>"
+                        data-paystate="<%=orderarray[i].state.quotestate.code%>"
+                        data-orderstate="<%=orderarray[i].state.orderstate.orderstate%>"
+                        ordersheetstate="<%=orderarray[i].state.ordersheetstate.code%>"
+                        data-finalprice="<%=orderarray[i].price.finalprice%>"
+                        data-deadline="<%=orderarray[i].orderinfo.deadline%>">
+                        <%if(orderarray[i].state.payoffstate.code == 1 && orderarray[i].state.ordersheetstate.code < 6){%>
+                        <button class="allocationProduce">分配生产</button>
+                        <%} if((orderarray[i].state.quotestate.code != 3 || orderarray[i].state.orderstate.orderstate <
+                        6)&& orderarray[i].state.payoffstate.code != 1){%>
+                        <button class="workstage_enquiryBtn">发起询价</button>
+                        <%} if(orderarray[i].state.orderstate.orderstate < 2 ){%>
+                        <button class="workstage_designBtn">分配设计</button>
+                        <%} if(orderarray[i].state.designstate.code ==1 ||
+                        orderarray[i].state.designstate.code ==3 ){%>
+                        <button class="workstage_reminderBtn">催设计稿</button>
+                        <%} if(orderarray[i].state.payoffstate.code == 0 && orderarray[i].state.quotestate.code == 3){%>
+                        <button class="workstage_confirmPayBtn">确认支付</button>
+                        <%} if(orderarray[i].state.payoffstate.code == 1){%>
+                        <!--<button class="workstage_productionBtn" data-orderState="<%=ordersummary.orderarray[i].state.ordersheetstate.code%>">分配生产</em>-->
+                        <%} if(orderarray[i].state.ordersheetstate.code == 7 ){%>
+                        <button class="checkLogist">查看物流</button>
+                        <button class="workstage_confirmDeliveryBtn">确认收货</button>
+                        <%}%>
+                    </li>
+                </ul>
+                <!-- 滑动尺  预算   定价      -->
+                <h6 class="order_service_bottom">
+                    <div class="slide-rule-os" data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+                         data-customid="<%=orderarray[i].orderinfo.customid%>"
+                         data-up-min="0" data-up-max="<%=orderarray[i].price.productPriceLimit%>" data-down-min="8"
+                         data-down-max="<%=orderarray[i].price.designPriceLimit%>" data-up-name="产品费"
+                         data-down-name="设计费" data-step="10"
+
+                    <%if(orderarray[i].price.taxrate>0){%>
+                    data-red-name="(含税)"
+                    <%}%>
+                    <%if(orderarray[i].price.taxrate==0){%>
+                    data-red-name="(不含税)"
+                    <%}%>
+
+                    <%if(orderarray[i].state.orderstate.orderstate >= 8 ){%> islock-red-point islock-yellow-point <%}%>
+                    data-red-point-val="<%=orderarray[i].price.returnprice%>"
+                    data-red-point-show
+                    data-yellow-point-val="<%=orderarray[i].price.mindprice%>" data-yellow-point-show
+                    <%if(orderarray[i].state.orderstate.orderstate >= 3 ){%> islock-blue-point <%}%>
+                    data-blue-point-val="<%=orderarray[i].price.designprice%>" data-blue-point-show
+                    data-red-darrow-val="<%=orderarray[i].price.finalprice <= 0 ? orderarray[i].price.extent1 :
+                    orderarray[i].price.finalprice%>"
+                    <%if(orderarray[i].state.quotestate.code==3){%> data-red-darrow-show <%}%>
+                    data-red-darrow-name="定价金额:¥" guide-fee-value="<%=orderarray[i].price.finalprice%>" guide-fee-show >
+            </div>
+            </h6>
+            </div>
+        </dd>
+
+    </dl>
+    <%}%>
+</script>
+
+
+<!-- 测试用开始 -->
+<script src="../../lib/jquery.cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../js/baiduTemplate.js"></script>
+<script src="../../lib/jqueryPagination/js/jquery.pagination.min.js" rel="stylesheet"></script>
+<script src="../../lib/layer/2.4/layer.js" rel="stylesheet"></script>
+<script src="../../js/common/common.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../js/common/pullDown_menu.js"></script>
+<script src="../../js/service/inReturns.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../js/service/serviceEvent.js"></script>
+<script type="text/javascript" src="../../lib/SlideRuleOS/SlideRuleOS.js"></script>
+</body>
+</html>

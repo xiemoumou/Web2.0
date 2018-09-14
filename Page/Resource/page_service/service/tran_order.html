@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>转接订单</title>
+    <link href="../../css/common/base.css" rel="stylesheet">
+    <link href="../../css/service/tran_order.css" rel="stylesheet">
+</head>
+<body>
+ <div class="tran-content">
+    <div class="tran-order-box">
+
+        <div class="tran-order-text">
+            <p class="ord-label">源车间</p>
+            <p>帐号：<span id="org_account"></span></p>
+            <p>昵称：<span id="org_nikename"></span></p>
+            <hr style="height:1px;border:none;border-top:1px dashed #d5d5d5;" />
+        </div>
+
+        <div class="work-shop">
+            <span class="trans-name"></span>
+            <select id="translist">
+                <option id="select_name" value="-1" selected>--</option>
+
+            </select>
+            <p class="active select-mag"></p>
+        </div>
+        <div class="floor">
+            <button class="red-button ok" style="margin-right: 10px" onclick="submit();">确定</button>
+            <button onclick="parent.layer.closeAll()" style="margin-left: 10px" class="hollow-button">取消</button>
+        </div>
+    </div>
+ </div>
+
+
+
+
+<script type="text/javascript" src="../../lib/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../lib/jquery.cookie.js"></script>
+<script type="text/javascript" src="../../lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="../../js/common/common.js"></script>
+<script type="text/javascript">
+    var status=0;
+    var data=null;
+    $(function () {
+        status=Common.getUrlParam("tabstatus");
+        if(status=="1")//车间
+        {
+            $(".ord-label").text("源车间");
+            $(".trans-name").text("接受转接的车间：");
+            $("#select_name").text("请选择车间");
+            $(".select-mag").text("请选择转接的车间");
+        }
+        else if(status=="2")//方案师
+        {
+            $(".ord-label").text("源方案师");
+            $(".trans-name").text("接受转接的方案师：");
+            $("#select_name").text("请选择方案师");
+            $(".select-mag").text("请选择转接的方案师");
+        }
+
+        data=parent.document.getElementById("cont_iframe").contentWindow.orderAdmin.data;
+        var index=Common.getUrlParam('index',true);
+        index=parseInt(index);
+        data=data[index];
+
+        var orgName=data.workshopname||data.disignername;//原名称
+        $("#org_nikename").text(orgName);
+        var account=data.account;//账号
+        $("#org_account").text(account);
+        var transList=data.translist;//转接到列表
+        var transSelect=$("#translist");
+        for(var i=0;i<transList.length;i++)
+        {
+            var item=transList[i];
+            var option=$("<option value='"+item.transaccount+"'>"+item.transname+"</option>");
+            transSelect.append(option);
+        }
+    });
+
+    var submit=function () {//确定转接
+        var selVal= $("#translist").val();
+        if(selVal=="-1")
+        {
+            var msg="";
+            if(status=="1")//车间
+            {
+                msg="请选择转接的车间";
+            }
+            else if(status=="2")//方案师
+            {
+                msg="请选择转接的方案师";
+            }
+            Common.msg(msg,null,2000);
+            return;
+        }
+        var userInfo = top.Main.userInfo;//获取用户信息
+        var params = {
+            "orderid": data.orderid,
+            "userId": userInfo.userid,
+            "token": userInfo.token,
+            "roleType": parseInt(userInfo.roletype),
+            "commandCode":1,
+            "status":status,
+            "transaccount":selVal,
+        }
+        //获取订单列表
+        var url = Common.getUrl()['order'] + Common.getDataInterface()["managerOrderRevice"];
+        debugger
+        Common.ajax(url, params,true, function (response) {
+            if (response) {
+
+                if(response.status.code==0)
+                {
+                    Common.msg(response.status.msg,200,2000,function () {
+                        if (parent.document.getElementById("cont_iframe").contentWindow.orderAdmin) {
+                            parent.document.getElementById("cont_iframe").contentWindow.orderAdmin.getData(data.orderid);
+
+                        }
+                        parent.layer.closeAll();
+
+                    });
+
+                }
+                else
+                {
+                    Common.msg(response.status.msg,null,2000);
+                    parent.layer.closeAll();
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

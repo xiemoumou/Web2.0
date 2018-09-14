@@ -1,0 +1,257 @@
+@charset "UTF-8";
+/*css 初始化 */
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img { margin:0; padding:0; }
+fieldset, img,input,button { border:none; padding:0;margin:0;outline-style:none; }
+ul, ol { list-style:none; }
+input { padding-top:0; padding-bottom:0; font-family: "SimSun","宋体";}
+select, input { vertical-align:middle;}
+select, input, textarea { font-size:12px; margin:0; }
+textarea { resize:none; outline: none;} /*防止拖动*/
+img {border:0;	vertical-align:middle; }  /*  去掉图片低测默认的3像素空白缝隙*/
+table { border-collapse:collapse; }
+body {
+    font:12px/150% Arial,Verdana,"\5b8b\4f53";
+    color:#666;
+    background:#F5F5F5;
+    overflow-x: hidden;
+}
+.clearfix:before,.clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after{clear:both;}
+.clearfix{
+    *zoom:1;/*IE/7/6*/
+}
+a {color:#666; text-decoration:none; }
+h1,h2,h3,h4,h5,h6 {text-decoration:none;font-weight:normal;font-size:100%;}
+s,i,em{font-style:normal;text-decoration:none;}
+.col-red{color: #C81623!important;}
+
+/*公共类*/
+.w {  /*版心 提取 */
+    width: 1200px;margin:0 auto;
+    position: relative;
+}
+.fl {
+    float:left
+}
+.fr {
+    float:right
+}
+.al {
+    text-align:left
+}
+.ac {
+    text-align:center
+}
+.ar {
+    text-align:right
+}
+.hide {
+    display:none !important;
+}
+
+@font-face
+{
+   font-family: 'design';
+   src: url('../../images/icon/design/icomoon.ttf'),
+        url('../../images/icon/design/icomoon.svg'),
+        url('../../images/icon/design/icomoon.ttf'),
+        url('../../images/icon/design/icomoon.woff');
+}
+
+
+.page-box {
+    height: 34px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+}
+
+.page-box .info {
+    width: 200px;
+    height: 34px;
+    line-height: 34px;
+}
+
+.page-box .fl {
+    float: left;
+}
+
+.pad-lr-26{
+    padding: 0 26px;
+}
+
+.pad-top-20{
+    padding-top:20px;
+}
+
+.error-msg{
+    width: 134px;
+    height: 22px;
+    line-height: 22px;
+    color: #444444;
+    padding-left: 40px;
+    border-radius: 4px;
+    border: 1px solid #e84b4c;
+    background-color: #fbf2f2;
+    position: relative;
+    display: block;
+}
+
+.error-msg::before{
+    content: '';
+    background: url(../../images/icon/server/cwxx.png) no-repeat center center;
+    display: block;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 2px;
+    left: 14px;
+}
+
+.red-button{
+    display: block;
+    width: 70px;
+    height: 30px;
+    background-color: #e84b4c;
+    border-radius: 4px;
+    color: #fff;
+    font: 12px "微软雅黑";
+    cursor: pointer;
+    font-weight: 400;
+}
+/* 镂空button */
+.hollow-button{
+    border: 1px solid #e84b4b;
+    color: #e84b4b;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    font: 12px "微软雅黑";
+    font-weight: 400;
+}
+
+.border-red{//提醒文本框输入效果
+    border-color: #ff4159 !important;
+    box-shadow: 0px 0px 5px #ff4159;
+}
+
+.ml-15{
+    margin-left: 15px;
+}
+
+.ml-54{
+    margin-left: 54px;
+}
+
+.ml-126{
+    margin-left: 126px;
+}
+
+.ml-177{
+    margin-left: 177px;
+}
+
+.ml-49{
+    margin-left: 49px;
+}
+
+.ml-59{
+    margin-left: 59px;
+}
+
+.pr-50{
+    padding-right: 50px;
+}
+
+/*滚动条样式*/
+::-webkit-scrollbar-track-piece {
+    /*background-color:#f5f5f5;*/
+    /*border-left:1px solid #d2d2d2;*/
+}
+::-webkit-scrollbar {
+    width:4px;
+    height:13px;
+}
+::-webkit-scrollbar-thumb {
+    background-color:#c2c2c2;
+    background-clip:padding-box;
+    /*border:1px solid #979797;*/
+    min-height:28px;
+}
+::-webkit-scrollbar-thumb:hover {
+    border:1px solid #636363;
+    /*background-color:#929292;*/
+}
+
+.empty-list{
+    margin: 0 auto;
+    width: 240px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.empty-list p.msg{
+    font: 14px "微软雅黑";
+    height: 50px;
+    line-height: 50px;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.layui-layer-msg {
+    box-shadow: 1px 1px 33px #888888 !important;
+}
+
+.hide{
+    display: none;
+}
+
+
+/*--弹出输入框样式---*/
+/* 弹出框 */
+
+.layui-layer{
+    border-radius: 6px !important;
+}
+
+.layer-anim{
+    height: 0px !important;
+}
+
+.layui-layer-title {
+    display: none;
+}
+.layui-layer-setwin .layui-layer-close1{
+    background-position: 17px -40px!important;
+}
+
+.layui-layer-content{
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 0 30px #333;
+}
+
+.layui-layer-loading .layui-layer-content{
+    box-shadow: none;
+}
+
+
+
+/*********/
+
+
+
+
+
+
+
+
+
+
+
+

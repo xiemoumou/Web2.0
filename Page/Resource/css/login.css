@@ -1,0 +1,301 @@
+/* @media only screen and (min-width: 1080px) and (max-width: 1199px) {
+     #login{
+         width: 1080px;
+         margin: 0 auto;
+     }
+ }
+ }*/
+#login {
+    width: 100%;
+}
+
+#login > p {
+    width: 22.2222rem;
+    margin: 0 auto;
+}
+
+img.log_login {
+    width: 3.01rem;
+    margin: 0.4444rem 0 0.3703rem 2.6666rem;
+}
+
+div.box_login {
+    width: 100%;
+    height: 10.6481rem;
+    background: url(http://resource-1255653994.coscd.myqcloud.com/login_banner.jpg) center no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+div.box_loginBox {
+    width: 22.2222rem;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+}
+
+img.login_pic {
+    height: 3.7037rem;
+    position: absolute;
+    top: 2.5555rem;
+    left: 0.1107rem;
+}
+
+div.loginCon {
+    position: absolute;
+    top: 1.737rem;
+    right: 0.1851rem;
+    width: 6.6666rem;
+    height: 7.5rem;
+    padding-top: 0.4444rem;
+    background-color: #fff;
+}
+
+div.loginCon input[type="password"], div.loginCon input[type="text"] {
+    width: 4.2592rem;
+    border-left: 1px solid #e4e2e2;
+    padding-left: 0.2777rem;
+}
+
+/*input::-webkit-input-placeholder { !* WebKit browsers *!*/
+    /*color: #aeaeae;*/
+/*}*/
+
+/*input::-moz-placeholder { !* Mozilla Firefox 4 to 18 *!*/
+    /*　　color: #aeaeae;*/
+    /*　　*/
+/*}*/
+
+/*input::-moz-placeholder { !* Mozilla Firefox 19+ *!*/
+    /*　　color: #aeaeae;*/
+    /*　　*/
+/*}*/
+
+/*input::-ms-input-placeholder { !* Internet Explorer 10+ *!*/
+    /*　　color: #aeaeae;*/
+    /*　　*/
+/*}*/
+
+div.loginCon > h4 {
+    margin: 0 auto;
+    font-size: 0.2592rem;
+    color: #252525;
+    display: flex;
+    width: 5.5555rem;
+    height: 0.8148rem;
+    border: 1px solid #e4e2e2;
+    border-bottom: 0;
+}
+
+div.loginCon > h4 span.tog {
+    line-height: 0.8148rem;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 0.2962rem;
+    font-weight: normal;
+}
+
+span.tog:first-of-type {
+    border-right: 1px solid #e4e2e2;
+}
+
+span.tog:hover {
+    cursor: pointer;
+}
+
+div.loginCon > ul {
+    width: 5.5555rem;
+    margin: 0 auto;
+    margin-top: -1px;
+    border-top: 1px solid #e4e2e2;
+    font-size: 0.2037rem;
+}
+
+li.cont_li embed {
+    display: inline-block;
+    width: 0.3703rem;
+    height: 0.3703rem;
+    vertical-align: top;
+    margin: 0 0.1666rem 0 0.2222rem;
+}
+
+li.cont_li h3 {
+    font-weight: normal;
+    width: 6.1111rem;
+    height: 0.9444rem;
+    line-height: 0.9444rem;
+    border-top: 1px solid #e4e2e2;
+    background-color: #fafafa;
+    margin-left: -0.5555rem;
+    position: absolute;
+    bottom: 0;
+    padding-right: 0.5555rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#tip_login, #tip_register {
+    height: 0.2592rem;
+    margin: 0.2222rem 0;
+    line-height: 0.2592rem;
+    font-size: 0.2222rem;
+    color: #e84b4c;
+}
+
+#tip_login embed, #tip_register embed {
+    width: 0.2592rem;
+    height: 0.2592rem;
+    margin-right: 0.1851rem;
+}
+
+#tip_login span, #tip_register span {
+    display: inline-block;
+    margin-top: -4px;
+}
+
+p.cont_p {
+    border: 1px solid #e4e2e2;
+    width: 5.5553rem;
+    height: 0.4444rem;
+    line-height: 0.4444rem;
+    padding: 0.1851rem 0;
+    margin-bottom: 0.2592rem;
+}
+
+p.cont_p:nth-of-type(2) {
+    margin-bottom: 0.1242rem;
+}
+
+div#strength_password {
+    font-size: 12px;
+    height: 0.3333rem;
+    line-height: 0.3333rem;
+    margin-bottom: 0.1242rem;
+}
+
+div#strength_password span {
+    display: inline-block;
+    width: 1rem;
+    height: 0.074rem;
+    background-color: #fff;
+    margin-right: 0.037rem;
+    border-radius: 0.037rem;
+}
+
+div#strength_password span.active1 { /* 弱 */
+    background-color: #FF4B47;
+}
+
+div#strength_password span.active2 { /* 中   */
+    background-color: #F9AE35;
+}
+
+div#strength_password span.active3 { /* 强   */
+    background-color: #2DAF7D;
+}
+
+span.active {
+    color: #ea5a54;
+    background-color: #fff;
+}
+
+p.tip_auto {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #7b7979;
+}
+
+p.tip_auto a {
+    color: #252525;
+    margin-bottom: 0.0925rem;
+}
+
+#loginBtn {
+    width: 5.5555rem;
+    height: 0.8148rem;
+    background-color: #e84b4c;
+    color: #fff;
+    font-size: 0.2962rem;
+    margin: 0.5925rem 0;
+}
+
+#loginBtn:hover, #registerBtn:hover {
+    cursor: pointer;
+}
+
+#registerBtn {
+    width: 5.5555rem;
+    height: 0.8148rem;
+    background-color: #e84b4c;
+    color: #fff;
+    font-size: 0.2962rem;
+    margin: 0.3518rem 0;
+}
+
+#exLogin, #exRegis {
+    display: inline-block;
+    background-color: #fafafa;
+    color: #e84b4c;
+}
+
+/*自上弹出层的样式*/
+
+div.pop_copyAlert {
+    position: fixed;
+    left: 12.0000rem;
+    top: 3.7037rem;
+    width: 9.7222rem;
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 0.1481rem 0.3703rem;
+    z-index: 199;
+    border: 2px solid #eee;
+    display: none;
+}
+
+div.pop_copyAlert > p {
+    height: 0.9259rem;
+    line-height: 0.9259rem;
+    display: flex;
+    font-size: 0.3333rem;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    color: #494949;
+}
+
+div.pop_copyAlert i {
+    cursor: pointer;
+}
+
+div.pop_copyAlert > h5 {
+    display: flex;
+    justify-content: space-around;
+}
+
+div.pop_copyAlert ul {
+    margin: 0.2222rem 0;
+}
+
+div.pop_copyAlert li {
+    height: 0.3703rem;
+    line-height: 0.3703rem;
+}
+
+button.redbutton {
+    width: 1.8148rem;
+    height: 0.5925rem;
+    line-height: 0.5925rem;
+    background-color: #e95758;
+    color: #fff;
+    border-radius: 0.074rem;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    height: 1.4444rem;
+    line-height: 1.4444rem;
+    font-size: 0.2222rem;
+    /*margin-top: 0.3703rem;*/
+}

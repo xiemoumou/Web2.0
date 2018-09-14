@@ -1,0 +1,176 @@
+            html{
+                background-color: #f5f5f5;
+                overflow-x: hidden;
+                -webkit-text-size-adjust:none;
+            }
+            /* logo 和  页头部分 */
+            #header{
+                width: 100vw;
+                height: 1.6666rem;
+                background-color: #fff;             
+            }
+            #header>div{
+                width: 18.5185rem;
+                height: 1.6666rem;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                position: relative;
+            }           
+            #header h4{             
+                width: 2.2222rem;
+                height: 1.6481rem;
+                font-weight: normal;
+                line-height: 1.6481rem;
+                font-size: 0.3333rem;
+                margin-left: 1.2962rem;
+                text-align: center;
+                border-bottom: 1px solid #fff;
+                cursor: pointer;
+            }
+            #header h4.active{
+                background-color: #fbf2f2;
+                color: #e84b4c;
+                border-color: #E84B4C;
+            } 
+            /* 主内容部分 */
+            div.main_cont{
+                width: 18.5185rem;
+                height: 10.585rem;
+                margin: 0 auto;
+                background-color: #fff;
+            }
+div.main_cont>p{
+    margin: 0.4814rem auto;
+    width: 17.3888rem;
+    text-align: center;
+    font-size: 0.3703rem;
+    color: #363535;
+    padding: 0.7407rem 0 0.4814rem 0;
+    border-bottom: 1px solid #e9e9e9;
+}            
+/* 进度显示条 */           
+div.retrievePW_prograssBar>ul{
+    width: 9.6296rem;
+    margin: 0 auto;
+    padding: 0.5rem 0 0.4629rem 0;
+    display: flex;
+    justify-content: space-between;  
+}
+div.retrievePW_prograssBar li{
+    text-align: center; 
+}
+div.retrievePW_prograssBar p{
+    width: 0.5555rem;
+    height: 0.5555rem;
+    line-height: 0.5555rem;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #cbcbcb;
+    margin-bottom: 0.2222rem;
+    font-size: 0.2592rem;
+}
+div.retrievePW_prograssBar span{
+    display: block;
+    width: 100%;
+    color: #a3a3a3;  
+    font-size: 12px;
+}
+div.retrievePW_prograssBar li.progress_bar{
+    width: 3.2407rem;
+    height: 0.0185rem;
+    background-color: #cbcbcb;
+    margin-top: 0.2592rem;
+}
+div.retrievePW_prograssBar p.redbgcolor{
+    background-color: #e84b4c;
+}
+div.retrievePW_prograssBar span.redcolor{
+    color: #e84b4c;
+}
+div.main_cont>dl{
+    width: 9.6296rem;
+    margin: 0 auto;
+    display: flex;
+    font-size: 0.2592rem;
+}
+div.main_cont>dl>dt{
+    width: 1.8518rem;
+    text-align: right;
+    color: #454444;
+}
+div.main_cont>dl.retrievePW_checkemail{
+    /*display: none;*/
+}
+div.main_cont>dl.retrievePW_newPW{
+    display: none;
+}
+div.main_cont>dl>dt p:last-of-type{
+    margin-top: 0.6481rem;
+}
+div.main_cont>dl input{
+    height: 0.6851rem;
+    line-height: 0.6851rem;
+    border: 1px solid #d5d5d5;
+    padding: 0 0.1111rem;
+    margin: 0 0.2037rem;
+}
+div.main_cont>dl p{
+    height: 0.7222rem;
+    line-height: 0.7222rem;
+}
+input.retrieve_email{
+    width: 5.4629rem;
+}
+input.retrieve_checkcode{
+    width: 2.5rem;
+    /*color: #e80404; red  */
+}
+div.main_cont>dl dd strong{
+    display: inline-block;
+    width: 1.6666rem;
+    height: 0.6851rem;
+    line-height: 0.6851rem;
+    text-align: center;
+    border: 1px solid #d5d5d5;
+    background-color: #eee;
+    color: #747474;
+    border-radius: 0.074rem;
+    cursor: pointer;
+}
+div.main_cont>dl dd h6{
+    height: 0.4629rem;
+    line-height: 0.4074rem;
+    font-size: 12px;
+    margin: 0 0 0.1851rem 0.2037rem;
+}
+div.main_cont>dl dd b{
+    display: inline-block;
+    width: 0.6111rem;
+    height: 0.1111rem;
+    background-color: #e5e5e5;
+    margin-right: 0.074rem;
+}
+div.main_cont>dl dd h5{
+    width: 1.9444rem;
+    height: 0.6851rem;
+    line-height: 0.6851rem;
+    background-color: #e95758;
+    color: #fff;
+    border-radius: 0.074rem;
+    text-align: center;
+    cursor: pointer;
+    margin: 0.6481rem 0 0.9259rem 2.2592rem;
+}
+/* 页脚部分样式 */
+            footer{
+                width: 100%;
+                height: 1.0555rem;
+                line-height: 1.0555rem;
+                text-align: center;
+                font-size: 12px;
+                margin-top: 0.4444rem;
+                color: #fff;
+                background-color: #333333;
+            }

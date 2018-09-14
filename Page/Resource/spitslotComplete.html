@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+        <!--5秒钟后跳转到指定的页面--> 
+        <meta http-equiv="refresh" content="6;url=spitslot.html" />
+        <title>吐槽展示和发布</title>
+        <link rel="stylesheet" href="./css/reset.css" />
+        <link rel="stylesheet" href="./css/iconfont.css" />
+        <link rel="stylesheet" href="./css/iconfont1.css" />
+        <link rel="stylesheet" href="./css/workstage.css"/>
+        <link rel="stylesheet" href="./css/layer.css" />
+        <link rel="stylesheet" href="./css/spitslot.css" />
+        <script type="text/javascript" src="./js/flexible.js" ></script>
+        <script type="text/javascript" src="./js/jquery-1.11.0.min.js" ></script>
+        
+        <script type="text/javascript" src="./js/jquery.cookie.js" ></script>
+        <script type="text/javascript" src="./js/layer.js" ></script>       
+        <script type="text/javascript" src="./js/common.js" ></script>
+        <style>
+        	div#content{
+        		padding: 1.4444rem 0;
+        	}
+        	div.spitslotComp{
+        		width: 9.2592rem;
+        		margin: 0 auto;        		
+        	}
+        	div.spitslotComp p{
+        		text-align: center;
+        		color:#747474;
+        	}
+        	div.spitslotComp i{
+        		color: #26aba2;
+        		font-size: 1.9444rem;
+        	}
+        	div.spitslotComp em{
+        		color: #eb5f27; 
+        		margin: 0 0.1111rem 0 0.1481rem;       		
+        	}
+        	div.spitslotComp p:nth-of-type(2){
+        		margin: 0.8518rem 0 0.4074rem;       		
+        	}
+        	div.spitslotComp em.goback_spitslot{       		
+        		text-decoration: underline;
+        		cursor: pointer;
+        	}
+        </style>
+    </head>
+	<body>
+		<div id="header">
+            <div>
+                <img src="./images/icon/logo.png" alt="logo"/>
+                <h4 class="active">我的工作台</h4>
+                <form class="searchbar"> 
+                    <div class="mod_select searSort">
+                        <div class="select_box">
+                            <span class="select_txt">分&nbsp;&nbsp;类</span>                     
+                            <ul class="option_">
+                                <li>分&nbsp;&nbsp;类</li>
+                                <li>用户名</li>
+                                <li>订单号</li>
+                                <li>客服号</li>
+                            </ul> 
+                        </div>                       
+                    </div>
+                    
+                     <input type="text" id="searchCon" value="" placeholder="请输入您要搜索的订单号等"/>
+                    <button class="searBtn"><i class="icon iconfont icon-sousuo"></i></button>
+                </form>
+                <dl >
+                    <dt class="ddstyle"><span class="user_nickname">风吹云散</span><img class="imgcol" src="./images/icon/arr.svg"/></dt>
+                    <dd class="ddstyle center hid" >个人中心</dd>
+                    <dd class="ddstyle exit hid">退出</dd>
+                </dl>                                           
+            </div>
+            <img src="./images/images/spitslot.jpg" />
+        </div>
+        
+        <!--主内容-->
+        <div id="content">       	       	
+        	<div class="spitslotComp" >
+        		<p><i class="icon iconfont icon-duihao"></i></p>
+        		<p style="font-size: 0.4814rem;">感谢您的反馈！您的支持是我们最大的动力</p>
+        		<p><em>5</em>秒后自动返回首页<em class="goback_spitslot">立即返回>></em></p>
+        	</div>
+        	
+        	<!--回到顶部模块-->
+            <div class="totop_box" >
+                    <a onclick="show_newTask()">
+                        <i class="icon iconfont icon-xinjianrenwu"></i>
+                        <p>新建任务</p>
+                    </a>
+                    <a class="newOrderBtn" >
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>新建订单</p>
+                    </a>
+                    <a class="" >
+                        <i class="icon iconfont icon-yijianfankui"></i>
+                        <p>意见反馈</p>
+                    </a>
+                    <button>
+                        <img style="width: 24px" src="./images/icon/toTop.svg" />
+                        <p>顶部</p>
+                    </button>              
+            </div>
+        </div>
+        
+        <footer>Copyright&copy;&nbsp;2017-2018&nbsp;&nbsp;制宝科技&nbsp;&nbsp;版权所有</footer>
+        
+        <script>
+        	
+        	$("em.goback_spitslot").click(function(){
+        		window.location.href = 'spitslot.html';
+        	});
+        </script>
+        
+	</body>
+</html>

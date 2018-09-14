@@ -1,0 +1,150 @@
+ul,ol,li,div,p,h4,h5,h6{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+time{
+    color: #757575;
+}
+b{
+    color: #e84b4c;
+}
+div.cont_right>div strong.redbtn{ 
+    background-color: #e95758;
+    color: #fff;
+    cursor: pointer;
+}
+p.reimburse_header{
+    background-color: #fff;
+    padding: 0.3333rem 0.6111rem;
+    font-size: 0.2592rem;
+    display: flex;
+    justify-content: space-between;
+}
+ul.reimburse_content{
+    margin-top: 0.2407rem;
+    padding: 0.4444rem 0.6111rem;
+    background-color: #fff;
+    color:#404040;
+}
+ul.reimburse_content>li:first-of-type{
+    margin-bottom: 0.1851rem;
+}
+ul.reimburse_content>li:first-of-type span{
+    font-size: 0.2592rem;
+}
+ul.reimburse_content>li:last-of-type>h5{
+    height: 0.7037rem;
+    line-height: 0.7037rem;
+    border-bottom: 1px solid #e9e9e9;
+    display: flex;
+    justify-content: space-between;
+}
+ul.reimburse_content>li>h5 span{
+    font-size: 0.2592rem;
+}
+ul.reimburse_content>li:last-of-type>div{
+    color: #6b6a6a;
+    margin-top: 0.1851rem;
+    width: 10.5555rem;    
+}
+b.reimburse_cont_copy{
+    cursor: pointer;
+}
+ul.reimburse_content>li:last-of-type h6{
+    height: 0.5rem;
+    line-height: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+ul.reimburse_content em{
+    margin-left: 0.0925rem;
+}
+ul.reimburse_content>li:last-of-type p{
+    height: 0.5rem;
+    line-height: 0.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis; /*超出的设置为省略号*/
+}
+div.reimburse_logistics_box{
+    margin: 0.2407rem 0;
+    padding: 0.1296rem 0.6111rem 0.3333rem 0.6111rem;
+    background-color: #fff;
+}
+div.reimburse_logistics_box>p{
+    height: 0.9629rem;
+    line-height: 0.9629rem;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 0.2962rem;
+    color: #090909;
+}
+div.reimburse_logistics_box>h5{
+    margin: 0.4444rem auto;
+    width: 8.5185rem;
+    height: 0.8148rem;  
+    display: flex;      
+}
+div.reimburse_logistics_box input{
+    width: 6.7962rem;
+    height: 0.8148rem;
+    border: 1px solid #dadada;
+    border-right: none;
+    padding: 0 0.0925rem;
+}
+div.reimburse_logistics_box strong{
+    display: inline-block;
+    text-align: center; 
+    width: 1.7037rem;
+    height: 0.8148rem;
+    line-height: 0.8148rem;
+}
+div.reimburse_reason_box{
+    background-color: #fff;
+}
+div.reimburse_reason_box em{
+    color: #8a8787;
+}
+div.reimburse_reason_box span{
+    color: #404040;
+}
+div.reimburse_reason_box>dl{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3333rem 0.6111rem;
+    border-bottom: 1px solid #e9e9e9;
+    
+}
+div.reimburse_reason_box dt{
+    width: 6.7592rem;
+    line-height: 0.4444rem;
+}
+div.reimburse_reason_box dd{
+    width: 4.9259rem;
+    line-height: 0.4444rem;
+}
+div.reimburse_reason_box dd span{
+    display: inline-block;
+    width: 2.8703rem;
+    text-align: right;
+}
+div.reimburse_reason_box>h6{
+    height: 1.2407rem;
+    line-height: 0.6851rem;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.2777rem 0.2962rem 0.2777rem 0;
+}
+div.reimburse_reason_box>h6 b{
+    font-size: 0.4259rem;
+}
+div.reimburse_reason_box>h6 strong{
+    display: inline-block;
+    width: 1.9444rem;
+    height: 0.6851rem;
+    line-height: 0.6851rem;
+    border-radius: 0.074rem;    
+    margin-left: 0.5185rem;
+    background-color: #e9e9e9;
+    text-align: center;
+}

@@ -1,0 +1,116 @@
+ul,ol,li,div,p,h4,h5,h6{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+time{
+    color: #757575;
+}
+b{
+    color: #e84b4c;
+}
+div.cont_right{
+    
+}
+div.refund_return_header{
+    width: 100%;
+    background-color: #fff;
+}
+div.refund_return_header>p{   
+    width: 16.8333rem;
+    margin-left: 0.574rem;
+    padding: 0.3333rem 0;
+    font-size: 0.2592rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e9e9e9;
+}
+div.refund_return_prograssBar{
+    background-color: #fff;
+}
+div.refund_return_prograssBar>ul{
+    width: 9.1666rem;
+    margin: 0 auto;
+    padding: 0.5rem 0 0.4629rem 0;
+    display: flex;
+    justify-content: space-between;   
+}
+div.refund_return_prograssBar p{
+    width: 0.5555rem;
+    height: 0.5555rem;
+    line-height: 0.5555rem;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #cbcbcb;
+    margin-bottom: 0.2222rem;
+}
+div.refund_return_prograssBar span{
+    color: #a3a3a3;  
+    font-size: 12px;
+}
+div.refund_return_prograssBar li{
+    text-align: center;
+}
+div.refund_return_prograssBar li.progress_bar{
+    width: 3.5rem;
+    height: 0.0185rem;
+    background-color: #cbcbcb;
+    margin-top: 0.2592rem;
+}
+div.refund_return_prograssBar p.redbgcolor{
+    background-color: #e84b4c;
+}
+div.refund_return_prograssBar span.redcolor{
+    color: #e84b4c;
+}
+div.refund_return_box{
+    background-color: #fff;
+    margin-top: 0.2962rem;
+}
+div.refund_return_box em{
+    color: #8a8787;
+}
+div.refund_return_box span{
+    color: #404040;
+}
+div.refund_return_box>dl{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3333rem 0.6111rem;
+    border-bottom: 1px solid #e9e9e9;   
+}
+div.refund_return_box dt{
+    width: 6.7592rem;   
+}
+div.refund_return_box dd{
+    width: 4.9259rem;
+    line-height: 0.4444rem;
+}
+div.refund_return_box dd span{
+    display: inline-block;
+    width: 2.8703rem;
+    text-align: right;
+}
+div.refund_return_box>h6{
+    height: 1.2407rem;
+    line-height: 0.6851rem;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.2777rem 0.2962rem 0.2777rem 0;
+}
+div.refund_return_box>h6 b{
+    font-size: 0.4259rem;
+}
+div.refund_return_box>h6 strong{
+    display: inline-block;
+    width: 1.9444rem;
+    height: 0.6851rem;
+    line-height: 0.6851rem;
+    border-radius: 0.074rem;    
+    margin-left: 0.5185rem;   
+    background-color: #e95758;
+    color: #fff;
+    text-align: center;  
+    cursor: pointer;
+}

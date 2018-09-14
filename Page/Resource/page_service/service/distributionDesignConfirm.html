@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>确认发起设计</title>
+    <script id="version" src="../../js/common/vesion.js" type="text/javascript"></script>
+
+    <style>
+        .container{
+            margin: 20px 20px 0 20px;
+        }
+        .floor{
+            width: 100%;
+            text-align: center;
+
+        }
+        .floor .red-button{
+            display: inline-block;
+            width: 100px;
+            height: 32px;
+            margin-right: 30px;
+        }
+        .floor .hollow-button{
+            display: inline-block;
+            width: 100px;
+            height: 32px;
+        }
+        .container label{
+            font-size: 14px;
+            line-height: 28px;
+        }
+
+        .content{
+            font-size: 16px;
+            line-height: 30px;
+        }
+
+        .money{
+
+        }
+    </style>
+
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("version");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../lib/loading/css/global.css?v="' + VESION + ' rel="stylesheet" />');
+        document.write('<link href="../../css/common/base.css?v="' + VESION + ' rel="stylesheet" />');
+        document.write('<link href="../../lib/SlideRuleOS/SlideRuleOS.css?v="' + VESION + ' rel="stylesheet" />');
+        document.write('<link href="../../css/service/all_order.css?v="' + VESION + ' rel="stylesheet" />');
+        document.write('<link href="../../lib/jqueryPagination/css/jquery.pagination.css?v="' + VESION + ' rel="stylesheet" />');
+    </script>
+    <script src="../../lib/jquery-1.11.0.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div class="container">
+    <ul>
+        <li>
+            <p class="content">您确定要分配设计吗？</p>
+        </li>
+        <li>
+            <label>设计费：</label><span id="design" class="money"></span>
+        </li>
+        <li>
+            <label>设计引导费：</label><span id="guidefee" class="money"></span>
+        </li>
+    </ul>
+</div>
+<div class="floor">
+    <button class="red-button" onclick="parent.distribution();">确定</button>
+    <button class="hollow-button" onclick="parent.layer.closeAll()">取消</button>
+</div>
+
+<script src="../../lib/jquery.cookie.js" type="text/javascript"></script>
+<script src="../../js/common/common.js" type="text/javascript"></script>
+<script>
+    $(function () {
+       var design= Common.getUrlParam('design');
+       var guidefee=Common.getUrlParam('guidefee');
+        $("#design").html("¥"+design);
+        $("#guidefee").html("¥"+guidefee);
+    });
+
+
+
+</script>
+</body>
+</html>

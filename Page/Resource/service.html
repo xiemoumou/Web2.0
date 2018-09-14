@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>客服工作台</title>
+		<link rel="stylesheet" href="./css/reset.css" />
+		<link rel="stylesheet" href="css/iconfont.css" />   
+		<link rel="stylesheet" href="css/iconfont3.css"/>
+		<link rel="stylesheet" href="css/layer.css"/>
+		<link rel="stylesheet" href="./css/service.css"/>
+        
+        <script type="text/javascript" src="./js/flexible.js" ></script>
+        <script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.cookie.js" ></script>
+        <script type="text/javascript" src="./lib/jqueryPagination/js/jquery.pagination.min.js" ></script>
+        <script type="text/javascript" src="./js/layer.js" ></script>
+        <script type="text/javascript" src="js/baiduTemplate.js" ></script>
+        <script type="text/javascript" src="./js/common.js" ></script>        
+    </head>
+    <body>
+    	<div class="wrap-outer">
+        <div id="header">
+            <div>
+                <img src="./images/icon/logo.png" alt="制宝logo"/>
+                <h4 >
+                	<p class="active myWorkstage" onclick="getWorkstage()">我的工作台</p><!--class="goback_workstage"-->
+                	<p class="myResource" onclick="getResource()">素材库</p>
+                </h4> 
+                <div class="searchbar"> 
+                    <div class="mod_select searSort">
+                        <div class="select_box">
+                            <span class="select_txt">旺旺号</span>                     
+                            <ul class="option_">
+                            	<li>旺旺号</li>
+                            	<li>订单号</li>
+                            </ul> 
+                        </div>                       
+                    </div>
+                    
+                    <input type="text" id="searchCon" value="" placeholder="请输入您要搜索的订单号等"/>
+                    <button class="searBtn_workstage"><i class="icon iconfont icon-sousuo"></i></button>
+                </div>
+                <h5 class="createOrder" onclick="getNewOrder()">
+                	<i class="icon iconfont icon-jiahao"></i>
+                	<em>新建订单</em>
+                </h5>
+                <dl>
+                    <dt class="ddstyle">
+                    	<span></span>
+                    	<img class="imgcol" src="./images/icon/arr.svg"/>
+                    </dt>
+                    <!--<dd class="ddstyle center hid" >个人中心</dd>-->
+                    <dd class="ddstyle exitLoginBtn hid">退出</dd>
+                </dl>                                           
+            </div>
+        </div>
+        
+        <!--主内容-->
+        <div id="content">
+            <ul id="nav">
+            	<h3><i class="icon iconfont icon-liuchengxiangdao"></i>业务流程</h3>
+            	<li class="active" data-index = "0"><i class="icon iconfont icon-iconfontzhizuobiaozhun45"></i>全部订单<em class="baccred"></em></li>
+            	<li data-index = "1"><i class="icon iconfont icon-zixun"></i>咨询中订单<em class="baccred"></em></li>
+            	<li data-index = "2"><i class="icon iconfont icon-sheji"></i>设计中订单<em class="baccred"></em></li>
+            	<li data-index = "3"><i class="icon iconfont icon-daizhifudingdan"></i>待支付订单<em class="baccred"></em></li>
+            	<li data-index = "4"><i class="icon iconfont icon-web-icon-" 
+            		style="font-size: 22px;margin: 0 0.1481rem 0 0.3333rem;"></i>待分配生产<em class="baccred"></em></li>
+            	<li data-index = "5"><i class="icon iconfont icon-kujialeqiyezhan_quanwudingzhishengchan" 
+            		style="font-size: 20px;margin: 0 0.1851rem 0 0.3703rem;"></i>车间订单<em class="baccred"></em></li>
+            	<li data-index = "6"><i class="icon iconfont icon-shouhouwuyou" 
+            		style="font-size: 20px;margin: 0 0.1851rem 0 0.3703rem;"></i>售后处理中<em class="baccred"></em></li>
+            	<li data-index = "7"><i class="icon iconfont icon-quxiao"></i>已取消订单<em class="baccred"></em></li>
+            	<li data-index = "8"><i class="icon iconfont icon-duihaocheckmark17"></i>已完成订单<em class="baccred"></em></li>
+            </ul>
+            
+            <div id="conRight">
+            	<!--  消息框  -->
+            	<p class="notice_rig newMessage_workstage" >
+                    <i class="icon iconfont icon-tongzhi"></i>
+                    <span><a  data-user="" target="_blank" class="newMessageNum">您有0条新消息</a>，请点击<a >进入消息列表</a>进行处理</span>
+                    <i class="icon iconfont icon-error-20170103"></i>
+                </p>
+            	<div class="orderCont_service">
+	            	<ul class="overview_service">
+	            	 	<li>
+	            	 		<p data-code = "18"><span>全部订单</span><em class="baccred"></em></p>
+	            	 		<p class="bgred" data-code = "19"><span>待处理</span><em class="baccred"></em></p>
+	            	 	</li>
+	            	 	<li>
+	            	 		<p class="bgred" data-code = "0"><span>咨询中</span><em class="baccred"></em></p>
+	            	 	</li>
+	            	 	<li>
+	            	 		<p class="bgred" data-code = "4"><span>设计中</span><em class="baccred"></em></p>
+	            	 		<p data-code = "5"><span>待用户确认</span><em class="baccred"></em></p>
+	            	 	</li>
+	            	 	<li>
+	            	 		<p class="bgred" data-code = "7"><span>待支付</span><em class="baccred"></em></p>
+	            	 	</li>
+	            	 	<li>
+	            	 		<p class="bgred" data-code = "8"><span>待分配生产</span><em class="baccred"></em></p>
+	            	 	</li>
+	            	 	<li>
+	            	 		<p data-code = "10" class="bgred"><span>生产中</span><em class="baccred"></em></p>
+	            	 		<p data-code = "11"><span>邮寄中</span><em class="baccred"></em></p>
+	            	 	</li>
+	            	 	<li>
+	            	 		<p class="bgred" data-code = "12"><span>售后处理中</span><em class="baccred"></em></p>
+	            	 		<p data-code = "14"><span>退货中</span><em class="baccred"></em></p>
+	            	 		<p data-code = "15"><span>退款中</span><em class="baccred"></em></p>
+	            	 	</li>
+	            	 	<li>
+	            	 		<p data-code = "16" class="bgred"><span>已取消订单</span><em class="baccred"></em></p>
+	            	 	</li>
+	            	 	<li>
+	            	 		<p data-code = "17" class="bgred"><span>已完成订单</span><em class="baccred"></em></p>
+	            	 	</li>
+	            	 	<li>
+	            	 		<p class="bgred"><span>搜索到的订单</span><em class="baccred num_search_service"></em></p>
+	            	 	</li>
+	            	</ul>
+	            	<!-- 订单概览中  订单的信息 -->
+	            	<div id="order_service_box">
+	            		 
+	            		
+	            	</div>
+	            	
+	            	
+	            	<!-- 模拟alert弹出框的模块 -->
+                    <div class="popup_style pop_copyAlert">
+                        <p>
+                            <span style="font-size: 0.3333rem;">操作提示信息</span><i class="icon iconfont icon-guanbi"></i>
+                        </p>
+                        
+						<ul>
+						    <li><span class="message_copyAlert"></span></li> 
+						    
+						</ul>
+						<h5>
+							<button class="emptyMessage redbutton">确定</button> <!-- 确定清空信息 -->
+							<button class="continueEnquiry_copyAlert redbutton">继续</button><!--继续询价-->    
+						    <button class="continuePay_copyAlert redbutton">继续</button>
+						    <button class="close_copyAlert redbutton">关闭</button>
+						</h5>
+                    </div>
+                    
+                    
+                    <!-- 发货清单  模块 -->
+			        <div class="popup_style shippingList_add">
+			            <p>
+			                <span style="font-size: 0.3333rem;">发货清单</span><i class="icon iconfont icon-guanbi"></i>
+			            </p>
+			            <div>
+			            	<h5>起始时间:
+				                <select id="select_year3" rel="2017" name="year"></select>年
+				                <select id="select_month3" rel="12" name="month"></select>月
+				                <select id="select_day3" rel="20" name="day"></select>日
+			                </h5>
+			                <h5>截止时间:
+				                <select id="select_year4" rel="2017" name="year"></select>年
+				                <select id="select_month4" rel="12" name="month"></select>月
+				                <select id="select_day4" rel="20" name="day"></select>日
+			                </h5>
+			                
+			            </div>
+			            <h4 class="shippingList_add_tip"></h4>
+			            <button class="downloadShippingList">下载发货清单</button>
+			        </div>
+			        
+			        
+	            	<!-- 添加确认支付的价格信息的模块 -->
+                    <div class="popup_style uploadPayPrice_orderDetail">
+                        <p>
+                            <span style="font-size: 0.3333rem;">添加客户支付的金额</span><i class="icon iconfont icon-guanbi"></i>
+                        </p>
+                        
+						<div>
+						   	<span style="margin:0 0.1111rem;">客户支付的金额:</span>   
+						    <input class="payPrice_orderDetail" maxlength="10" placeholder="请输入客户支付的金额" 
+						    	onkeyup="value=value.replace(/[^\d]/g,'')" ng-pattern="/[^a-zA-Z]/"/>元    
+						</div>
+						    
+					    <button class="confirmBtn_PayPrice redbutton">确认上传</button>
+                    </div>
+                    
+	            	<div id="page_service">
+	            		
+	            	</div>
+            	</div>
+            	<!-- #orderCont_service  END-->
+            	
+            	<!--回到顶部模块-->
+            <div class="totop_box">
+            	    <!-- 发货清单 -->
+                    <!--<a class="shippingListBtn" >   
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>发货清单</p>
+                    </a>
+                    <a class="reminderBtn" onclick="getFeednack()">   
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>意见反馈</p>
+                    </a> 意见反馈 -->
+                    <button>
+                        <img style="width: 24px" src="./images/icon/toTop.svg" />
+                        <p>顶部</p>
+                    </button>              
+            </div>
+            </div>
+            <!-- #conRight  END-->
+            
+        </div>
+        <!-- #content  END-->
+        <footer>Copyright&copy;&nbsp;2017-2018&nbsp;&nbsp;制宝科技&nbsp;&nbsp;版权所有</footer>
+    </div>
+    
+    <!-- 订单概览的百度模板 -->
+    <script id="baidu_workstage_order" type="text/html">
+    		<%for(var i =0;i<orderarray.length;i++){%> 		
+             		<dl class="order_cont_service">
+	            			<dt class="order_service_top">
+	            				<p>
+	            					<time style="display: inline-block;width: 2.7777rem;"><%=orderarray[i].orderinfo.createtime%></time>
+	            					<span style="display: inline-block;width: 3.0555rem;">订单号:<em><%=orderarray[i].orderinfo.orderid%></em></span>
+	            					<span class="redfont" style="display: inline-block;width: 4.0814rem;">客户旺旺号:<em><%=orderarray[i].orderinfo.customerid%></em></span>
+	            					<span class="redfont" style="visibility: hidden;">77888</span><!--<i class="icon iconfont icon-naozhong3"></i>-->
+	            				</p>
+	            				<p>
+	            					<span style="display: inline-block;width: 2.7777rem;">客服:<em><%=orderarray[i].nickname.customnickname%></em></span>
+	            					<span style="display: inline-block;width: 3.0555rem;">设计师:<em><%=orderarray[i].nickname.designernickname%></em></span>
+	            					<span style="display: inline-block;width: 4.0814rem;">工厂:<em><%=orderarray[i].nickname.factorynickname%></em></span>
+	            					<span style="visibility: hidden;"></i>7788</span>
+	            				</p>
+	            			</dt>
+	            			<dd class="order_service_middle">
+	            				<div>
+	            					<!-- 下拉  单选  和  多选  框 -->
+	            					<h5 data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+	                                    data-customid="<%=orderarray[i].orderinfo.customid%>">
+	            						<!-- 选择产品类型  -->
+	            						<div class="mod_select borderGray">
+			                                <div class="select_box">
+			                                    <span class="select_txt productTypeBtn_service">
+			                                    	<%if( orderarray[i].orderinfo.goodsclass ){%>
+			                                    		<%=orderarray[i].orderinfo.goodsclass%>
+			                                    	<%}else{%>
+			                                    		请选择
+			                                    	<%}%>
+			                                    </span>                     
+			                                    <ul class="option_ productType_service">                                    
+			                                        <li>徽章</li><li>纪念币</li><li>奖牌</li>
+			                                        <li>奖章</li><li>姓名牌</li><li>胸针</li>
+			                                        <li>书签</li><li>车标</li><li>铭牌</li>
+			                                        <li>门牌</li><li>授权牌</li><li>奖杯</li>
+			                                        <li>印章</li><li>车贴</li><li>不干胶</li>                                       
+			                                    </ul> 
+			                                </div> 
+			                            </div>
+			                            <!-- 选择材质 -->
+	            						<div class="mod_select borderGray">
+			                                <div class="select_box " >
+			                                    <span class="select_txt textureBtn_service" >
+			                                    	<%if( orderarray[i].goodsinfo.texturename ){%>
+			                                    		<%=orderarray[i].goodsinfo.texturename%>
+			                                    	<%}else{%>
+			                                    		请选择
+			                                    	<%}%>
+			                                    </span>                     
+			                                    <ul class="option_ texture_service">                                    
+			                                        <li>锌合金</li><li>铜合金</li><li>铁合金</li><li>铝合金</li>
+			                                        <li>不锈钢</li><li>不锈铁</li><li>亚克力</li><li>ABS塑料</li>
+													<li>贴纸</li><li>水晶</li><li>软硅胶</li><li>PVC背胶</li>
+													<li>不干胶</li><li>马口铁</li><li>三维软标</li><li>软硅胶</li>
+													<li>纯金</li><li>纯银</li><li>木制金箔</li><li>925银</li>
+													<li>18K金</li><li>24K金</li><li>薄金属</li><li>绒布</li>
+			                                    </ul> 
+			                                </div> 
+			                            </div>
+			                            <!-- 选择配件 -->
+			                            <div class="mod_select borderGray">
+			                                <div class="select_box" >
+			                                    <span class="select_txt partsBtn_service">
+			                                    	<%if( orderarray[i].goodsinfo.accessoriesname ){%>
+			                                    		<%=orderarray[i].goodsinfo.accessoriesname%>
+			                                    	<%}else{%>
+			                                    		请选择
+			                                    	<%}%>
+			                                    </span>                     
+			                                    <ul class="option_ parts_service">                                   
+			                                        <li>无</li><li>蝴蝶扣</li>
+                                     				<li>螺杆</li>
+                                     				<li>高卡扣</li>
+													<li>背胶</li><li>别针</li><li>PVC别针</li>
+			                                        <li>平顶扣</li><li>磁扣</li><li>钥匙链</li>
+			                                        <li>袖扣</li><li>领带夹</li><li>塑料帽</li>
+			                                        <li>旋转件</li><li>组合件</li><li>带弹簧</li>
+			                                        <li>带滑块</li><li>带铰链</li><li>标准彩带</li>
+			                                        <li>定制彩带</li>
+			                                    </ul> 
+			                                </div> 
+			                            </div>
+	            							<!-- 开模方式 -->
+                        					<div class="moldOpen_box type_tech borderGray">
+                                                <span class="moldOpenBtn techTypeBtn">
+                                                	<%if( orderarray[i].goodsinfo.shape ){%>
+			                                    		<%=orderarray[i].goodsinfo.shape%>
+			                                    	<%}else{%>
+			                                    		请选择
+			                                    	<%}%>
+                                                </span>
+                                                <h5  class="tech_label_box">
+                                                	<div>
+                                                		<label><input type="checkbox"/>无</label>                             <label><input type="checkbox"/>双面开模</label>
+	                                                 	<label><input type="checkbox"/>2D</label>
+	                                                 	<label><input type="checkbox"/>3D</label>
+	                                                 	<label><input type="checkbox"/>冲压</label>
+	                                                 	<label><input type="checkbox"/>压铸</label>
+	                                                 	<label><input type="checkbox"/>镂空</label>
+	                                                 	<label><input type="checkbox"/>液压</label>
+	                                                 	<label><input type="checkbox"/>浇铸</label>
+	                                                 	<p>
+	                                                 		<button class="confirm_addTech confirm_addMold_work">确定</button>
+	                                                 		<button class="cancel_addTech">取消</button>
+	                                                 	</p>
+                                                 	</div>
+                                                </h5>	
+                                            </div>
+                                            <!-- 选择工艺 -->
+                                            <div class="craft_box type_tech borderGray">
+                                                <span class="craftBtn techTypeBtn">
+                                                	<%if( orderarray[i].goodsinfo.technology ){%>
+			                                    		<%=orderarray[i].goodsinfo.technology%>
+			                                    	<%}else{%>
+			                                    		请选择
+			                                    	<%}%>
+                                                </span><!--order_craft-->
+                                                <h5 class="tech_label_box">
+                                                	<div>
+	                                                 	<label><input type="checkbox"/>无</label><label><input type="checkbox"/>柯氏</label>
+                                                		<label><input type="checkbox"/>纯色电镀</label><label><input type="checkbox"/>镶钻</label>
+                                                		<label><input type="checkbox"/>腐蚀</label><label><input type="checkbox"/>烤漆</label>
+	                                                 	<label><input type="checkbox"/>仿珐琅</label><label><input type="checkbox"/>滴胶</label>
+	                                                 	<label><input type="checkbox"/>贴纸</label><label><input type="checkbox"/>珐琅印</label>
+	                                                 	<label><input type="checkbox"/>金葱粉</label><label><input type="checkbox"/>夜光漆</label>
+	                                                 	<label><input type="checkbox"/>透明漆</label><label><input type="checkbox"/>背模</label>
+	                                                 	<label><input type="checkbox"/>刻字</label><label><input type="checkbox"/>镶边</label>
+	                                                 	<label><input type="checkbox"/>抛光</label><label><input type="checkbox"/>丝印</label>
+	                                                 	<label><input type="checkbox"/>喷绘</label>
+	                                                 	<p>
+	                                                 		<button class="confirm_addTech confirm_addCraft_work">确定</button>
+	                                                 		<button class="cancel_addTech">取消</button>
+	                                                 	</p>
+                                                	</div>
+                                                </h5>                     
+                                            </div>
+                                            <!-- 选择电镀色 -->
+                                            <div class="electroplate_box type_tech borderGray">
+                                                <span class="electroplateBtn techTypeBtn">
+                                                	<%if( orderarray[i].goodsinfo.color ){%>
+			                                    		<%=orderarray[i].goodsinfo.color %>
+			                                    	<%}else{%>
+			                                    		请选择
+			                                    	<%}%>
+                                                </span>
+                                                <h5  class="tech_label_box">
+                                                	<div>
+	                                                 	<label><input type="checkbox"/>金色</label>
+	                                                 	<label><input type="checkbox"/>银色(镍)</label>
+	                                                 	<label><input type="checkbox"/>古青铜</label>
+	                                                 	<label><input type="checkbox"/>古红铜</label>
+	                                                 	<label><input type="checkbox"/>浅金色</label>
+	                                                 	<label><input type="checkbox"/>古银色</label>
+	                                                 	<label><input type="checkbox"/>黑镍色</label>
+	                                                 	<label><input type="checkbox"/>黑漆</label>
+	                                                 	<label><input type="checkbox"/>玫瑰金</label>
+	                                                 	<p>
+	                                                 		<button class="confirm_addTech confirm_addColor_work">确定</button>
+	                                                 		<button class="cancel_addTech">取消</button>
+	                                                 	</p>
+                                                 	</div>
+                                                </h5>                    
+                                            </div>
+		            				</h5>
+		            				<h6 class="">
+		            					<figure class="pic_order" data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+	                                     data-customid="<%=orderarray[i].orderinfo.customid%>"><img onerror="this.src='../../images/images/mr.png'" class="figure_orderCont"
+		            						<%if( orderarray[i].orderinfo.goodsimage ){%>
+			                                   src="<%=cosImgUrl%><%=orderarray[i].orderinfo.goodsimage %>"
+			                                <%}else{%>
+			                                    src="./images/images/mr.png" 
+			                                <%}%>
+		            						 />
+		            					</figure>
+		            					<!-- 订单参数  信息   -->
+		            					<ul class="order_parameter" data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+	                                     			data-customid="<%=orderarray[i].orderinfo.customid%>">
+		            						<!-- 长宽高 -->
+		            						<li class="order_li_first">
+		            							<p>
+		            								<span><em>长</em><input type="text" class="prdLength" 
+		            											onkeyup="clearNoNum(this)" value="<%=orderarray[i].goodsinfo.size.length %>"/></span>mm
+		            							</p>
+		            							<p>
+		            								<span><em>宽</em><input type="text" class="prdWidth" 
+		            											onkeyup="clearNoNum(this)" value="<%=orderarray[i].goodsinfo.size.width %>"/></span>mm
+		            							</p>
+		            							<p>
+		            								<span><em>厚</em><input type="text" class="prdHeight" 
+		            											onkeyup="clearNoNum(this)"  value="<%=orderarray[i].goodsinfo.size.height %>"/></span>mm
+		            							</p>
+		            						</li>
+		            						<!-- 数量  周期  -->
+		            						<li class="order_li_second">
+		            							<p>
+		            								<span>
+		            									<em>数量</em><input type="text" class="prdNum" onkeyup="value=value.replace(/[^\d]/g,'')" 
+                            									ng-pattern="/[^a-zA-Z]/" value="<%=orderarray[i].goodsinfo.number %>"/>
+		            								</span>个
+		            							</p>
+		            							<p>
+		            								<span>
+		            									<em>周期</em><input type="text" class="prdDeadline" onkeyup="value=value.replace(/[^\d]/g,'')" 
+                            									ng-pattern="/[^a-zA-Z]/" value="<%=orderarray[i].orderinfo.deadline %>" 
+                            									style="color: #e84b4c;font-size: 14px;"/>
+		            								</span>天
+		            							</p>
+		            						</li>
+		            						<!-- 客户预算   订单金额：-->
+		            						<li class="order_li_third">
+		            							<p>
+		            								<span>
+		            									<em>客户预算</em><input type="text" class="customPrice_ser" onkeyup="value=value.replace(/[^\d]/g,'')" 
+                            									ng-pattern="/[^a-zA-Z]/" value="￥<%=orderarray[i].price.extent1 %>"
+                            									style="color: #e84b4c;font-size: 14px;"/>
+		            								</span>
+		            							</p>
+		            							<p style="height: 0.5555rem;line-height: 0.5555rem;">
+		            								<b style="margin-left: 0.1481rem;">订单金额：</b>
+		            								<b style="color: #e84b4c;font-size: 14px;" class="finalprice_ser">
+		            									<%if( orderarray[i].price.finalprice != 0 ){%>
+		            										￥<%=orderarray[i].price.finalprice %>
+		            									<%}%>
+		            									
+		            								</b>
+		            							</p>
+		            						</li>
+		            					</ul>
+		            					
+		            				</h6>
+	            				</div>
+	            				
+	            				<h4 class="">
+	            					<p> 
+	            						<span style="color: #e84b4c;"><%=orderarray[i].state.ordersheetstate.msg%></span>
+	            						<span><%=orderarray[i].state.designstate.msg%></span>
+	            						<span style="color: #e84b4c;"><%=orderarray[i].state.quotestate.msg%></span>
+	            						<span><%=orderarray[i].state.payoffstate.msg%></span>
+	            					</p>
+	            					<div data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+	                                     data-customid="<%=orderarray[i].orderinfo.customid%>"
+	                                     data-goodsid="<%=orderarray[i].orderinfo.goodsid%>"
+	                                     data-paystate="<%=orderarray[i].state.quotestate.code%>"
+	                                     data-finalprice="<%=orderarray[i].price.finalprice%>"
+	                                     data-deadline="<%=orderarray[i].orderinfo.deadline%>">
+	            						<%if(orderarray[i].state.payoffstate.code == 0 ){%>
+	                                            	
+	                                    <%} if((orderarray[i].state.quotestate.code != 3 || orderarray[i].state.orderstate.orderstate < 6)&& orderarray[i].state.payoffstate.code != 1){%>
+	                                                <button class="workstage_enquiryBtn">发起询价</button>
+	                                    <%} if(orderarray[i].state.orderstate.orderstate < 2 ){%>
+	                                                <button class="workstage_designBtn">分配设计</button>
+	                                    <%} if(orderarray[i].state.orderstate.orderstate >= 2 && orderarray[i].state.orderstate.orderstate <6 ){%>
+	                                                	<button class="workstage_reminderBtn">催设计稿</button>
+	                                    <%} if(orderarray[i].state.payoffstate.code == 0 && orderarray[i].state.quotestate.code == 3){%>
+	                                                	<button class="workstage_confirmPayBtn">确认支付</button>
+	                                    <%} if(orderarray[i].state.payoffstate.code == 1){%>
+	                                    <!--<button class="workstage_productionBtn" data-orderState="<%=ordersummary.orderarray[i].state.ordersheetstate.code%>">分配生产</em>-->
+	                                    <%} if(orderarray[i].state.ordersheetstate.code == 7 ){%>
+	                                                <button class="workstage_confirmDeliveryBtn">确认收货</button>
+	                                    <%}%>
+	            						
+	            						<b class="figure_orderCont">完善需求</b>
+	            					</div>
+	            				</h4>
+	            			</dd>
+	            			<!-- 滑动尺  预算   定价      -->
+	            			<dt class="order_service_bottom" data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+	                                     data-customid="<%=orderarray[i].orderinfo.customid%>">
+	            					<div >
+                                        	<em class="downRuler0">8</em><em class="downRuler1">8</em>
+                                            <ul class="ruler design_ruler drag"  ><!--设计费-->
+                                                <li>
+                                                    <span>设计费</span>
+                                                    <input type="text" class="designFee" readonly="readonly"
+                                                    	value="￥<%=orderarray[i].price.designprice %>">
+                                                    <button class="designFee_btn">确定</button>
+                                                </li>
+                                                <li><img src="./images/icon/tranrigle_green.svg"/></li>
+                                                
+                                            </ul>
+                                	</div> <!--预算-->           
+                                    <!--<ul class="ruler custom_ruler drag"  >
+                                                <li>
+                                                    <span>预算</span>
+                                                    <input type="text" class="customFee" value="￥<%=orderarray[i].price.mindprice %>"
+                                                       onkeyup="clearNoNum(this)" />
+                                                    <button class="customFee_btn">确定</button>
+                                                </li>
+                                    </ul>--> 
+                                    <!--定价-->
+                                    <ul class="ruler offer_ruler drag"  >
+                                    			<li>
+                                                    <span>报价</span>
+                                                     
+                                                    	<%if( orderarray[i].price.finalprice != 0 ){%>
+                                                    		<input type="text" class="offerFee" 
+                                                    			value="￥<%=orderarray[i].price.finalprice %>"
+                                                    			onkeyup="clearNoNum(this)" />
+                                                    	<%}else{%>
+                                                    		<input type="text" class="offerFee"
+                                                    		value="￥<%=orderarray[i].price.returnprice %>"
+                                                    		onkeyup="clearNoNum(this)" />
+                                                    	<%}%>
+                                                    	
+                                                    <button class="offerFee_service">定价</button>
+                                                </li>
+                                    </ul>
+            					
+	            			</dt>
+	            			
+	            		</dl>       
+                <%}%>    	
+                    		
+				
+				 
+	</script>
+    
+    
+        <script type="text/javascript" src="./js/service.js" ></script>
+    </body>
+    
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设计稿</title>
+    <link href="../../css/common/base.css" rel="stylesheet" />
+    <link href="../../css/design/design_draft.css" rel="stylesheet" />
+    <link href="../../lib/viewer/viewer.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div id="orderInfo">
+            <ul>
+                <li class="orderNumber">
+                    <span id="ordNum">订单号: </span>
+                    <!-- <span class="jidan">急单</span> -->
+                </li>
+            </ul>
+        </div>
+        <div id="detail">
+            <ul>
+                <li class="money">
+                    <span>设计费 : </span>
+                    <i id="money"></i>
+                    <!-- <span>工期 : </span>
+                    <i id="day">1天</i> -->
+                    <span>尺寸 : </span>
+                    <i id="size"></i>
+                </li>
+                <li class="attribute">
+                    <span>产品属性 : </span>
+                    <i id="attr_info"></i>
+                </li>
+                <li class="requ-info" style="overflow-y: scroll;">
+                    <span>具体要求 : </span>
+                    <span id="requ_info"></span>
+                </li>
+                <li class="design-diagram-layout-photo clearfix" style="height: 140px; display: none;">
+                    <span class="refe">参考图 : </span>
+                </li>
+                <li class="attachment">
+                    <span>附件 : </span>
+                </li>
+                <li class="download">
+                    <span>
+                        <input id="fileName" value="" title="" maxlength="15" disabled />
+                        <a id="download" href="#">下载</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <!-- 设计稿上传 -->
+        <div class="upload">
+            <div class="updesign clearfix">
+                <span class="pl-10">
+                    <i class="war">*</i>上传设计稿 : </span>
+                <div id="uploadedList" class="clearfix">
+                    <div id="upload_btn">
+                        <input id="input_file" style="" class="hidden" type="file" name="input_file" multiple>
+                        <span class="icon-plus"></span>
+                        <span class="text">点击上传图片</span>
+                        <span class="format">支持jpg/gif/png格式体积在10MB以下</span>
+                    </div>
+                    <span class="upload-msg">将图片拖拽至此区域</span>
+                </div>
+            </div>
+            <div class="upfile" style="border: 2px dashed #eee;">
+                <span class="pl-10" style="margin-right: 21px;">
+                    <i class="war">*</i>上传附件 : </span>
+                <input id="input_file_1" style="display:none;" class="hidden" accept=".cdr,.ai,.psd,.pdf" type="file" name="input_file">
+                <button id="upfile">上传文件</button>
+                <ul id="filelist" class="pl-10">
+                    <!-- 附件 -->
+                </ul>
+                <span class="upload-file-msg">将附件拖拽至此区域</span>
+            </div>
+            <div class="upfile o_upfile" style="border: 2px dashed #eee;">
+                <span class="pl-10" style="margin-right: 21px;">
+                    <i class="war"></i>其他附件 : </span>
+                <input id="input_file_2" style="display:none;" class="hidden" type="file" name="input_file">
+                <button id="o_upfile">上传文件</button>
+                <ul id="o_filelist" class="pl-10">
+                    <!-- 附件 -->
+                </ul>
+                <span class="upload-file-msg">将附件拖拽至此区域</span>
+            </div>
+            <div class="upfile">
+                <span class="sm"> 文件说明 : </span>
+                <input id="explain" placeholder="请输入文件说明" />
+            </div>
+            <button id="submit">提交设计稿</button>
+        </div>
+        <!-- 设计方案选定 -->
+        <div class="programme">
+            <!-- <div class="head">
+                <ul>
+                    <li id="programme_1">
+                        <span>张小哈</span>
+                        <span>投稿方案</span>
+                    </li>
+                    <li id="programme_2">
+                        <span>张小哈</span>
+                        <span>投稿方案</span>
+                    </li>
+                </ul>
+            </div> -->
+            <div id="module" class="body">
+                <div id="module_1" class="module">
+                    <ul>
+                        <i id="xdsjfa"></i>
+                        <li class="design">
+                            <img onerror="this.src='../../images/icon/errorHead.jpg'" src="" title="" />
+                            <span class="designName"></span>
+                            <span class="date"></span>
+                        </li>
+                        <li class="remarks">
+                            <span class="remarks-info"></span>
+                        </li>
+                        <li id="photo" class="photo clearfix">
+                            <!-- <div class="img">
+                                            <img data-original="../../images/images/cube.jpg" src="../../images/images/cube.jpg" >
+                                    </div>
+                                    <div class="img">
+                                            <img data-original="../../images/images/cube.jpg" src="../../images/images/cube.jpg">
+                                    </div> -->
+                        </li>
+                        <li class="attachment">
+                            <span class="fj">附件 ：</span>
+                            <div class="org">
+                                <label></label>
+                                <span class="download">下载</span>
+                            </div>
+
+                            <span class="fj otherfile hide" style="margin-left: 240px;">其他附件 ：</span>
+                            <div class="otherfile hide" style="margin-left: 312px;">
+                                <label></label>
+                                <span class="download">下载</span>
+                            </div>
+                        </li>
+                        <li class="message">
+                            <img onerror="this.src='../../images/icon/errorHead.jpg'" src="" title="" />
+                            <span class="kffk">客服反馈反馈：</span>
+                            <span class="fknr"></span>
+                            <div class="date-hf">
+                                <span class="date"></span>
+                                <!-- <span class="hf"><i title="消息图标"></i>回复</span> -->
+                            </div>
+                        </li>
+                        <!-- <li class="reply">
+                            <textarea class="content" rows="3" cols="20"></textarea>
+                        </li>
+                        <li class="reply-btn">
+                            <button>回复</button>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../js/jquery-1.11.0.min.js"></script>
+<script src="../../js/jquery.cookie.js" type="text/javascript"></script>
+<script src="../../lib/layer/2.4/layer.js" rel="stylesheet"></script>
+<script src="../../js/common/cos_upload_file.js" rel="stylesheet"></script>
+<script src="../../lib/viewer/viewer.min.js" type="text/javascript"></script>
+<script src="../../js/common/common.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../js/design/design_draft.js"></script>
+
+</html>

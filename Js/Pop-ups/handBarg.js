@@ -13,7 +13,7 @@ $(function () {
 
     $('.ok').on('click',function () {
         var price=$("#price").val()||0;
-        price=parseFloat(price.replace(/[^0-9.]/g, ''));//回应报价
+        price=parseFloat(price.replace(/[^0-9-.]/g, ''));//回应报价
 
         var period=$("#period").val()||0;
         period=parseInt(period);//回应工期

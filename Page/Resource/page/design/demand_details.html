@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>需求详情</title>
+    <link href="../../css/common/base.css" rel="stylesheet" />
+    <link href="../../css/design/demand_details.css" rel="stylesheet" />
+    <link href="../../lib/viewer/viewer.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div id="orderInfo">
+            <ul>
+                <li class="orderNumber">
+                    <span id="ordNum">订单号: </span>
+                    <!-- <span class="jidan">急单</span> -->
+                </li>
+            </ul>
+        </div>
+        <div id="detail">
+            <ul>
+                <li class="money">
+                    <span>设计费 : </span>
+                    <i id="money"></i>
+                    <!-- <span>工期 : </span>
+                    <i id="day">1天</i> -->
+                    <span>尺寸 : </span>
+                    <i id="size"></i>
+                </li>
+                <li class="attribute">
+                    <span>产品属性 : </span>
+                    <i id="attr_info"></i>
+                </li>
+                <li class="requirement">
+                    <span>具体要求</span>
+                </li>
+                <li class="requ-info">
+                    <span id="requ_info"></span>
+                </li>
+                <li class="design-diagram-layout-photo clearfix">
+                    <span class="refe">参考图</span>
+                </li>
+                <li class="attachment">
+                    <span>附件 : </span>
+                </li>
+                <li class="download">
+                    <span>
+                        <input id="fileName" value="" title="" maxlength="15" disabled />
+                        <a id="download" href="#">下载</a>
+                    </span>
+                </li>
+                <li class="line"></li>
+                <!--<li class="supplement">
+                    <span>补充需求</span>
+                </li>
+                <li class="supp-info">
+                    <span>10厘米。车标的。锌合金</span>
+                </li> -->
+                <li class="datetime">
+                    <i class="icon-clock fl"></i>
+                    <span class="lf" id="datetime">0000-00-00</span>
+                </li>
+            </ul>
+            <button id="qd_btn" class="qd-btn" >立即抢单</button>
+        </div>
+    </div>
+    <script src="../../js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../../lib/layer/2.4/layer.js" rel="stylesheet"></script>
+    <script src="../../js/common/common.js" type="text/javascript"></script>
+    <script src="../../lib/viewer/viewer-liugang.js" type="text/javascript" ></script>
+    <script src="../../js/design/demand_details.js" type="text/javascript"></script>
+</body>
+
+</html>

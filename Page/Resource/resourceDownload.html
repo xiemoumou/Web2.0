@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资源下载</title>
+    <link href="./css/common/base.css" rel="stylesheet">
+    <link href="./css/resourceDownload.css" rel="stylesheet">
+    <link href="./lib/viewer/viewer.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="body clearfix">
+            <div class="left fl">
+                <div class="head clearfix">
+                    <div class="fl">
+                        <span>上传者：</span><span class="text" id="uploader"></span>
+                    </div>
+                    <div class="fr">
+                        <span>上传时间：</span><span class="text" id="upload_date"></span>
+                    </div>
+                </div>
+                <div class="img-badge">
+                    <img id="badge" src="" class="img">
+                </div>
+            </div>
+            <div class="right fr">
+                <div class="download-point"><span>您当前拥有：</span><span id="download_point">*</span><span>个下载点</span></div>
+                <div class="head">
+                    <div class="title">
+                        <h1 id="title"></h1>
+                    </div>
+                    <div class="download-num">
+                        <span>下载次数：</span><span id="downloac_num"></span><span>次</span>
+                    </div>
+                </div>
+                <div class="label-container"><!--标签-->
+                    <span class="label-msg hide">还没有标签，从添加标签处可以可以为素材添加标签。</span>
+                </div>
+                <span class="show-more hide">显示更多标签</span>
+                <div class="add-label">
+                    <span class="label">添加标签：<i>对素材的描述，每个不超过5个字</i></span>
+                    <div class="add-input">
+                        <input type="text" id="add_input" placeholder="标签之间以符号“ ，”（逗号）隔开，(非必填项)" maxlength="100">
+                        <button class="submit-btn red-button" onclick="base.addLabel()">提交标签</button>
+                    </div>
+                </div>
+                <div class="reward">
+                    <span class="icon-reward"></span><span class="content-reward">提交标签可以获得2个下载点呦！</span>
+                </div>
+            </div>
+        </div>
+        <div class="floor">
+            <button class="btn-download red-button" onclick="base.download()"><i class="text-1">下载矢量图</i><i class="text-2">（下载消耗10个下载点）</i></button>
+            <button class="btn-close hollow-button" onclick="parent.layer.closeAll()">取消</button>
+        </div>
+    </div>
+<script src="./lib/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="./lib/jquery.cookie.js" type="text/javascript"></script>
+<script src="./lib/layer/layer.js" type="text/javascript"></script>
+<script src="./lib/viewer/viewer-liugang.js" type="text/javascript"></script>
+<script src="./js/common/common.js" type="text/javascript"></script>
+<script src="./js/resourceDownload.js" type="text/javascript"></script>
+</body>
+</html>

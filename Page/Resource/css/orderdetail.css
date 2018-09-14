@@ -1,0 +1,960 @@
+time{
+    color: #757575;
+}
+div.cont_right{
+   
+}
+
+p.orderContent_header{
+    background-color: #fff;
+    padding: 0.3333rem 0.6111rem;
+    font-size: 0.2592rem;
+}
+dd.orderContent{
+	padding-right: 0;
+	width: 100%;
+}
+p.orderContent_header>b{
+	display: block;
+	height: 0.4074rem;
+	line-height: 0.4074rem;
+}
+span.factoryname_orderDetail,span.designername_orderDetail,
+span.orderid_orderDetail,span.customname_orderDetail,
+span.customnickname_orderDetail{
+	display: inline-block;
+	min-width: 0.5555rem;
+}
+p.orderContent_header time{
+    margin-left: 0.2851rem;
+}
+p.orderContent_header strong{
+    color: #000;
+}
+span.customname_orderDetail{
+	
+}
+i.icon-henggang{
+    font-size: 0.3703rem;
+    color: #8a8a8a;
+}
+i.icon-comiisjiahao{
+    font-size: 0.4259rem;
+    color: #8a8a8a;
+    display: none;
+}
+div.cont_right>h4{
+    width: 100%;
+    background-color: #fff;
+    cursor: pointer;
+    /*margin-top: 0.2037rem;*/
+}
+div.cont_right>h4>p{
+    width: 16.8333rem;
+    height: 1.0185rem;
+    line-height: 1.0185rem;
+    margin-left: 0.5185rem;
+    font-size: 0.3333rem;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #fff;
+}
+div.cont_right>h4 i{
+    margin: 0 0.1666rem 0 0.074rem;
+}
+div.order_box{
+    margin: 0;
+    padding: 0.1851rem 0.4629rem 0.1851rem 0.5185rem;
+}
+div.order_box dt{
+    margin: 0;
+}
+div.orderContent_cont li.orderCont1 ul.option_{
+    z-index: 69;
+}
+/*ul.custom_ruler{
+	right: 0.1851rem;
+}
+ul.offer_ruler{
+	right: 0.1851rem;
+}*/
+/*---上传参考图、备注 和 附件----*/
+/*ul.upload_pic_remark{
+    width: 100%;
+    padding-top: 0.1851rem;
+}
+ul.upload_pic_remark>li{
+    display: flex; 
+    width: 95%;   
+    margin-top: 0.1851rem; 
+    align-items: flex-start;    
+}
+ul.upload_pic_remark>li>p{
+    width: 1.3703rem;
+    height: 0.5555rem;
+    line-height: 0.5555rem;
+    text-align: right;
+}
+ul.upload_pic_remark>li div{
+    display: flex;
+    align-items: center;
+    width: 13.8888rem;
+}
+ul.upload_pic_remark>li strong{
+    display: block;
+    width: 1.8888rem;
+    height: 0.5185rem;
+    line-height: 0.5185rem;
+    text-align: center;
+    border: 1px solid #e84b4c;
+    background-color: #fff;
+    border-radius: 0.2592rem;
+    color: #e84b4c; 
+    margin-right: 0.2592rem;
+    font-size: 12px;
+}
+ul.upload_pic_remark h6{
+    display: flex;
+    margin-left: 0.2222rem;
+    align-items: flex-start;
+    width: 15.2777rem;
+    flex-wrap: wrap; 
+}
+
+ul.upload_pic_remark ol{
+    display: flex;
+}
+h6.newOrder_uppic>ol.show_uppic{
+	margin-top: 0.1481rem;	
+}
+h6.newOrder_uppic>ol.show_uppic li{
+    width: 1.4814rem;
+    height: 1.4814rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e3e3e3;
+    position: relative;
+    margin-right: 0.1481rem;
+    cursor: pointer;   
+}
+h6.newOrder_uppic>ol.show_uppic li>p{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,.5);
+	text-align: center;
+	line-height: 1.4444rem;
+}
+h6.newOrder_uppic>ol.show_uppic li i{
+	color: #fff;	
+	cursor: pointer;
+}
+h6.newOrder_uppic>ol.show_uppic li i.icon-liucheng{
+	margin-left: 0.2777rem;
+}
+h6.newOrder_uppic>ol.show_uppic li i:hover{
+	color: #ed7b7b;
+}
+
+h6.newOrder_uppic>ol.show_uppic li>img{
+    max-width: 1.4814rem;
+    max-height: 1.4814rem;   
+}
+h6.newOrder_uppic>ol.show_uppic li>em{
+    position: absolute;
+    bottom: -2px;
+    display: block;
+    height: 0.4074rem;
+    width: 1.4814rem;
+    color: #fff;
+    text-align:center;
+    line-height: 0.4074rem;
+    background: rgba(0,0,0,.7);
+}*/
+/*---放大参考图片的效果---*/
+h6.newOrder_uppic>ol.show_uppic>li>div{
+	position: absolute;
+	top: -4.7037rem;
+	left: -1.1111rem;
+	z-index: 79;
+	width: 11.1111rem;
+	height: 11.1111rem;
+	background: rgba(0,0,0,.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: none;
+}
+h6.newOrder_uppic>ol.show_uppic>li>div>img{
+	max-width: 10.5555rem;
+	max-height: 10.5555rem;
+}
+h6.newOrder_uppic>ol.show_uppic>li>div i.icon-error-20170103{
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	color: #fff;
+}
+/*-------上传参考图片和附件的区域---START------------*/
+ul.upload_pic_remark{
+    width: 100%;
+    display: flex;
+}
+ul.upload_pic_remark>li{
+	font-size: 12px;
+	display: block; 
+    width: 100%;   
+    margin: 0.1851rem 0; 
+    border: 1px solid #e6e6e6;
+    min-height: 4.9814rem;
+    padding-bottom: 0.1481rem;    
+}
+
+ul.upload_pic_remark>li>div{
+	display: flex;
+	margin-top: 0.3333rem;
+}
+ul.upload_pic_remark>li.toDesigner_cont{ 
+	border-top: 3px solid #E6E6E6;
+}
+/*ul.upload_pic_remark>li.toFactory_cont{ 
+	border-top: 3px solid #2a8ad5;
+}*/
+ul.upload_pic_remark>li>h5{
+	height: 0.8703rem;
+	line-height: 0.8703rem;
+	padding-left: 0.4074rem;
+	font-size: 16px;
+	color: #313131;
+	background-color: #f8f8f8;
+}
+
+ul.upload_pic_remark>li>div>p{
+	width: 1.7777rem;
+	text-align: right;
+	height: 0.5555rem;
+	line-height: 0.5555rem;
+}
+ul.upload_pic_remark>li h6{
+	display: flex;
+    margin-left: 0.4444rem;
+    align-items: flex-start;
+    width: 9.2222rem;
+    flex-wrap: wrap; 
+}
+h6.newOrder_uppic>div{
+	display: flex;
+    
+    width: 9.2222rem;
+    flex-wrap: wrap; 
+}
+ul.upload_pic_remark>li label strong{
+	display: inline-block;
+    width: 1.8888rem;
+    height: 0.5185rem;
+    line-height: 0.5185rem;
+    text-align: center;
+    border: 1px solid #e84b4c;
+    background-color: #fff;
+    border-radius: 0.2592rem;
+    color: #e84b4c; 
+    margin-right: 0.2592rem;
+}
+ul.upload_pic_remark>li>div:nth-of-type(1)>p{
+	
+}
+h6.newOrder_uppic>div>p{
+	height: 0.5555rem;
+	line-height: 0.5555rem;
+}
+h6.newOrder_uppic>ol.show_uppic{
+    /*height: 1.4814rem;*/
+   margin-top: 0.1111rem;
+   display: flex;
+}
+h6.newOrder_uppic>ol.show_uppic li{
+    width: 1.7777rem;
+    height: 1.7777rem;
+    line-height: 1.7777rem;
+    border: 1px solid #e3e3e3;
+    position: relative;
+    margin-right: 0.1481rem;
+}
+h6.newOrder_uppic>ol.show_uppic li>p{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1.7777rem;
+	height: 1.7777rem;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	line-height: 1.7777rem;
+	background: rgba(0,0,0,.5);
+}
+h6.newOrder_uppic>ol.show_uppic li>p i{
+	color: #fff;	
+}
+h6.newOrder_uppic>ol.show_uppic li>p i:hover{
+	color: #e84b4c;	
+}
+h6.newOrder_uppic>ol.show_uppic li img{
+    max-width:  1.7777rem;
+    max-height: 1.7777rem;   
+}
+h6.newOrder_uppic>ol.show_uppic li em{
+    position: absolute;
+    bottom: -2px;
+    display: block;
+    height: 0.4074rem;
+    width: 1.7777rem; 
+    color: #fff;
+    text-align:center;
+    line-height: 0.4074rem;
+    background: rgba(0,0,0,.7);
+}
+ol.show_upaccessory{
+    width: 10.8888rem;
+    justify-content: space-between;
+    margin: 0.1851rem 0 0.1481rem;
+    flex-wrap: wrap;
+}
+ol.show_upaccessory li{
+    padding: 0 0.1111rem;
+    height: 0.5555rem;
+    max-width: 7.1555rem;
+    display: flex;
+    align-items: center;    
+    background-color: #f8f8f8;
+    margin-bottom: 0.1111rem;
+}
+ol.show_upaccessory li span{
+    color: #4e4e4e;
+    display: inline-block;
+    max-width: 3.5185rem;
+    overflow: hidden; /*超出的隐藏*/
+	white-space: nowrap;
+	text-overflow:ellipsis; /*超出的设置为省略号*/
+}
+ol.show_upaccessory li em{
+    color: #a7a7a7;
+    margin: 0 0.1851rem;
+}
+ol.show_upaccessory li b{
+    color: #e84b4c;
+    margin-right: 0.1851rem;
+    cursor: pointer;
+}
+textarea.neworder_remark_designer,textarea.neworder_remark_factory{
+    width: 9.2222rem;
+    height: 1.5555rem;
+    border: 1px solid #e3e3e3;
+    margin-left: 0.4444rem;
+}
+/*-------上传参考图片和附件的区域---END------------*/
+/*---------上传参考附件----------*/
+/*ol.show_upaccessory{
+    width: 13.8888rem;
+    min-height: 0.3703rem;
+    justify-content: space-between;
+    margin: 0.1851rem 0 0.1481rem;
+    flex-wrap: wrap;
+}
+ol.show_upaccessory li{
+    padding: 0 0.2777rem;
+    height: 0.5555rem;
+    display: flex;
+    align-items: center;    
+    background-color: #f8f8f8;
+    margin-bottom: 0.1111rem;   
+}
+ol.show_upaccessory li span{
+    color: #4e4e4e;
+}
+ol.show_upaccessory li em{
+    color: #a7a7a7;
+    margin: 0 0.1851rem;
+}
+ol.show_upaccessory li b{
+    color: #e84b4c;
+    margin-right: 0.1851rem;
+    cursor: pointer;
+}
+b.delete_accessory{
+	display: none;
+}*/
+/*--------参考图的备注-----------*/
+/*textarea.neworder_remark{
+    width: 15.0112rem;
+    height: 1.5555rem;
+    border: 1px solid #e3e3e3;
+    margin: 0 0.0185rem 0.2222rem 0.2222rem;
+}*/
+
+div.order_box>button.workstage_modifyRefPicBtn{
+	display: none;
+	margin: 0.3777rem 0 0.3777rem 7.5296rem;
+}
+
+ul,li,ol,dl,dt,dd{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+/* 设计方案内容 */
+div.order_scheme_box{
+    font-size: 12px;  
+}
+div.order_scheme_box>ul{
+    display: flex;
+    padding-left: 0.7407rem;
+    margin-top: 0.4259rem;
+    background-color: #fff;
+}
+div.order_scheme_box>ul>li{
+    width: 2.5185rem;
+    height: 0.9259rem;
+    line-height: 0.2777rem;
+    border: 1px solid #e6e6e6;
+    cursor: pointer;
+    text-align: center;
+}
+div.order_scheme_box>ul>li>p{
+    margin: 0.1111rem 0 0.074rem ;
+    color: #777373;
+}
+/* 设计方案表头border变色的效果 */
+div.order_scheme_box>ul>li.border_red{
+    border-color: #d74a49;
+    border-bottom-color: #fff;
+    color: #d74a49;
+}
+h5.content_scheme{
+    background-color: #fff;
+    padding: 0.2222rem 0.4074rem;
+    margin-top: 0.0925rem;
+}
+h5.content_scheme>div.content_scheme_design1{
+    border: 1px solid #5094c8;
+    background-color: #f8f8f8;
+    width: 17.1296rem;
+    padding-bottom: 0.2777rem;
+    position: relative;
+}
+
+h5.content_scheme>div>dl{   
+    display: flex;
+}
+h5.content_scheme dl dt{
+    width: 1.5185rem;
+    height: 1.2962rem;
+    margin: 0.3148rem 0 0 0.3148rem;
+}
+h5.content_scheme>p{
+    margin-bottom: 0.2407rem;
+}
+h5.content_scheme>p>em{
+    display: inline-block;
+    width: 2.0925rem;
+    height: 0.5925rem;
+    line-height: 0.5925rem;
+    text-align: center; 
+    cursor: pointer; 
+    background-color: #d74a49;
+    color: #fff; 
+}
+h5.content_scheme dl dt{
+	width: 0.8888rem;
+	height: 1.2962rem;
+}
+h5.content_scheme dl dt>p{
+	width: 0.8888rem;
+    height: 0.8888rem;
+    border-radius: 0.4444rem;
+    overflow: hidden;    
+}
+h5.content_scheme dt img{
+    width: 0.8888rem;
+}
+h5.content_scheme>p>button{
+    float: right;   
+    padding: 0 0.5rem;
+    line-height: 0.574rem;
+    text-align:center;
+    color: #d74a49;
+    border: 1px solid #d74a49;
+    cursor: pointer;
+    margin-left: 0.2777rem;
+    display: none;
+}
+/*h5#content_scheme>p>button.selectScheme_orderDetail{
+	display: none;
+}*/
+/* 设计方案的表头信息  */
+h5.content_scheme dd>h6{
+    width: 15rem;
+    height: 0.9074rem;
+    line-height: 0.9074rem;
+    border-bottom: 1px solid #e2e2e2;
+    padding-left: 0.2777rem;
+}
+div.content_scheme_design1>h2.selectSch{
+	position: absolute;
+	z-index: 19;
+	width: 1.4814rem;
+	height: 1.1851rem;
+	background: url(../images/icon/xz.png) no-repeat;
+}
+h5.content_scheme dl>dd>h6 time{
+    float: right;
+}
+h5.content_scheme dd>p{
+    height: 0.8148rem;
+    line-height: 0.8148rem;
+}
+h5.content_scheme dd>h6 span{
+    font-size: 0.2592rem;
+}
+/* 设计方案师上传图片  附件 */
+ul.upload_picremark_scheme{
+    width: 100%;
+    padding-top: 0.1851rem;
+}
+ul.upload_picremark_scheme>li{
+    display: flex; 
+    width: 95%;   
+    margin-top: 0.1851rem; 
+    align-items: flex-start;    
+}
+ul.upload_picremark_scheme>li>p{
+    width: 1.3703rem;
+    height: 0.5555rem;
+    line-height: 0.5555rem;
+    text-align: right;
+}
+ul.upload_picremark_scheme>li div{
+    display: flex;
+    align-items: center;
+    width: 13.8888rem;
+}
+ul.upload_picremark_scheme>li strong{
+    display: block;
+    width: 1.8888rem;
+    height: 0.5185rem;
+    line-height: 0.5185rem;
+    text-align: center;
+    border: 1px solid #e84b4c;
+    background-color: #fff;
+    border-radius: 0.2592rem;
+    color: #e84b4c; 
+    margin-right: 0.2592rem;
+}
+ul.upload_picremark_scheme h6{
+    display: flex;
+    margin-left: 0.2222rem;
+    align-items: flex-start;
+    width: 15.2777rem;
+    flex-wrap: wrap; 
+}
+h6.scheme_uppic{
+    /*height: 4.074rem;*/
+   
+}
+ul.upload_picremark_scheme ol{
+    display: flex;
+}
+h6.scheme_uppic>ol.show_uppic_scheme{
+    /*height: 3.2592rem;*/
+   margin-top: 0.1481rem;
+}
+h6.scheme_uppic>ol.show_uppic_scheme li{
+    width: 3.2592rem;
+    height: 3.2592rem;
+    border: 1px solid #e3e3e3;
+    position: relative;
+    margin-right: 0.1481rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h6.scheme_uppic>ol.show_uppic_scheme li>p{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background: rgba(0,0,0,.5);
+	/*text-align: center;
+	line-height: 3.2592rem;*/
+}
+h6.scheme_uppic>ol.show_uppic_scheme li i{
+	color: #fff;
+	cursor: pointer;
+}
+h6.scheme_uppic>ol.show_uppic_scheme li i.icon-liucheng{
+	margin-left: 0.2777rem;
+}
+h6.scheme_uppic>ol.show_uppic_scheme li i:hover{
+	color: #ed7b7b;
+}
+
+h6.scheme_uppic>ol.show_uppic_scheme li>img{
+    max-width: 3.2592rem;
+    max-height: 3.2592rem;   
+}
+h6.scheme_uppic>ol.show_uppic_scheme li>em{
+    position: absolute;
+    bottom: -2px;
+    display: block;
+    height: 0.5555rem;
+    width: 3.2592rem;
+    color: #fff;
+    text-align:center;
+    line-height: 0.5555rem;
+    background: rgba(0,0,0,.7);
+}
+/*---放大设计图片的效果的  样式---*/
+h6.scheme_uppic>ol.show_uppic_scheme>li>div{
+	position: absolute;
+	top: -3.8888rem;
+	right: -4.6629rem;
+	z-index: 79;
+	width: 11rem;
+	height: 11rem;
+	background: rgba(0,0,0,.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display: none;
+}
+h6.scheme_uppic>ol.show_uppic_scheme>li>div>img{
+	max-width: 10.5555rem;
+	max-height: 10.5555rem;
+}
+h6.scheme_uppic>ol.show_uppic_scheme>li>div>i.icon-error-20170103{
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	height: 0.2962rem;
+}
+/*----上传设计附件的样式------*/
+ol.show_upaccessory_scheme{
+    width: 13.8888rem;
+    justify-content: space-between;
+    margin: 0.1851rem 0 0.1481rem;
+    flex-wrap: wrap;
+}
+ol.show_upaccessory_scheme li{
+    padding: 0 0.2777rem;
+    height: 0.5555rem;
+    display: flex;
+    align-items: center;    
+    background-color: #f8f8f8;
+    margin-bottom: 0.1111rem;
+}
+ol.show_upaccessory_scheme li span{
+    color: #4e4e4e;
+}
+ol.show_upaccessory_scheme li em{
+    color: #a7a7a7;
+    margin: 0 0.1851rem;
+}
+ol.show_upaccessory_scheme li b{
+    color: #e84b4c;
+    margin-right: 0.1851rem;
+    cursor: pointer;
+}
+b.delete_accessory_scheme,b.download_order_scheme{
+	display: none;
+}
+i.icon-liuyan{
+    color: #8a8a8a; 
+    margin-left: 0.4629rem;       
+}
+h6.scheme_upaccessory>div>i{
+    float: right;
+    cursor: pointer;
+}
+textarea.remark_access_scheme{
+	width: 12.9629rem;
+	margin: 0 0.1481rem;
+	padding: 0.1111rem 0.1666rem;
+}
+h5.content_scheme>p{
+	height: 0.6111rem;
+}
+strong.selectScheme_orderDetail{
+	
+}
+h5.content_scheme figure>p{
+    width: 0.6851rem;
+    height: 0.6851rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 0.3148rem;
+}
+h5.content_scheme figure img{
+    max-width: 0.6851rem;
+    height: 0.6851rem;
+}
+h5.content_scheme figure{
+    display: flex;
+}
+h5.content_scheme figure i.icon-liuyan{
+    font-size: 12px;  
+    cursor: pointer;  
+}
+h5.content_scheme figcaption{
+    margin-left: 0.2777rem;
+}
+h5.content_scheme figcaption span{
+    color: #eb6c6d;
+}
+/* 收货地址的模块 */
+div.deliveryaddress_orderdetail{
+    margin-top: 0.5rem;
+    background-color: #fff;
+    padding-bottom: 0.4074rem;
+}
+div.deliveryaddress_orderdetail p em{
+	margin: 0 0.2222rem;
+}
+div.deliveryaddress_orderdetail span em{
+	margin-left: 0.1111rem;
+}
+div.deliveryaddress_orderdetail>p{
+    height: 0.9629rem;
+    line-height: 0.9629rem;
+    padding-left: 0.5rem;
+}
+div.deliveryaddress_orderdetail strong{
+    display: inline-block;
+    width: 1.9444rem;
+    height: 0.5185rem;
+    line-height: 0.5185rem;
+    text-align: center;
+    border: 1px solid #e84b4c;
+    border-radius: 0.2592rem;
+    color: #e84b4c;
+    cursor: pointer;
+}
+div.deliveryaddress_orderdetail>dl{
+    width: 16.6666rem;
+    height: 1.2962rem;
+    border: 1px solid #e2e2e2;
+    background-color: #fbfbfb;
+    display: flex;
+    justify-content: space-between;
+    margin-left:0.5185rem;
+    padding: 0.1481rem 0.3148rem 0.1481rem 0.5rem;
+}
+div.deliveryaddress_orderdetail>dl dt{
+    width: 10.1851rem;
+    height: 1rem;
+}
+div.deliveryaddress_orderdetail>dl h6{
+    display: flex;
+    justify-content: space-between;
+    height: 0.5rem;
+    line-height: 0.5rem;
+}
+div.deliveryaddress_orderdetail>dl dt>span{
+    height: 0.5rem;
+    line-height: 0.5rem;
+}
+div.deliveryaddress_orderdetail>dl dd{
+    width: 1.1481rem;
+    height: 0.2222rem;
+    display: flex;
+    justify-content: space-between;
+    color: #eb6d6e;
+    cursor: pointer;
+}
+/*---------模拟alert弹窗---------------*/
+div.pop_copyAlert{
+	display: none;
+}
+div.pop_copyAlert ul{
+	margin: 0.2222rem 0;
+}
+div.pop_copyAlert li{
+	height: 0.3703rem;
+	line-height: 0.3703rem;
+}
+/* 客服上传 设计图 、 备注、 附件  */
+div.production_service_box{
+	/*display: block;*/
+}
+div.production_service_box>h4>div:nth-of-type(3){
+	margin-top: 0;
+}
+button.delete_ref_access,button.delete_design_access{
+	display: none;
+}
+/*----------新建地址的弹窗--------------*/
+div.newAddress_orderDetail{	
+	top: 5rem;
+	padding-bottom: 0.3333rem;
+	/*display: block;*/
+}
+div.newAddress_orderDetail dl{
+	margin-top: 0.1851rem;
+	display: flex;
+}
+div.newAddress_orderDetail dl p{
+	height: 0.6rem;
+	line-height: 0.6rem;	
+}
+div.newAddress_orderDetail dl dt{
+	width: 2.4074rem;
+	margin-right: 0.1851rem;
+}
+div.newAddress_orderDetail dt i{
+	font-size: 22px;
+	color: #E84B4C;	
+}
+div.newAddress_orderDetail dt p{
+	text-align: right;
+	width: 100%;
+}
+div.newAddress_orderDetail input{
+	width: 3.5rem;
+	padding: 0.0925rem 0.037rem;
+	border: 1px solid #d5d5d5;
+}
+div.newAddress_orderDetail .redbord{
+	border-color: #e95758;
+}
+div.newAddress_orderDetail dd{
+	
+}
+div.addAddressBox{
+	margin: 0.0925rem 0;
+}
+div.newAddress_orderDetail input.addDetailAddress_newAdd{
+	width: 6.1111rem;
+	margin: 0.0925rem 0;
+}
+select.form-control{	
+	width: 2rem;
+	padding: 0.0925rem 0.037rem;
+	border: 1px solid #d5d5d5;
+}
+button.redbutton{
+	margin-left: 2.7777rem;
+	width: 1.8148rem;
+	height: 0.5925rem;
+	line-height: 0.5925rem;	
+	background-color: #e95758;
+    color: #fff;
+    border-radius: 0.074rem;
+}
+/*----------新建地址的弹窗END--------------*/
+
+/*----------上传物流信息的弹窗 START-----查看物流----上传支付金额--确认支付---*/
+div.uploadExpress_orderDetail,div.checkExpress_orderDetail,div.uploadPayPrice_orderDetail{
+	top: 3.3333rem;
+}
+div.uploadExpress_orderDetail div,div.uploadPayPrice_orderDetail div{
+	margin: 0.1851rem 0;
+}
+div.uploadExpress_orderDetail input,div.uploadPayPrice_orderDetail input{
+	padding: 0.1111rem 0.0925rem;
+	border: 1px solid #d5d5d5;
+}
+/*----------上传物流信息的弹窗  END--------------*/
+
+/*----------查看物流信息的弹窗 START--------------*/
+div.checkExpress_orderDetail>ul{
+	margin: 0.1851rem 0;
+}
+div.checkExpress_orderDetail li{
+	height: 0.5555rem;
+	line-height: 0.5555rem;
+	padding-left: 0.2777rem;
+}
+div.checkExpress_orderDetail li em{
+	margin-right: 0.1851rem;
+}
+/*----------查看物流信息的弹窗  END--------------*/
+
+/* 订单详情中的 取消订单 */
+div.cancel_orderDetail{
+}
+
+div.cancel_orderDetail dt{
+    width: 8.6666rem;
+    height: 0.9629rem;
+    color: #e95758;
+    background-color: #fbf2f2;   
+    border: 1px solid #e84b4c;
+    margin-top: 0.2037rem;
+    padding: 9px 0.2222rem;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+div.cancel_orderDetail dd{
+    margin-top: 0.4444rem;
+    display: flex;
+}
+div.cancel_orderdetail dd>p{
+    width: 2.3518rem;
+    height: 0.6111rem;
+    text-align: right;
+    line-height: 0.6111rem;
+}
+
+h4.cancel_orderDetail_content div.select_box{    
+    width: 5.0185rem;
+    height: 0.6111rem; 
+    cursor: pointer;   
+}
+h4.cancel_orderDetail_content span.select_txt{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 4.9814rem;
+    height: 0.574rem;
+    padding-left: 0.1851rem;
+    line-height: 0.574rem;
+    border: 1px solid #d5d5d5;
+    background: url(../images/icon/arr.svg) 4.2592rem 0 no-repeat;
+    background-size: 0.5925rem;
+}
+h4.cancel_orderDetail_content .option_{
+    margin-top: 0.0925rem;
+    display: none;
+    z-index: 59;
+}
+h4.cancel_orderDetail_content .option_ li{
+    width: 5.0185rem;
+    height: 0.3703rem;
+    line-height: 0.3703rem;
+    padding-left: 0.1851rem;
+    background-color: #fff;
+}
+h4.cancel_orderDetail_content>p{
+    margin: 0.7407rem 0 0.4444rem;  
+    cursor: pointer;
+} 
+h4.cancel_orderDetail_content>p>strong{
+	display: inline-block;
+    width: 1.9444rem;
+    height: 0.6851rem;
+    text-align: center;
+    line-height: 0.6851rem;
+    background-color: #e7e7e7;
+    color: #5e5e5e;
+    margin-right: 0.2037rem;
+    border-radius: 0.0925rem;
+}
+h4.cancel_orderDetail_content>p>strong.redbgc{
+    background-color: #e95758;
+    color: #fff;
+}
+

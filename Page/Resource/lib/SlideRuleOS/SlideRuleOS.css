@@ -1,0 +1,333 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset,
+img,
+input,
+button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline-style: none;
+}
+
+.mt-8{
+    margin-top: 8px;
+}
+
+.slide-rule-os {
+    width: 600px;
+    height: 4px;
+    background-color: #dad8d9;
+    position: absolute;
+}
+
+/* 设计费用 */
+
+/*滑动尺两端*/
+.slide-rule-os::before {
+    content: '';
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    border-radius: 4px;
+    top: -2px;
+    left: -7px;
+}
+
+.slide-rule-os::after {
+    content: '';
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    border-radius: 4px;
+    top: -2px;
+    right: -7px;
+}
+/*滑动尺两端end*/
+
+/*右边值呈现*/
+.slide-rule-os .show-value{
+    width: 290px;
+    height: 52px;
+    position: absolute;
+    top: -26px;
+    right: -349px;
+}
+
+.slide-rule-os .show-value .red,.slide-rule-os .show-value .blue,.slide-rule-os .show-value .yellow,.slide-rule-os .show-value .guide-fee{
+    margin-right: 10px;
+    float: left;
+    line-height: 25px;
+    font:12px "微软雅黑";
+}
+/*报价按钮-begin*/
+.slide-rule-os .show-value .red label{
+    color:#e84b4c;
+}
+
+.slide-rule-os .red-div{
+    width: 92px;
+    height: 20px;
+    border: 1px solid #e84b4c;
+    display: inline-block;
+    line-height: 20px;
+    border-radius: 4px;
+}
+
+.slide-rule-os .red-value{
+    width: 50px;
+    height: 16px;
+    padding: 0 4px;
+    text-align: right;
+}
+
+.slide-rule-os .red-div .red-btn{
+    width: 34px;
+    height: 20px;
+    background-color: #e84b4c;
+    color: #fff;
+    font: 12px "微软雅黑";
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+/*报价-end*/
+
+/*设计费-begin*/
+.slide-rule-os .show-value .blue label{
+    color:#28a3fe;
+}
+
+.slide-rule-os .blue-div{
+    width: 92px;
+    height: 20px;
+    border: 1px solid #28a3fe;
+    display: inline-block;
+    line-height: 20px;
+    border-radius: 4px;
+}
+
+.slide-rule-os .blue-value{
+    width: 50px;
+    height: 16px;
+    padding: 0 4px;
+    text-align: right;
+}
+
+.slide-rule-os .blue-div .blue-btn{
+    width: 34px;
+    height: 20px;
+    background-color: #28a3fe;
+    color: #fff;
+    font: 12px "微软雅黑";
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+/*设计费-end*/
+
+/*预算-begin*/
+.slide-rule-os .show-value .yellow label{
+    color:#fda81b;
+}
+
+.slide-rule-os .yellow-div{
+    width: 92px;
+    height: 20px;
+    border: 1px solid #fda81b;
+    display: inline-block;
+    line-height: 20px;
+    border-radius: 4px;
+}
+
+.slide-rule-os .yellow-value{
+    width: 50px;
+    height: 16px;
+    padding: 0 4px;
+    text-align: right;
+}
+
+.slide-rule-os .yellow-div .yellow-btn{
+    width: 34px;
+    height: 20px;
+    background-color: #fda81b;
+    color: #fff;
+    font: 12px "微软雅黑";
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+/*预算-end*/
+
+/*引导费begin*/
+.slide-rule-os .guide-fee{
+    color:#28a3fe;
+}
+.slide-rule-os .guide-fee .guide-fee-value{
+    display: inline-block;
+    height: 20px;
+    line-height: 21px;
+    color:#28a3fe;
+}
+/*引导费end*/
+
+
+/*右边值呈现-end*/
+
+/*尺子界限标值*/
+.slide-rule-os .lu {
+    font: 12px "微软雅黑";
+    color: #e84b4c;
+    position: absolute;
+    top: -16px;
+    left: -60px;
+    text-align: right;
+    width: 60px;
+}
+
+/*尺子文字标注*/
+.slide-rule-os .up-name
+{
+    font:12px "微软雅黑";
+    color: #D5D5D5;
+    position: absolute;
+    top: -17px;
+    left: 3px;
+}
+.slide-rule-os .ru {
+    font: 12px "微软雅黑";
+    color: #e84b4c;
+    position: absolute;
+    top: -18px;
+    right: -7px;
+    text-align: right;
+    width: 60px;
+}
+
+.slide-rule-os .ld {
+    font: 12px "微软雅黑";
+    color: #adadad;
+    position: absolute;
+    top: 3px;
+    left: -60px;
+    text-align: right;
+    width: 60px;
+}
+
+/*尺子文字标注*/
+.slide-rule-os .down-name
+{
+    font:12px "微软雅黑";
+    color: #D5D5D5;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
+
+.slide-rule-os .rd {
+    font: 12px "微软雅黑";
+    color: #adadad;
+    position: absolute;
+    top: 3px;
+    right: -7px;
+    text-align: right;
+    width: 60px;
+}
+
+
+
+
+
+
+
+
+/*滑动按钮*/
+.point-os {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -8px;
+    cursor: pointer;
+    border-radius: 11px;
+    z-index: 1000;
+    box-shadow: 0px 0px 4px #8a8a8a;
+}
+
+.darrow-os{
+    width: 15px;
+    height: 10px;
+    position: absolute;
+    top: 5px;
+    z-index: 50;
+}
+
+
+/*设计费按钮*/
+.slide-rule-os .blue-point{
+    background: url('./image/blue_point.png') no-repeat center center;
+    background-size:100% 100%;
+}
+
+/*预算*/
+.slide-rule-os .yellow-point{
+    background: url('./image/yellow_point.png') no-repeat center center;
+    background-size:100% 100%;
+}
+
+/*报价*/
+.slide-rule-os .red-point{
+    background: url('./image/red_point.png') no-repeat center center;
+    background-size:100% 100%;
+}
+
+/*箭头*/
+/*定价金额*/
+.slide-rule-os .red-darrow{
+    background: url('./image/red_darrow.png') no-repeat center center;
+    background-size:100% 100%;
+}
+
+.slide-rule-os .yellow-darrow{
+    background: url('./image/yellow_arrow.png') no-repeat center center;
+    background-size:100% 100%;
+    position: absolute;
+    top: -11px;
+    z-index: 50;
+}
+/*箭头上文字容器*/
+.darrow-os-container{
+    width: 140px;
+    height: 12px;
+    line-height: 12px;
+    font:12px "微软雅黑";
+    position: absolute;
+    text-align: center;
+}
+
+/*箭头上文字*/
+.red-darrow .darrow-os-container{
+    top:7px;
+    color: #E84B4C;
+    left: -64px;
+}
+
+.yellow-darrow .darrow-os-container{
+    top:-15px;
+    color: #FF9017;
+    left: -64px;
+}
+
+.red label{
+    position: absolute;
+    left: 0px;
+    top: 3px;
+    text-align: right;
+}
+
+.red {
+    margin-left: 27px;
+}

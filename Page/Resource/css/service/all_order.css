@@ -1,0 +1,578 @@
+body {
+    background: #fff;
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background-color: #fff;
+    height: 99px;
+    padding: 20px 26px 0 26px;
+}
+
+.tab ul li {
+    float: left;
+    width: 100px;
+    position: relative;
+    height: 32px;
+    font-size: 16px;
+    color: #E74B4B;
+    margin-right: 10px;
+    text-align: left;
+    font-family: "微软雅黑";
+}
+
+.content .tab ul li a {
+    float: left;
+}
+
+.content .tab ul li.active {
+    border-bottom: 2px solid #E74B4B;
+}
+
+.content .tab ul li:hover {
+    border-bottom: 2px solid #E74B4B;
+}
+
+.content .tab #all_order, .content .tab #wait_order {
+    float: left;
+    display: block;
+    width: 26px;
+    height: 15px;
+    background-color: #e84b4c;
+    margin-left: 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    line-height: 16px;
+}
+
+.tab #tabmode i.reddot {
+    font: 13px "微软雅黑";
+    color: #fff;
+    background-color: #e84b4c;
+    border-radius: 14px;
+    margin-left: 5px;
+    padding: 0 3px;
+    position: absolute;
+    top: 0px;
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+}
+
+.content .sort {
+    position: absolute;
+    top: 44px;
+    color: #2e2e2e;
+}
+
+.content .sort ul li {
+    float: left;
+    width: 86px;
+    height: 34px;
+    border: 1px solid #E1E1E1;
+    text-align: center;
+    line-height: 34px;
+}
+
+.content .sort ul li.hideRborder {
+    border-right: none;
+}
+
+.content .urgent {
+    position: absolute;
+    left: 379px;
+    width: 54px;
+    top: 9px;
+}
+
+.content .thead ul {
+    position: absolute;
+    top: 58px;
+    width: calc(100% - 52px);
+    border: 1px solid #d5d5d5;
+    background-color: #f2f2f2;
+}
+
+.content .thead ul li {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.content .thead ul li span {
+    font: 14px "微软雅黑";
+    color: #2e2e2e;
+}
+
+.content .thead ul li:nth-of-type(1) {
+    width: 120px;
+    padding-left: 24px;
+}
+
+.content .thead ul li:nth-of-type(2) {
+    width: 186px;
+}
+
+.content .thead ul li:nth-of-type(3) {
+    width: 50px;
+}
+
+.content .thead ul li:nth-of-type(4) {
+    width: 100px;
+    margin-left: 35px;
+}
+
+.content .thead ul li:nth-of-type(5) {
+    width: 150px;
+}
+
+.content .thead ul li:nth-of-type(6) {
+    width: 85px;
+    text-align: left;
+}
+
+.content .thead ul li:nth-of-type(7) {
+    width: 80px;
+    text-align: left;
+}
+
+.content .thead ul li:nth-of-type(8) {
+    width: 60px;
+}
+
+.content .order {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    top: 99px;
+    margin: 10px  26px 0 26px;
+
+    width: calc(100% - 52px);
+}
+
+
+
+
+/*本页通用样式*/
+/*--显示数字  红色背景 -*/
+em.baccred {
+    display: inline;
+    font-size: 12px;
+    padding: 2px 5px;
+    border-radius: 10px;
+    background-color: #e95758;
+    color: #fff;
+    margin-left: 4px;
+}
+
+/*--盒子模型--*/
+ul, li, ol, dl, dt, dd, div, span, h2, h3, h4, h5, h6 {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.order_cont_service {
+    /*width: 889px;*/
+    border: 1px solid #dedede;
+    margin-top: 18px;
+}
+
+.order_cont_service:first-of-type {
+    margin: 0;
+}
+
+.order_service_top {
+    /*height: 34px;*/
+    border-bottom: 1px solid #dedede;
+    line-height: 34px;
+    background-color: #f5f5f5;
+    padding: 7px 20px;
+    font-size: 12px;
+}
+
+.order_service_top > p {
+    height: 20px;
+    line-height: 20px;
+    /*display: flex;
+    justify-content: space-between;*/
+}
+
+.order_service_top > p em {
+    margin-left: 6px;
+}
+
+.order_service_top > p:nth-of-type(2) {
+    margin-left: 0px;
+    color: #adadad;
+}
+
+.order_service_middle {
+    display: flex;
+    padding: 8px 10px;
+}
+
+/*--   定义  灰色边框   --*/
+.order_service_middle .borderGray {
+    box-sizing: border-box;
+    border: 1px solid #d5d5d5;
+    padding: 0 0;
+}
+
+.order_service_middle > div {
+    height: 150px;
+    width: 718px;
+}
+
+/*---单选  多选  区域--*/
+
+/*--下拉单选---*/
+.order_service_middle .mod_select {
+    width: 84px;
+    height: 26px;
+    margin-bottom: 8px;
+}
+
+.order_service_middle .mod_select div.select_box {
+    width: 84px;
+    height: 26px;
+    cursor: pointer;
+    position: relative;
+}
+
+.order_service_middle .mod_select .option {
+    position: absolute;
+    left: -1px;
+    width: 100%;
+    height: 134px;
+    overflow-y: scroll;
+    border: 1px solid #d5d5d5;
+    border-top: none;
+    background-color: #fff;
+    display: none;
+    z-index: 1100;
+}
+
+.order_service_middle .mod_select .option li {
+    height: 24px;
+    line-height: 24px;
+    text-align: left;
+    padding-left: 12px;
+}
+
+.order_service_middle .mod_select .option li:hover{
+    background-color: #d5d5d5;
+}
+
+.order_service_middle .mod_select div.select_box span {
+    display: inline-block;
+    padding-left: 11px;
+    width: 82px;
+    height: 24px;
+    line-height: 24px;
+    background: url(../../images/icon/arr.svg) 54px 2px no-repeat;
+    background-size: 24px;
+    border: none;
+
+}
+
+/*--下拉多选框--*/
+div.type_tech {
+    width: 110px;
+    height: 26px;
+    line-height: 26px;
+    cursor: pointer;
+    background: url(../../images/icon/arr.svg) 80px 2px no-repeat;
+    background-size: 24px;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+div.type_tech > span {
+    display: inline-block;
+    width: 100%;
+    height: 24px;
+    padding-left: 11px;
+    overflow: hidden;
+    border: none;
+}
+
+div.type_tech > h5 {
+    display: none;
+    width: 130px;
+    position: absolute;
+    top: 24px;
+    left: -1px;
+    z-index: 1100;
+}
+
+.tech_label_box > div {
+    width: 270px;
+    padding: 6px;
+    border: 1px solid #d5d5d5;
+    background-color: #f2f2f2;
+}
+
+.tech_label_box > div > label {
+    display: inline-block;
+    margin-right: 10px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.tech_label_box > div > p {
+    width: 100%;
+}
+
+button.confirm_addTech {
+    display: inline-block;
+    color: #fff;
+    background-color: #e95758;
+    margin: 8px 40px 0 60px;
+    font-size: 14px;
+    width: 34px;
+    border-radius: 4px;
+
+}
+
+button.cancel_addTech {
+    display: inline-block;
+    color: #fff;
+    background-color: #bcbcbc;
+    margin: 8px 0 0 0;
+    font-size: 14px;
+    width: 34px;
+    border-radius: 4px;
+
+}
+
+/*----下拉多选框--end---*/
+/*---订单的图片  长宽高   客户预算   订单金额   数量  周期  ---*/
+
+figure.pic_order {
+    width: 152px;
+    height: 152px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #e5e5e5;
+}
+
+figure.pic_order > img {
+    max-height: 150px;
+    max-width: 150px;
+}
+
+.order_parameter {
+    width: 712px;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    margin-left: 12px;
+    color: #6f6f6f;
+}
+
+.order_parameter li input {
+    text-align: center;
+    color: #6f6f6f;
+}
+
+.order_li_single {
+    width: 84px;
+    /*display: flex;*/
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.order_li_more {
+    width: 112px;
+    /*display: flex;*/
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.order_li_first {
+    width: 67px;
+}
+
+.order_li_first p input {
+    width: 65px;
+    height: 24px;
+    line-height: 24px;
+}
+
+/*.order_li_first p span{
+	width: 94px;
+	margin-right: 8px;	
+}
+.order_li_first p em{
+	width: 25px;	
+}*/
+.order_li_second {
+    width: 150px;
+}
+
+.order_li_second p input {
+    width: 40px;
+    height: 26px;
+    line-height: 26px;
+}
+
+/*.order_li_second p em{
+	width: 38px;	
+}	
+.order_li_second p span{	
+	width: 114px;
+	margin-right: 10px;	
+}*/
+.order_li_third {
+    width: 65px;
+}
+
+.order_li_third > span {
+    height: 25px;
+    margin-bottom: 0;
+}
+
+.order_li_third > span {
+    display: inline-block;
+    width: 62px;
+    border: none;
+    text-align: center;
+}
+
+/*----客服角色  的  按钮 ---*/
+.order_li_last {
+    width: 80px;
+    /*display: flex;*/
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 12px;
+}
+
+.order_li_last button {
+    font-size: 12px;
+    width: 75px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 3px;
+    background-color: #e84b4c;
+    color: #fff;
+    cursor: pointer;
+}
+
+.order_li_last button:hover {
+    color: #e84b4c;
+    border: 1px solid #e84b4c;
+    background-color: #fff;
+    font-size: 12px;
+    width: 75px;
+}
+
+/*------滑动尺------*/
+.order_service_bottom {
+    width: 99%;
+    height: 55px;
+    position: relative;
+    margin-left: 12px;
+}
+
+.slide-rule-os {
+    margin: 27px 10px;
+    width: 360px;
+}
+
+.slide-rule-os .blue-div, .slide-rule-os .red-div, .slide-rule-os .yellow-div {
+    height: 24px;
+    line-height: 24px;
+}
+
+.slide-rule-os .row .red, .slide-rule-os .row .blue, .slide-rule-os .row .yellow {
+    height: 26px;
+    line-height: 26px;
+}
+
+.slide-rule-os .show-value .guide-fee {
+    height: 26px;
+    line-height: 26px;
+}
+
+.mt-8 {
+    margin-top: 3px;
+}
+
+.slide-rule-os .show-value .row div label {
+    float: left;
+}
+
+.slide-rule-os .show-value .red-btn, .slide-rule-os .show-value .blue-btn,
+.slide-rule-os .show-value .yellow-btn {
+    height: 22px;
+    line-height: 22px;
+    float: right;
+    border-radius: 0 1px 1px 0;
+}
+
+.show-value .red-value, .show-value .blue-value, .show-value .yellow-value {
+    width: 55px;
+    height: 22px;
+    line-height: 20px;
+    float: left;
+    border-radius: 4px 0 0 4px;
+}
+
+
+.leave-message .ok {
+    width: 56px;
+    height: 26px;
+    position: absolute;
+    top: 12px;
+    left: 807px;
+}
+
+.page-box{
+    right: 26px;
+}
+
+.red label{
+    top:0px;
+}
+
+.redfont{
+    position: relative;
+}
+
+.redfont em{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    width: 120px;
+    position: absolute;
+    top: 0px;
+    left: 60px;
+}
+
+/*续订订单*/
+.renew{
+    background-color: #E84B4C;
+    color: #fff;
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 4px;
+}
+

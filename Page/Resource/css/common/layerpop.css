@@ -1,0 +1,26 @@
+.layui-layer{
+    border-radius: 6px !important;
+}
+
+.layui-layer-title {
+    display: none;
+}
+
+.layui-layer-setwin{
+    position: absolute !important;
+    background-color: #fff !important;
+    width: 22px !important;
+    height: 22px !important;
+    right: -28px !important;
+    border-radius: 12px !important;
+    top: -21px !important;
+    background: url('../../images/icon/server/close.png') no-repeat center center !important;
+    cursor: pointer;
+}
+.layui-layer-setwin .layui-layer-close1{
+    background-position: 17px -40px!important;
+}
+
+.layui-layer-content{
+    margin-top: 10px;
+}

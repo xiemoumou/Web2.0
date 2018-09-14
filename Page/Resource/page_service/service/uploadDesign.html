@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客服上传设计稿</title>
+    <link href="../../css/common/base.css" rel="stylesheet">
+    <link href="../../lib/viewer/viewer.css" rel="stylesheet">
+    <link href="../../lib/layer/2.4/skin/layer.css" rel="stylesheet"/>
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        .container {
+            padding: 10px 25px;
+        }
+
+        .center {
+            margin: 0 auto;
+        }
+
+        .title {
+            height: 44px;
+            border-bottom: 1px solid #dddddd;
+            margin-bottom: 14px;
+        }
+
+        .title span {
+            font: 18px/44px "微软雅黑";
+        }
+
+        .info {
+            background-color: #fbf2f2;
+            width: 460px;
+            height: 45px;
+            border: 1px solid #e84b4c;
+            padding: 10px 10px 10px 40px;
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        .icon-warning {
+            background: url("../../images/icon/warning.png") no-repeat center;
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            left: 13px;
+            top: 12px;
+        }
+
+        .info p {
+            color: #e95758;
+            font: 12px/24px "微软雅黑";
+            display: inline-block;
+        }
+
+        .upload {
+            position: relative;
+        }
+
+        .upload-photo-label, .upload-annex-label, .design-requirements-label, .production-requirements-label, .production-requirements-label {
+            font: 14px "微软雅黑";
+            color: #444444;
+            font-weight: 500;
+            position: absolute;
+            top: 10px;
+            left: 4px;
+        }
+
+        .upload .upload-photo {
+            height: 80px;
+            width: 100%;
+            position: relative;
+            border: 2px dashed #eee;
+        }
+
+        .upload .upload-photo .photo-1, .upload .upload-photo .photo-2, .upload .upload-photo .photo-3 {
+            background: url('../../images/icon/server/sctp.png') no-repeat center center;
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: 0px;
+            left: 70px;
+            background-size: 100% 100%;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .upload .upload-photo .photo-2 {
+            left: 159px;
+        }
+
+        .upload .upload-photo .photo-3 {
+            left: 248px;
+        }
+
+        .upload .upload-photo .cover {
+            display: none;
+        }
+
+        .upload .upload-photo .cover.active {
+            width: 100%;
+            height: 20px;
+            background-color: #00000059;
+            position: absolute;
+            bottom: 0px;
+            display: block;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .upload .upload-photo .zoon {
+            background: url(../../images/icon/server/fdj.png) no-repeat center center;
+            width: 15px;
+            height: 18px;
+            position: absolute;
+            top: 1px;
+            left: 14px;
+            cursor: pointer;
+        }
+
+        .upload .upload-photo .del {
+            background: url(../../images/icon/server/sc.png) no-repeat center center;
+            width: 15px;
+            height: 18px;
+            position: absolute;
+            top: 1px;
+            right: 14px;
+            cursor: pointer;
+        }
+
+        .upload .upload-photo .error-msg {
+            top: 55px;
+            left: 337px;
+        }
+
+        /*remarks*/
+        .requirements-content {
+            width: 382px;
+            height: 84px;
+            border: 1px solid #d7d7d7;
+            border-radius: 4px;
+            position: absolute;
+            left: 70px;
+            padding: 3px;
+        }
+
+        #production_requirements {
+            width: 354px;
+            height: 56px;
+            border: none;
+            padding: 10px;
+        }
+
+        /*附件*/
+
+        .upload .upload-annex {
+            height: 40px;
+            width: 100%;
+            /*margin-top: 15px;*/
+            position: relative;
+            border: 2px dashed #eee;
+        }
+
+        .upload-annex .red-button {
+            width: 70px;
+            height: 28px;
+            position: absolute;
+            top: 6px;
+            left: 70px;
+        }
+
+        .annex-oper {
+            position: absolute;
+            width: 165px;
+            height: 28px;
+            border: 1px solid #d5d5d5;
+            border-radius: 4px;
+            line-height: 28px;
+            padding-left: 10px;
+            font: 400 12px/28px "微软雅黑";
+            color: #444444;
+            left: 150px;
+            top: 5px;
+        }
+
+        .annex-oper .size {
+            position: absolute;
+            right: 45px;
+        }
+
+        .design-annex .annex-oper .size {
+            position: absolute;
+            right: 62px;
+        }
+
+        .annex-oper .line {
+            width: 1px;
+            height: 18px;
+            background-color: #d5d5d5;
+            position: absolute;
+            right: 25px;
+            top: 6px;
+        }
+
+        .annex-oper .download {
+            width: 11px;
+            height: 11px;
+            position: absolute;
+            right: 29px;
+            top: 9px;
+            background: url('../../images/icon/server/xz.png') no-repeat center center;
+            cursor: pointer;
+        }
+
+        .upload-annex .annex-oper .del {
+            width: 11px;
+            height: 11px;
+            position: absolute;
+            right: 8px;
+            top: 9px;
+            background: url('../../images/icon/server/sc_red.png') no-repeat center center;
+            cursor: pointer;
+        }
+
+        .upload-annex .error-msg {
+            left: 338px;
+            top: 10px;
+        }
+
+        .production-requirements {
+            height: 100px;
+            width: 100%;
+            margin-top: 15px;
+            position: relative;
+        }
+
+        .ok {
+            width: 114px;
+            height: 38px;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .hollow-button {
+            width: 114px;
+            height: 38px;
+            display: inline-block;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /*上传进度*/
+        .progress {
+            position: absolute;
+            top: -25px;
+            left: 24px;
+            z-index: 100;
+            color: #fff;
+            text-shadow: 0px 0px 6px #000;
+        }
+
+        .error-msg {
+            display: none;
+        }
+
+        .upload-annex .error-msg {
+            left: 150px;
+        }
+
+        #file_annex .progress,#o_file_annex .progress{
+            top: 0;
+            left: 190px;
+            width: 90px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="title center">
+        <span>分配生产</span>
+    </div>
+    <div class="info center">
+        <span class="icon-warning"></span>
+        <p>此订单尚未完成设计，继续分配生产将忽略本订单的设计师方案，如果您确认有
+            可以生产的设计方案文件，请将方案提交到下方。</p>
+    </div>
+    <div class="main">
+        <div class="upload">
+            <!-- 上传图片 -->
+            <div class="upload-photo">
+                <label class="upload-photo-label">设计稿:</label>
+                <input id="input_file" style="display:none;" class="hidden"
+                       accept="image/x-png,image/gif,image/jpeg,image/bmp" type="file" name="input_file">
+                <div id="photo_1" class="photo-1 upload-photo-btn">
+                    <div class="cover">
+                        <span class="progress"></span>
+                        <span id="zoon_1" class="zoon"><img style="display: none;" class="up-img" src=""></span>
+                        <span class="del"></span>
+                    </div>
+                </div>
+                <!--<div id="photo_2" class="photo-2 upload-photo-btn">-->
+                    <!--<div class="cover">-->
+                        <!--<span class="progress"></span>-->
+                        <!--<span id="zoon_2" class="zoon"><img style="display: none;" class="up-img" src=""></span>-->
+                        <!--<span class="del"></span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div id="photo_3" class="photo-3 upload-photo-btn">-->
+                    <!--<div class="cover">-->
+                        <!--<span class="progress"></span>-->
+                        <!--<span id="zoon_3" class="zoon"><img style="display: none;" class="up-img" src=""></span>-->
+                        <!--<span class="del"></span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <span class="error-msg">图片大小不能超过10M</span>
+                <span class="upload-msg" style="position: absolute; bottom: 10px; right: 10px; color: #d5d5d5;">将图片拖拽至此区域</span>
+            </div>
+            <div class="production-requirements">
+                <label class="upload-photo-label">备注:</label>
+                <div class="requirements-content">
+                    <textarea id="production_requirements" placeholder="请输入设计备注" maxlength="300"></textarea>
+                </div>
+            </div>
+
+            <!--上传附件-->
+            <div class="upload-annex">
+                <label class="upload-annex-label">上传附件:</label>
+                <input id="input_file_1" style="display:none;" class="hidden" accept=".cdr,.ai,.psd,.pdf" type="file" name="input_file">
+                <button class="red-button upload-file-btn">点击上传</button>
+                <div id="file_annex" class="annex-oper hide">
+                    <span class="annex-name">请上传附件</span>
+                    <span class="size">0.00M</span>
+                    <span class="line"></span>
+                    <span class="download"></span>
+                    <span class="del"></span>
+                    <span class="progress"></span>
+                </div>
+                <span class="error-msg">图片大小不能超过50M</span>
+                <span class="upload-msg" style="position: absolute; bottom: 10px; right: 10px; color: #d5d5d5;">将附件拖拽至此区域</span>
+            </div>
+            <div class="upload-annex upload-annex-other" style="margin-top: 10px;">
+                <label class="upload-annex-label">其他附件:</label>
+                <input id="input_file_2" style="display:none;" class="hidden" type="file" name="input_file">
+                <button class="red-button o_upload-file-btn">点击上传</button>
+                <div id="o_file_annex" class="annex-oper hide">
+                    <span class="annex-name">请上传附件</span>
+                    <span class="size">0.00M</span>
+                    <span class="line"></span>
+                    <span class="download"></span>
+                    <span class="del"></span>
+                    <span class="progress"></span>
+                </div>
+                <span class="error-msg">图片大小不能超过50M</span>
+                <span class="upload-msg" style="position: absolute; bottom: 10px; right: 10px; color: #d5d5d5;">将附件拖拽至此区域</span>
+            </div>
+        </div>
+        <div class="remarks"></div>
+        <div class="accessory"></div>
+    </div>
+    <div class="footer center">
+        <button class="ok red-button" onclick="uploadDesign.submit()">确认</button>
+        <button class="hollow-button"
+                onclick="parent.layer.closeAll();">取消
+        </button>
+    </div>
+</div>
+<script src="../../lib/jquery-1.11.0.min.js"></script>
+<script src="../../js/common/common.js" type="application/javascript"></script>
+<script src="../../js/common/cos_upload_file.js" type="text/javascript"></script>
+<script src="../../lib/viewer/viewer-liugang.js"></script>
+<script src="../../lib/layer/2.4/layer.js" type="text/javascript"></script>
+<script>
+    var orderId = "";//订单号
+    var customid = "";//客户id
+    var goodsid = "abcd123456";
+    $(function () {
+        //初始化上传操作
+        orderid = Common.getUrlParam("orderid");//订单号
+        customid = Common.getUrlParam("customid");//客户id
+        var inputFilePoto = document.querySelector('#input_file');//上传图片
+        var inputFileAnnex = document.querySelector('#input_file_1');//上传附件
+        var inputFileAnnex2 = document.querySelector('#input_file_2');//上传附件
+
+        //初始化图片上传******
+        uploadDesign.uploadInit(orderId, customid, inputFilePoto, $(".upload-photo-btn"), function (uri, name, files, size, clickObj) {//选择文件后调用
+                    return uploadDesign.insertPhoto(uri, name, files, size, clickObj);//插入图片
+                },
+                function (err, data, imgId) {//上传成功后调用
+                    var str_url = (data.url).substr((data.url).indexOf(".com/") + 5);
+                    $("#" + imgId).attr('data-Url', str_url);
+                }
+                , "photo", function (progressValue, imgId) {
+                    $("#" + imgId).attr('data-progress', progressValue);
+                    $("#" + imgId + " .progress").html(progressValue + "%");
+                    console.log(progressValue)
+                });
+
+        //初始化附件上传******
+        uploadDesign.uploadInit(orderId, customid, inputFileAnnex, $(".upload-file-btn"), function (uri, name, files, size, clickObj) {//选择文件后调用
+                    $('#file_annex').removeClass('hide');
+                    return uploadDesign.insertFile(uri, name, files, size, "#file_annex");//显示已上传附件
+                },
+                function (err, data, fileId) {//上传成功后调用
+                    var str_url = (data.url).substr((data.url).indexOf(".com/") + 5);
+                    $("#file_annex").attr('data-file-url', str_url);
+
+                }
+                , "file", function (progressValue) {
+                    $("#file_annex").attr('data-progress', progressValue);
+                    $("#file_annex .progress").html("已上传:" + progressValue + "%");
+                });
+
+        //初始化附件上传******
+        uploadDesign.uploadInit(orderId, customid, inputFileAnnex2, $(".o_upload-file-btn"), function (uri, name, files, size, clickObj) {//选择文件后调用
+                    $('#o_file_annex').removeClass('hide');
+                    return uploadDesign.insertFile(uri, name, files, size, "#o_file_annex");//显示已上传附件
+                },
+                function (err, data, fileId) {//上传成功后调用
+                    var str_url = (data.url).substr((data.url).indexOf(".com/") + 5);
+                    $("#o_file_annex").attr('data-file-url', str_url);
+
+                }
+                , "other-file", function (progressValue) {
+                    $("#o_file_annex").attr('data-progress', progressValue);
+                    $("#o_file_annex .progress").html("已上传:" + progressValue + "%");
+                });
+
+        //图片拖拽事件
+        var updesign = $(".upload-photo")[0];
+        updesign.ondragover = function (ev) {
+            //阻止浏览器默认打开文件的操作
+            ev.preventDefault();
+            //拖入文件后
+            $(this).css({"border": "2px dashed #5d5d5d"});
+        }
+
+        updesign.ondragleave = function () {
+            //拖出
+            $(this).css({"border": "2px dashed #eee"});
+        }
+        updesign.ondrop = function (ev) {
+            //放下
+            $(this).css({"border": "2px dashed #eee"});
+            //阻止浏览器默认打开文件的操作
+            ev.preventDefault();
+
+            // //判断只是否三张图片都存在
+            var imageDivs = $(".upload-photo .upload-photo-btn");
+            var imgcount = 0;//记录图片空缺
+            for (var k = 0; k < imageDivs.length; k++) {
+                var isUrl = $(imageDivs[k]).is('[data-url]');
+                var isName = $(imageDivs[k]).is('[data-name]');
+                if ((!isUrl && !isName) || isUrl && $(imageDivs[k]).attr('data-url') == "" && (!isName || (isName && $(imageDivs[k]).attr('data-name') == ""))) {
+                    imgcount++;
+                }
+            }
+            var files = ev.dataTransfer.files;
+            if (imgcount < files.length) {
+                if (imgcount == 0) {
+                    Common.msg("最多上传3张图片", null, 2000);
+                    return false;
+                }
+                Common.msg("本次只能拖拽" + imgcount + "张图片", null, 2000);
+                return false;
+            }
+            inputFilePoto.files = files;
+        }
+
+        //附件拖拽事件
+        var upfile = $(".upload-annex")[0];
+        Common.dragBind(upfile, inputFileAnnex, {"border": "2px dashed #5d5d5d"}, {"border": "2px dashed #eee"});//附件拖拽上传
+
+        var upfile = $(".upload-annex-other")[0];
+        Common.dragBind(upfile, inputFileAnnex2, {"border": "2px dashed #5d5d5d"}, {"border": "2px dashed #eee"});//附件拖拽上传
+    });
+
+    var uploadDesign = {
+        uploadInit: function (orderId, customid, inputFileObj, clickObj, callback, uploadSuccessCallback, filetype, progressCallback) {//初始化上传
+
+            $(".cover").on('click', function (e) {
+                e.stopPropagation();
+            });
+
+            $(".zoon").on('click', function (e) {
+                e.stopPropagation();
+            });
+
+            $(".upload-photo .del").on('click', function (e) {
+                var imgDiv = $(e.target).parent().parent();
+                uploadDesign.deletePhoto(imgDiv);
+                e.stopPropagation();
+            });
+
+            $(".annex-oper .del").on('click', function (e) {
+                uploadDesign.deleteFile(this);
+            });
+
+
+            var event = null;
+            clickObj.on('click', function (e) {
+                event = e;
+                inputFileObj.click();
+            })
+
+            var imageDivs = $(".upload-photo .upload-photo-btn");
+
+            // 选择文件成后
+            inputFileObj.addEventListener('change', function (e) {
+                var files = inputFileObj.files;
+                for (var i = 0; i < files.length; i++) {
+                    if (filetype == "photo" && event == null) {
+                        var flag = true;
+
+                        for (var k = 0; k < imageDivs.length; k++) {
+                            if (!flag) {
+                                continue;
+                            }
+                            var isUrl = $(imageDivs[k]).is('[data-url]');
+                            var isName = $(imageDivs[k]).is('[data-name]');
+                            if ((!isUrl && !isName) || isUrl && $(imageDivs[k]).attr('data-url') == "" && (!isName || (isName && $(imageDivs[k]).attr('data-name') == ""))) {
+                                event = {};
+                                event["target"] = $(imageDivs[k]);
+                                flag = false;
+                            }
+                        }
+                    }
+                    else if (filetype == "file" && event == null) {
+                        event = $(".upload-file-btn");
+                    }
+
+                    var file = files[i];
+                    var uri = uploadDesign.getObjectURL(file);
+                    var name = file.name;
+                    var index= name.lastIndexOf('.');
+                    var type = name.slice(index+1).toLowerCase();
+                    //var createDate = file.lastModifiedDate.toLocaleDateString();
+                    var size = file.size / 1024 / 1024;
+                    size = size.toFixed(2);
+                    if (filetype == "photo" && size > 10) {
+                        $('.upload-photo .error-msg').show(300);
+                        setTimeout(function () {
+                            $('.upload-photo .error-msg').hide(300);
+                        }, 3000);
+                        return;
+                    }
+                    else if (filetype == "file" && size > 50) {
+                        $('.upload-annex .error-msg').show(300);
+                        setTimeout(function () {
+                            $('.upload-annex .error-msg').hide(300);
+                        }, 3000);
+                        return;
+                    }
+
+                    if (filetype == "photo" && type.indexOf('jpg') < 0 && type.indexOf('jpeg') < 0 && type.indexOf('png') < 0 && type.indexOf('gif') < 0) {
+                        Common.msg("上传图片格式不正确");
+                        return;
+                    }
+                    //.cdr,.ai,.psd,.pdf
+                    if (filetype == "file" && type.indexOf('cdr') < 0 && type.indexOf('ai') < 0 && type.indexOf('psd') < 0 && type.indexOf('pdf') < 0 && type.indexOf('eps') < 0) {
+                        Common.msg("上传文件格式不正确");
+                        return;
+                    }
+
+                    var isupload = callback(uri, name, files, size, event.target);//展示选择的文件
+                    if (!isupload) {
+                        return false;
+                    }
+
+                    var docId = $(event.target).attr('id');
+                    cosUploadFile(file, function (err, data, docId) {//上传完成回调
+
+                        uploadSuccessCallback(err, data, docId);
+                    }, isupload, progressCallback,orderid);
+                    event = null;
+                }
+            });
+        },
+        getObjectURL: function (file) {//获取图片本地路径
+            var url = null;
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        },
+        insertPhoto: function (uri, name, files, size, clickObj) {  //图片上传区域添加图片
+
+            $(clickObj).css('background-image', 'url(' + uri + ')');
+            $(clickObj).find('.cover').addClass('active');
+            $(clickObj).attr('data-name', name);
+            //viewer必要元素img标签 src属性
+            $(clickObj).find('.zoon').find('img').attr('data-original', uri);
+            $(clickObj).find('.zoon').find('img').attr('src', uri);
+
+            var id = $(clickObj).find('.zoon').attr('id');
+            $('#' + id).viewer({
+                url: 'data-original',
+            });
+
+            return $(clickObj).attr('id');
+        }
+        ,
+        deletePhoto: function (imgDiv) {//删除图片
+            $(imgDiv).css('background-image', 'url("../../images/icon/server/sctp.png")');
+            $(imgDiv).find('.cover').removeClass('active');
+            $(imgDiv).find('img').attr('data-original', '');
+            $(imgDiv).attr('data-Url', '');
+            $(imgDiv).attr('data-progress', '');
+            $(imgDiv).attr('data-name', '');
+            document.querySelector('#input_file').value = '';
+        }
+        ,
+        insertFile: function (uri, name, files, size, objId) {
+            var newfilename = name;
+            if (name.length > 10) {
+                newfilename = newfilename.substring(0, 10) + "...";
+            }
+            $(objId).find('.annex-name').html(newfilename);
+            $(objId).find('.annex-name').attr('title', name);
+            return 'file_annex';
+        },
+        deleteFile: function (obj) {
+            var obj = $(obj).parent();
+            obj.addClass('hide');
+            obj.attr('data-file-url', '');
+            obj.attr('data-file-name', '');
+            obj.find('.annex-name').html('请上传附件');
+            obj.find('.size').html('0.00M');
+            document.querySelector('#input_file_1').value = '';//上传附件
+        },
+        request: function (data, callback, getDataInterface, functionalInterface) {
+            var url = Common.getUrl()['order'];
+            if (getDataInterface) {
+                url += Common.getDataInterface()[getDataInterface];
+            }
+            if (functionalInterface) {
+                url += Common.functionalInterface()[functionalInterface];
+            }
+            Common.ajax(url, data, true, callback, function (error) {
+                //接口调用错误处理
+            });
+        },
+        submit: function () {//选定设计方案
+
+            var patternimageurl1 = "", patternimageurl2 = "", patternimageurl3 = "", patternaccessoryid = "", patternaccessoryurl = "", patternmemo = "",
+                    otherAccessoryUrl="";
+            var photo_1 = $("#photo_1");
+            var photo_2 = $("#photo_2");
+            var photo_3 = $("#photo_3");
+            var file_annex = $("#file_annex");
+            var o_file_annex = $("#o_file_annex");
+            var patternmemo = $("#production_requirements");
+
+
+
+            if (photo_1.attr("data-progress")) {
+                if (photo_1.attr("data-progress") == 100) {
+                    patternimageurl1 = photo_1.attr("data-url");
+                }
+                else {
+                    Common.msg("图片正在上传...");
+                    return;
+                }
+            }
+
+            if (photo_2.attr("data-progress")) {
+                if (photo_2.attr("data-progress") == 100) {
+                    patternimageurl2 = photo_2.attr("data-url");
+                }
+                else {
+                    Common.msg("图片正在上传...");
+                    return;
+                }
+            }
+
+            if (photo_3.attr("data-progress")) {
+                if (photo_3.attr("data-progress") == 100) {
+                    patternimageurl3 = photo_3.attr("data-url");
+                }
+                else {
+                    Common.msg("图片正在上传...");
+                    return;
+                }
+            }
+
+            if (file_annex.attr("data-progress")) {
+                if (file_annex.attr("data-progress") == 100) {
+                    patternaccessoryid = file_annex.attr("data-file-name");
+                    patternaccessoryurl = file_annex.attr("data-file-url");
+                }
+                else {
+                    Common.msg("附件正在上传...");
+                    return;
+                }
+            }
+
+            if (o_file_annex.attr("data-progress")) {
+                if (o_file_annex.attr("data-progress") == 100) {
+                    otherAccessoryUrl = o_file_annex.attr("data-file-url");
+                }
+                else {
+                    Common.msg("附件正在上传...");
+                    return;
+                }
+            }
+
+            patternmemo = patternmemo.val();//备注
+
+            if (!((patternimageurl1 || patternimageurl2 || patternimageurl3) && patternaccessoryurl)) {
+                Common.msg("图片与附件均不能为空");
+                return;
+            }
+
+            var data = {
+                "orderid": orderid,
+                "userid": top.Main.userInfo.userid,
+                "customid": customid,
+                "roletype": top.Main.userInfo.roletype,
+                "token": top.Main.userInfo.token,
+                "commandcode": 170,
+                "patternimageurl1": patternimageurl1,
+                "patternimageurl2": patternimageurl2,
+                "patternimageurl3": patternimageurl3,
+                "patternaccessoryid": patternaccessoryid,
+                "patternaccessoryurl": patternaccessoryurl,
+                "patternmemo": patternmemo,
+                "otherAccessoryUrl":otherAccessoryUrl,
+            };
+
+            this.request(data, function (data) {
+                if (data) {
+                    Common.msg(data.msg, data.code == 1 ? 200 : null, 2000, function () {
+                        parent.base.init();
+                        parent.layer.closeAll();
+                    });
+                }
+            }, 'beforeAllocationDesin', null);
+        },
+    }
+</script>
+</body>
+</html>

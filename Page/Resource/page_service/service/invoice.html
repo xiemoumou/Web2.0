@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发票</title>
+    <link href="../../css/common/base.css" rel="stylesheet">
+    <link href="../../css/service/invoice.css" rel="stylesheet">
+
+    <script id="version" src="../../js/common/vesion.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("version");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../css/common/base.css?v="' + VESION + ' rel="stylesheet" />');
+        document.write('<link href="../../css/service/invoice.css?v="' + VESION + ' rel="stylesheet" />');
+    </script>
+</head>
+<body>
+<div class="container">
+    <input type="hidden" id="operateType" value="create">
+    <input type="hidden" id="typestatus" value="">
+    <div class="invoice-content" style="position: relative;">
+        <div class="all-lock hide"></div>
+        <div class="select-box">
+            <p>请选择:</p>
+            <ul>
+                <li>
+                    <input id="no-invoice" type="radio" name="invoice" data-val=1 index="0" class="radio-select-first">
+                    <label for="no-invoice">不开发票</label>
+                    <span class="radio-img js-icon no-img"></span>
+                </li>
+                <li>
+                    <input id="tax-invoice" type="radio" name="invoice" data-val=2 index="1" class="radio-select-second">
+                    <label for="tax-invoice">增值税普通发票</label>
+                    <span class="radio-img js-icon pt-img"></span>
+                </li>
+                <li>
+                    <input id="spec-invoice" type="radio" name="invoice" data-val=3 index="2" class="radio-select-third">
+                    <label for="spec-invoice">增值税专用发票</label>
+                    <span class="radio-img js-icon zzx-img"></span>
+                </li>
+                <li>
+                    <input id="receipt" type="radio" name="invoice" data-val=4 index="3" class="radio-select-fourth">
+                    <label for="receipt">收据</label>
+                    <span class="radio-img js-icon zzx-img"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="content-box">
+            <div class="database">
+                <section class="tax-rate">
+                    <div class="tax-rate-title">
+                        <span class="red-rate">*</span>税&nbsp;&nbsp;率：
+                    </div>
+                    <select class="rate-select" id="rate-select">
+                        <option selected value="0">请选择</option>
+                        <option value="3">3%</option>
+                        <option value="6">6%</option>
+                        <option value="16">16%</option>
+                    </select>
+                    <span class="msg-rate hide" style="color: #E84B4C">已支付税率不可修改</span>
+                    <div class="raxr-lock hide"></div>
+                </section>
+
+                <section class="rise">
+                    <div class="tax-rate-title">
+                        <span class="red-rate">*</span>抬&nbsp;&nbsp;头：
+                    </div>
+                    <input class="rise-text" placeholder="请输入发票抬头" maxlength="30">
+                    <!--<p class="count">30/30</p>-->
+                </section>
+
+                <section class="money">
+                    <div class="tax-rate-title">
+                        <span class="red-rate">*</span>金&nbsp;&nbsp;额：
+                    </div>
+                    <input class="money-text input-money" placeholder="请输入发票金额" maxlength="10" value="0.00">
+                </section>
+
+                <section class="invoice-text">
+                    <div class="tax-rate-title" style="width: 77px;">
+                        <span class="red-rate">*</span><a id="tax-rate-title">发票内容：</a>
+                    </div>
+                    <select class="invoice-select">
+                        <option selected value="0">请选择</option>
+                        <option value="徽章">徽章</option>
+                        <option value="车贴">车贴</option>
+                        <option value="设计服务费">设计服务费</option>
+                    </select>
+                </section>
+
+                <section class="mech" data-val="true">
+                    <input id="mech-invoice" type="checkbox" class="mech-checkbox" name="ns-check">
+                    <label>非营利性机构或个人</label>
+                    <span class="js-icon mech-img" name="0"></span>
+                </section>
+            </div>
+            <div class="uncommercially">
+                <section class="dist">
+                    <div class="tax-rate-title">纳税人识别号：</div>
+                    <input type="text" maxlength="20" placeholder="请输入纳税人识别号" class="dist-text">
+                </section>
+
+                <section class="address">
+                    <div class="tax-rate-title">注册地址：</div>
+                    <textarea class="address-text" placeholder="请输入公司注册地址" maxlength="120"></textarea>
+                    <!--<p class="count">30/120</p>-->
+                </section>
+
+                <section class="phone">
+                    <div class="tax-rate-title">联系电话：</div>
+                    <input class="phone-text" placeholder="请输入联系电话">
+                </section>
+
+                <section class="account">
+                    <div class="tax-rate-title" style="width: 70px;">开&nbsp;户&nbsp;行：</div>
+                    <input class="account-text" placeholder="请输入开户行名称" maxlength="30">
+                    <!--<p class="count">30/30</p>-->
+                </section>
+
+                <section class="account-num">
+                    <div class="tax-rate-title" style="width: 70px;">开户账号：</div>
+                    <input class="account-num-text" placeholder="请输入账号" maxlength="30">
+                    <!--<p class="count">30/30</p>-->
+                </section>
+            </div>
+        </div>
+        <div class="receipt-box active-none">
+            <!--<section class="receipt-title">-->
+                <!--<div class="receipt-active">抬头：</div>-->
+                <!--<input class="rise-text receipt-input rece-title" placeholder="请输入抬头" maxlength="30">-->
+            <!--</section>-->
+
+            <!--<section class="receipt-cate">-->
+                <!--<div class="receipt-active">品类：</div>-->
+                <!--<select class="receipt-select">-->
+                    <!--<option selected value="0">请选择</option>-->
+                    <!--<option>徽章</option>-->
+                    <!--<option>车贴</option>-->
+                    <!--<option>设计服务费</option>-->
+                <!--</select>-->
+            <!--</section>-->
+
+
+            <!--<section class="receipt-money">-->
+                <!--<div class="receipt-active">金额：</div>-->
+                <!--<input class="receipt-input" placeholder="请输入金额" maxlength="16" onkeyup="clearNoNum(this)">-->
+            <!--</section>-->
+        </div>
+        <section class="receipt-num active-none">
+            <div class="receipt-active">数量：</div>
+            <input class="receipt-input" id="re_num" placeholder="请输入数量" maxlength="16" onkeyup="clearNoNum(this)">
+        </section>
+
+        <section class="receipt-unit active-none">
+            <div class="receipt-active">单价：</div>
+            <input class="receipt-input" id="re_mon" placeholder="请输入单价" maxlength="16" onkeyup="clearNoNum(this)">
+        </section>
+
+        <div class="remarks">
+            <div class="tax-rate-title remarks-title">备注：</div>
+            <textarea class="remarks-text" maxlength="300"></textarea>
+        </div>
+    </div>
+    <div class="floor">
+        <button class="red-button allocation" style="margin-right: 10px;display: none;" onclick="Invoice.Submit();">分配生产</button>
+        <button class="red-button ok" style="margin-right: 10px" onclick="Invoice.Submit();">确定</button>
+        <button onclick="parent.layer.closeAll()" style="margin-left: 10px" class="hollow-button">取消</button>
+    </div>
+</div>
+<script type="text/javascript" src="../../lib/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../lib/jquery.cookie.js"></script>
+<script type="text/javascript" src="../../lib/layer/2.4/layer.js"></script>
+
+<script>
+    document.write('<script src="../../js/common/common.js?v="' + VESION + ' type="text/javascript"><\/script>');
+    document.write('<script src="../../js/service/invoice.js?v="' + VESION + ' type="text/javascript"><\/script>');
+</script>
+
+</body>
+</html>

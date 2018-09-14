@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">        
+        <title>登录成功</title>
+        <link rel="stylesheet" href="./css/reset.css" />     
+        <link rel="stylesheet" href="./css/workstage.css"/>
+        <link rel="stylesheet" href="./css/common/base.css" />
+        <script type="text/javascript" src="./js/flexible.js" ></script>
+        <script type="text/javascript" src="./js/jquery-1.11.0.min.js" ></script>
+        <script type="text/javascript" src="./js/jquery.cookie.js" ></script>
+        <!--<script type="text/javascript" src="./js/layer.js" ></script>-->
+        <script type="text/javascript" src="./js/common.js" ></script>
+    </head>
+    <body>
+        <div id="header">
+            <div>
+                <img src="./images/icon/logo.png" alt="制宝logo"/>
+                <h4 >
+                	<p class="active myWorkstage" onclick="getWorkstage()">我的工作台</p><!--class="goback_workstage"-->
+                	<p class="myResource" onclick="getResource()">素材库</p>
+                </h4>
+                <div class="resetPasswords">
+                    <button class="red-button" onclick="loginSuccess.PopResetPasswords();">修改密码</button>
+                </div>
+                <dl>
+                    <dt class="ddstyle">
+                    	<span></span>
+                    	<img class="imgcol" src="./images/icon/arr.svg"/>
+                    </dt>
+                    <!--<dd class="ddstyle center hid" >个人中心</dd>-->
+                    <dd class="ddstyle exitLoginBtn hid">退出</dd>
+                </dl>                                           
+            </div>
+        </div>
+        
+        <!--主内容-->
+        <div id="content" style="height: 10.7037rem;width: 22.2222rem;margin: 20px auto;">
+            <h1 style="margin-top: 2.7777rem;text-align: center;width: 100%;color: #666;">
+            	欢迎注册和使用制宝个性化定制系统
+            </h1>
+        </div>
+        
+        <footer>Copyright&copy;&nbsp;2017-2018&nbsp;&nbsp;制宝科技&nbsp;&nbsp;版权所有</footer>
+        <script type="text/javascript" src="./js/common/common.js"></script>
+        <script type="text/javascript" src="./lib/layer/2.4/layer.js"></script>
+        <script type="text/javascript" src="./js/loginSuccess.js" ></script>
+    </body>
+    
+</html>
+
+

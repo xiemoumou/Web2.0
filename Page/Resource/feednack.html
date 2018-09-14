@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>意见反馈</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/feed.css" />
+		<link rel="stylesheet" href="css/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfontfood.css"/>
+		<script type="text/javascript" src="./js/flexible.js" ></script>
+		<script type="text/javascript" src="js/baiduTemplate.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+
+		
+	</head>
+	<body>
+		<div id="header">
+			<div>
+				<img src="images/icon/logo.png" alt="制宝logo" />
+				<h4>
+		            <p class="myWorkstage" onclick="getWorkstage()">我的工作台</p>
+		            <p class="myResource" >素材库</p>
+		        </h4>
+				<!--<div class="searchbar"> 
+		                    <div class="mod_select searSort">
+		                        <div class="select_box">
+		                            <span class="select_txt">分&nbsp;&nbsp;类</span>                     
+		                            <ul class="">
+		                                <li>分&nbsp;&nbsp;类</li>
+		                                <li>用户名</li>
+		                                <li>订单号</li>
+		                                <li>客服号</li>
+		                            </ul> 
+		                        </div>                       
+		                    </div>-->
+				<!--<input type="text" id="searchCon" value="" placeholder="请输入您要搜索的标题"/>
+		                    <button class="searBtn"><i class="icon iconfont icon-sousuo" id="search"></i></button>-->
+				<dl>
+					<dt class="ddstyle"><span>风吹云散</span><img class="imgcol" src="./images/icon/arr.svg"/></dt>
+					<dd class="ddstyle center hid">个人中心</dd>
+					<dd class="ddstyle exitLoginBtn hid">退出</dd>
+				</dl>
+			</div>
+		</div>
+		<!--图片区域-->
+		<div id="spit">
+			<img src="images/images/spit.png"/>
+		</div>
+		<div id="feed">
+			<ul class="feed_ul">
+				<li class="feed_li clearfix">
+					<p>主题：</p>
+					<input type="text" placeholder="请输入意见主题" id="theme"/>
+				</li>
+				<li class="feed_li clearfix">
+					<p>反馈意见：</p>
+					<!--<input type="text" placeholder="请输入意见主题"/>-->
+					<textarea  class="domain" cols=45 rows=10 onkeyUp="textLimitCheck(this, 300);"placeholder="请输入您要反馈的意见"></textarea>
+						<br>
+						<font id="font" color=#666666>限300 个字符 已输入
+						<font color="#CC0000"><span id="messageCount">0</span></font> 个字</font>
+						<button id="submit">提交反馈</button>
+				</li>
+			</ul>
+			<!--上传附件-->
+			<div class="enclosure">
+				
+
+				<a class="input-file input-fileup" href="javascript:;">
+				     + 选择文件<input size="100" type="file" name="file" id="input">
+				</a>
+				<div class="fileerrorTip1" style="width: 200px;"></div>
+				<div class="showFileName1" style="width: 200px;"></div>
+
+			</div>
+			 <!--<div style="width:90px; height:110px; overflow:hidden; border:1px solid red; display: block;" id="show">  
+		        <div id="mark"></div>  
+		    </div>  -->
+		</div>
+		
+		<!--内容区域-->
+		<div id="content_box">
+			<ul class="content_ul">
+				
+			</ul>
+		</div> 
+		<!--提交意见-->
+		
+		
+		<!--回到顶部模块-->
+            <div class="totop_box">
+                    <a onclick="show_newTask()" style="display: none;">
+                        <i class="icon iconfont icon-xinjianrenwu"></i>
+                        <p>新建任务</p>
+                    </a>
+                    <a class="newOrderBtn" >
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>新建订单</p>
+                    </a>
+                    <a class="shippingListBtn" style="display: none;">   <!-- 发货清单 -->
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>发货清单</p>
+                    </a>
+                    <a class="" onclick="getFeednack()">   <!-- 意见反馈 -->
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>意见反馈</p>
+                    </a>
+                    <button>
+                        <img style="width: 24px" src="./images/icon/toTop.svg" />
+                        <p>顶部</p>
+                    </button>              
+            </div>
+		
+		
+		<div id="succ" style="display: none;">
+			<div class="img_box">
+				<img src="images/images/feed1.png" alt="" />
+			</div>
+			<div class="retu">
+				<p><span id="countDownTime"></span>秒之后自动返回首页 <a href="feednack.html" id="a">立即返回</a></p>
+			</div>
+		</div>
+		
+		<div class="feed_div"></div>
+		
+		<!--底部-->
+		<footer>Copyright&copy;&nbsp;2017-2018&nbsp;&nbsp;制宝科技&nbsp;&nbsp;版权所有</footer>
+	</body>
+	<script type="text/javascript" src="js/feed.js"></script>
+	<script type="text/javascript" src="js/FeedMethod.js"></script>
+</html>

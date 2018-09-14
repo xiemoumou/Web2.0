@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>确认客户支付页面</title>
+    <link rel="stylesheet" href="../../lib/loading/css/global.css">
+    <link href="../../css/common/base.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../css/layer.css"/>
+    <style>
+        input::-webkit-input-placeholder { /* WebKit browsers */
+            color: #ADADAD;
+            font-size: 12px;
+        }
+
+        input::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color: #ADADAD;
+
+        }
+
+        input::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color: #ADADAD;
+
+        }
+
+        input::-ms-input-placeholder { /* Internet Explorer 10+ */
+            color: #ADADAD;
+
+        }
+
+        .content {
+            width: 400px;
+            /*height: 220px;*/
+            text-align: center;
+            padding: 10px 30px;
+            font-size: 12px;
+            background-color: #fff;
+        }
+
+        .content > h5 {
+            height: 40px;
+            line-height: 40px;
+            font-weight: 560;
+            text-align: center;
+        }
+
+        .content > p {
+            height: 60px;
+            line-height: 60px;
+        }
+
+        .content > h6 {
+            height: 66px;
+            line-height: 66px;
+        }
+
+        .payPrice_val {
+            margin-left: 10px;
+            padding-left: 3px;
+            width: 146px;
+            height: 29px;
+            line-height: 29px;
+            border: 1px solid #D5D5D5;
+            border-radius: 4px;
+
+        }
+
+        .btnStyle {
+            display: inline-block;
+            width: 112px;
+            height: 35px;
+            line-height: 35px;
+            border-radius: 4px;
+            border: 1px solid #E84B4C;
+            color: #E84B4C;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .confirmBtn_PayPrice, .confirmBtn {
+            background-color: #E84B4C;
+            color: #fff;
+        }
+
+        .layer_cont_tip {
+            padding: 10px 0;
+        }
+
+        .layer_cont_tip > h6 {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .layer_cont_tip > p {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="content">
+    <h5>确认客户支付</h5>
+    <p>
+        <span>客户支付的金额:</span>
+        <input class="payPrice_val" maxlength="10" placeholder="请输入客户支付的金额"
+               onkeyup="value=value.replace(/[^\d]/g,'')" ng-pattern="/[^a-zA-Z]/"/>元
+    </p>
+    <h6>
+        <button class="confirmBtn_PayPrice btnStyle">确认</button>
+        <button class="cancelBtn btnStyle">取消</button>
+    </h6>
+</div>
+
+
+<!-- 测试用开始 -->
+<script src="../../lib/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../../lib/jquery.cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../js/baiduTemplate.js"></script>
+<script src="../../lib/layer/2.4/layer.js" rel="stylesheet"></script>
+<script src="../../js/common/common.js" type="text/javascript"></script>
+<script>
+    var orderid = Common.getUrlParam("orderid");
+    var customid = Common.getUrlParam("customid");
+    var goodsid = Common.getUrlParam("goodsid");
+    var finalprice = parseInt(Common.getUrlParam("finalprice"));
+    var payPrice = 0;
+    $("button.confirmBtn_PayPrice").click(function () {
+        payPrice = parseInt($.trim($(".payPrice_val").val()));
+        if (( finalprice == payPrice ) && payPrice != 0) {
+            ConfirmPay.confPay();
+        } else {
+            ConfirmPay.layerIndex = layer.open({
+                type: 1,
+                title: '提示信息',
+                shadeClose: false,
+                shade: 0.1,
+                area: ['300px', '160px'],
+                content: '<div class="layer_cont_tip"><p>您输入的支付价格和订单定价不符，</p><p>是否要变更订单定价？</p>'
+                + '<h6><button class="confirmBtn btnStyle">确认</button>&nbsp;&nbsp;<button onclick="layer.closeAll()" class="cancelBtn btnStyle">取消</button></h6></div>'
+            });
+
+
+        }
+    });
+    $("button.cancelBtn").click(function () {
+        parent.layer.closeAll();
+    });
+    $(document).on("click", "button.confirmBtn", function () {
+        //调用  变更 定价的接口
+        ConfirmPay.changePrice();
+    });
+    var ConfirmPay = {
+        layerIndex: 0,
+        getUrl: {},//请求接口的URL
+        getDataInterface: {},//请求数据的接口
+        functionalInterface: {},//操作功能的接口
+        request: function (data, callback, getDataInterface, functionalInterface) {
+            var url = Common.getUrl()['order'];
+            if (getDataInterface) {
+                url += Common.getDataInterface()[getDataInterface];
+            }
+            if (functionalInterface) {
+                url += Common.functionalInterface()[functionalInterface];
+            }
+            Common.ajax(url, data, true, callback, function (error) {
+                //接口调用错误处理
+            });
+        },
+        confPay: function () {//确认支付--确认客户付款--客服
+            ConfirmPay.request({
+                "orderid": orderid,
+                "userid": top.Main.userInfo.userid,
+                "customid": customid,
+                "roletype": top.Main.userInfo.roletype,
+                "token": top.Main.userInfo.token,
+                "goodsid": "abcd123456",
+                "commandcode": 240,
+                "payamout": payPrice
+            }, function (data) {
+                if (data && data.status && data.status.msg) {
+                    if(data.status.code==0)
+                    {
+                        Common.msg(data.status.msg,data.status.code==0?200:null,2000);
+
+                        if(parent.base.init)
+                        {
+                            parent.base.init();
+                        }
+                        setTimeout(function () {
+                            parent.layer.closeAll();
+                        },2000);
+                    }
+                }
+            }, 'confirmPay', null);
+        },
+        changePrice: function () {//变更订单定价--客服
+
+            ConfirmPay.request({
+                "orderid": orderid,
+                "userId": top.Main.userInfo.userid,
+                "customid": customid,
+                "roleType": top.Main.userInfo.roletype,
+                "token": top.Main.userInfo.token,
+                "commandcode": 141,
+                "finalprice": payPrice
+            }, function (data) {
+
+                if (data && data.status && data.status.msg) {
+
+                    //Common.msg(data.status.msg,data.status.code==0?200:null);
+                    if (data.status.code == 0) {
+                        ConfirmPay.confPay();
+                    }
+
+                }
+            }, 'priceRuler', null);
+        }
+
+    }
+</script>
+
+<!-- 测试用结束 -->
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>工厂产品管理</title>
+        <link rel="stylesheet" href="../css/reset.css" />
+        <link rel="stylesheet" href="../css/iconfont.css" />
+        <link rel="stylesheet" href="../css/iconfont1.css" />
+        <link rel="stylesheet" href="../css/workstage.css"/>   
+        <link rel="stylesheet" href="../css/productManage.css" />
+        <script type="text/javascript" src="../js/flexible.js" ></script>
+        <script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
+        <script type="text/javascript" src="../js/jquery.cookie.js" ></script>
+        <script type="text/javascript" src="../js/baiduTemplate.js" ></script>
+        <script type="text/javascript" src="../js/common.js" ></script>
+    </head>
+    <body>
+        <div id="header">
+            <div>
+                <img src="../images/icon/logo.png" alt="logo"/>
+                <h4 class="" onclick="getWorkstage()">我的工作台</h4>
+                <form class="searchbar"> 
+                    <div class="mod_select searSort">
+                        <div class="select_box">
+                            <span class="select_txt">分&nbsp;&nbsp;类</span>                     
+                            <ul class="option_">
+                                <li>分&nbsp;&nbsp;类</li>
+                                <li>用户名</li>
+                                <li>订单号</li>
+                                <li>客服号</li>
+                            </ul> 
+                        </div>                       
+                    </div>
+                    
+                     <input type="text" id="searchCon" value="" placeholder="请输入您要搜索的订单号等"/>
+                    <button class="searBtn"><i class="icon iconfont icon-sousuo"></i></button>
+                </form>
+                <dl >
+                    <dt class="ddstyle"><span>风吹云散</span><img class="imgcol" src="../images/icon/arr.svg"/></dt>
+                    <dd class="ddstyle center hid" >个人中心</dd>
+                    <dd class="ddstyle exit hid">退出</dd>
+                </dl>                                           
+            </div>
+        </div>
+        
+        <!--主内容-->
+        <div id="content">
+            <!--左侧  导航区-->
+            <div id="nav">
+                <ul class="">
+                    <h3><i class="icon iconfont icon-liucheng"></i>个人中心</h3>                  
+                    <li >账号信息</li>
+                    <li>安全设置</li>                    
+                    <li class="perDet_headl"><span>个人资料</span><img class="imgcol" style="margin: 0.1111rem 0 0 0.1111rem;" src="../images/icon/arr.svg"/></li>
+                        <p class="perDet_cont">
+                            <b >基本信息</b>
+                            <b >详细资料</b>
+                            <b >教育背景</b>
+                            <b >工作信息</b>
+                            <b >头像设置</b>
+                        </p>                    
+                    <li>收货地址</li>
+                    <li>账号绑定</li>
+                    <li>职位申请</li>  
+                    <li class="borderCol">产品管理</li>
+                </ul>               
+            </div>
+            
+            <!--右侧  主内容-->
+            <div class="cont_right">
+                <p><span>产品管理</span><button class="addTextureBtn"><i class="icon iconfont icon-jiahao"></i> 添加材质</button></p>
+                <div class="TextureContent">
+                	<!-- 添加的材质START -->             
+	                <div class="product_box" data-texturenum="">
+	                	<h4>
+	                		<span>铝合金</span>
+	                		<b class="retProduct_tip redcolor"><i class="icon iconfont icon-gantanhao"></i>未添加关联产品</b>
+	                		<strong><em class="downLineBtn">下线</em><em class="AttEditBtn redcolor">编辑属性</em><em class="deleteTextureBtn">删除</em></strong>               		
+	                	</h4>
+	                	<div class="relatedProduct_box">
+	                		<div>
+		                		<dl>
+		                			<dt>产品</dt>
+		                			<dd>
+		                				<p class="typeBox">
+		                					<span>徽章<i class="icon iconfont icon-error-20170103"></i></span>
+		                				</p>
+		                				<button class="redcolor addProduct addTypeBtn">
+		                					<i class="icon iconfont icon-jiahao1"></i>添加产品
+		                				</button>
+		                			</dd>
+		                			
+		                		</dl>
+		                		<dl>
+		                			<dt>开模</dt>
+		                			<dd>
+		                				<p class="typeBox">
+		                					<span>徽章<i class="icon iconfont icon-error-20170103"></i></span>
+		                				</p>
+		                				<button class="redcolor addTypeBtn">
+		                					<i class="icon iconfont icon-jiahao1"></i>添加属性
+		                				</button>
+		                			</dd>
+		                			<!-- 添加新的属性 -->
+		                			<!--<h5 class="addAttrBox">
+		                				<p>
+		                					<input class="addAttr_inp" placeholder="请输入名称"/>
+		                					<i class="icon iconfont icon-sousuo2"></i>
+		                				</p>
+		                				<div class="addAttr_cont">
+		                					<label><input type="checkbox"/>徽章1</label>
+		                					<label><input type="checkbox"/>徽章美好</label>
+		                					
+		                				</div>
+		                				<div class="addAttr_bggray">
+		                					<button class="confirm_addAttr">确定</button>
+		                					<button class="cancel_addAttr">取消</button>
+		                				</div>
+		                				
+		                			</h5>-->
+		                			<!-- 添加新的属性 END-->
+		                		</dl>
+		                		<dl>
+		                			<dt>电镀色</dt>
+		                			<dd>
+		                				<p class="typeBox"> 
+		                					<span>徽章<i class="icon iconfont icon-error-20170103"></i></span>
+		                				</p>
+		                				<button class="redcolor addColor addTypeBtn">
+			                				<i class="icon iconfont icon-jiahao1"></i>添加属性
+			                			</button>
+		                			</dd>
+		                			
+		                		</dl>
+		                		<dl>
+		                			<dt>工艺</dt>
+		                			<dd>
+		                				<p class="typeBox">
+		                					<span>徽章<i class="icon iconfont icon-error-20170103"></i></span>
+		                				</p>
+		                				<button class="redcolor addCraftBtn addTypeBtn">
+			                				<i class="icon iconfont icon-jiahao1"></i>添加属性
+			                			</button>
+		                			</dd>
+		                			
+		                		</dl>
+		                		<dl>
+		                			<dt>配件</dt>
+		                			<dd>
+		                				<p class="typeBox">
+		                					<span>徽章<i class="icon iconfont icon-error-20170103"></i></span>
+		                					<span>徽章<i class="icon iconfont icon-error-20170103"></i></span>
+		                					<span>徽章<i class="icon iconfont icon-error-20170103"></i></span>
+		                					<span>徽章<i class="icon iconfont icon-error-20170103"></i></span>
+		                					<span>徽章<i class="icon iconfont icon-error-20170103"></i></span>
+		                					<span>徽章<i class="icon iconfont icon-error-20170103"></i></span>
+		                				</p>
+		                				<button class="redcolor addPartsBtn addTypeBtn">
+			                				<i class="icon iconfont icon-jiahao1"></i>添加属性
+			                			</button>
+		                			</dd>
+		                			
+		                		</dl>
+		                		<dl>
+		                			<dt>尺寸</dt>
+		                			<dd>
+		                				<p class="typeBox addSize_content">
+		                					<em>最小值:
+		                						<b class="minLength">100</b>*
+		                						<b class="minWidth">100</b>*
+		                						<b class="minHeight">2</b>
+		                					</em>
+		                					<em>最大值:
+		                						<b class="maxLength">5000</b>*
+		                						<b class="maxWidth">5000</b>*
+		                						<b class="maxHeight">5</b>
+		                					</em>
+		                				</p>
+		                				<button class="redcolor addSizeBtn">
+			                				<i class="icon iconfont icon-jiahao1"></i>添加属性
+			                			</button>
+		                			</dd>	              			
+		                		</dl>
+		                		
+	                		</div>
+	                	</div>
+	                </div>
+	                <!-- 材质显示END  -->
+	                
+	                
+                </div>
+                
+                <button class="addTextureBtn" style="float: none;"><i class="icon iconfont icon-jiahao"></i>添加材质</button>
+            </div>
+            
+        </div>
+                  
+            
+            </div> 
+            
+            <!--回到顶部-->
+            <div class="totop_box">
+                    <a onclick="show_newTask()">
+                        <i class="icon iconfont icon-xinjianrenwu"></i>
+                        <p>新建任务</p>
+                    </a>
+                    <a onclick="getNewOrder()">
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>新建订单</p>
+                    </a>
+                    <button>
+                        <img style="width: 24px" src="../images/icon/toTop.svg" />
+                        <p>顶部</p>
+                    </button>              
+            </div>
+        </div>
+        
+ 
+        <script type="text/javascript" src="../js/productManange.js" ></script>
+        
+    </body>
+    
+</html>
+

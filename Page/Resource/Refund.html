@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>退货流程</title>
+        <link rel="stylesheet" href="./css/reset.css" />
+        <link rel="stylesheet" href="./css/iconfont.css" />
+        <link rel="stylesheet" href="./css/iconfont1.css" />
+        <link rel="stylesheet" href="./css/iconfont2.css" />
+        <link rel="stylesheet" href="./css/workstage.css"/>
+        <link rel="stylesheet" href="./css/Refund.css" />
+        <script type="text/javascript" src="./js/flexible.js" ></script>
+        <script type="text/javascript" src="./js/jquery-1.11.0.min.js" ></script>
+        <script type="text/javascript" src="./js/jquery.cookie.js" ></script>
+        <script type="text/javascript" src="./js/jquery.raty.min.js" ></script>
+        <script type="text/javascript" src="./js/jquery.countdown.js" ></script>
+        <script type="text/javascript" src="./js/common.js" ></script>
+    </head>
+    <body>
+        <div id="header">
+            <div>
+                <img src="./images/icon/logo.png" alt="logo"/>
+                <h4 class="active">我的工作台</h4>
+                <form class="searchbar"> 
+                    <div class="mod_select searSort">
+                        <div class="select_box">
+                            <span class="select_txt">分&nbsp;&nbsp;类</span>                     
+                            <ul class="option_">
+                                <li>分&nbsp;&nbsp;类</li>
+                                <li>用户名</li>
+                                <li>订单号</li>
+                                <li>客服号</li>
+                            </ul> 
+                        </div>                       
+                    </div>
+                    
+                     <input type="text" id="searchCon" value="" placeholder="请输入您要搜索的订单号等"/>
+                    <button class="searBtn"><i class="icon iconfont icon-sousuo"></i></button>
+                </form>
+                <dl >
+                    <dt class="ddstyle"><span>风吹云散</span><img class="imgcol" src="./images/icon/arr.svg"/></dt>
+                    <dd class="ddstyle center hid" >个人中心</dd>
+                    <dd class="ddstyle exit hid">退出</dd>
+                </dl>                                           
+            </div>
+        </div>
+        
+        <!--主内容-->
+        <div id="content">
+            <!--左侧  导航区-->
+            <div id="nav">
+                <ul class="">
+                    <h3><i class="icon iconfont icon-liuchengxiangdao"></i>业务流程</h3>
+                    <h4 class="borderCol"><span>全部订单</span><em class="baccred">100</em></h4>
+                    <li >咨询中<em>(20)</em></li>
+                    <li>设计中<em>(20)</em></li>
+                    <li>待客户确认<em>(20)</em></li>
+                    <li>待支付<em>(20)</em></li>
+                    <li>定稿<em>(20)</em></li>
+                    <li>生产中<em>(20)</em></li>
+                    <li>邮寄中<em>(20)</em></li>
+                    <li>售后处理中<em>(20)</em></li>
+                    <li>退货中<em>(20)</em></li>
+                    <li>退款中<em>(20)</em></li>
+                    <li>取消<em>(20)</em></li>
+                    <li>完成<em>(20)</em></li>
+                </ul>
+                <ul>
+                    <h3><i class="icon iconfont icon-daibanshixiang"></i>待办事项</h3>
+                    <h4 onclick="getTaskList()">任务列表</h4>
+                    <h4 onclick="getDraft()">草稿箱</h4>
+                </ul>
+            </div>
+            
+            <!--右侧  主内容-->
+            <div class="cont_right">
+                <!--  退货流程  -->
+                <div class="refund_content">
+                        <p>
+                            <span style="font-size: 0.3333rem;" >任务单</span><em>任务类型：退货后退款</em>
+                        </p>
+                         <!-- 展示任务的头部部分 -->
+                        <ul class="taskCont_head">
+                            <li>
+                                <span><i class="icon iconfont icon-naozhong3"></i>距结束
+                                    <time class="countdownTime" style="color: #e95758;font-size: 0.2962rem;">02:30:42</time>
+                                </span>
+                                
+                            </li>
+                           
+                            <li >
+                                
+                                    <em>发起人： <strong>李四</strong></em>
+                                    <em>订单号： <strong>23456789</strong></em>
+                                    <em>处理期限： <strong>30分钟内</strong></em>
+                                    <em>发起时间： <time>2017-10-12 13:20:10</time></em>                                
+                                    <em>发给： <strong>王五</strong></em>
+                            </li>
+                        </ul>
+                        <!-- 展示任务列表的具体内容 -->
+                        <ol class="taskCont_body">
+                            <!-- 回复者的信息和回复的内容 -->
+                            <li>
+                                <!-- 回复者的信息 -->
+                                <h4><strong style="font-size: 0.2592rem;">admin1234</strong><time style="color: #898989;">2017-10-12 13:20:10</time></h4>
+                                <h5>设计设计好快乐吗？还要多久？</h5>
+                                <div><button class="replyshowBtn">回复</button></div>
+                                <form class="taskCont_reply" enctype="multipart/form-data">
+                                    <!-- 回复内容的中文部分 -->
+                                    <h3>
+                                        <i class="icon iconfont icon-dingbu"></i>
+                                        <textarea class="reply_content" onmousedown="toTextFirst(event,this)" maxlength="300">
+                                                                                       
+                                        </textarea> 
+                                        <p><b class="textnum">00</b>/<em>300</em></p>
+                                    </h3>
+                                    <!--回复中的上传图片模块 -->
+                                    <h6>
+                                        <div class="piclist">
+                                            <img src="" class="upload_img"/>
+                                            <label class="upload_label">
+                                                <input type="file" class="upload_input" style="display: none;" accept="image/*"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                            </label>
+                                            <p class="upload_float">
+                                                <i class="icon iconfont icon-shanchu"></i>
+                                            </p>
+                                        </div>  
+                                        
+                                        <div class="piclist">
+                                            <img src="" class="upload_img"/>
+                                            <label class="upload_label">
+                                                <input type="file" class="upload_input" style="display: none;" accept="image/*"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                            </label>
+                                            <p class="upload_float">
+                                                <i class="icon iconfont icon-shanchu"></i>
+                                            </p>
+                                        </div>
+                                        <div class="piclist">
+                                            <img src="" class="upload_img"/>
+                                            <label class="upload_label">
+                                                <input type="file" class="upload_input" style="display: none;" accept="image/*"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                            </label>
+                                            <p class="upload_float">
+                                                <i class="icon iconfont icon-shanchu"></i>
+                                            </p>
+                                        </div>
+                                        
+                                    </h6>
+                                    <button class="targetReplyBtn">回复</button>
+                                </form>
+                                
+                            </li>
+                                                                                 
+                    </ol>
+                    <dl class="Refund_content_box">
+                        <dt>
+                            <p>运费承担：</p>
+                            <p>退货地址：</p>
+                            <p>收取费用：</p>
+                            <p>收费原因：</p>
+                        </dt>
+                        <dd>
+                            <p>
+                                <label><input type="radio" name="freight_bear"/>买家承担</label>
+                                <label><input type="radio" name="freight_bear"/>厂家承担</label>
+                                <label><input type="radio" name="freight_bear"/>制宝承担</label>                               
+                            </p>
+                            <div class="deliveryadd_Refund_box">
+                                <p>
+                                    <em class="deliveryadd_zhibao bacred">制宝收货地址</em>
+                                    <em class="deliveryadd_factory">厂家收货地址</em>
+                                    <b class="deliveryadd_new_Refund">新增收货地址</b>
+                                </p>
+                                <div class="deliveryadd_Refund_cont">
+                                    <h5 class="deliveryadd_Refund">
+                                        <strong class="deliveryadd_alias bacg_cuntermark">别名</strong>  <!--**送货地址_别名**-->
+                                        <span class="name_Refund">易烊千玺</span>
+                                        <span class="address_Refund">北京市&nbsp;海淀区&nbsp;太阳宫&nbsp;育慧南路世奥国际中心111111111</span>
+                                        <span class="tel01_Refund"></span>
+                                        <span class="toolbar_Refund"><b>设为默认</b><b>编辑</b></span>
+                                    </h5>
+                                    <h5 class="deliveryadd_Refund"> 
+                                        <strong class="deliveryadd_alias">别名</strong>  
+                                        <span class="name_Refund">李易峰</span>
+                                        <span class="address_Refund">北京市&nbsp;海淀区&nbsp;太阳宫&nbsp;育慧南路世奥国际中心222212332</span>
+                                        <span class="tel02_Refund"></span>
+                                        <span class="toolbar_Refund"><b>设为默认</b><b>编辑</b></span>
+                                    </h5>
+                                    <!--<h5 class="deliveryadd_Refund"> 
+                                        <strong class="deliveryadd_alias">别名</strong>  
+                                        <span class="name_Refund">李易峰</span>
+                                        <span class="address_Refund">北京市&nbsp;海淀区&nbsp;太阳宫&nbsp;育慧南路世奥国际中心222212332</span>
+                                        <span class="tel02_Refund"></span>
+                                        <span class="toolbar_Refund"><b>设为默认</b><b>编辑</b></span>
+                                    </h5>-->
+                                </div>
+                                <!--<h6 class="address_show">更多地址<img src="./images/icon/arr.svg"/></h6>-->
+                            </div>
+                            <p><input type="text" name="" class="charge_fees" maxlength="5"/>元<i>可输入范围&nbsp;&nbsp;0-99999</i></p>
+                            <textarea class="fees_reason" onmousedown="toTextFirst(event,this)">                               
+                            </textarea>
+                            <p>
+                                <strong class="agree_return_Refund">同意退货</strong>
+                                <strong class="refuse_Refund">拒绝</strong>
+                            </p>
+                        </dd>
+                    </dl>    
+                </div> 
+            </div>
+           
+            <!--回到顶部模块-->
+            <div class="totop_box">
+                    <a onclick="show_newTask()">
+                        <i class="icon iconfont icon-xinjianrenwu"></i>
+                        <p>新建任务</p>
+                    </a>
+                    <a class="newOrderBtn">
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>新建订单</p>
+                    </a>
+                    <button>
+                        <img style="width: 24px" src="./images/icon/toTop.svg" />
+                        <p>顶部</p>
+                    </button>              
+            </div>           
+            
+        </div>
+        
+         <!-- 拒绝退货内容模块 -->
+            <div class="refused_return_cont">
+                <p><span style="font-size: 0.3333rem;">拒绝退货退款</span><i class="icon iconfont icon-guanbi"></i></p>
+                <form class="refused_return_reply" enctype="multipart/form-data">
+                                    <!-- 回复内容的中文部分 -->
+                                    <h3>                                     
+                                        <textarea class="refused_reply_content" onmousedown="toTextFirst(event,this)" name="refused_reply_content">                                                                                       
+                                        </textarea> 
+                                        <!--<p><b class="textnum">00</b>/<em>300</em></p>-->
+                                    </h3>
+                                    <!--回复中的上传图片模块 -->
+                                    <h6>
+                                        <div class="piclist">
+                                            <img src="" class="upload_img"/>
+                                            <label class="upload_label">
+                                                <input type="file" class="upload_input" name="pic1" style="display: none;" accept="image/*"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                            </label>
+                                            <p class="upload_float">
+                                                <i class="icon iconfont icon-shanchu"></i>
+                                            </p>
+                                        </div>  
+                                        
+                                        <div class="piclist">
+                                            <img src="" class="upload_img"/>
+                                            <label class="upload_label">
+                                                <input type="file" class="upload_input" name="pic2" style="display: none;" accept="image/*"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                            </label>
+                                            <p class="upload_float">
+                                                <i class="icon iconfont icon-shanchu"></i>
+                                            </p>
+                                        </div>
+                                        <div class="piclist">
+                                            <img src="" class="upload_img"/>
+                                            <label class="upload_label">
+                                                <input type="file" class="upload_input" name="pic3" style="display: none;" accept="image/*"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                            </label>
+                                            <p class="upload_float">
+                                                <i class="icon iconfont icon-shanchu"></i>
+                                            </p>
+                                        </div>
+                                        
+                                    </h6>
+                                    <button class="refused_ReplyBtn">拒绝</button>
+                                </form>
+            </div>
+            
+        <footer>Copyright&copy;&nbsp;2017-2018&nbsp;&nbsp;制宝科技&nbsp;&nbsp;版权所有</footer>
+        
+        
+        
+        <script type="text/javascript" src="./js/targetList.js" ></script>
+        <script type="text/javascript" src="./js/Refund.js" ></script>   
+    </body>   
+</html>
+

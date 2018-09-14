@@ -1,0 +1,131 @@
+div#header{
+	height: 5rem;
+}
+div#header>img{
+	width: 100%;
+	height: 3.3333rem;
+}
+div#content{
+	display: block;
+	background-color: #fff;
+	position: relative;
+}
+div,li{
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+div#content>div.spitslot_box{
+	width: 22.2222rem;
+	border: 1px solid #edf0f4;
+	/*box-shadow: ;*/
+	margin: 0.5rem auto;
+	padding: 0.1481rem 0.4074rem ;	
+}
+div.spitslot_box li{
+	display: flex;
+	padding: 0.3333rem 0;
+	border-top: 1px solid #f1f1f1;
+}
+div.spitslot_box li:first-of-type{
+	border: none;
+}
+div.spitslot_box li>p{
+	width: 0.8148rem;
+	height: 0.8148rem;
+	border-radius: 50%;
+	background-color: #f1f3f6;
+}
+div.spitslot_box li>p>img{
+	max-height: 0.8148rem;
+	max-width: 0.8148rem;
+}
+div.spitslot_box li>div{
+	margin-left: 0.2592rem;
+	color: #939393;
+}
+div.spitslot_box li>div span{
+	float: right;
+}
+div.spitslot_box li h5{
+	height: 0.8160rem;
+	line-height: 0.4074rem;
+	margin: 0.1111rem 0;
+	overflow: hidden;
+	word-break:break-all;
+ 	display:-webkit-box;
+ 	-webkit-line-clamp:2;
+ 	-webkit-box-orient:vertical;
+}
+div.spitslot_box li>div strong{
+	color: #484848;
+}
+div.spitslot_box li>div time{
+	margin-left: 0.2777rem;
+}
+div.spitslot_box li>div button{
+	display: inline-block;
+	margin-left: 0.2222rem;
+	color: #a1a1a1;
+}
+div.spitslot_box li>div em{
+	margin: 0 0.0925rem;	
+}
+em.viewTotalBtn{
+	cursor: pointer;
+}
+b.packupBtn{
+	cursor: pointer;
+}
+b.packupBtn>i{
+	
+}
+div.spitslot_box li>div .redcol{
+	color: #e95758;
+}
+div.spitslot_box li>div i{
+	margin-right: 0.1111rem;
+}
+/* 添加意见反馈的区域 */
+dl.newFeedback_content{
+	display: flex;
+	border-top: 1px solid #eef1f4;
+	padding-top: 0.4444rem;
+}
+dl.newFeedback_content>dt{
+	width: 1.3333rem;
+}
+dl.newFeedback_content>dd{
+	margin-left: 0.2962rem;
+}
+dl.newFeedback_content p{
+	height: 0.6666rem;
+	line-height: 0.6666rem;
+	text-align: right;
+	margin-bottom: 0.1851rem;
+}
+input.feedback_title{
+	width: 19.3518rem;
+	height: 0.6296rem;
+	border: 1px solid #d8d8d8;
+	padding: 0 0.1481rem;
+}
+.feedback_cont{
+	width: 19.3518rem;
+	height: 2.9629rem;
+	border: 1px solid #d8d8d8;
+	padding: 0.1111rem 0.1481rem;
+	outline-color: #e95758;
+}
+
+button.feedbackBtn{
+	width: 1.9444rem;
+    height: 0.6851rem;
+    background-color: #e95758;
+    color: #fff;
+    line-height: 0.6851rem;
+    border-radius: 0.0925rem;
+    margin: 0.2962rem auto;
+}
+

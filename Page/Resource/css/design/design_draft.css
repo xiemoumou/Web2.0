@@ -1,0 +1,544 @@
+/* 设计稿 */
+body{
+    background-color: #f5f5f5;
+    font: 14px "微软雅黑";
+    color: #2f2f2f;
+}
+
+#detail{
+    background-color: #fff;
+}
+
+#detail ul{
+    padding: 26px 0 26px 26px;
+}
+
+#detail ul li{
+    height: 28px;
+    line-height: 28px;
+}
+
+#money{
+    color: #ea595a;
+    padding-right: 184px;
+}
+
+#day{
+    color: #ea595a;
+    padding-right: 184px;
+}
+
+.upload{
+    background-color: #fff;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    position: relative;
+}
+#uploadedList{
+    position: relative;
+    left: 116px;
+    top: -20px;
+    width: 840px;
+}
+
+#upload_btn{
+    background-color: #f0f0f0;
+    width: 260px;
+    height: 200px;
+    float: left;
+    position: relative;
+    margin-right: 16px;
+    border: 1px solid #f0f0f0;
+    cursor: pointer;
+}
+
+#upload_btn .text{
+    position: absolute;
+    left: 90px;
+    top: 100px;
+}
+
+#upload_btn .format{
+    font-size: 12px;
+    color: #929292;
+    position: absolute;
+    top: 130px;
+    left: 70px;
+    text-align: center;
+    width: 120px;
+}
+
+.icon-plus{
+    background: url(../../images/icon/upload.png) no-repeat;
+    display: block;
+    width: 38px;
+    height: 38px;
+    position: absolute;
+    left: 50%;
+    margin-left: -19px;
+    top: 18px;
+}
+
+
+#uploadedList .img{
+    background-color: #f0f0f0;
+    width: 260px;
+    height: 200px;
+    float: left;
+    position: relative;
+    margin-right: 16px;
+    border: 1px solid #f0f0f0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#uploadedList .progress{
+    position: absolute;
+    left: 50%;
+    margin-left: -14px;
+    text-shadow: 0 0 10px #000;
+    color: #fff;
+}
+
+#uploadedList .img .x{
+    background: url(../../images/icon/X.png) no-repeat;
+    display: block;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: -12px;
+    top: -8px;
+    cursor: pointer;
+}
+
+#uploadedList .img img{
+    /* display: block; */
+    max-width: 260px;
+    max-height: 200px;
+}
+
+.war{
+    color: #e84b4c;
+    padding-right: 5px;
+    line-height: 12px;
+}
+.upfile{
+    margin-bottom: 10px;
+    padding-top: 10px;
+    position: relative;
+}
+#upfile,#o_upfile{
+    width: 100px;
+    height: 40px;
+    background-color: #e84b4c;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+#filelist,#o_filelist{
+    margin-left: 98px;
+    margin-top: 10px;
+    width: 300px;
+}
+
+#filelist li,#o_filelist li{
+    background-color: #f8f8f8;
+    height: 32px;
+    width: 256px;
+    line-height: 32px;
+    padding-left: 18px;
+    margin-bottom: 10px;
+}
+
+#filelist .del_btn,#o_filelist .del_btn{
+    float: right;
+    padding-right: 10px;
+    color: #e84b4c;
+    cursor: pointer;
+}
+
+#explain{
+    margin-left: 19px;
+    border: 1px solid #d4d4d4;
+    width: 778px;
+    height: 40px;
+    border-radius: 4px;
+    padding-left: 12px;
+    color: #696969;
+    font-family: "微软雅黑";
+    margin-bottom: 20px;
+}
+
+#submit{
+    background-color: #e95758;
+    width: 150px;
+    height: 38px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: "微软雅黑";
+    left: 50%;
+    position: relative;
+    margin-left: -75px;
+    cursor: pointer;
+    bottom: 0px;
+}
+
+.updesign{
+    padding-top: 10px;
+    border: 2px dashed #eee;
+    margin-bottom: 10px;
+}
+
+.pl-10{
+    padding-left: 14px;
+}
+.pl_10_new{
+    padding-left: 0;
+    width: 68px;
+    display: inline-block;
+}
+.sm{
+    padding-left: 24px;
+    display: block;
+    float: left;
+    height: 30px;
+    width: 68px;
+    line-height: 37px;
+}
+.demo_pop{ overflow-x: hidden;overflow-y: auto;}
+
+#orderInfo{
+    width: 100%;
+    height: 37px;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+
+.orderNumber{
+    height: 40px;
+    line-height: 40px;
+    padding-left: 25px;
+}
+
+.jidan{
+    width: 46px;
+    height: 20px;
+    background-color: #f7dfd6;
+    display: block;
+    color: #e54d40;
+    line-height: 20px;
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    left: 232px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.programme .body .module{
+    background-color: #fff;
+    padding: 10px 10px;
+    margin-top: 15px;
+    /* margin: 15px;
+    border: 1px solid #d74b4a; */
+}
+
+.programme .body .module ul
+{
+    border: 1px solid #d74b4a;
+    padding: 15px 15px 15px 86px;
+    background-color: #f8f8f8;
+    position: relative;
+}
+
+.programme .module .design{
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.programme .body .module ul .design img{
+    display: block;
+    width: 38px;
+    height: 38px;
+    background-color: #d4d4d4;
+    border-radius: 20px;
+    position: absolute;
+    left: 36px;
+    top: 22px;
+}
+
+.programme .body .module ul .design .date{
+    font: 12px "微软雅黑";
+    color: #929292;
+    float: right;
+    line-height: 40px;
+}
+
+.programme .body .module ul .remarks {
+    height: 42px;
+    line-height: 42px;
+}
+
+.programme .body .module ul .remarks span{
+    font: 12px "微软雅黑";
+    color: #5e5e5e;
+}
+
+.programme .body .module ul .photo .img{
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 180px;
+    border: 1px solid #e2e2e2;
+    margin-right: 15px;
+}
+
+.programme .body .module ul .photo .img img{
+    max-width: 218px;
+    max-height: 178px;
+    display: block;
+}
+
+
+.programme .body .module ul .attachment{
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+}
+
+.programme .body .module ul .attachment .fj{
+    font: 12px "微软雅黑";
+    color:#5e5e5e;
+}
+
+
+.programme .body .module ul .attachment div{
+    width: 202px;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    position: absolute;
+    top: 14px;
+    left: 39px;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.programme .body .module ul .attachment div span{
+    float: right;
+    color: #e84b4c;
+    margin-right: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.programme .body .module ul .message{
+    position: relative;
+    /*height: 54px;*/
+    line-height: 30px;
+}
+
+.programme .body .module ul .message img{
+    display: block;
+    width: 38px;
+    height: 38px;
+    background-color: #d4d4d4;
+    border-radius: 20px;
+    position: absolute;
+    left: -49px;
+    top: 8px;
+}
+
+.programme .body .module ul .message .kffk{
+    font: 12px "微软雅黑";
+    color: #e95758;
+}
+
+.programme .body .module ul .message .fknr{
+    font: 12px "微软雅黑";
+    color: #5e5e5e;
+}
+
+.programme .body .module ul .message .date-hf{
+    font: 12px "微软雅黑";
+    color: #8a8a8a;
+    width: 100%;
+}
+
+.programme .body .module ul .message .date-hf .hf{
+    float: right;
+    cursor: pointer;
+}
+
+.programme .body .module ul .message .date-hf .hf i{
+    display: block;
+    width: 18px;
+    height: 16px;
+    background: url(../../images/icon/msg.png) no-repeat;
+    position: absolute;
+    right: 28px;
+    top: 2px;
+}
+
+.programme .body .module ul .reply .content{
+    width: 100%;
+    height: 56px;
+    margin-top: 5px;
+    border: 1px solid #cecece;
+}
+
+.programme .body .module ul .reply-btn{
+    line-height: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.reply-btn button{
+    width: 106px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: #5094c8;
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: -5px;
+    cursor: pointer;
+}
+
+#xdsjfa{
+    background: url(../../images/icon/xz.png) no-repeat;
+    display: block;
+    width: 78px;
+    height: 62px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 100;
+    display: none;
+}
+
+
+#orderInfo{
+    display: none;
+}
+
+#detail{
+    display: none;
+}
+
+.upload{
+    display: none;
+}
+
+.programme{
+    display: none;
+}
+
+.message{
+    display: none;
+}
+
+
+
+/*客服参考图*/
+.design-diagram-layout-photo{
+    padding-bottom: 15px;
+}
+
+.refe{
+    display: block;
+    height: 30px;
+    font-weight: bold;
+}
+
+.design-diagram-layout-photo .photo-container{
+    height: 110px;
+    width: 110px;
+    border: 1px solid #d5d5d5;
+    border-radius: 4px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.photo-container img{
+    max-width: 110px;
+    max-height: 110px;
+}
+
+.photo-container .cover{
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    color: #fff;
+    bottom: 0px;
+    border-radius: 0 0 4px 4px;
+    background: url(../../images/icon/server/fdj.png) no-repeat center center;
+    background-color: #50505094;
+}
+
+.attachment{
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.download span{
+    display: block;
+    background-color: #f8f8f8;
+    width: 255px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.download span a{
+    font-size: 12px;
+    color: #ea595a;
+    cursor: pointer;
+}
+
+#fileName{
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    width: 198px;
+    padding-left: 14px;
+    background-color: #f8f8f8;
+    color: #4e4e4e;
+}
+
+
+/*拖拽上传提示*/
+.upload-msg{
+    position: absolute;
+    display: block;
+    width: 128px;
+    color: #d5d5d5;
+    right: 24px;
+    bottom: 1px;
+}
+
+.upload-file-msg{
+    position: absolute;
+    display: block;
+    width: 128px;
+    color: #d5d5d5;
+    right: 24px;
+    bottom: 10px;
+}
+
+.requ-info{
+height: auto !important;
+}

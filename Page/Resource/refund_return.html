@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>退货后退款</title>
+        <link rel="stylesheet" href="./css/reset.css" />
+        <link rel="stylesheet" href="./css/iconfont.css" />
+        <link rel="stylesheet" href="./css/iconfont1.css" />
+        <link rel="stylesheet" href="./css/iconfont2.css" />
+        <link rel="stylesheet" href="./css/workstage.css"/>
+        <link rel="stylesheet" href="./css/refund_return.css" />
+        <script type="text/javascript" src="./js/flexible.js" ></script>
+        <script type="text/javascript" src="./js/jquery-1.11.0.min.js" ></script>
+        <script type="text/javascript" src="./js/jquery.cookie.js" ></script>
+        <script type="text/javascript" src="./js/common.js" ></script>
+    </head>
+    <body>
+        <div id="header">
+            <div>
+                <img src="./images/icon/logo.png" alt="logo"/>
+                <h4 class="active">我的工作台</h4>
+                <form class="searchbar"> 
+                    <div class="mod_select searSort">
+                        <div class="select_box">
+                            <span class="select_txt">分&nbsp;&nbsp;类</span>                     
+                            <ul class="option_">
+                                <li>分&nbsp;&nbsp;类</li>
+                                <li>用户名</li>
+                                <li>订单号</li>
+                                <li>客服号</li>
+                            </ul> 
+                        </div>                       
+                    </div>
+                    
+                     <input type="text" id="searchCon" value="" placeholder="请输入您要搜索的订单号等"/>
+                    <button class="searBtn"><i class="icon iconfont icon-sousuo"></i></button>
+                </form>
+                <dl >
+                    <dt class="ddstyle"><span>风吹云散</span><img class="imgcol" src="./images/icon/arr.svg"/></dt>
+                    <dd class="ddstyle center hid" >个人中心</dd>
+                    <dd class="ddstyle exit hid">退出</dd>
+                </dl>                                           
+            </div>
+        </div>
+        
+        <!--主内容-->
+        <div id="content">
+            <!--左侧  导航区-->
+            <div id="nav">
+                <ul class="">
+                    <h3><i class="icon iconfont icon-liuchengxiangdao"></i>业务流程</h3>
+                    <h4 class="borderCol"><span>全部订单</span><em class="baccred">100</em></h4>
+                    <li >咨询中<em>(20)</em></li>
+                    <li>设计中<em>(20)</em></li>
+                    <li>待客户确认<em>(20)</em></li>
+                    <li>待支付<em>(20)</em></li>
+                    <li>定稿<em>(20)</em></li>
+                    <li>生产中<em>(20)</em></li>
+                    <li>邮寄中<em>(20)</em></li>
+                    <li>售后处理中<em>(20)</em></li>
+                    <li>退货中<em>(20)</em></li>
+                    <li>退款中<em>(20)</em></li>
+                    <li>取消<em>(20)</em></li>
+                    <li>完成<em>(20)</em></li>
+                </ul>
+                <ul>
+                    <h3><i class="icon iconfont icon-daibanshixiang"></i>待办事项</h3>
+                    <h4 onclick="getTaskList()">任务列表</h4>
+                    <h4 onclick="getDraft()">草稿箱</h4>
+                </ul>
+            </div>
+            
+            <!--右侧  主内容-->
+            <div class="cont_right">
+                <div class="refund_return_header">
+                    <p>
+                        <span>订单号：<strong>123445566779</strong></span>
+                        <time>2017-10-10&nbsp;&nbsp;21:10:10</time>  
+                    </p>                            
+                </div>               
+                <div class="refund_return_prograssBar">
+                    <ul>
+                        <li><p class="redbgcolor">1</p><span class="redcolor">退货</span></li>
+                        <li class="progress_bar"></li>
+                        <li><p class="redbgcolor">2</p><span class="redcolor">退款</span></li>
+                        <li class="progress_bar"></li>
+                        <li><p>3</p><span>完成</span></li>
+                    </ul>
+                </div>
+                <!-- 确认退款 -->
+                <div class="refund_return_box">
+                    <dl>
+                        <dt></dt>
+                        <dd>
+                            <p><span>订单金额：</span><b>￥3456789</b></p>
+                            <p><span>设计费<em>(成交设计费的50%)</em>：</span><b>￥343</b></p>
+                            <p><span>收取费用：</span><b>￥3456</b></p>
+                            <p><span>邮费：</span><b>￥345</b></p>                          
+                        </dd>
+                    </dl>
+                    <h6>
+                        <p><span>实退款：</span><b>￥56789</b></p>
+                        <!-- 当工厂或制宝公司收到退回的商品时，“确认收到退货”按钮可点击 -->
+                        <strong class="confirm_returngoods">确认退款</strong>
+                    </h6>
+                </div>
+            </div> 
+            
+            <!--回到顶部模块-->
+            <div class="totop_box">
+                    <a onclick="show_newTask()">
+                        <i class="icon iconfont icon-xinjianrenwu"></i>
+                        <p>新建任务</p>
+                    </a>
+                    <a class="newOrderBtn">
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>新建订单</p>
+                    </a>
+                    <button>
+                        <img style="width: 24px" src="./images/icon/toTop.svg" />
+                        <p>顶部</p>
+                    </button>              
+            </div>
+            
+            
+        </div>
+        
+        <footer>Copyright&copy;&nbsp;2017-2018&nbsp;&nbsp;制宝科技&nbsp;&nbsp;版权所有</footer>
+        
+        
+        
+        <script type="text/javascript" src="./js/reimburse.js" ></script>
+    </body>
+    
+</html>
+
+

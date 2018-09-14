@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全部订单</title>
+	<link rel="stylesheet" href="../../lib/loading/css/global.css">
+    <link href="../../css/common/base.css" rel="stylesheet" />
+    <link href="../../css/design/all_order.css" rel="stylesheet" />
+    <link href="../../lib/jqueryPagination/css/jquery.pagination.css" rel="stylesheet" />
+
+
+    <!-- 测试用开始 -->
+    <!-- <script src="../../lib/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../lib/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../../lib/jqueryPagination/js/jquery.pagination.min.js" rel="stylesheet"></script>
+    <script src="../../lib/layer/2.4/layer.js" rel="stylesheet"></script>
+    <script src="../../js/common/common.js" type="text/javascript"></script>
+    <script src="../../js/design/all_order.js" type="text/javascript"></script> -->
+    <!-- 测试用结束 -->
+</head>
+
+<body>
+    <div class="content">
+        <div class="header clearfix">
+            <div class="tab"><!--tab -->
+                 <ul id="tabmode">
+                    <li id="all_ord" class="active"><a href="#">全部订单</a> <i class="reddot" id="al_i">0</i></li><li id="dcl_click" onclick="window.location.href='./waiting_handle.html'"><a  href="#">待处理<i id="dcl_i" class="reddot">0</i></a></li>
+                 </ul>  
+            </div>
+             <div class="sort">
+                <ul>
+                    <li class="hideRborder addstyle" value="2" name="1">综合</li>
+                    <li class="hideRborder peg" value="1" name="2" attribute="0">发布时间<span><img src="../../images/icon/bottom_icon.png"></span></li>
+                    <li class="hideRborderv peg" value="1" name="3" attribute="0">设计周期<span><img src="../../images/icon/bottom_icon.png"></span></li>
+                    <li class="peg" value="1" name="4" attribute="0">设计费<span><img src="../../images/icon/bottom_icon.png"></span></li>
+                </ul>
+                <!--<div class="urgent">-->
+                    <!--<input type="checkbox" id="urgent" />-->
+                    <!--<label for="urgent">急单</label>-->
+                <!--</div>-->
+            </div>
+            <div class="thead">
+                <ul>
+                    <li>
+                        <span>产品图</span>
+                    </li>
+                    <li>
+                        <span>名称</span>
+                    </li>
+                    <li>
+                        <span>属性材质</span>
+                    </li>
+                    <li>
+                        <span>长×宽×厚(mm)</span>
+                    </li>
+                    <li>
+                        <span>设计费</span>
+                    </li>
+                    <li>
+                        <span>设计周期</span>
+                    </li>
+                    <li>
+                        <span>订单状态</span>
+                    </li>
+                    <li>
+                        <span>操作</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="order" id="orderList">
+            <div class="empty-list"><p><img src="../../images/icon/bj_ico.jpg"></p><p class="msg" style="color: #858585">您还没有相关订单！</p></div>
+            <!-- <div class="detial">
+                <div class="head">
+                    <span class="date">2018-03-13</span>
+                    <span class="ordNum">订单号: 138414483038571275</span>
+                    <span class="jidan">急单</span>
+                </div>
+                <div class="body">
+                    <ul>
+                        <li>
+                            <a class="img" href="javascript:parent.Main.designDraft('88888888888','88888888888');"><img alt="图片" onerror="this.src='../../images/images/mr.png'" src="" /></a>
+                        </li>
+                        <li>
+                            <span class="describe">徽章 锌合金 蝴蝶扣
+                                2D; 烤漆; 金色;</span>
+                        </li>
+                        <li>
+                            <span class="size">20cm＊20cm</span>
+                        </li>
+                        <li>
+                            <span class="money">¥200</span>
+                        </li>
+                        <li>
+                            <span class="day">1天</span>
+                        </li>
+                        <li>
+                            <button class="rob" onclick="parent.Main.robbery('888888888','88888888888',all_order.robbery)" >立即抢单</button>
+                            <a class="desc" href="javascript:parent.Main.demandDetails('0000000000','0000000')">需求详情</a>
+                        </li>
+                        <li>
+                            <button class="rob" onclick="parent.Main.robbery('888888888','88888888888',all_order.robbery)" >立即抢单</button>
+                            <a class="desc" href="javascript:parent.Main.demandDetails('0000000000','0000000')">需求详情</a>
+                        </li>
+                        <li>
+                            <button class="rob" onclick="parent.Main.robbery('888888888','88888888888',all_order.robbery)" >立即抢单</button>
+                            <a class="desc" href="javascript:parent.Main.demandDetails('0000000000','0000000')">需求详情</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>-->
+        </div>
+        <div class="page-box">
+		</div>
+    </div>
+    <script src="../../lib/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../lib/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../../lib/jqueryPagination/js/jquery.pagination.min.js" rel="stylesheet"></script>
+    <script src="../../lib/layer/2.4/layer.js" rel="stylesheet"></script>
+    <script src="../../js/common/common.js" type="text/javascript"></script>
+    <script src="../../js/design/all_order.js" type="text/javascript"></script>
+</body>
+</html>

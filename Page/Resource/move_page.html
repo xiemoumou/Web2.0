@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>首页</title>
+    <link rel="stylesheet" href="amaze/assets/css/amazeui.min.css">
+    <link rel="stylesheet" href="./css/move_page.css" />
+    <script type="text/javascript">
+        var os = function() {
+            var ua = navigator.userAgent,
+                    isQB = /(?:MQQBrowser|QQ)/.test(ua),
+                    isWindowsPhone = /(?:Windows Phone)/.test(ua),
+                    isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+                    isAndroid = /(?:Android)/.test(ua),
+                    isFireFox = /(?:Firefox)/.test(ua),
+                    isChrome = /(?:Chrome|CriOS)/.test(ua),
+                    isIpad = /(?:iPad|PlayBook)/.test(ua),
+                    isTablet = /(?:iPad|PlayBook)/.test(ua)||(isFireFox && /(?:Tablet)/.test(ua)),
+                    isSafari = /(?:Safari)/.test(ua),
+                    isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+                    isOpen= /(?:Opera Mini)/.test(ua),
+                    isUC = /(?:UCWEB|UCBrowser)/.test(ua),
+                    isPc = !isPhone && !isAndroid && !isSymbian;
+            return {
+                isQB: isQB,
+                isTablet: isTablet,
+                isPhone: isPhone,
+                isAndroid : isAndroid,
+                isPc : isPc,
+                isOpen : isOpen,
+                isUC: isUC,
+                isIpad : isIpad
+            };
+        }();
+        var html=[];
+        html[html.length]='是QQ浏览器:'+os.isQB+"<br/>";
+        html[html.length]='是Tablet:'+os.isTablet+"<br/>";
+        html[html.length]='是Phone:'+os.isPhone+"<br/>";
+        html[html.length]='是Android:'+os.isAndroid+"<br/>";
+        html[html.length]='是电脑:'+os.isPc+"<br/>";
+        html[html.length]='是Opera浏览器:'+os.isOpen+"<br/>";
+        html[html.length]='是UC浏览器:'+os.isUC+"<br/>";
+        html[html.length]='是Ipad:'+os.isIpad+"<br/>";
+        console.log(html.join(""));
+
+        if(os.isPc)
+        {
+            window.location.href="./index.html";
+        }
+
+    </script>
+</head>
+<body>
+<header class="head">
+    <img src="images/move_page/logo.png">
+</header>
+    <section class="black-banner">
+        <!--<img src="images/move_page/banner.png">-->
+        <div class="banner-text">
+            <h3>个性定制SaaS平台</h3>
+            <p>让天下没有难搞的创意</p>
+            <div class="silid"></div>
+        </div>
+    </section>
+
+    <section class="slideshow-box">
+        <div class="slideshow-title">
+            <p>制宝可为您解决</p>
+            <div class="slideshow-silid"></div>
+            <div>PROBLEM SOLVED</div>
+        </div>
+
+        <div data-am-widget="slider" class="am-slider am-slider-c2" data-am-slider='{&quot;directionNav&quot;:false}' >
+            <ul class="am-slides">
+                <li>
+                    <img src="images/move_page/page_1.png">
+                    <div class="am-slider-desc">
+                        <p>定制价格高周期长</p>
+                        <p class="next-p">提供个性定制整体解决方案，降低定制成</p>
+                        <p class="next-p">本，减少定制时间。</p>
+                    </div>
+
+                </li>
+                <li>
+                    <img src="images/move_page/page_2.png">
+                    <div class="am-slider-desc">
+                        <p>很难找到合适的创意</p>
+                        <p class="next-p">平台能快速匹配海量设计师，应用区块</p>
+                        <p class="next-p">链技术保护原创设计。</p>
+                    </div>
+
+                </li>
+                <li>
+                    <img src="images/move_page/page_3.png">
+                    <div class="am-slider-desc">
+                        <p>找不到合适工厂生产</p>
+                        <p class="next-p">平台整合3D打印和智能化工厂资源，拥</p>
+                        <p class="next-p">有强大柔性化生产能力。</p>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="black">
+        <div class="slideshow-title black-text">
+            <p>我们的优势</p>
+            <div class="slideshow-silid black-a"></div>
+            <div class="text-bottom">ADVANTAGE</div>
+        </div>
+
+        <div class="one-box">
+            <div class="one-left">
+                <h3>1000万</h3>
+                <div class="data">
+                    <span></span>
+                    <p>数据优势</p>
+                </div>
+                <div class="one-smg">多个天猫和京东电商平台10年服务定制客户</div>
+            </div>
+            <div class="one-right">
+                <h3>99.99%</h3>
+                <div class="image-box">
+                    <span></span>
+                    <p>客户满意度<p>
+                </div>
+                <div class="one-smg">通过平台提供的创意服务，客户高度满意</div>
+            </div>
+        </div>
+
+        <div class="tow-box">
+            <div class="tow-left">
+                <h3>35%</h3>
+                <div class="quality">
+                    <span></span>
+                    <p>客户复购率</p>
+                </div>
+                <div class="one-smg">大量客户长期在平台购买定制产品和服务</div>
+            </div>
+            <div class="tow-right">
+                <h3>20%</h3>
+                <div class="effic">
+                    <span></span>
+                    <p>提高销售量<p>
+                </div>
+                <div class="one-smg">使用平台SaaS服务以后，大幅提高商家销量</div>
+            </div>
+        </div>
+
+    </section>
+<div class="intr-box-pre">
+    <section class="intr-box">
+        <img src="images/move_page/img_1.png">
+        <h3>客户需求对接</h3>
+        <p class="intr-text">平台将客户端的关键要素记录下来</p>
+        <p class="intr-text-next">【 开始定制流程 】</p>
+        <span></span>
+    </section>
+
+    <section class="intr-box">
+        <img src="images/move_page/img_2.png">
+        <h3>设计</h3>
+        <p class="intr-text">专业设计针对客户的要求</p>
+        <p class="intr-text-next">【 开展快速设计 】</p>
+        <span></span>
+    </section>
+
+    <section class="intr-box">
+        <img src="images/move_page/img_3.png">
+        <h3>制造</h3>
+        <p class="intr-text">完备高效的制造企业针对设计方案</p>
+        <p class="intr-text-next">【 开展实现 】</p>
+        <span></span>
+    </section>
+
+    <section class="intr-box">
+        <img src="images/move_page/img_4.png">
+        <h3>发货</h3>
+        <p class="intr-text">严格按照客户要求完整制造</p>
+        <p class="intr-text-next last">【 及时发货 】</p>
+    </section>
+</div>
+
+   <section class="cust-box">
+       <h3>打造个性定制生态</h3>
+       <div class="cust-solid"></div>
+       <div class="cust-text">
+           <p>搭建融合客户、客服、方案师、车间</p>
+           <p>都能参与的业务管理系统</p>
+           <p>实现个性定制资源高效整合</p>
+       </div>
+       <span></span>
+   </section>
+
+    <section class="cust-box cust-box-next">
+        <h3>优化个性定制业务流程</h3>
+        <div class="cust-solid"></div>
+        <div class="cust-text">
+            <p>基于大数据、人工智能技术的个性定制业务流程规范</p>
+            <p>实现方案师、车间的一键智能选择</p>
+        </div>
+        <span class="cust-img">
+            <div class="dist">分配设计</div>
+            <div class="inquiry">发起询价</div>
+        </span>
+    </section>
+
+    <footer class="footer">
+        <div class="content-box">
+            <div class="content">
+                <section class="contact">
+                    <span></span>
+                    <p class="copy-my">联系我们</p>
+                </section>
+                <section class="address">地址：北京市朝阳区育辉南路世奥国际中心B座</section>
+                <section class="mail">邮箱：vipcnvip@qq.com</section>
+                <div class="footer-solid"></div>
+                <section class="copy">Copyright © 2017 - 2018&nbsp;&nbsp;&nbsp;制宝科技&nbsp;版权所有</section>
+            </div>
+        </div>
+    </footer>
+<script type="text/javascript" src="./js/jquery-1.11.0.min.js" ></script>
+<script type="text/javascript" src="js/flexible.js"></script>
+<script type="text/javascript" src="amaze/assets/js/amazeui.min.js"></script>
+
+</body>
+</html>

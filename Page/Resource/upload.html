@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资源库上传附件</title>
+    <link href="./css/common/base.css" rel="stylesheet">
+    <script src="./js/common/data.js" type="text/javascript"></script>
+    <style>
+
+        body {
+            margin: 0;
+            background-color: #fff;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 348px;
+        }
+
+        .content {
+            position: relative;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .title h1 {
+            font: 14px/55px "微软雅黑";
+            color: #444444;
+            border-bottom: 1px solid #D5D5D5;
+        }
+
+        .body .label {
+            width: 84px;
+            font-family: "微软雅黑";
+            font-size: 14px;
+            color: #444444;
+        }
+
+        .body .row {
+            margin-top: 20px;
+            display: block;
+            display: flex;
+            align-items: center;
+        }
+
+        .body .image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90px;
+            height: 90px;
+            border: 1px solid #D5D5D5;
+            border-radius: 4px;
+        }
+
+        .body .image img {
+            display: inline-block;
+            max-width: 90px;
+            max-height: 90px;
+            /*border-radius: 4px;*/
+        }
+
+        .file {
+            border-radius: 4px;
+            height: 29px;
+            width: 228px;
+            border: 1px solid #D5D5D5;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .file input {
+            line-height: 29px;
+            padding-left: 10px;
+            width: 216px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .body .content button {
+            background: #E84B4C;
+            border-radius: 4px;
+            width: 112px;
+            height: 29px;
+            color: #fff;
+            cursor: pointer;
+            /*margin-top: 10px;*/
+        }
+
+        .error-msg {
+            width: 110px;
+            padding-left: 23px;
+            display: inline-block;
+            bottom: -2px;
+        }
+
+        .error-msg::before {
+            left: 4px;
+        }
+
+        .select {
+            border-radius: 4px;
+            height: 29px;
+            width: 128px;
+            border: 1px solid #D5D5D5;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .select::after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            top: 13px;
+            right: 8px;
+            background: url("./images/icon/server/xljt.png") no-repeat;
+        }
+
+        .select input {
+            font: 12px/29px "微软雅黑";
+            border-radius: 4px;
+            padding-left: 10px;
+            height: 29px;
+            width: 100px;
+        }
+
+        /*下拉框*/
+        .dropdown-list {
+            border: 1px solid #d5d5d5;
+            background-color: #fff;
+            height: 150px;
+            overflow-y: scroll;
+            position: absolute;
+            z-index: 1000;
+            width: 100%;
+            display: none;
+        }
+
+        .dropdown-list li {
+            height: 20px;
+            line-height: 20px;
+            padding-left: 10px;
+        }
+
+        .dropdown-list li:hover {
+            background-color: #d5d5d5;
+            cursor: pointer;
+        }
+
+        .reso-title {
+            border-radius: 4px;
+            height: 29px;
+            width: 259px;
+            border: 1px solid #D5D5D5;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .reso-title input {
+            font: 12px/29px "微软雅黑";
+            border-radius: 4px;
+            padding-left: 10px;
+            height: 29px;
+            width: 248px;
+        }
+
+        .examples {
+            font-family: "微软雅黑";
+            font-size: 12px;
+            color: #ADADAD;
+        }
+
+        .reward {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon-reward {
+            background: url("./images/icon/reward.png") no-repeat;
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+        }
+
+        .floor {
+            margin-top: 27px;
+            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-reward {
+            font-family: "微软雅黑";
+            font-size: 14px;
+            color: #444444;
+        }
+
+        .btn-upload {
+            width: 112px;
+            height: 35px;
+            margin-right: 32px;
+        }
+
+        .btn-close {
+
+            width: 112px;
+            height: 35px;
+        }
+
+        .js-upload-img .progress{
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            margin-left: -14px;
+            color: #fff;
+            text-shadow: 0 0 10px #000;
+        }
+
+        #upload_file .progress{
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="title">
+        <h1>上传设计素材</h1>
+    </div>
+    <div class="body">
+        <ul>
+            <li class="row clearfix">
+                <div class="label fl">
+                    <label>参考图：</label>
+                </div>
+                <div id="upload_img" class="content fl js-upload-img">
+                    <input id="input_file" class="hide" type="file" name="input_file" multiple>
+                    <div class="image js-photo" style="display: none"><img src="./images/images/a11.png"></div>
+                    <button class="js-photo-btn btn-red" >上传图片</button>
+                    <span class="error-msg hide">参考图/文件必填项</span>
+                    <span class="progress"></span>
+                </div>
+            </li>
+            <li class="row clearfix">
+                <div class="label fl">
+                    <label>矢量源文件：</label>
+                </div>
+                <div id="upload_file" class="content fl js-upload-file">
+                    <input id="input_file_1" class="hide" type="file" name="input_file">
+                    <div class="file js-file hide">
+                        <input readonly id="js-file" type="text" class=""></div>
+                    <button class="btn-red js-file-btn">上传文件</button>
+                    <span class="error-msg hide">参考图/文件必填项</span>
+                    <span class="progress"></span>
+                </div>
+            </li>
+            <li class="row clearfix">
+                <div class="label fl">
+                    <label>产品类型：</label>
+                </div>
+                <div class="content fl">
+                    <div class="select">
+                        <input id="prod_type" readonly type="text" placeholder="请选择产品类型">
+                    </div>
+                    <div class="dropdown-list">
+                        <ul id="prod_List">
+
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="row clearfix">
+                <div class="label fl">
+                    <label>资源标题：</label>
+                </div>
+                <div class="content fl">
+                    <div class="reso-title">
+                        <input id="reso_title" type="text" maxlength="30" placeholder="请输入资源标题（最多30字）">
+                    </div>
+                </div>
+            </li>
+            <li class="row clearfix">
+                <span class="examples">规范：产品+材质+工艺+图案特征（圆形，老鹰，飘带）</span>
+            </li>
+            <li class="row clearfix">
+                <div class="label fl" style="width: 54px;">
+                    <label>标签：</label>
+                </div>
+                <div class="content fl">
+                    <div class="reso-title" style="width: 290px;">
+                        <input id="label" style="width: 276px;" type="text" maxlength="50"
+                               placeholder="标签之间以符号“  ，”（逗号）隔开，（非必填项）">
+                    </div>
+                </div>
+            </li>
+            <li class="row clearfix">
+                <span class="examples">标签：对素材的描述，每个不超过5个字</span>
+            </li>
+            <li class="row clearfix">
+                <div class="reward"><span class="icon-reward"></span><span class="content-reward">上传素材可以获得20下载点呦！</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class=" floor">
+        <button id="btn_upload" class="btn-upload red-button" onclick="base.upload()">上传</button>
+        <button class="btn-close hollow-button" onclick="parent.layer.closeAll()">取消</button>
+    </div>
+</div>
+<script src="./lib/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="./lib/jquery.cookie.js" type="text/javascript"></script>
+<script src="./lib/layer/layer.js" type="text/javascript"></script>
+<script src="./js/common/common.js" type="text/javascript"></script>
+<script src="./js/common/cos_upload_file.js" type="text/javascript"></script>
+<script src="./js/upload.js" type="text/javascript"></script>
+</body>
+</html>

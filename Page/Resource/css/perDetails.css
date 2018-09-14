@@ -1,0 +1,121 @@
+p.perDet_cont{
+    /*display: none;*/
+   
+}
+p.perDet_cont b{
+    display: block;
+    padding: 0.1296rem 0.3333rem 0.1296rem 1.3185rem;
+    border-left: 3px solid #fff;
+    color: #888686;
+    font-size: 0.2592rem;
+} 
+
+div.cont_right{
+    background: #fff;  
+    height: 8.7777rem; 
+}
+div.cont_right li{
+    font-size: 0.2962rem;
+}
+form.perDetails_cont{
+    font-size: 12px;
+    width: 16.8148rem;
+    padding: 0.1296rem 0 0 0.5555rem;
+}
+form.perDetails_cont>div{
+    font-size: 0.3333rem;
+    padding-left: 5px;
+    color: #373737;
+    border-bottom: 1px solid #e5e5e5;
+    height: 1.2037rem;
+    line-height: 1.2037rem;
+}
+form.perDetails_cont dl{
+    padding-top: 0.4074rem;
+    display: flex;    
+}
+form.perDetails_cont dl dt{
+    width: 1.537rem;  
+}
+form.perDetails_cont dl dd{
+    width: 7.5925rem;   
+}
+form.perDetails_cont dl dt p{
+    text-align: right;
+    margin-right: 0.1851rem;
+}
+form.perDetails_cont dl p{
+    height: 46px;
+    line-height: 0.8518rem;
+}
+form.perDetails_cont p:last-of-type{
+    height: 1.7037rem;
+}
+form.perDetails_cont p input[type="radio"]{
+    margin: 0 0.1481rem 0 0.0555rem;
+}
+form.perDetails_cont p label{
+    margin-right: 0.4074rem;
+}
+form.perDetails_cont p input[type="text"]{
+    height: 0.574rem;
+    width: 4.6851rem;
+    padding: 0.1111rem 0.2222rem;
+    border: 1px solid #e5e5e5;
+}
+form.perDetails_cont p select{
+    height: 0.574rem;
+    width: 1.4629rem;   
+    border: 1px solid #e5e5e5;
+    margin-right: 0.0925rem;
+}
+form.perDetails_cont p select option{
+    z-index: 19;  
+}
+button#perDetBtn{
+    width: 1.9444rem;
+    height: 0.6851rem;
+    text-align: center;
+    line-height: 0.6851rem;
+    background-color: #e95758;
+    color: #fff;
+    margin-top: 0.3703rem;
+}
+div.perDetail_headPic{
+    width: 2.8518rem;
+    height: 2.9259rem;
+    border: 1px solid #e5e5e5;
+    background-color: #f9f9f9;
+    margin-left: 5.1651rem;
+}
+div.perDetail_headPic>p{
+    width: 1.7777rem;
+    height: 1.7777rem;    
+    border-radius: 50%;
+    margin: 0.2592rem 0.5555rem;
+    overflow: hidden;
+    font-size: 0.2592rem;
+    color: #525252;
+    position: relative;
+}
+div.perDetail_headPic>p a{
+    display: inline-block;
+    width: 100%;
+    height: 0.4814rem;
+    line-height: 0.4814rem;
+    text-align: center;
+    position: absolute;
+    background: rgba(255,255,255,0.6);
+    bottom: 0.1851rem;
+    color: #e95758;
+}
+div.perDetail_headPic img{
+    width: 1.7777rem;
+    height: 1.7777rem;
+    
+}
+div.perDetail_headPic span{
+    display: block;
+    width: 100%;
+    text-align: center;
+}

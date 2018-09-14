@@ -1,0 +1,399 @@
+ul,li,ol,dl,dt,dd,div{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+/*-- 任务单 --*/
+div.refund_content{
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 0.1481rem 0.3703rem;   
+}
+div.refund_content>p{
+    height: 0.9259rem;
+    line-height: 0.9259rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+div.refund_content i.icon-naozhong3{
+    font-size: 0.3888rem;
+    color: #b3b3b3;
+    margin-right: 0.0925rem;
+}
+ul.taskCont_head{
+    padding-top: 0.3148rem;
+}
+ul.taskCont_head li:first-of-type{
+    width: 100%;
+    padding: 0 0.2962rem;
+    height: 0.7962rem;
+    background-color: #f6f6f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ul.taskCont_head>li button{
+    height: 0.574rem;
+    width: 105px;
+    padding: 0 0.2962rem;
+    line-height: 0.574rem;
+    background-color: #e95758;
+    color: #fff;
+}
+ul.taskCont_head li:last-of-type{
+    height: 0.6666rem;
+    line-height: 0.5rem; 
+    padding: 0.0925rem 0.2962rem; 
+    color: #212121;
+    border: 1px solid #ddd;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;    
+}
+ol.taskCont_body{
+
+}
+ol.taskCont_body>li{
+    margin-top: 0.2592rem;
+    color: #303030;
+    border-top: 1px solid #e6e6e6 ;
+}
+ol.taskCont_body>li:first-of-type{
+    border: none;
+}
+ol.taskCont_body>li h4{
+    height: 0.5925rem;
+    display: flex;
+    padding: 0 0.074rem;
+    align-items: center;
+    justify-content: space-between;
+}
+ol.taskCont_body>li h5{
+    height: 0.5925rem;
+    line-height: 0.5925rem;
+    padding: 0 0.074rem;  
+}
+ol.taskCont_body>li div{
+    height: 0.5185rem;
+    line-height: 0.5185rem;    
+    padding: 0 0.074rem;
+}
+ol.taskCont_body>li  button.replyshowBtn{
+    float: right;
+    margin-right: 0.1851rem;
+    background-color: #fff;
+}
+form.taskCont_reply{
+    display: none;
+    height: 4.3074rem;
+}
+form.taskCont_reply>h3{
+    width: 16.7777rem;
+    height: 1.6481rem;
+    border: 1px solid #e6e6e6;
+    position: relative;
+    font-weight: normal;
+    font-size: 12px;
+}
+form.taskCont_reply>h3>i{
+    font-size: 0.3703rem;
+    position: absolute;
+    top: -0.2962rem;
+    right: 0.1296rem;
+    z-index: 55;
+    color: #e6e6e6;
+}
+form.taskCont_reply>h3>textarea{
+    width: 16.7777rem;
+    height: 1.6481rem;
+    color: #212121;
+}
+form.taskCont_reply>h3>p{
+   position: absolute;
+   bottom: 0;
+   right: 0.2962rem;   
+}
+ol.taskCont_body h6{
+    display: flex;
+    margin-top: 0.1481rem;
+}
+ol.taskCont_body h6>div.piclist{
+    width: 1.4814rem;
+    height: 1.4814rem;
+    border: 1px solid #e5e5e5;
+    margin-right: 0.1481rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ol.taskCont_body h6 img{
+    max-width: 1.4814rem;
+    max-height: 1.4814rem;
+}
+div.piclist>label i{
+   margin: 0 0.1851rem;
+   
+}
+div.piclist>label{
+    position: absolute;
+    z-index: 50;
+    width: 0.8888rem;
+    height: 0.8888rem;
+}
+label.upload_label{
+    /*display: none;*/
+}
+div.piclist>p.upload_float{
+    position: absolute;
+    left: 0;
+    top: 0;   
+    width: 1.4814rem;
+    height: 1.4814rem;
+    z-index: 55;
+    cursor: pointer;
+    background: rgba(13,20,24,0.6);
+    text-align: center;
+    line-height: 1.4814rem;   
+    color: #fff; 
+    display: none;
+}
+button.targetReplyBtn{
+    float: right;
+    width: 1.6481rem;
+    height: 0.6296rem;
+    background-color: #5094c8;
+    color: #fff;  
+    border-radius: 0.0555rem; 
+    margin: 0.1666rem 0.2592rem 0.2222rem 0 ;
+}
+/*退货处理的部分*/
+dl.Refund_content_box{
+    width: 17.1111rem;
+    border-top: 1px solid #ddd;
+    padding-top: 0.1111rem;
+    display: flex;
+}
+dl.Refund_content_box p{
+    height: 0.5185rem;
+    line-height: 0.5185rem;
+}
+dl.Refund_content_box>dt{
+    width: 1.3888rem;
+    color: #212121;
+}
+dl.Refund_content_box>dt>p:nth-of-type(2){
+    height: 2.1111rem;
+}
+dl.Refund_content_box>dt>p:nth-of-type(3){
+    margin-top: 0.1481rem;
+}
+dl.Refund_content_box>dd{
+    width: 15.4629rem;
+}
+dl.Refund_content_box>dd label{
+    margin-right: 0.6481rem;
+}
+dl.Refund_content_box>dd input[name="freight_bear"]{
+    margin-right: 0.1481rem;
+}
+div.deliveryadd_Refund_box{
+    width: 100%;
+    height: 2.1111rem;
+    margin-bottom: 0.1481rem;
+}
+div.deliveryadd_Refund_cont{
+    height: 1.4444rem;
+    overflow-y: scroll;
+    margin-top: 0.0925rem;
+}
+div.deliveryadd_Refund_box>p>em{
+    display: inline-block;
+    width: 1.6666rem;
+    height: 0.5185rem;
+    text-align: center;
+    border-radius: 0.0555rem;
+    cursor: pointer;
+}
+div.deliveryadd_Refund_box>p>em.bacred{
+    color: #fff;
+    background-color: #e84b4c;
+}
+h5.deliveryadd_Refund{
+    height: 0.574rem;
+    line-height: 0.574rem;
+    margin-top: 0.1111rem;
+}
+/*h5.deliveryadd_Refund:first-of-type{
+    display: block;
+}*/
+b.deliveryadd_new_Refund{
+    float: right;
+}
+h5.deliveryadd_Refund strong{
+    display: inline-block;
+    width: 2.3888rem;
+    height: 0.537rem;
+    line-height: 0.537rem;
+    text-align: center;
+    border: 1px solid #d5d5d5;
+    cursor: pointer;
+}
+h5.deliveryadd_Refund:hover{
+    background-color: #fbf2f2;
+}
+h5.deliveryadd_Refund strong:hover{
+    border-color: #e84b4c;
+}
+h5.deliveryadd_Refund strong.bacg_cuntermark{
+    background: url(../images/icon/cuntermark.svg) 2rem 0.1851rem no-repeat;
+    background-size: 0.4814rem;
+    border-color: #e84b4c;
+}
+div.deliveryadd_Refund_box b{
+    color: #eb6364;
+    cursor: pointer;
+}
+b.deliveryadd_new_Refund{
+    margin-right: 0.2592rem;
+}
+span.toolbar_Refund{
+    float: right; 
+}
+span.name_Refund{
+    display: inline-block;
+    width: 1.1481rem;
+    text-align: center;
+    margin: 0 0.1111rem;
+}
+span.address_Refund{
+    display: inline-block;
+    margin: 0 0.1111rem;   
+    width: 5.5555rem;
+    height: 0.2592rem;
+    line-height: 0.2592rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis; /*超出的设置为省略号*/
+}
+span.toolbar_Refund b{
+    margin: 0 0.2592rem;
+}
+div.deliveryadd_Refund_box>h6.address_show{
+    width: 1.2037rem;
+    height: 0.7222rem;
+    line-height: 0.7222rem;
+    cursor: pointer;
+}
+h6.address_show>img{
+    margin: 0.2407rem 0 0 0.0555rem;
+}
+input.charge_fees{
+    width: 2.537rem;
+    height: 0.574rem;
+    line-height: 0.574rem;
+    border: 1px solid #d5d5d5;
+    padding: 0 0.1111rem;
+    margin-right: 0.2592rem;
+}
+dl.Refund_content_box dd i{
+    margin-left: 0.537rem;
+    color: #ababab;
+}
+textarea.fees_reason{
+    margin-top: 0.1851rem;
+    width: 15.4259rem;
+    height: 1.3703rem;
+    border: 1px solid #e7e7e7;
+}
+dl.Refund_content_box>dd>p>strong{
+    display: inline-block;
+    width: 1.9444rem;
+    height: 0.6851rem;
+    line-height: 0.6851rem;
+    text-align: center; 
+    border-radius: 0.0555rem; 
+    cursor: pointer;
+}
+strong.agree_return_Refund{
+    background-color: #e95758;
+    color: #fff;
+    margin-right: 0.2037rem;
+}
+strong.refuse_Refund{
+    background-color: #e7e7e7;
+}
+dl.Refund_content_box>dd>p:last-of-type{
+    float: right;
+    margin: 0.2962rem 0 0.7222rem 0;
+}
+/*拒绝退货的理由的模块*/
+div.refused_return_cont{
+    position: fixed;
+    top: 0;
+    left: 11.7962rem;
+    width: 9.6851rem;
+    padding: 0.2222rem 0.3703rem 0.2222rem 0.4814rem;
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+    z-index: 39;
+    display: none;
+}
+div.refused_return_cont>p{
+    height: 0.9259rem;
+    line-height: 0.9259rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+form.refused_return_reply{
+    /*height: 4.3074rem;*/
+}
+
+form.refused_return_reply>h3{
+    width: 8.7962rem;
+    height: 1.6851rem;
+    border: 1px solid #e6e6e6;
+    position: relative;
+    font-weight: normal;
+    font-size: 12px;
+    margin-top: 0.3518rem;
+}
+form.refused_return_reply>h3>textarea{
+    width: 8.7592rem;
+    height: 1.6481rem;
+    color: #212121;
+}
+form.refused_return_reply>h3>p{
+   position: absolute;
+   bottom: 0;
+   right: 0.2962rem;   
+}
+
+form.refused_return_reply h6{
+    display: flex;
+    margin-top: 0.1481rem;
+}
+form.refused_return_reply h6>div.piclist{
+    width: 1.4814rem;
+    height: 1.4814rem;
+    border: 1px solid #e5e5e5;
+    margin-right: 0.1481rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form.refused_return_reply h6 img{
+    max-width: 1.4814rem;
+    max-height: 1.4814rem;
+}
+button.refused_ReplyBtn{    
+    width: 1.6481rem;
+    height: 0.6296rem;
+    background-color: #e95758;
+    color: #fff;  
+    border-radius: 0.0555rem; 
+    margin: 1.0185rem 0 0.4444rem 3.6111rem;
+}

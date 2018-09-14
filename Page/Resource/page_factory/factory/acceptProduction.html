@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>接受生产页面</title>
+	<link rel="stylesheet" href="../../lib/loading/css/global.css">
+    <link href="../../css/common/base.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/layer.css" />
+    <style>
+    	input::-webkit-input-placeholder { /* WebKit browsers */
+		    color: #ADADAD;
+		    font-size: 12px;
+		}
+		input::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		    color: #ADADAD;
+		    
+		}
+		input::-moz-placeholder { /* Mozilla Firefox 19+ */
+		    color: #ADADAD;
+		    
+		}
+		input::-ms-input-placeholder { /* Internet Explorer 10+ */
+		    color: #ADADAD;
+		    
+		} 
+		body{
+			background-color: #fff;
+		}
+    	.content{
+    		width: 400px;
+    		height: 200px;
+    		padding: 10px 30px 0 30px;
+    		font-size: 12px;
+    		background-color: #fff;
+    	}
+    	.content>h5{
+    		height: 40px;
+    		line-height: 40px;
+    		font-weight: 560;
+    		text-align: center;
+    	}
+    	.content>p span{
+    		margin-right: 10px;
+    	}
+    	.content>p b{
+    		color: #E84B4C;
+    	}
+    	.content>p{
+    		height: 45px;
+    		line-height: 45px;
+            text-align:  center;
+    	}
+    	.content>h6{
+    		height: 60px;
+    		line-height: 60px;
+            text-align:  center;
+    	}
+    	.prdCycle_val{
+    		padding-left: 3px;
+    		width: 146px;
+    		height: 29px;
+    		line-height: 29px;
+    		border: 1px solid #D5D5D5;
+		    border-radius: 4px;
+		    
+    	}
+    	.btnStyle{
+    		display: inline-block;
+    		width: 112px;
+    		height: 35px;
+    		line-height: 35px;
+    		border-radius: 4px;
+    		border: 1px solid #E84B4C;
+    		color: #E84B4C;
+    		background-color: #fff;
+    		margin-left: 20px;
+    		cursor: pointer;
+    	}
+    	.confirmBtn_PayPrice,.confirmBtn{
+    		background-color: #E84B4C;
+    		color: #fff;
+    	}
+    	.layer_cont_tip{
+    		padding: 10px 0;
+    	}
+    	.layer_cont_tip>h6{
+    		margin-top: 20px;
+    		text-align: center;
+    	}
+    	.layer_cont_tip>p{
+    		text-align: center;
+    	}
+    </style>
+   	
+</head>
+
+<body>
+    <div class="content">
+    	<h5>接受生产</h5>
+    	<p>
+        	<span>订单定价:</span>  
+			<b></b>
+        </p>
+        <p>
+        	<span>生产周期:</span>  
+			<input class="prdCycle_val" maxlength="4" placeholder="请输入您的生产周期"
+						onkeyup="value=value.replace(/[^\d]/g,'')" ng-pattern="/[^a-zA-Z]/"/>天
+        </p>
+		<h6>
+			<button class="confirmBtn_PayPrice btnStyle">确认</button>
+			<button class="cancelBtn btnStyle">取消</button>
+		</h6>
+    </div>
+    
+    
+    
+    
+    <!-- 测试用开始 -->
+    <script src="../../lib/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="../../lib/jquery.cookie.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../../js/baiduTemplate.js" ></script>
+    <script src="../../lib/layer/2.4/layer.js" rel="stylesheet"></script>
+    <script src="../../js/common/common.js" type="text/javascript"></script>
+    <script>
+    	var orderid = Common.getUrlParam("orderid");
+    	var customid = Common.getUrlParam("customid");
+    	var goodsid = Common.getUrlParam("goodsid");
+    	var deadline = parseInt( Common.getUrlParam("deadline") || 0 );
+    	var finalprice = parseInt( Common.getUrlParam("finalprice") || 0);
+    	var prdCycle_val = 0;
+    	$(".content b").text("￥"+ finalprice );
+    	//确认按钮  事件
+    	$("button.confirmBtn_PayPrice").click(function(){
+    		prdCycle_val = parseInt( $(".prdCycle_val").val() || 0 );
+    		console.log( prdCycle_val );
+    		if ((( deadline >= prdCycle_val ) && prdCycle_val != 0) || deadline == 0 ) {
+    			
+    			AcceptProd.AcceptProduction();
+    		} else{
+    			
+    			Common.msg("该订单的生产周期为"+ deadline +"天，请重新输入！");
+    			
+    		}
+    	});
+    	$("button.cancelBtn").click(function(){
+    		parent.layer.closeAll();
+    	});
+    	
+    	var AcceptProd = {
+			layerIndex: 0,
+		    request: function (data, callback, getDataInterface, functionalInterface) {
+		        var url = Common.getUrl()['order'];
+		        if (getDataInterface) {
+		            url += Common.getDataInterface()[getDataInterface];
+		        }
+		        if (functionalInterface) {
+		            url += Common.functionalInterface()[functionalInterface];
+		        }
+		        Common.ajax(url, data, true, callback, function (error) {
+		            //接口调用错误处理
+		        });
+		    },
+		    AcceptProduction: function () {//接受生产 --- 车间、工厂
+		        	AcceptProd.request({
+		                "orderid": orderid,
+		                "userid": top.Main.userInfo.userid,
+		                "customid": customid,
+		                "roletype": top.Main.userInfo.roletype,
+		                "token": top.Main.userInfo.token,
+		                "goodsid": goodsid,
+		                "commandcode": 171,
+					    "isreceive": 1
+					}, function (data) {
+						console.log( data );
+
+		                if (data && data.status && data.status.msg) {
+		                	if(parent.base&&parent.base.init)
+							{
+								parent.base.init();
+							}
+		                    Common.msg(data.status.msg,data.status.code==0?200:null,3000,function () {
+								parent.layer.closeAll();
+							});
+		                    
+		                }
+		            }, 'acceptProduction', null);  
+		   }
+		   
+		}
+    </script>
+    
+    <!-- 测试用结束 -->
+</body>
+</html>

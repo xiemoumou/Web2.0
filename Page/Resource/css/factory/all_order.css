@@ -1,0 +1,331 @@
+body{
+    background:#fff;
+}
+
+.header{
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background-color: #fff;
+    height: 99px;
+    padding: 20px 26px 0 26px;
+}
+
+.tab ul li{
+    float: left;
+    width: 100px;
+    position: relative;
+    height: 32px;
+    font-size: 16px;
+    color: #E74B4B;
+    margin-right: 10px;
+    text-align: left;
+    font-family: "微软雅黑";
+}
+
+.content .tab ul li a{
+    float: left;
+}
+
+.content .tab ul li.active{
+    border-bottom: 2px solid #E74B4B;
+}
+
+.content .tab ul li:hover{
+    border-bottom: 2px solid #E74B4B;
+}
+
+.content .tab #all_order,.content .tab #wait_order{
+    float: left;
+    display: block;
+    width: 26px;
+    height: 15px;
+    background-color: #e84b4c;
+    margin-left: 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    line-height: 16px;
+}
+.content .tab #afterProcessing_ord{
+	width: 65px;
+}
+.content .tab #inReturns_click,.content .tab #inReimburse_click{
+	width: 80px;
+}
+
+.tab #tabmode i.reddot{
+    font: 13px "微软雅黑";
+    color: #fff;
+    background-color: #e84b4c;
+    border-radius: 14px;
+    margin-left: 5px;
+    padding: 0 3px;
+    position: absolute;
+    top: 0px;
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+}
+
+
+
+.content .sort{
+    position: absolute;
+    top: 44px;
+    color: #2e2e2e;
+}
+
+.content .sort ul li{
+    float: left;
+    width: 86px;
+    height: 34px;
+    border: 1px solid #E1E1E1;
+    text-align: center;
+    line-height: 34px;
+}
+.content .sort ul li.hideRborder{
+    border-right: none;
+}
+
+.content .urgent{
+    position: absolute;
+    left: 379px;
+    width: 54px;
+    top: 9px;
+}
+
+.content .thead ul{
+    position: absolute;
+    top: 58px;
+    width: calc(100% - 52px);
+    border: 1px solid #d5d5d5;
+    background-color: #f2f2f2;
+}
+.content .thead ul li{
+   float: left;
+   height: 40px;
+   line-height: 40px;
+   text-align: center;
+}
+
+.content .thead ul li span{
+    font:14px "微软雅黑";
+    color: #2e2e2e;
+}
+
+.content .thead ul li:nth-of-type(1){
+    width: 120px;
+    padding-left: 24px;
+}
+
+.content .thead ul li:nth-of-type(2){
+    width: 110px;
+    margin-left: 12px;
+}
+
+.content .thead ul li:nth-of-type(3){
+    width: 40px;
+}
+
+.content .thead ul li:nth-of-type(4){
+    width: 132px;
+    margin-left: 37px;
+}
+
+.content .thead ul li:nth-of-type(5){
+    width: 136px;
+    margin-left: 5px;
+}
+.content .thead ul li:nth-of-type(6){
+    width: 85px;
+    margin-left: 30px;
+}
+.content .thead ul li:nth-of-type(7){
+    width: 80px;
+}
+.content .thead ul li:nth-of-type(8){
+    width: 80px;
+}
+
+.content .order{
+    overflow-y:scroll;
+    overflow-x: hidden;
+    position: absolute;
+    top: 99px;
+    margin: 10px 26px 0 26px;
+    width: calc(100% - 52px);
+}
+
+/*本页通用样式*/
+           /*--显示数字  红色背景 -*/
+            em.baccred{
+            	display: inline;
+                font-size: 12px;
+                padding: 2px 5px;
+                border-radius: 10px;
+                background-color: #e95758;
+                color: #fff;
+                margin-left: 4px;
+            }
+            
+        /*--盒子模型--*/
+        ul,li,ol,dl,dt,dd,div,span,h2,h3,h4,h5,h6{
+		    box-sizing: border-box;
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing: border-box;
+		}
+		
+		.order_cont_service{
+				/*width: 889px;*/
+        		border: 1px solid #dedede;
+        		margin-top: 18px;
+        	}
+        	.order_cont_service:first-of-type{
+        		margin: 0;
+        	}
+        	.order_service_top{
+        		height: 38px;
+        		line-height: 38px;
+        		background-color: #f5f5f5;
+        		padding: 4px 20px;
+        		font-size: 12px;
+        	}
+        	.order_service_top>p{
+        		height: 30px;
+        		line-height: 30px;
+        		/*display: flex;
+        		justify-content: space-between;*/
+        	}
+        	.order_service_top>p em{
+        		margin-left: 6px;
+        	}
+        	.order_service_top>p:nth-of-type(2){
+        		margin-left: 6px;
+        		color: #adadad;
+        	}
+        	.order_service_middle{
+        		display: flex;
+        		padding: 15px;
+        	}
+        	
+        	.order_service_middle>div{
+        		height: 130px;
+        		width: 718px;
+        	}
+        	
+/*---订单的图片  长宽高   客户预算   订单金额   数量  周期  ---*/
+
+figure.pic_order{
+	width: 130px;
+	height: 130px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border: 1px solid #e5e5e5;
+}
+figure.pic_order>img{
+	max-height: 128px;
+	max-width: 128px;
+}
+.order_parameter{
+	width: 712px;
+	display: flex;
+	justify-content: space-between;
+	height: 80px;
+	margin-left: 15px;
+	color: #6f6f6f;
+}	
+
+.order_parameter li,.order_parameter li p{
+	text-align: center;
+	color: #6f6f6f;
+}
+.order_li_first{
+	width: 60px;
+}
+.order_li_second{
+	width: 60px;
+}
+.order_li_third{
+	width: 180px;	
+}
+.order_parameter .order_li_fouth{
+	width: 140px;
+	text-align: left;
+	padding-left: 10px;
+}
+.order_li_fifth{
+	width: 60px;
+}
+.order_li_sixth{
+	width: 80px;
+}
+/*----客服角色  的  按钮 ---*/	
+.order_li_last{
+	width: 90px;
+	height: 80px;
+	text-align: center;
+	font-size: 12px;
+	position: relative;
+}
+.order_li_last>button{
+    /*position: absolute;*/
+    /* left: -10px; */
+    /* bottom: -41px; */
+    width: 88px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #e84b4c;
+    color: #fff;
+    cursor: pointer;
+    z-index: 99;
+    margin-top: 10px;
+}
+.order_li_last button:hover{
+	color: #e84b4c;
+	border: 1px solid #e84b4c;
+	background-color: #fff;
+}
+/*------滑动尺------*/
+.order_service_bottom{
+	width: 99%;
+	height: 50px;
+	position: relative;
+	margin-left: 12px;
+}
+.slide-rule-os{
+	width: 450px;
+	margin: 24px 25px;	
+}
+.slide-rule-os .ld,.slide-rule-os .rd{
+	display: none;
+}
+
+
+
+.leave-message .ok {
+    width: 56px;
+    height: 26px;
+    position: absolute;
+    top: 12px;
+    left: 807px;
+}
+
+/*续订订单*/
+.renew{
+    background-color: #E84B4C;
+    color: #fff;
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 4px;
+}

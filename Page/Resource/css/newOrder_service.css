@@ -1,0 +1,362 @@
+body{
+	background-color: #fff;
+}
+div,p{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+div.cont_right{
+    overflow: hidden;
+	width: 886px;
+    background-color: #fff;
+    padding: 0 30px;
+}
+div.cont_right .orderhead{
+    width: 886px;
+    height: 58px;
+    line-height: 58px;
+    font-size: 18px;
+}
+div.cont_right>form{
+    font-size: 12px;
+    width: 886px;
+}
+.neworder_content>ul{
+    width: 100%;
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    flex-wrap: wrap;
+}
+.neworder_content>ul>li{
+    display: flex;
+    align-items: center;
+    color: #4d4b4b;
+}
+.neworder_content>ul>li.lihead{
+    height: 61px;   
+}
+.neworder_content>ul>li.litop{
+    margin-top: 14px;    
+}
+/*.neworder_content>ul>li.litop:first-of-type{
+    position: relative;
+}
+.neworder_content>ul>li.litop:first-of-type input{
+    padding: 10px 0.6444rem  8px 0.2222rem;
+}
+.neworder_content>ul>li.litop:first-of-type span{
+    position: absolute;
+    right: 0.2407rem;
+    top: 10px;
+    color: #aeaeae;
+}*/
+.select_box{
+	position: relative;
+}
+ul.option{
+	position: absolute;
+	border: 1px solid #e5e5e5;
+	max-height: 300px;
+	overflow-y: scroll;
+	display: none;
+    z-index: 100;
+    overflow-x: hidden;
+    left: -1px;
+}
+.neworder_content>ul>li.litop:first-of-type span{
+    width: 78px;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+div.select_box ul li{
+	cursor: pointer;
+}
+
+div.select_box ul li:hover{
+    background-color: #d5d5d5;
+}
+
+.neworder_content>ul>li.limiddle{
+	
+    width: 100%;
+    height: 10px; /*0.537rem*/
+   line-height: 23px;
+    color: #ea0600; 
+    justify-content: space-between;  
+}
+.neworder_content li.limiddle span{
+	display: inline-block;
+	height: 23px;
+	width: 150px;	
+	visibility: hidden;/*visible*/
+}
+.neworder_content>ul>li.limiddle embed{
+	margin-right: 8px;
+    width: 14px;
+    height: 14px;
+}
+
+.neworder_content>ul>li.libottom{
+    margin-bottom: 14px;  
+}
+li.libottom input{
+    padding: 0 5px;
+}
+.neworder_content li i.icon-asterisk{   
+    color: #e40f0f;
+}
+.borderGray{
+    box-sizing: border-box;
+    display: inline-block;
+    border: 1px solid #d5d5d5;
+    padding: 10px 10px 8px 6px;
+}
+div.neworder_content ul .borderRed{
+	border: 1px solid #e95758;
+}
+
+.ordertype_div{
+    background: url(../images/icon/arr.svg) 62px 6px no-repeat;
+    background-size: 24px;
+    cursor: pointer;
+}
+
+div.typeselect,div.type_tech{
+    width: 100px;
+    height: 36px;
+    cursor: pointer;
+    margin-right: 5px;
+    background: url(../images/icon/arr.svg) 72px 6px no-repeat;
+    background-size: 24px;
+    position: relative;
+}
+div.type_tech>span{
+	display: inline-block;
+	width: 60px;
+	padding-right: 16px;
+	height: 15px;
+    line-height: 15px;
+	overflow: hidden;
+}
+div.type_tech>h5{
+	display: none;
+	position: absolute;
+	z-index: 99;
+}
+div.typeselect ul{
+	width: 100%;
+    top: 33px;
+    left: 0;
+    background-color: #fff;
+    z-index: 100;
+}
+div.typeselect ul li{
+    width: 93%;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+    padding-left: 6px;
+}
+span.ordertype_span{
+    display: inline-block; 
+}
+.border_gray{
+	border: 1px solid #d5d5d5;
+}
+div.ordertype_div ul{
+    width: 100%;
+    z-index: 9;
+    background-color: #fff;
+}
+div.ordertype_div ul li{
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+}
+div.typeselect>span{
+    display: inline-block;                  
+}
+div.sizediv{
+    position: relative;
+    height: 33px;
+    border: 1px solid #d5d5d5;
+    margin: 0 6px 0 12px;
+}
+div.sizediv>span{
+    display: inline-block;
+    height: 31px;
+    line-height: 31px;
+    padding: 0 8px;
+    background-color: #ebebeb;
+}
+div.sizediv>input{
+    width: 80px;  
+}
+div.neworder_content input.order_customerprice,
+div.neworder_content input.order_evaluate{
+    width: 99px;
+    padding-left: 6px;
+    margin-right: 5px;
+}
+div.order_limittimebox{
+    width: 119px;
+    position: relative;
+}
+div.neworder_content ul div.order_limittimebox>input{
+    width: 117px;
+    padding: 10px 25px 8px 6px;
+    position: relative;
+}
+.timer_icon{
+    position: absolute;
+    right:0;
+    background: url(../images/icon/design/timer_img.png) no-repeat 90px center;
+    background-size:16px;
+    min-height: 34px;
+    cursor: pointer;
+}
+div.order_limittimebox>i{
+    position: absolute;
+    font-size: 16px;
+    top: 10px;
+    right: 6px;
+    cursor: pointer;
+}
+/*-------上传参考图片和附件的区域---START------------*/
+ul.upload_pic_remark{
+    width: 100%;
+    display: flex;
+}
+ul.upload_pic_remark>li{
+	display: block; 
+    width: 100%;   
+    /*border: 1px solid #e6e6e6;*/
+    min-height: 269px;
+}
+ .explain{
+     flex: 1;
+ 	min-height: 35px;
+	display: inline-block;
+	border: 1px solid #d5d5d5;
+	border-radius: 4px;
+	padding: 0 8px;
+}
+#upload_btn{
+	width: 100px;
+    height: 100px;
+}
+#upload_btn .text{
+	text-align: center;
+    width: 100%;
+    left: 0;
+    top: 66px;
+}
+#uploadedList .img{
+	background-color: #f0f0f0;
+    width: 100px;
+    height: 100px;
+    float: left;
+    position: relative;
+    margin-right: 16px;
+    border: 1px solid #f0f0f0;
+    text-align: center;
+}
+#uploadedList .img img{
+    max-width: 100px;
+    max-height: 100px;
+}
+ul.upload_pic_remark>li>div{
+	/*display: flex;
+	width: 100%;
+	margin-top: 18px;*/
+}
+/*.upload{
+	margin: -15px 0 0 70px;
+}*/
+ul.upload_pic_remark>li.toDesigner_cont{ 
+	/*border-top: 3px solid #e6e6e6;*/
+}
+
+
+/*-------上传参考图片和附件的区域---END------------*/
+
+
+/*  页面弹框调整  */
+.settings_flex {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    width: 760px;
+}
+
+
+.zb-dorpdownbox h5{
+    display: none;
+    width: 268px;
+    overflow: hidden;
+    background-color: #fafafa;
+    position: absolute;
+    top: 34px;
+    left: -1px;
+    border: 1px solid #d5d5d5;
+    border-top: none;
+    z-index: 2000;
+    padding: 8px 0;
+}
+
+.zb-dorpdownbox h5 label {
+    display: inline-block;
+    padding-right: 3px;
+    position: relative;
+    font: 400 12px 微软雅黑;
+    padding: 5px;
+}
+.zb-dorpdownbox h5 button
+{
+    width: 37px;
+    height: 19px;
+    float: left;
+    line-height: 19px;
+    margin-right: 10px;
+
+}
+.newOrder_changeL{
+    display: block;
+    background-color: #e84b4c;
+    border-radius: 4px;
+    color: #fff;
+    font: 12px "微软雅黑";
+    cursor: pointer;
+    font-weight: 400;
+}
+.newOrder_changeR{
+    border: 1px solid #e84b4b;
+    color: #e84b4b;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    font: 12px "微软雅黑";
+    font-weight: 400;
+}
+.newOrder_p{padding-top: 8px;overflow: hidden;padding-left: 5px;}
+
+.lihead{
+    position: relative;
+}
+.evaluation.active{
+    border: 1px solid transparent;
+    width: 99px;
+    height: 34px;
+    position: absolute;
+    left: 65px;
+    top: 14px;
+    z-index: 1000;
+    background: url(../lib/layer/theme/default/loading-2.gif) no-repeat;
+    background-color: #f1f1f16e;
+    background-size: 20%;
+    background-position: center;
+}

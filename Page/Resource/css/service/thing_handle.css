@@ -1,0 +1,138 @@
+/*事物处理*/
+body{
+    background-color: #fff;
+}
+.container{
+    margin: 20px;
+}
+
+.head ul li span{
+    color: #E84B4C;
+}
+
+.head ul li{
+    font: 16px "微软雅黑";
+    display: inline-block;
+    border-bottom: 2px solid #E84B4C;
+    height: 33px;
+    padding: 0 10px;
+    position: relative;
+}
+
+#redDot{
+    display: inline-block;
+    background-color: #E84B4C;
+    font-size: 14px;
+    color: #FFFFFF;
+    border-radius: 11px;
+    margin-left: 5px;
+    padding: 0 8px;
+}
+
+.redDot-none{
+    border-bottom: 3px solid #E84B4C;
+    background-color: transparent !important;
+    border-radius: 0px !important;
+}
+
+.deliver{
+    height: 264px;
+    border: 1px solid #D5D5D5;
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+.title{
+    position: relative;
+    padding-left: 14px;
+    font: 14px 微软雅黑;
+    line-height: 45px;
+    height: 45px;
+    color: #E84B4C;
+    background-color: #F5F5F5;
+    text-align: center;
+}
+
+.title .span-1{
+    position: absolute;
+    left: 10px;
+}
+
+.title .span-2{
+    color:#444444;
+}
+.begin-time,.begin-time-next{
+    height: 31px;
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+}
+.end-time{
+    height: 31px;
+    display: block;
+    text-align: center;
+    margin-top: 60px;
+}
+.begin-time section{
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+}
+.end-time section{
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+}
+.end-time div{
+    margin-left: 30px;
+}
+.begin-time div{
+    margin-left: 30px;
+}
+.begin-time-next div{
+    margin-left: 30px;
+}
+.begin-time-next section{
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+}
+.deliver-btn{
+    width: 160px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #e84b4c;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 0 auto;
+    margin-top: 30px;
+    cursor: pointer;
+}
+.deliver-next-btn{
+    width: 160px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #e84b4c;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 0 auto;
+    margin-top: 56px;
+    cursor: pointer;
+}
+.deliver-work{
+    width: 160px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #e84b4c;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin: 0 auto;
+    margin-top: 56px;
+    cursor: pointer;
+}

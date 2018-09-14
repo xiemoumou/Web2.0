@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+        <title>吐槽展示和发布</title>
+        <link rel="stylesheet" href="./css/reset.css" />
+        <link rel="stylesheet" href="./css/iconfont.css" />
+        <link rel="stylesheet" href="./css/iconfont1.css" />
+        <link rel="stylesheet" href="./css/workstage.css"/>
+        <link rel="stylesheet" href="./css/layer.css" />
+        <link rel="stylesheet" href="./css/spitslot.css" />
+        <script type="text/javascript" src="./js/flexible.js" ></script>
+        <script type="text/javascript" src="./js/jquery-1.11.0.min.js" ></script>
+        <script type="text/javascript" src="./js/baiduTemplate.js"></script>
+        <script type="text/javascript" src="./js/jquery.cookie.js" ></script>
+        <script type="text/javascript" src="./js/layer.js" ></script>       
+        <script type="text/javascript" src="./js/common.js" ></script>
+        
+    </head>
+	<body>
+		<div id="header">
+            <div>
+                <img src="./images/icon/logo.png" alt="logo"/>
+                <h4 class="active">我的工作台</h4>
+                <form class="searchbar"> 
+                    <div class="mod_select searSort">
+                        <div class="select_box">
+                            <span class="select_txt">分&nbsp;&nbsp;类</span>                     
+                            <ul class="option_">
+                                <li>分&nbsp;&nbsp;类</li>
+                                <li>用户名</li>
+                                <li>订单号</li>
+                                <li>客服号</li>
+                            </ul> 
+                        </div>                       
+                    </div>
+                    
+                     <input type="text" id="searchCon" value="" placeholder="请输入您要搜索的订单号等"/>
+                    <button class="searBtn"><i class="icon iconfont icon-sousuo"></i></button>
+                </form>
+                <dl >
+                    <dt class="ddstyle"><span class="user_nickname">风吹云散</span><img class="imgcol" src="./images/icon/arr.svg"/></dt>
+                    <dd class="ddstyle center hid" >个人中心</dd>
+                    <dd class="ddstyle exit hid">退出</dd>
+                </dl>                                           
+            </div>
+            <img src="./images/images/spitslot.jpg" />
+        </div>
+        
+        <!--主内容-->
+        <div id="content">       	       	
+        	<div class="spitslot_box">
+        		<!-- 最新提交的反馈意见的排名 -->
+        		<ol id="spitslot_content">
+        			<li>
+        				<p><img src="./images/images/mr.png"</p>
+        				<div>
+        					<h4><strong>关于开通手机验证登录的建议</strong></h4>
+							<h5 class="spitslot_cont">
+							     这些年一个人，风也过，雨也走，有过泪，有过错，还记得坚持些什么。真爱过才会痛。雨也走，有过泪，有过错，还记得坚持些什么。
+							     真爱过才会痛。多少年一个人真爱过才会痛。多少年一个人，风也过，雨也走，有过泪，
+							 	多少年一个人，风也过，这些年一个人，风也过，雨也走，有过泪，有过错，还记得坚持些什么。真爱过才会痛。雨也走，有过泪，有过错，还记得坚持些什么。
+							     真爱过才会痛。多少年一个人真爱过才会痛。多少年一个人，风也过，雨也走，有过泪，
+							 	多少年一个人，风也过，
+							     雨也走，有过泪，有过错，还记得坚持些什么。真爱过才会痛。多少年一个人，风也过，雨也走，有过泪，
+								 有过错，还记得坚持些什么。真爱过才会痛。
+							     雨也走，有过泪，有过错，还记得坚持些什么。真爱过才会痛。多少年一个人，风也过，雨也走，有过泪，
+								 有过错，还记得坚持些什么。真爱过才会痛。
+							</h5>
+							<h6 style="color: #686868;"><em class="viewTotalBtn redcol">查看全部</em><b class="packupBtn">收起<i class="icon iconfont icon-dingbu"></i></b></h6>
+        					<h6>
+        						<strong>仰天大笑</strong>
+        						<time>2018-1-12&nbsp;&nbsp;12:12:12</time>
+        						<span>
+        							<button class="spitslot_supportBtn"><i class="icon iconfont icon-zan"></i>支持<em class="spitslot_suportnum redcol">100</em></button>
+        							<button class="spitslot_opposeBtn"><i class="icon iconfont icon-good-copy"></i>反对<em class="spitslot_opposenum redcol">100</em></button>	
+        						</span>
+        					</h6>
+        				</div>
+        			</li>
+        			
+        			<li>
+        				<p><img src="./images/images/mr.png"</p>
+        				<div>
+        					<h4><strong>关于开通手机验证登录的建议</strong></h4>
+							<h5 class="spitslot_cont">
+							     这些年一个人，风也过，雨也走，有过泪，有过错，还记得坚持些什么。真爱过才会痛。雨也走，有过泪，有过错，还记得坚持些什么。真爱过才会痛。多少年一个人
+							 多少年一个人，风也过，
+							     雨也走，有过泪，有过错，还记得坚持些什么。真爱过才会痛。多少年一个人，风也过，雨也走，有过泪，
+							 有过错，还记得坚持些什么。真爱过才会痛。
+							</h5>
+        					<h6>
+        						<strong>仰天大笑</strong>
+        						<time>2018-1-12&nbsp;&nbsp;12:12:12</time>
+        						<span>
+        							<button class="spitslot_supportBtn"><i class="icon iconfont icon-zan"></i>支持<em class="spitslot_suportnum redcol">99</em></button>
+        							<button class="spitslot_opposeBtn"><i class="icon iconfont icon-good-copy"></i>反对<em class="spitslot_opposenum redcol">10</em></button>	
+        						</span>
+        					</h6>
+        				</div>
+        			</li>
+        			
+        		</ol>
+        		
+        		<!--<ul id="hotpots_spitslot_content">
+        			
+        		</ul>-->
+        		<!-- 添加意见反馈区 -->
+        		<dl class="newFeedback_content">
+        			<dt>
+        				<p>主题：</p>
+        				<p>反馈意见：</p>
+        			</dt>
+        			<dd>
+        				<p><input type="text" class="feedback_title" placeholder="请输入您的主题"/></p>
+        				<div class="feedback_cont" contenteditable="true" placeholder="写下您的意见，我们会用心聆听，做得更好！" onmousedown="toTextFirst(event,this)">
+        					
+        				</div>
+        				<button class="feedbackBtn">提交反馈</button>
+        			</dd>
+        		</dl>
+        	</div>
+        	
+        	
+        	<!--回到顶部模块-->
+            <div class="totop_box" >
+                    <a onclick="show_newTask()">
+                        <i class="icon iconfont icon-xinjianrenwu"></i>
+                        <p>新建任务</p>
+                    </a>
+                    <a class="newOrderBtn" >
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>新建订单</p>
+                    </a>
+                    <a class="" >
+                        <i class="icon iconfont icon-yijianfankui"></i>
+                        <p>意见反馈</p>
+                    </a>
+                    <button>
+                        <img style="width: 24px" src="./images/icon/toTop.svg" />
+                        <p>顶部</p>
+                    </button>              
+            </div>
+        </div>
+        
+        <footer>Copyright&copy;&nbsp;2017-2018&nbsp;&nbsp;制宝科技&nbsp;&nbsp;版权所有</footer>
+        
+        <script type="text/javascript" src="./js/spitslot.js" ></script>
+	</body>
+</html>

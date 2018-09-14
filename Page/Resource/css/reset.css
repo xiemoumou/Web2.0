@@ -1,0 +1,100 @@
+div,ul,li,h1,h2,h3,h4,h5,h6,p,ol,dl,dt,dd,img,body,figure,
+iframe,table,tr,td,thead,th,textarea,span,em,strong,b{
+	margin: 0;
+	padding: 0;
+	font-family: "Microsoft YaHei","tahoma","arial","Hiragino Sans GB"; 
+}
+ul,ol,li{
+	list-style: none;
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+img{
+	border: 0;
+	vertical-align: top;
+}
+a{
+    display: inline-block;
+	color: #666;
+	text-decoration: none;
+}
+input,button,select,table,textarea{
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+input:-webkit-autofill {
+-webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+textarea{
+    resize: none;
+    overflow: hidden;
+    display: block;
+    padding: 0 0.0925rem;
+}
+button{
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    background-color: #fff;
+}
+i{
+  font-style: normal;  
+}
+em{
+    font-style: normal;
+    display: inline-block;
+}
+strong{
+	display: inline-block;
+}
+strong,b,h4,h5,h6{
+    font-weight: normal;
+}
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color: #aeaeae;
+    font-size: 0.2222rem;
+}
+input::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #aeaeae;
+    font-size: 0.2222rem;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #aeaeae;
+    font-size: 0.2222rem;
+}
+input::-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #aeaeae;
+    font-size: 0.2222rem;
+} 
+
+textarea::-webkit-input-placeholder { /* WebKit browsers */
+    color: #aeaeae;
+    font-size: 0.2222rem;
+}
+textarea::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #aeaeae;
+    font-size: 0.2222rem;
+}
+textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #aeaeae;
+    font-size: 0.2222rem;
+}
+textarea::-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #aeaeae;
+    font-size: 0.2222rem;
+}  
+.small-font{    
+        font-size:12px; 
+        -webkit-transform-origin-x: 0;
+        -webkit-transform: scale(0.90);
+}
+.smallsize-font{
+ 　　 font-size:10px;
+}
+
+      
+    

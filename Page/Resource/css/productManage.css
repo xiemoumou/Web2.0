@@ -1,0 +1,245 @@
+div#nav{
+	height: 12.037rem;
+}
+p.perDet_cont{
+    /*display: none;*/  
+}
+p.perDet_cont b{
+    display: block;
+    padding: 0.1296rem 0.3333rem 0.1296rem 1.3185rem;
+    border-left: 3px solid #fff;
+    color: #888686;
+    font-size: 0.2592rem;
+} 
+/*  */
+div,h4,h5,dl,dt,dd{
+	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+div.cont_right{
+    background: #fff;  
+    padding: 0.1296rem 0.4629rem 0.4629rem 0.6481rem; 
+}
+div.cont_right>p{
+	font-size: 0.2962rem;
+	height: 0.9629rem;
+	line-height: 0.9629rem;
+	color: #090909;
+	border-bottom: 1px solid #e5e5e5;
+}
+div.cont_right button.addTextureBtn{
+	float: right;
+	width: 1.8148rem;
+	height: 0.4444rem;
+	line-height: 0.4444rem;
+	text-align: center;
+	font-size: 12px;
+	color: #e95758;
+	border: 1px solid #dd5353;
+	margin-top: 0.3333rem;
+}
+div.cont_right i.icon-jiahao{
+	font-size: 12px;
+}
+div.cont_right i{
+	margin-right: 0.1111rem;
+}
+div.product_box{
+	color: #666666;
+}
+div.product_box>h4{
+	margin: 0.2777rem 0 0.2222rem 0;
+	height: 0.6481rem;
+	line-height: 0.6481rem;
+	background-color: #f6f6f7;
+	font-size: 0.2592rem;
+	padding: 0 0.2592rem;
+}
+
+div.product_box .redcolor{
+	color: #e95758;
+}
+b.retProduct_tip{
+	margin: 0 0.6666rem;
+}
+div.product_box>h4>strong{
+	float: right;
+}
+div.product_box em.AttEditBtn{
+	margin: 0 0.2777rem ;
+	cursor: pointer;
+}
+div.product_box>h4 em{
+	cursor: pointer;
+}
+/* 添加新的材质 */
+div.TextureContent p.addTexture_p{
+	background-color: #f6f6f7;
+	display: flex;
+	align-items: center;
+	height: 0.6481rem;	
+}
+p.addTexture_p>input{
+	width: 3.074rem;
+	height: 0.4629rem;
+	border: 1px solid #e0e0e0;
+	margin: 0 0.0925rem 0 0.1481rem;
+	padding: 0 0.0925rem;
+}
+p.addTexture_p>button{
+	width: 0.8888rem;
+	height: 0.4629rem;
+	color: #fff;
+	background-color: #e95758;
+	border-radius: 0.0555rem;
+}
+div.relatedProduct_box{
+	display: none;
+}
+div.relatedProduct_box>div{	
+	height: 4.3518rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: space-between;
+	font-size: 12px;
+}
+div.relatedProduct_box>div>dl{
+	width: 5.3703rem;
+	height: 2.037rem;
+	border: 1px solid #dfe2e7;
+	display: flex;
+	position: relative;
+}
+div.relatedProduct_box dt{
+	width: 1rem;
+	background-color: #f5f6f8;
+	border-right: 1px solid #dfe2e7;
+	padding-top: 0.2777rem;
+	text-align: center;
+}
+div.relatedProduct_box dd{
+	/*height: 1.1666rem;*/
+	width: 4.3518rem;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0.1111rem 0.2222rem;	
+}
+div.relatedProduct_box dd>p{
+	font-size: 12px;
+	width: 3.8888rem;
+	min-height: 1.1851rem;
+	display: flex;	
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: space-between;
+	margin-bottom: 0.074rem;
+}
+p.typeBox>span{
+	height: 0.2962rem;
+	padding: 0.1111rem 0 0.1111rem 0.1851rem;
+	border: 1px solid #e6e4e4;
+}
+div.relatedProduct_box dd>p i{
+	font-size: 0.2592rem;
+	margin-left: 0.1851rem ;
+	color: #b1b1b1;
+	cursor: pointer;
+}
+div.relatedProduct_box>div>dl button{
+	align-self: flex-end;
+	width: 1.6481rem;
+	height: 0.5rem;
+	border: 1px solid #e95758;
+	color: #e95758;
+	padding: 0;	
+}
+div.relatedProduct_box>div>dl dd button:hover{
+	background-color: #e95758;
+	color: #fff;
+}
+div.relatedProduct_box>div>dl dd button.redbg{
+	background-color: #e95758;
+	color: #fff;
+}
+div.relatedProduct_box p.addSize_content em{
+	display: block;
+	width: 3.3333rem;
+	padding: 0.1111rem 0.1851rem;
+	border: 1px solid #e6e4e4;	
+}
+div.relatedProduct_box p.addSize_content b{
+	margin: 0 0.0925rem;
+}
+/* 添加新的属性  */
+div.relatedProduct_box dl h5.addAttrBox{
+	position: absolute;
+	top: 1.9444rem;
+	left: 1.037rem;
+	width: 5.5555rem;
+	height: 3.4407rem;
+	border: 1px solid #e1e1e1;
+	background-color: #fff;
+	z-index: 19;
+	padding: 0.1481rem 0.1851rem;
+}
+div.relatedProduct_box dl h5.addAttrBox>p{
+	width: 5.037rem;
+	height: 0.4074rem;
+	line-height: 0.4074rem;
+	border: 1px solid #dcdcdc;
+	
+}
+div.relatedProduct_box h5.addAttrBox input.addAttr_inp{
+	width: 4.5444rem;
+	padding: 0 0.1851rem;
+}
+h5.addAttrBox i.icon-sousuo2{
+	font-size: 0.2592rem;
+	float: right;
+	cursor: pointer;
+}
+h5.addAttrBox div.addAttr_cont{
+	padding: 0.1111rem 0;
+	height: 1.8518rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: space-between;
+	overflow-y: scroll;
+}
+h5.addAttrBox div.addAttr_cont label{
+	display: inline-block;
+	width: 1.4074rem;
+	height: 0.5185rem;
+	line-height: 0.5185rem;
+}
+h5.addAttrBox div.addAttr_cont label input{
+	margin: 0 0.074rem 0 0;
+}
+div.relatedProduct_box dl div.addAttr_bggray{
+	margin: 0.074rem -0.1851rem 0;
+	height: 0.8888rem;
+	line-height: 0.8888rem;
+	background-color: #f8f7f7;
+}
+div.relatedProduct_box dl h5 button.confirm_addAttr{
+	width: 1.4629rem;
+	height: 0.5185rem;
+	border: none;
+	display: inline-block;
+	color: #fff;
+	background-color: #e95758;
+	border-radius: 0.0555rem;
+	margin: 0 0.1666rem 0 1.2777rem;
+}
+div.relatedProduct_box dl h5 button.cancel_addAttr{
+	width: 1.4629rem;
+	height: 0.5185rem;
+	border: none;
+	display: inline-block;
+	color: #fff;
+	background-color: #bcbcbc;
+	border-radius: 0.0555rem;
+}

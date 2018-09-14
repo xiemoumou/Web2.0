@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单报价</title>
+    <script id="version" src="../../js/common/vesion.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("version");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../css/common/base.css?v=' + VESION + '" rel="stylesheet" />');
+    </script>
+    <style>
+        body {
+            padding: 20px 34px 25px 34px;
+            color: #444444;
+            background-color: #fff;
+            overflow: hidden;
+            margin-top: -10px;
+        }
+
+        .container {
+            margin: 0 auto;
+        }
+
+        .head {
+            text-align: center;
+            border-bottom: 2px solid #D5D5D5;
+            height: 25px;
+        }
+
+        .head span {
+            font: 500 14px/14px "微软雅黑";
+        }
+
+        .body {
+            padding: 20px 16px;
+        }
+
+        .body div:nth-of-type(1) {
+            height: 30px;
+            width: 100%;
+            line-height: 30px;
+        }
+
+        .body div:nth-of-type(2) {
+            height: 30px;
+
+            width: 100%;
+            line-height: 30px;
+            margin-bottom: 10px;
+        }
+
+        .body div:nth-of-type(3) {
+            height: 30px;
+
+            width: 100%;
+            line-height: 30px;
+            margin-bottom: 10px;
+        }
+
+        .body label {
+            font: 14px "微软雅黑";
+        }
+
+        .body input {
+            width: 134px;
+            padding: 0 5px;
+            height: 28px;
+            border: 1px solid #D5D5D5;
+            border-radius: 4px;
+            position: absolute;
+            left: 188px;
+            font: 12px "微软雅黑";
+        }
+
+        .body .yuan {
+            position: absolute;
+            left: 354px;
+        }
+
+        .footer {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="head">
+        <span>订单报价</span>
+    </div>
+    <div class="body">
+        <div>
+            <label>您上次对该订单的报价：¥</label><span id="old_quote">0</span>
+        </div>
+        <div>
+            <label>对该订单进行报价：</label>
+            <input placeholder="填写报价金额" type="text" id="quote_price" class="number-input">
+            <span class="yuan">元</span>
+        </div>
+        <div>
+            <label>订单生产周期：</label>
+            <input placeholder="完成生产、发货的天数" type="text" id="produce_day" class="number-input">
+            <span class="yuan">天</span>
+        </div>
+    </div>
+    <div class="footer">
+        <button class="red-button" style="width: 112px; height: 35px; display: inline-block; margin-right: 23px;" onclick="quotePrice()">确定
+        </button>
+        <button class="hollow-button" style="width: 112px; height: 35px; display: inline-block;"
+                onclick="parent.layer.closeAll();">取消
+        </button>
+    </div>
+</div>
+</body>
+<script>
+    document.write('<script src="../../lib/jquery-1.11.0.min.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+    document.write('<script src="../../js/common/common.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+    document.write('<script src="../../lib/layer/2.4/layer.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+</script>
+<script type="text/javascript">
+    var deadline="";
+    var customid= Common.getUrlParam('customid');
+    var orderid=Common.getUrlParam('orderid');
+    $(function () {
+
+        $(".number-input").keyup(function () {
+            $(this).val(Common.convertInt($(this).val()));
+        });
+        $("#old_quote").html(Common.getUrlParam('quotePrice'));
+        deadline=Common.getUrlParam('deadline');
+    });
+    function quotePrice() {//报价
+        var quote_price=$("#quote_price").val();
+        var produce_day=$('#produce_day').val();
+        if(quote_price==""||quote_price<=0)
+        {
+            Common.shake($("#quote_price"),'border-red',5);
+            return;
+        }
+        if(produce_day==""||produce_day<=0)
+        {
+            Common.shake($('#produce_day'),'border-red',5);
+            return ;
+        }
+
+        if(parseInt(deadline)!=0&&deadline!=null&&deadline!=""&&parseInt(deadline)<parseInt(produce_day))
+        {
+            Common.msg('订单生产周期超过预期',null,2000,function () {
+                if(parent.OrderDetails)
+                {
+                    parent.OrderDetails.quotePrice(produce_day,quote_price);
+                }
+                else
+                {
+                    parent.base.quotePrice(produce_day,quote_price,orderid,customid);
+                }
+            });
+        }
+        else
+        {
+            if(parent.OrderDetails)
+            {
+                parent.OrderDetails.quotePrice(produce_day,quote_price);
+            }
+            else
+            {
+                parent.base.quotePrice(produce_day,quote_price,orderid,customid);
+            }
+        }
+    }
+</script>
+</html>

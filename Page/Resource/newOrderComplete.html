@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>新建订单完成</title>
+        <link rel="stylesheet" href="./css/reset.css" />
+        <link rel="stylesheet" href="./css/iconfont.css" />
+        <link rel="stylesheet" href="./css/iconfont1.css" />
+        <link rel="stylesheet" href="./css/workstage.css"/> 
+        <link rel="stylesheet" href="./css/newOrderComplete.css" />
+        <script type="text/javascript" src="./js/flexible.js" ></script>  
+        <script type="text/javascript" src="./js/jquery-1.11.0.min.js" ></script>
+        <script type="text/javascript" src="./js/jquery.cookie.js" ></script>
+        <script type="text/javascript" src="./js/baiduTemplate.js" ></script>
+        <script type="text/javascript" src="js/layui.js" ></script>
+        <script type="text/javascript" src="./js/layer.js" ></script>
+        <script type="text/javascript" src="./js/common.js" ></script>
+    </head>
+    <body>
+        <div id="header">
+            <div>
+                <img src="./images/icon/logo.png" alt="制宝logo"/>
+                <h4 >
+                	<p class="active myWorkstage" onclick="getWorkstage()">我的工作台</p>
+                	<p class="myResource" onclick="getResource()">素材库</p>
+                </h4>
+                <form class="searchbar"> 
+                    <div class="mod_select searSort">
+                        <div class="select_box">
+                            <span class="select_txt">分&nbsp;&nbsp;类</span>                     
+                            <ul class="option_">
+                                <li>分&nbsp;&nbsp;类</li>
+                                <li>用户名</li>
+                                <li>订单号</li>
+                                <li>客服号</li>
+                            </ul> 
+                        </div>                       
+                    </div>
+                    
+                     <input type="text" id="searchCon" value="" placeholder="请输入您要搜索的订单号等"/>
+                    <button class="searBtn"><i class="icon iconfont icon-sousuo"></i></button>
+                </form>
+                <dl >
+                    <dt class="ddstyle"><span>风吹云散</span><img class="imgcol" src="./images/icon/arr.svg"/></dt>
+                    <!--<dd class="ddstyle center hid" >个人中心</dd>-->
+                    <dd class="ddstyle exitLoginBtn hid">退出</dd>
+                </dl>                                           
+            </div>
+        </div>
+        
+        <!--主内容-->
+        <div id="content">
+            <!--左侧  导航区-->
+            <div id="nav">
+                <!--<ul class="" onclick="window.location.href = 'workstage.html';">
+                    <h3><i class="icon iconfont icon-liuchengxiangdao"></i>业务流程</h3>
+                    <h4 ><span>全部订单</span></h4>
+                    <li >咨询中</li>
+                    <li>设计中</li>
+                    <li>待客户确认</li>
+                    <li>待支付</li>
+                    <li>定稿</li>
+                    <li>生产中</li>
+                    <li>邮寄中</li>
+                    <li>售后处理中</li>
+                    <li>退货中</li>
+                    <li>退款中</li>
+                    <li>取消</li>
+                    <li>完成</li>
+                </ul>-->
+                
+            </div>
+            
+            <!--右侧  主内容-->
+            <div class="cont_right">
+                <!-- 新建订单的内容 -->
+                <div class="orderhead">新建订单</div>  
+                <h4>
+                    <p><i class="icon iconfont icon-duihao1"></i></p>
+                    <p>新建订单成功！</p>
+                    <p><span id="countDownTime"></span>s后自动跳转至</p>
+                    <a class="returnBack_prevPage">新建订单之前的页面</a>
+                </h4>
+                
+            </div>
+            
+            <!--回到顶部模块-->
+            <div class="totop_box">
+                    <a onclick="show_newTask()" style="display: none;">
+                        <i class="icon iconfont icon-xinjianrenwu"></i>
+                        <p>新建任务</p>
+                    </a>
+                    <a class="newOrderBtn">
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>新建订单</p>
+                    </a>
+                    <a class="shippingListBtn" style="display: none;">   <!-- 发货清单 -->
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>发货清单</p>
+                    </a>
+                    <a class="reminderBtn" onclick="getFeednack()">   <!-- 意见反馈 -->
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>意见反馈</p>
+                    </a>
+                    <button>
+                        <img style="width: 24px" src="./images/icon/toTop.svg" />
+                        <p>顶部</p>
+                    </button>              
+            </div>
+        </div>
+        
+        <footer>Copyright&copy;&nbsp;2017-2018&nbsp;&nbsp;制宝科技&nbsp;&nbsp;版权所有</footer>
+        
+        <!-- 工作台 导航区的百度模板 -->
+        <script id="baidu_workstage_nav" type="text/html">
+				<ul class="workstage_prograss" onclick="getWorkstage()">
+                    <h3><i class="icon iconfont icon-liuchengxiangdao"></i>业务流程</h3>
+                    <%for(i=0;i<workflow.length;i++){%>
+                    	<%if(i == 0){%>
+                    		<li class="borderCol allorder_work" data-code="<%=workflow[i].code%>">
+                    			<%=workflow[i].name%>
+                    			<em class="baccred"><%=workflow[i].num%></em>
+                    		</li>
+                    	<%}else{%>
+                    		<li data-code="<%=workflow[i].code%>"><%=workflow[i].name%>
+                    			
+                    			<em>(<%=workflow[i].num%>)</em>
+                    		</li>
+                    	<%}%>
+                    <%}%>
+				</ul>
+				<!--<ul>
+                    <h3><i class="icon iconfont icon-daibanshixiang"></i>待办事项</h3>
+                    <h4 onclick="getTaskList()">任务列表</h4>
+                    <h4 onclick="getDraft()">草稿箱</h4>
+                </ul>-->     
+		</script>
+        
+        
+        <script type="text/javascript" src="./js/workstage.js" ></script> 
+        <script type="text/javascript">
+//      	setTimeout(function(){
+//      		history.go(-2);
+//      	},3000);
+//      	
+        	$("a.returnBack_prevPage").click(function(){
+        		history.go(-2);
+        	});
+        	
+        	
+        	//显示倒计时
+        	$(function(){
+			  var countDownTime=parseInt(3);    //在这里设置倒计时的时长
+			  function countDown(countDownTime){
+			    var timer=setInterval(function(){
+			      if(countDownTime>=0){
+			        showTime(countDownTime);
+			        countDownTime--;
+			        
+			      }else{
+			        clearInterval(timer);
+//			        window.location.href='feednack.html';
+					history.go(-2);
+			      }
+//			      document.write(countDownTime)
+			    },1000);
+			  }
+			  countDown(countDownTime);
+			  function showTime(countDownTime){      //这段是计算分和秒的具体数
+			    var minute=Math.floor(countDownTime/60);
+			    var second=countDownTime-minute*60;
+			    $("#countDownTime").text(+second);//将倒计时添加到span标签内显示到页面
+			  }
+	})
+        	
+        </script>
+    </body>
+    
+</html>
+

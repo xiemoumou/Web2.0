@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">        
+        <title>物流信息</title>
+        <link rel="stylesheet" href="./css/reset.css" />     
+        <link rel="stylesheet" href="./css/workstage.css"/>  
+        <link rel="stylesheet" href="./css/logisticsMess.css" />
+        <script type="text/javascript" src="./js/flexible.js" ></script>
+        <script type="text/javascript" src="./js/jquery-1.11.0.min.js" ></script>
+        <script type="text/javascript" src="./js/jquery.cookie.js" ></script>
+        <script type="text/javascript" src="js/baiduTemplate.js" ></script>
+        <script type="text/javascript" src="./js/layer.js" ></script>
+        <script type="text/javascript" src="./js/common.js" ></script>        
+    </head>
+    <body>
+        <div id="header">
+            <div>
+                <img src="./images/icon/logo.png" alt="制宝logo"/>
+                <h4>
+                	<p class="active myWorkstage" onclick="getWorkstage()">我的工作台</p><!--class="goback_workstage"-->
+                	<p class="myResource" onclick="getResource()">素材库</p>
+                </h4>                
+                <dl>
+                    <dt class="ddstyle">
+                    	<span></span>
+                    	<img class="imgcol" src="./images/icon/arr.svg"/>
+                    </dt>
+                    <!--<dd class="ddstyle center hid" >个人中心</dd>-->
+                    <dd class="ddstyle exitLoginBtn hid">退出</dd>
+                </dl>                                           
+            </div>
+        </div>
+        
+        <!--主内容-->
+        <div id="content" style="height: 10.7037rem;width: 22.2222rem;margin: 20px auto;">
+            <dl id="logisticsMess_content">
+            	
+            </dl>
+        </div>
+        
+        <footer>Copyright&copy;&nbsp;2017-2018&nbsp;&nbsp;制宝科技&nbsp;&nbsp;版权所有</footer>
+        <!-- 展示物流信息  的  百度模板 -->
+        <script type="text/html" id="baidu_logisticsMess">
+        		<dt><p>送货方式：<span>普通快递</span></p>
+            		<p>物流公司：<span><%=ArrayList[0].logisticscompany%></span></p>
+            		<p>运单号码：<span><%=ArrayList[0].logisticssheetid%></span></p>
+           		</dt>
+           		<dd><ul>
+           			<%for(var i=traces.length-1;i>=0;i--){%>
+           				<li><time><%=traces[i].acceptTime%></time><span><%=traces[i].acceptStation%></span></li>
+           			<%}%>
+            	</ul></dd>
+        </script>
+        <script type="text/javascript" >
+        if( window.localStorage ){
+        	var data_logistics = JSON.parse( localStorage.getItem("obj_logisticsMess") );
+        	console.log( data_logistics.ArrayList );
+        }
+        	
+        	///调用百度模板
+	    	//命名空间
+			var bt = baidu.template;
+			var strHtml = bt( 'baidu_logisticsMess', data_logistics );
+			//渲染
+			$("#logisticsMess_content").html( strHtml );
+        	
+        </script>
+    </body>
+    
+</html>
+
+

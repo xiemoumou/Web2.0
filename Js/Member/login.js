@@ -181,6 +181,7 @@ var mail = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
                return false
            }
            else{
+               debugger
                //$.cookie('token', data.data.token, {path: "/"});
                Helper.Cache.set('token',data.data.token,7);//token
                Helper.Cache.set('mickName',data.data.mickName,7);//mickName

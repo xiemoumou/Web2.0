@@ -1,0 +1,352 @@
+body{
+    background:#fff;
+}
+
+.header{
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background-color: #fff;
+    height: 99px;
+    padding: 20px 26px 0 26px;
+}
+
+.tab ul li{
+    float: left;
+    width: 100px;
+    position: relative;
+    height: 32px;
+    font-size: 16px;
+    color: #E74B4B;
+    margin-right: 3px;
+    text-align: left;
+    font-family: "微软雅黑";
+}
+
+.content .tab ul li a{
+    float: left;
+}
+
+.content .tab ul li.active{
+    border-bottom: 2px solid #E74B4B;
+}
+
+.content .tab ul li:hover{
+    border-bottom: 2px solid #E74B4B;
+}
+
+.content .tab #all_order,.content .tab #wait_order{
+    float: left;
+    display: block;
+    width: 26px;
+    height: 15px;
+    background-color: #e84b4c;
+    margin-left: 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    line-height: 16px;
+}
+
+
+.tab #tabmode i.reddot{
+    font: 13px "微软雅黑";
+    color: #fff;
+    background-color: #e84b4c;
+    border-radius: 14px;
+    margin-left: 5px;
+    padding: 0 3px;
+    position: absolute;
+    top: 0px;
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+}
+
+.content .sort{
+    position: absolute;
+    top: 60px;
+    color: #2e2e2e;
+}
+
+.content .sort ul li{
+    float: left;
+    width: 86px;
+    height: 34px;
+    border: 1px solid #E1E1E1;
+    text-align: center;
+    line-height: 34px;
+}
+.content .sort ul li.hideRborder{
+    border-right: none;
+}
+
+.content .urgent{
+    position: absolute;
+    left: 379px;
+    width: 54px;
+    top: 9px;
+}
+.content .urgent label,input{
+    cursor: pointer;
+}
+.content .thead ul{
+    position: absolute;
+    top: 100px;
+    width: calc(100% - 52px);
+    background-color: #f2f2f2;
+}
+.content .thead ul li{
+   float: left;
+   height: 40px;
+   line-height: 40px;
+   text-align: left;
+}
+
+.content .thead ul li span{
+    font:14px "微软雅黑";
+    color: #2e2e2e;
+}
+
+.content .thead ul li:nth-of-type(1){
+    width: 147px;
+    text-align: center;
+}
+
+.content .thead ul li:nth-of-type(2){
+    width: 52px;
+    text-align: center;
+}
+
+.content .thead ul li:nth-of-type(3){
+    width: 150px;
+    text-align: center;
+}
+
+.content .thead ul li:nth-of-type(4){
+    width: 124px;
+    text-align: center;
+}
+
+.content .thead ul li:nth-of-type(5){
+    width: 106px;
+    text-align: center;
+}
+
+.content .thead ul li:nth-of-type(6){
+    width: 124px;
+    text-align: center;
+}
+
+.content .thead ul li:nth-of-type(7){
+    width: 88px;
+    text-align: center;
+}
+.content .thead ul li:nth-of-type(8){
+    width: 88px;
+    text-align: center;
+}
+
+.content .order{
+    overflow-y:scroll;
+    overflow-x: hidden;
+    position: absolute;
+    top: 140px;
+    margin: 0 26px;
+    width: calc(100% - 52px);
+}
+
+.content .order .detial{
+    height: 178px;
+    border: 1px solid #DCDCDC;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.content .order .detial .head{
+    height: 46px;
+    line-height: 46px;
+    background-color: #F5F5F5;
+    position: relative;
+}
+.content .order .detial .head .date{
+    padding-left: 15px;
+    font:12px "微软雅黑";
+    color: #3f3f3f;
+}
+
+.content .order .detial .head .ordNum{
+    padding-left: 18px;
+    font:12px "微软雅黑";
+    color: #3f3f3f;
+}
+
+.content .order .detial .head .jidan{
+    width: 46px;
+    height: 20px;
+    background-color: #f7dfd6;
+    display: block;
+    color: #e54d40;
+    line-height: 20px;
+    text-align: center;
+    position: absolute;
+    top: 13px;
+    left: 280px;
+    border-radius: 4px;
+}
+
+.content .order .detial .body ul li
+{
+    height: 130px;
+    float: left;
+}
+
+.content .order .detial .body ul li:nth-of-type(1)
+{
+    width: 140px;
+}
+
+.content .order .detial .img{
+    width: 106px;
+    height: 106px;
+    border:1px solid #e5e5e5;
+    margin-left: 16px;
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .order .detial .img img{
+    display: block;
+    max-width: 104px;
+    max-height: 104px;
+}
+
+.content .order .detial .body ul li:nth-of-type(2)
+{
+    width: 70px;
+    text-align: center;
+}
+
+.content .order .detial .name{
+    display: block;
+    height: 106px;
+    color: #333;
+    padding-top: 20px;
+    font: 12px "微软雅黑";
+}
+
+.content .order .detial .body ul li:nth-of-type(3)
+{
+    width: 148px;
+    text-align: center;
+}
+
+.content .order .detial .describe{
+    display: block;
+
+    height: 106px;
+    color: #333;
+    padding-top: 20px;
+    font: 12px "微软雅黑";
+}
+.content .order .detial .body ul li:nth-of-type(4)
+{
+    width: 108px;
+    text-align: center;
+}
+
+.content .order .detial .size{
+    display: block;
+
+    height: 106px;
+    color: #333;
+    padding-top: 20px;
+    font: 12px "微软雅黑";
+}
+.content .order .detial .body ul li:nth-of-type(5)
+{
+    width: 122px;
+    text-align: center;
+}
+
+.content .order .detial  .money{
+    display: block;
+
+    height: 106px;
+    color: #e95758;
+    padding-top: 20px;
+    font: 12px "微软雅黑";
+}
+.content .order .detial .body ul li:nth-of-type(6)
+{
+    width: 106px;
+    text-align: center;
+}
+.content .order .detial  .day{
+    display: block;
+
+    height: 106px;
+    color: #e95758;
+    padding-top: 20px;
+    font: 12px "微软雅黑";
+}
+
+.content .order .detial .body ul li:nth-of-type(7)
+{
+    width: 108px;
+    text-align: center;
+}
+
+.content .order .detial  .status{
+    display: block;
+
+    height: 106px;
+    color: #e95758;
+    padding-top: 20px;
+    font: 12px "微软雅黑";
+}
+
+.content .order .detial .body ul li:nth-of-type(8)
+{
+    text-align: center;
+    position: relative;
+}
+
+.content .order .detial  .rob{
+    display: block;
+    height: 32px;
+    color: #ffffff;
+    border-radius: 5px;
+    font: 12px "微软雅黑";
+    background-color: #e95758;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    width: 89px;
+}
+.content .order .detial  .desc{
+    display: block;
+    padding-left: 20px;
+    font: 12px "微软雅黑";
+    padding-top: 10px;
+    position: absolute;
+    right: 19px;
+    top: 5px;
+    color: #db6860;
+}
+
+.sort ul li span{
+    padding-left: 5px;
+}
+.sort ul li{
+    cursor: pointer;
+}
+.addstyle{
+    background-color: #e95758;
+    color: #fff;
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>未报价订单</title>
+    <link rel="stylesheet" href="../../lib/loading/css/global.css">
+    <link href="../../css/common/base.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../lib/SlideRuleOS/SlideRuleOS.css"/>
+    <link href="../../css/factory/all_order.css" rel="stylesheet"/>
+    <link href="../../lib/jqueryPagination/css/jquery.pagination.css" rel="stylesheet"/>
+
+</head>
+
+<body>
+<div class="content">
+    <div class="header clearfix">
+        <div class="tab"><!--tab -->
+            <ul id="tabmode">
+                <li id="factory_ord" class="active">
+                    <a href="#">未报价</a> <i class="reddot" id="factory_ord_i"></i>
+                </li>
+            </ul>
+        </div>
+        <!-- <div class="sort">
+            <ul>
+                <li class="hideRborder">综合</li>
+                <li class="hideRborder">发布时间</li>
+                <li class="hideRborder">设计周期</li>
+                <li>设计费</li>
+            </ul>
+            <div class="urgent">
+                <input type="checkbox" id="urgent" />
+                <label for="urgent">急单</label>
+            </div>
+        </div> -->
+        <div class="thead hide">
+            <ul>
+                <li>
+                    <span>产品图</span>
+                </li>
+                <li>
+                    <span>名称</span>
+                </li>
+                <li>
+                    <span>数量</span>
+                </li>
+                <li>
+                    <span>属性/工艺</span>
+                </li>
+                <li>
+                    <span>长x宽×厚(mm)</span>
+                </li>
+
+                <li>
+                    <span>生产周期(天)</span>
+                </li>
+                <li>
+                    <span>订单状态</span>
+                </li>
+                <li>
+                    <span>操作</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="order" id="orderList">
+
+
+    </div>
+    <div class="page-box">
+    </div>
+</div>
+
+<!-- 订单概览的百度模板 -->
+<script id="baidu_workstage_order" type="text/html">
+    <%for(var i =0;i
+    <orderarray.length;i++){%>
+    <!-- 订单概览信息---客服角色   -->
+    <dl class="order_cont_service js_list_" data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+        data-customid="<%=orderarray[i].orderinfo.customid%>">
+        <dt class="order_service_top">
+        <p data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+           data-customid="<%=orderarray[i].orderinfo.customid%>">
+            <time style="display: inline-block;width: 150px;"><%=orderarray[i].orderinfo.createtime%></time>
+            <span style="display: inline-block;width: 165px;color: #e84b4c;">订单号:<em><%=orderarray[i].orderinfo.orderid%></em></span>
+        <%if(orderarray[i].orderinfo.renew==1){%>
+        <span style="display: inline-block;" class="renew">续订</span>
+        <%}%>
+        <span class="figure_orderCont js_go_detail" style="float: right;color: #e84b4c;cursor: pointer;">查看订单</span>
+        </p>
+        </dt>
+        <dd class="order_service_middle">
+            <figure class="pic_order js_go_detail" data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+                    data-customid="<%=orderarray[i].orderinfo.customid%>"><img onerror="this.src='../../images/images/mr.png'" class="figure_orderCont"
+                <%if( orderarray[i].orderinfo.goodsimage ){%>
+                src="<%=cosImgUrl%><%=orderarray[i].orderinfo.goodsimage %>"
+                <%}else{%>
+                src="../../images/images/mr.png"
+                <%}%>
+                />
+            </figure>
+
+            <div>
+                <!-- 订单参数  信息   -->
+                <ul class="order_parameter" data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+                    data-customid="<%=orderarray[i].orderinfo.customid%>">
+                    <!-- 选择产品类型  -->
+                    <li class="order_li_first"><%=orderarray[i].orderinfo.goodsclass%></li>
+                    <!-- 产品  数量 -->
+                    <li class="order_li_second">×<%=orderarray[i].goodsinfo.number %></li>
+                    <li class="order_li_third">
+                        <!-- 产品属性 -->
+                        <p>
+                            <%=orderarray[i].goodsinfo.texturename%>
+                            <%=orderarray[i].goodsinfo.accessoriesname%>
+                        </p>
+                        <!-- 产品工艺 -->
+                        <p><%=orderarray[i].goodsinfo.shape%></p>
+                        <p><%=orderarray[i].goodsinfo.technology%></p>
+                        <p><%=orderarray[i].goodsinfo.color %></p>
+                    </li>
+
+                    <!-- 长宽高 -->
+                    <li class="order_li_fouth">
+                        <span><%=orderarray[i].goodsinfo.size.length %></span><b>×</b>
+                        <span><%=orderarray[i].goodsinfo.size.width %></span><b>×</b>
+                        <span><%=orderarray[i].goodsinfo.size.height %></span>
+                    </li>
+                    <!-- 产品  周期  -->
+                    <li class="order_li_fifth">
+                        <span><%=orderarray[i].orderinfo.deadline %></span>天
+                    </li>
+
+                    <li class="order_li_sixth">
+		            							<span>
+		            							<%if(orderarray[i].state.orderstate.orderstate >= 6 ){%>
+		            								<%=orderarray[i].state.ordersheetstate.msg%>
+		            							<%}else{%>
+		            								<%=orderarray[i].state.quotestate.msg%>
+		            							<%}%>
+		            							</span>
+                    </li>
+
+                    <li class="order_li_last" data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+                        data-customid="<%=orderarray[i].orderinfo.customid%>"
+                        data-goodsid="<%=orderarray[i].orderinfo.goodsid%>"
+                        data-returnprice="<%=orderarray[i].price.returnprice%>"
+                        data-finalprice="<%=orderarray[i].price.finalprice%>"
+                        data-deadline="<%=orderarray[i].orderinfo.deadline%>">
+                        <% if(orderarray[i].state.quotestate.code != 3 ){%>
+                        <button class="workstage_quotePriceBtn">报价</button>
+                        <%} if(orderarray[i].state.orderstate.orderstate == 7 ){%>
+                        <button class="workstage_acceptProductionBtn">接受生产</button>
+                        <%}if(orderarray[i].state.ordersheetstate.code == 6 ){%>
+                        <button class="uploadLogistics">上传物流信息</button>
+                        <%}if(orderarray[i].state.ordersheetstate.code == 7 ){%>
+                        <button class="showLogistics">查看物流</button>
+                        <%}%>
+                    </li>
+                </ul>
+                <!-- 滑动尺        -->
+                <h6 class="order_service_bottom">
+                    <div class="slide-rule-os" data-orderid="<%=orderarray[i].orderinfo.orderid%>"
+                         data-customid="<%=orderarray[i].orderinfo.customid%>"
+                         data-up-min="0" data-up-max="<%=orderarray[i].price.productPriceLimit%>" data-up-name="产品费"
+                         data-step="10"
+                    <%if(orderarray[i].state.orderstate.orderstate < 7){%>
+                    data-yellow-darrow-val="<%=orderarray[i].price.mindprice%>"
+                    <%if(orderarray[i].price.mindprice != 0){%>
+                    <%if(orderarray[i].price.mindprice < orderarray[i].price.returnprice){%>
+                    data-yellow-darrow-show=""
+                    data-yellow-darrow-name="预算¥:"
+                    <%}%>
+                    <%}%>
+                    <%}%>
+
+                    <%if(orderarray[i].state.orderstate.orderstate>=7){%>
+                    data-yellow-darrow-show=""
+                    data-yellow-darrow-name="预算¥:"
+                    <%if(orderarray[i].price.returnprice==0){%>
+                    data-yellow-darrow-val="<%=orderarray[i].price.finalprice%>"
+                    <%}%>
+                    <%if(orderarray[i].price.returnprice!=0 && orderarray[i].price.finalprice<= orderarray[i].price.returnprice){%>
+                    data-yellow-darrow-val="<%=orderarray[i].price.finalprice%>"
+                    <%}%>
+                    <%if(orderarray[i].price.returnprice!=0 && orderarray[i].price.finalprice>= orderarray[i].price.returnprice){%>
+                    data-yellow-darrow-val="<%=orderarray[i].price.returnprice%>"
+                    <%}%>
+                    <%}%>
+
+                    <%if(orderarray[i].price.returnprice != 0&&orderarray[i].state.orderstate.orderstate< 7){%>
+                    data-red-darrow-val="<%=orderarray[i].price.returnprice%>"
+                    data-red-darrow-show=""
+                    data-red-darrow-name="上次报价¥:"
+                    <%}%>s
+                    >
+            </div>
+            </h6>
+            </div>
+        </dd>
+
+    </dl>
+    <%}%>
+</script>
+
+
+<!-- 测试用开始 -->
+<script src="../../lib/jquery-1.11.0.min.js" type="text/javascript"></script>
+<script src="../../lib/jquery.cookie.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../js/baiduTemplate.js"></script>
+<script src="../../lib/jqueryPagination/js/jquery.pagination.min.js" rel="stylesheet"></script>
+<script src="../../lib/layer/2.4/layer.js" rel="stylesheet"></script>
+<script src="../../js/common/common.js" type="text/javascript"></script>
+<script src="../../js/factory/quotation.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../js/factory/factoryEvent.js"></script>
+<script type="text/javascript" src="../../lib/SlideRuleOS/SlideRuleOS.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的工作台</title>
+    <script id="version" src="../js/common/vesion.js" type="text/javascript"></script>
+    <script>
+        var random=Math.random();
+        var versionDoc= document.getElementById("version");
+        versionDoc.attributes.src.value=versionDoc.attributes.src.value+"?v="+random;
+        document.write('<link href="../css/common/base_main.css?v="'+ VESION +' rel="stylesheet" />');
+        document.write('<link href="../css/main.css?v="'+ VESION +' rel="stylesheet" />');
+        document.write('<link href="../lib/layer/2.4/skin/layer.css?v="'+ VESION +' rel="stylesheet" />');
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="w">
+            <h1>
+                <img src="../images/icon/logo.png" alt="logo" />
+            </h1>
+            <ul class="tab">
+                <li class="active">
+                    <a href="javascript:window.location.reload()">我的工作台</a>
+                </li>
+                <li id="resource">
+                    <a href="#">素材库</a>
+                </li>
+            </ul>
+            <div class="search">
+                <div class="mod_select">
+                    <div class="select_box">
+                        <span class="select_txt">订单号</span>
+                        <ul class="option">
+                            <!-- <li>旺旺号</li> -->
+                            <li>搜索</li>
+                        </ul>
+                    </div>
+                </div>
+                <input type="text" id="searchCon" value="" placeholder="请输入您要搜索的订单号" />
+                <button class="searBtn"></button>
+            </div>
+            <div class="userinfo">
+                <span id="nickname">当前用户</span>
+                <i></i>
+                <ul class="user-select">
+                    <li class="modifyPwd">修改密码</li>
+                    <li class="exit">退出</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="w">
+        <div class="nav">
+            <h3>业务流程</h3>
+            <ul>
+                <li class="all-order">
+                    全部订单<i>0</i>
+                </li>
+                <li class="waiting-list">
+                    待接单<i>0</i>
+                </li>
+                <li class="waiting-design">
+                    待设计<i>0</i>
+                </li>
+                <li class="waiting-modification">
+                    待修改<i>0</i>
+                </li>
+                <li class="cancelled">
+                    已取消订单<i>0</i>
+                </li>
+                <li class="completed">
+                    已完成订单<i>0</i>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <!--  消息框  -->
+            <p id="pop_msg" class="notice_rig newMessage_workstage">
+                <i class="icon iconfont icon-tongzhi"></i>
+                <span>
+                    <a data-user="" target="_blank" class="newMessageNum">您有0条新消息</a>，请点击
+                    <a>进入消息列表</a>进行处理</span>
+                <i class="icon iconfont icon-error-20170103"></i>
+            </p>
+            <div class="content">
+                <iframe frameborder="0" id="cont_iframe" src="" scrolling="auto"></iframe>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <p>Copyright © 2017 - 2018  制宝科技 版权所有</p>
+    </div>
+
+    <script>
+        document.write('<script src="../lib/jquery-1.11.0.min.js?v="'+ VESION +' type="text/javascript"><\/script>');
+        document.write('<script src="../lib/jquery.cookie.js?v="'+ VESION +' type="text/javascript"><\/script>');
+        document.write('<script src="../lib/layer/layer.js?v="'+ VESION +' type="text/javascript"><\/script>');
+        document.write('<script src="../js/common/common.js?v="'+ VESION +' type="text/javascript"><\/script>');
+        document.write('<script src="../js/main.js?v="'+ VESION +' type="text/javascript"><\/script>');
+        document.write('<script src="../js/common/pop_message.js?v="'+ VESION +' type="text/javascript"><\/script>');
+    </script>
+</body>
+
+</html>

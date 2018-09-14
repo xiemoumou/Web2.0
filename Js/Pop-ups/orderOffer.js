@@ -10,7 +10,7 @@ $(function () {
 
     $('.ok').on('click', function () {
         var quotePrice = $("#quotePrice").val() || 0;
-        quotePrice = parseFloat(quotePrice.replace(/[^0-9.]/g, ''));//报价
+        quotePrice = parseFloat(quotePrice.replace(/[^0-9-.]/g, ''));//报价
         var quotePeriod = $("#quotePeriod").val() || 0;
         quotePeriod = parseInt(quotePeriod);//工期
 
@@ -32,7 +32,6 @@ $(function () {
             if (data.code == 200) {
                 top.Message.show("提示", data.message, MsgState.Success, 2000, function () {
                     top.classMain.loadOverview(null, null, null, customid);
-                    debugger
                     if (data.data) {
                         var code = data.data;
                         top.Cache["train-data"] = code;

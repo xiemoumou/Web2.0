@@ -1,0 +1,40 @@
+.floor {
+    text-align: center;
+    padding-top: 50px;
+}
+.hollow-button, .red-button {
+    width: 112px;
+    height: 35px;
+    display: inline-block;
+}
+.tran-content{
+    width: 100%;
+    height: 269px;
+    background-color: #fff;
+}
+.tran-order-box{
+    width: 348px;
+    margin: 0 auto;
+}
+.tran-order-text p{
+    padding-top: 10px;
+}
+.tran-order-box{
+    font-size: 14px;
+    color: #444444;
+}
+.work-shop select{
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    width: 153px;
+    height: 28px;
+    line-height: 28px;
+}
+.work-shop{
+    padding-top: 15px;
+}
+.active{
+    color: #E84B4C;
+    font-size: 12px;
+}

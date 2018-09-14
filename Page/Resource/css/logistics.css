@@ -1,0 +1,35 @@
+.logistics_pad{ box-sizing: border-box; font-size:14px; color: #343434;}
+.logistics_state{ padding: 0 40px;overflow: hidden;background-color: #fff;}
+.logistics_listNum{ height: 22px; margin: 16px 0;clear: both;}
+.logistics_liL{ float: left; margin-right: 20px; }
+.logistics_liBtn{ float: left; width: 44px; height: 22px; border-radius: 3px; text-align: center; line-height: 22px;}
+.logistics_liBtn.hurry{ text-align: center; background-color: #FBF2F2; color: #E95556;}
+.logistics_liR{ float: right; line-height: 22px;}
+.logistics_numberInfo{ padding-bottom: 16px; line-height: 22px; clear: both; overflow: hidden;}
+.logistics_numberInfo div{ float: left; margin-right: 100px;}
+.logistics_content{ margin-top: 10px; padding: 40px; background-color: #fff; overflow: hidden;}
+.logistics_list{ padding-bottom: 20px; clear: both; overflow: hidden;}
+.logistics_list div{ float: left;}
+.logistics_list_second{ padding:0 30px;}
+.logistics_list_third{ padding-right:68px;}
+.logistics_list_fourth{ padding-right:20px;}
+.logistics_list .blod{ font-weight: 700;}
+.logistics_list .red{ color: #fbf3f3}
+.logistics_list .vis{ visibility: hidden;}
+.logistics_list.red_color{ color:#ef4454;}
+.logistics_numberInfo .edit{
+    float:right;
+    position: relative;
+    color:#E95758;
+    cursor:pointer;
+}
+.logistics_numberInfo .edit:before{
+    display: block;
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: url(../images/icon/edit.png) no-repeat -2px -2px;
+    position: absolute;
+    left: -19px;
+    top: 2px;
+}

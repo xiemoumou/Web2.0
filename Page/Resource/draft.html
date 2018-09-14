@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>草稿箱</title>
+        <link rel="stylesheet" href="./css/reset.css" />
+        <link rel="stylesheet" href="./css/iconfont.css" />
+        <link rel="stylesheet" href="./css/iconfont1.css" />
+        <link rel="stylesheet" href="./css/workstage.css"/> 
+        <link rel="stylesheet" href="./css/draft.css" />
+        <script type="text/javascript" src="./js/flexible.js" ></script>
+        <script type="text/javascript" src="./js/jquery-1.11.0.min.js" ></script>
+        <script type="text/javascript" src="./js/jquery.cookie.js" ></script>
+        <script type="text/javascript" src="./js/layer.js" ></script>
+        <script type="text/javascript" src="./js/common.js" ></script>
+    </head>
+    <body>
+        <div id="header">
+            <div>
+                <img src="./images/icon/logo.png" alt="logo"/>
+                <h4 class="active">我的工作台</h4>
+                <form class="searchbar"> 
+                    <div class="mod_select searSort">
+                        <div class="select_box">
+                            <span class="select_txt">分&nbsp;&nbsp;类</span>                     
+                            <ul class="option_">
+                                <li>分&nbsp;&nbsp;类</li>
+                                <li>用户名</li>
+                                <li>订单号</li>
+                                <li>客服号</li>
+                            </ul> 
+                        </div>                       
+                    </div>
+                    
+                     <input type="text" id="searchCon" value="" placeholder="请输入您要搜索的订单号等"/>
+                    <button class="searBtn"><i class="icon iconfont icon-sousuo"></i></button>
+                </form>
+                <dl >
+                    <dt class="ddstyle"><span>风吹云散</span><img class="imgcol" src="./images/icon/arr.svg"/></dt>
+                    <dd class="ddstyle center hid" >个人中心</dd>
+                    <dd class="ddstyle exit hid">退出</dd>
+                </dl>                                           
+            </div>
+        </div>
+        
+        <!--主内容-->
+        <div id="content">
+            <!--左侧  导航区-->
+            <div id="nav">
+                <ul class="">
+                    <h3><i class="icon iconfont icon-liucheng"></i>业务流程</h3>
+                    <h4 onclick="getWorkstage()"><span>全部订单</span><em class="baccred">100</em></h4>
+                    <li >咨询中<em>(20)</em></li>
+                    <li>设计中<em>(20)</em></li>
+                    <li>待客户确认<em>(20)</em></li>
+                    <li>待支付<em>(20)</em></li>
+                    <li>定稿<em>(20)</em></li>
+                    <li>生产中<em>(20)</em></li>
+                    <li>邮寄中<em>(20)</em></li>
+                    <li>售后处理中<em>(20)</em></li>
+                    <li>退货中<em>(20)</em></li>
+                    <li>退款中<em>(20)</em></li>
+                    <li>取消<em>(20)</em></li>
+                    <li>完成<em>(20)</em></li>
+                </ul>
+                <ul>
+                    <h3><i class="icon iconfont icon-daibanshixiang"></i>待办事项</h3>
+                    <h4 onclick="getTaskList()">任务列表</h4>
+                    <h4 class="borderCol">草稿箱</h4>
+                </ul>
+            </div>
+            
+            <!--右侧  主内容-->
+            <div class="cont_right">
+                <!-- 展示草稿箱的内容 -->
+                    <table class="draft_box">
+                        <caption><strong>草稿箱</strong><span class="allnum_draft"></span></caption>
+                                                                                                                                               
+                    </table>
+                    
+                    <!--分页-->
+                    <!--<div class="page">
+                        <p>
+                            <span>首页</span>
+                            <span>上一页</span>
+                            <span class="spanRed">1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>下一页</span>
+                            <span>末页</span>
+                        </p>
+                    </div>-->
+                     
+                </div>
+                
+                
+                
+                <!--<iframe href="./draft.html" style="width: 964px;height: 600px;border: none;">
+                    
+                </iframe>-->   
+            
+            </div> 
+            
+            <!--回到顶部-->
+            <div class="totop_box">
+                    <a onclick="get_newTask()">
+                        <i class="icon iconfont icon-xinjianrenwu"></i>
+                        <p>新建任务</p>
+                    </a>
+                    <a class="newOrderBtn">
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>新建订单</p>
+                    </a>
+                    <button>
+                        <img style="width: 24px" src="./images/icon/toTop.svg" />
+                        <p>顶部</p>
+                    </button>              
+            </div>
+        </div>
+        
+        <footer>Copyright&copy;&nbsp;2004-2017&nbsp;&nbsp;制宝科技&nbsp;&nbsp;版权所有</footer>
+        
+        
+        <script type="text/javascript" src="./js/draft.js" ></script>
+    </body>
+    
+</html>

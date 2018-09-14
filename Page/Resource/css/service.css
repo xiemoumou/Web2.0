@@ -1,0 +1,1042 @@
+		html{
+                background-color: #f5f5f5;
+                /*overflow-x: hidden;*/
+                /*-webkit-text-size-adjust:none;*/
+            }
+            @media screen and (min-width: 1200px) {   
+			  .wrap-outer {   
+			       margin-left: calc(100vw - 100%);   
+			   }   
+			}  
+
+            #header{
+                width: 100%;
+                height: 1.6666rem;
+                background-color: #fff;             
+            }
+            #header>div{
+                width: 22.2222rem;
+                height: 1.6666rem;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                position: relative;
+            }  
+            #header h4{
+            	display: flex;
+            	margin-left: 1.2962rem;
+            }         
+            #header h4>p{             
+                width: 2.2222rem;
+                height: 1.5925rem;
+                font-weight: normal;
+                line-height: 1.6481rem;
+                font-size: 0.3333rem;
+                margin-right: 0.0925rem;
+                text-align: center;
+                border-bottom: 4px solid #fff;
+                background-color: #f5f5f5;
+                cursor: pointer;
+            }
+            #header h4>p.active{
+                background-color: #fbf2f2;
+                color: #e84b4c;
+                border-color: #E84B4C;
+            }
+            #header h4>p:nth-of-type(2){
+            	/*display: none;*/
+            }   
+            #header h4>p:hover{
+                background-color: #fbf2f2;
+                color: #e84b4c;
+                border-color: #E84B4C;
+            }        
+            #header input{
+                width: 4.074rem;
+                height: 0.5555rem;
+                align-self: center;
+                font-size: 12px;
+                margin-left: 1.1111rem;
+                padding-left: 0.1851rem;
+                border-left: 1px solid #d0d0d0;
+            }
+            .searchbar{
+                width: 6.037rem;
+                height: 0.7407rem;
+                line-height: 0.7407rem;
+                border-radius: 0.3703rem;
+                border: 1px solid #d0d0d0;
+                position: absolute;
+                right: 4.1111rem;
+                padding-left: 0.3703rem;
+                display: flex;
+                margin-top: 0.1666rem;
+                
+            }
+            .searchbar.active{
+                border-color: #e95758;
+            }
+            .searchbar img.imgcol{
+                margin: 0.2037rem 0 0 0.037rem;
+            }
+            .searchbar i{
+                display: inline-block;
+                width: 0.4074rem;
+                color: #fff;
+            }
+            .searchbar div.searSort{               
+               position: absolute; 
+               z-index: 19;
+               background-color: #fff;
+               font-size: 12px; 
+               width: 1rem;
+               height: 0.5555rem;               
+               /*overflow: hidden;*/
+               cursor: pointer;            
+            }
+            .searchbar div.searSort span{
+                display: inline-block;
+                width: 0.9444rem;
+                padding-left: 0.0555rem;
+                height: 0.5555rem;
+                line-height: 0.5555rem;
+                background: url(../images/icon/arr.svg) 0.7037rem 0.1851rem no-repeat;               
+            }
+            .createOrder{
+            	position: absolute;
+            	right: 2.0259rem;
+                top: 0.6861rem;
+                font-size: 14px;
+                color: #e95758;
+                cursor: pointer;
+            }
+            .createOrder i{
+            	font-size: 18px;
+            	margin-right: 0.1081rem;
+            }
+           
+            /* 模拟下拉菜单样式 */
+            .select_box{
+                position: relative;
+            }
+            .select_box ul.option_{
+                position: absolute;
+                display: none;
+            }            
+            .searSort .option_{
+               width: 100%;             
+               border: 1px solid #e95758;  
+               border-top: none;
+               background-color: #fff;                                     
+            }
+            .searchbar .mod_select .select_box span{
+            	padding: 0;
+                background: url(../images/icon/arr.svg) 0.6666rem 0.0751rem no-repeat; 
+                background-size: 0.3888rem;   				
+            }
+            .searSort .option_ li{
+                width: 100%;
+                height: 0.5925rem; 
+                text-align: center;
+                line-height: 0.5925rem;               
+            }
+            .searchbar .searSort li:odd{
+               background-color: #f3f3f3;
+            }
+            ul.option_ li:hover{
+                background-color: #fbf2f2;
+                color: #e95758;
+            }  
+            /*--  模拟下拉框    结束  ---*/                     
+            .searchbar button.searBtn_workstage{
+            	position: absolute;
+            	top: -1px;
+            	right: -1px;
+                display: inline-block;
+                width: 1rem;
+                height: 0.7777rem;
+                border-radius: 0 0.3703rem 0.3703rem 0;
+                background-color: #e95758;
+                text-align: center;
+            }
+            #header dl{                
+                width: 1.8148rem;
+                position: absolute;
+                right: 0;
+                top: 0.5185rem;
+                z-index: 9;
+                font-size: 12px;
+                cursor: pointer;
+            }
+            #header dl:hover{
+                border: 1px solid #dfdfdf;
+            }
+            dt.ddstyle  img.imgcol{
+                margin: 0.2962rem 0 0 0.037rem;
+            }
+            #header .ddstyle{
+                width: 1.8148rem;
+                height: 0.7407rem;
+                text-align: center;
+                line-height: 0.7407rem;
+                background-color: #fff;
+                overflow: hidden;
+            }
+            dd.hid{
+               display: none;
+            }
+            #header dl dd:nth-of-type(1){
+                background-color: #f5f5f5;
+            }
+            #header dl dd:hover{
+            	background-color: #d74a49;
+            }
+           
+            /*本页通用样式*/
+           /*--显示数字  红色背景 -*/
+            em.baccred{
+            	display: inline;
+                font-size: 12px;
+                padding: 0.037rem 0.0925rem;
+                border-radius: 0.1851rem;
+                background-color: #e95758;
+                color: #fff;
+                margin-left: 0.074rem;
+            }
+            
+        /*--盒子模型--*/
+        ul,li,ol,dl,dt,dd,div,span,h2,h3,h4,h5,h6{
+		    box-sizing: border-box;
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing: border-box;
+		}
+         /*主内容区*/          
+            div#content{
+                width: 22.2222rem;
+                margin: 0.4814rem auto;
+                display: flex;
+                position: relative;
+            }
+            /*- 定义导航区的 样式 -*/
+            #nav{
+            	width: 3.8333rem;
+            	height: 8.5799rem;
+            	background-color: #fff;
+            }
+            #nav h3{
+            	height: 0.9074rem;
+            	line-height: 0.9074rem;
+            	font-size: 18px;
+            	background-color: #e84b4c;
+            	color: #fff;
+            	font-weight: 510;
+            }
+            #nav li{
+            	height: 0.8518rem;
+            	line-height: 0.8518rem;
+            	font-size: 16px;
+            	color: #454545;
+            	border-left: 2px solid #fff;
+            	cursor: pointer;
+            }  
+            #nav li.active{
+            	background-color: #fbf2f2;
+            	color: #e84b4c;
+            	border-color: #e84b4c;
+            }
+            #nav li:hover{
+            	background-color: #fbf2f2;
+            	color: #e84b4c;
+            	border-color: #e84b4c;
+            } 
+            #nav  i{
+            	margin: 0 0.2222rem 0 0.4074rem;
+            } 
+        	#nav  em{
+        		margin-left: 0.1111rem;
+        	}
+        	/*- 定义导航区的 样式 --END--*/
+        	/*---右侧    主区域---*/
+        	#conRight{
+        		width: 17.8703rem;
+        		margin-left: 0.5185rem;
+        	}
+        	.notice_rig{
+                height: 0.6296rem;
+                line-height: 0.6296rem;
+                border: 1px solid #e95e5f;
+                color: #e84b4c;
+                background-color: #fbf2f2;
+                font-size: 0.2407rem;
+                margin-bottom: 0.2592rem;
+            }
+            .notice_rig span{
+                color: #e84b4c;
+                
+            }
+            .notice_rig i.icon-tongzhi{
+                margin: 0 0.2037rem 0 0.2407rem;
+            }
+            .notice_rig i.icon-error-20170103{
+                float: right;
+                margin-right: 0.1851rem;
+            }
+            .notice_rig a{
+                color: #3a8ecc;
+                padding: 0 0.074rem;
+                cursor: pointer;
+            }
+            div.layui-layer .layui-layer-content table{
+            	border: none;
+            }
+            div.layui-layer .layui-layer-content table thead tr{
+            	color: #e84b4c;
+            }
+            div.layui-layer .layui-layer-content button.onekey_clear{
+            	padding: 0.0555rem 0.0925rem;
+            	color: #fff;
+            	background-color: #e84b4c;
+            	border-radius: 2px;
+            }
+            div.layui-layer .layui-layer-content table tbody tr:nth-of-type(odd){
+            	background-color: #eee;
+            }
+            div.layui-layer .layui-layer-content table tbody tr{
+            	cursor: pointer;
+            	border: none;
+            }
+            div.layui-layer .layui-layer-content table tbody tr:hover{
+            	color: #fff;
+            	background-color: #e84b4c;
+            }
+            div.layui-layer .layui-layer-content table tr td{
+            	padding: 0 0.1481rem;
+            	text-align: center;
+            	border: none;
+            }
+            /*--没有订单信息时  的  样式  START--*/
+            div.noorder_workstage{
+           	 width: 100%;
+           	 height: 69vh;
+           	 display: flex;
+           	 justify-content: center;
+           	 align-items: center;
+           }
+           div.noorder_workstage>div{
+           	text-align: center;
+           	color: #7c7c7c;
+           }
+           div.noorder_workstage>div p:last-of-type{
+           		margin-top: 0.1851rem;
+           		font-size: 0.3703rem;
+           }
+           /*--没有订单信息时  的  样式   END--*/
+        	.orderCont_service{
+        		padding: 0.2222rem 0.4629rem;
+        		background-color: #fff;
+        	}
+        	.overview_service{
+        		height: 0.8889rem;
+        		display: flex;
+        		flex-wrap: wrap;
+        		overflow: hidden;
+        	}
+        	.overview_service li{
+        		display: flex;
+        		cursor: pointer;
+        		display: none;
+        	}
+        	.overview_service li:first-of-type{
+        		display: block;
+        	}
+        	.overview_service li p{
+        		float: left;
+        		height: 0.8518rem;
+        		line-height: 0.8518rem;
+        		border-bottom: 2px solid #fff;
+        		margin-right: 0.6666rem;
+        	}
+        	.overview_service li span{
+        		padding: 0.2777rem 0;
+        		font-size: 16px;
+        	}
+        	.overview_service li p.bgred{
+        		border-bottom-color: #e84b4c;
+        		color: #e84b4c;
+        	}
+        	.overview_service li p:hover{
+        		border-bottom-color: #e84b4c;
+        		color: #e84b4c;
+        	}
+        	#order_service_box{
+        		margin-top: 0.2962rem;
+        		/*width: 16.6666rem;
+        		height: 62vh;
+        		overflow-y: scroll;*/
+        	}
+        	#order_service_box .redfont{
+        		color: #e84b4c;
+        		font-size: 14px;
+        	}
+        	.order_cont_service{
+        		border: 1px solid #dedede;
+        	}
+        	.order_service_top{
+        		height: 0.8888rem;
+        		line-height: 0.8888rem;
+        		background-color: #f5f5f5;
+        		padding: 0.074rem 0.3703rem;
+        		font-size: 0.2222rem;
+        	}
+        	.order_service_top>p{
+        		height: 0.3703rem;
+        		line-height: 0.3703rem;
+        		display: flex;
+        		justify-content: space-between;
+        	}
+        	.order_service_top>p em{
+        		margin-left: 0.1111rem;
+        	}
+        	.order_service_middle{
+        		display: flex;
+        	}
+        	/*--   定义  灰色边框   --*/
+        	.order_service_middle .borderGray{
+        		box-sizing: border-box;
+			    border: 1px solid #d5d5d5;
+			    padding: 0 0;
+        	}
+        	/*---单选  多选  区域--*/
+        	.order_service_middle>div>h5{
+        		width: 13.1851rem;
+        		height: 1rem;
+        		display: flex;
+        		justify-content: space-between;
+        		align-items: center;
+        		padding: 0 0.2777rem;
+        		font-size: 0.2222rem;
+        	}
+        	.order_service_middle>h4{
+        		width: 3.6851rem;
+        		border-left: 1px solid #e9e9e9;
+        		display: flex;
+        		padding: 0.2407rem 0.2962rem;
+        	}
+        	/*--下拉单选---*/
+        	.order_service_middle .mod_select{
+               width: 1.5555rem;
+               height: 0.5555rem;
+            }
+            .order_service_middle .mod_select div.select_box{
+               width: 1.5555rem;
+               height: 0.5555rem;
+               cursor: pointer;
+            }
+        	.order_service_middle .mod_select .option_{
+               width: 100%; 
+               height: 2.4925rem; 
+               overflow-y: scroll;           
+               border: 1px solid #d5d5d5;  
+               border-top: none;
+               background-color: #fff;
+            }
+            .order_service_middle .mod_select .option_ li{
+                width: 100%;
+                height: 0.4074rem; 
+                text-align: center;
+                line-height: 0.4074rem;               
+            }
+            .order_service_middle .mod_select div.select_box span{
+            	display: inline-block;
+            	padding-left: 0.2037rem;
+                width: 1.5185rem;
+                height: 0.5185rem;
+                line-height: 0.5185rem;
+                background: url(../images/icon/arr.svg) 1.0137rem 0.0751rem no-repeat;
+                background-size: 0.4444rem; 
+                              
+            }
+/*--下拉多选框--*/           
+div.type_tech{
+    width: 2.4074rem;
+    height: 0.5555rem;
+    line-height: 0.5555rem;
+    cursor: pointer;
+    background: url(../images/icon/arr.svg) 1.8481rem 0.0751rem no-repeat; 
+    background-size: 0.4444rem;
+    position: relative;
+}
+div.type_tech>span{
+	display: inline-block;
+	width: 2.0259rem;
+	height: 0.5185rem;
+	padding-left: 0.2037rem;
+	overflow: hidden;
+}
+div.type_tech>h5{
+	display: none;
+	width: 5.5407rem;
+	position: absolute;	
+	top: 0.537rem;
+	left: 0;
+	z-index: 99;
+}
+.tech_label_box>div{
+	width: 5.5407rem;
+	padding: 0.0925rem;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	/*align-items: ;*/
+	border: 1px solid #d5d5d5;
+	background-color: #fff;
+}
+.tech_label_box>div>label{
+	width: 1.2592rem;
+	cursor: pointer;
+}
+.tech_label_box>div>p{
+	width: 100%;
+}
+button.confirm_addTech{
+	display: inline-block;
+	background-color: #e95758;
+    margin: 0.1481rem 0.2962rem 0 1.1407rem;
+    font-size: 0.2592rem;
+}
+button.cancel_addTech{
+	display: inline-block;
+	color: #fff;
+	background-color: #bcbcbc;
+    margin: 0.1481rem 0.2962rem 0 0.5407rem;
+    font-size: 0.2592rem;
+}
+/*----下拉多选框--end---*/
+/*---订单的图片  长宽高   客户预算   订单金额   数量  周期  ---*/
+.order_service_middle>div>h6{
+	height: 2.4074rem;
+	border-top: 1px solid #e9e9e9;
+	padding: 0.2037rem 0.2777rem;
+	display: flex;
+	font-size: 0.2222rem;
+}
+figure.pic_order{
+	width: 1.9629rem;
+	height: 1.9629rem;
+	border: 1px solid #e5e5e5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+figure.pic_order>img{
+	max-height: 1.9629rem;
+	max-width: 1.9629rem;
+}
+.order_parameter{
+	width: 10.1851rem;
+	display: flex;
+	justify-content: space-between;
+	margin-left: 0.4074rem;
+}	
+.order_parameter span{
+	display: inline-block;
+	height: 0.5185rem;
+	border: 1px solid #d7d7d7;
+	margin-bottom: 0.1481rem;
+}
+.order_parameter em{
+	display: inline-block;
+	height: 0.4814rem;
+	line-height: 0.4814rem;
+	text-align: center;
+	background-color: #ebebeb;
+}
+.order_parameter input{
+	padding: 0 0 0 0.0925rem;
+	font-size: 0.2222rem;
+	color: #6f6f6f;
+}
+.order_li_first{
+	width: 2.3703rem;
+}
+.order_li_first p input{
+	width: 1.1777rem;	
+}
+.order_li_first p span{	
+	width: 1.7407rem;
+	margin-right: 0.1481rem;	
+}
+.order_li_first p em{
+	width: 0.4629rem;	
+}	
+.order_li_second{
+	width: 2.4259rem;
+}
+.order_li_second p em{
+	width: 0.7037rem;	
+}	
+.order_li_second p input{
+	width: 1.2407rem;	
+}
+.order_li_second p span{	
+	width: 1.9814rem;
+	margin-right: 0.1851rem;	
+}
+.order_li_third{
+	width: 3.037rem;
+}
+.order_li_third p em{
+	width: 1.3148rem;	
+}	
+.order_li_third p input{
+	width: 1.6481rem;	
+}
+/*----客服角色  的  按钮 ---*/	
+.order_service_middle>h4>p{
+	width: 1.2837rem;
+}
+.order_service_middle>h4>p>span{
+	display: block;
+	width: 1.2837rem;
+	height: 0.4814rem;
+	line-height: 0.4814rem;
+	text-align: center;
+	font-size: 12px;
+}
+.order_service_middle>h4>div{
+	/*width: 1.6666rem;*/
+	margin-left: 0.1174rem;
+}
+.order_service_middle>h4 button{
+	width: 1.6296rem;
+	height: 0.5925rem;
+	line-height: 0.5925rem;
+	text-align: center;
+	border-radius: 0.0925rem;
+	color: #fff;
+	margin-bottom: 0.1111rem;
+}
+.order_service_middle>h4 b{
+	display: block;
+	width: 1.6296rem;
+	height: 0.5925rem;
+	line-height: 0.5925rem;
+	text-align: center;
+	color: #2890dc;
+	font-size: 12px;
+	cursor: pointer;
+}
+.order_service_middle>h4 button:nth-of-type(odd){
+	background-color: #42a5f5;
+}
+.order_service_middle>h4 button:nth-of-type(even){
+	background-color: #66bb6a;
+}
+/*------滑动尺------*/
+.order_service_bottom{
+	width: 100%;
+	height: 1.1111rem;
+	background-color: #f5f5f5;
+	position: relative;
+}
+.order_service_bottom>div{
+	width: 10.1851rem;
+	height: 0.0555rem;
+	background-color: #dad9d9;
+	position: absolute;
+	left: 0.3703rem;
+	bottom: 0.2962rem;
+	font-size: 12px;
+}
+.order_service_bottom>div em{
+	position: absolute;
+	top: 2px;
+	color: #4cab39;
+}
+.order_service_bottom>div em.downRuler1{
+	right: 0;
+}
+			ul.ruler{
+               position: absolute;  
+               cursor: pointer;
+               z-index: 9; 
+               font-size: 12px;            
+           }
+           ul.ruler li{
+               position: absolute; 
+               display: flex;  
+                           
+           }
+           ul.ruler span{
+               display: inline-block;
+               width: 0.8518rem;
+               text-align: center;
+               color: #fff;
+           }
+           ul.ruler input{
+               width: 1.016rem;
+               height: 0.4074rem;
+               padding-left: 1px;
+               background-color: #fff;
+           }
+           ul.ruler li:nth-of-type(odd) button{
+           		height: 0.4074rem;
+           		display: inline-block;
+           		color: #fff;
+           }
+           ul.ruler li:nth-of-type(even){
+           		display: none;
+           }
+           ul.ruler input.designFee{
+           		color: #4cab39;
+           		
+           }
+           ul.ruler img{
+               width: 0.2222rem;
+           }
+			/* 设计费的标尺  */                  
+           ul.design_ruler{
+               top: -0.6111rem;
+               left: 4.9666rem;
+           }
+           ul.design_ruler li:first-of-type{
+               width: 2.7407rem;
+               height: 0.4444rem;
+               left: -1rem;
+               line-height: 0.4444rem;               
+               background-color: #4cab39;
+               border: 1px solid #4cab39;
+               border-radius: 3px;
+           } 
+           ul.design_ruler li:first-of-type button{
+               background-color: #4cab39;
+           }
+           ul.design_ruler li:nth-of-type(2){              
+               top: 0.4444rem;
+               left: 50%;
+               display: block;
+           }
+ 		/*-----预算   定价------*/           
+ 			/* 预算   客户心理价   的标尺  */
+ 			ul.custom_ruler{
+ 				right: 2.6592rem;
+ 				top: 0.0555rem;
+ 			} 
+ 			ul.custom_ruler span{
+ 				width: 0.9962rem; 
+ 			} 
+ 			                 
+           ul.custom_ruler li{
+               width: 3.1851rem;
+               height: 0.4444rem;
+               line-height: 0.4444rem;
+               left: -0.8518rem;
+               border: 1px solid #d74a49;
+               background-color: #d74a49;
+           }
+           ul.custom_ruler li input{
+           	  width: 1.3016rem;
+           }   
+           ul.custom_ruler li button{
+               background-color: #d74a49;
+           }        
+           
+        /* 工厂报价的标尺  */
+        ul.offer_ruler{
+          	right: 2.6592rem;
+          	top: 0.3255rem;
+        }
+        ul.offer_ruler span{
+          	width: 0.9962rem;
+        }         
+        ul.offer_ruler li{
+            width: 3.1851rem;
+            height: 0.4444rem;
+            line-height: 0.4444rem;
+            left: -0.8518rem;
+            border: 1px solid #3a8ecc;
+            background-color: #3a8ecc;
+        }
+        ul.offer_ruler li input{
+           	width: 1.3016rem;
+        } 
+        ul.offer_ruler li button{
+            background-color: #3a8ecc;
+        }
+/*自上弹出层的样式*/
+div.popup_style{       
+    position: fixed;
+    left: 12.0000rem;
+    top: 0;
+    width: 9.7222rem;
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 0.1481rem 0.3703rem;
+    z-index: 89;
+    border: 2px solid #eee;
+    display: none;
+} 
+div.popup_style>p{
+    height: 0.9259rem;
+    line-height: 0.9259rem;
+    display: flex;
+    font-size: 0.3333rem;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    color: #494949;
+}
+div.pop_copyAlert>h5{
+	display: flex;
+	justify-content: space-around;
+}
+div.pop_copyAlert h5 button{
+	margin: 0;
+}
+button.redbutton{
+	margin-left: 2.7777rem;
+	width: 1.8148rem;
+	height: 0.5925rem;
+	line-height: 0.5925rem;	
+	background-color: #e95758;
+    color: #fff;
+    border-radius: 0.074rem;
+}
+button.continuePay_copyAlert,button.continueEnquiry_copyAlert,
+button.confirmOffer_work,button.emptyMessage{
+	display: none;
+}
+
+/*--------查看物流----上传支付金额--确认支付---*/
+div.uploadPayPrice_orderDetail{
+	top: 3.3333rem;
+}
+div.uploadPayPrice_orderDetail div{
+	margin: 0.1851rem 0;
+}
+div.uploadPayPrice_orderDetail input{
+	padding: 0.1111rem 0.0925rem;
+	border: 1px solid #d5d5d5;
+}     
+
+/*--客服发起生产 并  上传设计--*/
+div.production_service_box{
+	/*display: block;*/
+	min-height: 7.5703rem;	
+}
+div.production_service_box>h5{
+	font-size: 12px;
+	display: block;
+	width: 8.6666rem;
+    height: 0.9629rem;
+    color: #e95758;
+    background-color: #fbf2f2;
+    color: #e95758;
+    border: 1px solid #e84b4c;
+    margin-top: 0.2037rem;
+    padding: 9px 0.2222rem;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;	
+}
+/*-------客服自己  上传图片和附件的  区域---START------------*/
+
+h4.production_service{
+	font-size: 12px;
+	width: 8.7037rem;
+	display: block;   
+    margin: 0.1851rem 0; 
+    /*border: 1px solid #e6e6e6;*/
+    min-height: 3.7037rem;    
+}
+h4.production_service>div{
+	display: flex;
+	margin-top: 0.3333rem;
+}
+
+h4.production_service>div>p{
+	width: 1.2037rem;
+	text-align: right;
+	height: 0.5555rem;
+	line-height: 0.5555rem;
+}
+h4.production_service h6{
+	display: flex;
+    margin-left: 0.2222rem;
+    align-items: flex-start;
+    width: 6.2222rem;
+    flex-wrap: wrap; 
+}
+h6.newOrder_uppic>div{
+	display: flex;
+    
+    width: 6.2222rem;
+    flex-wrap: wrap; 
+}
+h4.production_service label strong{
+	display: inline-block;
+    width: 1.8888rem;
+    height: 0.5185rem;
+    line-height: 0.5185rem;
+    text-align: center;
+    border: 1px solid #e84b4c;
+    background-color: #fff;
+    border-radius: 0.2592rem;
+    color: #e84b4c; 
+    margin-right: 0.2592rem;
+}
+h4.production_service>div:nth-of-type(1)>p{
+	
+}
+h6.newOrder_uppic>div>p{
+	height: 0.5555rem;
+	line-height: 0.5555rem;
+}
+h6.newOrder_uppic>ol.show_uppic_service{
+    /*height: 1.4814rem;*/
+   margin-top: 0.1111rem;
+   display: flex;
+}
+h6.newOrder_uppic>ol.show_uppic_service li{
+    width: 1.4814rem;
+    height: 1.4814rem;
+    line-height: 1.4814rem;
+    border: 1px solid #e3e3e3;
+    position: relative;
+    margin-right: 0.1481rem;
+}
+h6.newOrder_uppic>ol.show_uppic_service li>p{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1.4814rem;
+	height: 1.4814rem;
+	text-align: center;
+	line-height: 1.4814rem;
+	background: rgba(0,0,0,.5);
+}
+h6.newOrder_uppic>ol.show_uppic_service li>p i{
+	color: #fff;
+}
+h6.newOrder_uppic>ol.show_uppic_service li img{
+    max-width: 1.4814rem;
+    max-height: 1.4814rem;   
+}
+h6.newOrder_uppic>ol.show_uppic_service li em{
+    position: absolute;
+    bottom: -2px;
+    display: block;
+    height: 0.4074rem;
+    width: 1.5rem;
+    color: #fff;
+    text-align:center;
+    line-height: 0.4074rem;
+    background: rgba(0,0,0,.7);
+}
+ol.show_upaccessory_service{
+    max-width: 13.8888rem;
+    justify-content: space-between;
+    margin: 0.1851rem 0 0.1481rem;
+    flex-wrap: wrap;
+}
+ol.show_upaccessory_service li{
+    padding: 0 0.1111rem;
+    height: 0.5555rem;
+    display: flex;
+    align-items: center;    
+    background-color: #f8f8f8;
+    margin-bottom: 0.1111rem;
+}
+ol.show_upaccessory_service li span{
+    color: #4e4e4e;
+    display: inline-block;
+    max-width: 3.5185rem;
+    overflow: hidden; /*超出的隐藏*/
+	white-space: nowrap;
+	text-overflow:ellipsis; /*超出的设置为省略号*/
+}
+ol.show_upaccessory_service li em{
+    color: #a7a7a7;
+    margin: 0 0.1851rem;
+}
+ol.show_upaccessory_service li b{
+    color: #e84b4c;
+    margin-right: 0.1851rem;
+    cursor: pointer;
+}
+textarea.neworder_remark_service{
+    width: 6.2222rem;
+    height: 1.5555rem;
+    border: 1px solid #e3e3e3;
+    margin-left: 0.2222rem;
+    padding: 0.0555rem ;
+}
+/*-------客服自己  上传图片和附件的  区域---END------------*/
+      
+/*----分页的样式------*/ 
+div#page_service{
+	margin: 0.3703rem 0 0.2962rem 0;
+	height: 0.5555rem;
+}
+div#page_service>div{
+	float: right;
+	height: 0.5555rem;
+} 
+div#page_service>div a{
+	height: 0.5555rem;
+	line-height: 0.5555rem;
+	padding: 0 0.2037rem;
+	border: 1px solid #dbe0ea;
+	margin-right: 0.0925rem;
+	color: #868e9c;
+}
+div#page_service>div a.active{
+	background-color: #d74a49;
+	color: #fff;
+} 
+
+		/*回到顶部的模块*/
+           div.totop_box{
+               width: 1.4074rem;
+               position: absolute;
+               top: 2.2222rem;
+               right: -1.6481rem;
+               background-color: #fff;
+               font-size: 12px;
+               text-align: center;
+               z-index: 999;
+           }
+           /*响应式布局*/
+          @media screen and (max-width:1399px){
+	          	div.totop_box{
+	               
+	               position: fixed;
+	               top: 7.4074rem;
+	               right: 0.2777rem;
+	               
+	           }
+          }
+          div.totop_box>button{
+               display: block;
+               width: 1.4074rem;
+               height: 1.2592rem;
+               background-color: #fff;
+               font-size: 12px;
+           }
+           div.totop_box>button:hover{
+               color: #fff;
+               background-color: #e95758;
+           }
+       
+/*--页脚--*/	   
+footer{
+    	/*position: fixed;
+    	bottom: 0;*/
+        width: 100%;
+        height: 1.0555rem;
+        line-height: 1.0555rem;
+        text-align: center;
+        font-size: 12px;
+        margin-top: 0.4444rem;
+        color: #fff;
+        background-color: #333333;
+    }

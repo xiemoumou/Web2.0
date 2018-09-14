@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!--<meta name=renderer content=webkit>-->
+		<title>登录页面</title>		
+		<link rel="stylesheet" href="./css/reset.css" />
+		<link rel="stylesheet" href="./css/login.css" />
+		<link rel="stylesheet" href="css/iconfont1.css" />
+		<script type="text/javascript" src="./js/flexible.js" ></script>
+		<script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="./js/jquery.cookie.js" ></script>
+	</head>
+	<body>
+		<div id="login">
+			<p>
+				<img class="log_login" src="./images/icon/logo.png" />
+			</p>
+			<div class="box_login" >
+				<div class="box_loginBox">
+				    <img class="login_pic" src="./images/images/left_img.png" />
+					<div class="loginCon">
+						<h4><span class="tog active" >用户登录</span><span class="tog">用户注册</span></h4>
+						<ul>
+							<li class="cont_li">
+								<h5 id="tip_login"></h5>
+								<p class="cont_p">
+									<embed type="image/svg+xml" src="./images/icon/user.svg"></embed>
+									<input id="email" type="text" placeholder="请输入手机号或邮箱" name="t1" tabindex="1"/>
+								</p>
+								<p class="cont_p">
+									<embed type="image/svg+xml" src="./images/icon/password.svg"></embed>
+									<input id="passwor" type="password" placeholder="请输入密码" name="t2" tabindex="2"/>
+								</p>
+								<p class="tip_auto" style="display: none;">
+									<label><input type="checkbox" id="autoLogin"><span>下次自动登录</span></label> 
+									<a href="#" style="display: none;">忘记密码？</a>
+								</p>
+								<button id="loginBtn">登录</button>
+								<h3><span>还没有帐户吗?<button id="exRegis">立即注册</button></span></h3>
+							</li>
+							<li class="cont_li">
+								<h5 id="tip_register"></h5>
+								<p class="cont_p">
+									<embed type="image/svg+xml" src="./images/icon/user.svg"></embed>
+									<input id="emailRegis" type="text" placeholder="请输入手机号或邮箱" name="t1" tabindex="1"/>
+								</p>
+								<p class="cont_p">
+									<embed type="image/svg+xml" src="./images/icon/password.svg"></embed>
+									<input id="passwordRegis" type="password" placeholder="请输入密码，长度为6-20个字符" name="t2" tabindex="2"/>
+								</p>
+								<div id="strength_password">
+									<span class="strength1_password"></span>
+									<span class="strength2_password"></span>
+									<span class="strength3_password"></span>
+									<b id="word_password"></b>
+								</div>
+								<p class="cont_p">
+									<embed type="image/svg+xml" src="./images/icon/password.svg"></embed>
+									<input id="passwordMore" type="password" placeholder="请再次输入密码" name="t3" tabindex="3"/>
+								</p>
+								<button id="registerBtn">注册</button>
+								<h3><span>已有帐户,<button id="exLogin" >立即登录</button></span></h3>
+							</li>
+						</ul>
+					</div>	
+				</div>
+				<!-- 模拟alert弹出框的模块 -->
+                    <div class="pop_copyAlert">
+                        <p>
+                            <span style="font-size: 0.3333rem;">提示信息</span><i class="icon iconfont icon-guanbi close_Alert"></i>
+                        </p>
+                        
+						<ul>
+						    <li><span class="message_copyAlert"></span></li> 
+						</ul>
+						<h5>
+							<button class="continueLogin_copyAlert redbutton">继续</button>
+						    <button class="close_Alert redbutton">关闭</button>
+						</h5>
+                    </div>
+			</div>
+			
+			<footer>Copyright&copy;&nbsp;2017-2018&nbsp;&nbsp;制宝科技&nbsp;&nbsp;版权所有</footer>
+			
+		</div>
+		<script type="text/javascript" src="./js/common.js"></script>
+		<script type="text/javascript" src="./js/login.js"></script>
+	</body>
+</html>

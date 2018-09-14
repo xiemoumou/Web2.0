@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../css/common/base.css" rel="stylesheet">
+    <style>
+        body{
+            background-color: #fff;
+        }
+        .floor{
+            position: absolute;
+            bottom: 0;
+            margin-top: -20px;
+            margin-bottom: 20px;
+        }
+        .red-button{
+            display: inline-block;
+        }
+        .hollow-button{
+            display: inline-block;
+            width: 70px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .floor button{
+            margin-left: 40px;
+        }
+        .floor{
+            margin-left: 20px;
+        }
+        .container-content{
+            margin-top: 60px;
+            font-weight: 400;
+            font-size: 12px;
+            text-align: center;
+        }
+        .header{
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            border-bottom: 2px solid #ccc;
+            width: 85%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h3>删除订单</h3>
+    </div>
+    <div class="container-content">
+        确定删除此订单吗？
+    </div>
+    <div class="floor">
+        <button class="red-button delok">确定</button>
+        <button onclick="parent.layer.closeAll()" class="hollow-button">取消</button>
+    </div>
+</div>
+<script type="text/javascript" src="../../lib/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../../lib/jquery.cookie.js"></script>
+<script type="text/javascript" src="../../lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="../../js/common/common.js"></script>
+
+
+<script>
+    $(".delok").on('click',function () {
+        delOrd.submit();
+    });
+    var delOrd = {
+        submit: function () {
+
+            var taxrate = Common.getUrlParam("customid", true);
+            var url = Common.getUrl()['order'] + Common.getDataInterface()["deleByCustomid"];
+            var data = {
+                "commandcode": 250,
+                "userId": $.cookie('userid'),
+                "roleType": $.cookie('roletype'),
+                "token": $.cookie('token'),
+                "customId": taxrate,
+            };
+            $(".delok").attr("disabled", true);
+            Common.ajax(url, data, true, function (data) {
+                if (data) {
+                    if (data.status.code == 0) {
+                        Common.msg(data.status.msg, 200, 2000, function () {
+                            if (parent.base && parent.base.init) {
+                                parent.base.init();
+                            }
+                            parent.layer.closeAll();
+                        });
+                    }
+                    else {
+                        Common.msg(data.status.msg, null, 2000, function () {
+                            $(".delok").attr("disabled", false);
+                        });
+                    }
+                }
+            }, function (err) {
+                $(".delok").attr("disabled", false);
+            });
+        }
+    };
+</script>
+</body>
+</html>

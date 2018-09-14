@@ -1,0 +1,352 @@
+/* 重置样式 */
+li,ul,ol,div{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+/* 展示任务的列表 */
+table.order_all{
+    margin-top: 0.0925rem;
+    width: 16.7407rem;
+    border-collapse: collapse;
+    color: #2E2E2E;
+}
+p.overview>span{
+	
+}
+
+table.order_all thead{
+    width: 100%;
+    height: 0.7222rem;
+    line-height: 0.7222rem;
+    background-color: #f2f2f2;
+    font-weight: normal;
+    font-size: 0.2592rem;
+    margin-bottom: 0.1296rem;
+    color: #2E2E2E;
+}
+table.order_all tbody tr{
+    font-size: 12px;
+    text-align: center;
+    height: 0.7777rem;
+    line-height: 0.7777rem;
+    border-bottom: 1px solid #e5e5e5;
+    color: #2e2e2e;   
+}
+table.order_all tbody td.graycolor{
+    color: #808080;
+}
+table.order_all tbody tr td.task_title{
+    display: inline-block;
+    width: 6.2962rem;
+    height: 0.7777rem;
+    line-height: 0.7777rem;
+    padding: 0 0.074rem;
+    overflow: hidden; /*超出的隐藏*/
+    white-space: nowrap;
+    text-overflow:ellipsis; /*超出的设置为省略号*/
+}
+table.order_all tbody tr td.taskBtn{
+    color: #549dd3;
+    cursor: pointer;
+}
+
+/* 具体任务内容  */
+div#task_content{
+    position: fixed;
+    top: 0;
+    width: 12.9629rem;
+    background-color: #fff;
+    padding: 0.1481rem 0.3703rem;
+    z-index: 49;
+    border: 1px solid #ddd;
+    display: none;
+}
+div#task_content>p{
+    height: 0.9259rem;
+    line-height: 0.9259rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+div#task_content i{
+    font-size: 0.3888rem;
+    color: #b3b3b3;
+}
+ul.taskCont_head{
+    padding-top: 0.1111rem;
+}
+ul.taskCont_head li:first-of-type{
+    width: 100%;
+    padding: 0 0.2962rem;
+    height: 0.7962rem;
+    background-color: #f6f6f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ul.taskCont_head>li button{
+    height: 0.574rem;
+    width: 105px;
+    padding: 0 0.2962rem;
+    line-height: 0.574rem;
+    background-color: #e95758;
+    color: #fff;
+}
+ul.taskCont_head li:last-of-type{
+    height: 1.2037rem;
+    line-height: 0.5rem; 
+    padding: 0.0925rem 0.2962rem; 
+    color: #212121;
+    border: 1px solid #ddd;
+    font-size: 12px;
+}
+ul.taskCont_head li:last-of-type p{
+    color: #212121;
+    display: flex;
+    justify-content: space-between;
+}
+
+ol#taskCont_body{
+	height: 8.4814rem;
+    overflow-y: scroll;
+}
+ol#taskCont_body>li{
+    margin-top: 0.2592rem;   
+    color: #303030;
+    border-top: 1px solid #e6e6e6 ;
+}
+ol#taskCont_body>li:first-of-type{
+    border: none;
+}
+ol#taskCont_body>li h4{
+    height: 0.5925rem;
+    display: flex;
+    padding: 0 0.074rem;
+    align-items: center;
+    justify-content: space-between;
+}
+ol#taskCont_body>li h5{
+    height: 0.5925rem;
+    line-height: 0.5925rem;
+    padding: 0 0.074rem;  
+}
+ol#taskCont_body>li div{
+    height: 0.5185rem;
+    line-height: 0.5185rem;    
+    padding: 0 0.074rem;
+}
+ol#taskCont_body p.taskCont_imgbox{
+	width: 7.5rem;
+    height: 1.65rem;
+    /*margin-top: 0.2777rem;*/
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+}
+ol#taskCont_body p.taskCont_imgbox>img{
+	max-width: 1.4814rem;
+    max-height: 1.4814rem;
+	margin: 0 0.1851rem;
+}
+ol#taskCont_body>li button.replyshowBtn{
+    float: right;
+    background-color: #fff;
+    margin-right: 0.6666rem;
+}
+ol#taskCont_body h6{
+    display: flex;
+    margin-top: 0.1481rem;
+}
+ol#taskCont_body h6>div.piclist{
+    width: 1.4814rem;
+    height: 1.4814rem;
+    border: 1px solid #e5e5e5;
+    margin-right: 0.1481rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ol#taskCont_body h6 img{
+    max-width: 1.4814rem;
+    max-height: 1.4814rem;
+}
+/* 回复任务的问题  */
+form.taskCont_reply{
+    display: none;
+    height: 4.3074rem;
+}
+form.taskCont_reply>h3{
+    width: 11.1296rem;
+    height: 1.6481rem;
+    border: 1px solid #e6e6e6;
+    position: relative;
+    font-weight: normal;
+    font-size: 12px;
+}
+form.taskCont_reply>h3>i{
+    font-size: 0.3703rem;
+    position: absolute;
+    top: -0.2962rem;
+    right: 0.1296rem;
+    z-index: 55;
+    color: #e6e6e6;
+}
+form.taskCont_reply>h3>textarea{
+    width: 11.1296rem;
+    height: 1.6481rem;
+    color: #212121;
+}
+form.taskCont_reply>h3>p{
+   position: absolute;
+   bottom: 0;
+   right: 0.2962rem;   
+}
+div.piclist>label i{
+   margin: 0 0.1851rem;
+}
+div.piclist>label{
+    position: absolute;
+    z-index: 50;
+    width: 0.8888rem;
+    height: 0.8888rem;
+}
+label.upload_label{
+    /*display: none;*/
+}
+div.piclist>p.upload_float{
+    position: absolute;
+    left: 0;
+    top: 0;   
+    width: 1.4814rem;
+    height: 1.4814rem;
+    z-index: 55;
+    cursor: pointer;
+    background: rgba(13,20,24,0.6);
+    text-align: center;
+    line-height: 1.4814rem;    
+    display: none;
+}
+strong.targetReplyBtn{
+    float: right;
+    display: block;
+    width: 1.6481rem;
+    height: 0.6296rem;
+    line-height: 0.6296rem;
+    text-align: center;
+    background-color: #5094c8;
+    color: #fff;  
+    border-radius: 0.0555rem; 
+    margin: 0.1666rem 0.2592rem 0.2222rem 0 ;
+    cursor: pointer;
+ }
+/*自上弹出层的样式*/
+div.popup_style{       
+    position: fixed;
+    left: 12.0000rem;
+    top: 0;
+    width: 9.7222rem;
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 0.1481rem 0.3703rem;
+    z-index: 89;
+    border: 2px solid #eee;
+    display: none;
+} 
+div.popup_style>p{
+    height: 0.9259rem;
+    line-height: 0.9259rem;
+    display: flex;
+    font-size: 0.3333rem;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    color: #494949;
+}
+div.pop_copyAlert>h5{
+	display: flex;
+	justify-content: space-around;
+}
+div.pop_copyAlert h5 button{
+	margin: 0;
+}
+button.continuePay_copyAlert,button.continueEnquiry_copyAlert{
+	display: none;
+}
+/* 评价任务处理的方面  */
+div.task_evaluation{
+    position: fixed;
+    top: 0;
+    /*left: 10rem;*/
+    width: 9.7037rem;
+    height: 7.2962rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    padding: 0.1481rem 0.4814rem 0.3703rem 0.4814rem;
+    z-index: 79;
+    display: none;
+}
+div.task_evaluation>p{
+    height: 0.9259rem;
+    line-height: 0.9259rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+
+}
+div.task_evaluation i{
+    font-size: 0.3888rem;
+    color: #b3b3b3;
+}
+div.task_evaluation>dl{
+    display: flex;
+    padding: 0.3333rem 0;
+    border-bottom: 1px solid #e7e7e7;
+}
+div.task_evaluation>dl>dt{
+    height: 1.9629rem;
+    width: 1.9629rem;    
+    border: 1px solid #e5e5e5;
+}
+div.task_evaluation>dl>dd{
+    margin-left: 0.3333rem;
+}
+div.task_evaluation dd b{
+    color: #e95758;
+}
+div.task_evaluation>dl img{
+    max-height: 1.9629rem;
+    max-width: 1.9629rem;  
+}
+div.task_evaluation>ul{
+    padding: 0.2037rem 0.0555rem;
+}
+div.task_evaluation>ul>li{
+    height: 0.5185rem;
+    line-height: 0.5185rem;
+}
+div.task_evaluation>ul>li{
+    height: 0.5185rem;
+    line-height: 0.5185rem;
+}
+span.span_style{
+    display: inline-block;
+    width: 2.1296rem;
+    height: 0.2962rem;
+    line-height: 0.2962rem;
+    margin-left: 0.1111rem;
+}
+span.span_style>img{
+    font-size: 0.2962rem;
+}
+button.confirm_evaluation{
+    width: 1.9444rem;
+    height: 0.6851rem;
+    line-height: 0.6851rem;
+    text-align: center;
+    background-color: #e95758;
+    color: #fff;
+    margin: 0.2037rem auto;
+    cursor: pointer;
+}

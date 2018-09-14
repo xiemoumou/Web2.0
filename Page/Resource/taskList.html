@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>任务列表</title>
+        <link rel="stylesheet" href="./css/reset.css" />
+        <link rel="stylesheet" href="./css/iconfont.css" />
+        <link rel="stylesheet" href="./css/iconfont1.css" />
+        <link rel="stylesheet" href="./css/iconfont4.css" />
+        <link rel="stylesheet" href="./css/workstage.css"/> 
+        <link rel="stylesheet" href="./css/taskList.css"/>
+        <script type="text/javascript" src="./js/flexible.js"></script>
+        <script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="./js/jquery.raty.min.js"></script>
+        <script type="text/javascript" src="./js/layer.js"></script>
+        <script type="text/javascript" src="./js/jquery.countdown.js"></script>
+        <script type="text/javascript" src="./js/baiduTemplate.js" ></script>
+        <script type="text/javascript" src="./js/common.js"></script>
+    </head>
+    <body>
+        <div id="header">
+            <div>
+                <img src="./images/icon/logo.png" alt="logo"/>
+                <h4 >
+                	<p class="active myWorkstage" onclick="getWorkstage()">我的工作台</p>
+                	<p class="myResource" onclick="getResource()">素材库</p>
+                </h4>
+                <form class="searchbar" style="display: none;"> 
+                    <div class="mod_select searSort">
+                        <div class="select_box">
+                            <span class="select_txt">分&nbsp;&nbsp;类</span>                     
+                            <ul class="option_">
+                                <li>分&nbsp;&nbsp;类</li>
+                                <li>用户名</li>
+                                <li>订单号</li>
+                                <li>客服号</li>
+                            </ul> 
+                        </div>                       
+                    </div>
+                    
+                     <input type="text" id="searchCon" value="" placeholder="请输入您要搜索的订单号等"/>
+                    <button class="searBtn"><i class="icon iconfont icon-sousuo"></i></button>
+                </form>
+                <dl >
+                    <dt class="ddstyle"><span>风吹云散</span><img class="imgcol" src="./images/icon/arr.svg"/></dt>
+                    <dd class="ddstyle center hid" >个人中心</dd>
+                    <dd class="ddstyle exit hid">退出</dd>
+                </dl>                                           
+            </div>
+        </div>
+        
+        <!--主内容-->
+        <div id="content">
+            <!--左侧  导航区-->
+            <div id="nav">
+                
+            </div>
+            
+            <!--右侧  主内容-->
+            <div class="cont_right">
+                
+                <div class="surmarize_con">
+                    <ul>
+                        <li><em>￥10000.00</em><p>本月成交金额</p></li>
+                        <li><em>100</em><p>本月接待</p></li>
+                        <li><em>99</em><p>本月成交</p></li>
+                        <li><em>34.5%</em><p>综合转化率</p></li>
+                        <li><em>￥10000.00</em><p>本月收入</p></li>
+                        <li><em>￥33399.70</em><p>累计收入</p></li>
+                        <li><em>3</em><p>综合排名</p></li>
+                    </ul>
+                    <ol>
+                        <li>
+                            <i class="icon iconfont icon-daijiedan"></i>
+                            <span>今日接待：</span><em>345</em>
+                        </li>
+                        <li>
+                            <i class="icon iconfont icon-chengjiao"></i>
+                            <span>今日成交：</span><em>100</em>
+                        </li>
+                        <li>
+                            <i class="icon iconfont icon-money"></i>
+                            <span>今日成交额：</span><em>￥3309.70</em>
+                        </li>
+                        <li>
+                            <i class="icon iconfont icon-shouru"></i>
+                            <span>今日收入：</span><em>￥3339.70</em>
+                        </li>
+                        <li>
+                            <i class="icon iconfont icon-paiming"></i>
+                            <span>综合排名：</span><em>3</em>
+                        </li>
+                    </ol>
+                </div>
+                
+                <!--显示内容-->
+                <div class="order_box">
+                    <p class="overview overview_task">
+                        <span class="borderRed ">
+                            <strong>待处理任务</strong><em class="baccred todealTaskNum"></em>
+                        </span>
+                        <span class="">
+                            <strong>历史任务</strong><em class="baccred historyTaskNum"></em>
+                        </span>
+                    </p>
+                    <table class="order_all">
+                        <thead>
+                            <th class="task_title">任务内容</th>
+                            <th>订单号</th>
+                            <th>发起人</th>
+                            <th>处理期限</th>
+                            <th>时间</th>
+                            <th>操作</th>                           
+                        </thead>
+                        <!--<tr>
+                            <td class="task_title">设计图还好？设计图还好？</td>
+                            <td>235656678678734</td>
+                            <td>李四</td>
+                            <td class="graycolor">30分钟内</td>
+                            <td class="graycolor">2017-10-20 14：30：37</td>
+                            <td data-taskId="" data-user="" class="taskBtn">查看任务</td>
+                        </tr>-->
+                        
+                    </table>
+                    
+                    <!--分页-->
+                    <div class="page page_taskList">
+                        <div>
+                            <em>首页</em>
+                            <em>上一页</em>
+                            <em class="spanRed">1</em>
+                            <!--<em>2</em>
+                            <em>3</em>-->
+                            <em>下一页</em>
+                            <em>末页</em>
+                        </div>
+                    </div>
+                    <!-- 查看任务的具体内容 -->
+                    <div id="task_content">
+                        <!--<p>
+                            <span style="font-size: 0.3333rem;">查看任务</span><i class="icon iconfont icon-guanbi"></i>
+                            
+                        </p>
+                         
+                        <ul class="taskCont_head">
+                            <li>
+                                <span><i class="icon iconfont icon-naozhong3"></i>距结束
+                                    <time class="countdownTime" style="color: #e95758;font-size: 0.2962rem;"></time>
+                                </span>
+                                <button class="tasklist_completeBtn">完成任务</button>
+                            </li>
+                           
+                            <li >
+                                <p>
+                                    <em>发起人： <strong class="sender_taskList"></strong></em>
+                                    <em>订单号： <strong class="orderid_taskList"></strong></em>
+                                    
+                                    <em>处理期限： <strong class="period_taskList"></strong></em>
+                                    <em>发起时间： <time class="createTime_taskList"></time></em>
+                                </p>
+                                <em>发给： <strong class="receive_taskList"></strong></em>
+                            </li>
+                        </ul>-->
+                        
+                        <!-- 展示任务列表的具体内容 
+                        <ol id="taskCont_body">-->
+                            <!-- 回复者的信息和回复的内容 -->
+                            <!--<li>
+                                
+                                <h4><strong style="font-size: 0.2592rem;">admin1234</strong><time style="color: #898989;">2017-10-12 13:20:10</time></h4>
+                                <p class="taskCont_imgbox"></p>
+                                <h5>设计设计好快乐吗？还要多久？</h5>
+                                <div><button class="replyshowBtn">留言</button></div>
+                                <form class="taskCont_reply">  
+                                    
+                                    <h3>
+                                        <i class="icon iconfont icon-dingbu"></i>
+                                        <textarea class="reply_content" maxlength="300" onmousedown="toTextFirst(event,this)"></textarea> 
+                                        <p><b class="textnum">00</b>/<em>300</em></p>
+                                    </h3>
+                                    
+                                    <h6>
+                                        <div class="piclist">
+                                            <img src="" class="upload_img"/>
+                                            <label class="upload_label">
+                                                <input type="file" class="upload_input" style="display: none;" accept="image/*"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                            </label>
+                                            <p class="upload_float">
+                                                <i class="icon iconfont icon-shanchu"></i>
+                                            </p>
+                                        </div>  
+                                        
+                                        <div class="piclist">
+                                            <img src="" class="upload_img"/>
+                                            <label class="upload_label">
+                                                <input type="file" class="upload_input" style="display: none;" accept="image/*"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                            </label>
+                                            <p class="upload_float">
+                                                <i class="icon iconfont icon-shanchu"></i>
+                                            </p>
+                                        </div>
+                                        <div class="piclist">
+                                            <img src="" class="upload_img"/>
+                                            <label class="upload_label">
+                                                <input type="file" class="upload_input" style="display: none;" accept="image/*"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                            </label>
+                                            <p class="upload_float">
+                                                <i class="icon iconfont icon-shanchu"></i>
+                                            </p>
+                                        </div>
+                                        
+                                    </h6>
+                                    <strong class="targetReplyBtn">回复</strong>
+                                </form>
+                                
+                            </li>
+                            
+                            
+                        </ol>-->
+                        
+                    </div> 
+                    
+                    <!-- 任务评价的模块 -->
+                    <div class="task_evaluation">
+                        <p>
+                            <span style="font-size: 0.3333rem;">评价任务</span><i class="icon iconfont icon-guanbi"></i>
+                        </p>
+                        <dl>
+                            <dt><img src="./images/images/mr.png" class="task_evaluation_pic"/></dt>
+                            <dd>
+                                <p style="font-size: 0.2592rem;">任务主题名称</p>
+                                <p><span>完成时间：</span><b>5分钟</b></p>
+                            </dd>
+                        </dl>
+                        <ul>
+                            <li><span>处理结果：</span><span class="result_evaluation span_style"></span></li>
+                            <li><span>处理速度：</span><span class="speed_evaluation span_style"></span></li>
+                            <li><span>服务态度：</span><span class="attitude_evaluation span_style"></span></li>
+                        </ul>
+                        <button class="confirm_evaluation">确定</button>
+                    </div>
+                    
+                </div>
+                 
+                <!-- 模拟alert弹出框的模块 -->
+                    <div class="popup_style pop_copyAlert">
+                        <p>
+                            <span style="font-size: 0.3333rem;">操作提示信息</span><i class="icon iconfont icon-guanbi"></i>
+                        </p>
+                        
+						<ul>
+						    <li><span class="message_copyAlert"></span></li> 
+						    
+						</ul>
+						<h5>
+							<button class="continuePay_copyAlert redbutton">继续</button>
+						    <button class="close_copyAlert redbutton">关闭</button>
+						</h5>
+                    </div>
+                    
+            
+            </div> 
+            
+            <!--回到顶部模块-->
+            <div class="totop_box">
+                    <a onclick="show_newTask()" style="display: none;">
+                        <i class="icon iconfont icon-xinjianrenwu"></i>
+                        <p>新建任务</p>
+                    </a>
+                    <a class="newOrderBtn" >
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>新建订单</p>
+                    </a>
+                    <a class="shippingListBtn" style="display: none;">   <!-- 发货清单 -->
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>发货清单</p>
+                    </a>
+                    <a class="reminderBtn" onclick="getFeednack()">   <!-- 意见反馈 -->
+                        <i class="icon iconfont icon-dingdan"></i>
+                        <p>意见反馈</p>
+                    </a>
+                    <button>
+                        <img style="width: 24px" src="./images/icon/toTop.svg" />
+                        <p>顶部</p>
+                    </button>              
+            </div>
+        </div>
+        
+        <footer>Copyright&copy;&nbsp;2017-2018&nbsp;&nbsp;制宝科技&nbsp;&nbsp;版权所有</footer>
+        
+        <!-- 工作台 导航区的百度模板 -->
+        <script id="baidu_workstage_nav" type="text/html">
+				<ul class="workstage_prograss"  onclick="getWorkstage()">
+                    <h3><i class="icon iconfont icon-liuchengxiangdao"></i>业务流程</h3>
+                    <%for(i=0;i<workflow.length;i++){%>
+                    	<%if(i == 0){%>
+                    		<li class="borderCol allorder_work" data-code="<%=workflow[i].code%>">
+                    			<%=workflow[i].name%>
+                    			<%if( workflow[i].num != 0 ){%>
+                    				<em class="baccred"><%=workflow[i].num%></em>
+                    			<%}%>
+                    		</li>
+                    	<%}else{%>
+                    		<li data-code="<%=workflow[i].code%>"><%=workflow[i].name%>
+                    			<%if( workflow[i].num != 0 ){%>
+                    				<em>(<%=workflow[i].num%>)</em>
+                    			<%}%>
+                    		</li>
+                    	<%}%>
+                    <%}%>
+				<ul>
+					<h3><i class="icon iconfont icon-daibanshixiang"></i>待办事项</h3>
+                    <h4 class="" onclick="getTaskList()">任务列表</h4>
+                    <!--<h4 onclick="getDraft()">草稿箱</h4>--> 
+				</ul> 
+		</script>
+		
+		<!-- 查看任务详情    的百度模板 -->
+        <script id="baidu_taskDetail" type="text/html">
+        				<p>
+                        	<span style="font-size: 0.3333rem;">查看任务</span><i class="icon iconfont icon-guanbi"></i>
+                        </p>
+                         <!-- 展示任务的头部部分 -->
+                        <ul class="taskCont_head">
+                            <li data-taskid="<%=taskinfo.taskid%>">
+                                <span><i class="icon iconfont icon-naozhong3"></i>距结束
+                                    <time class="countdownTime" style="color: #e95758;font-size: 0.2962rem;"></time>
+                                </span>
+                                <button class="tasklist_completeBtn">完成任务</button>
+                            </li>
+                           	<li>
+                                <p>
+                                    <em>发起人： <strong class="sender_taskList"><%=taskinfo.tasksendername%></strong></em>
+                                    <em>订单号： <strong class="orderid_taskList">
+                                    <%if( taskinfo.taskorderid != null ){%>
+                                    	<%=taskinfo.taskorderid%>
+                                    <%}%></strong></em>
+                                    <em>处理期限： <strong class="period_taskList"><%=taskinfo.taskperiod%>分钟内</strong></em>
+                                    <em>发起时间： <time class="createTime_taskList"><%=taskinfo.tasksendtime%></time></em>
+                                </p>
+                                <em>发给： <strong class="receive_taskList"><%=taskinfo.taskreceivername%></strong></em>
+                            </li>
+                        </ul>
+                        <!-- 展示任务列表的具体内容 -->
+                        <ol id="taskCont_body">
+                            <!-- 回复者的信息和回复的内容 -->
+                            <%for(var i=0;i<taskdetailinfo.length;i++){%>
+                            	<li>
+	                                <h4><strong style="font-size: 0.2592rem;"><%=taskdetailinfo[i].tasksendername%></strong>
+	                                	<time style="color: #898989;"><%=taskdetailinfo[i].tasksendtime%></time></h4>
+	                                <p class="taskCont_imgbox">
+	                                <%if( taskdetailinfo[i].taskimageurl1 ){%>
+	                                	<img src="<%=cosImgUrl%><%=taskdetailinfo[i].taskimageurl1%>"/>
+	                                <%} if( taskdetailinfo[i].taskimageurl2 ){%>
+	                                	<img src="<%=cosImgUrl%><%=taskdetailinfo[i].taskimageurl2%>"/>
+	                                <%} if( taskdetailinfo[i].taskimageurl3 ){%>
+	                                	<img src="<%=cosImgUrl%><%=taskdetailinfo[i].taskimageurl3%>"/>
+	                                <%}%>
+	                                </p>
+	                                <h5><%=taskdetailinfo[i].taskinfo%></h5>
+	                                <div><button data-taskid="<%=taskinfo.taskid%>" class="replyshowBtn">留言</button></div>
+	                            <form class="taskCont_reply" data-taskid="<%=taskinfo.taskid%>" 
+	                            	data-tasklistid="<%=taskdetailinfo[i].tasklistid%>">  
+                                    
+                                    <h3>
+                                        <i class="icon iconfont icon-dingbu"></i>
+                                        <textarea class="reply_content" maxlength="300" onmousedown="toTextFirst(event,this)"></textarea> 
+                                        <p style="display: none;"><b class="textnum">00</b>/<em>300</em></p>
+                                    </h3>
+                                    
+                                    <h6>
+                                        <div class="piclist" data-num="1">
+                                            <img src="" class="upload_img"/>
+                                            <label class="upload_label">
+                                                <input type="file" class="upload_input" id="uploadPic1_taskReply" style="display: none;"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                            </label>
+                                            <p class="upload_float">
+                                                <i class="icon iconfont icon-shanchu"></i>
+                                            </p>
+                                        </div>  
+                                        
+                                        <div class="piclist" data-num="2">
+                                            <img src="" class="upload_img"/>
+                                            <label class="upload_label">
+                                                <input type="file" class="upload_input" id="uploadPic2_taskReply" style="display: none;"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                            </label>
+                                            <p class="upload_float">
+                                                <i class="icon iconfont icon-shanchu"></i>
+                                            </p>
+                                        </div>
+                                        <div class="piclist" data-num="3">
+                                            <img src="" class="upload_img"/>
+                                            <label class="upload_label">
+                                                <input type="file" class="upload_input" id="uploadPic3_taskReply" style="display: none;"/>
+                                                <span>
+                                                    <i class="icon iconfont icon-jiahao"></i>
+                                                    <em>上传图片</em>
+                                                </span>
+                                            </label>
+                                            <p class="upload_float">
+                                                <i class="icon iconfont icon-shanchu"></i>
+                                            </p>
+                                        </div>
+                                        
+                                    </h6>
+                                    <strong class="targetReplyBtn">回复</strong>
+                                </form>
+	                            </li>
+                            <%}%>
+                            
+                        </ol>
+        </script>
+		
+        <script type="text/javascript" src="./js/taskList.js" ></script>
+    </body>
+    
+</html>
+						

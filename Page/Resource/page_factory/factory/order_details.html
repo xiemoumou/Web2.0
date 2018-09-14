@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>客服订单详情</title>
+    <script id="version" src="../../js/common/vesion.js" type="text/javascript"></script>
+    <script>
+        var random = Math.random();
+        var versionDoc = document.getElementById("version");
+        versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../../css/common/base.css?v=' + VESION + '" rel="stylesheet" />');
+        document.write('<link href="../../css/factory/order_details.css?v=' + VESION + '" rel="stylesheet" />');
+        document.write('<link href="../../lib/layer/2.4/skin/layer.css?v=' + VESION + '" rel="stylesheet" />');
+        document.write('<link href="../../lib/viewer/viewer.css?v=' + VESION + '" rel="stylesheet" />');
+    </script>
+    <link rel="stylesheet" href="../../lib/SlideRuleOS/SlideRuleOS.css"/>
+</head>
+
+<body>
+<div class="order">
+    <div class="header">
+        <div class="order-number">
+            <label>订单号：</label>
+            <span id="order_number" class="pr-50"></span>
+            <!--<span>订单来源：</span><span>天达</span>-->
+            <!--<span id="order_datetime">2017-10-20 21:10:20</span>-->
+            <span class="renew hide">续订</span>
+        </div>
+        <div class="order-role clearfix hide">
+            <div class="wangwang-number fl">
+                <label>客户旺旺号：</label>
+                <span id="wangwang_number" class="pr-50"></span>
+            </div>
+            <div class="service-number fl">
+                <label>客服：</label>
+                <span id="customer_service" class="pr-50"></span>
+            </div>
+            <div class="designer-number fl">
+                <label>设计师：</label>
+                <span id="designer_number" class="pr-50"></span>
+            </div>
+            <div class="factory-number fl">
+                <label>车间：</label>
+                <span id="factory_number"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 订单详情 -->
+    <div class="detail">
+        <div class="design">
+            <div class="design-header">
+                <!-- 接单状态 -->
+                    <span class="status">
+                        <i></i>
+                    </span>
+                <ul class="design-header-title">
+                    <li style="margin-right: 35px;"><span>名称</span></li>
+                    <li style="margin-right: 85px;"><span>数量</span></li>
+                    <li style="margin-right: 65px;"><span>属性/材质</span></li>
+                    <li style="margin-right: 20px;"><span>长×宽×厚(mm)</span></li>
+                    <li style="margin-right: 30px;"><span>生产周期(天)</span></li>
+                    <li style="margin-right: 35px;"><span>订单状态</span></li>
+                    <li><span>操作</span></li>
+                </ul>
+
+            </div>
+            <div class="design-body" style="display: none;">
+                <div class="img-count">
+                    <div class="img">
+                        <img src="" onerror="this.src='../../images/images/mr.png'">
+                    </div>
+                </div>
+                <ul class="parameter">
+                    <li style="width: 60px;" class="clearfix dorpdown">
+                        <div class="type zb-dorpdownlist "><!-- 产品类别 -->
+                        </div>
+                    </li>
+                    <li style="width: 80px;" class="clearfix dorpdown order-count">
+                        <div class="order-count-1" id="order_count">
+                        </div>
+                    </li>
+                    <li style="width: 170px;" class="clearfix dorpdown">
+                        <div>
+                            <span class="materials"></span> <!--  材质   -->
+                            <span class="wear"></span>  <!--  配件   -->
+                        </div>
+                        <div class="technology zb-dorpdownbox ">
+                        </div>
+
+                        <div class="machining zb-dorpdownbox "><!--  工艺   -->
+                        </div>
+
+                        <div class="color  zb-dorpdownbox "><!-- 电镀色 -->
+                        </div>
+                    </li>
+
+                    <li style="width: 120px;" class="clearfix dorpdown l-w-h">
+                        <span class="par-length" id="par_length"></span><span class="x">×</span>
+                        <span class="par-width" id="par_width"></span><span class="x">×</span>
+                        <span class="par-height" id="par_height"></span>
+                    </li>
+                    <li style="width: 90px; " class="clearfix dorpdown order-count">
+                        <span class="order-cycle" id="cycle"></span>
+                    </li>
+                    <li style="width: 88px; " class=" dorpdown">
+                        <div class="order-status clearfix">
+                            <span id="ordersheetstate"></span><!-- 订单状态 -->
+                            <span id="quotestate"></span><!-- 报价状态 -->
+                        </div>
+
+                    </li>
+                    <li class="clearfix dorpdown" style="width: 100px; ">
+                        <div class="operate-btn">
+                            <button style="display: none;" id="acceptProduction"
+                                    class="red-button allocation workstage_acceptProductionBtn ">接受生产
+                            </button>
+                            <button  onclick="" class="red-button up-finished btn-w hide">上传成品图</button>
+                            <button  onclick="" class="red-button ed-finished btn-w hide">编辑成品图</button>
+                            </button>
+                            <button style="display: none;" id="uploadLogistics" onclick="OrderDetails.statusClick.uploadLogistics()"
+                                    class="red-button allocation btn-w">上传物流信息
+                            </button>
+                            <button style="display: none;" id="logistics" onclick="OrderDetails.statusClick.logistics();"
+                                    class="red-button allocation btn-w">查看物流信息
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+                <div class="slideruleos-container"> <!--滑动尺-->
+
+                </div>
+                <div id="slide_rule_os" style="width: 553px" class="slide-rule-os my_slider_rule" data-up-min="0"
+                     data-up-max="" data-down-min="0" data-down-max="" data-yellow-darrow-name="" data-yellow-darrow-val="" data-up-name="" data-down-name="" data-red-darrow-name="" data-yellow-darrow-val="">
+                </div>
+            </div>
+        </div>
+
+        <!-- 参考图 -->
+        <div class="upload" style="padding-bottom: 0;">
+            <div class="clearfix">
+                <div class="fl" style="width: 60%; position: relative; display: inline-block;">
+
+                    <!--参考附件-->
+                    <div class="upload-photo hide">
+                        <label class="upload-photo-label">参考图:</label>
+                        <div id="photo_1" class="photo-1 upload-photo-btn hide">
+                            <div class="cover">
+                                <span id="zoon_1" class="zoon"><img   class="up-img" src=""></span>
+                            </div>
+                        </div>
+                        <div id="photo_2" class="photo-2 upload-photo-btn hide">
+                            <div class="cover">
+                                <span id="zoon_2" class="zoon"><img   class="up-img" src=""></span>
+                            </div>
+                        </div>
+                        <div id="photo_3" class="photo-3 upload-photo-btn hide">
+                            <div class="cover">
+                                <span id="zoon_3" class="zoon"><img   class="up-img" src=""></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--参考附件-->
+                    <div class="prev-annex hide">
+                        <div class="annex-oper">
+                            <span id="prev_annex_name" class="annex-name"></span>
+                            <span class="line"></span>
+                            <span id="prev_annex_download" class="download">下载附件</span>
+                        </div>
+                    </div>
+
+                </div>
+                <!--生产参考图-->
+                <div class="fl"  style="width: 30%; position: relative; display: inline-block;">
+                    <div class="upload-photo product-photo hide">
+                        <label class="upload-photo-label">生产参考图:</label>
+                        <div id="p_photo_1" style="margin-left: 10px;" class="photo-1 upload-photo-btn">
+                            <div class="cover">
+                                <span id="p_zoon_1" class="zoon"><img   class="up-img" src=""></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--生产要求-->
+            <div class="production-requirements">
+                <label class="production-requirements-label">生产要求:</label>
+                <div class="requirements-content">
+                    <textarea id="production_requirements" readonly="readonly"></textarea>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="upload" style="display: none; padding-top: 0;">
+            <div>
+                <!--收获地址-->
+                <div class="shipping-address">
+                    <label class="production-requirements-label">收货地址:</label>
+
+                    <div class="address-info" style="display: none">
+                        <div class="address-head clearfix">
+                            <span class="fl ml-15">收货人</span>
+                            <span class="fl ml-54">所在地区</span>
+                            <span class="fl ml-126">详细地址</span>
+                            <span class="fl ml-177">邮编</span>
+                            <span class="fl ml-49">电话／手机</span>
+                            <span class="fl ml-59">操作</span>
+                        </div>
+                        <ul class="address-info-ul ul_new_class copy_ele">
+                            <li>
+                                <span id="name"></span>
+                            </li>
+                            <li>
+                                <span id="area"></span>
+                            </li>
+                            <li>
+                                <span id="address"></span>
+                            </li>
+                            <li>
+                                <span id="code"></span>
+                            </li>
+                            <li>
+                                <span id="tel"></span>
+                            </li>
+                        </ul>
+                        <li class="modify">
+                            <span id="address_copy" class=" fl btn_copy " data-clipboard-action="copy"
+                                  data-clipboard-target=".copy_ele">复制地址信息</span>
+
+                        </li>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 设计稿(设计方案) -->
+    <div class="design-draft" style="display: none;">
+        <!-- 已分配设计师 -->
+        <div class="allocation">
+            <!-- 设计师信息 -->
+            <div class="designer-information js_off_click">
+                <div class="designer-avatar">
+                    <img src="errorHead.jpg" onerror="this.src='../../images/icon/errorHead.jpg'">
+                </div>
+                <span id="designer_information_name" class="designer-information-name"></span>
+                <span class="designer-information-role">设计师</span>
+                <span id="designer_information_date" class="designer-information-date"></span>
+                <span id="selected_plan" class="selected_plan"></span>
+                <!--<button onclick="OrderDetails.statusClick.designate();" class="red-button selected_plan-btn"
+                		id="selected_plan_btn">选定设计方案</button>-->
+            </div>
+            <!--设计图-->
+
+            <div id="design_annex" class="design-annex">
+                <label class="design-draft-label fl">附件:</label>
+                <div class="annex-oper fl" style="position: relative">
+                    <span id="design_annex_name" class="annex-name"></span>
+                    <!--<span class="size">30M</span>-->
+                    <span class="line"></span>
+                    <span id="design_annex_download" class="download">下载附件</span>
+                </div>
+                <div class="annex-oper fl hide" style="position: relative;margin-left: 10px;">
+                    <span id="other_annex_name" class="annex-name"></span>
+                    <!--<span class="size">30M</span>-->
+                    <span class="line"></span>
+                    <span id="other_annex_download" class="download">下载附件</span>
+                </div>
+                <button id="order_download" class="red-button fl" style="position: relative;position: relative; left: 115px;">下载订单</button>
+            </div>
+            <div id="design_diagram" class="design-diagram">
+
+                <label class="design-draft-label">设计图:</label>
+                <ul id="design_diagram_layout" class="design-diagram-layout">
+
+                </ul>
+            </div>
+            <!--设计附件-->
+
+            <!--设计备注-->
+            <div class="design-note">
+                <label class="design-draft-label">设计备注:</label>
+                <div id="note_content" class="note-content"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+        document.write('<script src="../../lib/jquery-1.11.0.min.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+        document.write('<script src="../../lib/layer/2.4/layer.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+        document.write('<script src="../../lib/viewer/viewer-liugang.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+        document.write('<script src="../../js/common/common.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+        document.write('<script src="../../js/factory/order_details.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+        document.write('<script src="../../js/factory/factoryEvent.js?v=' + VESION + '" type="text/javascript" ><\/script>');
+
+    </script>
+    <script type="text/javascript" src="../../lib/SlideRuleOS/SlideRuleOS.js"></script>
+    <script type="text/javascript" src="../../js/clipboard.min.js"></script>
+    <script>
+        var clipboard1 = new Clipboard('.btn_copy');
+        $('.js_off_click').on('click', function () {
+            console.log(11111);
+        });
+
+        clipboard1.on('success', function (e) {
+            Common.msg('复制成功');
+            $(document).off('focus');
+            $('.js_off_click').trigger('click');
+        });
+    </script>
+</body>
+
+</html>

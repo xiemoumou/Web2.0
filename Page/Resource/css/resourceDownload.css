@@ -1,0 +1,262 @@
+body{
+    background-color: #fff;
+    padding: 20px 34px 34px 34px;
+}
+.container{
+}
+/*左侧区域*/
+.left{
+    height: 342px;
+    width:  314px;
+    /*border: 1px solid;*/
+}
+.left .head{
+    /*border-bottom: 1px solid;*/
+    margin-bottom: 10px;
+}
+
+.left .head div{
+    font-family: 微软雅黑;
+    font-size: 14px;
+    color: #444444;
+}
+
+.left .head div .text{
+    font:400 14px/20px 微软雅黑;
+    color: #000000;
+}
+
+.img-badge{
+    width: 312px;
+    height: 312px;
+    border-radius: 4px;
+    border: 1px solid #DDDDDD;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+.img-badge .img{
+    max-height: 312px;
+    max-width: 312px;
+}
+
+
+/*右侧*/
+.right{
+    height: 312px;
+    width:  410px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.download-point{
+    position: absolute;
+    top: -24px;
+    right: 0px;
+    color: #e74b4b;
+}
+
+.right .head{
+    padding-left:10px;
+    /*height:34px;*/
+    /*line-height: 34px;*/
+    border-bottom: 2px solid #D5D5D5;
+}
+
+.right .title{
+    height: 34px;
+    line-height: 34px;
+    margin-bottom: 20px;
+}
+#title{
+    /*font:400 24px/34px 微软雅黑;*/
+    font-weight: 400;
+    font-size: 24px;
+    color: #444444;
+    cursor: pointer;
+}
+
+.download-num{
+    font:14px/14px 微软雅黑;
+    margin-bottom: 10px;
+    color: #444444;
+}
+
+.right .label-container{
+    height: 103px;
+    margin-top:5px;
+    text-indent: 5em;
+    position: relative;
+    padding: 0 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.right .label-container::before{
+    content: '标签：';
+    font-family: 微软雅黑;
+    font-size: 14px;
+    color: #444444;
+    position: absolute;
+    left: -62px;
+    top: 20px;
+    padding: 0 10px;
+}
+
+.right .label-container.edit{
+    border:1px solid #DDDDDD;
+    background-color: #F5F5F5;
+    border-radius: 4px;
+    overflow-y:scroll;
+}
+
+.label-msg{
+    margin-left: -21px;
+    line-height: 58px;
+    color: #999;
+}
+
+.label-element{
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
+    margin-top: 15px;
+    border-radius: 14px;
+    border: 1px solid #E84B4C;
+    display: inline-block;
+    text-indent: 0;
+    color: #E84B4C;
+    margin-right: 10px;
+}
+
+.show-more{
+    font-family: 微软雅黑;
+    font-size: 14px;
+    color: #444444;
+    position: absolute;
+    cursor: pointer;
+    top: 160px;
+    left: 320px;
+}
+
+.add-label{
+    height:76px;
+    padding-left: 10px;
+    margin-top: 5px;
+}
+
+.add-label .label{
+    font-family: 微软雅黑;
+    font-size: 14px;
+    color: #444444;
+    margin-bottom: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+.add-label .label i{
+    position: absolute;
+    left: 75px;
+    display: block;
+    width: 220px;
+    font-size: 12px;
+    color: #999999;
+    font-family: 微软雅黑;
+    top:0;
+}
+
+.add-label .add-input{
+    width: 284px;
+    height: 29px;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+    line-height: 29px;
+    padding-left:12px;
+    position: relative;
+}
+
+#add_input{
+    width: 278px;
+}
+
+.submit-btn{
+    width: 90px;
+    height: 29px;
+    position: absolute;
+    top: 0px;
+    right: -102px;
+}
+
+.reward {
+    position: relative;
+    margin-top: 20px;
+    padding-left: 35px;
+}
+
+.content-reward {
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color: #444444;
+}
+
+
+.icon-reward{
+    background: url('../images/icon/reward.png') no-repeat;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    position: absolute;
+    left: 10px;
+    top: -3px;
+}
+
+/*底部*/
+.floor {
+    margin-top: 30px;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-download {
+    width: 160px;
+    height: 45px;
+    margin-right: 120px;
+    display: inline-block;
+}
+
+.btn-download .text-1{
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.btn-download .text-2{
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+    font-family: 微软雅黑;
+}
+
+.btn-close {
+
+    width: 160px;
+    height: 45px;
+}
+
+/*layer效果**********************/
+.layui-layer-loading
+{
+    left:50% !important;
+    margin-left: -10px;
+}
+
+.layui-layer-content
+{
+    box-shadow: none !important;
+}
+/**********************layer效果*/

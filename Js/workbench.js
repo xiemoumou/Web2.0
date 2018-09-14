@@ -21,6 +21,16 @@ $(function () {
     classMain.init();
 
     classMain.message();//获取消息
+
+    //显示资源库按钮
+    if(roleType==1||roleType==4||roleType==2)
+    {
+        $(".resource").removeClass('hide');
+        $(".resource").on('click',function () {
+            top.window.location.href="./Resource/resource.html";
+        });
+    }
+
 });
 
 var classMain = {
@@ -450,9 +460,15 @@ var classMain = {
 
 
             var co = document.getElementById("createOrder");
-
-            co.style.left = x + "px";
-            co.style.top = y + "px";
+            if(x && y) {
+                co.style.left = x + "px";
+                co.style.top = y + "px";
+            }
+            else
+            {
+                co.style.left = "685px";
+                co.style.top = "9px";
+            }
             that.initEvent.creatOrderBtn();
             if(roleType==1)
             {
@@ -488,16 +504,20 @@ var classMain = {
         // 刷新车间的剩余发货时间
         if (roleType == 3) {
             setInterval(function () {
+                countdown();
+            }, 60000);
+            function countdown() {
                 var timeleft = $('.timeleft');
                 for (var i = 0; i < timeleft.length; i++) {
-                   var domItem=timeleft.attr('data-deadlineTime');
+                    var domItem=timeleft.attr('data-deadlineTime');
                     if(domItem && domItem!='null')
                     {
                         var countdown=Helper.Date.countdown(domItem);
                         $(timeleft.find('em')).text(countdown);
                     }
                 }
-            }, 60000);
+            }
+            countdown();
         }
 
         //旋转图标
@@ -681,36 +701,42 @@ var classMain = {
 
             //方案师
             $('.designer-table-sort .complex').on('click', function () {
-                classMain.requstParams['sortCategory'] = 'synthesize'; //综合排序
-                classMain.requstParams['sortType'] = 'asc';
                 setSortType($(this));
+                classMain.requstParams['sortCategory'] = 'synthesize'; //综合排序
+                classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.loadOverview();
             });
             $('.designer-table-sort .assigntime').on('click', function () {
-                classMain.requstParams['sortCategory'] = 'createTime';//派单时间
-                classMain.requstParams['sortType'] = 'asc';
                 setSortType($(this));
+                classMain.requstParams['sortCategory'] = 'createTime';//派单时间
+                classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.loadOverview();
             });
             $('.designer-table-sort .designfee').on('click', function () {
-                classMain.requstParams['sortCategory'] = 'designPrice';//设计费
-                classMain.requstParams['sortType'] = 'asc';
                 setSortType($(this));
+                classMain.requstParams['sortCategory'] = 'designPrice';//设计费
+                classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.loadOverview();
             });
 
             //车间
             $('.workshop-table-sort .complex').on('click', function () {
-                classMain.requstParams['sortCategory'] = 'synthesize'; //综合排序
-                classMain.requstParams['sortType'] = 'asc';
                 setSortType($(this));
+                classMain.requstParams['sortCategory'] = 'synthesize'; //综合排序
+                classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.loadOverview();
             });
             $('.workshop-table-sort .createtime').on('click', function () {
-                classMain.requstParams['sortCategory'] = 'createTime';//创建时间
-                classMain.requstParams['sortType'] = 'asc';
                 setSortType($(this));
+                classMain.requstParams['sortCategory'] = 'createTime';//创建时间
+                classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.loadOverview();
             });
             $('.customer-service-table-sort .opertime').on('click', function () {
-                classMain.requstParams['sortCategory'] = 'updateTime';//操作时间
-                classMain.requstParams['sortType'] = 'asc';
                 setSortType($(this));
+                classMain.requstParams['sortCategory'] = 'updateTime';//操作时间
+                classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
+                classMain.loadOverview();
             });
 
 
@@ -1694,6 +1720,7 @@ var classMain = {
                             //处理议价
                             if(item.inquiryStatus==5 || (item.inquiryStatus==6 && item.lastQuote==0))
                             {
+                                debugger
                                 var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-userPeriod="'+item.workshopUserPeriod+'" data-basePrice="'+item.workshopBasePrice+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">处理议价</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
