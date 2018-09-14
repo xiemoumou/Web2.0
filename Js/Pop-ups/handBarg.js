@@ -32,16 +32,16 @@ $(function () {
         top.Requst.ajaxGet(url,{"customid":customid,"price":price,"period":period},true,function (data) {
             if(data.code==200)
             {
-                top.Message.show("提示",data.message,MsgState.Success,2000,function () {
+                top.Message.show("提示",data.message,MsgState.Success,3000,function () {
                     top.classMain.loadOverview(null,null,null,customid);
-                });
+                },{"width":420 ,"height":75});
+                top.Popup.close("处理议价");
             }
             else
             {
                 top.Message.show("提示",data.message,MsgState.Warning,2000);
             }
         });
-
     });
 
 

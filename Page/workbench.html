@@ -8,6 +8,7 @@
         var random = Math.random();
         var versionDoc = document.getElementById("ver");
         versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
+        document.write('<link href="../Common/Js/version.js?t=' + random + '" rel="stylesheet" />');
         document.write('<link href="../Common/Css/base.css' + VER + '" rel="stylesheet" />');
         document.write('<link href="../Common/Lib/layer-v3.1.1/layer/theme/default/layer.css" rel="stylesheet" />');
         document.write('<link href="../Common/Lib/viewer/viewer.min.css' + VER + '" rel="stylesheet" />');

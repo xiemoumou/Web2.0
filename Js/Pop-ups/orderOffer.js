@@ -1,3 +1,4 @@
+//报价与重新报价
 $(function () {
     var customid = Helper.getUrlParam("customid");
     var inquiryRound = Helper.getUrlParam("inquiryRound");

@@ -78,7 +78,7 @@ var message = {
                 for(var i=0;i<data.data.pageData.length;i++)
                 {
                     var item=data.data.pageData[i];
-                    var dom=$('<div data-customid="'+item.customid+'" class="message-msg-box">'+
+                    var dom=$('<div data-msgId="'+item.id+'" data-customid="'+item.customid+'" class="message-msg-box">'+
                                     '<span class="message-msg-1">-后台没反字段-</span>'+
                                     '<span class="message-msg-2">'+item.msgContent+'</span>'+
                                     '<span class="message-msg-3">'+item.orderid+'</span>'+
@@ -88,6 +88,7 @@ var message = {
                     {
                         dom.on('click',function () {
                             var customid=$(this).attr('data-customid');
+                            var msgId=$(this).attr('data-msgId');
                             if(roleType==1||roleType==4)
                             {
                                 top.classMain.addTab(customid, './CustomerService/orderDetails.html?customid=' + customid);
@@ -101,7 +102,7 @@ var message = {
                                 top.classMain.addTab(customid, './WorkShop/shopDetails.html?customid=' + customid);
                             }
                             var url=config.WebService()["markedUpRead"];
-                            top.Requst.ajaxPost(url,{'wId':customid},true,function (data) {
+                            top.Requst.ajaxPost(url,{'wId':msgId},true,function (data) {
                                 if(data.code==200)
                                 {
                                     console.log("消息标记已读"+data.message);

@@ -898,6 +898,7 @@ body {
     height: 26px;
     float: left;
     margin-top: 6px;
+    position: relative;
 }
 
 /*设计费*/
@@ -985,20 +986,20 @@ body {
 }
 
 /*议价*/
-.data-item .amount .quoted .bargain{
-    width: 227px;
+.data-item .amount .bargain{
     height: 24px;
     box-shadow: 0 2px 2px #00000010;
     position: absolute;
     top: -31px;
     border: 1px solid #00000010;
     border-radius: 3px;
-    right: 0;
+    right: -16px;
+    background-color: #fff;
     z-index: 2;
     line-height: 16px;
 }
 
-.data-item .amount .quoted .bargain .tax{
+.data-item .amount .bargain .tax{
     color: #FF7853;
     border: 1px solid #FF7853;
     border-radius: 3px;
@@ -1008,24 +1009,28 @@ body {
     display: inline-block;
 }
 
-.data-item .amount .quoted .bargain .proposed-price
+.data-item .amount .bargain .proposed-price
 {
     color: #5298FF;
     font-size: 12px;
+    margin-top: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 /*议价结束*/
-.data-item .amount .quoted .bargain .proposed-price.red{
+.data-item .amount .bargain .proposed-price.red{
     color: #E84B4C;
 }
 
-.data-item .amount .quoted .bargain .button{
-    color: #E84B4C;
-    margin-left: 5px;
+.data-item .amount .bargain .button{
+    margin-top: 4px;
+    margin-right: 5px;
     cursor: pointer;
+    color:#DB4D4D;
 }
 
-.data-item .amount .quoted .bargain .arrow{
+.data-item .amount .bargain .arrow{
     width: 0;
     height: 0;
     border-width: 5px 5px 0px 0px;
@@ -1033,7 +1038,7 @@ body {
     border-color: #ffffff #ffffff00 transparent;
     position: absolute;
     bottom: -5px;
-    right: 33px;
+    right: 76px;
 }
 
 /***********/

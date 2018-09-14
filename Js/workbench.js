@@ -894,11 +894,28 @@ var classMain = {
 
         top.Requst.ajaxGet(getNavListUrl,reqPara, true, function (data) {
 
+            var isDom=false;//
             var datalist = $('#datalist');
-            if(!customid)
+            if(customid)//是否需要跟新特定某条
+            {
+                //服务器返回新列表中是否包含customid对应的数据
+                for (var i = 0; i < data.data.pageData.length; i++) {
+                    var item = data.data.pageData[i];
+                    if(customid==item.customid)
+                    {
+                        isDom=true;
+                    }
+                }
+                if(!isDom)
+                {
+                    datalist.html('');
+                }
+            }
+            else
             {
                 datalist.html('');
             }
+
             if (data.code == 200 && data.data && data.data.pageData.length > 0) {
                 if (roleType == 1 || roleType == 4)//客服与经理数据模版
                 {
@@ -913,7 +930,7 @@ var classMain = {
                             itemDiv=$("#item_"+customid);
                             itemDiv.html("");
                         }
-                        else if(customid!=null && customid!=item.customid)
+                        else if(customid!=null && customid!=item.customid && isDom)
                         {
                             continue;
                         }
@@ -1020,7 +1037,7 @@ var classMain = {
                                         }
                                         else
                                         {
-                                            top.Message.show("提示",data.message,MsgState.Warning,2000);
+                                            top.Message.show("提示",data.message,MsgState.Warning,3000,null,{"width":435,"height":75});
                                         }
                                     })
                                 });
@@ -1120,43 +1137,44 @@ var classMain = {
                                 '<input class="fl input-money" value="' + item.userPrice.formatMoney(2, "", ",", ".") + '">' +
                                 '<button data-customid="' + item.customid + '" class="btn edit fl">确定</button>' +
                                 '</div>' +
+                                '<div class="bargain"><!--议价-->' +
+                                    '<span class="tax fl">' + tax + '</span>' +
+                                    '<span class="proposed-price fl">' + proposed + '</span>' +
+                                    '<span data-tax="'+tax+'" data-userPeriod="'+item.userPeriod+'" data-lastQuote="'+item.lastQuote+'" data-customid="' + item.customid + '" class="button fl hide">议价</span>' +
+                                    '<i class="arrow"></i>' +
+                                '</div>' +
                                 '<!--报价-->' +
                                 '<div class="quoted">' +
-                                '<div class="bargain"><!--议价-->' +
-                                '<span class="tax">' + tax + '</span>' +
-                                '<span class="proposed-price">' + proposed + '</span>' +
-                                '<span data-tax="'+tax+'" data-userPeriod="'+item.userPeriod+'" data-lastQuote="'+item.lastQuote+'" data-customid="' + item.customid + '" class="button hide">议价</span>' +
-                                '<i class="arrow"></i>' +
-                                '</div>' +
                                 '<i class="label fl">报价：</i>' +
                                 '<input class="fl input-money" value="' + item.prePrice.formatMoney(2, "", ",", ".") + '">' +
                                 '<button data-customid="' + item.customid + '" class="btn edit fl">确定</button>' +
                                 '</div>' +
                                 '</div>');
 
+                            //议价
                             if(item.inquiryStatus==6)//议价达成
                             {
                                 var bargain = $(money.find('.quoted').find('.button'));
-                                $(money.find('.quoted').find('.proposed-price')).css('color', ' #E84B4C');
+                                $(money.find('.bargain').find('.proposed-price')).css('color', ' #E84B4C');
                                 $(bargain).text("议价达成");
-                                $(bargain.parent()).css('width', '238px');
+                                // $(bargain.parent()).css('width', '238px');
                                 bargain.removeClass('hide');
                             }
                             else if(item.inquiryStatus==5)
                             {
-                                var bargain = $(money.find('.quoted').find('.button'));
-                                $(money.find('.quoted').find('.proposed-price')).css('color', ' #5298FF');
+                                var bargain = $(money.find('.bargain').find('.button'));
+                                $(money.find('.bargain').find('.proposed-price')).css('color', ' #5298FF');
                                 $(bargain).text("议价中");
-                                $(bargain.parent()).css('width', '230px');
+                                // $(bargain.parent()).css('width', '230px');
                                 bargain.removeClass('hide');
                             }
                             else if (item.inquiryStatus >= 2 && item.inquiryStatus <= 4)
                             {
-                                var bargain = $(money.find('.quoted').find('.button'));
-                                $(money.find('.quoted').find('.proposed-price')).css('color', ' #5298FF');
+                                var bargain = $(money.find('.bargain').find('.button'));
+                                $(money.find('.bargain').find('.proposed-price')).css('color', ' #5298FF');
                                 bargain.removeClass('hide');
                                 //议价
-                                $(money.find('.quoted').find('.button')).on('click', function () {
+                                $(money.find('.bargain').find('.button')).on('click', function () {
                                     var customid = $(this).attr('data-customid');
                                     var lastQuote=$(this).attr('data-lastQuote');
                                     var userPeriod=$(this).attr('data-userPeriod');
@@ -1165,9 +1183,9 @@ var classMain = {
                                 });
                             }
                             else {
-                                var bargain = $(money.find('.quoted').find('.bargain'));
-                                $(money.find('.quoted').find('.proposed-price')).css('color', '#E84B4C');
-                                bargain.css('width', '185px');
+                                var bargain = $(money.find('.bargain').find('.bargain'));
+                                $(money.find('.bargain').find('.proposed-price')).css('color', '#E84B4C');
+                                // bargain.css('width', '185px');
                             }
 
 
@@ -1368,7 +1386,7 @@ var classMain = {
                             itemDiv=$("#item_"+customid);
                             itemDiv.html("");
                         }
-                        else if(customid!=null && customid!=item.customid)
+                        else if(customid!=null && customid!=item.customid && isDom)
                         {
                             continue;
                         }
@@ -1480,7 +1498,6 @@ var classMain = {
                                     var customid = $(this).attr('data-customid');
                                     var designId = $(this).attr('data-designId');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
-                                    debugger
                                     var url=config.WebService()["orderDesignInfo_Update"];
                                     Requst.ajaxPost(url,{"wId":designId},true,function (data) {
                                         if(data.code==200)
@@ -1548,7 +1565,7 @@ var classMain = {
                             itemDiv=$("#item_"+customid);
                             itemDiv.html("");
                         }
-                        else if(customid!=null && customid!=item.customid)
+                        else if(customid!=null && customid!=item.customid && isDom)
                         {
                             continue;
                         }
@@ -1740,12 +1757,12 @@ var classMain = {
                             //处理议价
                             if(item.inquiryStatus==5 || (item.inquiryStatus==6 && item.lastQuote==0))
                             {
-                                debugger
                                 var btn=$('<button class="btn" style="width: 66px; height: 23px;" data-userPeriod="'+item.workshopUserPeriod+'" data-basePrice="'+item.workshopBasePrice+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">处理议价</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
                                     var orderid = $(this).attr('data-orderid');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
+                                    debugger
                                     var userPeriod=$(this).attr("data-userPeriod");//客户期望工期
                                     var basePrice=$(this).attr("data-basePrice");//客户低价
 
