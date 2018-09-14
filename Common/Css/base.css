@@ -231,7 +231,7 @@ input:-webkit-autofill
 .msg-container{
     display: block;
     min-width: 358px;
-    height: 75px;
+    min-height: 75px;
     border-radius: 7px;
     /*border: 1px solid #2D7091;*/
 }
@@ -250,7 +250,7 @@ input:-webkit-autofill
     margin-top: 16px;
     margin-left: 21px;
     height: 48px;
-    width: 250px;
+    min-width: 250px;
     vertical-align: middle;
     text-align: center;
 }

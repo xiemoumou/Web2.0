@@ -6,7 +6,6 @@ var customid = '';//定制号
 var operType = '';//操作类型
 var createOrder = {
     init: function () {
-        
         operType = Helper.getUrlParam('operType');//新建还是编辑
         if (operType == 'edit') {
             //编辑5要素

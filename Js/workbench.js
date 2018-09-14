@@ -7,6 +7,8 @@ var isMessage=false;//是否有消息
 var Cache={};//全局缓存
 
 $(function () {
+    var pageLoading_start=new Date(); pageLoading_start.toLocaleString();//初始化计时
+
     roleType = top.Helper.Cache.get('roleType');
     roleType =parseInt(roleType);//获取角色
     if (localStorage.getItem('SysParam'))//从缓存获取字典
@@ -18,9 +20,6 @@ $(function () {
 
         }
     }
-    classMain.init();
-
-    classMain.message();//获取消息
 
     //显示资源库按钮
     if(roleType==1||roleType==4||roleType==2)
@@ -31,6 +30,12 @@ $(function () {
         });
     }
 
+    classMain.init();
+
+    classMain.message();//获取消息
+
+    var pageLoading_end=new Date(); pageLoading_end.toLocaleString();//初始化计时
+    console.log("workbench加载用时：" +Helper.Date.timeDifference(pageLoading_start,pageLoading_end)+"秒。");
 });
 
 var classMain = {
@@ -83,6 +88,7 @@ var classMain = {
                         orderMessage.removeClass("hide");
                         $("#didntReadCount").text(didntRead);
                         playSound.html('');
+                        playSound.append($('<audio autoplay="autoplay"><source src="../Common/Media/audio/71.mp3" type="audio/mpeg" /></audio>'));
                         isMessage=true;
                     }
                     else if(!orderMessage.hasClass('hide'))//没有未读消息
@@ -144,6 +150,8 @@ var classMain = {
             async = async ? async : false;
             var getSysParam = top.config.WebService()['getSysParam'];
             top.Requst.ajaxGet(getSysParam, null, async, function (data) {
+                var dict_start=new Date(); dict_start.toLocaleString();//初始化计时
+
                 data = data.data;
 
                 var dict = {};
@@ -238,6 +246,9 @@ var classMain = {
                     }
                     return result;
                 }
+                var dict_end=new Date(); dict_end.toLocaleString();//初始化计时
+                var timeDiff=async?"异步":"同步";
+                console.log("字典"+timeDiff+"初始化：" +Helper.Date.timeDifference(dict_start,dict_end)+"秒。");
             });
         }
 
@@ -252,6 +263,8 @@ var classMain = {
         // 导航数据加载
         loadingNav();
         function loadingNav() {
+            var nav_start=new Date(); nav_start.toLocaleString();//初始化计时
+
             var getNavListUrl = top.config.WebService()['business_Query'];
             top.Requst.ajaxGet(getNavListUrl, null, false, function (data) {
                 renderNav(data);
@@ -408,6 +421,9 @@ var classMain = {
                     temp = [];
                 }
             }
+
+            var nav_end=new Date(); nav_end.toLocaleString();//初始化计时
+            console.log("导航初始化：" +Helper.Date.timeDifference(nav_start,nav_end)+"秒。");
         }
 
         //头部tab滑过效果
@@ -732,7 +748,7 @@ var classMain = {
                 classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
                 classMain.loadOverview();
             });
-            $('.customer-service-table-sort .opertime').on('click', function () {
+            $('.workshop-table-sort .opertime').on('click', function () {
                 setSortType($(this));
                 classMain.requstParams['sortCategory'] = 'updateTime';//操作时间
                 classMain.requstParams['sortType'] = $(this).attr('data-sorttype');
@@ -1001,6 +1017,10 @@ var classMain = {
                                             top.Message.show("提示",data.message,MsgState.Success,2000,function () {
                                                 classMain.loadOverview();
                                             });
+                                        }
+                                        else
+                                        {
+                                            top.Message.show("提示",data.message,MsgState.Warning,2000);
                                         }
                                     })
                                 });
@@ -1460,7 +1480,7 @@ var classMain = {
                                     var customid = $(this).attr('data-customid');
                                     var designId = $(this).attr('data-designId');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
-
+                                    debugger
                                     var url=config.WebService()["orderDesignInfo_Update"];
                                     Requst.ajaxPost(url,{"wId":designId},true,function (data) {
                                         if(data.code==200)

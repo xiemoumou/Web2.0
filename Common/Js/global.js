@@ -292,9 +292,25 @@ function inputCheck() {
 //工具类
 var Helper = {
     Date: {
+        timeDifference:function (begin,end) {
+          //计算时间差 返回相差秒数
+            if(begin.replace)
+            {
+                begin=begin.replace(/\-/g, "/");
+                end=end.replace(/\-/g, "/");
+            }
+            var d1 = new Date(begin);
+            var d2 = new Date(end);
+            return parseInt(d2 - d1)/ 1000;
+        },
         countdown:function (tagDate) {
             //倒计时
             var now = new Date();
+            if(tagDate.replace)
+            {
+                tagDate=tagDate.replace(/\-/g, "/");
+            }
+
             var endDate = new Date(tagDate);
             var leftTime=endDate.getTime()-now.getTime();
             var dd = parseInt(leftTime / 1000 / 60 / 60 / 24, 10);//计算剩余的天数
@@ -329,6 +345,11 @@ var Helper = {
                 return 1924905600000
             }
             //获取时间戳
+            if(datetime.replace)
+            {
+                datetime=datetime.replace(/\-/g, "/");
+            }
+
             var timestamp = Date.parse(new Date(datetime));
             timestamp = timestamp;
             return timestamp;
@@ -567,7 +588,7 @@ var Popup = {
 //提示消息
 var MsgState = {"Success": 1, "Warning": 2, "Fail": 3};//提示消息状态
 var Message = {
-    show: function (title, content, status, time, callback) {
+    show: function (title, content, status, time, callback,size) {
 
         title = !title ? title = "提示:" : title;
 
@@ -591,14 +612,17 @@ var Message = {
         }
 
         var html = '<div class="msg-container msg-' + msgType + '-border"> <div class="msg-icon msg-' + msgType + '-icon"></div> <div class="msg-content msg-' + msgType + '-text"><span class="msg-content-title">' + title + '</span><span class="msg-content-content">' + content + '</span></div> </div>';
-        var index = layer.msg("",
-            {
-                type: 1,
-                icon: 1,
-                content: html,
-                time: time,
-            },
-            callback);
+        var data={
+            type: 1,
+            icon: 1,
+            content: html,
+            time: time,
+        };
+        if(size) {
+            data["area"] = [size.width + 'px', size.height + 'px'];
+        }
+
+        var index = layer.msg("",data , callback);
         $("#layui-layer" + index).css("box-shadow", box_shadow);
     }
 };
@@ -810,6 +834,10 @@ var OPER={
                 Message.show("提醒",data.message,MsgState.Success,2000,function () {
                     classMain.loadOverview(null,null,null,customid);
                 });
+            }
+            else
+            {
+                Message.show("提醒",data.message,MsgState.Warning,2000,null,{"width":370 ,"height":75});
             }
         });
     },

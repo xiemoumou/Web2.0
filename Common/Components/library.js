@@ -581,7 +581,7 @@ var uploadfile = {
         function renderPhoto(thumbnail, orgSrc, showProgress) {
             showProgress = showProgress == null ? true : showProgress;
             //图片
-            var diagram = $('<div data-progress="0" data-src="' + orgSrc + '" class="diagram"><div class="progress"><span>0%</span></div></div>').append($('<img src="' + thumbnail + '">'));
+            var diagram = $('<div data-progress="0" data-mimageurl="'+orgSrc+'"  data-simageurl="'+thumbnail+'"  data-src="' + orgSrc + '" class="diagram"><div class="progress"><span>0%</span></div></div>').append($('<img src="' + thumbnail + '">'));
             diagram.hover(function () {//显示或隐藏放大镜+删除图标
                 $(this).find('.handle').removeClass('hide');
             }, function () {
@@ -751,7 +751,7 @@ var uploadfile = {
         //渲染附件列表
         function renderAccessory(uri, name, type) {
             type = type.toUpperCase();
-            var accessoryItem = $('<div title="' + name + '" class="fileitem"><div class="progress hide"><span>0%</span></div></div>');
+            var accessoryItem = $('<div title="' + name + '" data-url="'+uri+'" class="fileitem"><div class="progress hide"><span>0%</span></div></div>');
             accessoryItem.append($('<span class="filetype fl">' + type + '</span>'));
             accessoryItem.append($('<span class="filename fl">' + name + '</span>'));
             if (isDownload) {
