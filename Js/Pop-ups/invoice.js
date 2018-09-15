@@ -293,10 +293,11 @@ var Invoice = {
     CheckData: function () { //验证文本框
         var that = this;
 
+        debugger
         var invoicetype = parseInt($("input[name='invoice']:checked").attr("index"));
-        var taxrate = parseInt($(".rate-select").val()/100) || 0;
+        var taxrate = parseFloat($(".rate-select").val()/100) || 0;
         var invoicetitle = $(".rise-text").val();
-        var detailsvalue1 = parseInt($(".money-text").val()) || 0;
+        var detailsvalue1 = parseInt($(".money-text").val().replace(/[^0-9-.]/g, '')) || 0;
         var detailsinvoice1 = $(".invoice-select").val();
         var taxIdentification = $(".dist-text").val();
         var customeraddress = $(".address-text").val();
