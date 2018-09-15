@@ -1359,7 +1359,7 @@ var classMain = {
                                 });
                                 operating.append(btn);
                             }
-
+                            
                             //查看成品
                             if (item.smallFinishedProductsImage1||item.smallFinishedProductsImage2||item.smallFinishedProductsImage3) {
                                 var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">查看成品</button>');
