@@ -621,7 +621,10 @@ var uploadfile = {
             return diagram;
         }
     },
-    uploadFile: function (tagId, limit, accessoryArray, allowEditors, size, typeConstraint, isDownload) {//上传文件 typeConstraint==false 表示不验证文件格式
+    uploadFile: function (tagId, limit, accessoryArray, allowEditors, size, typeConstraint, isDownload) {
+
+        //上传文件 typeConstraint==false 表示不验证文件格式 accessoryArray=[{"name":"","uri":""}]
+        
         var that = this;
         size = !size ? 200 : size;//图片大小限制默认200MB
         allowEditors = allowEditors == null ? true : allowEditors;//是否允许编辑

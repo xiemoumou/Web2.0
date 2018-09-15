@@ -875,15 +875,15 @@ var details = {
     },
     desiLeavBtn: function () {//选定设计方案
         var url = config.WebService()["chooseDesign"];
-
+        debugger
         data = {
-            "wId": dataDetail.designPatternId,
+            "wId": dataDetail.designInfo[0].id,
             "customId": customid,
         }
 
         Requst.ajaxPost(url, data, true, function (data) {
             if (data.code ==200){
-                Message.show('提示信息',data.message,2000);
+                top.Message.show('提示信息',data.message,MsgState.Success,2000);
             }
 
         });

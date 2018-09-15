@@ -268,8 +268,8 @@
                 {
                     data=data.data;
                     designImage.push({'thumbnail':data.smallDesignImage1,'orgSrc':data.middleDesignImage1});//设计图
-                    designFile.push(data.designFile);//设计附件
-                    otherFile.push(data.otherFile);//其他附件
+                    designFile.push({"name":data.designFile,"uri":data.designFile});//设计附件
+                    otherFile.push({"name":data.otherFile,"uri":data.otherFile});//其他附件
 
                     for(var i=1;i<3;i++)
                     {
