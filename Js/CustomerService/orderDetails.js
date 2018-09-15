@@ -183,6 +183,7 @@ var details = {
 
                     }
                 }
+
                 if (data.data.name) {
                     $('.address-empty').addClass('hide');
                     $('.address-text-box').removeClass('hide');
@@ -247,261 +248,93 @@ var details = {
                 }
 
 
-                var item = data.data;
-
-                // function operating() {
-                //     debugger
-                //     var operating = $('.operating');
-                //     // 发起询价
-                //     if (item.inquiryStatus==0) {
-                //         var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">发起询价</button>');
-                //         btn.on('click',function () {
-                //             var customid = $(this).attr('data-customid');
-                //             OPER.sendInquiry(customid);//发起询价
-                //         });
-                //         operating.append(btn);
-                //     }
-                //     //分配设计
-                //     if (item.designStatus==0) {
-                //         var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配设计</button>');
-                //         btn.on('click',function () {
-                //             var customid = $(this).attr('data-customid');
-                //             var orderid = $(this).attr('data-orderid');
-                //             var ordersummaryId = $(this).attr('data-ordersummaryId');
-                //             var designPrice= $($(this).parent().parent()).find('.amount').find('.design-fee').find('span').eq(0).find('em');
-                //             OPER.distributionDesign(ordersummaryId,orderid,customid,$(designPrice).text());
-                //         });
-                //         operating.append(btn);
-                //     }
-                //     //定价
-                //     if (item.produceStatus<=1) {
-                //         var btn=$('<button data-inquiryStatus="'+item.inquiryStatus+'" data-userPeriod="'+item.userPeriod+'" data-prePrice="'+parseFloat(item.prePrice).formatMoney(2, "", ",", ".")+'" data-currentPeriod="'+item.currentPeriod+'" data-currentPrice="'+parseFloat(item.currentPrice).formatMoney(2, "", ",", ".")+'" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">定价</button>');
-                //         btn.on('click',function () {
-                //             var customid = $(this).attr('data-customid');
-                //             var dataUserPeriod = $(this).attr('data-userPeriod');//客户要求工期
-                //             var currentPeriod = $(this).attr('data-currentPeriod');//当前车间工期
-                //             var currentPrice = $(this).attr('data-currentPrice');//当前车间报价
-                //             var quotePrice= $(this).attr('data-prePrice');//客服报价
-                //             var inquiryStatus= $(this).attr('data-inquiryStatus');//询价状态
-                //             if(parseInt(inquiryStatus)==4)
-                //             {
-                //                 Confirm("注意","订单已经支付，确定要重新定价？",423,235,null,function () {
-                //                     OPER.pricing(customid,currentPeriod,currentPrice,quotePrice,dataUserPeriod,inquiryStatus);
-                //                 });
-                //             }
-                //             else
-                //             {
-                //                 OPER.pricing(customid,currentPeriod,currentPrice,quotePrice,dataUserPeriod,inquiryStatus);
-                //             }
-                //         });
-                //         operating.append(btn);
-                //     }
-                //     //确认支付
-                //     if (item.inquiryStatus==3) {
-                //         var btn=$('<button data-inquiryStatus="'+item.inquiryStatus+'" data-finalPrice="'+parseFloat(item.finalPrice).formatMoney(2, "", ",", ".")+'" data-prePrice="'+parseFloat(item.prePrice).formatMoney(2, "", ",", ".")+'" data-currentPeriod="'+item.currentPeriod+'" data-currentPrice="'+parseFloat(item.currentPrice).formatMoney(2, "", ",", ".")+'" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">订单支付</button>');
-                //         btn.on('click',function () {
-                //             var customid = $(this).attr('data-customid');
-                //             var finalPrice = $(this).attr('data-finalPrice');//定价金额
-                //             OPER.orderPrice(customid,finalPrice);
-                //         });
-                //         operating.append(btn);
-                //     }
-                //     //分配生产
-                //     if (item.inquiryStatus==4 && item.produceStatus<=1) {
-                //         var btn=$('<button data-inquiryStatus="'+item.inquiryStatus+'" data-finalPrice="'+parseFloat(item.finalPrice).formatMoney(2, "", ",", ".")+'" data-prePrice="'+parseFloat(item.prePrice).formatMoney(2, "", ",", ".")+'" data-currentPeriod="'+item.currentPeriod+'" data-currentPrice="'+parseFloat(item.currentPrice).formatMoney(2, "", ",", ".")+'" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配生产</button>');
-                //         btn.on('click',function () {
-                //             var customid = $(this).attr('data-customid');
-                //             OPER.distributionProduction(customid);
-                //         });
-                //         operating.append(btn);
-                //     }
-                //     //查看物流
-                //     if (item.produceStatus==4) {
-                //         var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">查看物流</button>');
-                //         btn.on('click',function () {
-                //             var customid = $(this).attr('data-customid');
-                //             var orderId=$(this).attr('data-orderid');
-                //             window.open("./Pop-ups/logisticsInfo.html?customid="+customid+"&orderid="+orderId);
-                //         });
-                //         operating.append(btn);
-                //     }
-                //
-                //     //查看成品
-                //     if (item.smallFinishedProductsImage1||item.smallFinishedProductsImage2||item.smallFinishedProductsImage3) {
-                //         var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">查看成品</button>');
-                //         btn.on('click',function () {
-                //             var customid = $(this).attr('data-customid');
-                //             OPER.productPicture(customid,'prev');
-                //         });
-                //         operating.append(btn);
-                //     }
-                //
-                //     //确认收货
-                //     if (item.produceStatus==4) {
-                //         var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">确认收货</button>');
-                //         btn.on('click',function () {
-                //             var customid = $(this).attr('data-customid');
-                //             var url=config.WebService()["orderLogisticsStatus_Update"];
-                //             top.Requst.ajaxPost(url,{"customid":customid},true,function (data) {
-                //                 if(data.code==200)
-                //                 {
-                //                     top.Message.show("提示", data.message, MsgState.Success, 2000);
-                //                     if (top.classMain.loadOverview) {
-                //                         top.classMain.loadOverview(null, null, null, customid);
-                //                     }
-                //                 }
-                //                 else{
-                //                     top.Message.show("提示", data.message, MsgState.Warning, 2000);
-                //                 }
-                //             })
-                //         });
-                //         operating.append(btn);
-                //     }
-                //
-                //     //itemBody.append(operating);
-                // }
-                //
-                // operating();
-                //
-                //
-                //
                 // var itemHead = $('<div class="item-head"></div>');
-                //
-                // // var itemHead_l = $('<div class="item-head-left fl"></div>');
-                // // itemHead.append(itemHead_l);
+                // // itemDiv.append(itemHead);
+                // // itemDiv.append(itemHead);
+                // var itemHead_l = $('<div class="item-head-left fl"></div>');
+                // itemHead.append(itemHead_l);
                 // var itemHead_r = $('<div class="item-head-right fr"></div>');
                 // itemHead.append(itemHead_r);
-                //
-                // function addMore() {
-                //     //更多操作列表
-                //     var moreList = $('<div class="operlist" style="display: none;"><i class="arrow"></i></div>');
-                //     //发票收据
-                //     var moreItem_1 = $('<span data-customid="'+item.customid+'">发票/收据</span>');
-                //     moreItem_1.on('click', function () {
-                //         var customid = $(this).attr('data-customid');
-                //         var scrollH = top.Helper.getClientHeight();
-                //         var popH = scrollH - 100 > 680 ? 680 : scrollH - 100;
-                //         top.Popup.open("发票/收据",818,popH,"./Pop-ups/invoice.html?customid="+customid);
-                //     });
-                //     moreList.append(moreItem_1);
-                //
-                //     var moreItem_2 = $('<span data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">产品包装</span>');
-                //     moreItem_2.on('click', function () {
-                //         var orderid = $(this).attr('data-orderid');
-                //         var customid=$(this).attr('data-customid');
-                //         var scrollH = top.Helper.getClientHeight();
-                //         var popH = scrollH - 100 > 510 ? 510 : scrollH - 100;
-                //         top.Popup.open("产品包装",545, popH,"./Pop-ups/box.html?orderid="+orderid+"&customid="+customid);
-                //     });
-                //     moreList.append(moreItem_2);
-                //
-                //     // var moreItem_3 = $('<span>订单备注</span>');
-                //     // moreItem_3.on('click', function () {
-                //     //     alert('弹出订单备注');
-                //     // });
-                //     // moreList.append(moreItem_3);
-                //
-                //     var moreItem_4 = $('<span data-customid="'+item.customid+'" style="border-bottom: none;">删除订单</span>');
-                //     moreItem_4.on('click', function () {
-                //         debugger
-                //         var customid = $(this).attr('data-customid');
-                //         Confirm("删除订单","您确定要删除该订单吗？",423,203,null,function () {
-                //             var url=config.WebService()['orderSummaryInfo_Update'];
-                //             top.Requst.ajaxPost(url,{"customid":customid},true,function (data) {
-                //                 if(data.code==200)
-                //                 {
-                //                     top.Message.show("提示",data.message,MsgState.Success,2000,function () {
-                //                         classMain.loadOverview();
-                //                     });
-                //                 }
-                //                 else
-                //                 {
-                //                     top.Message.show("提示",data.message,MsgState.Warning,3000,null,{"width":435,"height":75});
-                //                 }
-                //             })
-                //         });
-                //     });
-                //     moreList.append(moreItem_4);
-                //
-                //     var more = $('<span title="更多操作"><i class="more-icon"></i></span>');
-                //     more.on('click', function (e) {
-                //         debugger
-                //         $('.operlist').slideUp();
-                //         var dropList = $($(this).find('.operlist'));
-                //         dropList.slideDown('fast');
-                //         $(document).click(function () {
-                //             dropList.slideUp('fast');
-                //         });
-                //         //点击后自动关闭下拉
-                //         $(dropList.find('span')).click(function (e) {
-                //             dropList.slideUp('fast');
-                //             e.stopPropagation();
-                //         });
-                //         e.stopPropagation();
-                //     });
-                //     more.append(moreList);
-                //     itemHead_r.append(more);
-                // }
-                //
-                // addMore();
+
+                var item=data.data;
+
+                //5要素
+                var element = SysParam.element;//元素
+                var model = ConvertIdToName(element.model, item.model).join(';');
+                var technology = ConvertIdToName(element.technology, item.technology).join(';');
+                var color = ConvertIdToName(element.color, item.color).join(';');
+
+                $(".time-num").text(createTime);//订单创建时间
+                $(".orderNum").text(orderid);//订单号
+                $(".orderWw").text(customerWang);//旺旺号
+                $(".orderCust").text(shop);//客源
+                $(".order-img img").attr('src', initialGoodsImage);//产品图
+                $(".attr-1").text(SysParam.element.goodsClass[item.goodsClass].name);//属性 产品类别
+                $(".attr-2").text(SysParam.element.material[item.material].name);//属性 产品材质
+                $(".attr-3").text(SysParam.element.accessories[item.accessories].name);//属性 配件
+                $(".tech-1").text(model);//工艺开模
+                $(".tech-2").text(technology);//生产工艺
+                $(".tech-3").text(color);//电镀色
+                $(".ordNum").text(number);//数量
+                $(".length").text(length);//长
+                $(".width").text(width);//宽
+                $(".height").text(height);//高
+                $(".limit").text(deadline);//工期
+                $(".offer-money").text(designPrice);//设计费
+                $(".offertime").text(introducePrice);//设计引导费
+                $(".budget-text input").val(userPrice);//预算
+                $(".quote-text input").val(prePrice);//报价
+                $(".details-rema-box .design-rema textarea").text(designMemo);//设计备注
+                $(".offer-rema textarea").text(produceMemo);//生产要求
+                $(".quot-num").text(currentPrice);//参考价格
+                $(".quot-day").text(currentPeriod);//参考工期
 
 
+                //if (data.data.name){
+                orderInfo.shippingAddress.name = data.data.name;//收货人姓名
+                orderInfo.shippingAddress.mobilephone = data.data.mobilephone;//收货联系电话
+                orderInfo.shippingAddress.postcode = data.data.postcode;//邮编
+                orderInfo.shippingAddress.province = data.data.province;//省
+                orderInfo.shippingAddress.city = data.data.city;//市
+                orderInfo.shippingAddress.county = data.data.county;//县
+                orderInfo.shippingAddress.address = data.data.detail_address;//详细地址
+                //}
 
 
+                if (deadline <= 5) {//急单
+                    $(".emer").removeClass('hide');
+                } else {
+                    $(".emer").addClass('hide');
+                }
+                debugger
+                if (data.data.designStatus >= 2) {
+                    $(".design-man").removeClass('hide');
+                    $(".edit-right").removeClass('hide');
+                }else{
+                    $(".design-man").addClass('hide');
+                    $(".edit-right").addClass('hide');
+                }
 
-
-                var itemHead = $('<div class="item-head"></div>');
-                // itemDiv.append(itemHead);
-                // itemDiv.append(itemHead);
-                var itemHead_l = $('<div class="item-head-left fl"></div>');
-                itemHead.append(itemHead_l);
-                var itemHead_r = $('<div class="item-head-right fr"></div>');
-                itemHead.append(itemHead_r);
-                var itemBody = $('<div class="clearfix fl"></div>');
-                // itemDiv.append(itemBody);
-                // 数据头
-                // function addHead() {
-                //     // 数据头左侧
-                //     itemHead_l.append($('<span class="time">' + item.createTime + '</span>'));
-                //     itemHead_l.append($('<span>订单号：<em>' + item.orderid + '</em></span>'));
-                //     itemHead_l.append($('<span>客源：<em>' + SysParam.element.shop[item.shop].name + '</em></span>'));
-                //     itemHead_l.append($('<span class="wangwang">旺旺：<em>' + item.customerWang + '</em></span>'));
-                //
-                //     //是否急单
-                //     var orderUrgencyDays = parseInt(SysParam.sysParam['order_urgency_days'].value);
-                //     if (item.userPeriod <= orderUrgencyDays) {
-                //         itemHead_l.append($('<span class="anxious">急单</span>'));
-                //     }
-                //
-                //     if (item.isContinueOrder == 1) {
-                //         itemHead_l.append($('<span class="renew">续订</span>'));
-                //     }
-                //
-                //     if (roleType == 4) {
-                //         itemHead.append($('<div class="item-head-left-manager fl">' +
-                //             '<span>客服ID：<em>' + item.servicerNickName + '</em></span>' +
-                //             '<span>车间ID：<em>' + item.produceNickName + '</em></span>' +
-                //             '<span style="border-right: none;">方案师ID：<em>' + item.designNickName + '</em></span>' +
-                //             '</div>'));
-                //     }
-                //
-                //     // 数据头右侧
-                //     var check = $('<span data-customid="' + item.customid + '">核对订单</span>');
-                //     check.on('click', function () {
-                //         var customid = $(this).attr('data-customid');
-                //         var scrollH = top.Helper.getClientHeight();
-                //         var popH = scrollH - 100 > 680 ? 680 : scrollH - 100;
-                //         top.Popup.open("核对订单",818,popH,"./Pop-ups/checkOrder.html?customid="+customid);
-                //     });
-                //     itemHead_r.append(check);
-                //
-                //     var view = $('<span data-customid="' + item.customid + '">查看订单</span>');
-                //     view.on('click', function () {
-                //         var customid = $(this).attr('data-customid');
-                //         that.addTab(customid, './CustomerService/orderDetails.html?customid=' + customid);
-                //     });
-                //     itemHead_r.append(view);
-                // }
+                debugger
+                var payStatus = item.inquiryStatus == 4 ? "" : "未支付";
+                //状态
+                function addStatus() {
+                    var status = $('.orderstatus');
+                    if (SysParam.inquiryStatus[item.inquiryStatus]) {
+                        status.append($('<p>' + SysParam.inquiryStatus[item.inquiryStatus].servicerTag + '</p>'));
+                    }
+                    if (SysParam.designStatus[item.designStatus]) {
+                        status.append($('<p>' + SysParam.designStatus[item.designStatus].servicerTag + '</p>'));
+                    }
+                    if (SysParam.produceStatus[item.produceStatus]) {
+                        status.append($('<p>' + SysParam.produceStatus[item.produceStatus].servicerTag + '</p>'));
+                    }
+                    if(payStatus)
+                    {
+                        status.append($('<p>' + payStatus + '</p>'));
+                    }
+                }
+                addStatus();
 
                 //addHead();
                 //添加更多按钮
@@ -534,6 +367,7 @@ var details = {
                     // });
                     // moreList.append(moreItem_3);
 
+                    // 删除订单
                     var moreItem_4 = $('<span data-customid="'+item.customid+'" style="border-bottom: none;">删除订单</span>');
                     moreItem_4.on('click', function () {
                         var customid = $(this).attr('data-customid');
@@ -553,7 +387,7 @@ var details = {
                             })
                         });
                     });
-                    moreList.append(moreItem_4);
+                    //moreList.append(moreItem_4);
 
                     var more = $('<span title="更多操作"><i class="more-icon"></i></span>');
                     more.on('click', function (e) {
@@ -571,17 +405,14 @@ var details = {
                         e.stopPropagation();
                     });
                     more.append(moreList);
-                    itemHead_r.append(more);
+                    $(".item-head-right").append(more);
                 }
 
                 addMore();
 
 
-
-
-
                 function operating() {
-                    var operating = $('<div class="operating"></div>');
+                    var operating = $('.operation');
                     var command=item.command.split(',');
                     // 发起询价
                     if (command.indexOf("INQUIRY")>=0) {
@@ -688,84 +519,9 @@ var details = {
                         });
                         operating.append(btn);
                     }
-
-                    itemBody.append(operating);
                 }
 
                 operating();
-
-
-
-
-
-
-
-
-
-                //5要素
-                var element = SysParam.element;//元素
-                var model = ConvertIdToName(element.model, item.model).join(';');
-                var technology = ConvertIdToName(element.technology, item.technology).join(';');
-                var color = ConvertIdToName(element.color, item.color).join(';');
-
-
-
-                var payStatus = data.data.inquiryStatus == 4 ? "" : "未支付";
-                if (payStatus) {
-                    $(".orderNewNext").text(payStatus);
-                }
-
-                $(".time-num").text(createTime);//订单创建时间
-                $(".orderNum").text(orderid);//订单号
-                $(".orderWw").text(customerWang);//旺旺号
-                $(".orderCust").text(shop);//客源
-                $(".order-img img").attr('src', initialGoodsImage);//产品图
-                $(".attr-1").text(SysParam.element.goodsClass[item.goodsClass].name);//属性 产品类别
-                $(".attr-2").text(SysParam.element.material[item.material].name);//属性 产品材质
-                $(".attr-3").text(SysParam.element.accessories[item.accessories].name);//属性 配件
-                $(".tech-1").text(model);//工艺开模
-                $(".tech-2").text(technology);//生产工艺
-                $(".tech-3").text(color);//电镀色
-                $(".ordNum").text(number);//数量
-                $(".length").text(length);//长
-                $(".width").text(width);//宽
-                $(".height").text(height);//高
-                $(".limit").text(deadline);//工期
-                $(".offer-money").text(designPrice);//设计费
-                $(".offertime").text(introducePrice);//设计引导费
-                $(".budget-text input").val(userPrice);//预算
-                $(".quote-text input").val(prePrice);//报价
-                $(".details-rema-box .design-rema textarea").text(designMemo);//设计备注
-                $(".offer-rema textarea").text(produceMemo);//生产要求
-                $(".quot-num").text(currentPrice);//参考价格
-                $(".quot-day").text(currentPeriod);//参考工期
-
-
-                //if (data.data.name){
-                orderInfo.shippingAddress.name = data.data.name;//收货人姓名
-                orderInfo.shippingAddress.mobilephone = data.data.mobilephone;//收货联系电话
-                orderInfo.shippingAddress.postcode = data.data.postcode;//邮编
-                orderInfo.shippingAddress.province = data.data.province;//省
-                orderInfo.shippingAddress.city = data.data.city;//市
-                orderInfo.shippingAddress.county = data.data.county;//县
-                orderInfo.shippingAddress.address = data.data.detail_address;//详细地址
-                //}
-
-
-                if (deadline <= 5) {//急单
-                    $(".emer").removeClass('hide');
-                } else {
-                    $(".emer").addClass('hide');
-                }
-                 debugger
-                if (data.data.designStatus >= 2) {
-                    $(".design-man").removeClass('hide');
-                    $(".edit-right").removeClass('hide');
-                }else{
-                    $(".design-man").addClass('hide');
-                    $(".edit-right").addClass('hide');
-                }
-
 
                 for (var i = 0; i < data.data.designInfo.length; i++) {
                      var commit_time = data.data.designInfo[i].commitTime || "";

@@ -797,7 +797,7 @@ var OPER={
         var scrollH = top.Helper.getClientHeight();
         var scrollW = top.Helper.getClientWidth();
         var popH = scrollH - 100 > 550 ? 550 : scrollH - 100;
-        Popup.open(title, 939, popH, "./Pop-ups/checkOrder.html?customid="+customid);
+        Popup.open(title, 939, popH, "./Pop-ups/checkOrder.html?customid="+customid+"&allocationProduce=true");
     },
     invoice:function (customid,title) {
         title=title?title:"发票收据";
