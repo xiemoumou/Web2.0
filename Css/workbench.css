@@ -746,7 +746,7 @@ body {
     position: absolute;
     width: 96px;
     height: 112px;
-    box-shadow: 0 0 16px #00000006;
+    box-shadow: 0 0 16px #00000073;
     background-color: #ffffff;
     border-radius: 4px;
     display: flex;
@@ -837,7 +837,7 @@ body {
 }
 
 .data-item .info:hover{
-    box-shadow: 0 0 10px #00000010;
+    box-shadow: 0 0 10px #0000005c;
     z-index: 3;
 }
 
