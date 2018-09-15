@@ -832,7 +832,7 @@ body {
     margin-top: 6px;
     position: relative;
     background-color: #ffffff;
-    z-index: 1;
+    z-index: 0;
 }
 
 .data-item .info:hover{
@@ -911,16 +911,19 @@ body {
     box-shadow: 0 0 6px #00000020;
     text-align: center;
     position: relative;
+    background-color: #ffffff;
     margin-left: 22px;
     float: left;
 }
 
 .data-item .amount .design-fee .edit{
     position: absolute;
-    right: -35px;
+    top: -1px;
+    right: -36px;
     color: #E84B4C;
-    width: 34px;
-    height: 20px;
+    width: 39px;
+    height: 23px;
+    background-color: #ffffff;
     cursor: pointer;
 }
 
@@ -995,7 +998,7 @@ body {
     border-radius: 3px;
     right: -16px;
     background-color: #fff;
-    z-index: 2;
+    z-index: 1;
     line-height: 16px;
 }
 

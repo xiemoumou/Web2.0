@@ -1,18 +1,19 @@
+// 收货地址
 var customid = Helper.getUrlParam('customid') || "";//获取订单号
-
+var operType="";//操作类型
 $(function () {
     dist.Address();
 
     $('.ok').on('click', function () {
         dist.Ressget();//保存
     });
-
-
 });
 
 //回填信息
 var dist = {
     Address: function () {
+        operType=Helper.getUrlParam("operType", true);//启动页面的类型
+
         var name = Helper.getUrlParam("name", true);//收货人
         var mobilephone = Helper.getUrlParam("mobilephone", true);//收货人电话
         var postcode = Helper.getUrlParam("postcode", true);//邮编
@@ -20,7 +21,6 @@ var dist = {
         var city = Helper.getUrlParam("city", true);//城市
         var county = Helper.getUrlParam("county", true);//县区
         var address = Helper.getUrlParam("address", true);//详细地址
-
         var orderid = Helper.getUrlParam("orderid", true);//订单id
         var goodsid = Helper.getUrlParam("goodsid", true);//
 
@@ -54,8 +54,6 @@ var dist = {
         });
     },
     Ressget: function () {
-        debugger
-
         var name = $('#recipient').val();
         var mobilephone = $('#tel').val();
         mobilephone = $.trim(mobilephone);
@@ -85,41 +83,41 @@ var dist = {
             $('#address_content').focus();
             return false
         }
+        else {
+            var data = {
+                "customid": customid,
+                "name": name,
+                "mobilephone": mobilephone,
+                "postcode": postcode,
+                "province": province,
+                "city": city,
+                "county": county,
+                "address": address,
+            };
+            var url = config.WebService()["logistics_Info"];
+            top.Requst.ajaxGet(url, data, true, function (data) {
+                if(data.code==200)
+                {
+                    top.Message.show("提示",data.message,MsgState.Success,2000,function () {
+                        if(operType=="distributionProduction")//分配生产
+                        {
+                            top.OPER.distributionProduction(customid);
+                        }
+                        else if(operType=="invoce") //发票
+                        {
 
+                        }
+                        else if(operType=="detail")//详情页面
+                        {
 
-        //else {
-           // if(parent.Invoice.Controller.saveAddress)
-           // {
-
-           // }
-           // else if(parent.Invoice.Controller)
-          //  {
-             //   parent.Invoice.Controller.saveAddress(name, mobilephone, postcode, province, city, county, address);
-          //  }
-          //  else//分配生产时保存
-          //  {
-
-                var data = {
-                    "customid": customid,
-                    "name": name,
-                    "mobilephone": mobilephone,
-                    "postcode": postcode,
-                    "province": province,
-                    "city": city,
-                    "county": county,
-                    "address": address,
-                };
-                var url = config.WebService()["logistics_Info"];
-                Requst.ajaxGet(url, data, true, function (data) {
-
-s
-
-                });
-                    //}
-          //  }
+                        }
+                    });
+                }
+                else
+                {
+                    top.Message.show("提示",data.message,MsgState.Warning,2000);
+                }
+            });
         }
-
-
-
-
     }
+}

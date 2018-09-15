@@ -803,7 +803,7 @@ var OPER={
         var scrollH = top.Helper.getClientHeight();
         var scrollW = top.Helper.getClientWidth();
         var popH = scrollH - 100 > 360 ? 360 : scrollH - 100;
-        Popup.open(title, 818, popH, "./CustomerService/Pop-ups/invoice.html?customid="+customid);
+        top.Popup.open(title, 818, popH, "./CustomerService/Pop-ups/invoice.html?customid="+customid);
     },
     box:function (customid,title) {
         title=title?title:"包装";
@@ -811,33 +811,33 @@ var OPER={
         var scrollH = top.Helper.getClientHeight();
         var scrollW = top.Helper.getClientWidth();
         var popH = scrollH - 100 > 550 ? 550 : scrollH - 100;
-        Popup.open(title, 939, popH, "./CustomerService/Pop-ups/box.html?customid="+customid);
+        top.Popup.open(title, 939, popH, "./CustomerService/Pop-ups/box.html?customid="+customid);
     },
     uploadDesign:function (customid,title) {
         title=title?title:"客服补充设计稿";
         var scrollH = top.Helper.getClientHeight();
         var popH = scrollH - 100 > 559 ? 559 : scrollH - 100;
-        Popup.open(title, 830, popH, "./CustomerService/Pop-ups/uploadDesign.html?customid="+customid);
+        top.Popup.open(title, 830, popH, "./CustomerService/Pop-ups/uploadDesign.html?customid="+customid);
     },
     invoiceDetails:function (customid,title) {
         title=title?title:"发票明细";
         var scrollH = top.Helper.getClientHeight();
         var popH = scrollH - 100 > 559 ? 559 : scrollH - 100;
-        Popup.open(title, 560, popH, "./CustomerService/Pop-ups/invoicePreview.html?customid="+customid);
+        top.Popup.open(title, 560, popH, "./CustomerService/Pop-ups/invoicePreview.html?customid="+customid);
     },
     sendInquiry:function (customid) {
         //发起询价
         var url=config.WebService()['orderInquiryInfo_Query'];
-        Requst.ajaxGet(url,{"customid":customid},true,function (data) {
+        top.Requst.ajaxGet(url,{"customid":customid},true,function (data) {
             if(data.code==200)
             {
-                Message.show("提醒",data.message,MsgState.Success,2000,function () {
+                top.Message.show("提醒",data.message,MsgState.Success,2000,function () {
                     classMain.loadOverview(null,null,null,customid);
                 });
             }
             else
             {
-                Message.show("提醒",data.message,MsgState.Warning,2000,null,{"width":370 ,"height":75});
+                top.Message.show("提醒",data.message,MsgState.Warning,2000,null,{"width":370 ,"height":75});
             }
         });
     },
@@ -845,7 +845,7 @@ var OPER={
         //分配设计
         Confirm("分配设计","请确认发起设计信息，设计费：<em style='color:#E84B4C;'>¥ "+designPrice+"</em>",423,235,null,function () {
             var url=config.WebService()['sendDesign'];
-            Requst.ajaxGet(url,{"ordersummaryId":parseInt(ordersummaryId),"orderId":orderId,"customId":customid},true,function (data) {
+            top.Requst.ajaxGet(url,{"ordersummaryId":parseInt(ordersummaryId),"orderId":orderId,"customId":customid},true,function (data) {
                 if(data.code==200)
                 {
                     Message.show("提醒",data.message,MsgState.Success,2000,function () {
@@ -857,32 +857,32 @@ var OPER={
     },
     pricing:function (customid,currentPeriod,currentPrice,quote,userPeriod,inquiryStatus) {
         //定价
-        Popup.open("订单定价", 407, 290, "./Pop-ups/orderPrice.html?customid="+customid+"&currentPeriod="+currentPeriod+"&currentPrice="+currentPrice+"&quote="+quote+"&userPeriod="+userPeriod+"&inquiryStatus="+inquiryStatus);
+        top.Popup.open("订单定价", 407, 290, "./Pop-ups/orderPrice.html?customid="+customid+"&currentPeriod="+currentPeriod+"&currentPrice="+currentPrice+"&quote="+quote+"&userPeriod="+userPeriod+"&inquiryStatus="+inquiryStatus);
     },
     orderPrice:function (customid,finalPrice) {
-        Popup.open("订单支付", 407, 240, "./Pop-ups/orderPay.html?customid="+customid+"&finalPrice="+finalPrice);
+        top.Popup.open("订单支付", 407, 240, "./Pop-ups/orderPay.html?customid="+customid+"&finalPrice="+finalPrice);
     },
     distributionProduction:function (customid) {
         //分配生产
         var url=config.WebService()['distribut_Production'];
-        Requst.ajaxGet(url,{"customid":customid},true,function (data) {
+        top.Requst.ajaxGet(url,{"customid":customid},true,function (data) {
             if(data.code==3000)
             {
-                Popup.open("收货地址", 482, 380, "./Pop-ups/addAddress.html?customid="+customid);
+                top.Popup.open("收货地址", 482, 380, "./Pop-ups/addAddress.html?customid="+customid+"&operType=distributionProduction");
             }
             else if(data.code==3001){
                 //发票收据不全,请补充发票收据
-                OPER.invoice(customid);
+                top.OPER.invoice(customid);
             }
             else if(data.code==3002)
             {
                 //设计稿未定稿,请先定稿
-                OPER.uploadDesign(customid);
+                top.OPER.uploadDesign(customid);
             }
             else
             {
                 //核对订单
-                OPER.checkOrder(customid,true);//第二个参数告诉核对订单页面分配生产
+                top.OPER.checkOrder(customid,true);//第二个参数告诉核对订单页面分配生产
             }
         });
     },
@@ -890,12 +890,12 @@ var OPER={
         //成品图
         if(operType=="prev")
         {
-            Popup.open("查看成品图", 482, 246, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
+            top.Popup.open("查看成品图", 482, 246, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
         }
         else if(operType=="edit")
         {
             title=title?title:"编辑成品图";
-            Popup.open(title, 482, 246, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
+            top.Popup.open(title, 482, 246, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
         }
     }
 };

@@ -1133,7 +1133,7 @@ var classMain = {
                         //金额区域
                         function addMoney() {
                             var proposed = ' 参考价 ¥' + parseFloat(item.currentPrice).formatMoney(2, "", ",", ".") + ' / 工期' + item.currentPeriod + '天 ';
-                            var tax = item.tax_rate > 0 ? "含税" : "不含税";
+                            var tax = item.taxRate > 0 ? "含税" : "不含税";
 
                             var money = $('<div class="amount">' +
                                 '<div class="design-fee"><!--设计费-->' +
@@ -1178,7 +1178,7 @@ var classMain = {
                             //     // $(bargain.parent()).css('width', '230px');
                             //     bargain.removeClass('hide');
                             // }
-                            else if (item.inquiryStatus >= 2 && item.inquiryStatus <= 4 || item.inquiryStatus==5)
+                            else if (item.inquiryStatus == 2 || item.inquiryStatus ==3 || item.inquiryStatus==5)
                             {
                                 var bargain = $(money.find('.bargain').find('.button'));
                                 $(money.find('.bargain').find('.proposed-price')).css('color', ' #5298FF');
