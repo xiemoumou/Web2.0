@@ -13,7 +13,7 @@ $(function () {
     })
 
 
-    $(".address-add").on('click', function () {//添加地址弹窗
+    $(".address-add,.modify-addr").on('click', function () {//添加地址弹窗
         details.openress();
     });
 
@@ -83,6 +83,8 @@ $(function () {
         '各种联系方式', '');
 
     details.leavShow();
+
+
 });
 
 var orderInfo = {
@@ -102,7 +104,7 @@ var orderInfo = {
 
 var details = {
     openress: function () {//添加地址弹窗
-        var url = encodeURI('../Pop-ups/addAddress.html?name=' + orderInfo.shippingAddress.name + '&mobilephone=' + orderInfo.shippingAddress.mobilephone + '&postcode=' + orderInfo.shippingAddress.postcode + '&province=' + orderInfo.shippingAddress.province + '&city=' + orderInfo.shippingAddress.city + '&county=' + orderInfo.shippingAddress.county + '&address=' + orderInfo.shippingAddress.address + '&customid=' + customid)
+        var url = encodeURI('../Pop-ups/addAddress.html?name=' + orderInfo.shippingAddress.name + '&mobilephone=' + orderInfo.shippingAddress.mobilephone + '&postcode=' + orderInfo.shippingAddress.postcode + '&province=' + orderInfo.shippingAddress.province + '&city=' + orderInfo.shippingAddress.city + '&county=' + orderInfo.shippingAddress.county + '&address=' + orderInfo.shippingAddress.address + '&customid=' + customid +'&operType=detail')
         var scrollH = document.documentElement.scrollHeight - 20;
         if (scrollH > 380) {
             scrollH = 380;
@@ -137,21 +139,21 @@ var details = {
 
     },
     saveAddress: function (name, mobilephone, postcode, province, city, county, address) {//保存收获地址
-        orderInfo.shippingAddress.name = name;
-        orderInfo.shippingAddress.mobilephone = mobilephone;
-        orderInfo.shippingAddress.province = province;
-        orderInfo.shippingAddress.postcode = postcode;
-        orderInfo.shippingAddress.city = city;
-        orderInfo.shippingAddress.county = county;
-        orderInfo.shippingAddress.address = address;
+        orderInfo.shippingAddress.name = name ||"";
+        orderInfo.shippingAddress.mobilephone = mobilephone||"";
+        orderInfo.shippingAddress.province = province||"";
+        orderInfo.shippingAddress.postcode = postcode||"";
+        orderInfo.shippingAddress.city = city||"";
+        orderInfo.shippingAddress.county = county||"";
+        orderInfo.shippingAddress.address = address||"";
         //orderInfo.shippingAddress.customid = customid;
         details.initAddress();//初始化收件地址
     },
     initAddress: function () {
-        $(".cont").html(orderInfo.shippingAddress.name);
-        $(".zip-code").html(orderInfo.shippingAddress.postcode);
-        $(".detailed").html(orderInfo.shippingAddress.address);
-        $(".phone").html(orderInfo.shippingAddress.mobilephone);
+        $(".cons").html(orderInfo.shippingAddress.name);
+        $(".code").html(orderInfo.shippingAddress.postcode);
+        $(".deta-add").html(orderInfo.shippingAddress.address);
+        $(".tele").html(orderInfo.shippingAddress.mobilephone);
         $(".area").html(orderInfo.shippingAddress.province + orderInfo.shippingAddress.city + orderInfo.shippingAddress.county);
         if (orderInfo.shippingAddress.name) {
             $('.address-empty').addClass('hide');
@@ -178,7 +180,21 @@ var details = {
 
                     }
                 }
+                if (data.data.name) {
+                    $('.address-empty').addClass('hide');
+                    $('.address-text-box').removeClass('hide');
+                    $('.modify-addr').removeClass('hide');
+                    // layer.closeAll();
+                }
 
+                // var province = data.data.province;
+                // var
+
+                $(".cont").text(data.data.name||"");
+                $(".phone").text(data.data.mobilephone||"");
+                $(".zip-code").text(data.data.postcode||"");
+                $(".area").text(data.data.province+data.data.city+data.data.county||"");
+                $(".detailed").text(data.data.detailAddress||"");
 
 
                 var createTime = data.data.createTime || "";//订单创建时间
@@ -221,11 +237,11 @@ var details = {
                     debugger
                     $(".orderComp").text(top.SysParam.inquiryStatus[data.data.inquiryStatus].servicerTag);
                 }
-                if (top.SysParam.designStatus[data.data.designStatus].designerTag) {
-                    $(".orderStat").text(top.SysParam.designStatus[data.data.designStatus]);
+                if (top.SysParam.designStatus[data.data.designStatus]) {
+                    $(".orderStat").text(top.SysParam.designStatus[data.data.designStatus].designerTag);
                 }
-                if (top.SysParam.produceStatus[data.data.produceStatus].workshopTag) {
-                    $(".orderNew").text(top.SysParam.produceStatus[data.data.produceStatus]);
+                if (top.SysParam.produceStatus[data.data.produceStatus]) {
+                    $(".orderNew").text(top.SysParam.produceStatus[data.data.produceStatus].workshopTag);
                 }
 
 
@@ -233,126 +249,118 @@ var details = {
 
                 function operating() {
                     debugger
-                    var operating = $('.operation');
-                    //未报价
-                    if ((item.inquiryStatus == 1 || item.inquiryStatus == 2) && item.lastQuote == 0) {
-                        var btn = $('<button class="btn" data-lastQuote="' + item.lastQuote + '" style="width: 66px; height: 23px;" data-inquiryRound="' + item.inquiryRound + '" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">报价</button>');
-                        btn.on('click', function () {
+                    var operating = $('.operating');
+                    // 发起询价
+                    if (item.inquiryStatus==0) {
+                        var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">发起询价</button>');
+                        btn.on('click',function () {
                             var customid = $(this).attr('data-customid');
-                            var orderid = $(this).attr('data-orderid');
-                            var ordersummaryId = $(this).attr('data-ordersummaryId');
-                            var inquiryRound = $(this).attr('data-inquiryRound');//询价轮次
-                            var lastQuote = $(this).attr("data-lastQuote");//上次报价
-                            top.Popup.open("报价", 423, 266, "./Pop-ups/orderOffer.html?customid=" + customid + "&inquiryRound=" + inquiryRound + "&lastQuote=" + lastQuote);
+                            OPER.sendInquiry(customid);//发起询价
                         });
                         operating.append(btn);
                     }
-                    //重新报价
-                    if (item.inquiryStatus == 2 && item.lastQuote > 0) {
-                        var btn = $('<button class="btn" data-lastQuote="' + item.lastQuote + '" style="width: 66px; height: 23px;" data-inquiryRound="' + item.inquiryRound + '" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">重新报价</button>');
-                        btn.on('click', function () {
+                    //分配设计
+                    if (item.designStatus==0) {
+                        var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配设计</button>');
+                        btn.on('click',function () {
                             var customid = $(this).attr('data-customid');
                             var orderid = $(this).attr('data-orderid');
                             var ordersummaryId = $(this).attr('data-ordersummaryId');
-                            var inquiryRound = $(this).attr('data-inquiryRound');//询价轮次
-                            var lastQuote = $(this).attr("data-lastQuote");//上次报价
-
-                            top.Popup.open("重新报价", 423, 266, "./Pop-ups/orderOffer.html?customid=" + customid + "&inquiryRound=" + inquiryRound + "&lastQuote=" + lastQuote);
-
+                            var designPrice= $($(this).parent().parent()).find('.amount').find('.design-fee').find('span').eq(0).find('em');
+                            OPER.distributionDesign(ordersummaryId,orderid,customid,$(designPrice).text());
                         });
                         operating.append(btn);
                     }
-                    //处理议价
-                    if (item.inquiryStatus == 5 || (item.inquiryStatus == 6 && item.lastQuote == 0)) {
-                        var btn = $('<button class="btn" style="width: 66px; height: 23px;" data-userPeriod="' + item.workshopUserPeriod + '" data-basePrice="' + item.workshopBasePrice + '" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">处理议价</button>');
-                        btn.on('click', function () {
+                    //定价
+                    if (item.produceStatus<=1) {
+                        var btn=$('<button data-inquiryStatus="'+item.inquiryStatus+'" data-userPeriod="'+item.userPeriod+'" data-prePrice="'+parseFloat(item.prePrice).formatMoney(2, "", ",", ".")+'" data-currentPeriod="'+item.currentPeriod+'" data-currentPrice="'+parseFloat(item.currentPrice).formatMoney(2, "", ",", ".")+'" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">定价</button>');
+                        btn.on('click',function () {
                             var customid = $(this).attr('data-customid');
-                            var orderid = $(this).attr('data-orderid');
-                            var ordersummaryId = $(this).attr('data-ordersummaryId');
-                            var userPeriod = $(this).attr("data-userPeriod");//客户期望工期
-                            var basePrice = $(this).attr("data-basePrice");//客户低价
-
-                            top.Popup.open("处理议价", 423, 266, "./Pop-ups/handBarg.html?customid=" + customid + "&userPeriod=" + userPeriod + "&basePrice=" + basePrice);
-
+                            var dataUserPeriod = $(this).attr('data-userPeriod');//客户要求工期
+                            var currentPeriod = $(this).attr('data-currentPeriod');//当前车间工期
+                            var currentPrice = $(this).attr('data-currentPrice');//当前车间报价
+                            var quotePrice= $(this).attr('data-prePrice');//客服报价
+                            var inquiryStatus= $(this).attr('data-inquiryStatus');//询价状态
+                            if(parseInt(inquiryStatus)==4)
+                            {
+                                Confirm("注意","订单已经支付，确定要重新定价？",423,235,null,function () {
+                                    OPER.pricing(customid,currentPeriod,currentPrice,quotePrice,dataUserPeriod,inquiryStatus);
+                                });
+                            }
+                            else
+                            {
+                                OPER.pricing(customid,currentPeriod,currentPrice,quotePrice,dataUserPeriod,inquiryStatus);
+                            }
                         });
                         operating.append(btn);
                     }
-                    //接受生产
-                    if (item.produceStatus == 2) {
-                        var btn = $('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">接受生产</button>');
-                        btn.on('click', function () {
+                    //确认支付
+                    if (item.inquiryStatus==3) {
+                        var btn=$('<button data-inquiryStatus="'+item.inquiryStatus+'" data-finalPrice="'+parseFloat(item.finalPrice).formatMoney(2, "", ",", ".")+'" data-prePrice="'+parseFloat(item.prePrice).formatMoney(2, "", ",", ".")+'" data-currentPeriod="'+item.currentPeriod+'" data-currentPrice="'+parseFloat(item.currentPrice).formatMoney(2, "", ",", ".")+'" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">订单支付</button>');
+                        btn.on('click',function () {
                             var customid = $(this).attr('data-customid');
-                            var orderid = $(this).attr('data-orderid');
-                            var ordersummaryId = $(this).attr('data-ordersummaryId');
+                            var finalPrice = $(this).attr('data-finalPrice');//定价金额
+                            OPER.orderPrice(customid,finalPrice);
+                        });
+                        operating.append(btn);
+                    }
+                    //分配生产
+                    if (item.inquiryStatus==4 && item.produceStatus<=1) {
+                        var btn=$('<button data-inquiryStatus="'+item.inquiryStatus+'" data-finalPrice="'+parseFloat(item.finalPrice).formatMoney(2, "", ",", ".")+'" data-prePrice="'+parseFloat(item.prePrice).formatMoney(2, "", ",", ".")+'" data-currentPeriod="'+item.currentPeriod+'" data-currentPrice="'+parseFloat(item.currentPrice).formatMoney(2, "", ",", ".")+'" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配生产</button>');
+                        btn.on('click',function () {
+                            var customid = $(this).attr('data-customid');
+                            OPER.distributionProduction(customid);
+                        });
+                        operating.append(btn);
+                    }
+                    //查看物流
+                    if (item.produceStatus==4) {
+                        var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">查看物流</button>');
+                        btn.on('click',function () {
+                            var customid = $(this).attr('data-customid');
+                            var orderId=$(this).attr('data-orderid');
+                            window.open("./Pop-ups/logisticsInfo.html?customid="+customid+"&orderid="+orderId);
+                        });
+                        operating.append(btn);
+                    }
 
-                            var url = config.WebService()["orderProductInfoAccept_Update"];
-                            top.Requst.ajaxPost(url, {"customid": customid}, true, function (data) {
-                                if (data.code == 200) {
-                                    top.Message.show("提示", data.message, MsgState.Success, 2000, function () {
+                    //查看成品
+                    if (item.smallFinishedProductsImage1||item.smallFinishedProductsImage2||item.smallFinishedProductsImage3) {
+                        var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">查看成品</button>');
+                        btn.on('click',function () {
+                            var customid = $(this).attr('data-customid');
+                            OPER.productPicture(customid,'prev');
+                        });
+                        operating.append(btn);
+                    }
+
+                    //确认收货
+                    if (item.produceStatus==4) {
+                        var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">确认收货</button>');
+                        btn.on('click',function () {
+                            var customid = $(this).attr('data-customid');
+                            var url=config.WebService()["orderLogisticsStatus_Update"];
+                            top.Requst.ajaxPost(url,{"customid":customid},true,function (data) {
+                                if(data.code==200)
+                                {
+                                    top.Message.show("提示", data.message, MsgState.Success, 2000);
+                                    if (top.classMain.loadOverview) {
                                         top.classMain.loadOverview(null, null, null, customid);
-                                    });
+                                    }
                                 }
-                                else {
+                                else{
                                     top.Message.show("提示", data.message, MsgState.Warning, 2000);
                                 }
-                            });
+                            })
                         });
                         operating.append(btn);
-                    }
-                    //发货
-                    if (item.produceStatus == 3) {
-                        var btn = $('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">发货</button>');
-                        btn.on('click', function () {
-                            var customid = $(this).attr('data-customid');
-                            var orderid = $(this).attr('data-orderid');
-                            var ordersummaryId = $(this).attr('data-ordersummaryId');
-                            top.Popup.open("发货", 423, 230, "./Pop-ups/uploadLogist.html?customid=" + customid);
-                        });
-                        operating.append(btn);
-                    }
-
-                    //查看物流
-                    if (item.produceStatus == 4) {
-                        var btn = $('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">查看物流</button>');
-                        btn.on('click', function () {
-                            var customid = $(this).attr('data-customid');
-                            var orderid = $(this).attr('data-orderid');
-                            var ordersummaryId = $(this).attr('data-ordersummaryId');
-                            window.open("./Pop-ups/logisticsInfo.html?customid=" + customid + "&orderid=" + orderid);
-                        });
-                        operating.append(btn);
-                    }
-
-                    //上传成品图
-                    if (item.produceStatus == 3 || item.produceStatus == 4) {
-
-                        if (item.smallFinishedProductsImage1 || item.smallFinishedProductsImage2 || item.smallFinishedProductsImage3) {
-                            var btn = $('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">编辑成品图</button>');
-                            btn.on('click', function () {
-                                var customid = $(this).attr('data-customid');
-                                var orderid = $(this).attr('data-orderid');
-                                var ordersummaryId = $(this).attr('data-ordersummaryId');
-                                OPER.productPicture(customid, 'edit');
-                            });
-                            operating.append(btn);
-                        }
-                        else {
-                            var btn = $('<button class="btn" style="width: 66px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">上传成品图</button>');
-                            btn.on('click', function () {
-                                var customid = $(this).attr('data-customid');
-                                var orderid = $(this).attr('data-orderid');
-                                var ordersummaryId = $(this).attr('data-ordersummaryId');
-                                OPER.productPicture(customid, 'edit', "上传成品图");
-                            });
-                            operating.append(btn);
-                        }
-
                     }
 
                     //itemBody.append(operating);
                 }
 
                 operating();
+
 
                 //5要素
                 var element = SysParam.element;//元素
@@ -750,8 +758,6 @@ var details = {
         } else {
             data.needReDesign = 0;
         }
-        console.log(check_box);
-        console.log(data);
 
 
         Requst.ajaxPost(url, data, true, function (data) {

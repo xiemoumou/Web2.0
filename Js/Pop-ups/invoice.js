@@ -151,23 +151,24 @@ var Invoice = {
             }
         },
         invoiceAddress: function () {
-            var url = encodeURI('../Pop-ups/addAddress.html?name=' + orderInfo.shippingAddress.name + '&mobilephone=' + orderInfo.shippingAddress.mobilephone + '&postcode=' + orderInfo.shippingAddress.postcode + '&province=' + orderInfo.shippingAddress.province + '&city=' + orderInfo.shippingAddress.city + '&county=' + orderInfo.shippingAddress.county + '&address=' + orderInfo.shippingAddress.address + '&customid=' + customid)
+            var url = encodeURI('../Pop-ups/addAddress.html?name=' + orderInfo.shippingAddress.name + '&mobilephone=' + orderInfo.shippingAddress.mobilephone + '&postcode=' + orderInfo.shippingAddress.postcode + '&province=' + orderInfo.shippingAddress.province + '&city=' + orderInfo.shippingAddress.city + '&county=' + orderInfo.shippingAddress.county + '&address=' + orderInfo.shippingAddress.address + '&customid=' + customid + '&operType=invoce')
             var scrollH = document.documentElement.scrollHeight - 20;
             if (scrollH > 380) {
                 scrollH = 380;
             }
+            Invoice.Controller.initAddress();//初始化收件地址
             Popup.open('添加收货地址', 480, scrollH, url);
 
 
         },
         saveAddress: function (name, mobilephone, postcode, province, city, county, address) {//保存收获地址
-            orderInfo.shippingAddress.name = name;
-            orderInfo.shippingAddress.mobilephone = mobilephone;
-            orderInfo.shippingAddress.province = province;
-            orderInfo.shippingAddress.postcode = postcode;
-            orderInfo.shippingAddress.city = city;
-            orderInfo.shippingAddress.county = county;
-            orderInfo.shippingAddress.address = address;
+            orderInfo.shippingAddress.name = name ||"";
+            orderInfo.shippingAddress.mobilephone = mobilephone||"";
+            orderInfo.shippingAddress.province = province||"";
+            orderInfo.shippingAddress.postcode = postcode||"";
+            orderInfo.shippingAddress.city = city||"";
+            orderInfo.shippingAddress.county = county||"";
+            orderInfo.shippingAddress.address = address||"";
             Invoice.Controller.initAddress();//初始化收件地址
         },
         initAddress: function () {
@@ -458,7 +459,6 @@ var Invoice = {
 
         Requst.ajaxGet(url, data, true, function (data) {
             if (data) {
-                Invoice.Controller.saveAddress(1,1,1,1,1,1,1);
                 if (data.code == 200) {
                     // var isPay = data.data.paystate;
                     // if (isPay == 6)//锁住税率

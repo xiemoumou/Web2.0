@@ -52,8 +52,6 @@ $(function () {
 OrderCheck = {
 
     getData: function () {
-        
-
         data = {
              "customid":customid,
         };
@@ -64,16 +62,19 @@ OrderCheck = {
                 var imgsrc = '../../Image/Pop-ups/nothing.png';
 
                 var invoice_val =  $(".invoice-type");//发票类型
-                for (var i=0; i<data.data.boxData.length; i++){
-                    $(".box-text").text(data.data[i].boxData);//包装详情
+                if (data.data.boxData.length>=1){
+                    for (var i=0; i<data.data.boxData.length; i++){
+                        $(".box-text").text(data.data[i].boxData);//包装详情
+                    }
                 }
-                 var dict=  top.SysParam.element;
-                 debugger
-                $(".type").text(dict.goodsClass[data.data.goodsClass].name);//产品类型
+
+
+                var dict=  top.SysParam.element;
+                //$(".type").text(dict.goodsClass[data.data.goodsClass].name);//产品类型
                 $(".check-length").text(data.data.size);//张宽高
                 // $(".check-width").text(data.data.width);//宽
                 // $(".check-height").text(data.data.height);//高
-                $(".parts").text(dict.accessories[data.data.accessories].name);//配件名称
+              //  $(".parts").text(dict.accessories[data.data.accessories].name);//配件名称
                 $(".deliver-time").text(data.data.lastestDate);//最迟发货时间
                 $(".num").text(data.data.number);//数量
                 $(".money").text(data.data.finalprice==0?'还未定价':data.data.finalprice)//订单金额
@@ -83,7 +84,7 @@ OrderCheck = {
                 $(".collect-phone-text").text(data.data.mobilephone);//收件人电话
                 $(".collect-code-text").text(data.data.postcode);//邮编
                 $(".invoice-money-text").text(data.data.detailsValue1);//发票金额
-                $(".invoice-tax-text").text(data.data.taxRate*100);//税率
+                $(".invoice-tax-text").text(data.data.taxRate);//税率
                 $(".invoice-title-text").text(data.data.invoiceTitle);//抬头
                 $(".texture").text(data.data.material);//材质
                 $(".tech").text(data.data.technology);//工艺

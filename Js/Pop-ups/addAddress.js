@@ -94,6 +94,7 @@ var dist = {
                 "county": county,
                 "address": address,
             };
+
             var url = config.WebService()["logistics_Info"];
             top.Requst.ajaxGet(url, data, true, function (data) {
                 if(data.code==200)
@@ -104,15 +105,23 @@ var dist = {
                             top.OPER.distributionProduction(customid);
                         }
                         else if(operType=="invoce") //发票
+
                         {
+                            if (top.document.getElementById("layui-layer-iframe4").contentWindow.Invoice.Controller) {
+                                top.document.getElementById("layui-layer-iframe4").contentWindow.Invoice.Controller.saveAddress(name,mobilephone,postcode,province,city,county,address);
+                            }
 
                         }
                         else if(operType=="detail")//详情页面
                         {
-
+                            if (top.document.getElementById("iframe_"+customid).contentWindow.details) {
+                                top.document.getElementById("iframe_"+customid).contentWindow.details.saveAddress(name,mobilephone,postcode,province,city,county,address);
+                            }
                         }
+                        top.Popup.close("收货地址");
                     });
-                    top.Message.close("收货地址");
+
+
                 }
                 else
                 {

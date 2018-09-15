@@ -199,9 +199,9 @@
     margin-top: 5px;
     color: #999999;
 }
-.orderComp{
-    color: #5298FF!important;
-}
+/*.orderComp{*/
+    /*color: #5298FF!important;*/
+/*}*/
 .operation{
     float: right;
     margin-right: 20px;
@@ -1111,4 +1111,18 @@
     position: absolute;
     top: -86px;
 }
-
+.more-box{
+    margin-left: 12px;
+    float: right;
+    cursor: pointer;
+    position: relative;
+    color: #666666;
+}
+.more-box i{
+    display: block;
+    width: 14px;
+    height: 11px;
+    margin-top: 11px;
+    margin-right: 10px;
+    background: url(../../Image/workbench.png) no-repeat -109px -59px;
+}
