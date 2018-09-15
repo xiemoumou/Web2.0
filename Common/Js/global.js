@@ -84,6 +84,7 @@ var config = {
             "exportYieldList":that.Domain.systemApi +"/dynamo/order/exportYieldList",//经理导出结算收益单
             "downManOrder":that.Domain.systemApi +"/dynamo/order/downManOrder",//下载生产单
             "algorithmTrainningInsert":that.Domain.systemApi +"/dynamo/order/algorithmTrainningInsert",//新增自动报价
+            "continue_Production":that.Domain.systemApi +"/dynamo/order/continue_Production",//继续分配
 
         }
     }

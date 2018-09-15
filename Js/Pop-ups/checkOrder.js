@@ -20,28 +20,12 @@ $(function () {
         $(".ok").on('click',function () {//分配生产
 
             var data={
-                "orderid": orderid,
-                "userid": $.cookie("userid"),
                 "customid": customid,
-                "roletype": $.cookie("roletype"),
-                "token": $.cookie("token"),
-                "commandcode": 170,
-                "goodsid": "abdc123456"
             };
-            
-            var url = Common.getUrl()['order'] + Common.getDataInterface()["allocation"];
-            Common.ajax(url, data, false, function (data) {
-                if (data && data.status.code==0) {
-                    Common.msg(data.status.msg,200,2000,function () {
-                        if (parent.document.getElementById("cont_iframe").contentWindow.base) {
-                            parent.document.getElementById("cont_iframe").contentWindow.base.init();
-                            parent.layer.closeAll();
-                        }
-                    });
-                }
-                else {
-                    Common.msg(data.status.msg,null,2000);
-                }
+
+            var url = config.WebService()["continue_Production"];
+            top.Requst.ajaxGet(url, data, true, function (data) {
+
             });
         });
     }

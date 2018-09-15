@@ -947,7 +947,7 @@ var details = {
 
         Requst.ajaxPost(url, data, true, function (data) {
             if (data.code ==200){
-                Message.show('提示信息',data,message,2000,function () {
+                Message.show('提示信息',data.message,1,2000,function () {
 
                 });
             } 
