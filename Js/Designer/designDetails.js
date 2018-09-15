@@ -11,7 +11,7 @@ $(function () {
     uploadfile.uploadPhoto('prod_refe',1);//设计稿
     uploadfile.uploadPhoto('details_encl_textarea',3);//设计备注上传
     uploadfile.uploadFile('details_encl',1,null,true,null);//附件上传
-    uploadfile.uploadFile('details_encl_next',1,null,true,null);//附件上传
+    uploadfile.uploadFile('details_encl_next',1,null,true,null,false);//附件上传
     uploadfile.uploadPhoto('leav_bottom_img', 3);//留言图片上传
     uploadfile.uploadFile('leav_bottom_file', 1);//留言附件上传
 

@@ -236,14 +236,17 @@ var details = {
                     that.version = data.data.designInfo[0].version;//设计方案版本号
                 }
 
+
                 if (top.SysParam.inquiryStatus[data.data.inquiryStatus]) {
 
                     $(".orderComp").text(top.SysParam.inquiryStatus[data.data.inquiryStatus].servicerTag);
                 }
                 if (top.SysParam.designStatus[data.data.designStatus]) {
+
                     $(".orderStat").text(top.SysParam.designStatus[data.data.designStatus].designerTag);
                 }
                 if (top.SysParam.produceStatus[data.data.produceStatus]) {
+
                     $(".orderNew").text(top.SysParam.produceStatus[data.data.produceStatus].workshopTag);
                 }
 
@@ -321,6 +324,7 @@ var details = {
                 //状态
                 function addStatus() {
                     var status = $('.orderstatus');
+                        status.html("");
                     if (SysParam.inquiryStatus[item.inquiryStatus]) {
                         status.append($('<p>' + SysParam.inquiryStatus[item.inquiryStatus].servicerTag + '</p>'));
                     }
@@ -406,6 +410,7 @@ var details = {
                         e.stopPropagation();
                     });
                     more.append(moreList);
+                    $(".item-head-right").html("");
                     $(".item-head-right").append(more);
                 }
 
@@ -414,6 +419,7 @@ var details = {
 
                 function operating() {
                     var operating = $('.operation');
+                        operating.html("");
                     var command=item.command.split(',');
                     // 发起询价
                     if (command.indexOf("INQUIRY")>=0) {

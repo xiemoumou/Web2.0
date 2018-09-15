@@ -525,6 +525,17 @@
 }
 
 
+.operation{
+    float: right;
+    margin-right: 20px;
+    height: 100px;
+    display: flex;
+    flex-flow: wrap;
+    vertical-align: middle;
+    justify-content: space-around;
+    align-items: center;
+    width: 63px;
+}
 
 
 
