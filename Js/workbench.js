@@ -43,7 +43,7 @@ var classMain = {
       //获取统计
         var url=config.WebService()["orderSupplementaryCount_Query"];
         Requst.ajaxGet(url,{},true,function (data) {
-            if(data.code==200)
+            if(data.code==200 && data.data.length)
             {
                 for(var i=0;i<data.data.length;i++)
                 {

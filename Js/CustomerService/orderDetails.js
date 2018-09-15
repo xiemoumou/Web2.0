@@ -115,8 +115,8 @@ var details = {
         //details.saveAddress();
     },
     edit: function () {
-        var url = encodeURI('../Pop-ups/adjustDesi.html');
-        Popup.open('订单定价', 423, 286, url);
+        // 编辑设计费
+        top.Popup.open("调整设计费",423,286,"./Pop-ups/adjustDesi.html?customid="+dataDetail.customid+"&introduceprice="+dataDetail.introduceprice+"&designPrice="+dataDetail.designPrice);
     },
     editDetails: function () {
         $(".order-msg-box").mouseover(function () {
@@ -218,15 +218,15 @@ var details = {
                 var length = data.data.length || "";//长
                 var width = data.data.width || "";//宽
                 var height = data.data.height || "";//高
-                var deadline = data.data.deadline || "";//要求工期
+                var deadline = data.data.deadline || "--";//要求工期
                 var designPrice = data.data.designPrice || "";//设计费
-                var introducePrice = data.data.introducePrice || "";//设计引导费
-                var userPrice = data.data.userPrice || "";//预算
-                var prePrice = data.data.prePrice || "";//报价
+                var introducePrice = data.data.introducePrice || "--";//设计引导费
+                var userPrice = data.data.userPrice || "0.00";//预算
+                var prePrice = data.data.prePrice || "0.00";//报价
                 var designMemo = data.data.designMemo || "";//设计备注
                 var produceMemo = data.data.produceMemo || "";//生产备注
                 var currentPrice = data.data.currentPrice || "";//参考价格
-                var currentPeriod = data.data.currentPeriod || "";//参考工期
+                var currentPeriod = data.data.currentPeriod || "--";//参考工期
                 var orderid = data.data.orderid || "";//订单ID
                 that.id = data.data.id;//设计方案表id
                 if (data.data.designInfo.length>=1) {
@@ -306,7 +306,8 @@ var details = {
                 } else {
                     $(".emer").addClass('hide');
                 }
-                debugger
+
+
                 if (data.data.designStatus >= 2) {
                     $(".design-man").removeClass('hide');
                     $(".edit-right").removeClass('hide');
@@ -769,8 +770,7 @@ var details = {
 
         Requst.ajaxGet(url, data, true, function (data) {
             $(".leav-content").html('');//清空
-            debugger
-            if (data.data.length>0) {
+            if (data.data && data.data.length>0) {
                 that.messageNo = data.data[0].messageNo;
                 that.targetId = data.data[0].targetId;//设计师Id
                 $(".leav-title-right-text em").text(data.data[0].version);//版本号沟通中
