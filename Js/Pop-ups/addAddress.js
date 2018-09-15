@@ -112,6 +112,7 @@ var dist = {
 
                         }
                     });
+                    top.Message.close("收货地址");
                 }
                 else
                 {
