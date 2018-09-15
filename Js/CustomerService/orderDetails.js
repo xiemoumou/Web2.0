@@ -3,7 +3,7 @@
  */
 
 var customid = Helper.getUrlParam('customid') || "";//获取订单号
-
+var dataDetail=null;
 $(function () {
 
     $(".Edit").on('click', function () {//添加编辑弹窗
@@ -172,7 +172,8 @@ var details = {
         var url = config.WebService()["orderSummaryInfo_Query"];
         Requst.ajaxGet(url, data, true, function (data) {
             if (data.data) {
-
+                dataDetail=data.data;
+                debugger
                 if (localStorage.getItem('SysParam'))//从缓存获取字典
                 {
                     try {
@@ -876,7 +877,7 @@ var details = {
         var url = config.WebService()["chooseDesign"];
 
         data = {
-            "wId": this.id,
+            "wId": dataDetail.designPatternId,
             "customId": customid,
         }
 

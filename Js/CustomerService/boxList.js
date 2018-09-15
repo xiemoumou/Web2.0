@@ -1,29 +1,28 @@
 $(function () {
     debugger
-    $('.nav ul li').on('click',function () {
+    $('.nav ul li').on('click', function () {
         $('.nav ul li').removeClass('active');
-        var li=$(this);
+        var li = $(this);
         li.addClass('active');
         $("#showtype").val(li.attr('data-status'));
-        invoList.pagePrams.isInit=-1;
+        invoList.pagePrams.isInit = -1;
         invoList.getDataList(1);//初始化数据
     });
     invoList.getDataList(1);//初始化数据
 });
 
 
-var invoList={
+var invoList = {
     pagePrams: {'curIndex': 1, 'totalPage': 1, 'pageSize': 20, 'isInit': -1},//分页参数
-    sign:function (orderid) {//标记已处理
-        var that=this;
-        var data={
-            "orderid":orderid,
+    sign: function (orderid) {//标记已处理
+        var that = this;
+        var data = {
+            "orderid": orderid,
         };
         var url = config.WebService()["orderInvoiceSign_Update"];
-        Requst.ajaxPost(url,data,true,function (data) {
-            if(data.code==200)
-            {
-                Message.show('提示','标记成功',1,2000,function () {
+        Requst.ajaxPost(url, data, true, function (data) {
+            if (data.code == 200) {
+                Message.show('提示', '标记成功', 1, 2000, function () {
                     that.getDataList();
                 });
             }
@@ -32,59 +31,55 @@ var invoList={
             }
         })
     },
-    popDetail:function (orderid) {//包装盒详情
-        var scrollH= parent.$(window).height();
-        if(scrollH>500)
-        {
-            scrollH=500;
+    popDetail: function (orderid) {//包装盒详情
+        var scrollH = parent.$(window).height();
+        if (scrollH > 500) {
+            scrollH = 500;
         }
-        var url = encodeURI('./CustomerService/packing_preview.html?orderid='+orderid);
+        var url = encodeURI('./CustomerService/packing_preview.html?orderid=' + orderid);
         parent.layer.open({
             type: 2,
             title: '包装盒详情',
             shadeClose: false,
             shade: 0.1,
-            area: ['620px',scrollH +'px'],
+            area: ['620px', scrollH + 'px'],
             content: url,
         });
     },
-    getDataList:function (currIndex) {
-        var that=this;
-        var state=$("#showtype").val();
-        var data={
+    getDataList: function (currIndex) {
+        var that = this;
+        debugger
+        var state = $("#showtype").val();
+        var data = {
             "sortField": "sendtime",
             "sortType": "desc",
-            "state": state,
+            "state": parseInt(state),
             "pageNum": currIndex,
             "pageSize": 10,
         };
 
         var url = config.WebService()["orderBoxInfoPage_Query"];
-        Requst.ajaxGet(url,data,true,function (data) {
-             var status=data.code;
-             var orderBoxs=data.data;
-             var datalist= $("#datalist");
-             datalist.html('');
-             if(status==200&&orderBoxs!=null&&orderBoxs.length>0)
-            {
-                that.pagePrams.totalPage= Math.ceil(data.totalNum / that.pagePrams.pageSize);
-                for(var i=0;i<orderBoxs.length;i++)
-                {
-                    var item=orderBoxs[i];
-                    var tr=$('<tr></tr>');
-                    var orderDatetime=item.sendtime?item.sendtime:'';
-                    tr.append($('<td style="min-width: 130px;">'+orderDatetime+'</td>'));
-                    tr.append($('<td style="min-width: 102px;">'+item.orderid+'</td>'));
-                    tr.append($('<td style="min-width: 102px;">'+item.wangid+'</td>'));
-                    tr.append($('<td style="min-width: 102px;">'+item.shop+'</td>'));
+        top.Requst.ajaxGet(url, data, true, function (data) {
+            var orderBoxs = data.data.pageData;
+            var datalist = $("#datalist");
+            datalist.html('');
+            if (data.code == 200 && data.data.pageData.length && data.data.pageData.length > 0) {
+                debugger
+                that.pagePrams.totalPage = Math.ceil(data.data.pageMessage.rowCount / that.pagePrams.pageSize);
+                for (var i = 0; i < orderBoxs.length; i++) {
+                    var item = orderBoxs[i];
+                    var tr = $('<tr></tr>');
+                    var orderDatetime = item.sendtime ? item.sendtime : '';
+                    tr.append($('<td style="min-width: 130px;">' + orderDatetime + '</td>'));
+                    tr.append($('<td style="min-width: 102px;">' + item.orderid + '</td>'));
+                    tr.append($('<td style="min-width: 102px;">' + item.wangid + '</td>'));
+                    tr.append($('<td style="min-width: 102px;">' + item.shop + '</td>'));
                     // tr.append($('<td><span class="text">'+item.invoicetitle+'</span></td>'));
-                    if(state==2)
-                    {
-                        tr.append($('<td style="text-align: right; min-width: 180px;"><div class="sign"> </div> <div class="ticket-details"> <span></span> <p onclick="invoList.popDetail(\''+item.orderid+'\')">包装详情</p> </div></td>'));
+                    if (state == 2) {
+                        tr.append($('<td style="text-align: right; min-width: 180px;"><div class="sign"> </div> <div class="ticket-details"> <span></span> <p onclick="invoList.popDetail(\'' + item.orderid + '\')">包装详情</p> </div></td>'));
                     }
-                    else
-                    {
-                        tr.append($('<td style="text-align: right; min-width: 180px;"><div class="sign"> <span></span> <p onclick="invoList.sign(\''+item.orderid+'\')">标记已处理</p> </div> <div class="ticket-details"> <span></span> <p onclick="invoList.popDetail(\''+item.orderid+'\')">包装详情</p> </div></td>'));
+                    else {
+                        tr.append($('<td style="text-align: right; min-width: 180px;"><div class="sign"> <span></span> <p onclick="invoList.sign(\'' + item.orderid + '\')">标记已处理</p> </div> <div class="ticket-details"> <span></span> <p onclick="invoList.popDetail(\'' + item.orderid + '\')">包装详情</p> </div></td>'));
                     }
 
                     datalist.append(tr);
