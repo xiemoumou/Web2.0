@@ -79,10 +79,11 @@ $(function () {
 
     textArea.init('.design-rema', 300, '', '请输入订单设计要求，请留意：备注不允许出现产品价格，参数和旺旺等\n' +
         '各种联系方式', '');
-    textArea.init('.offer-rema', 300, '', '请输入订单设计要求，请留意：备注不允许出现产品价格，参数和旺旺等\n' +
+    textArea.init('.offer-rema', 300, '', '请输入生产参考要求，请留意：备注不允许出现产品价格，参数和旺旺等\n' +
         '各种联系方式', '');
 
     details.leavShow();
+
 
 
 });
@@ -104,13 +105,14 @@ var orderInfo = {
 
 var details = {
     openress: function () {//添加地址弹窗
+
         var url = encodeURI('../Pop-ups/addAddress.html?name=' + orderInfo.shippingAddress.name + '&mobilephone=' + orderInfo.shippingAddress.mobilephone + '&postcode=' + orderInfo.shippingAddress.postcode + '&province=' + orderInfo.shippingAddress.province + '&city=' + orderInfo.shippingAddress.city + '&county=' + orderInfo.shippingAddress.county + '&address=' + orderInfo.shippingAddress.address + '&customid=' + customid +'&operType=detail')
         var scrollH = document.documentElement.scrollHeight - 20;
         if (scrollH > 380) {
             scrollH = 380;
         }
         Popup.open('添加收货地址', 480, scrollH, url);
-        details.saveAddress();
+        //details.saveAddress();
     },
     edit: function () {
         var url = encodeURI('../Pop-ups/adjustDesi.html');
@@ -150,10 +152,10 @@ var details = {
         details.initAddress();//初始化收件地址
     },
     initAddress: function () {
-        $(".cons").html(orderInfo.shippingAddress.name);
-        $(".code").html(orderInfo.shippingAddress.postcode);
-        $(".deta-add").html(orderInfo.shippingAddress.address);
-        $(".tele").html(orderInfo.shippingAddress.mobilephone);
+        $(".cont").html(orderInfo.shippingAddress.name);
+        $(".zip-code").html(orderInfo.shippingAddress.postcode);
+        $(".detailed").val(orderInfo.shippingAddress.address);
+        $(".phone").html(orderInfo.shippingAddress.mobilephone);
         $(".area").html(orderInfo.shippingAddress.province + orderInfo.shippingAddress.city + orderInfo.shippingAddress.county);
         if (orderInfo.shippingAddress.name) {
             $('.address-empty').addClass('hide');
@@ -189,7 +191,6 @@ var details = {
 
                 // var province = data.data.province;
                 // var
-
                 $(".cont").text(data.data.name||"");
                 $(".phone").text(data.data.mobilephone||"");
                 $(".zip-code").text(data.data.postcode||"");
@@ -234,7 +235,7 @@ var details = {
                 }
 
                 if (top.SysParam.inquiryStatus[data.data.inquiryStatus]) {
-                    debugger
+
                     $(".orderComp").text(top.SysParam.inquiryStatus[data.data.inquiryStatus].servicerTag);
                 }
                 if (top.SysParam.designStatus[data.data.designStatus]) {
@@ -248,7 +249,7 @@ var details = {
                 var item = data.data;
 
                 function operating() {
-                    debugger
+
                     var operating = $('.operating');
                     // 发起询价
                     if (item.inquiryStatus==0) {
@@ -360,6 +361,91 @@ var details = {
                 }
 
                 operating();
+
+
+
+                var itemHead = $('<div class="item-head"></div>');
+
+                // var itemHead_l = $('<div class="item-head-left fl"></div>');
+                // itemHead.append(itemHead_l);
+                var itemHead_r = $('<div class="item-head-right fr"></div>');
+                itemHead.append(itemHead_r);
+
+                function addMore() {
+                    //更多操作列表
+                    var moreList = $('<div class="operlist" style="display: none;"><i class="arrow"></i></div>');
+                    //发票收据
+                    var moreItem_1 = $('<span data-customid="'+item.customid+'">发票/收据</span>');
+                    moreItem_1.on('click', function () {
+                        var customid = $(this).attr('data-customid');
+                        var scrollH = top.Helper.getClientHeight();
+                        var popH = scrollH - 100 > 680 ? 680 : scrollH - 100;
+                        top.Popup.open("发票/收据",818,popH,"./Pop-ups/invoice.html?customid="+customid);
+                    });
+                    moreList.append(moreItem_1);
+
+                    var moreItem_2 = $('<span data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">产品包装</span>');
+                    moreItem_2.on('click', function () {
+                        var orderid = $(this).attr('data-orderid');
+                        var customid=$(this).attr('data-customid');
+                        var scrollH = top.Helper.getClientHeight();
+                        var popH = scrollH - 100 > 510 ? 510 : scrollH - 100;
+                        top.Popup.open("产品包装",545, popH,"./Pop-ups/box.html?orderid="+orderid+"&customid="+customid);
+                    });
+                    moreList.append(moreItem_2);
+
+                    // var moreItem_3 = $('<span>订单备注</span>');
+                    // moreItem_3.on('click', function () {
+                    //     alert('弹出订单备注');
+                    // });
+                    // moreList.append(moreItem_3);
+
+                    var moreItem_4 = $('<span data-customid="'+item.customid+'" style="border-bottom: none;">删除订单</span>');
+                    moreItem_4.on('click', function () {
+                        debugger
+                        var customid = $(this).attr('data-customid');
+                        Confirm("删除订单","您确定要删除该订单吗？",423,203,null,function () {
+                            var url=config.WebService()['orderSummaryInfo_Update'];
+                            top.Requst.ajaxPost(url,{"customid":customid},true,function (data) {
+                                if(data.code==200)
+                                {
+                                    top.Message.show("提示",data.message,MsgState.Success,2000,function () {
+                                        classMain.loadOverview();
+                                    });
+                                }
+                                else
+                                {
+                                    top.Message.show("提示",data.message,MsgState.Warning,3000,null,{"width":435,"height":75});
+                                }
+                            })
+                        });
+                    });
+                    moreList.append(moreItem_4);
+
+                    var more = $('<span title="更多操作"><i class="more-icon"></i></span>');
+                    more.on('click', function (e) {
+                        debugger
+                        $('.operlist').slideUp();
+                        var dropList = $($(this).find('.operlist'));
+                        dropList.slideDown('fast');
+                        $(document).click(function () {
+                            dropList.slideUp('fast');
+                        });
+                        //点击后自动关闭下拉
+                        $(dropList.find('span')).click(function (e) {
+                            dropList.slideUp('fast');
+                            e.stopPropagation();
+                        });
+                        e.stopPropagation();
+                    });
+                    more.append(moreList);
+                    itemHead_r.append(more);
+                }
+
+                addMore();
+
+
+
 
 
                 //5要素
@@ -570,7 +656,7 @@ var details = {
 
                 uploadfile.uploadPhoto('details_diagram', 3, srcArry.details());//设计图回显
                 uploadfile.uploadPhoto('prod_refe', 1, srcArry.srcArryProd());//生产参考图回显
-                uploadfile.uploadFile('details_encl', 1, srcArry.accessoryFile(), true)//设计附件回显
+                uploadfile.uploadFile('details_encl', 1, srcArry.accessoryFile(), true ,"", "", true)//设计附件回显
 
 
             }
@@ -584,8 +670,8 @@ var details = {
             "smallProducerefImage": $("#prod_refe .diagram-container .diagram").attr("data-simageurl"),//生产参考图小
             "middleProducerefImage": $("#prod_refe .diagram-container .diagram").attr("data-mimageurl"),//生产参考图中
             "accessoryFile": $("#details_encl .accessory-container .fileitem").attr("data-url")||"",//上传附件
-            "designMemo": $(".design-rema textarea").text(),//设计备注
-            "produceMemo": $(".offer-rema .textarea textarea").text(),//生产要求
+            "designMemo": $(".design-rema textarea").val(),//设计备注
+            "produceMemo": $(".offer-rema .textarea textarea").val(),//生产要求
             "wCustomid": customid,
             "initialReferenceImage1": '',
             "middleReferenceImage1": '',
@@ -606,6 +692,11 @@ var details = {
         }
 
         Requst.ajaxPost(url, data, true, function (data) {
+            if (data.code ==200){
+                Message.show('提示信息',data,message,2000,function () {
+
+                });
+            } 
 
         });
 
@@ -622,6 +713,12 @@ var details = {
             return false
         }
         Requst.ajaxGet(url, data, true, function (data) {
+            if (data.code==200){
+                Message.show('提示信息',data.message,1,2000,function () {
+                    details.detailsDetdata();
+                });
+
+            }
 
         });
 
@@ -631,15 +728,24 @@ var details = {
         var url = config.WebService()["updatePrice"];
         var money = $(".budget-text input").val();
         data = {
-            "wCustomid": 2051777045010001,
+            "wCustomid": customid,
             "price": money,
-            "type": 'payPrice',
+            "type": 'userPrice',
         }
         if (!(money)) {
             Message.show('提示消息', '预算金额不能为空', 3);
             return false
         }
         Requst.ajaxPost(url, data, true, function (data) {
+            if (data.code==200){
+                Message.show('提示消息', data.message, 1,2000,function () {
+                    details.detailsDetdata();
+                });
+            }if (data.code==100002){
+                Message.show('提示消息', data.message, 3,2000,function () {
+
+                });
+            }
 
         });
 
@@ -771,14 +877,16 @@ var details = {
 
         data = {
             "wId": this.id,
+            "customId": customid,
         }
 
         Requst.ajaxPost(url, data, true, function (data) {
+            if (data.code ==200){
+                Message.show('提示信息',data.message,2000);
+            }
 
         });
-    }
-
+    },
 
 }
-
 

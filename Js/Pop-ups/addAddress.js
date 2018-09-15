@@ -96,6 +96,7 @@ var dist = {
             };
 
             var url = config.WebService()["logistics_Info"];
+            debugger
             top.Requst.ajaxGet(url, data, true, function (data) {
                 if(data.code==200)
                 {

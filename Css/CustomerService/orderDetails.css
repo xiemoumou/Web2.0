@@ -126,11 +126,14 @@
     border-radius: 8px;
     display: inline-block;
     box-shadow:0px 0px 4px rgba(0,0,0,.4);
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
 
 }
 .order-img img{
-    width: 100px;
-    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
     border-radius: 8px;
 
 }
@@ -633,6 +636,7 @@
     align-items: center;
     top: 30px;
     right: 14px;
+    display: none;
 }
 
 .arrow {
@@ -1125,4 +1129,25 @@
     margin-top: 11px;
     margin-right: 10px;
     background: url(../../Image/workbench.png) no-repeat -109px -59px;
+}
+.item-head-right .more-icon{
+    display: block;
+    width: 14px;
+    height: 11px;
+    margin-top: 11px;
+    margin-right: 10px;
+    background: url(../../Image/workbench.png) no-repeat -109px -59px;
+}
+.item-head-right span{
+    margin-left: 12px;
+    float: left;
+    cursor: pointer;
+    position: relative;
+    color: #666666;
+}
+.item-head{
+    display: inline;
+}
+.data-item .item-head-right{
+    position: relative;
 }

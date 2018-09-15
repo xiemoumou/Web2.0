@@ -294,7 +294,7 @@ var Invoice = {
         var that = this;
 
         var invoicetype = parseInt($("input[name='invoice']:checked").attr("index"));
-        var taxrate = parseInt($(".rate-select").val()) || 0;
+        var taxrate = parseInt($(".rate-select").val()/100) || 0;
         var invoicetitle = $(".rise-text").val();
         var detailsvalue1 = parseInt($(".money-text").val()) || 0;
         var detailsinvoice1 = $(".invoice-select").val();
