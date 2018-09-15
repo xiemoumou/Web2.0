@@ -10,7 +10,7 @@
         versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
         document.write('<link href="../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
         document.write('<link href="../../Common/Components/library.css' + VER + '" rel="stylesheet" />');
-        document.write('<script type="text/javascript" src="../../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
+        document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
     </script>
     <style>
         body {
@@ -78,7 +78,7 @@
             position: absolute;
             top: -58px;
             left: -22px;
-            background: url(../../../Image/Designer/desiDesigner.png) no-repeat -56px -5px !important;
+            background: url(../../Image/Designer/desiDesigner.png) no-repeat -56px -5px !important;
         }
         #reference .addDiagram .dia-icon:before{
             content: '点击上传';
@@ -228,7 +228,7 @@
         </div>
     </div>
     <div class="footer center">
-        <button class="ok red-button btn" onclick="uploadDesign.submit()">确认</button>
+        <button class="ok red-button btn">提交</button>
         <button class="hollow-button btn-h"
                 onclick="parent.layer.closeAll();">取消
         </button>
@@ -242,21 +242,168 @@
 </script>
 <script>
     var customid = "";//客户id
+    var title="";
     $(function () {
         //初始化上传操作
-        customid = top.Helper.getUrlParam("customid");
-        uploadfile.uploadPhoto('reference_diagram', 1);//图片上传
-        uploadfile.uploadFile('accessory', 1, null, true, null);//附件上传
-        uploadfile.uploadFile('otherAccessory', 1, null, true, null,false);//附件上传
-        textArea.init('.requirements-content', 300, '', '请输入设计备注，请留意：备注不允许出现产品价格，参数和旺旺等各种联系方式', '备注不允许出现产品价格、参数和旺旺等各种联系方式');
+        customid = Helper.getUrlParam("customid");
+        var designPatternId=Helper.getUrlParam("designPatternId");//设计方案ID
+        title=Helper.getUrlParam('title',true);
 
-        uploadfile.uploadPhoto('reference',3);//图片上传
+        var designImage=[];//设计图
+        var designFile=[];//设计附件
+        var otherFile=[];//其他附件
+
+        var designMemo="";//设计备注
+        var remarkImage=[];//设计备注图片
+
+        debugger
+
+
+        //修正设计稿回显示
+        if(designPatternId && designPatternId!="undefined")
+        {
+            var url=config.WebService()["orderDesignPatternById_Query"];
+            top.Requst.ajaxPost(url,{"id":designPatternId},false,function (data) {
+                if(data.code==200)
+                {
+                    data=data.data;
+                    designImage.push({'thumbnail':data.smallDesignImage1,'orgSrc':data.middleDesignImage1});//设计图
+                    designFile.push(data.designFile);//设计附件
+                    otherFile.push(data.otherFile);//其他附件
+
+                    for(var i=1;i<3;i++)
+                    {
+                        remarkImage.push({"thumbnail":data["smallRemarkImage"+i],"orgSrc":data["middleRemarkImage"+i]});
+                    }
+
+                    designMemo=data.designMemo;//设计备注
+
+                }
+                else
+                {
+                    console.log(data.message);
+                }
+            });
+        }
+
+        uploadfile.uploadPhoto('reference_diagram', 1,designImage);//图片上传
+        uploadfile.uploadFile('accessory', 1, designFile, true, null);//附件上传
+        uploadfile.uploadFile('otherAccessory', 1, otherFile, true, null,false);//附件上传
+        textArea.init('.requirements-content', 300, designMemo, '请输入设计备注，请留意：备注不允许出现产品价格，参数和旺旺等各种联系方式', '备注不允许出现产品价格、参数和旺旺等各种联系方式');
+
+        uploadfile.uploadPhoto('reference',3,remarkImage);//设计备注图片上传
 
         uploadfile.initDrag('reference_diagram');//拖拽支持
         uploadfile.initDrag('accessory');//拖拽支持
         uploadfile.initDrag('otherAccessory');
-    });
 
+
+
+        $(".ok").on('click',function () {
+            var requstData = {"version": 1, "isNew": 1, "customid": customid, "status": 5};//提交参数
+
+            //设计图
+            var diagram = $("#reference_diagram .diagram-container .diagram");
+            if (diagram.length > 0) {
+
+                var complete = $(diagram[0]).attr("data-complete");
+                if (complete && complete != "complete") {
+                    top.Message.show("提示", "设计图正在上传...", MsgState.Warning, 2000);
+                    return;
+                }
+                else {
+                    requstData["initialDesignImage1"] = $(diagram[0]).attr("data-mimageurl");
+                    requstData["middleDesignImage1"] = $(diagram[0]).attr("data-mimageurl");
+                    requstData["smallDesignImage1"] = $(diagram[0]).attr("data-simageurl");
+                }
+            }
+            else
+            {
+                top.Message.show("提示", "请上传设计图", MsgState.Warning, 2000);
+                return;
+            }
+
+            //附件
+            var accessory=$("#accessory .accessory-container .fileitem");
+            if(accessory.length>0)
+            {
+                var complete=$(accessory[0]).attr("data-complete");
+                if(complete && complete!="complete")
+                {
+                    top.Message.show("提示","附件正在上传...",MsgState.Warning,2000);
+                    return;
+                }
+                else
+                {
+                    requstData["designFile"]=$(accessory[0]).attr("data-url");
+                }
+            }
+            else
+            {
+                top.Message.show("提示", "请上传设附件", MsgState.Warning, 2000);
+                return;
+            }
+
+            //其他附件
+            var otherAccessory=$("#otherAccessory .accessory-container .fileitem");
+            if(otherAccessory.length>0)
+            {
+                var complete=$(otherAccessory[0]).attr("data-complete");
+                if(complete && complete!="complete")
+                {
+                    top.Message.show("提示","其他附件正在上传...",MsgState.Warning,2000);
+                    return;
+                }
+                else
+                {
+                    requstData["otherFile"]=$(otherAccessory[0]).attr("data-url");
+                }
+            }
+
+
+            //备注参考图
+            var reference=$("#reference .diagram-container .diagram");
+            if(reference.length>0)
+            {
+                for(var i=0;i<reference.length;i++)
+                {
+                    var complete=$(reference[i]).attr("data-complete");
+                    if(complete && complete!="complete")
+                    {
+                        top.Message.show("提示","备注图片正在上传...",MsgState.Warning,2000);
+                        return;
+                    }
+                    else
+                    {
+                        requstData["initialRemarkImage"+(i+1)]=$(diagram[0]).attr("data-mimageurl");
+                        requstData["middleRemarkImage"+(i+1)]=$(diagram[0]).attr("data-mimageurl");
+                        requstData["smallRemarkImage"+(i+1)]=$(diagram[0]).attr("data-simageurl");
+                    }
+                }
+            }
+
+            requstData["designMemo"]=$('.production-requirements textarea').val();//设计备注
+            var url=config.WebService()["orderDesignPattern_Insert"];
+
+            top.Requst.ajaxPost(url,requstData,true,function (data) {
+                if(data.code==200)
+                {
+                    top.Message.show("提示",data.message,MsgState.Success,2000,function () {
+                        if (top.document.getElementById("iframe_"+customid)) {
+                            var pageObject=top.document.getElementById("iframe_"+customid).contentWindow;
+
+                            //调用李远鹏的更新设计稿方法
+                        }
+                        top.Popup.close(title);
+                    });
+                }
+                else
+                {
+                    top.Message.show("提示",data.message,MsgState.Warning,2000);
+                }
+            });
+        });
+    });
 </script>
 </body>
 </html>

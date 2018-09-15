@@ -31,8 +31,12 @@ var pricing = {
         top.Requst.ajaxGet(url,data,true,function (data) {
             if(data.code==200)
             {
-                top.Message.show("提示",data.message,MsgState.Success,200,function () {
-                    top.loadOverview(null,null,null,customid);
+                top.Message.show("提示",data.message,MsgState.Success,2000,function () {
+                    if(top.classMain.loadOverview)
+                    {
+                        top.classMain.loadOverview(null,null,null,customid);
+                    }
+                    
                     top.Popup.close("订单定价");
                 });
             }

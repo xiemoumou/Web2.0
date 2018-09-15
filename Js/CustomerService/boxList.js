@@ -1,16 +1,14 @@
-
 $(function () {
+    debugger
     $('.nav ul li').on('click',function () {
         $('.nav ul li').removeClass('active');
         var li=$(this);
         li.addClass('active');
         $("#showtype").val(li.attr('data-status'));
         invoList.pagePrams.isInit=-1;
-        sessionStorage.setItem('pageIndex', 1);//分页保持
         invoList.getDataList(1);//初始化数据
     });
-    invoList.getDataList();//初始化数据
-
+    invoList.getDataList(1);//初始化数据
 });
 
 
@@ -51,19 +49,13 @@ var invoList={
         });
     },
     getDataList:function (currIndex) {
-        if(!currIndex)
-        {
-            var pageIndex=sessionStorage.getItem('pageIndex');
-            currIndex=pageIndex?pageIndex:1;
-        }
-
         var that=this;
         var state=$("#showtype").val();
         var data={
             "sortField": "sendtime",
             "sortType": "desc",
-            "state": 1,
-            "pageNum": 1,
+            "state": state,
+            "pageNum": currIndex,
             "pageSize": 10,
         };
 

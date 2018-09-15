@@ -47,6 +47,7 @@ var config = {
             "orderDesignInfoSearch_Query":that.Domain.systemApi +"/dynamo/order/orderDesignInfoSearch_Query",//查询转接订单
             "orderSummaryInfoByOrderid":that.Domain.systemApi +"/dynamo/order/orderSummaryInfoByOrderid",//转接到列表
             "orderDesignInfoDesignTransfer_Update":that.Domain.systemApi +"/dynamo/order/orderDesignInfoDesignTransfer_Update",//转接操作
+            "orderDesignPatternById_Query":that.Domain.systemApi +"/dynamo/order/orderDesignPatternById_Query",//修正设计稿回显
 
 
 
@@ -795,15 +796,15 @@ var OPER={
         var scrollH = top.Helper.getClientHeight();
         var scrollW = top.Helper.getClientWidth();
         var popH = scrollH - 100 > 550 ? 550 : scrollH - 100;
-        Popup.open(title, 939, popH, "./CustomerService/Pop-ups/checkOrder.html?customid="+customid);
+        Popup.open(title, 939, popH, "./Pop-ups/checkOrder.html?customid="+customid);
     },
     invoice:function (customid,title) {
         title=title?title:"发票收据";
         // 流程弹窗
         var scrollH = top.Helper.getClientHeight();
         var scrollW = top.Helper.getClientWidth();
-        var popH = scrollH - 100 > 360 ? 360 : scrollH - 100;
-        top.Popup.open(title, 818, popH, "./CustomerService/Pop-ups/invoice.html?customid="+customid);
+        var popH = scrollH - 100 > 610 ? 610 : scrollH - 100;
+        top.Popup.open(title, 818, popH, "./Pop-ups/invoice.html?customid="+customid);
     },
     box:function (customid,title) {
         title=title?title:"包装";
@@ -811,19 +812,20 @@ var OPER={
         var scrollH = top.Helper.getClientHeight();
         var scrollW = top.Helper.getClientWidth();
         var popH = scrollH - 100 > 550 ? 550 : scrollH - 100;
-        top.Popup.open(title, 939, popH, "./CustomerService/Pop-ups/box.html?customid="+customid);
+        top.Popup.open(title, 939, popH, "./Pop-ups/box.html?customid="+customid);
     },
     uploadDesign:function (customid,title) {
-        title=title?title:"客服补充设计稿";
+        title=title?title:"补充设计稿";
         var scrollH = top.Helper.getClientHeight();
         var popH = scrollH - 100 > 559 ? 559 : scrollH - 100;
-        top.Popup.open(title, 830, popH, "./CustomerService/Pop-ups/uploadDesign.html?customid="+customid);
+        var url=encodeURI("./Pop-ups/uploadDesign.html?customid="+customid+"&title="+title);
+        top.Popup.open(title, 830, popH, url);
     },
     invoiceDetails:function (customid,title) {
         title=title?title:"发票明细";
         var scrollH = top.Helper.getClientHeight();
         var popH = scrollH - 100 > 559 ? 559 : scrollH - 100;
-        top.Popup.open(title, 560, popH, "./CustomerService/Pop-ups/invoicePreview.html?customid="+customid);
+        top.Popup.open(title, 560, popH, "./Pop-ups/invoicePreview.html?customid="+customid);
     },
     sendInquiry:function (customid) {
         //发起询价
@@ -866,6 +868,7 @@ var OPER={
         //分配生产
         var url=config.WebService()['distribut_Production'];
         top.Requst.ajaxGet(url,{"customid":customid},true,function (data) {
+            
             if(data.code==3000)
             {
                 top.Popup.open("收货地址", 482, 380, "./Pop-ups/addAddress.html?customid="+customid+"&operType=distributionProduction");

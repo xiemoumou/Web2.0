@@ -99,7 +99,7 @@ var orderAdmin = {
         }
         //获取订单列表
         var url = config.WebService()["orderDesignInfoSearch_Query"];
-        debugger
+        
         top.Requst.ajaxGet(url, data,true, function (data) {
             if (data.code==200) {
                 top.Cache["orderAdmin"]=  data.data;

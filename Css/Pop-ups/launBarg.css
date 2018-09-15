@@ -18,6 +18,8 @@ body {
 .offer-money span{
     font-size: 14px;
     color: #333333;
+    display: inline-block;
+    width: 131px;
 }
 .offer-money-left input{
     width: 154px;

@@ -115,7 +115,7 @@ var thingHandle={
 };
 var rofitSingle= {
     getDataList: function () {
-        debugger
+        
         var url = config.WebService()["exportYieldList"];
         //请求数据
         var bonus_year = $("#work_year input").val();//获取年

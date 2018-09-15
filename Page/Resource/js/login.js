@@ -414,7 +414,7 @@ registerBtn.click(function () {
     //去除前后的空白字符
     var emailRegisVal = $.trim(emailRegis.val());
     var passwordRegisVal = $.trim(passwordRegis.val());
-    debugger
+    
     if (checkPwMore()) {
         /*console.log(789, emailRegis.val(), passwordRegis.val() );*/
 

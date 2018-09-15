@@ -188,7 +188,8 @@ var priceSlider = {
             blue_point_cur=down_min;
         }
         $("#designPrice").val(blue_point_cur.formatMoney(2, "", ",", "."));
-        blue_point_cur = (blue_point_cur - down_min) * ($(scrollBar)[0].clientWidth - 10) / down_max;
+
+        blue_point_cur=(blue_point_cur-down_min)/(down_max-down_min)*($(scrollBar)[0].clientWidth - 10);
         blue_point_cur=Math.ceil(blue_point_cur);
         $(item).find('.blue-point').css('left', blue_point_cur + "px")
         priceSlider.changeGuideFee(item);//改变引导费
@@ -293,8 +294,13 @@ var priceSlider = {
             $(obj).css('left', axisWidth + "px");
         }
         //var currentValue = parseFloat( $(obj).css('left')/ axisWidth * axisMaxVal);
-        var curPos = parseFloat($(obj).css('left')) + axisMinVal * axisWidth / axisMaxVal;
-        var currentValue = parseFloat(curPos / (axisWidth + (axisMinVal * axisWidth / axisMaxVal)) * axisMaxVal);
+        var curPos = parseFloat($(obj).css('left')); //+ axisMinVal * axisWidth / axisMaxVal;
+        //var currentValue = parseInt(curPos / (axisWidth + (axisMinVal * axisWidth / axisMaxVal)) * axisMaxVal);
+        var currentValue = parseInt(axisMinVal+(axisMaxVal-axisMinVal)*curPos/axisWidth);
+        // console.log("轴最小值"+axisMinVal+"最大值"+axisMaxVal+"当前位置"+curPos+"尺宽度"+axisWidth);
+        //
+        //
+        // console.log(currentValue);
         if (currentValue < axisMinVal) {
             currentValue = axisMinVal;
         }

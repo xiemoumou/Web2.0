@@ -228,7 +228,7 @@ var design_draft = {
                                 window.location.href = "./demand_details.html?customid=" + customid + "&orderId=" + orderId;
                             }
 
-                            debugger
+                            
                             if (data.orderaddinfo.accessoryurl) {
                                 $("#fileName").val(data.orderaddinfo.accessoryid);
                                 $("#fileName").attr('title', data.orderaddinfo.accessoryid);

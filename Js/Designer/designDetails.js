@@ -61,7 +61,7 @@ $(function () {
 
 var desigDetails = {
     desiGet: function () {
-        debugger
+        
         var that = this;
         data = {
             "customId": customid,
@@ -197,7 +197,7 @@ var desigDetails = {
 
    // },
     desiSub: function () {//提交设计单
-        debugger
+        
         if (this.producestatus>=3){
             Message.show('提示','订单已经发起生产，设计稿相关内容不可使用',3,2000);
             return false;

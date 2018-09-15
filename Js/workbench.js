@@ -772,12 +772,12 @@ var classMain = {
                 if (thisObj.attr('data-select') == 'true') {
                     thisObj.attr('data-select', 'false');
                     $(i).css('background-color', '#ffffff');
-                    classMain.requstParams['userPeriod'] = 0;
+                    classMain.requstParams['isUrgency'] = 0;
                 }
                 else {
                     thisObj.attr('data-select', 'true');
                     $(i).css('background-color', 'rgb(249, 120, 83)');
-                    classMain.requstParams['userPeriod'] = 1;
+                    classMain.requstParams['isUrgency'] = 1;
                 }
                 classMain.loadOverview();
             });
@@ -1214,7 +1214,6 @@ var classMain = {
                                 var userPrice=$($(this).prev()).val().replace(/[^0-9-.]/g, '');
 
                                 Requst.ajaxPost(url,{"price":parseFloat(userPrice),"wCustomid":customid,"type":"userPrice"},true,function (data) {
-                                    debugger
                                     if(data.code==200)
                                     {
                                         top.Message.show("提示",data.message, MsgState.Success, 2000,function () {
@@ -1286,8 +1285,9 @@ var classMain = {
                         //按钮
                         function operating() {
                             var operating = $('<div class="operating"></div>');
+                            var command=item.command.split(',');
                             // 发起询价
-                            if (item.inquiryStatus==0) {
+                            if (command.indexOf("INQUIRY")>=0) {
                                 var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">发起询价</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
@@ -1296,7 +1296,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //分配设计
-                            if (item.designStatus==0) {
+                            if (command.indexOf("SEND_DESIGN")>=0) {
                                 var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配设计</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
@@ -1308,7 +1308,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //定价
-                            if (item.produceStatus<=1) {
+                            if (command.indexOf("PRICE")>=0) {
                                 var btn=$('<button data-inquiryStatus="'+item.inquiryStatus+'" data-userPeriod="'+item.userPeriod+'" data-prePrice="'+parseFloat(item.prePrice).formatMoney(2, "", ",", ".")+'" data-currentPeriod="'+item.currentPeriod+'" data-currentPrice="'+parseFloat(item.currentPrice).formatMoney(2, "", ",", ".")+'" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">定价</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
@@ -1331,7 +1331,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //确认支付
-                            if (item.inquiryStatus==3) {
+                            if (command.indexOf("PAYOFF")>=0) {
                                 var btn=$('<button data-inquiryStatus="'+item.inquiryStatus+'" data-finalPrice="'+parseFloat(item.finalPrice).formatMoney(2, "", ",", ".")+'" data-prePrice="'+parseFloat(item.prePrice).formatMoney(2, "", ",", ".")+'" data-currentPeriod="'+item.currentPeriod+'" data-currentPrice="'+parseFloat(item.currentPrice).formatMoney(2, "", ",", ".")+'" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">订单支付</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
@@ -1341,7 +1341,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //分配生产
-                            if (item.inquiryStatus==4 && item.produceStatus<=1) {
+                            if (command.indexOf("SEND_PRODUCE")>=0) {
                                 var btn=$('<button data-inquiryStatus="'+item.inquiryStatus+'" data-finalPrice="'+parseFloat(item.finalPrice).formatMoney(2, "", ",", ".")+'" data-prePrice="'+parseFloat(item.prePrice).formatMoney(2, "", ",", ".")+'" data-currentPeriod="'+item.currentPeriod+'" data-currentPrice="'+parseFloat(item.currentPrice).formatMoney(2, "", ",", ".")+'" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配生产</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
