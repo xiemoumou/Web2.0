@@ -151,9 +151,7 @@ var classMain = {
             var getSysParam = top.config.WebService()['getSysParam'];
             top.Requst.ajaxGet(getSysParam, null, async, function (data) {
                 var dict_start=new Date(); dict_start.toLocaleString();//初始化计时
-
                 data = data.data;
-
                 var dict = {};
                 var goodsClass = [];
                 dict['goodsClass'] = format(goodsClass, data.flatRelation.goodsClass, 'goodsClass');//品类
@@ -779,7 +777,7 @@ var classMain = {
                     $(i).css('background-color', 'rgb(249, 120, 83)');
                     classMain.requstParams['isUrgency'] = 1;
                 }
-                classMain.loadOverview();
+                classMain.loadOverview(null,null,true);
             });
 
             $('.renew').on('click', function () { //续订
@@ -795,7 +793,7 @@ var classMain = {
                     $(i).css('background-color', 'rgb(82, 151, 254)');
                     classMain.requstParams['isContinueOrder'] = 1;
                 }
-                classMain.loadOverview();
+                classMain.loadOverview(null,null,true);
             });
 
 
@@ -930,8 +928,8 @@ var classMain = {
                 if (roleType == 1 || roleType == 4)//客服与经理数据模版
                 {
                     for (var i = 0; i < data.data.pageData.length; i++) {
-
                         var item = data.data.pageData[i];
+                        var command=item.command.split(',');
                         var itemDiv = $('<div id="item_'+item.customid+'" class="customer-service data-item clearfix"></div>');
 
                         //更新逐条信息
@@ -1116,7 +1114,7 @@ var classMain = {
                                 '<span><em>' + item.length + '×' + item.width + '×' + item.height + '</em> (mm)</span>' +
                                 '</div>' +
                                 '<div class="day">' +
-                                '<span><em>' + item.userPeriod + '</em>天</span>' +
+                                '<span><em>' + item.userPeriod + '</em>天</span> </br> <span>¥ <em>'+parseFloat(item.finalPrice).formatMoney(2, "", ",", ".")+'</em></span>' +
                                 '</div>' +
                                 '<button class="edit red-h hide" onclick="classMain.initEvent.edit(' + item.customid + ');">编辑参数</button>' +
                                 '</div>');
@@ -1133,6 +1131,11 @@ var classMain = {
                         //金额区域
                         function addMoney() {
                             var proposed = ' 参考价 ¥' + parseFloat(item.currentPrice).formatMoney(2, "", ",", ".") + ' / 工期' + item.currentPeriod + '天 ';
+                            if(item.currentPrice<=0)
+                            {
+                                proposed = ' 参考价 ¥ - / 工期 - 天 ';
+                            }
+
                             var tax = item.taxRate > 0 ? "含税" : "不含税";
 
                             var money = $('<div class="amount">' +
@@ -1150,7 +1153,7 @@ var classMain = {
                                 '<div class="bargain"><!--议价-->' +
                                     '<span class="tax fl">' + tax + '</span>' +
                                     '<span class="proposed-price fl">' + proposed + '</span>' +
-                                    '<span data-tax="'+tax+'" data-userPeriod="'+item.userPeriod+'" data-lastQuote="'+item.lastQuote+'" data-customid="' + item.customid + '" class="button fl hide">议价</span>' +
+                                    '<span data-tax="'+tax+'" data-prePrice="'+item.prePrice+'" data-lastQuote="'+item.lastQuote+'" data-customid="' + item.customid + '" class="button fl hide">议价</span>' +
                                     '<i class="arrow"></i>' +
                                 '</div>' +
                                 '<!--报价-->' +
@@ -1178,7 +1181,7 @@ var classMain = {
                             //     // $(bargain.parent()).css('width', '230px');
                             //     bargain.removeClass('hide');
                             // }
-                            else if (item.inquiryStatus == 2 || item.inquiryStatus ==3 || item.inquiryStatus==5)
+                            else if (command.indexOf("BARGIN")>=0 && item.orderPrice>item.userPrice) //如果参考价低于客户预算，则不显示议价按钮
                             {
                                 var bargain = $(money.find('.bargain').find('.button'));
                                 $(money.find('.bargain').find('.proposed-price')).css('color', ' #5298FF');
@@ -1187,9 +1190,9 @@ var classMain = {
                                 $(money.find('.bargain').find('.button')).on('click', function () {
                                     var customid = $(this).attr('data-customid');
                                     var lastQuote=$(this).attr('data-lastQuote');
-                                    var userPeriod=$(this).attr('data-userPeriod');
+                                    var prePrice=$(this).attr('data-prePrice');
                                     var tax=$(this).attr("data-tax");
-                                    top.Popup.open("发起议价",423,235,"./Pop-ups/launBarg.html?customid="+customid+"&tax="+tax+"&lastQuote="+lastQuote+"&userPeriod="+userPeriod);
+                                    top.Popup.open("发起议价",423,235,"./Pop-ups/launBarg.html?customid="+customid+"&tax="+tax+"&lastQuote="+lastQuote+"&prePrice="+prePrice);
                                 });
                             }
                             else {
@@ -1285,7 +1288,6 @@ var classMain = {
                         //按钮
                         function operating() {
                             var operating = $('<div class="operating"></div>');
-                            var command=item.command.split(',');
                             // 发起询价
                             if (command.indexOf("INQUIRY")>=0) {
                                 var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 76px; height: 23px;">发起询价</button>');
@@ -1631,7 +1633,7 @@ var classMain = {
                             }
                             else
                             {
-                                deadlineTime="--  天  --  小时  --  分钟";
+                                deadlineTime="-  天  -  小时  -  分钟";
                             }
 
                             var timeleft = $('<span data-deadlineTime="'+item.deadlineTime+'" class="timeleft"><i class="clock-icon"></i>剩余发货时间：<em>'+deadlineTime+'</em></span>');
@@ -1684,7 +1686,7 @@ var classMain = {
                             var model = ConvertIdToName(element.model, item.model).join(';');
                             var technology = ConvertIdToName(element.technology, item.technology).join(';');
                             var color = ConvertIdToName(element.color, item.color).join(';');
-                            var producePrice=item.lastQuote>0?item.producePrice.formatMoney(2, "", ",", "."):"----";
+                            var producePrice=item.lastQuote>0?item.producePrice.formatMoney(2, "", ",", "."):"-";
 
                             var info = $('<div class="info">' +
                                 '<div class="attributes">' +
@@ -1715,10 +1717,10 @@ var classMain = {
 
                         //金额区域
                         function addMoney() {
-                            var lastQuote=item.lastQuote?item.lastQuote.formatMoney(2, "", ",", "."):"----";
-                            var lastPeriod=item.lastPeriod?item.lastPeriod:"--";
+                            var lastQuote=item.lastQuote?item.lastQuote.formatMoney(2, "", ",", "."):"-";
+                            var lastPeriod=item.lastPeriod?item.lastPeriod:"-";
                             var money = $('<div class="amount">' +
-                                '<div class="quoted"><!--报价-->' +
+                                '<div class="quoted hide"><!--报价-->' +
                                 '<span>上次报价：¥ <em> '+lastQuote+' / '+lastPeriod+'</em>天</span>' +
                                 '</div>' +
                                 '<!--预算-->' +
@@ -1728,9 +1730,14 @@ var classMain = {
                                 '</div>');
                             infoContainer.append(money);
 
+                            if(item.lastQuote>0)
+                            {
+                                $($(money).find('.quoted')).removeClass('hide');
+                            }
+
                             if(item.lastQuote>item.userPrice)//报价高于客户预算
                             {
-                                $($(money).find('.budget')).removeClass('hide');
+                                //$($(money).find('.budget')).removeClass('hide');
                             }
                         }
 
@@ -1749,17 +1756,18 @@ var classMain = {
                         //按钮
                         function operating() {
                             var operating = $('<div class="operating"></div>');
-                            //未报价
+                            //报价
                             if((item.inquiryStatus==1||item.inquiryStatus==2)&& item.lastQuote==0)
                             {
-                                var btn=$('<button class="btn" data-lastQuote="'+item.lastQuote+'" style="width: 76px; height: 23px;" data-inquiryRound="'+item.inquiryRound+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">报价</button>');
+                                var btn=$('<button class="btn" data-lastPeriod="'+item.lastPeriod+'" data-lastQuote="'+item.lastQuote+'" style="width: 76px; height: 23px;" data-inquiryRound="'+item.inquiryRound+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">报价</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
                                     var orderid = $(this).attr('data-orderid');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
                                     var inquiryRound=$(this).attr('data-inquiryRound');//询价轮次
                                     var lastQuote=$(this).attr("data-lastQuote");//上次报价
-                                    top.Popup.open("报价",423,266,"./Pop-ups/orderOffer.html?customid="+customid+"&inquiryRound="+inquiryRound+"&lastQuote="+lastQuote);
+                                    var lastPeriod=$(this).attr("data-lastPeriod");//上次工期
+                                    top.Popup.open("报价",423,266,"./Pop-ups/orderOffer.html?customid="+customid+"&inquiryRound="+inquiryRound+"&lastQuote="+lastQuote+"&lastPeriod="+lastPeriod);
                                 });
                                 operating.append(btn);
                             }

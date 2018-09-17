@@ -2,7 +2,7 @@ $(function () {
     var customid=Helper.getUrlParam("customid");
     var tax=Helper.getUrlParam("tax",true);//是否含税
     var userPeriod=Helper.getUrlParam("userPeriod");//客户要求工期
-    var lastQuote=Helper.getUrlParam("lastQuote");//上次报价
+    var lastQuote=Helper.getUrlParam("prePrice");//客户报价
     lastQuote=lastQuote=="undefined"?0:lastQuote;
     
     $("#userPeriod").val(userPeriod);

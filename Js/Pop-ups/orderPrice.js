@@ -25,7 +25,7 @@ var pricing = {
         var url=config.WebService()["order_Finally"];
         var data={};
         data["producrPeriod"]=parseInt($("#inputPeriod").val());//客户要求工期
-        data["finalprice"]=parseInt($("#inputQuote").val());//定价金额
+        data["finalprice"]=parseInt($("#inputQuote").val().replace(/[^0-9-.]/g, ''));//定价金额
         data['customid']=customid;
 
         top.Requst.ajaxGet(url,data,true,function (data) {

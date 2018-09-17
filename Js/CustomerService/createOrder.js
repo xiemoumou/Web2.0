@@ -164,6 +164,8 @@ var createOrder = {
         }
         $(".producttype").attr('data-val', goodsClassDefault);//把默认值赋给标签
         function goodsClassCallback(dataId) {
+            goodsClassDefault=dataId;
+
             material.length = 0;
             accessories.length = 0;
             dataId = parseInt(dataId);
@@ -178,7 +180,6 @@ var createOrder = {
                                 'name': item.son[j].secondDescription,
                                 'isDefault': item.son[j].isDefaultSon
                             });
-                            materialDefault = item.son[j].isDefaultSon > 0 ? item.son[j].isDefaultSon : 0;
                         }
                         else if (item.son[j].secondClass == 'accessories') {
                             accessories.push({
@@ -186,7 +187,6 @@ var createOrder = {
                                 'name': item.son[j].secondDescription,
                                 'isDefault': item.son[j].isDefaultSon
                             });
-                            accessoriesDefault = item.son[j].isDefaultSon > 0 ? item.son[j].isDefaultSon : 0;
                         }
                     }
                 }
@@ -199,6 +199,8 @@ var createOrder = {
 
         }//获取选中品类的子集
         goodsClassCallback(goodsClassDefault);//品类
+
+        //初始化品类下拉
         $(".producttype").DropDownList(SysParam['goodsClass'], function (dataId) {
             goodsClassCallback(dataId);
             createOrder.autoPrice();
@@ -217,24 +219,12 @@ var createOrder = {
                 var item = SysParam.relationMaterial[i];
                 if (item.firstId == dataId) {
                     for (var j = 0; j < item.son.length; j++) {
-                        if (item.son[j].secondClass == 'size') {
-                            size.push({
-                                'id': item.son[j].secondId,
-                                'name': item.son[j].secondDescription,
-                                'isDefault': item.son[j].isDefaultSon,
-                                "length": item.son[j].Length || 0,
-                                "height": item.son[j].height,
-                                "width": item.son[j].width || 0
-                            });
-                            sizeDefault = item.son[j].isDefaultSon > 0 ? item.son[j].isDefaultSon : 0;
-                        }
-                        else if (item.son[j].secondClass == 'technology') {
+                        if (item.son[j].secondClass == 'technology') {
                             technology.push({
                                 'id': item.son[j].secondId,
                                 'name': item.son[j].secondDescription,
                                 'isDefault': item.son[j].isDefaultSon
                             });
-                            technologyDefault = item.son[j].isDefaultSon > 0 ? item.son[j].isDefaultSon : 0;
                         }
                         else if (item.son[j].secondClass == 'model') {
                             model.push({
@@ -242,11 +232,36 @@ var createOrder = {
                                 'name': item.son[j].secondDescription,
                                 'isDefault': item.son[j].isDefaultSon
                             });
-                            modelDefault = item.son[j].isDefaultSon > 0 ? item.son[j].isDefaultSon : 0;
                         }
                     }
                 }
             }
+
+            //从品类下获取材质下的尺寸
+            for (var i = 0; i < SysParam.relationGoodsclass.length; i++) {
+                var item = SysParam.relationGoodsclass[i];
+                if (item.firstId ==parseInt(goodsClassDefault)) {
+                    for (var j = 0; j < item.son.length; j++) {
+                        if (item.son[j].secondClass == 'material' && item.son[j].secondId==parseInt(dataId)) {
+                            if (item.son[j].son && item.son[j].son.length>0) {
+                                for(var sizeI=0;sizeI<item.son[j].son.length;sizeI++)
+                                {
+                                    var sizeItem=item.son[j].son[sizeI];
+                                    if(sizeItem.thirdClass=="size")
+                                    {
+                                        size.push({
+                                            'id': sizeItem.thirdId,
+                                            'name': sizeItem.thirdDescription,
+                                            'isDefault': sizeItem.isDefaultGrandson,
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             setModel(model);
             setTechnology(technology);
             setSize(size);

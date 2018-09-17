@@ -5,8 +5,10 @@ $(function () {
     inquiryRound = parseInt(inquiryRound);
     var lastQuote = Helper.getUrlParam("lastQuote");
     lastQuote = parseFloat(lastQuote).formatMoney(2, "", ",", ".");
+    var lastPeriod=Helper.getUrlParam("lastPeriod");//上传报工期
 
     $("#lastQuote").text(lastQuote);
+    $("#lastPeriod").text(lastPeriod);
 
 
     $('.ok').on('click', function () {

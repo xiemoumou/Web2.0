@@ -8,7 +8,6 @@ $(function () {
         li.addClass('active');
         $("#showtype").val(li.attr('data-status'));
         invoList.pagePrams.isInit=-1;
-        sessionStorage.setItem('pageIndex', 1);//分页保持
         invoList.getDataList(1);//初始化数据
     });
 
@@ -23,104 +22,91 @@ var invoList={
         var that=this;
         var data={
             "orderid":orderid,
-            "userId":$.cookie("userid"),
-            "roleType":$.cookie("roletype"),
         };
-        Common.ajax(Common.getUrl()['order']+Common.getDataInterface()['markInvoiced'],data,true,function (data) {
-            if(data.status.code==0)
+        var url=config.WebService()["orderInvoiceSign_Update"];
+        top.Requst.ajaxPost(url,data,true,function (data) {
+            if(data.code==200)
             {
-             Common.msg(data.status.msg,200,2000,function () {
+             top.Message.show(" 提示",data.message,MsgState.Success,2000,function () {
                  that.getDataList();
              });
             }
             else {
-                Console.log(data.status.msg);
+                Console.log(data.message);
             }
         })
     },
-    popDetail:function (orderid) {//发票详情
+    popDetail:function (ordersummaryId,orderId) {//发票详情
         var scrollH= parent.$(window).height();
-        //if(scrollH-50>597)
             scrollH=560;
-        var url = encodeURI('./service/invoice_preview.html?orderid='+orderid);
-        parent.layer.open({
-            type: 2,
-            title: '票据明细',
-            shadeClose: false,
-            shade: 0.1,
-            area: ['620px',scrollH +'px'],
-            content: url,
-        });
+        var state=$("#showtype").val();
+        top.Popup.open("票据详情",620,scrollH,'./Pop-ups/invoicePreview.html?ordersummaryId='+ordersummaryId+"&state="+state+"&orderId="+orderId,invoList.getDataList);
     },
     getDataList:function (currIndex) {
         if(!currIndex)
         {
-            var pageIndex=sessionStorage.getItem('pageIndex');
-            currIndex=pageIndex?pageIndex:1;
+            currIndex=invoList.pagePrams.curIndex;
         }
 
         var that=this;
         var state=$("#showtype").val();
         var data={
-            "state":state,
-            "pageNo":currIndex,
-            "pageSize":20,
-            "userId":$.cookie("userid"),
-            "roleType":$.cookie("roletype"),
+            "invoiceStatus":parseInt(state),
+            "pageNum":parseInt(currIndex),
+            "pageSize":invoList.pagePrams.pageSize,
+            "sortType":"desc",
+            "sortField":"sendtime"
         };
-         
-        Common.ajax(Common.getUrl()['order']+Common.getDataInterface()['invoiceList'],data,true,function (data) {
-            var status=data.status;
-            var invoce=data.invoce;
+        var url=config.WebService()["orderInvoicePage_Query"];
+        top.Requst.ajaxGet(url,data,true,function (data) {
             var datalist= $("#datalist");
             datalist.html('');
-            if(status.code==0&&invoce!=null&&invoce.length>0)
+            if(data.code==200 && data.data.pageMessage.rowCount>0)
             {
-                 
-                that.pagePrams.totalPage= Math.ceil(data.totalNum / that.pagePrams.pageSize);
-                for(var i=0;i<invoce.length;i++)
+                invoList.pagePrams.totalPage= Math.ceil(data.data.pageMessage.rowCount / invoList.pagePrams.pageSize);
+                data=data.data.pageData;
+                for(var i=0;i<data.length;i++)
                 {
-                    var item=invoce[i];
+                    var item=data[i];
                     var tr=$('<tr></tr>');
-                    var orderDatetime=item.invoicetime?item.invoicetime:'';
+                    var orderDatetime=item.sendtime?item.sendtime:'';
                     tr.append($('<td style="min-width: 130px">'+orderDatetime+'</td>'));
                     tr.append($('<td style="min-width: 102px;">'+item.orderid+'</td>'));
-                    tr.append($('<td><span class="text">'+item.invoicetitle+'</span></td>'));
+                    tr.append($('<td><span class="text">'+item.invoiceTitle+'</span></td>'));
                     if(state==2)
                     {
-                        tr.append($('<td style="text-align: right; min-width: 180px;"><div class="sign"> </div> <div class="ticket-details"> <span></span> <p onclick="invoList.popDetail(\''+item.orderid+'\')">票据详情</p> </div></td>'));
+                        tr.append($('<td style="text-align: right; min-width: 180px;"><div class="sign"> </div> <div class="ticket-details"> <span></span> <p onclick="invoList.popDetail(\''+item.ordersummaryId+'\',\''+item.orderid+'\')">票据详情</p> </div></td>'));
                     }
                     else
                     {
-                        tr.append($('<td style="text-align: right; min-width: 180px;"><div class="sign"> <span></span> <p onclick="invoList.sign(\''+item.orderid+'\')">标记已开</p> </div> <div class="ticket-details"> <span></span> <p onclick="invoList.popDetail(\''+item.orderid+'\')">票据详情</p> </div></td>'));
+                        tr.append($('<td style="text-align: right; min-width: 180px;"><div class="sign"> <span></span> <p onclick="invoList.sign(\''+item.orderid+'\')">标记已开</p> </div> <div class="ticket-details"> <span></span> <p onclick="invoList.popDetail(\''+item.ordersummaryId+'\',\''+item.orderid+'\')">票据详情</p> </div></td>'));
                     }
 
                     datalist.append(tr);
                 }
             }
-            that.initPage();
+            invoList.initPage();
         })
     },
     initPage: function () {//初始化分页插件
         var that = this;
-        if (that.pagePrams.isInit > 0)
+        if (invoList.pagePrams.isInit > 0)
             return;
-        that.pagePrams.isInit = 1;
+        invoList.pagePrams.isInit = 1;
         $(".page-box").html("");
         $(".page-box").append($("<div id=\"pagination\" class=\"page fl\"></div>"));
         $("#pagination").pagination({
-            currentPage: that.pagePrams.curIndex,
-            totalPage: that.pagePrams.totalPage,
+            currentPage: invoList.pagePrams.curIndex,
+            totalPage: invoList.pagePrams.totalPage,
             isShow: true,
-            count: that.pagePrams.pageSize,
+            count: invoList.pagePrams.pageSize,
             homePageText: "首页",
             endPageText: "尾页",
             prevPageText: "上一页",
             nextPageText: "下一页",
             callback: function (currIndex) {
-                that.pagePrams.curIndex = currIndex;//分页保持
-                sessionStorage.setItem('pageIndex', currIndex);//分页保持
-                that.getDataList(currIndex);
+                invoList.pagePrams.curIndex = currIndex;//分页保持
+                invoList.getDataList(currIndex);
             }
         });
     },
