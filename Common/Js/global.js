@@ -1,1 +1,911 @@
-var _0xfdaf=["\x68\x74\x74\x70\x3A\x2F\x2F\x31\x39\x32\x2E\x31\x36\x38\x2E\x31\x2E\x35\x30\x3A\x38\x31","\x73\x79\x73\x74\x65\x6D\x41\x70\x69","\x44\x6F\x6D\x61\x69\x6E","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x73\x79\x73\x49\x6E\x69\x74\x69\x61\x6C\x69\x7A\x65\x2F\x67\x65\x74\x53\x79\x73\x50\x61\x72\x61\x6D","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x63\x72\x65\x61\x74\x65\x43\x75\x73\x74\x6F\x6D\x69\x64","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x53\x75\x6D\x6D\x61\x72\x79\x49\x6E\x66\x6F\x5F\x49\x6E\x73\x65\x72\x74","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x61\x75\x74\x6F\x5F\x70\x72\x69\x63\x65","\x2F\x64\x65\x73\x69\x67\x6E\x2F\x73\x65\x6E\x64\x44\x65\x73\x69\x67\x6E","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x5F\x46\x69\x6E\x61\x6C\x6C\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x5F\x50\x61\x79\x46\x69\x6E\x61\x6C\x6C\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6C\x6F\x67\x69\x73\x74\x69\x63\x73\x43\x6F\x6D\x70\x61\x6E\x79\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x50\x72\x6F\x64\x75\x63\x74\x49\x6E\x66\x6F\x49\x6D\x61\x67\x65\x73\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6C\x6F\x67\x69\x73\x74\x69\x63\x73\x5F\x55\x70\x6C\x6F\x61\x64","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x73\x65\x6C\x65\x63\x74\x5F\x4C\x6F\x67\x69\x73\x74\x69\x63\x73","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x63\x6F\x6E\x74\x69\x6E\x75\x65\x5F\x50\x72\x6F\x64\x75\x63\x74\x69\x6F\x6E","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x64\x69\x73\x74\x72\x69\x62\x75\x74\x5F\x50\x72\x6F\x64\x75\x63\x74\x69\x6F\x6E","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x75\x70\x64\x61\x74\x65\x4F\x72\x64\x65\x72\x51\x75\x6F\x74\x65\x49\x74\x65\x6D","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x53\x75\x70\x70\x6C\x65\x6D\x65\x6E\x74\x61\x72\x79\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x62\x75\x73\x69\x6E\x65\x73\x73\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x50\x72\x6F\x64\x75\x63\x74\x49\x6E\x66\x6F\x55\x70\x64\x61\x74\x65\x49\x6D\x61\x67\x65\x73","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x4C\x6F\x67\x69\x73\x74\x69\x63\x73\x53\x74\x61\x74\x75\x73\x5F\x55\x70\x64\x61\x74\x65","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x53\x75\x70\x70\x6C\x65\x6D\x65\x6E\x74\x61\x72\x79\x5F\x53\x65\x61\x72\x63\x68","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x49\x6E\x66\x6F\x5F\x55\x70\x64\x61\x74\x65","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x53\x75\x70\x70\x6C\x65\x6D\x65\x6E\x74\x61\x72\x79\x43\x6F\x75\x6E\x74\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x50\x72\x6F\x64\x75\x63\x74\x49\x6E\x66\x6F\x41\x63\x63\x65\x70\x74\x5F\x55\x70\x64\x61\x74\x65","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6D\x65\x73\x73\x61\x67\x65\x2F\x6D\x65\x73\x73\x61\x67\x65\x43\x6F\x75\x6E\x74","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6D\x65\x73\x73\x61\x67\x65\x2F\x6D\x65\x73\x73\x61\x67\x65\x53\x75\x6D\x6D\x61\x72\x79\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x53\x75\x6D\x6D\x61\x72\x79\x49\x6E\x66\x6F\x5F\x55\x70\x64\x61\x74\x65","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6D\x65\x73\x73\x61\x67\x65\x2F\x6D\x61\x72\x6B\x65\x64\x55\x70\x52\x65\x61\x64","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6D\x65\x73\x73\x61\x67\x65\x2F\x62\x61\x74\x63\x68\x4D\x61\x72\x6B\x65\x64\x55\x70\x52\x65\x61\x64","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x42\x6F\x78\x49\x6E\x73\x65\x72\x74\x5F\x49\x6E\x73\x65\x72\x74","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x42\x6F\x78\x41\x6C\x6C\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x50\x72\x6F\x64\x75\x63\x74\x49\x6E\x66\x6F\x57\x61\x69\x74\x50\x72\x6F\x64\x75\x63\x74","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x49\x6E\x66\x6F\x53\x65\x61\x72\x63\x68\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x53\x75\x6D\x6D\x61\x72\x79\x49\x6E\x66\x6F\x42\x79\x4F\x72\x64\x65\x72\x69\x64","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x49\x6E\x66\x6F\x44\x65\x73\x69\x67\x6E\x54\x72\x61\x6E\x73\x66\x65\x72\x5F\x55\x70\x64\x61\x74\x65","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x50\x61\x74\x74\x65\x72\x6E\x42\x79\x49\x64\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x49\x6E\x76\x6F\x69\x63\x65\x50\x61\x67\x65\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x49\x6E\x76\x6F\x69\x63\x65\x53\x69\x67\x6E\x5F\x55\x70\x64\x61\x74\x65","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x49\x6E\x76\x6F\x69\x63\x65\x44\x65\x74\x61\x69\x6C\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x75\x73\x65\x72\x2F\x75\x73\x65\x72\x41\x63\x63\x6F\x75\x6E\x74\x49\x6E\x66\x6F\x5F\x49\x6E\x73\x65\x72\x74","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x75\x73\x65\x72\x2F\x75\x73\x65\x72\x41\x63\x63\x6F\x75\x6E\x74\x49\x6E\x66\x6F\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x75\x73\x65\x72\x2F\x75\x73\x65\x72\x50\x61\x73\x73\x77\x6F\x72\x64\x5F\x55\x70\x64\x61\x74\x65","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x75\x70\x6C\x6F\x61\x64\x49\x6D\x61\x67\x65","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x75\x70\x6C\x6F\x61\x64\x41\x63\x63\x65\x73\x73\x6F\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x51\x75\x6F\x74\x65\x49\x6E\x66\x6F\x5F\x49\x6E\x73\x65\x72\x74","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x49\x6E\x71\x75\x69\x72\x79\x49\x6E\x66\x6F\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x42\x61\x72\x67\x69\x6E\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x42\x61\x72\x67\x69\x6E\x5F\x44\x6F\x69\x74","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x64\x65\x73\x69\x67\x6E\x46\x65\x65\x5F\x49\x6E\x69\x74","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x64\x65\x73\x69\x67\x6E\x46\x65\x65\x5F\x53\x75\x62\x6D\x69\x74","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x53\x75\x6D\x6D\x61\x72\x79\x49\x6E\x66\x6F\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x53\x75\x6D\x6D\x61\x72\x79\x49\x6E\x66\x6F\x41\x63\x63\x65\x73\x73\x6F\x72\x79\x5F\x55\x70\x64\x61\x74\x65","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6C\x6F\x67\x69\x73\x74\x69\x63\x73\x5F\x49\x6E\x66\x6F","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x63\x75\x73\x74\x6F\x6D\x5F\x51\x75\x6F\x74\x61\x74\x69\x6F\x6E","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x75\x70\x64\x61\x74\x65\x50\x72\x69\x63\x65","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x50\x61\x74\x74\x65\x72\x6E\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x50\x61\x74\x74\x65\x72\x6E\x5F\x49\x6E\x73\x65\x72\x74","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x4D\x65\x73\x73\x61\x67\x65\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x4D\x65\x73\x73\x61\x67\x65\x5F\x49\x6E\x73\x65\x72\x74","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x63\x68\x6F\x6F\x73\x65\x44\x65\x73\x69\x67\x6E","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x69\x6E\x76\x6F\x69\x63\x65\x5F\x55\x70\x64\x61\x74\x65","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x69\x6E\x76\x6F\x69\x63\x65\x5F\x49\x6E\x69\x74","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6C\x6F\x67\x69\x73\x74\x69\x63\x73\x5F\x43\x68\x65\x63\x6B","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x42\x6F\x78\x49\x6E\x66\x6F\x50\x61\x67\x65\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x42\x6F\x78\x44\x65\x74\x61\x69\x6C\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x6F\x72\x64\x65\x72\x4C\x6F\x67\x69\x73\x74\x69\x63\x73\x42\x69\x6C\x6C\x4F\x72\x64\x65\x72\x5F\x51\x75\x65\x72\x79","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x65\x78\x70\x6F\x72\x74\x59\x69\x65\x6C\x64\x4C\x69\x73\x74","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x64\x6F\x77\x6E\x4D\x61\x6E\x4F\x72\x64\x65\x72","\x2F\x64\x79\x6E\x61\x6D\x6F\x2F\x6F\x72\x64\x65\x72\x2F\x61\x6C\x67\x6F\x72\x69\x74\x68\x6D\x54\x72\x61\x69\x6E\x6E\x69\x6E\x67\x49\x6E\x73\x65\x72\x74","\x46\x6F\x72\x6D\x61\x74","\x70\x72\x6F\x74\x6F\x74\x79\x70\x65","\x67\x65\x74\x4D\x6F\x6E\x74\x68","\x67\x65\x74\x44\x61\x74\x65","\x67\x65\x74\x48\x6F\x75\x72\x73","\x67\x65\x74\x4D\x69\x6E\x75\x74\x65\x73","\x67\x65\x74\x53\x65\x63\x6F\x6E\x64\x73","\x66\x6C\x6F\x6F\x72","\x67\x65\x74\x4D\x69\x6C\x6C\x69\x73\x65\x63\x6F\x6E\x64\x73","\x74\x65\x73\x74","\x6C\x65\x6E\x67\x74\x68","\x24\x31","\x73\x75\x62\x73\x74\x72","\x67\x65\x74\x46\x75\x6C\x6C\x59\x65\x61\x72","","\x72\x65\x70\x6C\x61\x63\x65","\x28","\x29","\x30\x30","\x66\x6F\x72\x6D\x61\x74\x4D\x6F\x6E\x65\x79","\x61\x62\x73","\x24","\x2C","\x2E","\x2D","\x74\x6F\x46\x69\x78\x65\x64","\x73\x6C\x69\x63\x65","\x69\x6E\x64\x65\x78\x4F\x66","\x30","\x6A\x6F\x69\x6E","\x5E\x28\x2D\x7C\x5C\x2B\x29\x3F\x28\x5C\x64\x2B\x28\x5C\x2E\x5C\x64\x7B\x30\x2C","\x7D\x29\x3F\x29\x5C\x64\x2A\x24","\x24\x32","\x24\x33","\x6D\x61\x74\x63\x68","\x28\x5C\x64\x2B\x29\x28\x5C\x64\x7B","\x7D\x29\x5C\x64\x24","\x24\x31\x2E\x24\x32","\x6B\x65\x79\x75\x70","\x75\x6E\x62\x69\x6E\x64","\x2E\x69\x6E\x70\x75\x74\x2D\x6E\x75\x6D\x62\x65\x72","\x76\x61\x6C\x75\x65","\x2E\x69\x6E\x70\x75\x74\x2D\x66\x6C\x6F\x61\x74\x2D\x31","\x76\x61\x6C","\x62\x6C\x75\x72","\x4E\x61\x4E","\x64\x61\x74\x61\x2D\x64\x65\x66\x61\x75\x6C\x74","\x61\x74\x74\x72","\x30\x2E\x30","\x2E\x69\x6E\x70\x75\x74\x2D\x66\x6C\x6F\x61\x74\x2D\x32","\x30\x2E\x30\x30","\x66\x6F\x63\x75\x73","\x2E\x69\x6E\x70\x75\x74\x2D\x6D\x6F\x6E\x65\x79","\x2F","\x67\x65\x74\x54\x69\x6D\x65","\u5929\x20","\x20\u5C0F\u65F6\x20","\x20\u5206\u949F","\x79\x79\x79\x79\x2D\x4D\x4D\x2D\x64\x64\x20\x68\x68\x3A\x6D\x6D\x3A\x73\x73","\x70\x61\x72\x73\x65","\x6C\x6F\x67","\x79\x79\x79\x79\x2D\x4D\x4D\x2D\x64\x64","\x28\x5E\x7C\x26\x29","\x3D\x28\x5B\x5E\x26\x5D\x2A\x29\x28\x26\x7C\x24\x29","\x73\x65\x61\x72\x63\x68","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x46\x69\x72\x65\x66\x6F\x78","\x75\x73\x65\x72\x41\x67\x65\x6E\x74","\x61","\x63\x72\x65\x61\x74\x65\x45\x6C\x65\x6D\x65\x6E\x74","\x68\x72\x65\x66","\x63\x6C\x69\x63\x6B","\x62\x6F\x72\x64\x65\x72\x2D\x77\x61\x72\x6E\x69\x6E\x67","\x61\x64\x64\x43\x6C\x61\x73\x73","\x72\x65\x6D\x6F\x76\x65\x43\x6C\x61\x73\x73","\x6F\x6E\x64\x72\x61\x67\x6F\x76\x65\x72","\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74","\x63\x73\x73","\x6F\x6E\x64\x72\x61\x67\x6C\x65\x61\x76\x65","\x6F\x6E\x64\x72\x6F\x70","\x66\x69\x6C\x65\x73","\x64\x61\x74\x61\x54\x72\x61\x6E\x73\x66\x65\x72","\x63\x68\x61\x72\x43\x6F\x64\x65\x41\x74","\x65\x78\x70\x69\x72\x65\x73","\x63\x6F\x6F\x6B\x69\x65","\u60A8\u5728\u8C03\u7528\x43\x6F\x6D\x6D\x6F\x6E\x2E\x53\x6C\x65\x65\x70\x28\x74\x69\x6D\x65\x2C\x63\x61\x6C\x6C\x62\x61\x63\x6B\x29\u65B9\u6CD5\u65F6\u6CA1\u6709\u4F20\u5165\u7761\u7720\u65F6\u95F4","\x65\x72\x72\x6F\x72","\x23\x63\x6F\x70\x79\x43\x6F\x6E\x74\x65\x6E\x74","\x64\x61\x74\x61\x2D\x63\x6C\x69\x70\x62\x6F\x61\x72\x64\x2D\x74\x61\x72\x67\x65\x74","\x23","\x3C\x74\x65\x78\x74\x61\x72\x65\x61\x20\x74\x79\x70\x65\x3D\x22\x74\x65\x78\x74\x22\x20\x73\x74\x79\x6C\x65\x3D\x22\x68\x65\x69\x67\x68\x74\x3A\x20\x30\x70\x78\x3B\x20\x77\x69\x64\x74\x68\x3A\x20\x30\x70\x78\x3B\x20\x62\x6F\x72\x64\x65\x72\x3A\x20\x6E\x6F\x6E\x65\x3B\x22\x20\x69\x64\x3D\x22\x63\x6F\x70\x79\x43\x6F\x6E\x74\x65\x6E\x74\x22\x20\x76\x61\x6C\x75\x65\x3D\x22\x22\x20\x3E\x3C\x2F\x74\x65\x78\x74\x61\x72\x65\x61\x3E","\x77\x72\x69\x74\x65","\x73\x75\x63\x63\x65\x73\x73","\x41\x63\x74\x69\x6F\x6E\x3A","\x61\x63\x74\x69\x6F\x6E","\x69\x6E\x66\x6F","\x54\x65\x78\x74\x3A","\x74\x65\x78\x74","\x54\x72\x69\x67\x67\x65\x72\x3A","\x74\x72\x69\x67\x67\x65\x72","\x63\x6C\x65\x61\x72\x53\x65\x6C\x65\x63\x74\x69\x6F\x6E","\x6F\x6E","\x68\x65\x69\x67\x68\x74","\x77\x69\x64\x74\x68","\x70\x78","\x6F\x70\x65\x6E","\x6C\x61\x79\x65\x72\x49\x6E\x64\x65\x78","\x63\x61\x6C\x6C\x62\x61\x63\x6B","\x75\x6E\x64\x65\x66\x69\x6E\x65\x64","\x63\x6C\x6F\x73\x65","\x63\x6C\x6F\x73\x65\x41\x6C\x6C","\u63D0\u793A\x3A","\x30\x20\x30\x20\x36\x70\x78\x20\x23\x36\x35\x39\x46\x33\x44","\x30\x20\x30\x20\x36\x70\x78\x20\x23\x45\x32\x38\x33\x32\x37","\x57\x61\x72\x6E\x69\x6E\x67","\x30\x20\x30\x20\x36\x70\x78\x20\x23\x45\x38\x34\x42\x34\x43","\x46\x61\x69\x6C","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x6D\x73\x67\x2D\x63\x6F\x6E\x74\x61\x69\x6E\x65\x72\x20\x6D\x73\x67\x2D","\x2D\x62\x6F\x72\x64\x65\x72\x22\x3E\x20\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x6D\x73\x67\x2D\x69\x63\x6F\x6E\x20\x6D\x73\x67\x2D","\x2D\x69\x63\x6F\x6E\x22\x3E\x3C\x2F\x64\x69\x76\x3E\x20\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x6D\x73\x67\x2D\x63\x6F\x6E\x74\x65\x6E\x74\x20\x6D\x73\x67\x2D","\x2D\x74\x65\x78\x74\x22\x3E\x3C\x73\x70\x61\x6E\x20\x63\x6C\x61\x73\x73\x3D\x22\x6D\x73\x67\x2D\x63\x6F\x6E\x74\x65\x6E\x74\x2D\x74\x69\x74\x6C\x65\x22\x3E","\x3C\x2F\x73\x70\x61\x6E\x3E\x3C\x73\x70\x61\x6E\x20\x63\x6C\x61\x73\x73\x3D\x22\x6D\x73\x67\x2D\x63\x6F\x6E\x74\x65\x6E\x74\x2D\x63\x6F\x6E\x74\x65\x6E\x74\x22\x3E","\x3C\x2F\x73\x70\x61\x6E\x3E\x3C\x2F\x64\x69\x76\x3E\x20\x3C\x2F\x64\x69\x76\x3E","\x61\x72\x65\x61","\x6D\x73\x67","\x62\x6F\x78\x2D\x73\x68\x61\x64\x6F\x77","\x23\x6C\x61\x79\x75\x69\x2D\x6C\x61\x79\x65\x72","\u786E\u5B9A","\u53D6\u6D88","\x63\x6F\x6E\x66\x69\x72\x6D","\x6C\x6F\x61\x64","\x6C\x6F\x61\x64\x69\x6E\x67","\x73\x74\x61\x72\x74","\x74\x6F\x6B\x65\x6E","\x67\x65\x74","\x43\x61\x63\x68\x65","\x50\x6F\x73\x74","\x6A\x73\x6F\x6E","\x63\x6F\x64\x65","\x39\x39\x39\x39\x39","\x39\x39\x39\x39\x38","\x77\x69\x6E\x64\x6F\x77","\x2E\x2F\x4D\x65\x6D\x62\x65\x72\x2F\x6C\x6F\x67\x69\x6E\x2E\x68\x74\x6D\x6C","\x65\x6E\x64","\u64CD\u4F5C\u5931\u8D25","\u4E0E\u670D\u52A1\u5668\u4E92\u52A8\u73AF\u8282\u51FA\u73B0\u4E86\u9519\u8BEF\u3002","\x73\x68\x6F\x77","\u8BF7\u6C42\u5F02\u5E38","\x77\x61\x72\x6E","\x61\x6A\x61\x78","\x47\x65\x74","\x73\x70\x6C\x69\x74","\x6E\x61\x6D\x65","\x70\x75\x73\x68","\u6838\u5BF9\u8BA2\u5355","\x67\x65\x74\x43\x6C\x69\x65\x6E\x74\x48\x65\x69\x67\x68\x74","\x48\x65\x6C\x70\x65\x72","\x67\x65\x74\x43\x6C\x69\x65\x6E\x74\x57\x69\x64\x74\x68","\x2E\x2F\x50\x6F\x70\x2D\x75\x70\x73\x2F\x63\x68\x65\x63\x6B\x4F\x72\x64\x65\x72\x2E\x68\x74\x6D\x6C\x3F\x63\x75\x73\x74\x6F\x6D\x69\x64\x3D","\x26\x61\x6C\x6C\x6F\x63\x61\x74\x69\x6F\x6E\x50\x72\x6F\x64\x75\x63\x65\x3D\x74\x72\x75\x65","\u53D1\u7968\u6536\u636E","\x2E\x2F\x50\x6F\x70\x2D\x75\x70\x73\x2F\x69\x6E\x76\x6F\x69\x63\x65\x2E\x68\x74\x6D\x6C\x3F\x63\x75\x73\x74\x6F\x6D\x69\x64\x3D","\x50\x6F\x70\x75\x70","\u5305\u88C5","\x2E\x2F\x50\x6F\x70\x2D\x75\x70\x73\x2F\x62\x6F\x78\x2E\x68\x74\x6D\x6C\x3F\x63\x75\x73\x74\x6F\x6D\x69\x64\x3D","\u8865\u5145\u8BBE\u8BA1\u7A3F","\x2E\x2F\x50\x6F\x70\x2D\x75\x70\x73\x2F\x75\x70\x6C\x6F\x61\x64\x44\x65\x73\x69\x67\x6E\x2E\x68\x74\x6D\x6C\x3F\x63\x75\x73\x74\x6F\x6D\x69\x64\x3D","\x26\x74\x69\x74\x6C\x65\x3D","\u53D1\u7968\u660E\u7EC6","\x2E\x2F\x50\x6F\x70\x2D\x75\x70\x73\x2F\x69\x6E\x76\x6F\x69\x63\x65\x50\x72\x65\x76\x69\x65\x77\x2E\x68\x74\x6D\x6C\x3F\x63\x75\x73\x74\x6F\x6D\x69\x64\x3D","\x6F\x72\x64\x65\x72\x49\x6E\x71\x75\x69\x72\x79\x49\x6E\x66\x6F\x5F\x51\x75\x65\x72\x79","\u63D0\u9192","\x6D\x65\x73\x73\x61\x67\x65","\x6C\x6F\x61\x64\x4F\x76\x65\x72\x76\x69\x65\x77","\x4D\x65\x73\x73\x61\x67\x65","\x61\x6A\x61\x78\x47\x65\x74","\x52\x65\x71\x75\x73\x74","\u5206\u914D\u8BBE\u8BA1","\u8BF7\u786E\u8BA4\u53D1\u8D77\u8BBE\u8BA1\u4FE1\u606F\uFF0C\u8BBE\u8BA1\u8D39\uFF1A\x3C\x65\x6D\x20\x73\x74\x79\x6C\x65\x3D\x27\x63\x6F\x6C\x6F\x72\x3A\x23\x45\x38\x34\x42\x34\x43\x3B\x27\x3E\xA5\x20","\x3C\x2F\x65\x6D\x3E","\x73\x65\x6E\x64\x44\x65\x73\x69\x67\x6E","\u8BA2\u5355\u5B9A\u4EF7","\x2E\x2F\x50\x6F\x70\x2D\x75\x70\x73\x2F\x6F\x72\x64\x65\x72\x50\x72\x69\x63\x65\x2E\x68\x74\x6D\x6C\x3F\x63\x75\x73\x74\x6F\x6D\x69\x64\x3D","\x26\x63\x75\x72\x72\x65\x6E\x74\x50\x65\x72\x69\x6F\x64\x3D","\x26\x63\x75\x72\x72\x65\x6E\x74\x50\x72\x69\x63\x65\x3D","\x26\x71\x75\x6F\x74\x65\x3D","\x26\x75\x73\x65\x72\x50\x65\x72\x69\x6F\x64\x3D","\x26\x69\x6E\x71\x75\x69\x72\x79\x53\x74\x61\x74\x75\x73\x3D","\u8BA2\u5355\u652F\u4ED8","\x2E\x2F\x50\x6F\x70\x2D\x75\x70\x73\x2F\x6F\x72\x64\x65\x72\x50\x61\x79\x2E\x68\x74\x6D\x6C\x3F\x63\x75\x73\x74\x6F\x6D\x69\x64\x3D","\x26\x66\x69\x6E\x61\x6C\x50\x72\x69\x63\x65\x3D","\x64\x69\x73\x74\x72\x69\x62\x75\x74\x5F\x50\x72\x6F\x64\x75\x63\x74\x69\x6F\x6E","\u6536\u8D27\u5730\u5740","\x2E\x2F\x50\x6F\x70\x2D\x75\x70\x73\x2F\x61\x64\x64\x41\x64\x64\x72\x65\x73\x73\x2E\x68\x74\x6D\x6C\x3F\x63\x75\x73\x74\x6F\x6D\x69\x64\x3D","\x26\x6F\x70\x65\x72\x54\x79\x70\x65\x3D\x64\x69\x73\x74\x72\x69\x62\x75\x74\x69\x6F\x6E\x50\x72\x6F\x64\x75\x63\x74\x69\x6F\x6E","\x69\x6E\x76\x6F\x69\x63\x65","\x4F\x50\x45\x52","\x75\x70\x6C\x6F\x61\x64\x44\x65\x73\x69\x67\x6E","\x63\x68\x65\x63\x6B\x4F\x72\x64\x65\x72","\x70\x72\x65\x76","\u67E5\u770B\u6210\u54C1\u56FE","\x2E\x2F\x50\x6F\x70\x2D\x75\x70\x73\x2F\x70\x72\x6F\x64\x75\x63\x74\x50\x69\x63\x74\x75\x72\x65\x2E\x68\x74\x6D\x6C\x3F\x63\x75\x73\x74\x6F\x6D\x69\x64\x3D","\x26\x6F\x70\x65\x72\x54\x79\x70\x65\x3D","\x65\x64\x69\x74","\u7F16\u8F91\u6210\u54C1\u56FE"];var config={Domain:{"\x73\x79\x73\x74\x65\x6D\x41\x70\x69":_0xfdaf[0]},WebService:function(){var _0x43aex2=this;return {"\x67\x65\x74\x53\x79\x73\x50\x61\x72\x61\x6D":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[3],"\x63\x72\x65\x61\x74\x65\x4F\x72\x64\x65\x72\x49\x64":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[4],"\x6F\x72\x64\x65\x72\x53\x75\x6D\x6D\x61\x72\x79\x49\x6E\x66\x6F\x5F\x49\x6E\x73\x65\x72\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[5],"\x61\x75\x74\x6F\x50\x72\x69\x63\x65":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[6],"\x73\x65\x6E\x64\x44\x65\x73\x69\x67\x6E":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[7],"\x6F\x72\x64\x65\x72\x5F\x46\x69\x6E\x61\x6C\x6C\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[8],"\x6F\x72\x64\x65\x72\x5F\x50\x61\x79\x46\x69\x6E\x61\x6C\x6C\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[9],"\x6C\x6F\x67\x69\x73\x74\x69\x63\x73\x43\x6F\x6D\x70\x61\x6E\x79\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[10],"\x6F\x72\x64\x65\x72\x50\x72\x6F\x64\x75\x63\x74\x49\x6E\x66\x6F\x49\x6D\x61\x67\x65\x73\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[11],"\x6C\x6F\x67\x69\x73\x74\x69\x63\x73\x5F\x55\x70\x6C\x6F\x61\x64":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[12],"\x73\x65\x6C\x65\x63\x74\x5F\x4C\x6F\x67\x69\x73\x74\x69\x63\x73":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[13],"\x63\x6F\x6E\x74\x69\x6E\x75\x65\x5F\x50\x72\x6F\x64\x75\x63\x74\x69\x6F\x6E":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[14],"\x64\x69\x73\x74\x72\x69\x62\x75\x74\x5F\x50\x72\x6F\x64\x75\x63\x74\x69\x6F\x6E":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[15],"\x75\x70\x64\x61\x74\x65\x4F\x72\x64\x65\x72\x51\x75\x6F\x74\x65\x49\x74\x65\x6D":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[16],"\x6F\x72\x64\x65\x72\x53\x75\x70\x70\x6C\x65\x6D\x65\x6E\x74\x61\x72\x79\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[17],"\x62\x75\x73\x69\x6E\x65\x73\x73\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[18],"\x6F\x72\x64\x65\x72\x50\x72\x6F\x64\x75\x63\x74\x49\x6E\x66\x6F\x55\x70\x64\x61\x74\x65\x49\x6D\x61\x67\x65\x73":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[19],"\x6F\x72\x64\x65\x72\x4C\x6F\x67\x69\x73\x74\x69\x63\x73\x53\x74\x61\x74\x75\x73\x5F\x55\x70\x64\x61\x74\x65":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[20],"\x6F\x72\x64\x65\x72\x53\x75\x70\x70\x6C\x65\x6D\x65\x6E\x74\x61\x72\x79\x5F\x53\x65\x61\x72\x63\x68":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[21],"\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x49\x6E\x66\x6F\x5F\x55\x70\x64\x61\x74\x65":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[22],"\x6F\x72\x64\x65\x72\x53\x75\x70\x70\x6C\x65\x6D\x65\x6E\x74\x61\x72\x79\x43\x6F\x75\x6E\x74\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[23],"\x6F\x72\x64\x65\x72\x50\x72\x6F\x64\x75\x63\x74\x49\x6E\x66\x6F\x41\x63\x63\x65\x70\x74\x5F\x55\x70\x64\x61\x74\x65":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[24],"\x6D\x65\x73\x73\x61\x67\x65\x43\x6F\x75\x6E\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[25],"\x6D\x65\x73\x73\x61\x67\x65\x53\x75\x6D\x6D\x61\x72\x79\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[26],"\x6F\x72\x64\x65\x72\x53\x75\x6D\x6D\x61\x72\x79\x49\x6E\x66\x6F\x5F\x55\x70\x64\x61\x74\x65":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[27],"\x6D\x61\x72\x6B\x65\x64\x55\x70\x52\x65\x61\x64":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[28],"\x62\x61\x74\x63\x68\x4D\x61\x72\x6B\x65\x64\x55\x70\x52\x65\x61\x64":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[29],"\x6F\x72\x64\x65\x72\x42\x6F\x78\x49\x6E\x73\x65\x72\x74\x5F\x49\x6E\x73\x65\x72\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[30],"\x6F\x72\x64\x65\x72\x42\x6F\x78\x41\x6C\x6C\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[31],"\x6F\x72\x64\x65\x72\x50\x72\x6F\x64\x75\x63\x74\x49\x6E\x66\x6F\x57\x61\x69\x74\x50\x72\x6F\x64\x75\x63\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[32],"\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x49\x6E\x66\x6F\x53\x65\x61\x72\x63\x68\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[33],"\x6F\x72\x64\x65\x72\x53\x75\x6D\x6D\x61\x72\x79\x49\x6E\x66\x6F\x42\x79\x4F\x72\x64\x65\x72\x69\x64":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[34],"\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x49\x6E\x66\x6F\x44\x65\x73\x69\x67\x6E\x54\x72\x61\x6E\x73\x66\x65\x72\x5F\x55\x70\x64\x61\x74\x65":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[35],"\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x50\x61\x74\x74\x65\x72\x6E\x42\x79\x49\x64\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[36],"\x6F\x72\x64\x65\x72\x49\x6E\x76\x6F\x69\x63\x65\x50\x61\x67\x65\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[37],"\x6F\x72\x64\x65\x72\x49\x6E\x76\x6F\x69\x63\x65\x53\x69\x67\x6E\x5F\x55\x70\x64\x61\x74\x65":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[38],"\x6F\x72\x64\x65\x72\x49\x6E\x76\x6F\x69\x63\x65\x44\x65\x74\x61\x69\x6C\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[39],"\x41\x63\x63\x6F\x75\x6E\x74\x49\x6E\x66\x6F\x5F\x49\x6E\x73\x65\x72\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[40],"\x75\x73\x65\x72\x41\x63\x63\x6F\x75\x6E\x74\x49\x6E\x66\x6F\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[41],"\x75\x73\x65\x72\x50\x61\x73\x73\x77\x6F\x72\x64\x5F\x55\x70\x64\x61\x74\x65":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[42],"\x75\x70\x6C\x6F\x61\x64\x49\x6D\x61\x67\x65":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[43],"\x75\x70\x6C\x6F\x61\x64\x41\x63\x63\x65\x73\x73\x6F\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[44],"\x6F\x72\x64\x65\x72\x51\x75\x6F\x74\x65\x49\x6E\x66\x6F\x5F\x49\x6E\x73\x65\x72\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[45],"\x6F\x72\x64\x65\x72\x49\x6E\x71\x75\x69\x72\x79\x49\x6E\x66\x6F\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[46],"\x6F\x72\x64\x65\x72\x42\x61\x72\x67\x69\x6E\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[47],"\x6F\x72\x64\x65\x72\x42\x61\x72\x67\x69\x6E\x5F\x44\x6F\x69\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[48],"\x64\x65\x73\x69\x67\x6E\x46\x65\x65\x5F\x49\x6E\x69\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[49],"\x64\x65\x73\x69\x67\x6E\x46\x65\x65\x5F\x53\x75\x62\x6D\x69\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[50],"\x6F\x72\x64\x65\x72\x53\x75\x6D\x6D\x61\x72\x79\x49\x6E\x66\x6F\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[51],"\x6F\x72\x64\x65\x72\x53\x75\x6D\x6D\x61\x72\x79\x49\x6E\x66\x6F\x41\x63\x63\x65\x73\x73\x6F\x72\x79\x5F\x55\x70\x64\x61\x74\x65":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[52],"\x6C\x6F\x67\x69\x73\x74\x69\x63\x73\x5F\x49\x6E\x66\x6F":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[53],"\x63\x75\x73\x74\x6F\x6D\x5F\x51\x75\x6F\x74\x61\x74\x69\x6F\x6E":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[54],"\x75\x70\x64\x61\x74\x65\x50\x72\x69\x63\x65":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[55],"\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x50\x61\x74\x74\x65\x72\x6E\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[56],"\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x50\x61\x74\x74\x65\x72\x6E\x5F\x49\x6E\x73\x65\x72\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[57],"\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x4D\x65\x73\x73\x61\x67\x65\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[58],"\x6F\x72\x64\x65\x72\x44\x65\x73\x69\x67\x6E\x4D\x65\x73\x73\x61\x67\x65\x5F\x49\x6E\x73\x65\x72\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[59],"\x63\x68\x6F\x6F\x73\x65\x44\x65\x73\x69\x67\x6E":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[60],"\x69\x6E\x76\x6F\x69\x63\x65\x5F\x55\x70\x64\x61\x74\x65":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[61],"\x69\x6E\x76\x6F\x69\x63\x65\x5F\x49\x6E\x69\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[62],"\x6C\x6F\x67\x69\x73\x74\x69\x63\x73\x5F\x43\x68\x65\x63\x6B":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[63],"\x6F\x72\x64\x65\x72\x42\x6F\x78\x49\x6E\x66\x6F\x50\x61\x67\x65\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[64],"\x6F\x72\x64\x65\x72\x42\x6F\x78\x44\x65\x74\x61\x69\x6C\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[65],"\x6F\x72\x64\x65\x72\x4C\x6F\x67\x69\x73\x74\x69\x63\x73\x42\x69\x6C\x6C\x4F\x72\x64\x65\x72\x5F\x51\x75\x65\x72\x79":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[66],"\x65\x78\x70\x6F\x72\x74\x59\x69\x65\x6C\x64\x4C\x69\x73\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[67],"\x64\x6F\x77\x6E\x4D\x61\x6E\x4F\x72\x64\x65\x72":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[68],"\x61\x6C\x67\x6F\x72\x69\x74\x68\x6D\x54\x72\x61\x69\x6E\x6E\x69\x6E\x67\x49\x6E\x73\x65\x72\x74":_0x43aex2[_0xfdaf[2]][_0xfdaf[1]]+ _0xfdaf[69]}}};Date[_0xfdaf[71]][_0xfdaf[70]]= function(_0x43aex3){var _0x43aex4={"\x4D\x2B":this[_0xfdaf[72]]()+ 1,"\x64\x2B":this[_0xfdaf[73]](),"\x68\x2B":this[_0xfdaf[74]](),"\x6D\x2B":this[_0xfdaf[75]](),"\x73\x2B":this[_0xfdaf[76]](),"\x71\x2B":Math[_0xfdaf[77]]((this[_0xfdaf[72]]()+ 3)/ 3),"\x53":this[_0xfdaf[78]]()};if(/(y+)/[_0xfdaf[79]](_0x43aex3)){_0x43aex3= _0x43aex3[_0xfdaf[85]](RegExp.$1,(this[_0xfdaf[83]]()+ _0xfdaf[84])[_0xfdaf[82]](4- RegExp[_0xfdaf[81]][_0xfdaf[80]]))};for(var _0x43aex5 in _0x43aex4){if( new RegExp(_0xfdaf[86]+ _0x43aex5+ _0xfdaf[87])[_0xfdaf[79]](_0x43aex3)){_0x43aex3= _0x43aex3[_0xfdaf[85]](RegExp.$1,(RegExp[_0xfdaf[81]][_0xfdaf[80]]== 1)?(_0x43aex4[_0x43aex5]):((_0xfdaf[88]+ _0x43aex4[_0x43aex5])[_0xfdaf[82]]((_0xfdaf[84]+ _0x43aex4[_0x43aex5])[_0xfdaf[80]])))}};return _0x43aex3};Number[_0xfdaf[71]][_0xfdaf[89]]= function(_0x43aex6,_0x43aex7,_0x43aex8,_0x43aex9){_0x43aex6=  !isNaN(_0x43aex6= Math[_0xfdaf[90]](_0x43aex6))?_0x43aex6:2;_0x43aex7= _0x43aex7!== undefined?_0x43aex7:_0xfdaf[91];_0x43aex8= _0x43aex8|| _0xfdaf[92];_0x43aex9= _0x43aex9|| _0xfdaf[93];var _0x43aexa=this,_0x43aexb=_0x43aexa< 0?_0xfdaf[94]:_0xfdaf[84],_0x43aexc=parseInt(_0x43aexa= Math[_0xfdaf[90]](+_0x43aexa|| 0)[_0xfdaf[95]](_0x43aex6),10)+ _0xfdaf[84],_0x43aexd=(_0x43aexd= _0x43aexc[_0xfdaf[80]])> 3?_0x43aexd% 3:0;return _0x43aex7+ _0x43aexb+ (_0x43aexd?_0x43aexc[_0xfdaf[82]](0,_0x43aexd)+ _0x43aex8:_0xfdaf[84])+ _0x43aexc[_0xfdaf[82]](_0x43aexd)[_0xfdaf[85]](/(\d{3})(?=\d)/g,_0xfdaf[81]+ _0x43aex8)+ (_0x43aex6?_0x43aex9+ Math[_0xfdaf[90]](_0x43aexa- _0x43aexc)[_0xfdaf[95]](_0x43aex6)[_0xfdaf[96]](2):_0xfdaf[84])};Number[_0xfdaf[71]][_0xfdaf[95]]= function(_0x43aexe){var _0x43aexf=this+ _0xfdaf[84];if(!_0x43aexe){_0x43aexe= 0};if(_0x43aexf[_0xfdaf[97]](_0xfdaf[93])==  -1){_0x43aexf+= _0xfdaf[93]};_0x43aexf+=  new Array(_0x43aexe+ 1)[_0xfdaf[99]](_0xfdaf[98]);if( new RegExp(_0xfdaf[100]+ (_0x43aexe+ 1)+ _0xfdaf[101])[_0xfdaf[79]](_0x43aexf)){var _0x43aexf=_0xfdaf[98]+ RegExp[_0xfdaf[102]],_0x43aex10=RegExp[_0xfdaf[81]],_0x43aex11=RegExp[_0xfdaf[103]][_0xfdaf[80]],_0x43aex12=true;if(_0x43aex11== _0x43aexe+ 2){_0x43aex11= _0x43aexf[_0xfdaf[104]](/\d/g);if(parseInt(_0x43aex11[_0x43aex11[_0xfdaf[80]]- 1])> 4){for(var _0x43aexc=_0x43aex11[_0xfdaf[80]]- 2;_0x43aexc>= 0;_0x43aexc--){_0x43aex11[_0x43aexc]= parseInt(_0x43aex11[_0x43aexc])+ 1;if(_0x43aex11[_0x43aexc]== 10){_0x43aex11[_0x43aexc]= 0;_0x43aex12= _0x43aexc!= 1}else {break}}};_0x43aexf= _0x43aex11[_0xfdaf[99]](_0xfdaf[84])[_0xfdaf[85]]( new RegExp(_0xfdaf[105]+ _0x43aexe+ _0xfdaf[106]),_0xfdaf[107])};if(_0x43aex12){_0x43aexf= _0x43aexf[_0xfdaf[82]](1)};return (_0x43aex10+ _0x43aexf)[_0xfdaf[85]](/\.$/,_0xfdaf[84])};return this+ _0xfdaf[84]};$(function(){inputCheck()});function inputCheck(){function _0x43aex14(_0x43aex15){if(isNaN(_0x43aex15)){_0x43aex15= _0x43aex15[_0xfdaf[85]](/[^0-9-.]/g,_0xfdaf[84])};return parseFloat(_0x43aex15)}$(_0xfdaf[110])[_0xfdaf[109]](_0xfdaf[108]);$(_0xfdaf[110])[_0xfdaf[108]](function(){_0x43aex16($(this)[0])});function _0x43aex16(_0x43aex17){_0x43aex17[_0xfdaf[111]]= _0x43aex17[_0xfdaf[111]][_0xfdaf[85]](/[^0-9.]/g,_0xfdaf[84])}$(_0xfdaf[112])[_0xfdaf[109]](_0xfdaf[108]);$(_0xfdaf[112])[_0xfdaf[108]](function(){var _0x43aex18=$(this);var _0x43aex19=_0x43aex18[_0xfdaf[113]]()[_0xfdaf[104]](/(-?\d+\.?\d{0,1})|-/);var _0x43aex1a=_0xfdaf[84];if(_0x43aex19!= null){_0x43aex1a= _0x43aex19[0]};_0x43aex18[_0xfdaf[113]](_0x43aex1a)});$(_0xfdaf[112])[_0xfdaf[109]](_0xfdaf[114]);$(_0xfdaf[112])[_0xfdaf[114]](function(){var _0x43aex18=$(this);var _0x43aex15=parseFloat(_0x43aex18[_0xfdaf[113]]())[_0xfdaf[95]](1);if(_0x43aex15== _0xfdaf[115]){var _0x43aex1b=$(_0x43aex18)[_0xfdaf[117]](_0xfdaf[116]);if(_0x43aex1b){_0x43aex18[_0xfdaf[113]](_0x43aex1b)}else {_0x43aex18[_0xfdaf[113]](_0xfdaf[118])}}else {_0x43aex18[_0xfdaf[113]](_0x43aex15)}});$(_0xfdaf[119])[_0xfdaf[109]](_0xfdaf[108]);$(_0xfdaf[119])[_0xfdaf[108]](function(){var _0x43aex18=$(this);var _0x43aex19=_0x43aex18[_0xfdaf[113]]()[_0xfdaf[104]](/(-?\d+\.?\d{0,2})|-/);var _0x43aex1a=_0xfdaf[84];if(_0x43aex19!= null){_0x43aex1a= _0x43aex19[0]};_0x43aex18[_0xfdaf[113]](_0x43aex1a)});$(_0xfdaf[119])[_0xfdaf[109]](_0xfdaf[114]);$(_0xfdaf[119])[_0xfdaf[114]](function(){var _0x43aex18=$(this);var _0x43aex15=parseFloat(_0x43aex18[_0xfdaf[113]]());if(isNaN(_0x43aex15)){var _0x43aex1b=$(_0x43aex18)[_0xfdaf[117]](_0xfdaf[116]);if(_0x43aex1b){_0x43aex18[_0xfdaf[113]](_0x43aex1b)}else {_0x43aex18[_0xfdaf[113]](_0xfdaf[120])}}else {_0x43aex18[_0xfdaf[113]](_0x43aex15)}});$(_0xfdaf[122])[_0xfdaf[109]](_0xfdaf[121]);$(_0xfdaf[122])[_0xfdaf[121]](function(){var _0x43aex1c=$(this);var _0x43aex1d=_0x43aex14(_0x43aex1c[_0xfdaf[113]]());if(_0x43aex1d== 0){_0x43aex1d= _0xfdaf[84]};_0x43aex1c[_0xfdaf[113]](_0x43aex1d)});$(_0xfdaf[122])[_0xfdaf[109]](_0xfdaf[108]);$(_0xfdaf[122])[_0xfdaf[108]](function(){var _0x43aex18=$(this);var _0x43aex19=_0x43aex18[_0xfdaf[113]]()[_0xfdaf[104]](/(-?\d+\.?\d{0,2})|-/);var _0x43aex1a=_0xfdaf[84];if(_0x43aex19!= null){_0x43aex1a= _0x43aex19[0]};_0x43aex18[_0xfdaf[113]](_0x43aex1a)});$(_0xfdaf[122])[_0xfdaf[109]](_0xfdaf[114]);$(_0xfdaf[122])[_0xfdaf[114]](function(){var _0x43aex18=$(this);var _0x43aex15=parseFloat(_0x43aex18[_0xfdaf[113]]());_0x43aex18[_0xfdaf[113]](_0x43aex15[_0xfdaf[89]](2,_0xfdaf[84],_0xfdaf[92],_0xfdaf[93]))})}var Helper={Date:{timeDifference:function(_0x43aex1f,_0x43aex20){if(_0x43aex1f[_0xfdaf[85]]){_0x43aex1f= _0x43aex1f[_0xfdaf[85]](/\-/g,_0xfdaf[123]);_0x43aex20= _0x43aex20[_0xfdaf[85]](/\-/g,_0xfdaf[123])};var _0x43aex21= new Date(_0x43aex1f);var _0x43aex22= new Date(_0x43aex20);return parseInt(_0x43aex22- _0x43aex21)/ 1000},countdown:function(_0x43aex23){var _0x43aex24= new Date();if(_0x43aex23[_0xfdaf[85]]){_0x43aex23= _0x43aex23[_0xfdaf[85]](/\-/g,_0xfdaf[123])};var _0x43aex25= new Date(_0x43aex23);var _0x43aex26=_0x43aex25[_0xfdaf[124]]()- _0x43aex24[_0xfdaf[124]]();var _0x43aex27=parseInt(_0x43aex26/ 1000/ 60/ 60/ 24,10);var _0x43aex28=parseInt(_0x43aex26/ 1000/ 60/ 60% 24,10);var _0x43aex29=parseInt(_0x43aex26/ 1000/ 60% 60,10);var _0x43aex2a=parseInt(_0x43aex26/ 1000% 60,10);_0x43aex27= _0x43aex2b(_0x43aex27);_0x43aex28= _0x43aex2b(_0x43aex28);_0x43aex29= _0x43aex2b(_0x43aex29);_0x43aex2a= _0x43aex2b(_0x43aex2a);function _0x43aex2b(_0x43aexc){if(_0x43aexc< 10){_0x43aexc= _0xfdaf[98]+ _0x43aexc};return _0x43aexc}return _0x43aex27+ _0xfdaf[125]+ _0x43aex28+ _0xfdaf[126]+ _0x43aex29+ _0xfdaf[127]},getDate:function(_0x43aex2c){_0x43aex2c= _0x43aex2c?_0x43aex2c:_0xfdaf[128];var _0x43aex2d= new Date();var _0x43aex2e=_0x43aex2d[_0xfdaf[124]]();var _0x43aex2f= new Date(_0x43aex2e);return _0x43aex2f.Format(_0x43aex2c)},getTimestamp:function(_0x43aex30){if(!_0x43aex30){return 1924905600000};if(_0x43aex30[_0xfdaf[85]]){_0x43aex30= _0x43aex30[_0xfdaf[85]](/\-/g,_0xfdaf[123])};var _0x43aex31=Date[_0xfdaf[129]]( new Date(_0x43aex30));_0x43aex31= _0x43aex31;return _0x43aex31},getLocalTime:function(_0x43aex32,_0x43aex2c){try{if(_0x43aex2c){return  new Date(parseInt(_0x43aex32)* 1000).Format(_0x43aex2c)}}catch(error){console[_0xfdaf[130]](error)}},getCurrentMonthLast:function(_0x43aex33){var _0x43aex34= new Date();var _0x43aex35=_0x43aex34[_0xfdaf[72]]();var _0x43aex36=_0x43aex33;var _0x43aex37= new Date(_0x43aex34[_0xfdaf[83]](),_0x43aex36,1);var _0x43aex38=1000* 60* 60* 24;return  new Date(_0x43aex37[_0xfdaf[124]]()- _0x43aex38).Format(_0xfdaf[131])},getNdayDate:function(_0x43aex39,_0x43aex2c){_0x43aex2c= _0x43aex2c?_0x43aex2c:_0xfdaf[128];var _0x43aex2d= new Date();var _0x43aex2e=_0x43aex2d[_0xfdaf[124]]()+ 1000* 60* 60* 24* _0x43aex39;var _0x43aex2f= new Date(_0x43aex2e);return _0x43aex2f.Format(_0x43aex2c)}},getUrlParam:function(_0x43aex3a,_0x43aex3b){var _0x43aex19= new RegExp(_0xfdaf[132]+ _0x43aex3a+ _0xfdaf[133]);var _0x43aex3c=window[_0xfdaf[135]][_0xfdaf[134]][_0xfdaf[82]](1)[_0xfdaf[104]](_0x43aex19);if(_0x43aex3b){_0x43aex3c= decodeURI(window[_0xfdaf[135]][_0xfdaf[134]])[_0xfdaf[82]](1)[_0xfdaf[104]](_0x43aex19)};if(_0x43aex3c!= null){return unescape(_0x43aex3c[2])};return null},download:function(_0x43aex3d){if(navigator[_0xfdaf[137]][_0xfdaf[97]](_0xfdaf[136])>  -1){window[_0xfdaf[135]]= _0x43aex3d}else {var _0x43aex3e=document[_0xfdaf[139]](_0xfdaf[138]);_0x43aex3e[_0xfdaf[140]]= _0x43aex3d;_0x43aex3e[_0xfdaf[141]]()}},shake:function(_0x43aex3f){var _0x43aexc=0;var _0x43aex40=3000;var _0x43aex41=setInterval(function(){_0x43aexc+= 200;_0x43aex3f[_0xfdaf[143]](_0xfdaf[142]);if(_0x43aexc>= _0x43aex40){clearInterval(_0x43aex41);_0x43aex3f[_0xfdaf[144]](_0xfdaf[142])}else {if(_0x43aexc/ 600== 0){_0x43aex3f[_0xfdaf[144]](_0xfdaf[142])}}},200)},dragBind:function(_0x43aex42,_0x43aex43,_0x43aex44,_0x43aex45){_0x43aex42[_0xfdaf[145]]= function(_0x43aex46){_0x43aex46[_0xfdaf[146]]();$(this)[_0xfdaf[147]](_0x43aex44)};_0x43aex42[_0xfdaf[148]]= function(){$(this)[_0xfdaf[147]](_0x43aex45)};_0x43aex42[_0xfdaf[149]]= function(_0x43aex46){$(this)[_0xfdaf[147]](_0x43aex45);_0x43aex46[_0xfdaf[146]]();var _0x43aex47=_0x43aex46[_0xfdaf[151]][_0xfdaf[150]];_0x43aex43[_0xfdaf[150]]= _0x43aex47}},getStrLeng:function(_0x43aex48){var _0x43aex49=0;var _0x43aex4a=_0x43aex48[_0xfdaf[80]];var _0x43aex4b=-1;for(var _0x43aexc=0;_0x43aexc< _0x43aex4a;_0x43aexc++){_0x43aex4b= _0x43aex48[_0xfdaf[152]](_0x43aexc);if(_0x43aex4b>= 0&& _0x43aex4b<= 128){_0x43aex49+= 1}else {_0x43aex49+= 2}};return _0x43aex49},Cache:{set:function(_0x43aex4c,_0x43aex4d,_0x43aex4e){var _0x43aex4f={path:_0xfdaf[123]};if(_0x43aex4e){_0x43aex4f[_0xfdaf[153]]= _0x43aex4e};$[_0xfdaf[154]](_0x43aex4c,_0x43aex4d,_0x43aex4f)},get:function(_0x43aex4c){return $[_0xfdaf[154]](_0x43aex4c)}},Sleep:function(_0x43aex50,_0x43aex51){if(!_0x43aex50){console[_0xfdaf[156]](_0xfdaf[155]);return};var _0x43aex52=0;var _0x43aex53= new Date();while(_0x43aex52< _0x43aex50){var _0x43aex24= new Date();_0x43aex52= _0x43aex24- _0x43aex53};if(_0x43aex51){_0x43aex51()}},getStrLeng:function(_0x43aex48){var _0x43aex49=0;var _0x43aex4a=_0x43aex48[_0xfdaf[80]];var _0x43aex4b=-1;for(var _0x43aexc=0;_0x43aexc< _0x43aex4a;_0x43aexc++){_0x43aex4b= _0x43aex48[_0xfdaf[152]](_0x43aexc);if(_0x43aex4b>= 0&& _0x43aex4b<= 128){_0x43aex49+= 1}else {_0x43aex49+= 2}};return _0x43aex49},CopyToClipboard:function(_0x43aex54,_0x43aex55){if(!$(_0xfdaf[157])){$(_0xfdaf[159]+ _0x43aex55)[_0xfdaf[117]](_0xfdaf[158],_0xfdaf[157]);document[_0xfdaf[161]](_0xfdaf[160]);var _0x43aex56= new ClipboardJS(_0xfdaf[159]+ _0x43aex55);_0x43aex56[_0xfdaf[171]](_0xfdaf[162],function(_0x43aex57){console[_0xfdaf[165]](_0xfdaf[163],_0x43aex57[_0xfdaf[164]]);console[_0xfdaf[165]](_0xfdaf[166],_0x43aex57[_0xfdaf[167]]);console[_0xfdaf[165]](_0xfdaf[168],_0x43aex57[_0xfdaf[169]]);_0x43aex57[_0xfdaf[170]]()});_0x43aex56[_0xfdaf[171]](_0xfdaf[156],function(_0x43aex57){console[_0xfdaf[156]](_0xfdaf[163],_0x43aex57[_0xfdaf[164]]);console[_0xfdaf[156]](_0xfdaf[168],_0x43aex57[_0xfdaf[169]])})};$(_0xfdaf[157])[_0xfdaf[113]](_0x43aex54);$(_0xfdaf[159]+ _0x43aex55)[_0xfdaf[141]]()},getClientHeight:function(){return $(window)[_0xfdaf[172]]()},getClientWidth:function(){return $(window)[_0xfdaf[173]]()}};var Popup={layerIndex:{},callback:{},open:function(_0x43aex59,_0x43aex5a,_0x43aex5b,_0x43aex3d,_0x43aex5c){var _0x43aex2=this;var _0x43aex5d=layer[_0xfdaf[175]]({type:2,title:_0x43aex59,shadeClose:false,shade:0.1,area:[_0x43aex5a+ _0xfdaf[174],_0x43aex5b+ _0xfdaf[174]],resize:false,content:_0x43aex3d});_0x43aex2[_0xfdaf[176]][_0x43aex59]= _0x43aex5d;if(_0x43aex5c){_0x43aex2[_0xfdaf[177]][_0x43aex59]= _0x43aex5c}},close:function(_0x43aex59){var _0x43aex2=this;if(_0x43aex59!= null&& _0x43aex59!= _0xfdaf[84]){var _0x43aex5d=_0x43aex2[_0xfdaf[176]][_0x43aex59];if( typeof _0x43aex5d!= _0xfdaf[178]&& _0x43aex5d!= null){delete _0x43aex2[_0xfdaf[176]][_0x43aex59];layer[_0xfdaf[179]](_0x43aex5d)}}else {layer[_0xfdaf[180]]();_0x43aex2[_0xfdaf[177]]= {}}}};var MsgState={"\x53\x75\x63\x63\x65\x73\x73":1,"\x57\x61\x72\x6E\x69\x6E\x67":2,"\x46\x61\x69\x6C":3};var Message={show:function(_0x43aex59,_0x43aex54,_0x43aex60,_0x43aex50,_0x43aex51,_0x43aex61){_0x43aex59=  !_0x43aex59?_0x43aex59= _0xfdaf[181]:_0x43aex59;_0x43aex50=  !_0x43aex50?2000:_0x43aex50;var _0x43aex62=_0xfdaf[84];var _0x43aex63=_0xfdaf[84];switch(_0x43aex60){case 1:_0x43aex62= _0xfdaf[182];_0x43aex63= _0xfdaf[162];break;case 2:_0x43aex62= _0xfdaf[183];_0x43aex63= _0xfdaf[184];break;case 3:_0x43aex62= _0xfdaf[185];_0x43aex63= _0xfdaf[186];break};var _0x43aex64=_0xfdaf[187]+ _0x43aex63+ _0xfdaf[188]+ _0x43aex63+ _0xfdaf[189]+ _0x43aex63+ _0xfdaf[190]+ _0x43aex59+ _0xfdaf[191]+ _0x43aex54+ _0xfdaf[192];var _0x43aex4f={type:1,icon:1,content:_0x43aex64,time:_0x43aex50};if(_0x43aex61){_0x43aex4f[_0xfdaf[193]]= [_0x43aex61[_0xfdaf[173]]+ _0xfdaf[174],_0x43aex61[_0xfdaf[172]]+ _0xfdaf[174]]};var _0x43aex5d=layer[_0xfdaf[194]](_0xfdaf[84],_0x43aex4f,_0x43aex51);$(_0xfdaf[196]+ _0x43aex5d)[_0xfdaf[147]](_0xfdaf[195],_0x43aex62)}};var Confirm=function(_0x43aex59,_0x43aex66,_0x43aex5a,_0x43aex5b,_0x43aex67,_0x43aex51){var _0x43aex68={};var _0x43aex69=_0x43aex67?[_0xfdaf[197]]:[_0xfdaf[197],_0xfdaf[198]];var _0x43aex5d=layer[_0xfdaf[199]](_0x43aex66,{btn:_0x43aex69,area:[_0x43aex5a+ _0xfdaf[174],_0x43aex5b+ _0xfdaf[174]],title:_0x43aex59},function(){if(_0x43aex51){_0x43aex51();_0x43aex6a()}else {_0x43aex6a()}},function(){_0x43aex6a()});_0x43aex68[_0x43aex59]= _0x43aex5d;function _0x43aex6a(){var _0x43aex6b=_0x43aex68[_0x43aex59];if( typeof _0x43aex6b!= _0xfdaf[178]&& _0x43aex6b!= null){delete _0x43aex68[_0x43aex59];layer[_0xfdaf[179]](_0x43aex6b)}}};var Loading={start:function(_0x43aex6d){var _0x43aex5d=layer[_0xfdaf[200]](2,_0x43aex6d)},end:function(){layer[_0xfdaf[180]](_0xfdaf[201])}};var Requst={ajaxPost:function(_0x43aex3d,_0x43aex4f,_0x43aex6f,_0x43aex70,_0x43aex71,_0x43aex72){if(!_0x43aex72){Loading[_0xfdaf[202]]()};var _0x43aex73=Helper[_0xfdaf[205]][_0xfdaf[204]](_0xfdaf[203]);$[_0xfdaf[219]]({type:_0xfdaf[206],url:_0x43aex3d,data:_0x43aex4f,dataType:_0xfdaf[207],async:_0x43aex6f,headers:{"\x74\x6F\x6B\x65\x6E":_0x43aex73},timeout:10000,success:function(_0x43aex4f){if(_0x43aex4f[_0xfdaf[208]]&& _0x43aex4f[_0xfdaf[208]]== _0xfdaf[209]|| _0x43aex4f[_0xfdaf[208]]== _0xfdaf[210]){top[_0xfdaf[211]][_0xfdaf[135]][_0xfdaf[140]]= _0xfdaf[212]};if(!_0x43aex72){Loading[_0xfdaf[213]]()};_0x43aex70(_0x43aex4f)},error:function(_0x43aex4f){if(!_0x43aex72){Loading[_0xfdaf[213]]()};if(_0x43aex71){_0x43aex71(_0x43aex4f)}else {Message[_0xfdaf[216]](_0xfdaf[214],_0xfdaf[215],MsgState.Fail,2000);console[_0xfdaf[218]](_0xfdaf[217])}}})},ajaxGet:function(_0x43aex3d,_0x43aex4f,_0x43aex6f,_0x43aex70,_0x43aex71,_0x43aex72){if(!_0x43aex72){Loading[_0xfdaf[202]]()};var _0x43aex73=Helper[_0xfdaf[205]][_0xfdaf[204]](_0xfdaf[203]);$[_0xfdaf[219]]({type:_0xfdaf[220],url:_0x43aex3d,data:_0x43aex4f,dataType:_0xfdaf[207],async:_0x43aex6f,headers:{"\x74\x6F\x6B\x65\x6E":_0x43aex73},timeout:10000,success:function(_0x43aex4f){if(_0x43aex4f[_0xfdaf[208]]&& _0x43aex4f[_0xfdaf[208]]== _0xfdaf[209]|| _0x43aex4f[_0xfdaf[208]]== _0xfdaf[210]){top[_0xfdaf[211]][_0xfdaf[135]][_0xfdaf[140]]= _0xfdaf[212]};if(!_0x43aex72){Loading[_0xfdaf[213]]()};_0x43aex70(_0x43aex4f)},error:function(_0x43aex4f){if(!_0x43aex72){Loading[_0xfdaf[213]]()};if(_0x43aex71){_0x43aex71(_0x43aex4f)}else {Message[_0xfdaf[216]](_0xfdaf[214],_0xfdaf[215],MsgState.Fail,2000);console[_0xfdaf[218]](_0xfdaf[217])}}})}};function ConvertIdToName(_0x43aex75,_0x43aex76){var _0x43aex77=_0x43aex76[_0xfdaf[221]](_0xfdaf[92]);var _0x43aex78=[];for(var _0x43aex79=0;_0x43aex79< _0x43aex77[_0xfdaf[80]];_0x43aex79++){if(_0x43aex77[_0x43aex79]&& _0x43aex75[_0x43aex77[_0x43aex79]]){_0x43aex78[_0xfdaf[223]](_0x43aex75[_0x43aex77[_0x43aex79]][_0xfdaf[222]])}};return _0x43aex78}var OPER={checkOrder:function(_0x43aex7b,_0x43aex59){_0x43aex59= _0x43aex59?_0x43aex59:_0xfdaf[224];var _0x43aex7c=top[_0xfdaf[226]][_0xfdaf[225]]();var _0x43aex7d=top[_0xfdaf[226]][_0xfdaf[227]]();var _0x43aex7e=_0x43aex7c- 100> 550?550:_0x43aex7c- 100;Popup[_0xfdaf[175]](_0x43aex59,939,_0x43aex7e,_0xfdaf[228]+ _0x43aex7b+ _0xfdaf[229])},invoice:function(_0x43aex7b,_0x43aex59){_0x43aex59= _0x43aex59?_0x43aex59:_0xfdaf[230];var _0x43aex7c=top[_0xfdaf[226]][_0xfdaf[225]]();var _0x43aex7d=top[_0xfdaf[226]][_0xfdaf[227]]();var _0x43aex7e=_0x43aex7c- 100> 610?610:_0x43aex7c- 100;top[_0xfdaf[232]][_0xfdaf[175]](_0x43aex59,818,_0x43aex7e,_0xfdaf[231]+ _0x43aex7b)},box:function(_0x43aex7b,_0x43aex59){_0x43aex59= _0x43aex59?_0x43aex59:_0xfdaf[233];var _0x43aex7c=top[_0xfdaf[226]][_0xfdaf[225]]();var _0x43aex7d=top[_0xfdaf[226]][_0xfdaf[227]]();var _0x43aex7e=_0x43aex7c- 100> 550?550:_0x43aex7c- 100;top[_0xfdaf[232]][_0xfdaf[175]](_0x43aex59,939,_0x43aex7e,_0xfdaf[234]+ _0x43aex7b)},uploadDesign:function(_0x43aex7b,_0x43aex59){_0x43aex59= _0x43aex59?_0x43aex59:_0xfdaf[235];var _0x43aex7c=top[_0xfdaf[226]][_0xfdaf[225]]();var _0x43aex7e=_0x43aex7c- 100> 559?559:_0x43aex7c- 100;var _0x43aex3d=encodeURI(_0xfdaf[236]+ _0x43aex7b+ _0xfdaf[237]+ _0x43aex59);top[_0xfdaf[232]][_0xfdaf[175]](_0x43aex59,830,_0x43aex7e,_0x43aex3d)},invoiceDetails:function(_0x43aex7b,_0x43aex59){_0x43aex59= _0x43aex59?_0x43aex59:_0xfdaf[238];var _0x43aex7c=top[_0xfdaf[226]][_0xfdaf[225]]();var _0x43aex7e=_0x43aex7c- 100> 559?559:_0x43aex7c- 100;top[_0xfdaf[232]][_0xfdaf[175]](_0x43aex59,560,_0x43aex7e,_0xfdaf[239]+ _0x43aex7b)},sendInquiry:function(_0x43aex7b){var _0x43aex3d=config.WebService()[_0xfdaf[240]];top[_0xfdaf[246]][_0xfdaf[245]](_0x43aex3d,{"\x63\x75\x73\x74\x6F\x6D\x69\x64":_0x43aex7b},true,function(_0x43aex4f){if(_0x43aex4f[_0xfdaf[208]]== 200){top[_0xfdaf[244]][_0xfdaf[216]](_0xfdaf[241],_0x43aex4f[_0xfdaf[242]],MsgState.Success,2000,function(){classMain[_0xfdaf[243]](null,null,null,_0x43aex7b)})}else {top[_0xfdaf[244]][_0xfdaf[216]](_0xfdaf[241],_0x43aex4f[_0xfdaf[242]],MsgState.Warning,2000,null,{"\x77\x69\x64\x74\x68":370,"\x68\x65\x69\x67\x68\x74":75})}})},distributionDesign:function(_0x43aex7f,_0x43aex80,_0x43aex7b,_0x43aex81){Confirm(_0xfdaf[247],_0xfdaf[248]+ _0x43aex81+ _0xfdaf[249],423,235,null,function(){var _0x43aex3d=config.WebService()[_0xfdaf[250]];top[_0xfdaf[246]][_0xfdaf[245]](_0x43aex3d,{"\x6F\x72\x64\x65\x72\x73\x75\x6D\x6D\x61\x72\x79\x49\x64":parseInt(_0x43aex7f),"\x6F\x72\x64\x65\x72\x49\x64":_0x43aex80,"\x63\x75\x73\x74\x6F\x6D\x49\x64":_0x43aex7b},true,function(_0x43aex4f){if(_0x43aex4f[_0xfdaf[208]]== 200){Message[_0xfdaf[216]](_0xfdaf[241],_0x43aex4f[_0xfdaf[242]],MsgState.Success,2000,function(){classMain[_0xfdaf[243]](null,null,null,_0x43aex7b)})}})})},pricing:function(_0x43aex7b,_0x43aex82,_0x43aex83,_0x43aex84,_0x43aex85,_0x43aex86){top[_0xfdaf[232]][_0xfdaf[175]](_0xfdaf[251],407,290,_0xfdaf[252]+ _0x43aex7b+ _0xfdaf[253]+ _0x43aex82+ _0xfdaf[254]+ _0x43aex83+ _0xfdaf[255]+ _0x43aex84+ _0xfdaf[256]+ _0x43aex85+ _0xfdaf[257]+ _0x43aex86)},orderPrice:function(_0x43aex7b,_0x43aex87){top[_0xfdaf[232]][_0xfdaf[175]](_0xfdaf[258],407,240,_0xfdaf[259]+ _0x43aex7b+ _0xfdaf[260]+ _0x43aex87)},distributionProduction:function(_0x43aex7b){var _0x43aex3d=config.WebService()[_0xfdaf[261]];top[_0xfdaf[246]][_0xfdaf[245]](_0x43aex3d,{"\x63\x75\x73\x74\x6F\x6D\x69\x64":_0x43aex7b},true,function(_0x43aex4f){if(_0x43aex4f[_0xfdaf[208]]== 3000){top[_0xfdaf[232]][_0xfdaf[175]](_0xfdaf[262],482,380,_0xfdaf[263]+ _0x43aex7b+ _0xfdaf[264])}else {if(_0x43aex4f[_0xfdaf[208]]== 3001){top[_0xfdaf[266]][_0xfdaf[265]](_0x43aex7b)}else {if(_0x43aex4f[_0xfdaf[208]]== 3002){top[_0xfdaf[266]][_0xfdaf[267]](_0x43aex7b)}else {top[_0xfdaf[266]][_0xfdaf[268]](_0x43aex7b,true)}}}})},productPicture:function(_0x43aex7b,_0x43aex88,_0x43aex59){if(_0x43aex88== _0xfdaf[269]){top[_0xfdaf[232]][_0xfdaf[175]](_0xfdaf[270],482,246,_0xfdaf[271]+ _0x43aex7b+ _0xfdaf[272]+ _0x43aex88)}else {if(_0x43aex88== _0xfdaf[273]){_0x43aex59= _0x43aex59?_0x43aex59:_0xfdaf[274];top[_0xfdaf[232]][_0xfdaf[175]](_0x43aex59,482,246,_0xfdaf[271]+ _0x43aex7b+ _0xfdaf[272]+ _0x43aex88)}}}}
+/**
+ * Created by inshijie on 2018/6/12.
+ */
+// *************************************************************
+// *************************************************************
+// *************************************************************
+// *************************************************************
+// 系统配置
+var config = {
+    Domain: {
+        "systemApi": "http://192.168.1.50:81",
+        //"systemApi": "http://192.168.88.1:81",
+    },
+    WebService: function () {
+        var that = this;
+        return {
+            "getSysParam":that.Domain.systemApi + "/dynamo/sysInitialize/getSysParam",//初始化参数
+            "createOrderId": that.Domain.systemApi + "/dynamo/order/createCustomid",//创建订单id
+            "orderSummaryInfo_Insert": that.Domain.systemApi + "/dynamo/order/orderSummaryInfo_Insert",//新建订单
+            "autoPrice":that.Domain.systemApi + "/dynamo/order/auto_price",//自动报价
+            "sendDesign":that.Domain.systemApi + "/design/sendDesign",//分配设计
+            "order_Finally":that.Domain.systemApi + "/dynamo/order/order_Finally",//定价
+            "order_PayFinally":that.Domain.systemApi + "/dynamo/order/order_PayFinally",//确认支付
+            "logisticsCompany_Query":that.Domain.systemApi + "/dynamo/order/logisticsCompany_Query",//获取快递公司列表
+            "orderProductInfoImages_Query":that.Domain.systemApi +"/dynamo/order/orderProductInfoImages_Query",//查看成品图
+            "logistics_Upload":that.Domain.systemApi +"/dynamo/order/logistics_Upload",//编辑物流信息
+            "select_Logistics":that.Domain.systemApi + "/dynamo/order/select_Logistics",//查看物流信息
+            "continue_Production":that.Domain.systemApi + "/dynamo/order/continue_Production",//继续分配
+            "distribut_Production":that.Domain.systemApi + "/dynamo/order/distribut_Production",//分配生产前检查
+            "updateOrderQuoteItem":that.Domain.systemApi +"/dynamo/order/updateOrderQuoteItem",//影响报价数据编辑
+            "orderSupplementary_Query": that.Domain.systemApi + "/dynamo/order/orderSupplementary_Query",//订单概览
+            "business_Query":that.Domain.systemApi + "/dynamo/order/business_Query",//左侧业务栏
+            "orderProductInfoUpdateImages":that.Domain.systemApi + "/dynamo/order/orderProductInfoUpdateImages",//编辑上传成品图
+            "orderLogisticsStatus_Update":that.Domain.systemApi + "/dynamo/order/orderLogisticsStatus_Update",//确认收货
+            "orderSupplementary_Search":that.Domain.systemApi +"/dynamo/order/orderSupplementary_Search",//搜索
+            "orderDesignInfo_Update":that.Domain.systemApi +"/dynamo/order/orderDesignInfo_Update",//设计师抢单
+            "orderSupplementaryCount_Query":that.Domain.systemApi +"/dynamo/order/orderSupplementaryCount_Query",//统计
+            "orderProductInfoAccept_Update":that.Domain.systemApi +"/dynamo/order/orderProductInfoAccept_Update",//接受生产
+            "messageCount":that.Domain.systemApi +"/dynamo/message/messageCount",//获取消息条数
+            "messageSummary_Query":that.Domain.systemApi +"/dynamo/message/messageSummary_Query",//获取消息信息
+            "orderSummaryInfo_Update":that.Domain.systemApi +"/dynamo/order/orderSummaryInfo_Update",//删除订单
+            "markedUpRead":that.Domain.systemApi +"/dynamo/message/markedUpRead",//标记已读
+            "batchMarkedUpRead":that.Domain.systemApi +"/dynamo/message/batchMarkedUpRead",//全部标记已读
+            "orderBoxInsert_Insert":that.Domain.systemApi +"/dynamo/order/orderBoxInsert_Insert",//保存盒子
+            "orderBoxAll_Query":that.Domain.systemApi +"/dynamo/order/orderBoxAll_Query",//获取盒子信息
+            "orderProductInfoWaitProduct":that.Domain.systemApi +"/dynamo/order/orderProductInfoWaitProduct",//拉取列表与数量统计
+            "orderDesignInfoSearch_Query":that.Domain.systemApi +"/dynamo/order/orderDesignInfoSearch_Query",//查询转接订单
+            "orderSummaryInfoByOrderid":that.Domain.systemApi +"/dynamo/order/orderSummaryInfoByOrderid",//转接到列表
+            "orderDesignInfoDesignTransfer_Update":that.Domain.systemApi +"/dynamo/order/orderDesignInfoDesignTransfer_Update",//转接操作
+            "orderDesignPatternById_Query":that.Domain.systemApi +"/dynamo/order/orderDesignPatternById_Query",//修正设计稿回显
+            "orderInvoicePage_Query":that.Domain.systemApi +"/dynamo/order/orderInvoicePage_Query",//票据概览
+            "orderInvoiceSign_Update":that.Domain.systemApi +"/dynamo/order/orderInvoiceSign_Update",//发票标记已开
+            "orderInvoiceDetail_Query":that.Domain.systemApi +"/dynamo/order/orderInvoiceDetail_Query",//发票明细
+
+
+
+
+
+            "AccountInfo_Insert": that.Domain.systemApi + "/dynamo/user/userAccountInfo_Insert",//注册
+            "userAccountInfo_Query": that.Domain.systemApi + "/dynamo/user/userAccountInfo_Query",//登陆
+            "userPassword_Update": that.Domain.systemApi + "/dynamo/user/userPassword_Update",//修改密码
+            "uploadImage": that.Domain.systemApi + "/dynamo/order/uploadImage",//上传图片
+            "uploadAccessory": that.Domain.systemApi + "/dynamo/order/uploadAccessory",//文件上传
+            "orderQuoteInfo_Insert":that.Domain.systemApi + "/dynamo/order/orderQuoteInfo_Insert",//报价
+            "orderInquiryInfo_Query":that.Domain.systemApi + "/dynamo/order/orderInquiryInfo_Query",//发起询价
+            "orderBargin_Query":that.Domain.systemApi + "/dynamo/order/orderBargin_Query",//发起议价
+            "orderBargin_Doit":that.Domain.systemApi + "/dynamo/order/orderBargin_Doit",//处理议价
+            "designFee_Init":that.Domain.systemApi + "/dynamo/order/designFee_Init",//设计费编辑初始化
+            "designFee_Submit":that.Domain.systemApi + "/dynamo/order/designFee_Submit",//设计费点确定按钮
+            "orderSummaryInfo_Query":that.Domain.systemApi + "/dynamo/order/orderSummaryInfo_Query",//订单详情
+            "orderSummaryInfoAccessory_Update":that.Domain.systemApi + "/dynamo/order/orderSummaryInfoAccessory_Update",//提交修改
+            "logistics_Info":that.Domain.systemApi + "/dynamo/order/logistics_Info",//编辑添加收货地址
+            "custom_Quotation":that.Domain.systemApi + "/dynamo/order/custom_Quotation",//客服报价接口
+            "updatePrice":that.Domain.systemApi + "/dynamo/order/updatePrice",//修改价格
+            "orderDesignPattern_Query":that.Domain.systemApi +"/dynamo/order/orderDesignPattern_Query",//查询设计方案
+            "orderDesignPattern_Insert":that.Domain.systemApi +"/dynamo/order/orderDesignPattern_Insert",//提交设计单
+            "orderDesignMessage_Query":that.Domain.systemApi +"/dynamo/order/orderDesignMessage_Query",//显示留言
+            "orderDesignMessage_Insert":that.Domain.systemApi +"/dynamo/order/orderDesignMessage_Insert",//提交留言
+            "chooseDesign":that.Domain.systemApi +"/dynamo/order/chooseDesign",//选定设计稿
+            "invoice_Update":that.Domain.systemApi +"/dynamo/order/invoice_Update",//发票编辑新增
+            "invoice_Init":that.Domain.systemApi +"/dynamo/order/invoice_Init",//票据明细初始化
+            "logistics_Check":that.Domain.systemApi +"/dynamo/order/logistics_Check",//核对订单
+            "orderBoxInfoPage_Query":that.Domain.systemApi +"/dynamo/order/orderBoxInfoPage_Query",//经理包装盒代开已开
+            "orderBoxDetail_Query":that.Domain.systemApi +"/dynamo/order/orderBoxDetail_Query",//包装盒详情
+            "orderLogisticsBillOrder_Query":that.Domain.systemApi +"/dynamo/order/orderLogisticsBillOrder_Query",//经理导出发货单
+            "exportYieldList":that.Domain.systemApi +"/dynamo/order/exportYieldList",//经理导出结算收益单
+            "downManOrder":that.Domain.systemApi +"/dynamo/order/downManOrder",//下载生产单
+            "algorithmTrainningInsert":that.Domain.systemApi +"/dynamo/order/algorithmTrainningInsert",//新增自动报价
+        }
+    }
+};
+
+
+// *************************************************************
+// *************************************************************
+// *************************************************************
+// *************************************************************
+// 方法扩展
+Date.prototype.Format = function (fmt) {
+    var o = {
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+};
+
+// Extend the default Number object with a formatMoney() method:
+// usage: someVar.formatMoney(decimalPlaces, symbol, thousandsSeparator, decimalSeparator)
+// defaults: (2, "$", ",", ".")
+Number.prototype.formatMoney = function (places, symbol, thousand, decimal) {
+    places = !isNaN(places = Math.abs(places)) ? places : 2;
+    symbol = symbol !== undefined ? symbol : "$";
+    thousand = thousand || ",";
+    decimal = decimal || ".";
+    var number = this,
+        negative = number < 0 ? "-" : "",
+        i = parseInt(number = Math.abs(+number || 0).toFixed(places), 10) + "",
+        j = (j = i.length) > 3 ? j % 3 : 0;
+    return symbol + negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - i).toFixed(places).slice(2) : "");
+};
+
+Number.prototype.toFixed = function (d) {
+    var s = this + "";
+    if (!d) d = 0;
+    if (s.indexOf(".") == -1) s += ".";
+    s += new Array(d + 1).join("0");
+    if (new RegExp("^(-|\\+)?(\\d+(\\.\\d{0," + (d + 1) + "})?)\\d*$").test(s)) {
+        var s = "0" + RegExp.$2, pm = RegExp.$1, a = RegExp.$3.length, b = true;
+        if (a == d + 2) {
+            a = s.match(/\d/g);
+            if (parseInt(a[a.length - 1]) > 4) {
+                for (var i = a.length - 2; i >= 0; i--) {
+                    a[i] = parseInt(a[i]) + 1;
+                    if (a[i] == 10) {
+                        a[i] = 0;
+                        b = i != 1;
+                    } else break;
+                }
+            }
+            s = a.join("").replace(new RegExp("(\\d+)(\\d{" + d + "})\\d$"), "$1.$2");
+
+        }
+        if (b) s = s.substr(1);
+        return (pm + s).replace(/\.$/, "");
+    }
+    return this + "";
+};
+
+
+// *************************************************************
+// *************************************************************
+// *************************************************************
+// *************************************************************
+//*********************************输入框验证-begin
+$(function () {
+
+    inputCheck();
+
+});
+
+function inputCheck() {
+    //阻止选择网页内容
+    // document.onselectstart = function () {
+    //     return false;
+    // };
+
+    function MoneyToFloat(val) { //将字符串类型的金额转成float类型
+        if (isNaN(val)) {
+            val = val.replace(/[^0-9-.]/g, '');
+        }
+        return parseFloat(val);
+    }
+
+    // *************验证只允许输入正整数-begin
+    $(".input-number").unbind("keyup");
+    $(".input-number").keyup(function () {
+        ConvertToInt($(this)[0]);
+    });
+    function ConvertToInt(ob) {
+        ob.value = ob.value.replace(/[^0-9.]/g, '');
+    }
+
+    // ************* 验证只允许输入正整数-end
+
+    // *************验证只允许输入保留一位小数的浮点型数据-begin
+    $(".input-float-1").unbind("keyup");
+    $(".input-float-1").keyup(function () {
+        var curobj = $(this);
+        var reg = curobj.val().match(/(-?\d+\.?\d{0,1})|-/);
+        var txt = '';
+        if (reg != null) {
+            txt = reg[0];
+        }
+        curobj.val(txt);
+    });
+
+    $(".input-float-1").unbind("blur");
+    $(".input-float-1").blur(function () {
+        var curobj = $(this);
+        var val = parseFloat(curobj.val()).toFixed(1);
+        if (val == "NaN") {
+            var defaultVal = $(curobj).attr('data-default');
+            if (defaultVal) {
+                curobj.val(defaultVal);
+            }
+            else {
+                curobj.val("0.0");
+            }
+        }
+        else {
+            curobj.val(val);
+        }
+    })
+    // *************验证只允许输入保留一位小数的浮点型数据-begin
+
+    // *************验证只允许输入保留两位小数的浮点型数据-begin
+    $(".input-float-2").unbind("keyup");
+    $(".input-float-2").keyup(function () {
+        var curobj = $(this);
+        var reg = curobj.val().match(/(-?\d+\.?\d{0,2})|-/);
+        var txt = '';
+        if (reg != null) {
+            txt = reg[0];
+        }
+        curobj.val(txt);
+    });
+
+    $(".input-float-2").unbind("blur");
+    $(".input-float-2").blur(function () {
+        var curobj = $(this);
+        var val = parseFloat(curobj.val())/*.toFixed(2)*/;
+        if (isNaN(val)) {
+            var defaultVal = $(curobj).attr('data-default');
+            if (defaultVal) {
+                curobj.val(defaultVal);
+            }
+            else {
+                curobj.val("0.00");
+            }
+        }
+        else {
+            curobj.val(val);
+        }
+    })
+    // *************验证只允许输入保留两位小数的浮点型数据-begin
+
+    // *************验证只允许输入金额格式-begin
+    $(".input-money").unbind("focus");
+    $(".input-money").focus(function () {
+        var stringVal = $(this);
+        var floatVal = MoneyToFloat(stringVal.val());
+        if (floatVal == 0)
+            floatVal = "";
+        stringVal.val(floatVal);
+    });
+
+    $(".input-money").unbind("keyup");
+    $(".input-money").keyup(function () {
+        var curobj = $(this);
+        var reg = curobj.val().match(/(-?\d+\.?\d{0,2})|-/);
+        var txt = '';
+        if (reg != null) {
+            txt = reg[0];
+        }
+        curobj.val(txt);
+    });
+
+    $(".input-money").unbind("blur");
+    $(".input-money").blur(function () {
+        var curobj = $(this);
+        var val = parseFloat(curobj.val());
+        curobj.val(val.formatMoney(2, "", ",", "."));
+    });
+    // *************验证只允许输入金额格式-begin
+
+
+    //金额类型中提取浮点形数据
+    //.replace(/[^0-9-.]/g, '');
+}
+
+
+// *************************************************************
+// *************************************************************
+// *************************************************************
+// *************************************************************
+//工具类
+var Helper = {
+    Date: {
+        timeDifference:function (begin,end) {
+          //计算时间差 返回相差秒数
+            if(begin.replace)
+            {
+                begin=begin.replace(/\-/g, "/");
+                end=end.replace(/\-/g, "/");
+            }
+            var d1 = new Date(begin);
+            var d2 = new Date(end);
+            return parseInt(d2 - d1)/ 1000;
+        },
+        countdown:function (tagDate) {
+            //倒计时
+            var now = new Date();
+            if(tagDate.replace)
+            {
+                tagDate=tagDate.replace(/\-/g, "/");
+            }
+
+            var endDate = new Date(tagDate);
+            var leftTime=endDate.getTime()-now.getTime();
+            var dd = parseInt(leftTime / 1000 / 60 / 60 / 24, 10);//计算剩余的天数
+            var hh = parseInt(leftTime / 1000 / 60 / 60 % 24, 10);//计算剩余的小时数
+            var mm = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟数
+            var ss = parseInt(leftTime / 1000 % 60, 10);//计算剩余的秒数
+            dd = checkTime(dd);
+            hh = checkTime(hh);
+            mm = checkTime(mm);
+            ss = checkTime(ss);//小于10的话加0
+
+            function checkTime(i)
+            {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+            
+            return dd+"天 "+hh+" 小时 "+mm+" 分钟";
+        },
+        getDate: function (format) {
+            format=format?format:'yyyy-MM-dd hh:mm:ss';
+            var date = new Date();
+            var milliseconds = date.getTime();
+            var newDate = new Date(milliseconds);
+            return newDate.Format(format);
+        },
+        getTimestamp: function (datetime) {
+            if(!datetime)
+            {
+                return 1924905600000
+            }
+            //获取时间戳
+            if(datetime.replace)
+            {
+                datetime=datetime.replace(/\-/g, "/");
+            }
+
+            var timestamp = Date.parse(new Date(datetime));
+            timestamp = timestamp;
+            return timestamp;
+        },
+        getLocalTime: function (timespan, format) {
+            //时间戳转时间
+            /*
+             format:
+             yyyy-MM-dd
+             yyyy-MM-dd hh:mm:ss
+             yyyy/MM/dd hh:mm:ss
+             yyyy/MM/dd hh:mm
+             */
+            try {
+                if (format) {
+                    return new Date(parseInt(timespan) * 1000).Format(format);
+                }
+            }
+            catch (error) {
+                console.log(error);
+            }
+        },
+        getCurrentMonthLast: function (m) {
+            //获取当前月最后一天
+            var current = new Date();
+            var currentMonth = current.getMonth();
+            var nextMonth = m;
+            var nextMonthDayOne = new Date(current.getFullYear(), nextMonth, 1);
+            var minusDate = 1000 * 60 * 60 * 24;
+            return new Date(nextMonthDayOne.getTime() - minusDate).Format("yyyy-MM-dd");
+        },
+        getNdayDate: function (n,format) {
+            format=format?format:'yyyy-MM-dd hh:mm:ss';
+            //获取第N天的日期
+            var date = new Date();
+            //n代表天数,加号表示未来n天的此刻时间,减号表示过去n天的此刻时间
+            var milliseconds = date.getTime() + 1000 * 60 * 60 * 24 * n;
+            //getTime()方法返回Date对象的毫秒数,但是这个毫秒数不再是Date类型了,而是number类型,所以需要重新转换为Date对象,方便格式化
+            var newDate = new Date(milliseconds);
+            return newDate.Format(format);
+        }
+    },
+    getUrlParam: function (name, isdecode) {//第二参数防止中午乱码
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (isdecode) {
+            r = decodeURI(window.location.search).substr(1).match(reg);
+        }
+        if (r != null) return unescape(r[2]);
+        return null;
+    },
+    download: function (url) {//打开新页面下载
+        if (navigator.userAgent.indexOf("Firefox") > -1) //火狐浏览器
+            window.location = url;
+        else //其他浏览器
+        {
+            var aDoc = document.createElement("a");
+            aDoc.href = url;
+            aDoc.click();
+        }
+    },
+    shake: function (ele) {//边框闪烁
+        var i = 0;
+        var times = 3000;
+        var t = setInterval(function () {
+            i += 200;
+            ele.addClass('border-warning');
+            if (i >= times) {
+                clearInterval(t);
+                ele.removeClass('border-warning');
+            }
+            else if (i / 600 == 0) {
+                ele.removeClass('border-warning');
+            }
+        }, 200);
+    },
+    dragBind: function (domObj, inputFileObj, inCss, outCss) {//拖拽上传事件绑定
+        domObj.ondragover = function (ev) {
+            //阻止浏览器默认打开文件的操作
+            ev.preventDefault();
+            //拖入文件后
+            $(this).css(inCss);
+        }
+
+        domObj.ondragleave = function () {
+            //拖出
+            $(this).css(outCss);
+        }
+        domObj.ondrop = function (ev) {
+            //放下
+            $(this).css(outCss);
+            //阻止浏览器默认打开文件的操作
+            ev.preventDefault();
+            var files = ev.dataTransfer.files;
+            inputFileObj.files = files;
+        }
+    },
+    getStrLeng: function (str) {
+        //获取字节数
+        var realLength = 0;
+        var len = str.length;
+        var charCode = -1;
+        for (var i = 0; i < len; i++) {
+            charCode = str.charCodeAt(i);
+            if (charCode >= 0 && charCode <= 128) {
+                realLength += 1;
+            } else {
+                // 如果是中文则长度加2
+                realLength += 2;
+            }
+        }
+        return realLength;
+    },
+    Cache: {//缓存操作
+        set: function (key, value,expires) {
+            //localStorage.setItem(key, value);
+
+            var data={ path: '/' };
+            if(expires)
+            {
+                data['expires']=expires;
+            }
+            $.cookie(key, value, data);
+        },
+        get: function (key) {
+            //return localStorage.getItem(key);
+            return $.cookie(key);
+        }
+    },
+    Sleep: function (time, callback) {//睡眠函数 time:毫秒
+        if (!time) {
+            console.error("您在调用Common.Sleep(time,callback)方法时没有传入睡眠时间");
+            return;
+        }
+        var pus = 0;
+        var currentDate = new Date();
+        while (pus < time) {
+            var now = new Date();
+            pus = now - currentDate;
+        }
+        if (callback) {
+            callback();
+        }
+    },
+    getStrLeng:function (str){
+        var realLength = 0;
+        var len = str.length;
+        var charCode = -1;
+        for(var i = 0; i < len; i++){
+            charCode = str.charCodeAt(i);
+            if (charCode >= 0 && charCode <= 128) {
+                realLength += 1;
+            }else{
+                // 如果是中文则长度加2
+                realLength += 2;
+            }
+        }
+        return realLength;
+    },
+    CopyToClipboard: function (content, triggerId) {//content：内容,triggerObj:触发复制事件的对象Id
+        if (!$("#copyContent")) {
+            $('#' + triggerId).attr('data-clipboard-target', '#copyContent');
+            document.write('<textarea type="text" style="height: 0px; width: 0px; border: none;" id="copyContent" value="" ></textarea>');
+            var clipboard = new ClipboardJS('#' + triggerId);
+            clipboard.on('success', function (e) {
+                console.info('Action:', e.action);
+                console.info('Text:', e.text);
+                console.info('Trigger:', e.trigger);
+
+                e.clearSelection();
+            });
+
+            clipboard.on('error', function (e) {
+                console.error('Action:', e.action);
+                console.error('Trigger:', e.trigger);
+            });
+        }
+        $("#copyContent").val(content);
+        $('#' + triggerId).click();
+    },
+    getClientHeight: function () { //获取窗口可视范围的高度
+       return $(window).height();
+    },
+    getClientWidth: function () { //获取窗口可视范围的宽度
+        return $(window).width();
+    }
+};
+
+
+// *************************************************************
+// *************************************************************
+// *************************************************************
+// *************************************************************
+// 弹出页面
+var Popup = {
+    layerIndex: {},
+    callback: {},//弹窗回调
+    open: function (title, width, height, url, childCallback) {
+        var that = this;
+        var index = layer.open({
+            type: 2,
+            title: title,
+            shadeClose: false,
+            shade: 0.1,
+            area: [width + 'px', height + 'px'],
+            resize: false,
+            content: url,
+        });
+        that.layerIndex[title] = index;
+
+        if (childCallback) {
+            that.callback[title] = childCallback;
+        }
+    },
+    close: function (title) {
+        var that = this;
+        if (title != null && title != "") {
+            var index = that.layerIndex[title];
+            if (typeof index != "undefined" && index != null) {
+                delete that.layerIndex[title];
+                layer.close(index);
+            }
+        }
+        else {
+            layer.closeAll();
+            that.callback = {};
+        }
+    }
+};
+
+
+// *************************************************************
+// *************************************************************
+// *************************************************************
+// *************************************************************
+//提示消息
+var MsgState = {"Success": 1, "Warning": 2, "Fail": 3};//提示消息状态
+var Message = {
+    show: function (title, content, status, time, callback,size) {
+
+        title = !title ? title = "提示:" : title;
+
+        time = !time ? 2000 : time;
+
+        var box_shadow = '';
+        var msgType = "";
+        switch (status) {
+            case 1:
+                box_shadow = "0 0 6px #659F3D";
+                msgType = "success";
+                break;
+            case 2:
+                box_shadow = "0 0 6px #E28327";
+                msgType = "Warning";
+                break;
+            case 3:
+                box_shadow = "0 0 6px #E84B4C";
+                msgType = "Fail";
+                break;
+        }
+
+        var html = '<div class="msg-container msg-' + msgType + '-border"> <div class="msg-icon msg-' + msgType + '-icon"></div> <div class="msg-content msg-' + msgType + '-text"><span class="msg-content-title">' + title + '</span><span class="msg-content-content">' + content + '</span></div> </div>';
+        var data={
+            type: 1,
+            icon: 1,
+            content: html,
+            time: time,
+        };
+        if(size) {
+            data["area"] = [size.width + 'px', size.height + 'px'];
+        }
+
+        var index = layer.msg("",data , callback);
+        $("#layui-layer" + index).css("box-shadow", box_shadow);
+    }
+};
+
+
+// *************************************************************
+// *************************************************************
+// *************************************************************
+// *************************************************************
+// 会话窗口
+var Confirm = function (title, message, width, height, hideCancel, callback) {
+    var layerIndex = {};
+
+    var btn = hideCancel ? ['确定'] : ['确定', '取消'];
+
+    var index = layer.confirm(message, {
+        btn: btn,
+        area: [width + 'px', height + 'px'],
+        title: title,
+    }, function () {
+        if (callback) {
+            callback();
+            close();
+        }
+        else {
+            close();
+        }
+    }, function () {
+        close();
+    });
+    layerIndex[title] = index;
+
+    function close() {
+        var curindex = layerIndex[title];
+        if (typeof curindex != "undefined" && curindex != null) {
+            delete layerIndex[title];
+            layer.close(curindex);
+        }
+    }
+};
+
+// *************************************************************
+// *************************************************************
+// *************************************************************
+// *************************************************************
+//请求
+var Loading = {//加载效果
+    start: function (params) {
+        var index = layer.load(2, params);
+    },
+    end: function () {
+        layer.closeAll('loading');
+    }
+}
+var Requst = {
+    ajaxPost: function (url, data, isAsync, successCallback, errerCallback, hideLoading) {
+        if (!hideLoading)Loading.start();
+        var token = Helper.Cache.get('token');
+        $.ajax({
+            type: 'Post',
+            url: url,
+            data: data,
+            dataType: 'json',
+            async: isAsync,
+            headers: {"token": token},
+            timeout: 10000,
+            success: function (data) {
+                if(data.code && data.code=="99999" || data.code=="99998")
+                {
+                    //根据后台返回结果判断token是否过期，过期则退出系统
+                    top.window.location.href="./Member/login.html";
+                }
+                if (!hideLoading)Loading.end();
+                successCallback(data);
+            },
+            error: function (data) {
+                if (!hideLoading)Loading.end();
+                if (errerCallback) {
+                    errerCallback(data);
+                }
+                else {
+                    Message.show('操作失败', '与服务器互动环节出现了错误。', MsgState.Fail, 2000);
+                    console.warn("请求异常");
+                }
+            },
+        });
+    },
+    ajaxGet: function (url, data, isAsync, successCallback, errerCallback, hideLoading) {
+        if (!hideLoading)Loading.start();
+        var token = Helper.Cache.get('token');
+        $.ajax({
+            type: 'Get',
+            url: url,
+            data: data,
+            dataType: 'json',
+            async: isAsync,
+            headers: {"token": token},
+            timeout: 10000,
+            success: function (data) {
+                if(data.code && data.code=="99999" || data.code=="99998")
+                {
+                    //根据后台返回结果判断token是否过期，过期则退出系统
+                    top.window.location.href="./Member/login.html";
+                }
+                if (!hideLoading)Loading.end();
+                successCallback(data);
+            },
+            error: function (data) {
+                if (!hideLoading)Loading.end();
+                if (errerCallback) {
+                    errerCallback(data);
+                }
+                else {
+                    Message.show('操作失败', '与服务器互动环节出现了错误。', MsgState.Fail, 2000);
+                    console.warn("请求异常");
+                }
+            },
+        });
+    }
+}
+
+
+// var Global={
+//     router:{ // 跳转页面
+//         set:function (pageUrl,params,pageIndex) {
+//             sessionStorage.setItem("pageUrl",pageUrl);
+//             sessionStorage.setItem("params",params);
+//             sessionStorage.setItem("pageIndex",pageIndex);
+//             //设置main页面ifream  src
+//
+//             //显示loading
+//         },
+//         get:function () {
+//             var pageUrl=sessionStorage.getItem("pageUrl");
+//             var params=sessionStorage.getItem("params");
+//             var pageIndex=sessionStorage.getItem("pageIndex");
+//
+//             return {
+//                 "pageUrl":pageUrl,
+//                 "params":params,
+//                 "pageIndex":pageIndex,
+//             }
+//         }
+//     },
+//     statistics:function () {//数据统计
+//         //设置导航
+//
+//         //返回结果
+//     }
+// }
+
+//将id转换成名称
+function ConvertIdToName(dataSource,idArray) {
+    var idarray=idArray.split(',');
+    var temp=[];
+    for(var w=0;w<idarray.length;w++)
+    {
+        if(idarray[w] && dataSource[idarray[w]])
+        {
+            temp.push(dataSource[idarray[w]].name);
+        }
+    }
+    return temp;
+}
+
+var OPER={
+    checkOrder:function (customid,title) {
+        title=title?title:"核对订单";
+        // 流程弹窗
+        var scrollH = top.Helper.getClientHeight();
+        var scrollW = top.Helper.getClientWidth();
+        var popH = scrollH - 100 > 550 ? 550 : scrollH - 100;
+        Popup.open(title, 939, popH, "./Pop-ups/checkOrder.html?customid="+customid+"&allocationProduce=true");
+    },
+    invoice:function (customid,title) {
+        title=title?title:"发票收据";
+        // 流程弹窗
+        var scrollH = top.Helper.getClientHeight();
+        var scrollW = top.Helper.getClientWidth();
+        var popH = scrollH - 100 > 610 ? 610 : scrollH - 100;
+        top.Popup.open(title, 818, popH, "./Pop-ups/invoice.html?customid="+customid);
+    },
+    box:function (customid,title) {
+        title=title?title:"包装";
+        // 流程弹窗
+        var scrollH = top.Helper.getClientHeight();
+        var scrollW = top.Helper.getClientWidth();
+        var popH = scrollH - 100 > 550 ? 550 : scrollH - 100;
+        top.Popup.open(title, 939, popH, "./Pop-ups/box.html?customid="+customid);
+    },
+    uploadDesign:function (customid,title) {
+        title=title?title:"补充设计稿";
+        var scrollH = top.Helper.getClientHeight();
+        var popH = scrollH - 100 > 559 ? 559 : scrollH - 100;
+        var url=encodeURI("./Pop-ups/uploadDesign.html?customid="+customid+"&title="+title);
+        top.Popup.open(title, 830, popH, url);
+    },
+    invoiceDetails:function (customid,title) {
+        title=title?title:"发票明细";
+        var scrollH = top.Helper.getClientHeight();
+        var popH = scrollH - 100 > 559 ? 559 : scrollH - 100;
+        top.Popup.open(title, 560, popH, "./Pop-ups/invoicePreview.html?customid="+customid);
+    },
+    sendInquiry:function (customid) {
+        //发起询价
+        var url=config.WebService()['orderInquiryInfo_Query'];
+        top.Requst.ajaxGet(url,{"customid":customid},true,function (data) {
+            if(data.code==200)
+            {
+                top.Message.show("提醒",data.message,MsgState.Success,2000,function () {
+                    classMain.loadOverview(null,null,null,customid);
+                });
+            }
+            else
+            {
+                top.Message.show("提醒",data.message,MsgState.Warning,2000,null,{"width":370 ,"height":75});
+            }
+        });
+    },
+    distributionDesign:function (ordersummaryId,orderId,customid,designPrice) {
+        //分配设计
+        Confirm("分配设计","请确认发起设计信息，设计费：<em style='color:#E84B4C;'>¥ "+designPrice+"</em>",423,235,null,function () {
+            var url=config.WebService()['sendDesign'];
+            top.Requst.ajaxGet(url,{"ordersummaryId":parseInt(ordersummaryId),"orderId":orderId,"customId":customid},true,function (data) {
+                if(data.code==200)
+                {
+                    Message.show("提醒",data.message,MsgState.Success,2000,function () {
+                        classMain.loadOverview(null,null,null,customid);
+                    });
+                }
+            });
+        });
+    },
+    pricing:function (customid,currentPeriod,currentPrice,quote,userPeriod,inquiryStatus) {
+        //定价
+        top.Popup.open("订单定价", 407, 290, "./Pop-ups/orderPrice.html?customid="+customid+"&currentPeriod="+currentPeriod+"&currentPrice="+currentPrice+"&quote="+quote+"&userPeriod="+userPeriod+"&inquiryStatus="+inquiryStatus);
+    },
+    orderPrice:function (customid,finalPrice) {
+        top.Popup.open("订单支付", 407, 240, "./Pop-ups/orderPay.html?customid="+customid+"&finalPrice="+finalPrice);
+    },
+    distributionProduction:function (customid) {
+        //分配生产
+        var url=config.WebService()['distribut_Production'];
+        top.Requst.ajaxGet(url,{"customid":customid},true,function (data) {
+            
+            if(data.code==3000)
+            {
+                top.Popup.open("收货地址", 482, 380, "./Pop-ups/addAddress.html?customid="+customid+"&operType=distributionProduction");
+            }
+            else if(data.code==3001){
+                //发票收据不全,请补充发票收据
+                top.OPER.invoice(customid);
+            }
+            else if(data.code==3002)
+            {
+                //设计稿未定稿,请先定稿
+                top.OPER.uploadDesign(customid);
+            }
+            else
+            {
+                //核对订单
+                top.OPER.checkOrder(customid,true);//第二个参数告诉核对订单页面分配生产
+            }
+        });
+    },
+    productPicture:function (customid,operType,title) {
+        //成品图
+        if(operType=="prev")
+        {
+            top.Popup.open("查看成品图", 482, 246, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
+        }
+        else if(operType=="edit")
+        {
+            title=title?title:"编辑成品图";
+            top.Popup.open(title, 482, 246, "./Pop-ups/productPicture.html?customid="+customid+"&operType="+operType);
+        }
+    }
+};
+
+
+
+
+
+
