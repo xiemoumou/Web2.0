@@ -48,6 +48,9 @@ var config = {
             "orderSummaryInfoByOrderid":that.Domain.systemApi +"/dynamo/order/orderSummaryInfoByOrderid",//转接到列表
             "orderDesignInfoDesignTransfer_Update":that.Domain.systemApi +"/dynamo/order/orderDesignInfoDesignTransfer_Update",//转接操作
             "orderDesignPatternById_Query":that.Domain.systemApi +"/dynamo/order/orderDesignPatternById_Query",//修正设计稿回显
+            "orderInvoicePage_Query":that.Domain.systemApi +"/dynamo/order/orderInvoicePage_Query",//票据概览
+            "orderInvoiceSign_Update":that.Domain.systemApi +"/dynamo/order/orderInvoiceSign_Update",//发票标记已开
+            "orderInvoiceDetail_Query":that.Domain.systemApi +"/dynamo/order/orderInvoiceDetail_Query",//发票明细
 
 
 
@@ -78,15 +81,11 @@ var config = {
             "invoice_Init":that.Domain.systemApi +"/dynamo/order/invoice_Init",//票据明细初始化
             "logistics_Check":that.Domain.systemApi +"/dynamo/order/logistics_Check",//核对订单
             "orderBoxInfoPage_Query":that.Domain.systemApi +"/dynamo/order/orderBoxInfoPage_Query",//经理包装盒代开已开
-            "orderInvoiceSign_Update":that.Domain.systemApi +"/dynamo/order/orderInvoiceSign_Update",//经理标记已开
             "orderBoxDetail_Query":that.Domain.systemApi +"/dynamo/order/orderBoxDetail_Query",//包装盒详情
             "orderLogisticsBillOrder_Query":that.Domain.systemApi +"/dynamo/order/orderLogisticsBillOrder_Query",//经理导出发货单
             "exportYieldList":that.Domain.systemApi +"/dynamo/order/exportYieldList",//经理导出结算收益单
             "downManOrder":that.Domain.systemApi +"/dynamo/order/downManOrder",//下载生产单
             "algorithmTrainningInsert":that.Domain.systemApi +"/dynamo/order/algorithmTrainningInsert",//新增自动报价
-
-
-
         }
     }
 };
