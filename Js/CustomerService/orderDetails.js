@@ -442,6 +442,7 @@ var details = {
                         });
                         operating.append(btn);
                     }
+                    debugger
                     //分配设计
                     if (command.indexOf("SEND_DESIGN")>=0) {
                         var btn=$('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配设计</button>');
@@ -449,8 +450,8 @@ var details = {
                             var customid = $(this).attr('data-customid');
                             var orderid = $(this).attr('data-orderid');
                             var ordersummaryId = $(this).attr('data-ordersummaryId');
-                            var designPrice= $($(this).parent().parent()).find('.amount').find('.design-fee').find('span').eq(0).find('em');
-                            OPER.distributionDesign(ordersummaryId,orderid,customid,$(designPrice).text());
+                            var designPrice= item.designPrice;
+                            OPER.distributionDesign(ordersummaryId,orderid,customid,designPrice);
                         });
                         operating.append(btn);
                     }
