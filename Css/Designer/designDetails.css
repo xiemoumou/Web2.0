@@ -175,16 +175,16 @@
     border: 1px solid #d5d5d5!important;
 }
 #details_encl_textarea .addDiagram{
-    width: inherit;
+    width: 396px;
     height: inherit;
     box-shadow:inherit;
     float: inherit;
     border-radius: inherit;
-    background-color: inherit;
+    background-color: #fff;
     margin-right: inherit;
     position: absolute;
-    bottom: 30px;
-    left: 10px;
+    bottom: 24px;
+    left: 9px;
 }
 #details_encl_textarea .dia-icon{
     width: 16px;
@@ -196,19 +196,20 @@
 }
 #details_encl_textarea .dia-remind-1{
     display: inline-block;
-    width: inherit;
     text-align: inherit;
     color: #E84B4C;
     font-size: 12px;
     margin-left: 10px;
     text-decoration: underline;
+    width: 60px;
+    margin-top: initial;
 }
 #details_encl_textarea .dia-remind-2 {
     display: inline-block;
-    width: inherit;
     text-align: inherit;
     color: #d5d5d5;
     margin-left: 3px;
+    width: 110px;
 }
 #details_encl_textarea .diagram{
     width: 48px;
@@ -710,4 +711,12 @@
     margin-right: 20px;
     margin-left: -13px;
 }
-
+.desi-encl-box .accessory-container .fileitem{
+    margin-left: 112px;
+}
+.other-encl-box .accessory-container .fileitem{
+    margin-left: 112px;
+}
+.details-rema-box .design-rema textarea{
+    margin-bottom: 20px;
+}

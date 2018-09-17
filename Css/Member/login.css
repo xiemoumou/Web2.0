@@ -131,7 +131,7 @@ body{
 .user-icon{
     width: 60px;
     height: 60px;
-    background-image: url("../../image/Member/user_max.png");
+    background-image: url("../../Image/Member/user_max.png");
     background-size: 100% 100%;
     margin: 0 auto;
 }
@@ -152,14 +152,14 @@ body{
     display: inline-block;
     width: 22px;
     height: 22px;
-    background: url("../../image/Member/sprite.png") no-repeat  -81px 0px;
+    background: url("../../Image/Member/sprite.png") no-repeat  -81px 0px;
     vertical-align: middle;
 }
 .user-num span{
     display: inline-block;
     width: 22px;
     height: 22px;
-    background: url("../../image/Member/sprite.png") no-repeat  -27px 0px;
+    background: url("../../Image/Member/sprite.png") no-repeat  -27px 0px;
     vertical-align: middle;
 }
 .user-num input{
@@ -182,7 +182,7 @@ body{
     display: inline-block;
     width: 16px;
     height: 16px;
-    background: url("../../image/Member/sprite.png")no-repeat  -31px -31px;
+    background: url("../../Image/Member/sprite.png")no-repeat  -31px -31px;
     margin-top: 15px;
     float: right;
     cursor: pointer;
@@ -217,7 +217,7 @@ body{
     display: inline-block;
     width: 16px;
     height: 16px;
-    background: url("../../image/Member/sprite.png")no-repeat  -83px -31px;
+    background: url("../../Image/Member/sprite.png")no-repeat  -83px -31px;
     position: absolute;
     top: 2px;
     margin-left: -20px;
@@ -258,7 +258,7 @@ body{
     display: inline-block;
     width: 16px;
     height: 16px;
-    background: url(../../image/Member/sprite.png)no-repeat -57px -31px;
+    background: url(../../Image/Member/sprite.png)no-repeat -57px -31px;
     position: absolute;
     top: 2px;
     margin-left: -20px;
@@ -277,7 +277,7 @@ body{
     display: inline-block;
     width: 16px;
     height: 16px;
-    background: url(../../image/Member/sprite.png)no-repeat -31px -31px;
+    background: url(../../Image/Member/sprite.png)no-repeat -31px -31px;
     margin-top: 15px;
     float: right;
     cursor: pointer;

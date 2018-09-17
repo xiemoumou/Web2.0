@@ -45,7 +45,6 @@ OrderCheck = {
             if (data) {
                 var imgsrc = '../../Image/Pop-ups/nothing.png';
 
-                var invoice_val =  $(".invoice-type");//发票类型
                 if (data.data.boxData.length>=1){
                     for (var i=0; i<data.data.boxData.length; i++){
                         $(".box-text").text(data.data[i].boxData);//包装详情
@@ -58,10 +57,10 @@ OrderCheck = {
                 $(".check-length").text(data.data.size);//张宽高
                 // $(".check-width").text(data.data.width);//宽
                 // $(".check-height").text(data.data.height);//高
-              //  $(".parts").text(dict.accessories[data.data.accessories].name);//配件名称
+                $(".parts").text(data.data.goodsClass);//配件名称
                 $(".deliver-time").text(data.data.lastestDate);//最迟发货时间
                 $(".num").text(data.data.number);//数量
-                $(".money").text(data.data.finalprice==0?'还未定价':data.data.finalprice)//订单金额
+                $(".money").text(data.data.finalPrice);//订单金额
                 $(".requ").text(data.data.designMemo);//设计要求
                 $(".prod").text(data.data.produceMemo);//生产要求
                 $(".collect-user-text").text(data.data.name);//收件人
@@ -70,10 +69,11 @@ OrderCheck = {
                 $(".invoice-money-text").text(data.data.detailsValue1);//发票金额
                 $(".invoice-tax-text").text(data.data.taxRate);//税率
                 $(".invoice-title-text").text(data.data.invoiceTitle);//抬头
-                $(".texture").text(data.data.material);//材质
-                $(".tech").text(data.data.technology);//工艺
-                $(".tech-attr").text(data.data.model);//开模方式
-                $(".elec-color").text(data.data.color);//电镀色
+                $(".texture").text(data.data.productDescription);//材质
+                $(".type").text(data.data.accessories);//类型
+                // $(".tech").text(data.data.technology);//工艺
+                // $(".tech-attr").text(data.data.model);//开模方式
+                // $(".elec-color").text(data.data.color);//电镀色
 
                 
                 $("#refe-first").attr('src',(data.data.initialReferenceImage1==''?imgsrc:('http://' + data.data.initialReferenceImage1)));//参考图1
@@ -87,7 +87,7 @@ OrderCheck = {
                 if(data.data.referencepictureurl)
                 {
                     $("#refe-first").next().on('click',function () {
-                        top.previewImg.insert(top.Main.getUrl['cosImgUrl'] + data.data.referencepictureurl);
+                        top.previewImg.create(top.Main.getUrl['cosImgUrl'] + data.data.referencepictureurl);
                         top.previewImg.show();
                     });
                 }
@@ -95,7 +95,7 @@ OrderCheck = {
                 if(data.data.referencepictureurl2)
                 {
                     $("#refe-second").next().on('click',function () {
-                        top.previewImg.insert(top.Main.getUrl['cosImgUrl'] + data.data.referencepictureurl2);
+                        top.previewImg.create(top.Main.getUrl['cosImgUrl'] + data.data.referencepictureurl2);
                         top.previewImg.show();
                     });
                 }
@@ -103,36 +103,36 @@ OrderCheck = {
                 if(data.data.referencepictureurl3)
                 {
                     $("#refe-third").next().on('click',function () {
-                        top.previewImg.insert(top.Main.getUrl['cosImgUrl'] + data.data.referencepictureurl3);
+                        top.previewImg.create(top.Main.getUrl['cosImgUrl'] + data.data.referencepictureurl3);
                         top.previewImg.show();
                     });
                 }
                 if(data.data.factorypictureurl1)
                 {
                     $("#refe-fourth").next().on('click',function () {
-                        top.previewImg.insert(top.Main.getUrl['cosImgUrl'] + data.data.factorypictureurl1);
+                        top.previewImg.create(top.Main.getUrl['cosImgUrl'] + data.data.factorypictureurl1);
                         top.previewImg.show();
                     });
                 }
                 if(data.data.patternimageurl)
                 {
                     $("#design-first").next().on('click',function () {
-                        top.previewImg.insert(top.Main.getUrl['cosImgUrl'] + data.data.patternimageurl);
+                        top.previewImg.create(top.Main.getUrl['cosImgUrl'] + data.data.patternimageurl);
                         top.previewImg.show();
                     });
                 }
                 //参考图与设计图放大end
 
 
-                if (data.data.invoicetype==''){//判断发票类型
-                    invoice_val.text('');
-                    $(".invoice").text('不开发票');
-                    $(".see").addClass("acvive_none");
-                }if (data.data.invoicetype==1){
-                    invoice_val.text('增值税普通发票')
-                }if (data.data.invoicetype==2){
-                    invoice_val.text('增值税专用发票')
-                }
+                // if (data.data.invoicetype==''){//判断发票类型
+                //     invoice_val.text('');
+                //     $(".invoice").text('不开发票');
+                //     $(".see").addClass("acvive_none");
+                // }if (data.data.invoicetype==1){
+                //     invoice_val.text('增值税普通发票')
+                // }if (data.data.invoicetype==2){
+                //     invoice_val.text('增值税专用发票')
+                // }
 
 
                 // $(".texture,.tech,.elec-color").text(function(index, text) {

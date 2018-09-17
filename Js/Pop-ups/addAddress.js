@@ -29,7 +29,7 @@ var dist = {
         $('#address_content').val(address == "undefined" ? "" : address);
 
         //初始化省市下拉框
-        if (province != 'undefined') {
+        if (province != 'null') {
             $('#distpicker').distpicker({
                 province: province,
                 city: city,

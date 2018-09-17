@@ -218,7 +218,7 @@ var details = {
                 var length = data.data.length || "";//长
                 var width = data.data.width || "";//宽
                 var height = data.data.height || "";//高
-                var deadline = data.data.deadline || "--";//要求工期
+                var userPeriod = data.data.userPeriod || "--";//要求工期
                 var designPrice = data.data.designPrice || "";//设计费
                 var introducePrice = data.data.introducePrice || "--";//设计引导费
                 var userPrice = data.data.userPrice || "0.00";//预算
@@ -228,7 +228,7 @@ var details = {
                 var currentPrice = data.data.currentPrice || "";//参考价格
                 var currentPeriod = data.data.currentPeriod || "--";//参考工期
                 var orderid = data.data.orderid || "";//订单ID
-                that.id = data.data.id;//设计方案表id
+                that.id = data.data.id;//订单表id
                 if (data.data.designInfo.length>=1) {
                     that.orderid = data.data.designInfo[0].orderid;//订单id
 
@@ -263,6 +263,7 @@ var details = {
 
                 //5要素
                 var element = SysParam.element;//元素
+
                 var model = ConvertIdToName(element.model, item.model).join(';');
                 var technology = ConvertIdToName(element.technology, item.technology).join(';');
                 var color = ConvertIdToName(element.color, item.color).join(';');
@@ -270,7 +271,7 @@ var details = {
                 $(".time-num").text(createTime);//订单创建时间
                 $(".orderNum").text(orderid);//订单号
                 $(".orderWw").text(customerWang);//旺旺号
-                $(".orderCust").text(shop);//客源
+                $(".orderCust").text(element.shop[item.shop].name);//客源
                 $(".order-img img").attr('src', initialGoodsImage);//产品图
                 $(".attr-1").text(SysParam.element.goodsClass[item.goodsClass].name);//属性 产品类别
                 $(".attr-2").text(SysParam.element.material[item.material].name);//属性 产品材质
@@ -282,7 +283,7 @@ var details = {
                 $(".length").text(length);//长
                 $(".width").text(width);//宽
                 $(".height").text(height);//高
-                $(".limit").text(deadline);//工期
+                $(".limit").text(userPeriod);//工期
                 $(".offer-money").text(designPrice);//设计费
                 $(".offertime").text(introducePrice);//设计引导费
                 $(".budget-text input").val(userPrice);//预算
@@ -304,7 +305,7 @@ var details = {
                 //}
 
 
-                if (deadline <= 5) {//急单
+                if (userPeriod <= 5) {//急单
                     $(".emer").removeClass('hide');
                 } else {
                     $(".emer").addClass('hide');
@@ -340,6 +341,17 @@ var details = {
                     }
                 }
                 addStatus();
+                var itemHead_r = $('<div class="item-head-right fr"></div>');
+
+                var check = $('<span data-customid="' + item.customid + '">核对订单</span>');
+                debugger
+                check.on('click', function () {
+                    var customid = $(this).attr('data-customid');
+                    var scrollH = top.Helper.getClientHeight();
+                    var popH = scrollH - 100 > 680 ? 680 : scrollH - 100;
+                    top.Popup.open("核对订单",818,popH,"./Pop-ups/checkOrder.html?customid="+customid);
+                });
+                itemHead_r.append(check);
 
                 //addHead();
                 //添加更多按钮
@@ -389,7 +401,7 @@ var details = {
                                 {
                                     top.Message.show("提示",data.message,MsgState.Warning,3000,null,{"width":435,"height":75});
                                 }
-                            })
+                            });
                         });
                     });
                     //moreList.append(moreItem_4);
@@ -561,20 +573,20 @@ var details = {
                             "name": data.data.designInfo[i].otherFile,
                         });
                     }
-                    if (data.data.designInfo[i].initialRemarkImage1) {
+                    if (data.data.designInfo[i].middleRemarkImage1) {
                         remaMan.push({
-                            "orgSrc": 'http://'+data.data.designInfo[i].middleDesignImage1,
-                            "thumbnail": 'http://'+data.data.designInfo[i].smallDesignImage1,
+                            "orgSrc": 'http://'+data.data.designInfo[i].middleRemarkImage1,
+                            "thumbnail": 'http://'+data.data.designInfo[i].smallRemarkImage1,
                         });
 
                         remaMan.push({
-                            "orgSrc": 'http://'+data.data.designInfo[i].middleDesignImage2,
-                            "thumbnail": 'http://'+data.data.designInfo[i].smallDesignImage2,
+                            "orgSrc": 'http://'+data.data.designInfo[i].middleRemarkImage2,
+                            "thumbnail": 'http://'+data.data.designInfo[i].smallRemarkImage2,
                         });
 
                         remaMan.push({
-                            "orgSrc": 'http://'+data.data.designInfo[i].middleDesignImage3,
-                            "thumbnail": 'http://'+data.data.designInfo[i].smallDesignImage3,
+                            "orgSrc": 'http://'+data.data.designInfo[i].middleRemarkImage3,
+                            "thumbnail": 'http://'+data.data.designInfo[i].smallRemarkImage3,
                         });
 
                     }

@@ -37,7 +37,8 @@ $(function () {
     });
 
     var pas = $.cookie('password');//记住密码自动登录
-    if (pas!=undefined){
+    var token = $.cookie('token');//获取token
+    if (token!=undefined){
         $("#male").prop("checked",true);
         $("#auto-btn").removeClass('auto-btn').addClass('BtnActive');
         $(".phone").val($.cookie("phone"));
@@ -182,7 +183,7 @@ var mail = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
            } else if (data.code ==100001){
                $(".user-err").removeClass('hide');
                if (data.data.errorNum>10){
-                  //人机验证
+                  Message.show('提示','你已经尝试以错误的密码登录系统达到10次，为了你的安全，将进行人机验证，如果您忘记了密码，请联系管理员重置密码后再次登录',MsgState.Warning,2000)
                }
                return false;
            }
