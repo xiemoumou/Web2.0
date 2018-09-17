@@ -170,7 +170,7 @@ var desigDetails = {
                 if (data.data.accessoryFile) {
                     accessoryArray.push({
                         "uri": 'http://' + data.data.accessoryFile,
-                        "name": data.data.accessoryFile,
+                        "name": customid,
                     });
                 }
                 return accessoryArray
@@ -181,7 +181,7 @@ var desigDetails = {
                 if (data.data.accessoryFile) {
                     accessoryArray.push({
                         "uri": 'http://' + data.data.accessoryFile,
-                        "name": data.data.accessoryFile,
+                        "name": customid,
                     });
                 }
                 return accessoryArray
@@ -356,7 +356,7 @@ var desigDetails = {
         Requst.ajaxPost(url, data, true, function (data) {
              if (data.code ==200){
                  Message.show('提示',data.message,MsgState.Success,2000,function () {
-
+                     desigDetails.desiGet();
                  });
              }
 
@@ -375,7 +375,7 @@ var desigDetails = {
         });
 
     },
-    leavShow: function () {//显示留言
+    leavShow: function () { //显示留言
         var that = this;
         var url = config.WebService()["orderDesignMessage_Query"];
         data = {
@@ -387,20 +387,22 @@ var desigDetails = {
                 that.messageNo = data.data[0].messageNo||"";
                 that.targetId = data.data[0].targetId||"";//设计师Id
                 $(".leav-title-right-text em").text(data.data[0].version);//版本号沟通中
+                $(".leav-title-right span").text('版本'+data.data[0].version+'沟通中');
+                $(".leav-content").html('');
                 for (var i = 0; i < data.data.length; i++) {
                     var srcMan = [];//留言显示图片
                     var messageFile = [];//留言显示附件
                     if (data.data[i].initialMessageImage1) {
                         srcMan.push({
-                            "orgSrc": 'http://' +data.data[i].smallMessageImage +'i',
-                            "thumbnail": 'http://' +data.data[i].smallDesignImage +'i',
+                            "orgSrc": 'http://' +data.data[i]['middleMessageImage' + (i+1)],
+                            "thumbnail": 'http://' +data.data[i]['smallMessageImage' + (i+1)],
                         });
 
                     }
                     if (data.data[i].messageFile) {
                         messageFile.push({
                             "uri": 'http://' + data.data[i].messageFile,
-                            "name": data.data[i].messageFile,
+                            "name": customid,
                         });
                     }
 
@@ -413,7 +415,7 @@ var desigDetails = {
                         "<div class='leav-text-first'>" +
                         "<div class='TextList-left'>" +
                         "<span>我</span>回复" +
-                        "<a>方案师</a>：" +
+                        "<a>客服</a>：" +
                         "</div>" +
                         "<div class='TextList-right'>" +
                         "<span>" + data.data[i].leaveTime + "</span>" +
@@ -431,7 +433,7 @@ var desigDetails = {
                         "</div>"
 
                     $(".leav-content").append(str);
-                    uploadfile.uploadPhoto('leav_img_' + i, 1, srcMan, false);//留言显示图片
+                    uploadfile.uploadPhoto('leav_img_' + i, 3, srcMan, false);//留言显示图片
                     uploadfile.uploadFile('leav_file_' + i, 1, messageFile, false, "", "", true);//留言附件回显
                 }
             }
@@ -452,14 +454,19 @@ var desigDetails = {
         }else{
             data.needReDesign = 0;
         }
-        console.log(this.designInfo.length);
+
+        if (this.designInfo.length<= 1){
+            data.messageNo = 0;
+        }else{
+            data.messageNo = this.messageNo + 1;
+        }
         data = {
             "customid": customid,
             "orderid": this.orderid,
             "designPatternId": this.desi,
             "ordersummaryId": this.id,
             "version": this.version,
-            "messageNo": this.designInfo.length <= 1 ? 0:this.messageNo + 1,
+            "messageNo": 0,
             "targetId": this.servicerId,
             "messageContent": messageContent,
             "messageFile": $("#leav_bottom_file .accessory-container .fileitem").attr("data-url"),
@@ -475,16 +482,16 @@ var desigDetails = {
             "needReDesign":'',
         }
 
-        var imgContainer = $("#leav_bottom_img .diagram-container").children().length;
+        var imgContainer = $("#leav_bottom_img .diagram-container").children();
         var imgleng =  imgContainer.length;
         for (var i = 0; i < imgleng; i++) {// 添加设计图片
-            data['initialMessageImage' + (i+1)] = imgContainer[i].attr('data-oimageurl');
-            data['middleMessageImage' + (i+1)] = imgContainer[i].attr('data-mimageurl');
-            data['smallMessageImage' + (i+1)] = imgContainer[i].attr('data-simageurl');
+            data['initialMessageImage' + (i+1)] = imgContainer[i].getAttribute('data-oimageurl');
+            data['middleMessageImage' + (i+1)] = imgContainer[i].getAttribute('data-mimageurl');
+            data['smallMessageImage' + (i+1)] = imgContainer[i].getAttribute('data-simageurl');
         }
 
         Requst.ajaxPost(url, data, true, function (data) {
-            details.leavShow();
+            desigDetails.leavShow();
 
         });
     }

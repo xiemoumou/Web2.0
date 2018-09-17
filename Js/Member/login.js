@@ -125,10 +125,13 @@ var mail = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
          }
          else if (password==''){
              $(".pass-for").removeClass("hide");
+             $(".user-err").addClass('hide');
              return false
          }
          else if (password.length<6){
              $(".pass-error").removeClass("hide");
+             $(".user-err").addClass('hide');
+             $(".password").val('');
              return false;
          }
          login.GetUser();
@@ -179,9 +182,11 @@ var mail = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
 
            if (data.code ==99999){
                $(".btn-err").removeClass('hide');
+               $(".password").val('');
                return false;
            } else if (data.code ==100001){
                $(".user-err").removeClass('hide');
+               $(".password").val('');
                if (data.data.errorNum>10){
                   Message.show('提示','你已经尝试以错误的密码登录系统达到10次，为了你的安全，将进行人机验证，如果您忘记了密码，请联系管理员重置密码后再次登录',MsgState.Warning,2000)
                }

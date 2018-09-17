@@ -218,7 +218,7 @@ var details = {
                 var length = data.data.length || "";//长
                 var width = data.data.width || "";//宽
                 var height = data.data.height || "";//高
-                var userPeriod = data.data.userPeriod || "--";//要求工期
+                var userPeriod = data.data.userPeriod +'天'|| "--";//要求工期
                 var designPrice = data.data.designPrice || "";//设计费
                 var introducePrice = data.data.introducePrice || "--";//设计引导费
                 var userPrice = data.data.userPrice || "0.00";//预算
@@ -565,13 +565,13 @@ var details = {
                     if (data.data.designInfo[i].designFile) {
                         srcFile.push({
                             "uri": 'http://' + data.data.designInfo[i].designFile,
-                            "name": data.data.designInfo[i].designFile,
+                            "name": customid,
                         });
                     }
                     if (data.data.designInfo[i].otherFile) {
                         otherFile.push({
                             "uri": 'http://' + data.data.designInfo[i].otherFile,
-                            "name": data.data.designInfo[i].otherFile,
+                            "name": customid,
                         });
                     }
                     if (data.data.designInfo[i].middleRemarkImage1) {
@@ -677,7 +677,7 @@ var details = {
                         if (data.data.accessoryFile) {
                             accessoryArray.push({
                                 "uri": 'http://' + data.data['accessoryFile'],
-                                "name": data.data['accessoryFile'],
+                                "name": customid,
                             });
                         }
                         return accessoryArray
@@ -793,6 +793,7 @@ var details = {
                 that.messageNo = data.data[0].messageNo;
                 that.targetId = data.data[0].targetId;//设计师Id
                 $(".leav-title-right-text em").text(data.data[0].version);//版本号沟通中
+
                 for (var i = 0; i < data.data.length; i++) {
                     var srcMan = [];//留言显示图片
                     var messageFile = [];//留言显示附件
@@ -806,7 +807,7 @@ var details = {
                     if (data.data[i].messageFile) {
                         messageFile.push({
                             "uri": 'http://' + data.data[i].messageFile,
-                            "name": data.data[i].messageFile,
+                            "name": customid,
                         });
                     }
 
