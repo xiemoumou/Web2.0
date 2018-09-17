@@ -1774,15 +1774,16 @@ var classMain = {
                             //重新报价
                             if(item.inquiryStatus==2 && item.lastQuote>0)
                             {
-                                var btn=$('<button class="btn" data-lastQuote="'+item.lastQuote+'" style="width: 76px; height: 23px;" data-inquiryRound="'+item.inquiryRound+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">重新报价</button>');
+                                var btn=$('<button class="btn" data-lastPeriod="'+item.lastPeriod+'"  data-lastQuote="'+item.lastQuote+'"  style="width: 76px; height: 23px;" data-inquiryRound="'+item.inquiryRound+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">重新报价</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
                                     var orderid = $(this).attr('data-orderid');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
                                     var inquiryRound=$(this).attr('data-inquiryRound');//询价轮次
                                     var lastQuote=$(this).attr("data-lastQuote");//上次报价
+                                    var lastPeriod=$(this).attr("data-lastPeriod");//上次工期
 
-                                    top.Popup.open("重新报价",423,266,"./Pop-ups/orderOffer.html?customid="+customid+"&inquiryRound="+inquiryRound+"&lastQuote="+lastQuote);
+                                    top.Popup.open("重新报价",423,266,"./Pop-ups/orderOffer.html?customid="+customid+"&inquiryRound="+inquiryRound+"&lastQuote="+lastQuote+"&lastPeriod="+lastPeriod);
 
                                 });
                                 operating.append(btn);
