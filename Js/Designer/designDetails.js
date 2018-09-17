@@ -452,6 +452,7 @@ var desigDetails = {
         }else{
             data.needReDesign = 0;
         }
+        console.log(this.designInfo.length);
         data = {
             "customid": customid,
             "orderid": this.orderid,
