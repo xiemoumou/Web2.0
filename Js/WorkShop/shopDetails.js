@@ -328,6 +328,12 @@ var workShop = {
             uploadfile.uploadPhoto('deta_prod', 3, detaProd(), false);//点详情显示参考图
             uploadfile.uploadPhoto('deta_prod_refe', 3, detaProdRefe(), false);//点详情显示生产参考图
 
+            debugger
+            //刘刚加-车间在没有接收生产之前，不能显示收货地址
+            if(item.produceStatus>=3 && item.produceStatus<=7)
+            {
+               $(".dist-rece-address").removeClass("hide");
+            }
         })
     },
     Exportsing: function () {//下载生产单
