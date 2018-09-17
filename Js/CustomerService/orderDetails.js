@@ -720,9 +720,9 @@ var details = {
     },
     serverBtn: function () {//客服报价
         var url = config.WebService()["custom_Quotation"];
-        var server = $(".quote-text input").val();
+        var server = $(".quote-text input").val().replace(/[^0-9-.]/g, '');
         data = {
-            "customid": 2051777045010001,
+            "customid": customid,
             "prePrice": server,
         }
         if (!(server)) {
@@ -743,7 +743,7 @@ var details = {
     userValen: function () {//用户心理预算
 
         var url = config.WebService()["updatePrice"];
-        var money = $(".budget-text input").val();
+        var money = $(".budget-text input").val().replace(/[^0-9-.]/g, '');
         data = {
             "wCustomid": customid,
             "price": money,

@@ -24,8 +24,8 @@ var dist = {
         var orderid = Helper.getUrlParam("orderid", true);//订单id
         var goodsid = Helper.getUrlParam("goodsid", true);//
 
-        $('#recipient').val(name == "undefined" ? "" : name);
-        $('#tel').val(mobilephone == "undefined" ? "" : mobilephone);
+        $('#recipient').val(name == "null" ? "" : name);
+        $('#tel').val(mobilephone == "null" ? "" : mobilephone);
         $('#address_content').val(address == "undefined" ? "" : address);
 
         //初始化省市下拉框
@@ -42,7 +42,7 @@ var dist = {
             });
         }
 
-        $('#code').val(postcode == "undefined" ? "" : postcode);
+        $('#code').val(postcode == "null" ? "" : postcode);
 
         $('.address-select select').change(function () {
             var tempcode = $(this).find("option:selected").attr('data-code');
