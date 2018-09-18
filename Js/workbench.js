@@ -1932,9 +1932,16 @@ function SelectedTab(index) {
     DeactivatePage();
     $('#tab_' + index).addClass('active');
     $('#iframe_box_' + index).removeClass('hide');
-    debugger
     $('#iframe_' + index).focus();
-    $('#iframe_' + index).scroll();
+    if(getBrowserType()=="Safari")//如果是苹果浏览器
+    {
+        var iframeClass=$('.iframe-container .iframe');
+        if(!iframeClass.hasClass(Safari))
+        {
+            $('.iframe-container .iframe').addClass("Safari");
+            console.log("111");
+        }
+    }
 }
 
 //图片预览

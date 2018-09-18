@@ -439,13 +439,19 @@ body {
 .iframe {
     height: 100%;
     position: relative;
+}
+
+
+/*避免苹果浏览器无法滚动ifream*/
+.Safari{
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
 }
-
-.iframe::-webkit-scrollbar {
+.Safari::-webkit-scrollbar {
     display: none;
 }
+
+
 
 .iframe iframe {
     border: none;
