@@ -637,7 +637,6 @@ var Message = {
 // 会话窗口
 var Confirm = function (title, message, width, height, hideCancel, callback) {
     var layerIndex = {};
-
     var btn = hideCancel ? ['确定'] : ['确定', '取消'];
 
     var index = layer.confirm(message, {
@@ -745,36 +744,6 @@ var Requst = {
         });
     }
 }
-
-
-// var Global={
-//     router:{ // 跳转页面
-//         set:function (pageUrl,params,pageIndex) {
-//             sessionStorage.setItem("pageUrl",pageUrl);
-//             sessionStorage.setItem("params",params);
-//             sessionStorage.setItem("pageIndex",pageIndex);
-//             //设置main页面ifream  src
-//
-//             //显示loading
-//         },
-//         get:function () {
-//             var pageUrl=sessionStorage.getItem("pageUrl");
-//             var params=sessionStorage.getItem("params");
-//             var pageIndex=sessionStorage.getItem("pageIndex");
-//
-//             return {
-//                 "pageUrl":pageUrl,
-//                 "params":params,
-//                 "pageIndex":pageIndex,
-//             }
-//         }
-//     },
-//     statistics:function () {//数据统计
-//         //设置导航
-//
-//         //返回结果
-//     }
-// }
 
 //将id转换成名称
 function ConvertIdToName(dataSource,idArray) {

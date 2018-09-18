@@ -1933,14 +1933,19 @@ function SelectedTab(index) {
     $('#tab_' + index).addClass('active');
     $('#iframe_box_' + index).removeClass('hide');
     $('#iframe_' + index).focus();
-    if(getBrowserType()=="Safari")//如果是苹果浏览器
+
+    //如果是苹果浏览器
+    if(getBrowserType()=="Safari")
     {
         var iframeClass=$('.iframe-container .iframe');
-        if(!iframeClass.hasClass(Safari))
+        for(var i=0;i<iframeClass.length;i++)
         {
-            $('.iframe-container .iframe').addClass("Safari");
-            console.log("111");
+            if(!$(iframeClass[i]).hasClass("Safari"))
+            {
+                $(iframeClass[i]).addClass("Safari");
+            }
         }
+
     }
 }
 
