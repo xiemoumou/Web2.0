@@ -706,7 +706,7 @@ var Requst = {
                     errerCallback(data);
                 }
                 else {
-                    Message.show('操作失败', '与服务器互动环节出现了错误。', MsgState.Fail, 2000);
+                    Message.show('操作失败', '服务器无响应。', MsgState.Fail, 2000);
                     console.warn("请求异常");
                 }
             },
@@ -738,7 +738,7 @@ var Requst = {
                     errerCallback(data);
                 }
                 else {
-                    Message.show('操作失败', '与服务器互动环节出现了错误。', MsgState.Fail, 2000);
+                    Message.show('操作失败', '服务器无响应。', MsgState.Fail, 2000);
                     console.warn("请求异常");
                 }
             },

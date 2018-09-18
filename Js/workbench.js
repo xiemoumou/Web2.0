@@ -8,9 +8,24 @@ var Cache={};//全局缓存
 
 $(function () {
     var pageLoading_start=new Date(); pageLoading_start.toLocaleString();//初始化计时
-
     roleType = top.Helper.Cache.get('roleType');
     roleType =parseInt(roleType);//获取角色
+    Cache["userInfo"]={"roleType":roleType};
+
+    document.onkeydown = function(e){
+        e = window.event || e;
+        var keycode = e.keyCode || e.which;
+        if(keycode == 116){
+            if(window.event){// ie
+                try{e.keyCode = 0;}catch(e){}
+                e.returnValue = false;
+            }else{// firefox
+                e.preventDefault();
+            }
+            classMain.loadOverview();
+        }
+    }
+
     if (localStorage.getItem('SysParam'))//从缓存获取字典
     {
         try {
@@ -1917,6 +1932,9 @@ function SelectedTab(index) {
     DeactivatePage();
     $('#tab_' + index).addClass('active');
     $('#iframe_box_' + index).removeClass('hide');
+    debugger
+    $('#iframe_' + index).focus();
+    $('#iframe_' + index).scroll();
 }
 
 //图片预览

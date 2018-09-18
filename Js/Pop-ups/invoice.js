@@ -481,7 +481,7 @@ var Invoice = {
 
                     var $taxrate = data.data.taxRate;
                     var $invoicetitle = data.data.invoiceTitle;
-                    var $detailsvalue1 = data.data.detailsValue1;
+                    var $detailsvalue1 = data.data.detailsValue1||"0.00";
                     var $detailsinvoice1 = data.data.detailsInvoice1;
                     var $ispersonal = data.data.isPersonal;
                     //var $customerduty = data.data.customerduty;
@@ -532,6 +532,7 @@ var Invoice = {
                         $(".remarks-text").addClass('ml-30');
                     }
                     $(".rise-text").val($invoicetitle);
+                    debugger
                     $(".money-text").val($detailsvalue1);
                     if ($ispersonal == 1) {
                         that.Controller.uncommercially(true);//锁定非营利机构按钮

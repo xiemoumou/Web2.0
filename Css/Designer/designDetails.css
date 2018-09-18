@@ -70,12 +70,20 @@
     line-height: 24px;
     background: url(../../Image/WorkShop/workShopDetails.png) no-repeat 0px -1px;
 }
-.designAttr-text p{
-    display: inline-block;
+
+/*设计要求参考图*/
+#deta_prod .diagram-container .diagram{
+    width: 48px;
+    height: 48px;
 }
+
+#deta_prod .diagram-container .diagram img{
+    max-width: 46px;
+    max-height: 46px;
+}
+
 .design-attr{
     width: 462px;
-    background: #FAFBFB;
     margin: 5px 20px;
     font-size: 14px;
     color: #999999;
@@ -99,11 +107,21 @@
     width: 322px;
     vertical-align: top;
 }
+
+.designAttr-text p{
+    display: inline-block;
+}
+
 .quote-1{
     margin-top: 5px;
 }
+.quote-1 span,.designAttr-text span{
+    color:#666666;
+    font-size: 14px;
+}
+
 .order-money,.order-money-pre{
-    color: #E84B4C;
+    color: #E84B4C !important;
 }
 .up-design-box{
     width: 420px;
@@ -111,8 +129,8 @@
     vertical-align: top;
     margin: 15px 38px;
 }
-.design-uploadPhoto {
-    height: 145px;
+.ref-photo{
+    margin-top: 5px;
 }
 .label-1 {
     font-size: 14px;

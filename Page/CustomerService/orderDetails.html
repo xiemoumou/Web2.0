@@ -16,139 +16,102 @@
     </script>
 </head>
 <body>
-<div class="details-contnet">
+
+<div class="container hide">
+    <div class="details-contnet">
     <textarea type="text" style="height: 0px; width: 0px; border: none;display: none;" id="copyContent"
               value=""></textarea>
-    <div class="workshop-box">
-        <div class="details-title">
-            <ul>
-                <li class="tit-1">产品图</li>
-                <li class="tit-2">属性</li>
-                <li class="tit-3">工艺</li>
-                <li class="tit-4">数量</li>
-                <li class="tit-5">长×宽×高/厚(mm)</li>
-                <li class="tit-6">工期</li>
-                <li class="tit-7">订单状态</li>
-                <li class="tit-8">操作</li>
-            </ul>
-        </div>
-        <div class="order-time">
-            <div class="esta-time"><span class="time-num">2018-06-14  12:12:12</span></div>
-            <div class="order-num">订单号：<span class="orderNum">205177014313522</span></div>
-            <div class="order-cust">客源：<span class="orderCust">多贝特</span></div>
-            <div class="order-ww">旺旺：<span class="orderWw">文字文字文字文字</span></div>
-            <div class="order-status">
-                <span class="emer">急单</span>
-                <span class="renew">续订</span>
+        <div class="workshop-box">
+            <div class="details-title">
+                <ul>
+                    <li class="tit-1">产品图</li>
+                    <li class="tit-2">属性</li>
+                    <li class="tit-3">工艺</li>
+                    <li class="tit-4">数量</li>
+                    <li class="tit-5">长×宽×高/厚(mm)</li>
+                    <li class="tit-6">工期</li>
+                    <li class="tit-7">订单状态</li>
+                    <li class="tit-8">操作</li>
+                </ul>
             </div>
-            <!--<div class="check-img"></div>-->
-            <!--<span title="更多操作" class="more-box">-->
-                <!--<i class="more-icon"></i>-->
-                <!--<div class="operlist"> &lt;!&ndash;更多下拉&ndash;&gt;-->
-                <!--<i class="arrow"></i>-->
-                <!--<span>发票/收据</span>-->
-                <!--<span>产品包装</span>-->
-                <!--<span>订单备注</span>-->
-                <!--<span style="border-bottom: none;">删除订单</span>-->
-                 <!--</div>-->
-            <!--</span>-->
-            <!--<div class="check-order hover">核对订单</div>-->
-            <!--<div class="view-order hover">查看订单</div>-->
-            <!--<div class="item-head-right fr">-->
-                <!--<span>核对订单</span>-->
-                <!--<span>查看订单</span>-->
-                <!--<span title="更多操作"><i class="more-icon"></i></span>-->
-                <!--<div class="operlist"> &lt;!&ndash;更多下拉&ndash;&gt;-->
-                    <!--<i class="arrow"></i>-->
-                    <!--<span>发票/收据</span>-->
-                    <!--<span>产品包装</span>-->
-                    <!--<span>订单备注</span>-->
-                    <!--<span style="border-bottom: none;">删除订单</span>-->
-                <!--</div>-->
-            <!--</div>-->
-            <div class="item-head">
-                <div class="item-head-right fr">
-                    <span>核对订单</span>
+            <div class="order-time">
+                <div class="esta-time"><span class="time-num">2018-06-14  12:12:12</span></div>
+                <div class="order-num">订单号：<span class="orderNum">205177014313522</span></div>
+                <div class="order-cust">客源：<span class="orderCust">多贝特</span></div>
+                <div class="order-ww">旺旺：<span class="orderWw">文字文字文字文字</span></div>
+                <div class="order-status">
+                    <span class="emer hide">急单</span>
+                    <span class="renew hide">续订</span>
                 </div>
-                <!--<div class="item-head-left-manager hide fl">&lt;!&ndash;经理角色&ndash;&gt;-->
-                    <!--<span>客服ID：<em>238388</em></span>-->
-                    <!--<span>车间ID：<em>838888888448488</em></span>-->
-                    <!--<span style="border-right: none;">方案师ID：<em>838888888448488</em></span>-->
-                <!--</div>-->
-            </div>
-        </div>
-        <div class="order-msg">
-            <div class="order-img">
-                <img src="../../Image/Message/Fail.png">
-            </div>
-            <div class="order-msg-box" style="display: inline-block">
-                <div class="attr">
-                    <p class="attr-1">纪念币</p>
-                    <p class="attr-2">国产不反光</p>
-                    <p class="attr-3">蝴蝶扣</p>
-                </div>
-                <div class="tech">
-                    <p class="tech-1">双面开模；2D冲压；3D冲压</p>
-                    <p class="tech-2">烤漆；背膜；镶边；刻字；</p>
-                    <p class="tech-3">金色；黑漆；古银色；玫瑰金；</p>
-                </div>
-                <div class="number">
-                    <span class="ordNum">10000</span>个
-                </div>
-                <div class="size-box">
-                    <span class="length">100.0</span>×<span class="width">100.0</span>×<span class="height">20.0</span>(mm)
-                </div>
-                <div class="money-time">
-                    <div class="limit"><span>99</span>天</div>
-                </div>
-                <button class="Edit red-h hide">编辑参数</button>
-            </div>
-            <div class="operation">
-                <!--<span class="upimg btn">上传成品图</span><br>-->
-                <!--<span class="deli">发货</span>-->
-                <!--<button class="btn">发货发货</button>-->
-                <!--<button class="btn">发货发货</button>-->
-                <!--<button class="btn">发货发货</button>-->
-                <!--<button class="btn">发货发货</button>-->
-            </div>
-            <div style="float: right;width: 2px;height: 98px; background: #f5f5f5;margin-right: 20px;"></div>
-            <div class="orderstatus">
-                <!--<p class="orderComp">已完成状态</p>-->
-                <!--<p class="orderStat">未完成状态</p>-->
-                <!--<p class="orderNew">新建订单</p>-->
-                <!--<p class="orderNewNext">新建订单状态</p>-->
-            </div>
-            <div style="float: right;width: 2px;height: 98px; background: #f5f5f5;margin-right: 20px;"></div>
-            <div class="offer">
-                设计费：¥ <span class="offer-money">200</span>&nbsp;&nbsp; 引导费：¥ <span class="offertime">200</span>
-                <p class="edit hide">编辑</p>
-            </div>
-            <div class="budget">
-                <span>预算：</span>
-                <div class="budget-text">
-                    <input class="input-money">
-                    <span class="btn budget-btn">确定</span>
-                </div>
-            </div>
-            <div class="quote">
-                <div class="quote-tips">
-                    <span>含税</span>
-                    <div class="quoteTips">
-                        参考价 ¥<a class="quot-num">10000</a>/工期<em class="quot-day">12</em>天
+                <div class="item-head">
+                    <div class="item-head-right fr">
+                        <span>核对订单</span>
                     </div>
-                    <div class="bottom-tria"></div>
                 </div>
-                <span>报价：</span>
-                <div class="quote-text">
-                    <input class="input-money">
-                    <span class="btn server-btn">确定</span>
+                <div class="item-head-left-manager hide fl"><!--经理角色-->
+
                 </div>
             </div>
+            <div class="order-msg">
+                <div class="order-img">
+                    <img onerror="this.src='../Image/imageError.png'">
+                </div>
+                <div class="order-msg-box fl"
+                     style="display: inline-block;margin-left: 8px;padding-left: 24px; padding-bottom: 16px;padding-right: 30px; background-color: #ffffff;">
+                    <div class="attr">
+                        <p class="attr-1">-</p>
+                        <p class="attr-2">-</p>
+                        <p class="attr-3">-</p>
+                    </div>
+                    <div class="tech">
+                        <p class="tech-1">-</p>
+                        <p class="tech-2">-</p>
+                        <p class="tech-3">-</p>
+                    </div>
+                    <div class="number">
+                        <span class="ordNum">-</span>个
+                    </div>
+                    <div class="size-box">
+                        <span class="length">-</span>×<span class="width">-</span>×<span class="height">-</span>(mm)
+                    </div>
+                    <div class="money-time">
+                        <div class="limit"><span>-</span>天</div>
+                    </div>
+                    <button class="Edit red-h hide">编辑参数</button>
+                </div>
+                <div class="orderstatus"></div>
+                <div class="operation"></div>
+                <div class="money clearfix">
+                    <div class="offer fl">
+                        设计费：¥ <span class="offer-money">-</span>&nbsp;&nbsp; 引导费：¥ <span class="offertime">-</span>
+                        <p class="edit hide">编辑</p>
+                    </div>
+                    <div class="budget fl">
+                        <span>预算：</span>
+                        <div class="budget-text">
+                            <input class="input-money">
+                            <span class="btn budget-btn">确定</span>
+                        </div>
+                    </div>
+                    <div class="quote fl">
+                        <div class="quote-tips">
+                            <span>含税</span>
+                            <div class="quoteTips">
+                                参考价 ¥<a class="quot-num">-</a>/工期<em class="quot-day">-</em>天
+                            </div>
+                            <div class="bottom-tria"></div>
+                        </div>
+                        <span>报价：</span>
+                        <div class="quote-text">
+                            <input class="input-money">
+                            <span class="btn server-btn">确定</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="line">
         </div>
-        <hr style="width:975px;height:2px;border:none;border-top:2px solid #f5f5f5;padding-top: 19px">
     </div>
-
-
     <div class="desi-offer-box">
         <div class="design-rele">
             <div class="design-title">
@@ -353,7 +316,6 @@
         </div>
     </div>
 </div>
-
 
 <script>
     document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');

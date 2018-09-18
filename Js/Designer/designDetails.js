@@ -59,6 +59,8 @@ $(function () {
 
 })
 
+var detailsData=null;
+
 var desigDetails = {
     desiGet: function () {
         
@@ -68,32 +70,14 @@ var desigDetails = {
         }
         var url = config.WebService()["orderSummaryInfo_Query"];
         Requst.ajaxGet(url, data, true, function (data) {
+            detailsData=data.data;
+
             var createTime = data.data.createTime || "";//订单创建时间
             var designPrice = data.data.designPrice || "";//设计费
 
             var length = data.data.length || "";//长
             var width = data.data.width || "";//宽
             var height = data.data.height || "";//高
-            //属性
-            var goodsClass = data.data.goodsClass || "";//产品类别
-            var material = data.data.material || "";//产品材质
-            var accessories = data.data.accessories || "";//配件
-
-            //工艺
-            var shape = data.data.shape || "";//开模
-            var technology = data.data.technology || "";//生产工艺
-            var color = data.data.color || "";//电镀色
-            var deadline = data.data.deadline || "";//要求工期
-            var produceMemo = data.data.produceMemo || "";//生产备注
-            var orderid = data.data.orderid || "";//订单id
-            that.orderid = data.data.orderid || "";//orderid
-            that.designId = data.data.designId || "";//设计单id
-            that.id = data.data.id || "";//订单表
-            that.servicerId = data.data.servicerId || "";//客服id
-            //that.ordersummaryId = data.data.ordersummaryId || "";
-            that.designStatus = data.data.designStatus || "";//判断接单状态
-            that.producestatus = data.data.producestatus || "";//生产状态
-            that.designInfo = data.data.designInfo || "";
 
             if (data.data.designStatus==1){//已分配设计，尚无方案师接单
                 
@@ -112,23 +96,39 @@ var desigDetails = {
                 that.ordersummaryId = data.data.designInfo[0].ordersummaryId;//订单表id
                 that.version = data.data.designInfo[0].version;//设计方案版本号
             }
-            // if (data.data.designstatus >= 2) {
-            //     $(".design-man").removeClass('hide');
-            //     $(".edit-right").removeClass('hide');
-            // }else{
-            //     $(".design-man").addClass('hide');
-            //     $(".edit-right").addClass('hide');
-            // }
 
-
-
-            if (deadline <= 5) {//急单
+            //是否急单
+            var orderUrgencyDays = parseInt(top.SysParam.sysParam['order_urgency_days'].value);
+            if (detailsData.userPeriod <= orderUrgencyDays) {
                 $(".emer").removeClass('hide');
-            } else {
-                $(".emer").addClass('hide');
             }
-            
 
+            //是否续订
+            if (detailsData.isContinueOrder == 1) {
+                $(".renew").removeClass('hide');
+            }
+
+            //五要素
+            var element = top.SysParam.element;//元素
+            var shape = ConvertIdToName(element.model, detailsData.model).join(';');
+            var technology = ConvertIdToName(element.technology, detailsData.technology).join(';');
+            var color = ConvertIdToName(element.color, detailsData.color).join(';');
+
+            //属性
+            var goodsClass =top.SysParam.element.goodsClass[detailsData.goodsClass].name || "";//产品类别
+            var material = top.SysParam.element.material[detailsData.material].name || "";//产品材质
+            var accessories = top.SysParam.element.accessories[detailsData.accessories].name || "";//配件
+
+            //工艺
+            var deadline = data.data.deadline || "";//要求工期
+            var orderid = data.data.orderid || "";//订单id
+            that.orderid = data.data.orderid || "";//orderid
+            that.designId = data.data.designId || "";//设计单id
+            that.id = data.data.id || "";//订单表
+            that.servicerId = data.data.servicerId || "";//客服id
+            that.designStatus = data.data.designStatus || "";//判断接单状态
+            that.producestatus = data.data.producestatus || "";//生产状态
+            that.designInfo = data.data.designInfo || "";
 
             $(".order-time").text(createTime);//订单创建时间
             $(".order-num").text(orderid);//订单号
@@ -137,7 +137,7 @@ var desigDetails = {
             $(".width").text(width);//宽
             $(".height").text(height);//高
             $(".attr-text").text(goodsClass+material+accessories+shape+technology+color);//产品属性
-            $(".order-requ").text(produceMemo);//生产备注
+            $(".order-requ").text(detailsData.produceMemo);//生产备注
 
             function detaProdRefe (srcArray) {
                 srcArray = [];//参考图
@@ -198,7 +198,6 @@ var desigDetails = {
 
             if (data.data.designInfo.length>=1) {
                 for (var i = 0; i < data.data.designInfo.length; i++) {
-                    debugger
                     var commit_time = data.data.designInfo[i].commitTime || "";
                     var design_memo = data.data.designInfo[i].designMemo || "";
                     var srcMan = [];//设计稿版本图片

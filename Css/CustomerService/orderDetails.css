@@ -1,3 +1,35 @@
+body{
+    background-color: #ffffff;
+}
+/*经理角色item头*/
+.item-head-left-manager{
+    height: 16px;
+    line-height: 12px;
+    font-size: 12px;
+    background-color: #F5F5F5;
+    width: 100%;
+    margin-top: -2px;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+}
+
+.item-head-left-manager span{
+    border-right: 1px solid #999999;
+    height: 13px;
+    display: inline-block;
+    color: #999999;
+    padding-right: 20px;
+    margin-left: 12px;
+}
+
+.line{
+    width: 975px;
+    height: 2px;
+    border: none;
+    border-top: 2px solid #f5f5f5;
+    margin-top: 140px;
+    padding-bottom: 14px;
+}
 
 .workshop-content{
     width: 1005px;
@@ -25,7 +57,7 @@
     padding-left: 35px;
 }
 .tit-2,.tit-5{
-    padding-left: 60px;
+    padding-left: 70px;
 }
 .tit-3{
     padding-left: 65px;
@@ -34,13 +66,13 @@
     padding-left: 180px;
 }
 .tit-6{
-    padding-left: 60px;
+    padding-left: 39px;
 }
 .tit-7{
-    padding-left: 60px;
+    padding-left: 50px;
 }
 .tit-8{
-    padding-left: 87px;
+    padding-left: 60px;
 }
 .order-time{
     width: 975px;
@@ -115,8 +147,6 @@
 }
 
 .order-msg{
-    width: 975px;
-    height: 98px;
     margin: 12px 15px;
     position: relative;
 }
@@ -130,16 +160,14 @@
     display: flex;
     float: left;
     vertical-align: middle;
+    overflow: hidden;
 }
 .order-img img{
     max-width: 100px;
     max-height: 100px;
-    border-radius: 8px;
-
 }
 .attr{
     display: inline-block;
-    margin-left: 17px;
     width: 88px;
 }
 .attr p{
@@ -191,31 +219,32 @@
     line-height: 18px;
 }
 .orderstatus{
-    display: inline-block;
-    text-align: center;
-    vertical-align: top;
-    float: right;
-    margin-right: 20px;
+    width: 96px;
+    height: 88px;
+    padding-top: 10px;
+    border-left: 2px solid #F5F5F5;
+    border-right: 2px solid #F5F5F5;
+    float: left;
 }
 .orderstatus p{
     font-size: 12px;
     margin-top: 5px;
     color: #999999;
+    width: 100%;
+    text-align: center;
 }
 /*.orderComp{*/
     /*color: #5298FF!important;*/
 /*}*/
 .operation{
-    float: right;
-    margin-right: 20px;
-    height: 100px;
+    float: left;
+    width: 110px;
+    height: 98px;
     display: flex;
     flex-flow: wrap;
     vertical-align: middle;
     justify-content: space-around;
     align-items: center;
-    width: 63px;
-
 }
 .upimg,.deli{
     display: inline-block;
@@ -236,115 +265,152 @@
 .deli:hover{
     background: #5298FF;
 }
-.offer{
-    position: absolute;
-    display: inline-block;
-    width: 182px;
-    height: 21px;
-    line-height: 21px;
-    background: #FAFBFB;
-    box-shadow: 0 0 2px 0 rgba(0,0,0,0.20);
-    border-radius: 2px;
-    text-align: center;
-    left: 123px;
-    bottom: 0px;
-    color: #999;
-}
-.budget{
-    font-size: 12px;
-    color: #999999;
-    position: absolute;
-    left: 385px;
-    bottom: 0px;
-}
-.budget-text{
-    display: inline-block;
-}
-.budget-text input{
-    width: 64px;
-    text-align: center;
-    border: 1px solid #d5d5d5;
-    border-radius: 2px 0px 0px 2px;
-    border-right: none;
-    height: 19px;
-    line-height: 19px;
-}
-.budget-text span{
-    display: inline-block;
-    width: 32px;
-    height: 21px;
-    line-height: 21px;
-    font-size: 12px;
-    color: #FFFFFF;
-    border-radius: 0px 2px 2px 0px;
-    text-align: center;
-    float: right;
+
+.money{
+    position: relative;
+    float: left;
+    margin-top: -24px;
+    width: 645px;
+    height: 26px;
 }
 
-.quote{
-    font-size: 12px;
-    color: #999999;
-    position: absolute;
-    left: 585px;
-    bottom: 0px;
-}
-.quote-text{
-    display: inline-block;
-}
-.quote-text input{
-    width: 64px;
-    text-align: center;
-    border: 1px solid #d5d5d5;
-    border-radius: 2px 0px 0px 2px;
-    border-right: none;
-    height: 19px;
-    line-height: 19px;
-}
-.quote-text span{
-    display: inline-block;
-    width: 32px;
-    height: 21px;
+/*设计费*/
+.money .design-fee{
+    margin-top: 2px;
     line-height: 21px;
-    font-size: 12px;
-    color: #FFFFFF;
-    border-radius: 0px 2px 2px 0px;
+    height: 21px;
+    width: 182px;
+    border-radius: 4px;
+    box-shadow: 0 0 6px #00000020;
     text-align: center;
-    float: right;
+    position: relative;
+    background-color: #ffffff;
+    margin-left: 22px;
+    float: left;
 }
-.quote-tips{
+
+.money .design-fee .edit{
     position: absolute;
-    width: 190px;
-    height: 24px;
+    top: -1px;
+    right: -36px;
+    color: #E84B4C;
+    width: 39px;
+    height: 23px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+/*预算*/
+.money .budget{
+    height: 23px;
+    /*width: 132px;*/
+    float: left;
+    margin-left: 75px;
+    position: relative;
+    line-height: 21px;
+}
+
+.money .budget .label{
     line-height: 24px;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10);
-    border-radius: 2px;
-    top: -34px;
-    left: -56px;
-    background-color: #fff;
+}
+
+.money .budget input{
+    height: 21px;
+    width: 64px;
+    border:1px solid #D5D5D5;
+    border-radius: 3px;
+    border-right: none;
+    text-align: right;
+    padding-right: 3px;
+}
+
+.money .budget button{
+    height: 23px;
+    width: 31px;
+    line-height: 23px;
+    border-radius: 0 3px 3px 0;
+    color: #ffffff;
+}
+
+
+/*报价*/
+.money .quoted{
+    height: 23px;
+    /*width: 132px;*/
+    float: left;
+    margin-left: 80px;
+    position: relative;
+    line-height: 21px;
+}
+
+.money .quoted .label{
+    line-height: 24px;
+}
+
+.money .quoted input{
+    height: 21px;
+    width: 64px;
+    border:1px solid #D5D5D5;
+    border-radius: 3px;
+    border-right: none;
+    text-align: right;
+    padding-right: 3px;
+}
+
+.money .quoted button{
+    height: 23px;
+    width: 31px;
+    line-height: 23px;
+    border-radius: 0 3px 3px 0;
+    color: #ffffff;
+}
+
+/*议价*/
+.money .bargain{
+    height: 24px;
+    box-shadow: 0 2px 2px #00000010;
+    position: absolute;
+    top: -31px;
     border: 1px solid #00000010;
+    border-radius: 3px;
+    right: -16px;
+    background-color: #fff;
+    z-index: 1;
+    line-height: 16px;
 }
-.quote-tips span{
-    background: #FFFFFF;
-    border: 1px solid #FF7853;
-    border-radius: 2px;
-    font-size: 12px;
+
+.money .bargain .tax{
     color: #FF7853;
-    margin-left: 5px;
+    border: 1px solid #FF7853;
+    border-radius: 3px;
+    height: 16px;
+    line-height: 16px;
+    margin: 3px 0 0 4px;
     display: inline-block;
-    width: 38px;
-    height: 15px;
-    line-height: 15px;
-    text-align: center;
 }
-.quoteTips{
-    display: inline-block;
+
+.money .bargain .proposed-price
+{
+    color: #5298FF;
     font-size: 12px;
+    margin-top: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/*议价结束*/
+.money .bargain .proposed-price.red{
     color: #E84B4C;
 }
-.quoteTips a{
-    color: #E84B4C;
+
+.money .bargain .button{
+    margin-top: 4px;
+    margin-right: 5px;
+    cursor: pointer;
+    color:#DB4D4D;
 }
-.bottom-tria{
+
+.money .bargain .arrow{
     width: 0;
     height: 0;
     border-width: 5px 5px 0px 0px;
@@ -352,9 +418,7 @@
     border-color: #ffffff #ffffff00 transparent;
     position: absolute;
     bottom: -5px;
-    right: 33px;
-
-
+    right: 76px;
 }
 /****头部结束***/
 
@@ -474,7 +538,7 @@
 
 }
 .accessory-container .filelist .fileitem{
-    margin-left: 113px!important;
+    margin-left: 91px!important;
 }
 .offer-rele{
     /*margin-top: 10px;*/
@@ -1148,6 +1212,6 @@
 .item-head{
     display: inline;
 }
-.data-item .item-head-right{
+.item-head-right{
     position: relative;
 }
