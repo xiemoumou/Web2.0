@@ -79,6 +79,7 @@ var Veri ={
             "password": PassWord,
             "wPassword": old_pass,
         };
+        debugger
         if (old_pass==''){
             $(".pass-used").text('请输入旧密码').removeClass('hide');
             return false

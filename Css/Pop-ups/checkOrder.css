@@ -179,3 +179,8 @@ body{
     width: 600px;
     vertical-align: top;
 }
+.btn-close{
+    width: 112px;
+    height: 35px;
+    display: inline-block;
+}

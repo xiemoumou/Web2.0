@@ -246,7 +246,7 @@ var workShop = {
             $(".offer-money").text(lastQuote);//上次报价
             $(".offertime").text(lastPeriod);//上次工期
             $(".design-rema textarea").text(designMemo);//设计备注
-            $(".dist-text").text(produceMemo == '' ? '暂无' : true);//生产要求
+            $(".dist-text").text(produceMemo == '' ? '暂无' : produceMemo);//生产要求
             $(".quot-num").text(currentPrice);//参考价格
             $(".quot-day").text(currentPeriod);//参考工期
             $(".cont").text(data.data.name || "");//收货人姓名
@@ -386,17 +386,5 @@ var workShop = {
 
         });
     }
-    // code: function () {//测试报价返回自动报价训练库
-    //     data = {
-    //         "customid": 2051778645010001,
-    //         "quotePrice": 1000,
-    //         "quotePeriod": 12,
-    //         "rounds": 1,
-    //     }
-    //
-    //     var url = config.WebService()["orderQuoteInfo_Insert"];
-    //     Requst.ajaxGet(url, data, true, function (data) {
-    //
-    //     });
-    // }
+
 }

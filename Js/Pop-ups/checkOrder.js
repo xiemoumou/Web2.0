@@ -79,8 +79,8 @@ OrderCheck = {
                 $("#refe-first").attr('src',(data.data.initialReferenceImage1==''?imgsrc:('http://' + data.data.initialReferenceImage1)));//参考图1
                 $("#refe-second").attr('src',(data.data.initialReferenceImage2==''?imgsrc:('http://' + data.data.initialReferenceImage2)));//参考图2
                 $("#refe-third").attr('src',(data.data.initialReferenceImage3==''?imgsrc:('http://' + data.data.initialReferenceImage3)));//参考图3
-                $("#design-first").attr('src',(data.data.f_middleDesignImage1==''?imgsrc:('http://' + data.data.f_middleDesignImage1)));//设计图
-                $("#refe-fourth").attr('src',(data.data.f_initialWorkShopImage1==''?imgsrc:( data.data.f_initialWorkShopImage1)))//生产前参考图
+                $(".design-img-box img").attr('src',(data.data.f_middleDesignImage1==''?imgsrc:('http://' + data.data.f_middleDesignImage1)));//设计图
+                $(".img-box img").attr('src',(data.data.f_initialWorkShopImage1==''?imgsrc:( data.data.f_initialWorkShopImage1)))//生产前参考图
                 $(".address-text").text(data.data.address);//详细地址
 
                 //参考图与设计图放大
