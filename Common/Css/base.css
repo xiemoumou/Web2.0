@@ -329,6 +329,19 @@ input:-webkit-autofill
     background-color: #DB4D4D;
 }
 
+
+.btn-gray{
+    background-color: #F5F5F5 !important;
+    color: #D5D5D5 !important;
+    border: none !important;
+}
+.btn-gray:hover{
+    background-color: #F5F5F5 !important;
+    color: #D5D5D5 !important;
+    border: none !important;
+}
+
+
 /*红色镂空按钮*/
 .red-h{
     width: 66px;

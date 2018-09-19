@@ -79,7 +79,7 @@ var message = {
                 {
                     var item=data.data.pageData[i];
                     var dom=$('<div data-msgId="'+item.id+'" data-customid="'+item.customid+'" class="message-msg-box">'+
-                                    '<span class="message-msg-1">-后台没反字段-</span>'+
+                                    '<span class="message-msg-1">'+item.title+'</span>'+
                                     '<span class="message-msg-2">'+item.msgContent+'</span>'+
                                     '<span class="message-msg-3">'+item.orderid+'</span>'+
                                     '<span class="message-msg-4">'+item.createtime+'</span>'+

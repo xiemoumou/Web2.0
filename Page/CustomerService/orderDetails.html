@@ -18,7 +18,6 @@
 <body>
 <div class="container hide">
     <div class="details-contnet">
-        <textarea type="text" style="height: 0px; width: 0px; border: none;" id="copyContent" value=""></textarea>
         <div class="workshop-box">
             <div class="details-title">
                 <ul>
@@ -27,7 +26,7 @@
                     <li class="tit-3">工艺</li>
                     <li class="tit-4">数量</li>
                     <li class="tit-5">长×宽×高/厚(mm)</li>
-                    <li class="tit-6">工期</li>
+                    <li class="tit-6">金额／工期</li>
                     <li class="tit-7">订单状态</li>
                     <li class="tit-8">操作</li>
                 </ul>
@@ -79,7 +78,7 @@
                 </div>
                 <div class="orderstatus"></div>
                 <div class="operation"></div>
-                <div class="money clearfix"> </div>
+                <div class="money clearfix"></div>
             </div>
             <hr class="line">
         </div>
@@ -143,27 +142,29 @@
                         <div class="address-text-box hide">
                             <p>
                                 <span class="cont-box">联系人：</span>
-                                <span class="cont">韩师傅</span>
+                                <span class="cont"></span>
                                 <em class="copy-box">
+                                    <textarea type="text" style="height: 0px; width: 0px; border: none;"
+                                              id="copyContent" value=""></textarea>
                                     <a data-clipboard-target="#copyContent" class="copy" id="copy">一键复制</a>
                                     <span>地址信息</span>
                                 </em>
                             </p>
                             <p>
                                 <span class="phone-box">电话/手机：</span>
-                                <span class="phone">15648498520</span>
+                                <span class="phone"></span>
                             </p>
                             <p>
                                 <span class="zip-code-box">邮编：</span>
-                                <span class="zip-code">2984953</span>
+                                <span class="zip-code"></span>
                             </p>
                             <p>
                                 <span class="area-box">所在地区：</span>
-                                <span class="area">北京市  北京市  朝阳区</span>
+                                <span class="area"></span>
                             </p>
                             <p>
                                 <span class="detailed-box">详细地址：</span>
-                                <span class="detailed">韩家园乐园儿童亲子游戏中心10层3910号开心乐园师傅收韩家园乐园儿童亲子游戏中心10层3910号开心乐园师傅收韩家园乐园儿童亲子游戏中心10层3910号开心乐园师傅收韩家园乐园儿童亲子游戏中心10层3910号开心乐园师傅收</span>
+                                <span class="detailed"></span>
                             </p>
                         </div>
                     </div>
@@ -172,65 +173,65 @@
             <button class="offer-btn btn">提交修改</button>
         </div>
     </div>
-    <div class="design-man">
+    <!--设计稿-->
+    <div class="design-man hide">
         <div class="design-title">
             <span></span>
-            <b>生产要求</b>
+            <b>设计稿</b>
         </div>
         <hr style="height:1px;border:none;border-top:2px solid #f5f5f5;">
         <div class="for-design-box">
-            <!--<div class="for-design">-->
-            <!--<div class="design-next-title">-->
-            <!--<h3>版本 2</h3>-->
-            <!--<hr style="height:1px;border:none;border-top:2px solid #f5f5f5;display: inline-block;width: 827px;">-->
-            <!--</div>-->
-            <!--<div class="design-bg"></div>-->
-            <!--<div class="design-content">-->
-            <!--<div class="edit-left">-->
-            <!--<div class="planner">方案师</div>-->
-            <!--<div class="time-status">-->
-            <!--<span></span>-->
-            <!--<a>2018-09-09   14:40:00   </a>更新-->
-            <!--</div>-->
-            <!--<div class="desi-box">-->
-            <!--<span class="list-1">设计稿：</span>-->
-            <!--<div id="edit_desi" data-type=""></div>-->
-            <!--</div>-->
-            <!--<div class="desi-encl-box">-->
-            <!--<span class="list-1">设计附件：</span>-->
-            <!--<div id="desi_encl" data-type=""></div>-->
-            <!--</div>-->
-            <!--<div class="other-encl-box">-->
-            <!--<span class="list-1">其它附件：</span>-->
-            <!--<div id="other_encl" data-type=""></div>-->
-            <!--</div>-->
-            <!--<div class="planner-leav">-->
-            <!--<div class="planner-leav-content">-->
-            <!--<span class="list-1">方案师留言：</span>-->
-            <!--<div class="planner-leav-text">-->
-            <!--客户要求的做不了，在设计图上我备注了一下，客服你那边跟客户说-->
-            <!--一下，再改的话告诉我客户要求的做不了，在设计图上我备注了一下-->
-            <!--，客服你那边跟客户说一下，再改的话告诉我客户要求的做不了，在-->
-            <!--设计图上我备注了一下，客服你那边跟客户说一下，再改的话告诉我-->
-            <!--</div>-->
-            <!--<div id="planner_leav" data-type=""></div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--<div class="edit-right-button">-->
-            <!--<span>修正设计稿</span>-->
-            <!--<button class="EditButton">选定设计方案</button>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
+            <div class="for-design">
+                <div class="design-next-title">
+                    <h3>版本 1</h3>
+                    <hr style="height:1px;border:none;border-top:2px solid #f5f5f5;display: inline-block;width: 827px;">
+                </div>
+                <div class="design-content">
+                    <div class="edit-left">
+                        <div class="planner">方案师</div>
+                        <div class="time-status">
+                            <span></span>
+                            <a id="orderTime">--</a>更新
+                        </div>
+                        <div class="desi-box">
+                            <span class="list-1">设计稿：</span>
+                            <div id="edit_desi" data-type="">
+                                暂无
+                            </div>
+                        </div>
+                        <div class="desi-encl-box">
+                            <span class="list-1">设计附件：</span>
+                            <div id="desi_encl" data-type="">
+                                暂无
+                            </div>
+                        </div>
+                        <div class="other-encl-box">
+                            <span class="list-1">其它附件：</span>
+                            <div id="other_encl" data-type="">
+                                暂无
+                            </div>
+                        </div>
+                        <div class="planner-leav">
+                            <div class="planner-leav-content">
+                                <span class="list-1">方案师留言：</span>
+                                <div class="planner-leav-text">
+                                    暂无
+                                </div>
+                                <div id="planner_leav" data-type=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="edit-right hide">
+        <div class="edit-right interaction hide">
+            <!--留言-->
             <div class="leav-box">
                 <div class="leav-title">
                     <span>留言区</span>
                     <section class="leav-title-right">
                         <a></a>
-                        <div class="leav-title-right-text">版本<em>2</em>沟通中</div>
+                        <div class="leav-title-right-text">版本<em id="interaction_ver">1</em>沟通中</div>
                     </section>
                 </div>
                 <div class="leav-content">
