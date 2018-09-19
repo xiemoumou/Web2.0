@@ -423,10 +423,6 @@ body{
 /****头部结束***/
 
 
-
-
-
-
 .design-rele{
     /*margin-top: 10px;*/
     margin-left: 38px;
@@ -438,9 +434,7 @@ body{
     width: 420px;
     margin: 0 auto;
 }
-.design-title{
-    padding: 32px 0px 0px 40px;
-}
+
 .design-title b{
     display: inline-block;
     vertical-align: top;

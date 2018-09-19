@@ -798,7 +798,6 @@ var details = {
                     uploadfile.uploadPhoto('prod_refe', 1, srcArry.srcArryProd());//生产参考图回显
                     uploadfile.uploadFile('details_encl', 1, srcArry.accessoryFile(), true, "", "", true)//设计附件回显
                 }
-
             }
             $(".container").removeClass('hide');
         });
