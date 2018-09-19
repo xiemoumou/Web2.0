@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <textarea type="text" style="height: 0px; width: 0px; border: none;" id="copyContent" value=""></textarea>
+    <section data-clipboard-target="#copyContent" class="copy">一键复制</section>
+</body>
+<script src="../jquery/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="./clipboard.js"></script>
+<script>
+    //复制
+    $(function () {
+        var copy_code="复制内容测试";
+
+        $("#copyContent").val(copy_code);
+
+
+
+
+        var clipboard = new ClipboardJS('.copy');
+        clipboard.on('success', function (e) {
+            console.info('Action:', e.action);
+            console.info('Text:', e.text);
+            console.info('Trigger:', e.trigger);
+
+            e.clearSelection();
+        });
+
+        clipboard.on('error', function (e) {
+            console.error('Action:', e.action);
+            console.error('Trigger:', e.trigger);
+        });
+
+    });
+</script>
+</html>

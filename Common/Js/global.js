@@ -8,7 +8,7 @@
 // 系统配置
 var config = {
     Domain: {
-        "systemApi": "http://192.168.1.50:81",
+        "systemApi": "http://192.168.1.50:91",
         //"systemApi": "http://192.168.88.1:81",
     },
     WebService: function () {

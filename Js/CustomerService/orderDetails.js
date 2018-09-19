@@ -3,7 +3,20 @@
  */
 
 var customid = Helper.getUrlParam('customid') || "";//获取订单号
-var dataDetail = null;
+
+var orderInfo = {
+    shippingAddress: {//收货地址
+        customid: customid,//定制号
+        name: '',  //收件人
+        mobilephone: '', //收件人电话
+        postcode: '', //	邮编
+        province: '', //省份
+        city: '',  //城市
+        county: '',  //县区
+        address: '', //  收货地址
+    },
+    data: null,
+};
 
 $(function () {
 
@@ -28,7 +41,15 @@ $(function () {
     })
 
     $(".address-add,.modify-addr").on('click', function () {//添加地址弹窗
-        details.openress();
+        var scrollH = document.documentElement.scrollHeight - 20;
+        if (scrollH > 380) {
+            scrollH = 380;
+        }
+        var title="添加收货地址";
+        top.Popup.open(title,
+            480,
+            scrollH,
+            encodeURI('./Pop-ups/addAddress.html?title='+title+'&name=' + orderInfo.shippingAddress.name + '&mobilephone=' + orderInfo.shippingAddress.mobilephone + '&postcode=' + orderInfo.shippingAddress.postcode + '&province=' + orderInfo.shippingAddress.province + '&city=' + orderInfo.shippingAddress.city + '&county=' + orderInfo.shippingAddress.county + '&address=' + orderInfo.shippingAddress.address + '&customid=' + customid + '&operType=detail'));
     });
 
     $(".edit").on('click', function () {//编辑设计费
@@ -40,14 +61,6 @@ $(function () {
         details.btnModify();
     });
 
-    $(".server-btn").on('click', function () {//客服报价
-        details.serverBtn();
-    });
-
-    $(".budget-btn").on('click', function () {//用户心理预算
-        details.userValen();
-    });
-
     $(".leav-btn .btn").on('click', function () {//回复留言
         details.leavBtn();
     });
@@ -55,23 +68,6 @@ $(function () {
     details.getData();//请求详情
 
     details.editDetails();
-
-    //粘贴复制
-    var contbox = $(".cont-box").text();
-    var cont = $(".cont").text();
-    var phonebox = $('.phone-box').text();
-    var phone = $(".phone").text();
-    var zipcodebox = $(".zip-code-box").text();
-    var zipcode = $(".zip-code").text();
-    var areabox = $(".area-box").text();
-    var area = $(".area").text();
-    var detailedbox = $(".detailed-box").text();
-    var detailed = $(".detailed").text();
-
-    var Copy = contbox + cont + '\n' + phonebox + phone + '\n' + zipcodebox + zipcode + '\n' + areabox + area + '\n' + detailedbox + detailed;
-
-    // Helper.CopyToClipboard(Copy,'copy');
-
 
     $("#details_diagram").attr("data-customid", customid);
     $("#details_encl").attr("data-customid", customid);
@@ -91,47 +87,13 @@ $(function () {
     uploadfile.initDrag('details_encl');
     uploadfile.initDrag('prod_refe');
 
-
-    textArea.init('.design-rema', 300, '', '请输入订单设计要求，请留意：备注不允许出现产品价格，参数和旺旺等\n' +
-        '各种联系方式', '');
-    textArea.init('.offer-rema', 300, '', '请输入生产参考要求，请留意：备注不允许出现产品价格，参数和旺旺等\n' +
-        '各种联系方式', '');
-
     details.leavShow();
-
-
 });
 
-var orderInfo = {
-    shippingAddress: {//收货地址
-        customid: customid,//定制号
-        name: '',  //收件人
-        mobilephone: '', //收件人电话
-        postcode: '', //	邮编
-        province: '', //省份
-        city: '',  //城市
-        county: '',  //县区
-        address: '', //  收货地址
-    },
-    data: null,
-};
 
 
+var dataDetail = null;//详情对象
 var details = {
-    openress: function () {//添加地址弹窗
-
-        var url = encodeURI('../Pop-ups/addAddress.html?name=' + orderInfo.shippingAddress.name + '&mobilephone=' + orderInfo.shippingAddress.mobilephone + '&postcode=' + orderInfo.shippingAddress.postcode + '&province=' + orderInfo.shippingAddress.province + '&city=' + orderInfo.shippingAddress.city + '&county=' + orderInfo.shippingAddress.county + '&address=' + orderInfo.shippingAddress.address + '&customid=' + customid + '&operType=detail')
-        var scrollH = document.documentElement.scrollHeight - 20;
-        if (scrollH > 380) {
-            scrollH = 380;
-        }
-        Popup.open('添加收货地址', 480, scrollH, url);
-        //details.saveAddress();
-    },
-    edit: function () {
-        // 编辑设计费
-        top.Popup.open("调整设计费", 423, 286, "./Pop-ups/adjustDesi.html?customid=" + dataDetail.customid + "&introduceprice=" + dataDetail.introduceprice + "&designPrice=" + dataDetail.designPrice);
-    },
     editDetails: function () {
         $(".order-msg-box").mouseover(function () {
             $(".Edit").removeClass('hide');
@@ -154,7 +116,8 @@ var details = {
 
 
     },
-    saveAddress: function (name, mobilephone, postcode, province, city, county, address) {//保存收获地址
+    saveAddress: function (name, mobilephone, postcode, province, city, county, address) {
+        //保存收获地址
         orderInfo.shippingAddress.name = name || "";
         orderInfo.shippingAddress.mobilephone = mobilephone || "";
         orderInfo.shippingAddress.province = province || "";
@@ -162,29 +125,31 @@ var details = {
         orderInfo.shippingAddress.city = city || "";
         orderInfo.shippingAddress.county = county || "";
         orderInfo.shippingAddress.address = address || "";
-        //orderInfo.shippingAddress.customid = customid;
-        details.initAddress();//初始化收件地址
-    },
-    initAddress: function () {
+
         $(".cont").html(orderInfo.shippingAddress.name);
         $(".zip-code").html(orderInfo.shippingAddress.postcode);
         $(".detailed").val(orderInfo.shippingAddress.address);
         $(".phone").html(orderInfo.shippingAddress.mobilephone);
-        $(".area").html(orderInfo.shippingAddress.province + orderInfo.shippingAddress.city + orderInfo.shippingAddress.county);
+        $(".area").html(orderInfo.shippingAddress.province +" "+ orderInfo.shippingAddress.city +" "+ orderInfo.shippingAddress.county);
+        $(".detailed").text(orderInfo.shippingAddress.address);
         if (orderInfo.shippingAddress.name) {
             $('.address-empty').addClass('hide');
             $('.address-text-box').removeClass('hide');
-            // layer.closeAll();
         }
+
+        var copy_code="联系人： "+name+"\r\n";
+        copy_code+="电话/手机： "+mobilephone+"\r\n";
+        copy_code+="邮编："+postcode+"\r\n";
+        copy_code+="所在地区："+province+" ";
+        copy_code+=city+" ";
+        copy_code+=county+"\r\n";
+        copy_code+="详细地址："+address+"\r\n";
+        $("#copyContent").val(copy_code);
     },
     getData: function (operType) {//请求接口
         var that = this;
-        data = {
-            "customId": customid,
-        }
-
         var url = config.WebService()["orderSummaryInfo_Query"];
-        Requst.ajaxGet(url, data, true, function (data) {
+        Requst.ajaxGet(url, {"customId": customid}, true, function (data) {
             if (data.data) {
                 dataDetail = data.data;
                 var command=dataDetail.command.split(',');
@@ -224,8 +189,6 @@ var details = {
                     var introducePrice = dataDetail.introducePrice || "--";//设计引导费
                     var userPrice = data.data.userPrice || "0.00";//预算
                     var prePrice = data.data.prePrice || "0.00";//报价
-                    var designMemo = data.data.designMemo || "";//设计备注
-                    var produceMemo = data.data.produceMemo || "";//生产备注
                     var currentPrice = data.data.currentPrice || "";//参考价格
                     var currentPeriod = data.data.currentPeriod || "--";//参考工期
                     var orderid = data.data.orderid || "";//订单ID
@@ -278,11 +241,8 @@ var details = {
                     $(".width").text(width);//宽
                     $(".height").text(height);//高
                     $(".limit").text(userPeriod);//工期
-                    $(".details-rema-box .design-rema textarea").text(designMemo);//设计备注
-                    $(".offer-rema textarea").text(produceMemo);//生产要求
                     $(".quot-num").text(currentPrice);//参考价格
                     $(".quot-day").text(currentPeriod);//参考工期
-
 
                     //金额区域
                     function addMoney() {
@@ -675,219 +635,221 @@ var details = {
                 }
                 // 订单基础信息+++++++++++++++++++++++++++++++++++++ end +++++++++++++++++++++++++++++++++++++++++++++++++
 
-
-                if (data.data.name) {
-                    $('.address-empty').addClass('hide');
-                    $('.address-text-box').removeClass('hide');
-                    $('.modify-addr').removeClass('hide');
-                    // layer.closeAll();
-                }
-
-
-                $(".cont").text(data.data.name || "");
-                $(".phone").text(data.data.mobilephone || "");
-                $(".zip-code").text(data.data.postcode || "");
-                $(".area").text(data.data.province + data.data.city + data.data.county || "");
-                $(".detailed").text(data.data.detailAddress || "");
-
-
-
-
-
-                //if (data.data.name){
-                orderInfo.shippingAddress.name = data.data.name;//收货人姓名
-                orderInfo.shippingAddress.mobilephone = data.data.mobilephone;//收货联系电话
-                orderInfo.shippingAddress.postcode = data.data.postcode;//邮编
-                orderInfo.shippingAddress.province = data.data.province;//省
-                orderInfo.shippingAddress.city = data.data.city;//市
-                orderInfo.shippingAddress.county = data.data.county;//县
-                orderInfo.shippingAddress.address = data.data.detail_address;//详细地址
-                //}
-
-                if (data.data.designStatus >= 2) {
-                    $(".design-man").removeClass('hide');
-                    $(".edit-right").removeClass('hide');
-                } else {
-                    $(".design-man").addClass('hide');
-                    $(".edit-right").addClass('hide');
-                }
-
-                for (var i = 0; i < data.data.designInfo.length; i++) {
-                    var commit_time = data.data.designInfo[i].commitTime || "";
-                    var design_memo = data.data.designInfo[i].designMemo || "";
-                    var srcMan = [];//设计稿版本图片
-                    var srcFile = [];//设计稿版本附件
-                    var otherFile = [];//设计稿版本其他附件
-                    var remaMan = [];//设计稿版本备注图片
-
-                    if (data.data.designInfo[i].initialDesignImage1) {
-                        srcMan.push({
-                            "orgSrc": 'http://' + data.data.designInfo[i].initialDesignImage1,
-                            "thumbnail": 'http://' + data.data.designInfo[i].smallDesignImage1,
-                        });
-
-                    }
-                    if (data.data.designInfo[i].designFile) {
-                        srcFile.push({
-                            "uri": 'http://' + data.data.designInfo[i].designFile,
-                            "name": customid,
-                        });
-                    }
-                    if (data.data.designInfo[i].otherFile) {
-                        otherFile.push({
-                            "uri": 'http://' + data.data.designInfo[i].otherFile,
-                            "name": customid,
-                        });
-                    }
-                    if (data.data.designInfo[i].middleRemarkImage1) {
-                        remaMan.push({
-                            "orgSrc": 'http://' + data.data.designInfo[i].middleRemarkImage1,
-                            "thumbnail": 'http://' + data.data.designInfo[i].smallRemarkImage1,
-                        });
-
-                        remaMan.push({
-                            "orgSrc": 'http://' + data.data.designInfo[i].middleRemarkImage2,
-                            "thumbnail": 'http://' + data.data.designInfo[i].smallRemarkImage2,
-                        });
-
-                        remaMan.push({
-                            "orgSrc": 'http://' + data.data.designInfo[i].middleRemarkImage3,
-                            "thumbnail": 'http://' + data.data.designInfo[i].smallRemarkImage3,
-                        });
-
+                //设计与生产相关
+                if(operType==null)
+                {
+                    if (data.data.name) {
+                        $('.address-empty').addClass('hide');
+                        $('.address-text-box').removeClass('hide');
+                        $('.modify-addr').removeClass('hide');
                     }
 
-                    var str = "<div class='for-design'>" +
-                        "<div class='design-next-title'>" +
-                        "<h3>版本" +
-                        "<span>" + data.data.designInfo[i].version + "</span>" +
-                        "</h3>" +
-                        "<hr style='height:1px;border:none;border-top:2px solid #f5f5f5;display: inline-block;width: 827px;'>" +
-                        "</div>" +
-                        "<div class='design-bg hide'>" +
-                        "</div>" +
-                        "<div class='design-content'>" +
-                        "<div class='edit-left'>" +
-                        "<div class='planner'>方案师</div>" +
-                        "<div class='time-status'>" +
-                        "<span></span>" +
-                        "<a>" + commit_time + "</a>" + '更新' +
-                        "</div>" +
-                        "<div class='desi-box'>" +
-                        "<span class='list-1'>设计稿：</span>" +
-                        "<div id='edit_desi_" + i + "' data-type='' data-customid='" + customid + "'></div>" +
-                        "</div>" +
-                        "<div class='desi-encl-box'>" +
-                        "<span class='list-1'>设计附件：</span>" +
-                        "<div id='desi_encl_" + i + "' data-type='' data-customid='" + customid + "'></div>" +
-                        "</div>" +
-                        "<div class='other-encl-box'>" +
-                        "<span class='list-1'>其它附件：</span>" +
-                        "<div id='other_encl_" + i + "' data-type=''></div>" +
-                        "</div>" +
-                        "<div class='planner-leav'>" +
-                        "<div class='planner-leav-content'>" +
-                        "<span class='list-1'>方案师留言：</span>" +
-                        "<div class='planner-leav-text'>" + design_memo + "</div>" +
-                        "<div id='planner_leav_" + i + "' class='planner-leav-last' data-type='' data-customid='" + customid + "'></div>" +
-                        "</div>" +
-                        "</div>" +
-                        "</div>" +
-                        "<div class='edit-right-button'>" +
-                        "<span class='hide'>修正设计稿</span>" +
-                        "<button class='EditButton'>选定设计方案</button>" +
-                        "</div>" +
-                        "</div>" +
-                        "</div>"
+                    textArea.init('.design-rema', 300, dataDetail.designMemo, '请输入订单设计要求，请留意：备注不允许出现产品价格，参数和旺旺等\n' +
+                        '各种联系方式', '');
+                    textArea.init('.offer-rema', 300, dataDetail.produceMemo, '请输入生产参考要求，请留意：备注不允许出现产品价格，参数和旺旺等\n' +
+                        '各种联系方式', '');
 
-                    $(".for-design-box").append(str);
-                    uploadfile.uploadPhoto('edit_desi_' + i, 1, srcMan, true);//设计稿版本图片
-                    uploadfile.uploadFile('desi_encl_' + i, 1, srcFile, false, "", "", true);//设计稿版本附件回显
-                    uploadfile.uploadFile('other_encl_' + i, 1, otherFile, false, "", "", true);//设计稿版本其他附件回显
-                    uploadfile.uploadPhoto('planner_leav_' + i, 3, remaMan, false);//设计稿版本留言图片
-                    $(".edit-right-button .EditButton").on('click', function () {
-                        details.desiLeavBtn();
-                    })
-                }
+                    //收货地址
+                    details.saveAddress(dataDetail.name,dataDetail.mobilephone,dataDetail.postcode,dataDetail.province,dataDetail.city,dataDetail.county,dataDetail.detailAddress);
 
 
-                var srcArry = {//图片附件回显
-                    details: function () {
-                        var srcArray = [];//设计图
-                        for (var i = 1; i <= 3; i++) {
-                            if (dataDetail['initialReferenceImage' + i]) {
-                               var orgSrc= dataDetail['initialReferenceImage' + i];orgSrc=orgSrc.indexOf('http:')>=0?orgSrc:"http://"+orgSrc;
-                                var thumbnail=dataDetail['smallReferenceImage' + i];thumbnail=thumbnail.indexOf('http:')>=0?thumbnail:"http://"+thumbnail;
-                                srcArray.push({  "orgSrc": orgSrc, "thumbnail": thumbnail });
-                            }
+                    if (data.data.designStatus >= 2) {
+                        $(".design-man").removeClass('hide');
+                        $(".edit-right").removeClass('hide');
+                    } else {
+                        $(".design-man").addClass('hide');
+                        $(".edit-right").addClass('hide');
+                    }
+
+                    for (var i = 0; i < data.data.designInfo.length; i++) {
+                        var commit_time = data.data.designInfo[i].commitTime || "";
+                        var design_memo = data.data.designInfo[i].designMemo || "";
+                        var srcMan = [];//设计稿版本图片
+                        var srcFile = [];//设计稿版本附件
+                        var otherFile = [];//设计稿版本其他附件
+                        var remaMan = [];//设计稿版本备注图片
+
+                        if (data.data.designInfo[i].initialDesignImage1) {
+                            srcMan.push({
+                                "orgSrc": 'http://' + data.data.designInfo[i].initialDesignImage1,
+                                "thumbnail": 'http://' + data.data.designInfo[i].smallDesignImage1,
+                            });
 
                         }
-                        return srcArray
-                    },
-                    srcArryProd: function () {
-                        var srcArray = [];//生产参考图
-                        if (data.data.initialGoodsImage) {
-                            var orgSrc= dataDetail['initialGoodsImage'];orgSrc=orgSrc.indexOf('http:')>=0?orgSrc:"http://"+orgSrc;
-                            var thumbnail=dataDetail['middleGoodsImage'];thumbnail=thumbnail.indexOf('http:')>=0?thumbnail:"http://"+thumbnail;
-                            srcArray.push({ "orgSrc": orgSrc, "thumbnail": thumbnail });
-                        }
-                        return srcArray
-                    },
-                    accessoryFile: function () {
-                        var accessoryArray = [];//设计附件
-                        if (data.data.accessoryFile) {
-                            var accessoryFile=dataDetail['accessoryFile'];accessoryFile=accessoryFile.indexOf('http:')>=0?accessoryFile:"http://"+accessoryFile;
-                            accessoryArray.push({
-                                "uri": accessoryFile,
+                        if (data.data.designInfo[i].designFile) {
+                            srcFile.push({
+                                "uri": 'http://' + data.data.designInfo[i].designFile,
                                 "name": customid,
                             });
                         }
-                        return accessoryArray
-                    }
-                }
+                        if (data.data.designInfo[i].otherFile) {
+                            otherFile.push({
+                                "uri": 'http://' + data.data.designInfo[i].otherFile,
+                                "name": customid,
+                            });
+                        }
+                        if (data.data.designInfo[i].middleRemarkImage1) {
+                            remaMan.push({
+                                "orgSrc": 'http://' + data.data.designInfo[i].middleRemarkImage1,
+                                "thumbnail": 'http://' + data.data.designInfo[i].smallRemarkImage1,
+                            });
 
-                uploadfile.uploadPhoto('details_diagram', 3, srcArry.details());//设计图回显
-                uploadfile.uploadPhoto('prod_refe', 1, srcArry.srcArryProd());//生产参考图回显
-                uploadfile.uploadFile('details_encl', 1, srcArry.accessoryFile(), true, "", "", true)//设计附件回显
+                            remaMan.push({
+                                "orgSrc": 'http://' + data.data.designInfo[i].middleRemarkImage2,
+                                "thumbnail": 'http://' + data.data.designInfo[i].smallRemarkImage2,
+                            });
+
+                            remaMan.push({
+                                "orgSrc": 'http://' + data.data.designInfo[i].middleRemarkImage3,
+                                "thumbnail": 'http://' + data.data.designInfo[i].smallRemarkImage3,
+                            });
+
+                        }
+
+                        var str = "<div class='for-design'>" +
+                            "<div class='design-next-title'>" +
+                            "<h3>版本" +
+                            "<span>" + data.data.designInfo[i].version + "</span>" +
+                            "</h3>" +
+                            "<hr style='height:1px;border:none;border-top:2px solid #f5f5f5;display: inline-block;width: 827px;'>" +
+                            "</div>" +
+                            "<div class='design-bg hide'>" +
+                            "</div>" +
+                            "<div class='design-content'>" +
+                            "<div class='edit-left'>" +
+                            "<div class='planner'>方案师</div>" +
+                            "<div class='time-status'>" +
+                            "<span></span>" +
+                            "<a>" + commit_time + "</a>" + '更新' +
+                            "</div>" +
+                            "<div class='desi-box'>" +
+                            "<span class='list-1'>设计稿：</span>" +
+                            "<div id='edit_desi_" + i + "' data-type='' data-customid='" + customid + "'></div>" +
+                            "</div>" +
+                            "<div class='desi-encl-box'>" +
+                            "<span class='list-1'>设计附件：</span>" +
+                            "<div id='desi_encl_" + i + "' data-type='' data-customid='" + customid + "'></div>" +
+                            "</div>" +
+                            "<div class='other-encl-box'>" +
+                            "<span class='list-1'>其它附件：</span>" +
+                            "<div id='other_encl_" + i + "' data-type=''></div>" +
+                            "</div>" +
+                            "<div class='planner-leav'>" +
+                            "<div class='planner-leav-content'>" +
+                            "<span class='list-1'>方案师留言：</span>" +
+                            "<div class='planner-leav-text'>" + design_memo + "</div>" +
+                            "<div id='planner_leav_" + i + "' class='planner-leav-last' data-type='' data-customid='" + customid + "'></div>" +
+                            "</div>" +
+                            "</div>" +
+                            "</div>" +
+                            "<div class='edit-right-button'>" +
+                            "<span class='hide'>修正设计稿</span>" +
+                            "<button class='EditButton'>选定设计方案</button>" +
+                            "</div>" +
+                            "</div>" +
+                            "</div>"
+
+                        $(".for-design-box").append(str);
+                        uploadfile.uploadPhoto('edit_desi_' + i, 1, srcMan, true);//设计稿版本图片
+                        uploadfile.uploadFile('desi_encl_' + i, 1, srcFile, false, "", "", true);//设计稿版本附件回显
+                        uploadfile.uploadFile('other_encl_' + i, 1, otherFile, false, "", "", true);//设计稿版本其他附件回显
+                        uploadfile.uploadPhoto('planner_leav_' + i, 3, remaMan, false);//设计稿版本留言图片
+                        $(".edit-right-button .EditButton").on('click', function () {
+                            details.desiLeavBtn();
+                        })
+                    }
+
+                    var srcArry = {//图片附件回显
+                        details: function () {
+                            var srcArray = [];//设计图
+                            for (var i = 1; i <= 3; i++) {
+                                if (dataDetail['initialReferenceImage' + i]) {
+                                    var orgSrc= dataDetail['initialReferenceImage' + i];orgSrc=orgSrc.indexOf('http:')>=0?orgSrc:"http://"+orgSrc;
+                                    var thumbnail=dataDetail['smallReferenceImage' + i];thumbnail=thumbnail.indexOf('http:')>=0?thumbnail:"http://"+thumbnail;
+                                    srcArray.push({  "orgSrc": orgSrc, "thumbnail": thumbnail });
+                                }
+
+                            }
+                            return srcArray
+                        },
+                        srcArryProd: function () {
+                            var srcArray = [];//生产参考图
+                            if (data.data.initialGoodsImage) {
+                                var orgSrc= dataDetail['initialGoodsImage'];orgSrc=orgSrc.indexOf('http:')>=0?orgSrc:"http://"+orgSrc;
+                                var thumbnail=dataDetail['middleGoodsImage'];thumbnail=thumbnail.indexOf('http:')>=0?thumbnail:"http://"+thumbnail;
+                                srcArray.push({ "orgSrc": orgSrc, "thumbnail": thumbnail });
+                            }
+                            return srcArray
+                        },
+                        accessoryFile: function () {
+                            var accessoryArray = [];//设计附件
+                            if (data.data.accessoryFile) {
+                                var accessoryFile=dataDetail['accessoryFile'];accessoryFile=accessoryFile.indexOf('http:')>=0?accessoryFile:"http://"+accessoryFile;
+                                accessoryArray.push({
+                                    "uri": accessoryFile,
+                                    "name": customid,
+                                });
+                            }
+                            return accessoryArray
+                        }
+                    }
+
+                    uploadfile.uploadPhoto('details_diagram', 3, srcArry.details());//设计图回显
+                    uploadfile.uploadPhoto('prod_refe', 1, srcArry.srcArryProd());//生产参考图回显
+                    uploadfile.uploadFile('details_encl', 1, srcArry.accessoryFile(), true, "", "", true)//设计附件回显
+                }
 
             }
             $(".container").removeClass('hide');
         });
     },
     btnModify: function () {
-        //设计提交修改
+        //设计+生产提交修改
         var url = config.WebService()["orderSummaryInfoAccessory_Update"];
         data = {
             "designMemo": $(".design-rema textarea").val(),//设计备注
             "produceMemo": $(".offer-rema .textarea textarea").val(),//生产要求
             "wCustomid": customid,
         }
-
         //上传附件
-        var accessoryFile=$("#details_encl .accessory-container .fileitem").attr("data-url");
-        if(accessoryFile)
+        var accessoryFile=$("#details_encl .accessory-container .fileitem");
+        if(accessoryFile.length && accessoryFile.length>0)
         {
-            accessoryFile=accessoryFile.replace("http://","");
+            if (typeof $(accessoryFile[0]).attr('data-complete') != "undefined" && $(accessoryFile[0]).attr('data-complete') != "complete") {
+                Message.show('提醒', "设计相关正在上传请等待...", MsgState.Fail, 2000);
+                return;
+            }
+
+            accessoryFile=$(accessoryFile[0]).attr('data-url').replace("http://","");
             data["accessoryFile"]=accessoryFile;
         }
 
         // 生产参考图
-        var prod_refe_O=$("#prod_refe .diagram-container .diagram").attr("data-mimageurl");//生产参考图原图
-        var prod_refe_S=$("#prod_refe .diagram-container .diagram").attr("data-simageurl");//生产参考图小
-        var prod_refe_M=$("#prod_refe .diagram-container .diagram").attr("data-mimageurl");//生产参考图中
-        if(prod_refe)
+        var prod_refe=$("#prod_refe .diagram-container .diagram");
+        if(prod_refe.length && prod_refe.length>0)
         {
-            data["initialProducerefImage"]=prod_refe_O.replace("http://","");
-            data["smallProducerefImage"]=prod_refe_S.replace("http://","");;
-            data["middleProducerefImage"]=prod_refe_M.replace("http://","");;
+            if (typeof $(prod_refe[0]).attr('data-complete') !="undefined" && $(prod_refe[0]).attr('data-complete') != "complete") {
+                Message.show('提醒', "生产参考图正在上传请等待...", MsgState.Fail, 2000);
+                return;
+            }
+
+            data["initialProducerefImage"]=$(prod_refe[0]).attr("data-mimageurl").replace("http://","");
+            data["smallProducerefImage"]=$(prod_refe[0]).attr("data-simageurl").replace("http://","");
+            data["middleProducerefImage"]=$(prod_refe[0]).attr("data-mimageurl").replace("http://","");
         }
 
         //参考图
         var diagramArray = $("#details_diagram .diagram-container .diagram");
         for (var i = 0; i < diagramArray.length; i++) {// 添加设计图片
-            data['initialReferenceImage' + (i + 1)] = diagramArray[i].getAttribute('data-mimageurl').replace("http://","");;
-            data['middleReferenceImage' + (i + 1)] = diagramArray[i].getAttribute('data-mimageurl').replace("http://","");;
-            data['smallReferenceImage' + (i + 1)] = diagramArray[i].getAttribute('data-simageurl').replace("http://","");;
+
+            if (typeof $(diagramArray[i]).attr('data-complete') !="undefined" && $(diagramArray[i]).attr('data-complete') != "complete") {
+                Message.show('提醒', "参考图正在上传请等待...", MsgState.Fail, 2000);
+                return;
+            }
+
+            data['initialReferenceImage' + (i + 1)] = $(diagramArray[i]).attr('data-mimageurl').replace("http://","");;
+            data['middleReferenceImage' + (i + 1)] = $(diagramArray[i]).attr('data-mimageurl').replace("http://","");;
+            data['smallReferenceImage' + (i + 1)] = $(diagramArray[i]).attr('data-simageurl').replace("http://","");;
         }
 
         Requst.ajaxPost(url, data, true, function (data) {
@@ -1040,4 +1002,17 @@ var details = {
     },
 
 }
+
+//复制操作
+$(function () {
+    //复制收货地址
+    function address() {
+        var clipboard = new ClipboardJS('.copy');
+        clipboard.on('success', function (e) {
+            e.clearSelection();
+        });
+    }
+    address();
+
+});
 

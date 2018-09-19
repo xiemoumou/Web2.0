@@ -555,6 +555,7 @@ var uploadfile = {
                 that.upload(file, diagram, function (diagram, percentVal) {
                     //上传进度
                     var progress = diagram.find('.progress');
+                    diagram.attr('data-complete', percentVal);
                     $(progress).find('span').text(percentVal + "%...");
                     if (percentVal == 100) {
                         $(progress).find('span').text('处理中...');
@@ -562,12 +563,12 @@ var uploadfile = {
                 }, function (diagram, data) {
                     //上传成功
                     data = data.data;
-                    diagram.attr('data-complete', 'complete');
                     diagram.attr('data-mImageUrl', data.mImageUrl);
                     diagram.attr('data-oImageUrl', data.oImageUrl);
                     diagram.attr('data-sImageUrl', data.sImageUrl);
                     var progress = diagram.find('.progress');
                     $(progress).addClass('hide');
+                    diagram.attr('data-complete', 'complete');
                 }, function (diagram, data) {
                     //上传失败
                     var progress = diagram.find('.progress');
@@ -730,6 +731,7 @@ var uploadfile = {
                 that.upload(file, Accessory, function (Accessory, percentVal) {
                     //上传进度
                     var progress = Accessory.find('.progress');
+                    Accessory.attr('data-complete', percentVal);
                     progress.removeClass('hide');
                     $(progress).find('span').text(percentVal + "%...");
                     if (percentVal == 100) {
@@ -738,10 +740,10 @@ var uploadfile = {
                 }, function (Accessory, data) {
                     //上传成功
                     data = data.data;
-                    Accessory.attr('data-complete', 'complete');
                     Accessory.attr('data-url', data.url);
                     var progress = Accessory.find('.progress');
                     $(progress).addClass('hide');
+                    Accessory.attr('data-complete', 'complete');
                 }, function (Accessory, data) {
                     //上传失败
                     var progress = Accessory.find('.progress');

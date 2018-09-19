@@ -22,8 +22,7 @@ var dist = {
         var county = Helper.getUrlParam("county", true);//县区
         var address = Helper.getUrlParam("address", true);//详细地址
         var orderid = Helper.getUrlParam("orderid", true);//订单id
-        var goodsid = Helper.getUrlParam("goodsid", true);//
-
+        
         $('#recipient').val(name == "null" ? "" : name);
         $('#tel').val(mobilephone == "null" ? "" : mobilephone);
         $('#address_content').val(address == "undefined" ? "" : address);
@@ -96,10 +95,16 @@ var dist = {
             };
 
             var url = config.WebService()["logistics_Info"];
-            debugger
             top.Requst.ajaxGet(url, data, true, function (data) {
                 if(data.code==200)
                 {
+                    var closeTitle="收货地址";
+                    var title=Helper.getUrlParam("title",true);
+                    if(title)
+                    {
+                        closeTitle=title;
+                    }
+
                     top.Message.show("提示",data.message,MsgState.Success,2000,function () {
                         if(operType=="distributionProduction")//分配生产
                         {
@@ -119,7 +124,7 @@ var dist = {
                                 top.document.getElementById("iframe_"+customid).contentWindow.details.saveAddress(name,mobilephone,postcode,province,city,county,address);
                             }
                         }
-                        top.Popup.close("收货地址");
+                        top.Popup.close(closeTitle);
                     });
 
 

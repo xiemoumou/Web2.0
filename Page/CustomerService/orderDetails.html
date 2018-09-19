@@ -19,8 +19,7 @@
 
 <div class="container hide">
     <div class="details-contnet">
-    <textarea type="text" style="height: 0px; width: 0px; border: none;display: none;" id="copyContent"
-              value=""></textarea>
+        <textarea type="text" style="height: 0px; width: 0px; border: none;" id="copyContent" value=""></textarea>
         <div class="workshop-box">
             <div class="details-title">
                 <ul>
@@ -81,33 +80,7 @@
                 </div>
                 <div class="orderstatus"></div>
                 <div class="operation"></div>
-                <div class="money clearfix">
-                    <div class="offer fl">
-                        设计费：¥ <span class="offer-money">-</span>&nbsp;&nbsp; 引导费：¥ <span class="offertime">-</span>
-                        <p class="edit hide">编辑</p>
-                    </div>
-                    <div class="budget fl">
-                        <span>预算：</span>
-                        <div class="budget-text">
-                            <input class="input-money">
-                            <span class="btn budget-btn">确定</span>
-                        </div>
-                    </div>
-                    <div class="quote fl">
-                        <div class="quote-tips">
-                            <span>含税</span>
-                            <div class="quoteTips">
-                                参考价 ¥<a class="quot-num">-</a>/工期<em class="quot-day">-</em>天
-                            </div>
-                            <div class="bottom-tria"></div>
-                        </div>
-                        <span>报价：</span>
-                        <div class="quote-text">
-                            <input class="input-money">
-                            <span class="btn server-btn">确定</span>
-                        </div>
-                    </div>
-                </div>
+                <div class="money clearfix"> </div>
             </div>
             <hr class="line">
         </div>
@@ -173,7 +146,7 @@
                                 <span class="cont-box">联系人：</span>
                                 <span class="cont">韩师傅</span>
                                 <em class="copy-box">
-                                    <a class="copy" id="copy">一键复制</a>
+                                    <a data-clipboard-target="#copyContent" class="copy" id="copy">一键复制</a>
                                     <span>地址信息</span>
                                 </em>
                             </p>
@@ -316,14 +289,13 @@
         </div>
     </div>
 </div>
-
 <script>
     document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Js/CustomerService/orderDetails.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Components/library.js' + VER + '" ><\/script>');
-    document.write('<script type="text/javascript" src="../../Common/Lib/clipboard.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Lib/clipboard/clipboard.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Lib/layDate-v5.0.9/laydate/laydate.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
 </script>
