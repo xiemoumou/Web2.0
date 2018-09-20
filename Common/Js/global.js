@@ -784,11 +784,11 @@ var OPER={
         var popH = scrollH - 100 > 550 ? 550 : scrollH - 100;
         top.Popup.open(title, 939, popH, "./Pop-ups/box.html?customid="+customid);
     },
-    uploadDesign:function (customid,title) {
+    uploadDesign:function (customid,title,designPatternId) {
         title=title?title:"补充设计稿";
         var scrollH = top.Helper.getClientHeight();
         var popH = scrollH - 100 > 559 ? 559 : scrollH - 100;
-        var url=encodeURI("./Pop-ups/uploadDesign.html?customid="+customid+"&title="+title);
+        var url=encodeURI("./Pop-ups/uploadDesign.html?customid="+customid+"&title="+title+"&designPatternId="+designPatternId);
         top.Popup.open(title, 830, popH, url);
     },
     invoiceDetails:function (customid,title) {

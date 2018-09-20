@@ -17,9 +17,9 @@ var orderInfo = {
     },
     data: null,
 };
+var newDesignVer = 1;//最新设计稿版本号
 
 $(function () {
-
     document.onkeydown = function (e) {
         e = window.event || e;
         var keycode = e.keyCode || e.which;
@@ -41,7 +41,7 @@ $(function () {
         var scrollH = top.Helper.getClientHeight();
         var popH = scrollH - 100 > 410 ? 410 : scrollH - 100;
         top.Popup.open("产品生产参数编辑", 900, popH, "./CustomerService/createOrder.html?operType=edit&customid=" + customid);
-    })
+    });
 
     //添加地址弹窗
     $(".address-add,.modify-addr").on('click', function () {
@@ -79,9 +79,6 @@ $(function () {
         $("#leav_bottom_img").attr("data-customid", customid);
         $("#leav_bottom_file").attr("data-customid", customid);
 
-        uploadfile.uploadPhoto('leav_bottom_img', 3);//留言图片上传
-        uploadfile.uploadFile('leav_bottom_file', 1);//留言附件上传
-
         uploadfile.uploadPhoto('details_diagram', 3);//图片上传
         uploadfile.uploadPhoto('prod_refe', 1);//生产参考图上传`
         uploadfile.uploadFile('details_encl', 1, null, true, null);//附件上传
@@ -90,6 +87,7 @@ $(function () {
         uploadfile.initDrag('details_encl');
         uploadfile.initDrag('prod_refe');
     }
+
     fileInit();
 });
 
@@ -169,7 +167,7 @@ var details = {
                 }
 
                 // 订单基础信息++++++++++++++++++++++++++++++++++++ begin ++++++++++++++++++++++++++++++++++++++++++++++++
-                if (operType == "base" || operType == null || operType=="designDraft") {
+                if (operType == "base" || operType == null || operType == "designDraft") {
 
                     if (top.Cache.userInfo.roleType == 4) {
                         var manager = $('.item-head-left-manager');
@@ -688,19 +686,15 @@ var details = {
                 }
 
                 //设计方案
-                if ( operType == null || operType=="designDraft") {
+                if (operType == null || operType == "designDraft") {
                     if (data.data.designInfo.length > 0) {
                         $('.interaction .oper').removeClass('hide');//设计稿选定与修正
                         $(".for-design-box").html('');
-                        //经理修正设计
-                        if (parseInt(top.Helper.Cache.get('roleType')) == 4) {
-                            $('.interaction .modify').removeClass('hide');
-                        }
 
                         for (var i = 0; i < dataDetail.designInfo.length; i++) {
                             var commit_time = dataDetail.designInfo[i].commitTime.replace(/\-/g, "/");
-                            commit_time=new Date(commit_time);
-                            commit_time=commit_time.Format("yyyy-MM-dd hh:mm:ss");
+                            commit_time = new Date(commit_time);
+                            commit_time = commit_time.Format("yyyy-MM-dd hh:mm:ss");
                             var design_memo = dataDetail.designInfo[i].designMemo || "";
                             var srcMan = [];//设计稿版本图片
                             var srcFile = [];//设计稿版本附件
@@ -742,17 +736,13 @@ var details = {
                                 });
 
                             }
-                            if(i==1) //历史版本 画线
-                            {
-                                var line=$("<div class='history-line fl'><span class='left  fl'></span> <span class='title  fl'> 查看历史版本 </span> <span class='right  fl'></span></div>");
-                                $(".for-design-box").append(line);
-                            }
+
                             var designDraft = $("<div class='for-design'>" +
                                 "<div class='design-next-title'>" +
                                 "<h3>版本" +
                                 "<span>" + dataDetail.designInfo[i].version + "</span>" +
                                 "</h3>" +
-                                "<hr style='height:1px;border:none;border-top:2px solid #f5f5f5;display: inline-block;width: 842px;'>" +
+                                "<div style='height:1px;border:none;border-top:2px solid #f5f5f5;display: inline-block;width: 842px;'></div>" +
                                 "</div>" +
                                 "<div class='design-bg hide'>" +
                                 "</div>" +
@@ -784,40 +774,52 @@ var details = {
                                 "</div>" +
                                 "</div>" +
                                 "<div class='edit-right-button'>" +
-                                "<span class='hide'>修正设计稿</span>" +
-                                "<button data-index='"+dataDetail.designInfo[i].id+"' class='EditButton btn-h'>选定设计方案</button>" +
+                                "<span id='modify_"+i+"' class='hide'>修正设计稿</span>" +
+                                "<button data-index='" + dataDetail.designInfo[i].id + "' class='EditButton btn-h'>选定设计方案</button>" +
                                 "</div>" +
                                 "</div>" +
                                 "</div>");
                             $(".for-design-box").append(designDraft);
 
-                            uploadfile.uploadPhoto('edit_desi_' + i, 1, srcMan,false);//设计稿版本图片
+                            if (dataDetail.designInfo.length > 1 && i == 0) //历史版本 画线
+                            {
+                                var line = $("<div class='history-line fl'><div style='margin-left: 50px;'><span class='left  fl'></span> <span class='title  fl'> 查看历史版本 </span> <span class='right  fl'></span></div></div>");
+                                $(designDraft.find('.design-content')).append(line);
+                            }
+
+                            uploadfile.uploadPhoto('edit_desi_' + i, 1, srcMan, false);//设计稿版本图片
                             uploadfile.uploadFile('desi_encl_' + i, 1, srcFile, false, "", "", true);//设计稿版本附件回显
                             uploadfile.uploadFile('other_encl_' + i, 1, otherFile, false, "", "", true);//设计稿版本其他附件回显
                             uploadfile.uploadPhoto('planner_leav_' + i, 3, remaMan, false);//设计稿版本留言图片
 
                             //方案已选定
-                            if(dataDetail.designInfo[i].status==3)
-                            {
+                            if (dataDetail.designInfo[i].status == 3) {
                                 $(designDraft.find('.design-bg')).removeClass('hide');
                                 $(designDraft.find('.EditButton')).addClass("btn-gray");
                             }
-                            else
-                            {
+                            else {
                                 $(designDraft.find('.EditButton')).on('click', function () {
-                                    var index=$(this).attr("data-index");
+                                    var index = $(this).attr("data-index");
                                     details.desiLeavBtn(index);
                                 });
                             }
                         }
                     }
+                    //经理修正设计
+                    var modifyBtn=$('#modify_0');
+                    if (parseInt(top.Helper.Cache.get('roleType')) == 4) {
+                        modifyBtn.removeClass('hide');
+                    }
+                    modifyBtn.on('click',function () {
+                        top.OPER.uploadDesign(customid,"修正设计稿",dataDetail.designInfo[0].id);
+                    });
                 }
             }
             $(".container").removeClass('hide');
         });
     },
     btnModify: function () {
-        //设计+生产提交修改
+
         var url = config.WebService()["orderSummaryInfoAccessory_Update"];
         data = {
             "designMemo": $(".design-rema textarea").val(),//设计备注
@@ -863,7 +865,7 @@ var details = {
             data['middleReferenceImage' + (i + 1)] = $(diagramArray[i]).attr('data-mimageurl').replace("http://", "");
 
             data['smallReferenceImage' + (i + 1)] = $(diagramArray[i]).attr('data-simageurl').replace("http://", "");
-            
+
         }
 
         Requst.ajaxPost(url, data, true, function (data) {
@@ -875,26 +877,31 @@ var details = {
             }
         });
 
-    },
+    },//设计+生产提交修改
     leavShow: function () {
-        //留言区域
+
         var url = config.WebService()["orderDesignMessage_Query"];
         Requst.ajaxGet(url, {"customid": customid}, true, function (data) {
             if (data.data && data.data.length > 0) {
-                $("#interaction_ver").text(data.data[0].version);//版本号沟通中
+                var item = data.data;
 
+                $("#interaction_ver").text(newDesignVer);//版本号沟通中
                 $('.leav-box .leav-content').html('');//清空留言区域
 
+                var messageVer=1;//留言版本
                 for (var i = 0; i < data.data.length; i++) {
                     var srcMan = [];//留言显示图片
                     var messageFile = [];//留言显示附件
-                    if (data.data[i].initialMessageImage1) {
-                        var orgSrc = data.data[i].middleMessageImage1;
-                        orgSrc = orgSrc.indexOf('http:') >= 0 ? orgSrc : "http://" + orgSrc;
-                        var thumbnail = data.data[i].smallMessageImage1;
-                        thumbnail = thumbnail.indexOf('http:') >= 0 ? thumbnail : "http://" + thumbnail;
-                        srcMan.push({"orgSrc": orgSrc, "thumbnail": thumbnail});
+                    for (var j = 1; j <= 3; j++) {
+                        if (data.data[i]['middleMessageImage' + j]) {
+                            var orgSrc = data.data[i]['middleMessageImage' + j];
+                            orgSrc = orgSrc.indexOf('http:') >= 0 ? orgSrc : "http://" + orgSrc;
+                            var thumbnail = data.data[i]["smallMessageImage" + j];
+                            thumbnail = thumbnail.indexOf('http:') >= 0 ? thumbnail : "http://" + thumbnail;
+                            srcMan.push({"orgSrc": orgSrc, "thumbnail": thumbnail});
+                        }
                     }
+
                     if (data.data[i].messageFile) {
                         var accessoryFile = data.data[i].messageFile;
                         accessoryFile = accessoryFile.indexOf('http:') >= 0 ? accessoryFile : "http://" + accessoryFile;
@@ -904,65 +911,93 @@ var details = {
                         });
                     }
 
-                    var plan = "<div class='leav-reg'>" +
-                        "<div class='leav-reg-title'>" +
-                        "<span class='line'></span>" +
-                        "<span class='txt'>版本" + "<a class='txt-num'>" + data.data[i].version + "</a>" + "</span>" +
-                        "<span class='line'></span>" +
-                        "</div>" +
-                        "<div class='leav-text-first'>" +
-                        "<div class='TextList-left'>" +
-                        "<span>我</span>回复" +
-                        "<a>方案师</a>：" +
-                        "</div>" +
-                        "<div class='TextList-right'>" +
-                        "<span>" + data.data[i].leaveTime + "</span>" +
-                        "</div>" +
-                        "</div>" +
-                        "<div class='leav-text-second'>" + data.data[i].messageContent + "</div>" +
-                        "<div class='leav-reg-img'>" +
-                        "<div id='leav_img_" + i + "' data-type='reference_image' data-customid='" + customid + "'>" +
-                        "</div>" +
-                        "</div>" +
-                        "<div class='leav-reg-file'>" +
-                        "<div id='leav_file_" + i + "' data-type='' data-customid='" + customid + "'>" +
-                        "</div>" +
-                        "</div>" +
-                        "</div>";
+                    var plan = $("<div class='leav-reg'>" +
+                                    "<div class='leav-text-first'>" +
+                                    "<div class='TextList-left'>" +
+                                    "<span>"+data.data[i].leaverNickName+"</span>回复" +
+                                    "<a>"+data.data[i].targetNickName+"</a>：" +
+                                    "</div>" +
+                                    "<div class='TextList-right'>" +
+                                    "<span>" + data.data[i].leaveTime + "</span>" +
+                                    "</div>" +
+                                    "</div>" +
+                                    "<div class='leav-text-second'>" + data.data[i].messageContent + "</div>" +
+                                    "<div class='clearfix'>" +
+                                    "<div class='leav-reg-img'>" +
+                                    "<div id='leav_img_" + i + "'></div>" +
+                                    "</div>" +
+                                    "<div class='leav-reg-file'>" +
+                                    "<div id='leav_file_" + i + "' data-type='' data-customid='" + customid + "'>" +
+                                    "</div>" +
+                                    "</div>"+
+                                    "</div>"+
+                                    "</div>");
 
                     $(".leav-content").append(plan);
-                    uploadfile.uploadPhoto('leav_img_' + i, 1, srcMan, false);//留言显示图片
-                    uploadfile.uploadFile('leav_file_' + i, 1, messageFile, false, "", "", true);//留言附件回显
-                }
+                    if (srcMan.length > 0) {
+                        uploadfile.uploadPhoto('leav_img_' + i, 3, srcMan, false);//留言显示图片
+                    }
+                    if (messageFile.length > 0) {
+                        uploadfile.uploadFile('leav_file_' + i, 1, messageFile, false, "", "", true);//留言附件回显
+                    }
 
+                    if(messageVer!=data.data[i].version)
+                    {
+                        var line=$('<div class="history-line fl"><div><span class="left  fl"></span> <span class="title  fl"> 版本 '+ data.data[i].version+' </span> <span class="right  fl"></span></div></div>');
+                        plan.append(line);
+                        messageVer=data.data[i].version;
+                   }
+                }
+                //自动滚动到底部
+                $(".leav-content").scrollTop($(".leav-content")[0].scrollHeight);
             }
         }, null, true);
-    },
-    leavBtn: function () { //提交留言
-        debugger
-
+        uploadfile.uploadPhoto('leav_bottom_img', 3);//留言图片上传
+        uploadfile.uploadFile('leav_bottom_file', 1);//留言附件上传
+    },//留言区域
+    leavBtn: function () {
         //最新的一张设计稿
-        var newDesign=dataDetail.designInfo && dataDetail.designInfo.length>0?dataDetail.designInfo[dataDetail.designInfo.length-1]:{"id":0,"version":1};
+        var newDesign = dataDetail.designInfo && dataDetail.designInfo.length > 0 ? dataDetail.designInfo[0] : {
+            "id": 0,
+            "version": 1
+        };
+        newDesignVer = newDesign.version;
+
+        var messageContent = $.trim($(".leav-bottom-input input").val());
+        if (!messageContent) {
+            Message.show('提醒', "回复内容不能为空", MsgState.Fail, 2000);
+            return;
+        }
 
         var data = {
-            "customid": dataDetail.customid,
-            "orderid":dataDetail.orderid,
-            "designPatternId": newDesign.id,
             "ordersummaryId": dataDetail.id,
-            "version": newDesign.version,
-            "messageContent": $.trim($(".leav-bottom-input input").val()),
-            "needReDesign": $(".check_box #male").is(':checked')?1:0
+            "designPatternId": newDesign.id,
+            "version": parseInt(newDesign.version),
+            "orderid": dataDetail.orderid,
+            "customid": dataDetail.customid,
+            "messageContent": messageContent,
+            "initialMessageImage1": "",
+            "middleMessageImage1": "",
+            "smallMessageImage1": "",
+            "initialMessageImage2": "",
+            "middleMessageImage2": "",
+            "smallMessageImage2": "",
+            "initialMessageImage3": "",
+            "middleMessageImage3": "",
+            "smallMessageImage3": "",
+            "needReDesign": $(".check_box #male").is(':checked') ? 1 : 0,
+            "messageFile": ""
         }
 
         //附件
-        var messageFile= $("#leav_bottom_file .accessory-container .fileitem");
-        if (messageFile && messageFile.length>0) {
+        var messageFile = $("#leav_bottom_file .accessory-container .fileitem");
+        if (messageFile && messageFile.length > 0) {
             if (typeof $(messageFile[0]).attr('data-complete') != "undefined" && $(messageFile[0]).attr('data-complete') != "complete") {
                 Message.show('提醒', "留言附件正在上传请等待...", MsgState.Fail, 2000);
                 return;
             }
             messageFile = $(messageFile[0]).attr('data-url').indexOf('http:') >= 0 ? $(messageFile[0]).attr('data-url') : "http://" + $(messageFile[0]).attr('data-url');
-            data["messageFile"]=messageFile;
+            data["messageFile"] = messageFile;
         }
 
         //图片
@@ -981,21 +1016,22 @@ var details = {
 
         var url = config.WebService()["orderDesignMessage_Insert"];
         Requst.ajaxPost(url, data, true, function (data) {
-
-            details.leavShow();
-
+            if (data.code == 200) {
+                $(".leav-bottom-input input").val("");
+                details.leavShow();
+            }
         });
-    },
-    desiLeavBtn: function (index) {//选定设计方案
-        var that=this;
+    }, //提交留言
+    desiLeavBtn: function (index) {
+        var that = this;
         var url = config.WebService()["chooseDesign"];
-        Requst.ajaxPost(url, { "wId": parseInt(index), "customId": customid }, true, function (data) {
+        Requst.ajaxPost(url, {"wId": parseInt(index), "customId": customid}, true, function (data) {
             if (data.code == 200) {
                 top.Message.show('提示信息', data.message, MsgState.Success, 2000);
                 that.getData("designDraft");
             }
         });
-    },
+    },//选定设计方案
 
 }
 

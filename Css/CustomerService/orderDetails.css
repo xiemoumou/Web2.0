@@ -632,9 +632,6 @@ body{
     display: block;
     margin-top: 36px;
 }
-.hide{
-    display: none;
-}
 .address-text-box{
     padding: 15px 20px;
     font-size: 12px;
@@ -829,7 +826,10 @@ body{
 
 .history-line{
     line-height: 2px;
-    margin-left: 100px;
+    width: 100%;
+    padding-bottom: 50px;
+    position: absolute;
+    bottom: -40px;
 }
 
 .history-line .title{
@@ -901,7 +901,7 @@ body{
     color: #999999;
 }
 .for-design{
-    height: 660px;
+    min-height: 562px;
     position: relative;
 }
 .list-1{
@@ -932,6 +932,8 @@ body{
 .planner-leav-text{
     font-size: 12px;
     color: #333333;
+    width: 353px;
+    word-break: break-all;
 }
 #planner_leav{
     margin-top: 10px;
@@ -962,7 +964,7 @@ body{
 
 .leav-box{
     width: 437px;
-    height: 540px;
+    height: 560px;
     background: #FFFFFF;
     box-shadow: 0 0 16px 0 rgba(0,0,0,0.06);
     border-radius: 4px;
@@ -976,6 +978,7 @@ body{
     margin: 0 auto;
     padding-top: 20px;
     border-bottom: 1px solid #f5f5f5;
+    margin-bottom: 20px;
 }
 .leav-title span{
     font-size: 16px;
@@ -990,7 +993,7 @@ body{
     color: #999999;
 }
 .leav-reg-img{
-    height: 48px;
+    /*height: 48px;*/
     margin-top: 10px;
 }
 .leav-reg-img .diagram .handle .dia-zoom{
@@ -1016,9 +1019,9 @@ body{
 .leav-content{
     width: 357px;
     height: 341px;
-    overflow: scroll;
-    /*padding-top: 30px;*/
+    overflow-y: auto;
     margin: 0 auto;
+    overflow-x: hidden;
 }
 .leav-text-first {
     height: 14px;
@@ -1052,14 +1055,14 @@ body{
     padding: 6px 15px;
 }
 .leav-reg-title{
-    height: 60px;
-    line-height: 60px;
     text-align: center;
 }
+
 .leav-reg-title .line {
     display: inline-block;
     width: 128px;
     border-top: 2px solid #d5d5d5 ;
+    margin-top: 10px;
 }
 .leav-reg-title .txt {
     font-size: 14px;
@@ -1102,7 +1105,7 @@ body{
 }
 .leav-bottom-up,.leav-bottom-input,.leav-btn{
     display: inline-block;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
 }
 
 #leav_bottom_img .diagram{
@@ -1169,11 +1172,11 @@ body{
     visibility: hidden;
 }
 #leav_bottom_file{
-    margin-left: 47px;
     width: 45px;
+    text-align: center;
     height: 45px;
+    float: left;
     border-right: 1px solid #f5f5f5;
-
 }
 
 .leav-bottom-input input{
@@ -1191,7 +1194,7 @@ body{
     margin-right: 10px;
 }
 #leav_bottom_img .diagram{
-    margin-right: 16px!important;
+    margin-right: 8px!important;
 }
 
 #leav_bottom_file .accessory-container{
@@ -1200,6 +1203,7 @@ body{
 #leav_bottom_file .accessory-container .filelist{
     position: absolute;
     top: -86px;
+    width: 0px;
 }
 .more-box{
     margin-left: 12px;
@@ -1236,4 +1240,51 @@ body{
 }
 .item-head-right{
     position: relative;
+}
+
+/*留言附件*/
+#leav_bottom_file .accessory-container .fileitem{
+    width: 165px !important;
+    margin-left: 98px!important;
+}
+
+#leav_bottom_file .accessory-container .fileitem .filename{
+    width: 110px;
+    margin-left: 3px;
+}
+
+#leav_bottom_img{
+    max-width: 45px;
+    float: left;
+}
+
+#leav_bottom_img .diagram-container{
+    margin-left: 6px;
+}
+
+#leav_bottom_img .addDiagram.hide{
+    display: block !important;
+}
+
+.for-design-box .for-design:nth-of-type(1){
+    min-height: 670px;
+}
+.leav-content .leav-reg{
+    margin-bottom: 20px;
+}
+
+.leav-reg-file .accessory-container .fileitem{
+    margin-left: 113px !important;
+}
+
+.leav-reg .history-line{
+    position: initial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.leav-reg .history-line .left,.leav-reg .history-line .right{
+    width: 90px;
 }

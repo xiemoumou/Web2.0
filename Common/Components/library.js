@@ -558,7 +558,7 @@ var uploadfile = {
                     diagram.attr('data-complete', percentVal);
                     $(progress).find('span').text(percentVal + "%...");
                     if (percentVal == 100) {
-                        $(progress).find('span').text('处理中...');
+                        $(progress).find('span').text('压缩...');
                     }
                 }, function (diagram, data) {
                     //上传成功
@@ -735,7 +735,7 @@ var uploadfile = {
                     progress.removeClass('hide');
                     $(progress).find('span').text(percentVal + "%...");
                     if (percentVal == 100) {
-                        $(progress).find('span').text('处理中...');
+                        $(progress).find('span').text('压缩...');
                     }
                 }, function (Accessory, data) {
                     //上传成功
@@ -756,12 +756,12 @@ var uploadfile = {
         //渲染附件列表
         function renderAccessory(uri, name, type) {
             type = type.toUpperCase();
-            var accessoryItem = $('<div title="' + name + '" data-url="'+uri+'" class="fileitem"><div class="progress hide"><span>0%</span></div></div>');
+            var accessoryItem = $('<div  title="' + name + '" data-url="'+uri+'" class="fileitem"><div class="progress hide"><span>0%</span></div></div>');
             accessoryItem.append($('<span class="filetype fl">' + type + '</span>'));
             var lastIndex=name.lastIndexOf('/');
             if(lastIndex>=0)
             {
-                name=name.slice(lastIndex,name.length-lastIndex);
+                name=name.slice(lastIndex+1);
             }
             accessoryItem.append($('<span class="filename fl">' + name + '</span>'));
             if (isDownload) {
