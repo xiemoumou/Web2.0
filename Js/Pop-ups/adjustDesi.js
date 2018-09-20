@@ -1,3 +1,4 @@
+// 修改设计费
 $(function () {
     var url=config.WebService()["designFee_Init"];
     var customid=Helper.getUrlParam("customid");
@@ -25,8 +26,14 @@ $(function () {
             if(data.code==200)
             {
                 top.Message.show("提示", data.message, MsgState.Success, 2000,function () {
+                    //更新概览
                     if (top.classMain.loadOverview) {
                         top.classMain.loadOverview(null, null, null, customid);
+                    }
+                    //更新详情
+                    if(top.document.getElementById("iframe_"+customid))
+                    {
+                        top.document.getElementById("iframe_"+customid).contentWindow.details.getData("base");
                     }
                     top.Popup.close("调整设计费");
                 });

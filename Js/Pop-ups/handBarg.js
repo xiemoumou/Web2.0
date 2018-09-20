@@ -33,7 +33,16 @@ $(function () {
             if(data.code==200)
             {
                 top.Message.show("提示",data.message,MsgState.Success,3000,function () {
-                    top.classMain.loadOverview(null,null,null,customid);
+                    if(top.classMain)
+                    {
+                        top.classMain.loadOverview(null,null,null,customid);
+                    }
+
+                    if(top.document.getElementById("iframe_"+customid))
+                    {
+                        top.document.getElementById("iframe_"+customid).contentWindow.details.getData("base");
+                    }
+
                 },{"width":420 ,"height":75});
                 top.Popup.close("处理议价");
             }

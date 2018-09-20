@@ -1,3 +1,4 @@
+// 发起议价
 $(function () {
     var customid=Helper.getUrlParam("customid");
     var tax=Helper.getUrlParam("tax",true);//是否含税
@@ -19,6 +20,10 @@ $(function () {
                 top.Message.show("提示", data.message, MsgState.Success, 2000,function () {
                     if (top.classMain.loadOverview) {
                         top.classMain.loadOverview(null, null, null, customid);
+                    }
+                    if(top.document.getElementById("iframe_"+customid))
+                    {
+                        top.document.getElementById("iframe_"+customid).contentWindow.details.getData("base");
                     }
                     top.Popup.close("发起议价");
                 });

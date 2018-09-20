@@ -1640,7 +1640,7 @@ var classMain = {
                             if (item.isContinueOrder == 1) {
                                 itemHead_l.append($('<span class="renew">续订</span>'));
                             }
-
+                            
                             var deadlineTime=item.deadlineTime;
                             if(deadlineTime)
                             {
@@ -1677,11 +1677,11 @@ var classMain = {
                             });
                         }
 
-                        if(item.lastQuote>item.userPrice)
+                        /*if(item.lastQuote>item.userPrice)
                         {
                             prodImage.append($("<i class='mark1'><s style='font-size: 12px; color:#ffffff; text-shadow: 1px 1px 1px rgba(135,18,18,0.50);'>超预算</s></i>"));
                         }
-                        else if(item.lastPeriod>item.userPeriod)
+                        else */if(item.lastPeriod>item.userPeriod)
                         {
                             prodImage.append($("<i class='mark2'><s style='font-size: 12px; color:#ffffff; text-shadow: 1px 1px 1px rgba(174,64,16,0.50);'>超工期</s></i>"));
                         }
