@@ -254,34 +254,30 @@ var details = {
                 }
 
 
-                function details(srcArray) {
-                    srcArray = [];//参考图
+                function details() {
+                    var srcArray = [];//参考图
                     for (var i = 1; i <= 3; i++) {
-                        if (data.data['initialReferenceImage' + i]) {
+                        if (data.data['smallReferenceImage' + i]) {
                             srcArray.push({
-                                "orgSrc": 'http://' + data.data['initialReferenceImage' + i],
+                                "orgSrc": 'http://' + data.data['middleReferenceImage' + i],
                                 "thumbnail": 'http://' + data.data['smallReferenceImage' + i]
                             });
 
                         }
-                        return srcArray
                     }
-
+                    return srcArray;
                 }
 
                 function detailsProd(srcArray) {
                     srcArray = [];//生产参考图
-                    for (var i = 1; i <= 3; i++) {
                         if (data.data['initialReferenceImage' + i]) {
                             srcArray.push({
                                 "orgSrc": 'http://' + data.data['initialReferenceImage' + i],
-                                "thumbnail": 'http://' + data.data['smallReferenceImage' + i]
+                                "thumbnail": 'http://' + data.data['smallProducerefImage' + i]
                             });
 
                         }
                         return srcArray
-                    }
-
                 }
 
                 function detaProd(srcArray) {

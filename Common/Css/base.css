@@ -2,8 +2,8 @@
 
 @font-face {
     font-family: 'SourceHanSans';
-    src: url('../Font/SourceHanSans-Regular.otf'),
-    url('../Font/SourceHanSans-Regular.ttf') format('truetype');
+    src: url('../Font/SourceHanSansCN-Regular.otf'),
+    url('../Font/SourceHanSansCN-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
