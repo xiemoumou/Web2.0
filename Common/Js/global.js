@@ -8,8 +8,9 @@
 // 系统配置
 var config = {
     Domain: {
-        "systemApi": "http://192.168.1.50:91",
-        //"systemApi": "http://192.168.88.1:81",
+        "systemApi": "http://192.168.1.50:91",//内网研发
+        // "systemApi": "http://192.168.88.1:81",//内网测试
+        // "systemApi":"http://129.28.68.119:81",//公网
     },
     WebService: function () {
         var that = this;
@@ -51,11 +52,6 @@ var config = {
             "orderInvoicePage_Query":that.Domain.systemApi +"/dynamo/order/orderInvoicePage_Query",//票据概览
             "orderInvoiceSign_Update":that.Domain.systemApi +"/dynamo/order/orderInvoiceSign_Update",//发票标记已开
             "orderInvoiceDetail_Query":that.Domain.systemApi +"/dynamo/order/orderInvoiceDetail_Query",//发票明细
-
-
-
-
-
             "AccountInfo_Insert": that.Domain.systemApi + "/dynamo/user/userAccountInfo_Insert",//注册
             "userAccountInfo_Query": that.Domain.systemApi + "/dynamo/user/userAccountInfo_Query",//登陆
             "userPassword_Update": that.Domain.systemApi + "/dynamo/user/userPassword_Update",//修改密码

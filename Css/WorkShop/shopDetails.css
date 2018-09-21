@@ -1,6 +1,6 @@
 .workshop-table-head{
-    height: 24px;
-    line-height: 24px;
+    height: 34px;
+    line-height: 34px;
     font-size: 14px;
     color: #666666;
     width: 100%;
@@ -163,16 +163,17 @@
 .order-img{
     width: 100px;
     height: 100px;
-    border-radius: 8px;
-    display: inline-block;
-    box-shadow:0px 0px 4px rgba(0,0,0,.4);
-
+    border-radius: 6px;
+    box-shadow: 0 0 6px #00000010;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    float: left;
 }
 .order-img img{
-    width: 100px;
-    height: 100px;
-    border-radius: 8px;
-
+    max-width: 100px;
+    max-height: 100px;
 }
 .attr{
     display: inline-block;
