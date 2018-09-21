@@ -6,7 +6,6 @@ $(function () {
 
     desigDetails.desiGet();//显示详情
     desigDetails.leavShow();//留言显示
-    //desigDetails.suatusDesi();//显示是否接单
 
     uploadfile.uploadPhoto('prod_refe',1);//设计稿
     uploadfile.uploadPhoto('details_encl_textarea',3);//设计备注上传
@@ -71,7 +70,9 @@ var desigDetails = {
         var url = config.WebService()["orderSummaryInfo_Query"];
         Requst.ajaxGet(url, data, true, function (data) {
             detailsData=data.data;
-
+            var command=item.command.split(',');
+            
+            
             var createTime = data.data.createTime || "";//订单创建时间
             var designPrice = data.data.designPrice || "";//设计费
 
@@ -297,12 +298,6 @@ var desigDetails = {
                 }
 
             }
-            
-            
-            
-            
-            
-
         })
     },
     //suatusDesi: function () {

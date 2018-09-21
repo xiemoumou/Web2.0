@@ -1420,6 +1420,7 @@ var classMain = {
                 {
                     for (var i = 0; i < data.data.pageData.length; i++) {
                         var item = data.data.pageData[i];
+                        var command=item.command.split(',');
                         var itemDiv = $('<div id="item_'+item.customid+'" class="designer data-item clearfix"></div>');
 
                         //更新逐条信息
@@ -1534,7 +1535,7 @@ var classMain = {
                         function operating() {
                             var operating = $('<div class="operating"></div>');
                             //立即抢单
-                            if (item.designStatus==0||item.designStatus==1) {
+                            if (command.indexOf("ACCEPT_DESIGN")>=0) {
                                 var btn=$('<button class="btn" style="width: 76px; height: 23px;" data-designId="'+item.designId+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">立即抢单</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
@@ -1556,7 +1557,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //提交设计
-                            if (item.designStatus==2) {
+                            if (command.indexOf("COMMIT_DESIGN")>=0) {
                                 var btn=$('<button class="btn" style="width: 76px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">提交设计</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
@@ -1567,7 +1568,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //修改设计
-                            if (item.designStatus==4) {
+                            if (command.indexOf("EDIT_ACC")>=0) {
                                 var btn=$('<button class="btn" style="width: 76px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">修改设计</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
@@ -1599,6 +1600,7 @@ var classMain = {
                 {
                     for (var i = 0; i < data.data.pageData.length; i++) {
                         var item = data.data.pageData[i];
+                        var command=item.command.split(',');
                         var itemDiv = $('<div id="item_'+item.customid+'" class="workshop data-item clearfix"></div>');
 
                         //更新逐条信息
@@ -1701,7 +1703,7 @@ var classMain = {
                             var model = ConvertIdToName(element.model, item.model).join(';');
                             var technology = ConvertIdToName(element.technology, item.technology).join(';');
                             var color = ConvertIdToName(element.color, item.color).join(';');
-                            var producePrice=item.lastQuote>0?item.producePrice.formatMoney(2, "", ",", "."):"-";
+                            var producePrice=item.producePrice>0?item.producePrice.formatMoney(2, "", ",", "."):"-";
 
                             var info = $('<div class="info">' +
                                 '<div class="attributes">' +
@@ -1772,7 +1774,7 @@ var classMain = {
                         function operating() {
                             var operating = $('<div class="operating"></div>');
                             //报价
-                            if((item.inquiryStatus==1||item.inquiryStatus==2)&& item.lastQuote==0)
+                            if (command.indexOf("QUOTE")>=0 && item.lastQuote==0)
                             {
                                 var btn=$('<button class="btn" data-lastPeriod="'+item.lastPeriod+'" data-lastQuote="'+item.lastQuote+'" style="width: 76px; height: 23px;" data-inquiryRound="'+item.inquiryRound+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">报价</button>');
                                 btn.on('click',function () {
@@ -1787,7 +1789,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //重新报价
-                            if(item.inquiryStatus==2 && item.lastQuote>0)
+                            if(command.indexOf("QUOTE")>=0 && item.lastQuote>0)
                             {
                                 var btn=$('<button class="btn" data-lastPeriod="'+item.lastPeriod+'"  data-lastQuote="'+item.lastQuote+'"  style="width: 76px; height: 23px;" data-inquiryRound="'+item.inquiryRound+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">重新报价</button>');
                                 btn.on('click',function () {
@@ -1804,7 +1806,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //处理议价
-                            if(item.inquiryStatus==5 || (item.inquiryStatus==6 && item.lastQuote==0))
+                            if(command.indexOf("BARGIN_FEEDBACK")>=0)
                             {
                                 var btn=$('<button class="btn" style="width: 76px; height: 23px;" data-userPeriod="'+item.workshopUserPeriod+'" data-basePrice="'+item.workshopBasePrice+'" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">处理议价</button>');
                                 btn.on('click',function () {
@@ -1820,7 +1822,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //接受生产
-                            if(item.produceStatus==2)
+                            if(command.indexOf("ACCEPT_PRODUCE")>=0)
                             {
                                 var btn=$('<button class="btn" style="width: 76px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">接受生产</button>');
                                 btn.on('click',function () {
@@ -1845,7 +1847,7 @@ var classMain = {
                                 operating.append(btn);
                             }
                             //发货
-                            if(item.produceStatus==3)
+                            if(command.indexOf("MAIL")>=0)
                             {
                                 var btn=$('<button class="btn" style="width: 76px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">发货</button>');
                                 btn.on('click',function () {

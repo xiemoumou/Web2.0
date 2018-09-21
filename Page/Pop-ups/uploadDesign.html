@@ -60,11 +60,11 @@
             padding: 3px;
         }
 
-        .design-annex,.other-annex{
+        .design-annex, .other-annex {
             position: relative;
         }
 
-        #accessory{
+        #accessory {
             width: 240px;
             border: 1px dashed #D5D5D5;
             padding-bottom: 10px;
@@ -72,7 +72,7 @@
         }
 
         /*设计师备注附件*/
-        #reference .addDiagram .dia-icon{
+        #reference .addDiagram .dia-icon {
             width: 18px;
             height: 16px;
             position: absolute;
@@ -80,7 +80,8 @@
             left: -22px;
             background: url(../../Image/Designer/desiDesigner.png) no-repeat -56px -5px !important;
         }
-        #reference .addDiagram .dia-icon:before{
+
+        #reference .addDiagram .dia-icon:before {
             content: '点击上传';
             position: absolute;
             display: inline-block;
@@ -91,7 +92,8 @@
             left: 26px;
             border-bottom: 1px solid;
         }
-        #reference .addDiagram .dia-icon:after{
+
+        #reference .addDiagram .dia-icon:after {
             content: '备注图片(最多3张)';
             position: absolute;
             display: inline-block;
@@ -103,64 +105,63 @@
             cursor: auto;
         }
 
-        #reference .diagram{
+        #reference .diagram {
             width: 48px;
             height: 48px;
         }
 
-        #reference .diagram img{
+        #reference .diagram img {
             max-width: 48px;
             max-height: 48px;
         }
 
-        #reference .diagram .progress span{
+        #reference .diagram .progress span {
             font-size: 12px;
         }
 
-        #reference .diagram .handle .oper
-        {
+        #reference .diagram .handle .oper {
             margin: 0 !important;
         }
 
-        #reference .dia-remind-1,#reference .dia-remind-2{
+        #reference .dia-remind-1, #reference .dia-remind-2 {
             display: none;
         }
 
-        #reference .diagram{
+        #reference .diagram {
             z-index: 2;
         }
-        #reference .addDiagram{
+
+        #reference .addDiagram {
             position: absolute;
             background-color: transparent;
             box-shadow: none;
             z-index: 1;
         }
+
         #reference .addDiagram:hover {
             box-shadow: none;
         }
 
-        .requirements-content textarea{
+        .requirements-content textarea {
             height: 46px !important;
         }
 
-        .requirements-content .textarea .remark
-        {
+        .requirements-content .textarea .remark {
             line-height: 60px;
         }
 
-
-        #accessory .accessory-container .filelist .fileitem{
+        #accessory .accessory-container .filelist .fileitem {
             margin-left: 5px;
         }
 
-        #otherAccessory{
+        #otherAccessory {
             width: 240px;
             border: 1px dashed #D5D5D5;
             padding-bottom: 10px;
             margin-top: 18px;
         }
 
-        #otherAccessory .accessory-container .filelist .fileitem{
+        #otherAccessory .accessory-container .filelist .fileitem {
             margin-left: 5px;
         }
 
@@ -203,16 +204,18 @@
             <div class="upload-photo clearfix">
                 <div class="design-photo fl" style="width: 252px;">
                     <span class="label">设计图：</span>
-                    <div id="reference_diagram" class="clearfix" style="height: 109px;" data-type="design_image"> </div>
+                    <div id="reference_diagram" class="clearfix" style="height: 109px;" data-type="design_image"></div>
                 </div>
                 <div class="design-annex fl">
                     <span class="label">附件：</span>
-                    <span class="label" style="position: absolute; right: 15px; top: 20px; color: #999999; padding: 0 2px; background-color: #F5F5F5;" >设计附件</span>
-                    <div id="accessory" class="clearfix" data-type="design_accessory"> </div>
+                    <span class="label"
+                          style="position: absolute; right: 15px; top: 20px; color: #999999; padding: 0 2px; background-color: #F5F5F5;">设计附件</span>
+                    <div id="accessory" class="clearfix" data-type="design_accessory"></div>
                 </div>
                 <div class="other-annex fl">
-                    <span class="label" style="position: absolute; right: 4px; top: 20px; color: #999999; padding: 0 2px; background-color: #F5F5F5;">其它附件</span>
-                    <div id="otherAccessory" class="clearfix" data-type="other_accessory"> </div>
+                    <span class="label"
+                          style="position: absolute; right: 4px; top: 20px; color: #999999; padding: 0 2px; background-color: #F5F5F5;">其它附件</span>
+                    <div id="otherAccessory" class="clearfix" data-type="other_accessory"></div>
                 </div>
             </div>
             <div class="production-requirements">
@@ -242,68 +245,81 @@
 </script>
 <script>
     var customid = "";//客户id
-    var title="";
+    var title = "";
+    var reviewData = null;//回显对象
+    var ordersummaryId="";
+    var orderid="";
+    var id="";
+
     $(function () {
         //初始化上传操作
         customid = Helper.getUrlParam("customid");
-        var designPatternId=Helper.getUrlParam("designPatternId");//设计方案ID
-        title=Helper.getUrlParam('title',true);
+        var designPatternId = Helper.getUrlParam("designPatternId");//设计方案ID
+        ordersummaryId = Helper.getUrlParam("ordersummaryId");
+        orderid = Helper.getUrlParam("orderid");
+        id = Helper.getUrlParam("id");
 
-        var designImage=[];//设计图
-        var designFile=[];//设计附件
-        var otherFile=[];//其他附件
+        title = Helper.getUrlParam('title', true);
 
-        var designMemo="";//设计备注
-        var remarkImage=[];//设计备注图片
+        var designImage = [];//设计图
+        var designFile = [];//设计附件
+        var otherFile = [];//其他附件
 
-        debugger
+        var designMemo = "";//设计备注
+        var remarkImage = [];//设计备注图片
 
 
         //修正设计稿回显示
-        if(designPatternId && designPatternId!="undefined")
-        {
-            var url=config.WebService()["orderDesignPatternById_Query"];
-            top.Requst.ajaxGet(url,{"id":parseInt(designPatternId)},false,function (data) {
-                if(data.code==200)
-                {
-                    data=data.data[0];
-                    designImage.push({'thumbnail':"http://"+data.smallDesignImage1,'orgSrc':"http://"+data.middleDesignImage1});//设计图
-                    designFile.push({"name":data.designFile,"uri":"http://"+data.designFile});//设计附件
-                    otherFile.push({"name":data.otherFile,"uri":"http://"+data.otherFile});//其他附件
+        if (designPatternId && designPatternId != "undefined") {
+            var url = config.WebService()["orderDesignPatternById_Query"];
+            top.Requst.ajaxGet(url, {"id": parseInt(designPatternId)}, false, function (data) {
+                if (data.code == 200) {
+                    reviewData = data = data.data[0];
+                    if (data.smallDesignImage1) {
+                        designImage.push({
+                            'thumbnail': "http://" + data.smallDesignImage1,
+                            'orgSrc': "http://" + data.middleDesignImage1
+                        });//设计图
+                    }
+                    if (data.designFile) {
+                        designFile.push({"name": data.designFile, "uri": "http://" + data.designFile});//设计附件
+                    }
+                    if (data.otherFile) {
+                        otherFile.push({"name": data.otherFile, "uri": "http://" + data.otherFile});//其他附件
+                    }
 
-                    for(var i=1;i<3;i++) {
-                        if (data["smallRemarkImage" + i])
-                        {
-                            remarkImage.push({"thumbnail":"http://"+data["smallRemarkImage"+i],"orgSrc":"http://"+data["middleRemarkImage"+i]});
+                    for (var i = 1; i < 3; i++) {
+                        if (data["smallRemarkImage" + i]) {
+                            remarkImage.push({
+                                "thumbnail": "http://" + data["smallRemarkImage" + i],
+                                "orgSrc": "http://" + data["middleRemarkImage" + i]
+                            });
                         }
                     }
 
-                    designMemo=data.designMemo;//设计备注
+                    designMemo = data.designMemo;//设计备注
 
                 }
-                else
-                {
+                else {
                     console.log(data.message);
                 }
             });
         }
 
-        uploadfile.uploadPhoto('reference_diagram', 1,designImage);//图片上传
-        uploadfile.uploadFile('accessory', 1, designFile, true, null,null,true);//附件上传
-        uploadfile.uploadFile('otherAccessory', 1, otherFile, true, null,false,true);//附件上传
+        uploadfile.uploadPhoto('reference_diagram', 1, designImage);//图片上传
+        uploadfile.uploadFile('accessory', 1, designFile, true, null, null, true);//附件上传
+        uploadfile.uploadFile('otherAccessory', 1, otherFile, true, null, false, true);//附件上传
         textArea.init('.requirements-content', 300, designMemo, '请输入设计备注，请留意：备注不允许出现产品价格，参数和旺旺等各种联系方式', '备注不允许出现产品价格、参数和旺旺等各种联系方式');
 
-        uploadfile.uploadPhoto('reference',3,remarkImage);//设计备注图片上传
+        uploadfile.uploadPhoto('reference', 3, remarkImage);//设计备注图片上传
 
         uploadfile.initDrag('reference_diagram');//拖拽支持
         uploadfile.initDrag('accessory');//拖拽支持
         uploadfile.initDrag('otherAccessory');
 
 
-
-        $(".ok").on('click',function () {
-            var requstData = {"version": 1, "isNew": 1, "customid": customid, "status": 5};//提交参数
-
+        $(".ok").on('click', function () {
+            var requstData = {"id":id || 0,"version": reviewData.version || 0, "isNew": reviewData.isNew||1, "customid": reviewData.customid||customid, "status": reviewData.status||5,"ordersummaryId":reviewData.ordersummaryId || parseInt(ordersummaryId),"designId":reviewData.designId || 0,"orderid":reviewData.orderid || orderid};//提交参数
             //设计图
             var diagram = $("#reference_diagram .diagram-container .diagram");
             if (diagram.length > 0) {
@@ -314,98 +330,83 @@
                     return;
                 }
                 else {
-                    requstData["initialDesignImage1"] = $(diagram[0]).attr("data-mimageurl");
-                    requstData["middleDesignImage1"] = $(diagram[0]).attr("data-mimageurl");
-                    requstData["smallDesignImage1"] = $(diagram[0]).attr("data-simageurl");
+                    requstData["initialDesignImage1"] = $(diagram[0]).attr("data-mimageurl").replace("http://", "");
+                    requstData["middleDesignImage1"] = $(diagram[0]).attr("data-mimageurl").replace("http://", "");
+                    requstData["smallDesignImage1"] = $(diagram[0]).attr("data-simageurl").replace("http://", "");
                 }
             }
-            else
-            {
+            else {
                 top.Message.show("提示", "请上传设计图", MsgState.Warning, 2000);
                 return;
             }
 
             //附件
-            var accessory=$("#accessory .accessory-container .fileitem");
-            if(accessory.length>0)
-            {
-                var complete=$(accessory[0]).attr("data-complete");
-                if(complete && complete!="complete")
-                {
-                    top.Message.show("提示","附件正在上传...",MsgState.Warning,2000);
+            var accessory = $("#accessory .accessory-container .fileitem");
+            if (accessory.length > 0) {
+                var complete = $(accessory[0]).attr("data-complete");
+                if (complete && complete != "complete") {
+                    top.Message.show("提示", "附件正在上传...", MsgState.Warning, 2000);
                     return;
                 }
-                else
-                {
-                    requstData["designFile"]=$(accessory[0]).attr("data-url");
+                else {
+                    requstData["designFile"] = $(accessory[0]).attr("data-url").replace("http://", "");
                 }
             }
-            else
-            {
+            else {
                 top.Message.show("提示", "请上传设附件", MsgState.Warning, 2000);
                 return;
             }
 
             //其他附件
-            var otherAccessory=$("#otherAccessory .accessory-container .fileitem");
-            if(otherAccessory.length>0)
-            {
-                var complete=$(otherAccessory[0]).attr("data-complete");
-                if(complete && complete!="complete")
-                {
-                    top.Message.show("提示","其他附件正在上传...",MsgState.Warning,2000);
+            var otherAccessory = $("#otherAccessory .accessory-container .fileitem");
+            if (otherAccessory.length > 0) {
+                var complete = $(otherAccessory[0]).attr("data-complete");
+                if (complete && complete != "complete") {
+                    top.Message.show("提示", "其他附件正在上传...", MsgState.Warning, 2000);
                     return;
                 }
-                else
-                {
-                    requstData["otherFile"]=$(otherAccessory[0]).attr("data-url");
+                else {
+                    requstData["otherFile"] = $(otherAccessory[0]).attr("data-url").replace("http://", "");
                 }
             }
 
 
             //备注参考图
-            var reference=$("#reference .diagram-container .diagram");
-            if(reference.length>0)
-            {
-                for(var i=0;i<reference.length;i++)
-                {
-                    var complete=$(reference[i]).attr("data-complete");
-                    if(complete && complete!="complete")
-                    {
-                        top.Message.show("提示","备注图片正在上传...",MsgState.Warning,2000);
+            var reference = $("#reference .diagram-container .diagram");
+            if (reference.length > 0) {
+                for (var i = 0; i < reference.length; i++) {
+                    var complete = $(reference[i]).attr("data-complete");
+                    if (complete && complete != "complete") {
+                        top.Message.show("提示", "备注图片正在上传...", MsgState.Warning, 2000);
                         return;
                     }
-                    else
-                    {
-                        requstData["initialRemarkImage"+(i+1)]=$(diagram[0]).attr("data-mimageurl");
-                        requstData["middleRemarkImage"+(i+1)]=$(diagram[0]).attr("data-mimageurl");
-                        requstData["smallRemarkImage"+(i+1)]=$(diagram[0]).attr("data-simageurl");
+                    else {
+                        requstData["initialRemarkImage" + (i + 1)] = $(diagram[0]).attr("data-mimageurl").replace("http://", "");
+                        requstData["middleRemarkImage" + (i + 1)] = $(diagram[0]).attr("data-mimageurl").replace("http://", "");
+                        requstData["smallRemarkImage" + (i + 1)] = $(diagram[0]).attr("data-simageurl").replace("http://", "");
                     }
                 }
             }
 
-            requstData["designMemo"]=$('.production-requirements textarea').val();//设计备注
-            var url=config.WebService()["orderDesignPattern_Insert"];
+            requstData["designMemo"] = $('.production-requirements textarea').val();//设计备注
+            var url = config.WebService()["orderDesignPattern_Insert"];
 
-            top.Requst.ajaxPost(url,requstData,true,function (data) {
-                if(data.code==200)
-                {
-                    top.Message.show("提示",data.message,MsgState.Success,2000,function () {
-                        if (top.document.getElementById("iframe_"+customid)) {
-                            var pageObject=top.document.getElementById("iframe_"+customid).contentWindow;
+            top.Requst.ajaxPost(url, requstData, true, function (data) {
+                if (data.code == 200) {
+                    top.Message.show("提示", data.message, MsgState.Success, 2000, function () {
+                        if (top.document.getElementById("iframe_" + customid)) {
+                            var pageObject = top.document.getElementById("iframe_" + customid).contentWindow;
 
                             //调用李远鹏的更新设计稿方法
                         }
-                        if(top.document.getElementById("iframe_"+customid))
-                        {
-                            top.document.getElementById("iframe_"+customid).contentWindow.details.getData("designDraft");
+                        if (top.document.getElementById("iframe_" + customid)) {
+                            top.document.getElementById("iframe_" + customid).contentWindow.details.getData("designDraft");
                         }
                         top.Popup.close(title);
                     });
                 }
-                else
-                {
-                    top.Message.show("提示",data.message,MsgState.Warning,2000);
+                else {
+                    top.Message.show("提示", data.message, MsgState.Warning, 2000);
                 }
             });
         });

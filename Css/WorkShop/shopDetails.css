@@ -1,3 +1,61 @@
+.workshop-table-head{
+    height: 24px;
+    line-height: 24px;
+    font-size: 14px;
+    color: #666666;
+    width: 100%;
+    background: #FFFFFF;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,0.02);
+    font-size: 12px;
+}
+
+.workshop-table-head span:nth-of-type(1){
+    margin-left: 35px;
+}
+.workshop-table-head span:nth-of-type(2){
+    margin-left: 53px;
+}
+.workshop-table-head span:nth-of-type(3){
+    margin-left: 60px;
+}
+.workshop-table-head span:nth-of-type(4){
+    margin-left: 174px;
+}
+.workshop-table-head span:nth-of-type(5){
+    margin-left: 60px;
+}
+.workshop-table-head span:nth-of-type(6){
+    margin-left: 64px;
+}
+.workshop-table-head span:nth-of-type(7){
+    margin-left: 75px;
+}
+.workshop-table-head span:nth-of-type(8){
+    margin-left: 68px;
+}
+
+
+.order-img .mark1,.order-img .mark2,.order-img .mark3{
+    display: block;
+    width: 42px;
+    height: 20px;
+    z-index: 10;
+    position: absolute;
+    left: -4px;
+    top: 8px;
+    text-align: center;
+    background: url(../../Image/workbench.png) no-repeat -109px -133px;
+}
+
+.order-img .mark2{
+    background-position: -109px -159px;
+}
+
+.order-img .mark3{
+    background-position: -161px -133px;
+}
+
+
 .workshop-content{
     width: 1005px;
     height: 100%;
@@ -171,22 +229,16 @@
     line-height: 18px;
 }
 .orderstatus{
-    display: inline-block;
-    width: 89px;
-    text-align: right;
-    vertical-align: top;
+    border-left: none;
+    align-items: end;
+    width: 96px;
+    height: 88px;
+    text-align: center;
+    margin-left: 32px;
+    border-right: 2px solid #F5F5F5;
+    float: left;
 }
-.orderstatus p{
-    font-size: 12px;
-    color: #999999;
-}
-.operation{
-    display: inline-block;
-    vertical-align: top;
-    float: right;
-    margin-right: 10px;
-    margin-top: 10px;
-}
+
 .upimg,.deli{
     display: inline-block;
     width: 76px;
@@ -206,8 +258,8 @@
 .offer{
     position: absolute;
     display: inline-block;
-    width: 148px;
     height: 21px;
+    padding: 0 5px;
     line-height: 21px;
     background: #FAFBFB;
     box-shadow: 0 0 2px 0 rgba(0,0,0,0.20);
@@ -526,15 +578,18 @@
 
 
 .operation{
-    float: right;
-    margin-right: 20px;
-    height: 100px;
+    float: left;
+    width: 110px;
+    height: 98px;
     display: flex;
     flex-flow: wrap;
     vertical-align: middle;
     justify-content: space-around;
     align-items: center;
-    width: 63px;
+}
+
+.operation .btn{
+    border-radius: 2px;
 }
 
 

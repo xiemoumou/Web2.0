@@ -774,7 +774,7 @@ var details = {
                                 "</div>" +
                                 "</div>" +
                                 "<div class='edit-right-button'>" +
-                                "<span id='modify_"+i+"' class='hide'>修正设计稿</span>" +
+                                "<span id='modify_"+i+"' data-id='"+dataDetail.designInfo[i].id+"' class='hide'>修正设计稿</span>" +
                                 "<button data-index='" + dataDetail.designInfo[i].id + "' class='EditButton btn-h'>选定设计方案</button>" +
                                 "</div>" +
                                 "</div>" +
@@ -811,7 +811,8 @@ var details = {
                         modifyBtn.removeClass('hide');
                     }
                     modifyBtn.on('click',function () {
-                        top.OPER.uploadDesign(customid,"修正设计稿",dataDetail.designInfo[0].id);
+                        var id=$(this).attr("data-id");
+                        top.OPER.uploadDesign(customid,"修正设计稿",dataDetail.designInfo[0].id,dataDetail.orderid,dataDetail.id,id);
                     });
                 }
             }

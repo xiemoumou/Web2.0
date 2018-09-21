@@ -830,7 +830,7 @@ body {
     align-items: center;
     cursor: pointer;
     float: left;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .data-item .photo img{
