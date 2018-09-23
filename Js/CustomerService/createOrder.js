@@ -404,23 +404,23 @@ var createOrder = {
 
         //设置开模方式
         function setModel(data) {
-            var val = [];
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].isDefault) {
-                    val.push(data[i].id);
-                }
-            }
-
-            //保留原来选中的值（如果新数据愿中有的话）
-            var oldVal = oldSelectValue($('.technology-attribute-1').attr('data-val'), data);
-            if (oldVal) {
-                val = oldVal;
-            }
-
-            $('.technology-attribute-1').attr('data-val', val.join(','));
-            $('.technology-attribute-1').DropDownBox(data,function (dataId) {
-                createOrder.autoPrice();//触发自动报价
-            });
+            // var val = [];
+            // for (var i = 0; i < data.length; i++) {
+            //     if (data[i].isDefault) {
+            //         val.push(data[i].id);
+            //     }
+            // }
+            //
+            // //保留原来选中的值（如果新数据愿中有的话）
+            // var oldVal = oldSelectValue($('.technology-attribute-1').attr('data-val'), data);
+            // if (oldVal) {
+            //     val = oldVal;
+            // }
+            //
+            // $('.technology-attribute-1').attr('data-val', val.join(','));
+            // $('.technology-attribute-1').DropDownBox(data,function (dataId) {
+            //     createOrder.autoPrice();//触发自动报价
+            // });
         }
 
         //设置工艺
@@ -490,6 +490,11 @@ var createOrder = {
             }
             return false;
         }
+
+        //开模方式
+        $('.technology-attribute-1').DropDownMold(null,function () {
+            createOrder.autoPrice();//触发自动报价
+        });
     },
     getData: function () {
         Requst.ajaxGet(config.WebService()['orderSummaryInfo_Query'], {'customId': customid}, false, function (data) {

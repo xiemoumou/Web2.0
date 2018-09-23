@@ -263,6 +263,19 @@
         var width = tagObj.attr('data-width') || 160;//下拉宽度
         var height = tagObj.attr('data-height') || 206;//下拉高度
         var defaultValue = tagObj.attr('data-val') || "";//默认值
+        debugger
+        data=[
+            {"id":1,"name":"无","type":"mold-cbx-none"},
+            {"id":9,"name":"浇铸","type":"mold-single"},
+            {"id":10,"name":"模切","type":"mold-single"},
+            {"id":2,"name":"双面开模","type":"mold-single doubleSidedMold"},
+            {"id":3,"name":"2D冲压","type":"mold-drop-cbx"},
+            {"id":4,"name":"2D压铸","type":"mold-drop-cbx"},
+            {"id":5,"name":"2D液压","type":"mold-drop-cbx"},
+            {"id":6,"name":"3D冲压","type":"mold-drop-cbx"},
+            {"id":7,"name":"3D压铸","type":"mold-drop-cbx"},
+            {"id":8,"name":"3D液压","type":"mold-drop-cbx"},
+        ];
         var name=[];
         defaultValue=defaultValue.split(",");
         for(var i=0;i<data.length;i++)
@@ -293,11 +306,11 @@
                 //渲染数据
                 if (!data) return;//如果数据源为空则退出
                 div_c.html('');
-                var body_width = parseInt(width) - 10;
+                var body_width = parseInt(width) - 2;
 
                 div_c.css("width", body_width);
 
-                var div_body = $('<div class="div-body" style="padding-left:8px;width:' + body_width + 'px; height: ' + height + 'px;"></div>');
+                var div_body = $('<div class="div-body" style="overflow: overlay; width:' + body_width + 'px; height: ' + height + 'px;"></div>');
                 div_c.append(div_body);//选项容器
                 var div_oper = $('<div style="width:' + width + 'px; height:26px;"></div>');
                 div_c.append(div_oper);//确定取消
