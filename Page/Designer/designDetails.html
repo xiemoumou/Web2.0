@@ -11,13 +11,12 @@
         document.write('<link href="../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
         document.write('<link href="../../Common/Components/library.css' + VER + '" rel="stylesheet" />');
         document.write('<link href="../../Css/Designer/designDetails.css' + VER + '" rel="stylesheet" />');
-        document.write('<link href="../../Common/Lib/layDate-v5.0.9/laydate/theme/default/laydate.css' + VER + '" rel="stylesheet" />');
         document.write('<link href="../../Common/Lib/layer-v3.1.1/layer/theme/default/layer.css' + VER + '" rel="stylesheet" />');
     </script>
 </head>
 <body>
-<div class="desiDeta-content">
-    <div class="desiDeta-title">
+<div class="desiDeta-content hide">
+    <div class="desiDeta-title hide">
         <div class="desiDeta-title-box">
             <div class="design-title">
                 <span></span>
@@ -44,19 +43,25 @@
                             class="order-money">-</span></p>
                     <p class="quote-1"><em class="desi-text">尺寸(mm)：</em><span class="length">-</span>×<span
                             class="width">-</span>×<span class="height">-</span>(mm)</p>
-                    <p class="quote-1"><em class="desi-text">产品属性：</em><span class="attr-text">-</span> </p>
+                    <p class="quote-1">
+                        <em class="desi-text">产品属性：</em>
+                        <span class="attr-text" style="width: 320px;">-</span>
+                    </p>
                     <div class="ref-photo clearfix">
                         <div class="fl">
                             <span class="quote-1"><em class="desi-text">参考图：</em></span>
                         </div>
-                        <div class="design-uploadPhoto fl" style="display: inline-block">
+                        <div class="design-uploadPhoto fl">
                             <div id="deta_prod" data-type="design_image"></div>
                         </div>
                     </div>
-                    <p class="quote-1"><em class="desi-text">附件：</em><span
-                            style="height: 30px;display: inline-block;vertical-align: top;"></span></p>
-                    <div id="other_encl_first" data-type="design_accessory"></div>
-                    <p class="quote-1"><em class="desi-text">具体要求：</em><span class="order-requ">-</span>
+                    <div class="quote-1 hide clearfix">
+                        <em class="desi-text fl">附件：</em>
+                        <div id="referenceAccessory" style="margin-left: -30px; width: 300px;" class="fl"></div>
+                    </div>
+                    <p class="quote-1">
+                        <em class="desi-text">具体要求：</em>
+                        <span class="order-requ" style="width: 340px;">-</span>
                     </p>
                 </div>
             </div>
@@ -66,78 +71,19 @@
                     <span>留言区</span>
                     <section class="leav-title-right">
                         <a></a>
-                        <span>版本2沟通中</span>
+                        <div class="leav-title-right-text"></div>
                     </section>
                 </div>
-                <div class="leav-content">
-                    <!--<div class="leav-reg">-->
-                        <!--<div class="leav-text-first">-->
-                            <!--<div class="TextList-left">-->
-                                <!--<span>我</span>回复-->
-                                <!--<a>客服</a>：-->
-                            <!--</div>-->
-                            <!--<div class="TextList-right">-->
-                                <!--<span>2018-08-08   08:18:20</span>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="leav-text-second">-->
-                            <!--不能再快了不能再快了不能再快了不能再快了不能再快了不能-->
-                            <!--再快了不能再快了不能再快了不能再快了不能再快了不能再快-->
-                            <!--了不能再快了不能再快了不能再快了不能再快了不能再快了不-->
-                            <!--能再快了不能再快了不能再快了不能再快了，给你附件你看看-->
-                            <!--！！！！！-->
-                        <!--</div>-->
-                        <!--<div class="leav-reg-img">-->
-                            <!--<div id="leav_img" data-type="design_image"><input type="file" data-limit=""-->
-                                                                               <!--style="display:none;" multiple=""-->
-                                                                               <!--class="file-leav_img  diagram">-->
-                                <!--<div class="diagram-container"></div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="leav-reg-file">-->
-                            <!--<div id="leav_file" data-type=""><input type="file" data-limit="" style="display:none;"-->
-                                                                    <!--multiple="" class="file-leav_file designFile">-->
-                                <!--<div class="accessory-container">-->
-                                    <!--<div class="filelist clearfix"></div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                </div>
+                <div class="leav-content"> </div>
                 <div class="leav-show">
                     <div id="leav_img_up" data-type="design_image"></div>
                     <div id="leav_file_up" data-type=""></div>
-                    <div class="leav-show-left">
-                        <input id="male" type="checkbox">
-                        <label for="male">需要重新设计</label>
-                    </div>
                 </div>
                 <div class="leav-bottom-box">
-                    <div class="leav-bottom-up">
-                        <div id="leav_bottom_img" data-type="design_message_image"><input type="file" data-limit="3"
-                                                                                  style="display:none;" multiple=""
-                                                                                  class="file-leav_bottom_img  diagram">
-                            <div class="diagram-container"></div>
-                            <div class="addDiagram cursor"><span class="dia-icon"></span><span class="dia-remind-1">支持拖拽上传</span><span
-                                    class="dia-remind-2">大小不得超过6M</span></div>
-                        </div>
-                        <div id="leav_bottom_file" data-type="design_message_file"><span class="accessory-icon"></span><input type="file"
-                                                                                                           data-limit="1"
-                                                                                                           style="display:none;"
-                                                                                                           multiple=""
-                                                                                                           class="file-leav_bottom_file designFile">
-                            <div class="accessory-container">
-                                <div class="addAccessory"><span class="addAccessory-title">支持拖拽上传或</span><span
-                                        class="addAccessory-btn">点击上传</span><span
-                                        class="accessory-message">附件大小不得超过200M</span></div>
-                                <div class="filelist clearfix"></div>
-                            </div>
-                        </div>
+                    <div class="leav-bottom-input fl" style="width: 230px;background-color: aquamarine;">
+                        <input type="text" placeholder="请填写回复内容" style="width: 326px;">
                     </div>
-                    <div class="leav-bottom-input">
-                        <input type="text" placeholder="请填写回复内容">
-                    </div>
-                    <div class="leav-btn">
+                    <div class="leav-btn fl">
                         <button class="btn">回复</button>
                     </div>
                 </div>
@@ -151,7 +97,7 @@
                 <label class="label-1">设计稿：</label>
                 <label class="label-2">图片最多上传1张</label>
                 <div id="prod_refe" data-type="design_image"><input type="file" data-limit="1" style="display:none;"
-                                                                       multiple="" class="file-prod_refe  diagram">
+                                                                    multiple="" class="file-prod_refe  diagram">
                     <div class="diagram-container"></div>
                     <div class="addDiagram cursor"><span class="dia-icon"></span><span
                             class="dia-remind-1">支持拖拽上传</span><span class="dia-remind-2">大小不得超过6M</span></div>
@@ -201,7 +147,8 @@
                 </div>
                 <p>备注不允许出现产品价格、参数和旺旺等各种联系方式</p>
                 <div id="details_encl_textarea" data-type="design_message_image"><span class="accessory-icon"></span>
-                    <input type="file" data-limit="1" style="display:none;" multiple="" class="file-details_encl designFile">
+                    <input type="file" data-limit="1" style="display:none;" multiple=""
+                           class="file-details_encl designFile">
                     <div class="accessory-container">
                         <div class="addAccessory"><span class="addAccessory-btn">点击上传</span></div>
                         <div class="filelist clearfix"></div>
@@ -260,7 +207,7 @@
                                 </div>
                             </div>
                             <p></p>
-                            <p class="quote-1"><em class="desi-text">附件：</em><span
+                            <p class="quote-1 hide"><em class="desi-text">附件：</em><span
                                     style="height: 30px;display: inline-block;vertical-align: top;"></span>
                             </p>
                             <div id="other_encl_second" data-type="design_accessory"></div>
@@ -274,61 +221,16 @@
             </div>
         </div>
     </div>
-    <div class="design-man">
+    <div class="design-man hide">
         <div class="design-title">
             <span></span>
             <b>设计稿</b>
         </div>
         <hr style="height:1px;border:none;border-top:2px solid #f5f5f5;">
         <div class="for-design-box">
-            <!--<div class="for-design">-->
-                <!--<div class="design-next-title">-->
-                    <!--<h3>版本 2</h3>-->
-                    <!--<hr style="height:1px;border:none;border-top:2px solid #f5f5f5;display: inline-block;width: 827px;">-->
-                <!--</div>-->
-                <!--<div class="design-bg"></div>-->
-                <!--<div class="design-content">-->
-                    <!--<div class="edit-left">-->
-                        <!--<div class="planner">方案师</div>-->
-                        <!--<div class="time-status">-->
-                            <!--<span></span>-->
-                            <!--<a>2018-09-09 14:40:00 </a>更新-->
-                        <!--</div>-->
-                        <!--<div class="desi-box">-->
-                            <!--<span class="list-1">设计稿：</span>-->
-                            <!--<div id="edit_desi" data-type=""></div>-->
-                        <!--</div>-->
-                        <!--<div class="desi-encl-box">-->
-                            <!--<span class="list-1">设计附件：</span>-->
-                            <!--<div id="desi_encl" data-type=""></div>-->
-                        <!--</div>-->
-                        <!--<div class="other-encl-box">-->
-                            <!--<span class="list-1">其它附件：</span>-->
-                            <!--<div id="other_encl" data-type=""></div>-->
-                        <!--</div>-->
-                        <!--<div class="planner-leav">-->
-                            <!--<div class="planner-leav-content">-->
-                                <!--<span class="list-1">方案师留言：</span>-->
-                                <!--<div class="planner-leav-text">-->
-                                    <!--客户要求的做不了，在设计图上我备注了一下，客服你那边跟客户说-->
-                                    <!--一下，再改的话告诉我客户要求的做不了，在设计图上我备注了一下-->
-                                    <!--，客服你那边跟客户说一下，再改的话告诉我客户要求的做不了，在-->
-                                    <!--设计图上我备注了一下，客服你那边跟客户说一下，再改的话告诉我-->
-                                <!--</div>-->
-                                <!--<div id="planner_leav" data-type=""></div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="edit-right-button hide">-->
-                        <!--<span>修正设计稿</span>-->
-                        <!--<button class="EditButton">选定设计方案</button>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
         </div>
     </div>
 </div>
-
 
 <script>
     document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
@@ -336,7 +238,6 @@
     document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Components/library.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Js/Designer/designDetails.js' + VER + '" ><\/script>');
-    document.write('<script type="text/javascript" src="../../Common/Lib/layDate-v5.0.9/laydate/laydate.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
 </script>
 </body>

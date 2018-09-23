@@ -75,6 +75,12 @@
 #deta_prod .diagram-container .diagram{
     width: 48px;
     height: 48px;
+    border-radius: 2px;
+}
+
+#other_encl_second{
+    width: 300px;
+    margin-left: -29px;
 }
 
 #deta_prod .diagram-container .diagram img{
@@ -104,7 +110,7 @@
 }
 .attr-text,.order-requ{
     display: inline-block;
-    width: 322px;
+    width: 532px;
     vertical-align: top;
 }
 
@@ -114,10 +120,7 @@
 
 .quote-1{
     margin-top: 5px;
-}
-.quote-1 span,.designAttr-text span{
-    color:#666666;
-    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .order-money,.order-money-pre{
@@ -186,11 +189,15 @@
     color: #D5D5D5;
     letter-spacing: 0;
 }
+.design-rema{
+    border: 1px solid #d5d5d5!important;
+    border-radius: 4px;
+}
+
 
 .design-rema textarea {
-    height: 143px!important;
+    height: 120px!important;
     width: 402px!important;
-    border: 1px solid #d5d5d5!important;
 }
 #details_encl_textarea .addDiagram{
     width: 396px;
@@ -201,9 +208,18 @@
     background-color: #fff;
     margin-right: inherit;
     position: absolute;
-    bottom: 24px;
+    bottom: 22px;
     left: 9px;
 }
+
+#details_encl_textarea {
+    margin-top: 10px;
+}
+
+#details_encl_textarea .addDiagram.hide{
+    display: block !important;
+}
+
 #details_encl_textarea .dia-icon{
     width: 16px;
     height: 14px;
@@ -212,6 +228,11 @@
     background: url(../../Image/Designer/desiDesigner.png) no-repeat -58px -6px;
     vertical-align: middle;
 }
+
+#details_encl_textarea .diagram .handle .oper{
+    margin: 0px;
+}
+
 #details_encl_textarea .dia-remind-1{
     display: inline-block;
     text-align: inherit;
@@ -338,19 +359,22 @@
     color: #999999;
 }
 .leav-reg-img{
-    height: 48px;
+    /*height: 48px;*/
     margin-top: 10px;
 }
 .leav-reg-img .diagram .handle .dia-zoom{
     margin: 0 -1px;
 }
-.leav-reg-file{
-    margin-top: 10px;
-}
 .leav-reg-img .diagram{
     width: 48px;
     height: 48px;
 }
+
+.leav-reg-img .diagram img{
+    max-width: 48px;
+    max-height: 48px;
+}
+
 .leav-reg-file .accessory-container .fileitem{
     padding-left: 82px;
     margin-top: 10px;
@@ -367,13 +391,16 @@
 }
 .leav-content{
     width: 357px;
-    height: 341px;
-    overflow: scroll;
-    /*padding-top: 30px;*/
+    height: 436px;
+    overflow-y: auto;
     margin: 0 auto;
+    overflow-x: hidden;
+}
+
+.leav-content .leav-reg{
+    margin-bottom: 20px;
 }
 .leav-text-first {
-    height: 14px;
     font-size: 14px;
     color: #999999;
 }
@@ -428,11 +455,7 @@
     width: 48px;
     height: 48px;
 }
-.leav-show{
-    height: 43px;
-    background-color: #fafbfb;
-    margin-top: 53px;
-}
+
 .leav-show-left{
     display: inline-block;
     float: right;
@@ -447,6 +470,7 @@
 }
 .leav-bottom-box{
     height: 46px;
+    box-shadow: 0 -2px 6px 0 rgba(0,0,0,0.08);
 }
 .leav-bottom-up,.leav-bottom-input,.leav-btn{
     display: inline-block;
@@ -480,6 +504,8 @@
     border-radius: inherit;
     background-color: initial;
     border-right: 1px solid #f5f5f5;
+    margin-right:0px;
+    float: left;
 }
 #leav_bottom_img .addDiagram .dia-icon{
     display: block;
@@ -632,7 +658,7 @@
     color: #999999;
 }
 .for-design{
-    height: 660px;
+    padding-bottom: 30px;
     position: relative;
 }
 .list-1{
@@ -745,4 +771,76 @@
 .leav-title-right span{
     font-size: 14px;
     color: #999;
+}
+
+
+.history-line{
+    line-height: 2px;
+    width: 100%;
+    padding-bottom: 50px;
+    position: absolute;
+    bottom: -40px;
+}
+
+.history-line .title{
+    display: block;
+    width: 150px;
+    text-align: center;
+}
+
+.history-line .left,.history-line .right{
+    display: block;
+    float: left;
+    background-color: #F5F5F5;
+    height: 2px;
+    width: 342px;
+}
+
+
+#leav_bottom_img .addDiagram.hide{
+    display: block !important;
+}
+
+#leav_bottom_file .accessory-icon{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin: 15px 0px;
+    background: url("../../Image/orderDetails/customerServiceDetails.png") no-repeat -31px -83px;
+}
+#leav_bottom_file .addAccessory{
+    position: absolute;
+    top: -42px;
+    cursor: pointer;
+}
+#leav_bottom_file .addAccessory-title{
+    display: none;
+}
+#leav_bottom_file .accessory-message{
+    display: none;
+}
+
+#leav_bottom_file .addAccessory-btn{
+    visibility: hidden;
+}
+#leav_bottom_file{
+    width: 45px;
+    text-align: center;
+    height: 45px;
+    float: left;
+    border-right: 1px solid #f5f5f5;
+}
+
+
+/*留言*/
+.leav-reg .history-line{
+    position: initial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.leav-reg .history-line .left,.leav-reg .history-line .right{
+    width: 90px;
 }

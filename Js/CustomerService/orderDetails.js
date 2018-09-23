@@ -17,7 +17,6 @@ var orderInfo = {
     },
     data: null,
 };
-var newDesignVer = 1;//最新设计稿版本号
 
 $(function () {
     document.onkeydown = function (e) {
@@ -719,22 +718,30 @@ var details = {
                                     "name": customid,
                                 });
                             }
-                            if (data.data.designInfo[i].middleRemarkImage1) {
-                                remaMan.push({
-                                    "orgSrc": 'http://' + data.data.designInfo[i].middleRemarkImage1,
-                                    "thumbnail": 'http://' + data.data.designInfo[i].smallRemarkImage1,
-                                });
+                            if (dataDetail.designInfo[i].middleRemarkImage1) {
+                                if(dataDetail.designInfo[i].middleRemarkImage1)
+                                {
+                                    remaMan.push({
+                                        "orgSrc": 'http://' + dataDetail.designInfo[i].middleRemarkImage1,
+                                        "thumbnail": 'http://' + dataDetail.designInfo[i].smallRemarkImage1,
+                                    });
+                                }
 
-                                remaMan.push({
-                                    "orgSrc": 'http://' + data.data.designInfo[i].middleRemarkImage2,
-                                    "thumbnail": 'http://' + data.data.designInfo[i].smallRemarkImage2,
-                                });
+                                if(dataDetail.designInfo[i].middleRemarkImage2)
+                                {
+                                    remaMan.push({
+                                        "orgSrc": 'http://' + dataDetail.designInfo[i].middleRemarkImage2,
+                                        "thumbnail": 'http://' + dataDetail.designInfo[i].smallRemarkImage2,
+                                    });
+                                }
 
-                                remaMan.push({
-                                    "orgSrc": 'http://' + data.data.designInfo[i].middleRemarkImage3,
-                                    "thumbnail": 'http://' + data.data.designInfo[i].smallRemarkImage3,
-                                });
-
+                                if(dataDetail.designInfo[i].middleRemarkImage3)
+                                {
+                                    remaMan.push({
+                                        "orgSrc": 'http://' + dataDetail.designInfo[i].middleRemarkImage3,
+                                        "thumbnail": 'http://' + dataDetail.designInfo[i].smallRemarkImage3,
+                                    });
+                                }
                             }
 
                             var designDraft = $("<div class='for-design'>" +
@@ -883,13 +890,20 @@ var details = {
 
         var url = config.WebService()["orderDesignMessage_Query"];
         Requst.ajaxGet(url, {"customid": customid}, true, function (data) {
-            if (data.data && data.data.length > 0) {
-                var item = data.data;
 
-                $("#interaction_ver").text(newDesignVer);//版本号沟通中
+            if(dataDetail.designInfo.length==0 || (dataDetail.designInfo.length>0 && dataDetail.designInfo[0].version==0))
+            {
+                $(".leav-title-right-text").html('设计前沟通中');
+            }
+            else
+            {
+                $(".leav-title-right-text").html('版本<em id="interaction_ver">-</em>沟通中');
+            }
+            if (data.data && data.data.length > 0) {
+                $("#interaction_ver").text(data.data[data.data.length-1].version);//版本号沟通中
                 $('.leav-box .leav-content').html('');//清空留言区域
 
-                var messageVer=1;//留言版本
+                var messageVer=0;//留言版本
                 for (var i = 0; i < data.data.length; i++) {
                     var srcMan = [];//留言显示图片
                     var messageFile = [];//留言显示附件
@@ -942,7 +956,13 @@ var details = {
                         uploadfile.uploadFile('leav_file_' + i, 1, messageFile, false, "", "", true);//留言附件回显
                     }
 
-                    if(messageVer!=data.data[i].version)
+                    if(messageVer==0 && messageVer!=data.data[i].version)
+                    {
+                        var line=$('<div class="history-line fl"><div><span class="left  fl"></span> <span class="title  fl"> 以上信息为设计前沟通 </span> <span class="right  fl"></span></div></div>');
+                        plan.append(line);
+                        messageVer=data.data[i].version;
+                    }
+                    else if(messageVer!=data.data[i].version)
                     {
                         var line=$('<div class="history-line fl"><div><span class="left  fl"></span> <span class="title  fl"> 版本 '+ data.data[i].version+' </span> <span class="right  fl"></span></div></div>');
                         plan.append(line);
@@ -960,9 +980,8 @@ var details = {
         //最新的一张设计稿
         var newDesign = dataDetail.designInfo && dataDetail.designInfo.length > 0 ? dataDetail.designInfo[0] : {
             "id": 0,
-            "version": 1
+            "version": 0
         };
-        newDesignVer = newDesign.version;
 
         var messageContent = $.trim($(".leav-bottom-input input").val());
         if (!messageContent) {

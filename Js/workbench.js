@@ -1556,25 +1556,23 @@ var classMain = {
                                 });
                                 operating.append(btn);
                             }
-                            //提交设计
-                            if (command.indexOf("COMMIT_DESIGN")>=0) {
-                                var btn=$('<button class="btn" style="width: 76px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">提交设计</button>');
-                                btn.on('click',function () {
-                                    var customid = $(this).attr('data-customid');
-                                    var orderid = $(this).attr('data-orderid');
-                                    var ordersummaryId = $(this).attr('data-ordersummaryId');
-                                    that.addTab(customid, './Designer/designDetails.html?customid=' + customid+"&operType=submit");
-                                });
-                                operating.append(btn);
-                            }
-                            //修改设计
-                            if (command.indexOf("EDIT_ACC")>=0) {
+                            else if (command.indexOf("EDIT_ACC")>=0) {//修改设计
                                 var btn=$('<button class="btn" style="width: 76px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">修改设计</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
                                     var orderid = $(this).attr('data-orderid');
                                     var ordersummaryId = $(this).attr('data-ordersummaryId');
                                     that.addTab(customid, './Designer/designDetails.html?customid=' + customid+"&operType=modify");
+                                });
+                                operating.append(btn);
+                            }
+                            else if (command.indexOf("COMMIT_DESIGN")>=0) {//提交设计
+                                var btn=$('<button class="btn" style="width: 76px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">提交设计</button>');
+                                btn.on('click',function () {
+                                    var customid = $(this).attr('data-customid');
+                                    var orderid = $(this).attr('data-orderid');
+                                    var ordersummaryId = $(this).attr('data-ordersummaryId');
+                                    that.addTab(customid, './Designer/designDetails.html?customid=' + customid+"&operType=submit");
                                 });
                                 operating.append(btn);
                             }
