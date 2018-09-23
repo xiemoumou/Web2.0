@@ -77,45 +77,8 @@
         </div>
         <hr style="width:975px;height:2px;border:none;border-top:2px solid #f5f5f5;padding-top: 19px"/>
     </div>
-    <div class="prod-details hide">
-        <div class="design-title">
-            <span></span>
-            <b>生产要求</b>
-        </div>
-        <hr style="height:1px;border:none;border-top:2px solid #f5f5f5;">
-        <div class="refe-diag">
-            <span>参考图：</span>
-            <!--<ul class="refeImg-box">-->
-            <!--<li>-->
-            <!--<img src="../../Image/Message/Fail.png">-->
-            <!--</li>-->
-            <!--<li>-->
-            <!--<img src="../../Image/Message/Fail.png">-->
-            <!--</li>-->
-            <!--<li>-->
-            <!--<img src="../../Image/Message/Fail.png">-->
-            <!--</li>-->
-            <!--</ul>-->
-            <div class="design-uploadPhoto">
-                <div id="deta_prod" data-type="design_image"></div>
-            </div>
-        </div>
-        <div class="prod-refe">
-            <span>生产参考图：</span>
-            <!--<div class="prodRefe-box">-->
-            <!--<img class="prodRefe" src="../../Image/Message/Fail.png">-->
-            <div class="design-uploadPhoto">
-                <div id="deta_prod_refe" data-type="design_image"></div>
-            </div>
-            <p class="hide">暂无</p>
-            <!--</div>-->
-        </div>
-        <div class="prod-requ">
-            <span>生产要求：</span>
-            <div class="prod-text">暂无</div>
-        </div>
-    </div>
     <div class="daga-agae-box" style="width: 100%;">
+        <!--生产要求-->
         <div class="dist-prod">
             <div class="dist-title">
                 <span></span>
@@ -124,25 +87,12 @@
             <hr style="height:1px;border:none;border-top:2px solid #f5f5f5;">
             <div class="dist-diag">
                 <span>参考图：</span>
-                <!--<ul class="distDiag-box">-->
-                <!--<li>-->
-                <!--<img src="../../Image/Message/Fail.png">-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<img src="../../Image/Message/Fail.png">-->
-                <!--</li>-->
-                <!--<li>-->
-                <!--<img src="../../Image/Message/Fail.png">-->
-                <!--</li>-->
-                <!--</ul>-->
                 <div class="design-uploadPhoto">
                     <div id="details_diagram" data-type="design_image"></div>
                 </div>
             </div>
-            <div class="dist-refe">
+            <div class="dist-refe hide">
                 <span>生产参考图：</span>
-                <!--<div class="distRefe-box">-->
-                <!--<img class="distRefe" src="../../Image/Message/Fail.png">-->
                 <div class="design-uploadPhoto">
                     <div id="details_prod" data-type="design_image"></div>
                 </div>
@@ -153,32 +103,34 @@
                 <span>生产要求：</span>
                 <div class="dist-text">暂无</div>
             </div>
+            <!--收货地址-->
             <div class="dist-rece-address hide">
+                <textarea type="text" style="height: 0px; width: 0px; border: none;" id="copyContent" value=""></textarea>
                 <span>收货地址：</span>
                 <div class="address-text-box">
                     <p>
                         <span class="cont-box">联系人：</span>
-                        <span class="cont">韩师傅</span>
+                        <span class="cont"></span>
                         <em class="copy-box">
-                            <a class="copy" id="copy">一键复制</a>
+                            <a data-clipboard-target="#copyContent" class="copy">一键复制</a>
                             <span>地址信息</span>
                         </em>
                     </p>
                     <p>
                         <span class="phone-box">电话/手机：</span>
-                        <span class="phone">15648498520</span>
+                        <span class="phone"></span>
                     </p>
                     <p>
                         <span class="zip-code-box">邮编：</span>
-                        <span class="zip-code">2984953</span>
+                        <span class="zip-code"></span>
                     </p>
                     <p>
                         <span class="area-box">所在地区：</span>
-                        <span class="area">北京市  北京市  朝阳区</span>
+                        <span class="area"></span>
                     </p>
                     <p>
                         <span class="detailed-box">详细地址：</span>
-                        <span class="detailed">韩家园乐园儿童亲子游戏中心10层3910号开心乐园师傅收韩家园乐园儿童亲子游戏中心10层3910号开心乐园师傅收韩家园乐园儿童亲子游戏中心10层3910号开心乐园师傅收韩家园乐园儿童亲子游戏中心10层3910号开心乐园师傅收</span>
+                        <span class="detailed"></span>
                     </p>
                 </div>
             </div>
@@ -200,7 +152,7 @@
                     <div id="details_encl" data-type="design_accessory"></div>
                 </div>
             </div>
-            <div class="other-annex">
+            <div class="other-annex hide">
                 <span>其它附件：</span>
                 <div class="otherAnnex">
                     <div id="details_encl_next" data-type="design_accessory"></div>
@@ -208,11 +160,13 @@
             </div>
             <div class="disi-draft-img">
                 <span>设计图：</span>
-                <img class="draftImg" src="">
+                <div class="draftImg clearfix">
+                    <div id="draftImg" data-type="design_accessory"></div>
+                </div>
             </div>
             <div class="prog-rema">
                 <span>方案师备注：</span>
-                <div class="rema-text"> 没有啊</div>
+                <div class="rema-text"> </div>
             </div>
         </div>
     </div>
@@ -224,8 +178,8 @@
     document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Components/library.js' + VER + '" ><\/script>');
+    document.write('<script type="text/javascript" src="../../Common/Lib/clipboard/clipboard.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Js/WorkShop/shopDetails.js' + VER + '" ><\/script>');
-    document.write('<script type="text/javascript" src="../../Common/Lib/layDate-v5.0.9/laydate/laydate.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
 </script>
 </body>

@@ -659,7 +659,7 @@ var details = {
                                     "name": customid,
                                 });
                             }
-                            return accessoryArray
+                            return accessoryArray;
                         }
                     }
 
@@ -811,9 +811,8 @@ var details = {
                         modifyBtn.removeClass('hide');
                     }
                     modifyBtn.on('click',function () {
-                        debugger
-                        var id=
-                        top.OPER.uploadDesign(customid,"修正设计稿",dataDetail.designInfo[0].id,dataDetail.orderid,dataDetail.id);
+                        var id=$(this).attr("data-id");//设计稿ID
+                        top.OPER.uploadDesign(customid,"修正设计稿",dataDetail.designInfo[0].id,dataDetail.orderid,dataDetail.id,id);
                     });
                 }
             }

@@ -254,10 +254,11 @@
     $(function () {
         //初始化上传操作
         customid = Helper.getUrlParam("customid");
-        var designPatternId = Helper.getUrlParam("designPatternId");//设计方案ID
+        var designPatternId = Helper.getUrlParam("designPatternId") || 0;//设计方案ID
         ordersummaryId = Helper.getUrlParam("ordersummaryId");
         orderid = Helper.getUrlParam("orderid");
-        id = Helper.getUrlParam("id");
+        id = Helper.getUrlParam("id")||0;
+
 
         title = Helper.getUrlParam('title', true);
 
@@ -319,7 +320,16 @@
 
 
         $(".ok").on('click', function () {
-            var requstData = {"id":id || 0,"version": reviewData.version || 0, "isNew": reviewData.isNew||1, "customid": reviewData.customid||customid, "status": reviewData.status||5,"ordersummaryId":reviewData.ordersummaryId || parseInt(ordersummaryId),"designId":reviewData.designId || 0,"orderid":reviewData.orderid || orderid};//提交参数
+            var requstData = {"id":id || 0,
+                "version": reviewData.version || 0,
+                "isNew": reviewData.isNew||1,
+                "customid": reviewData.customid||customid,
+                "status": reviewData.status||5,
+                "ordersummaryId":reviewData.ordersummaryId || parseInt(ordersummaryId),
+                "designId":reviewData.designId || 0,
+                "orderid":reviewData.orderid || orderid,
+                "id":parseInt(id)};//提交参数
+
             //设计图
             var diagram = $("#reference_diagram .diagram-container .diagram");
             if (diagram.length > 0) {

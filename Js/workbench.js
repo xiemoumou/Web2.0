@@ -538,11 +538,11 @@ var classMain = {
             function countdown() {
                 var timeleft = $('.timeleft');
                 for (var i = 0; i < timeleft.length; i++) {
-                    var domItem=timeleft.attr('data-deadlineTime');
+                    var domItem=$(timeleft[i]).attr('data-deadlineTime');
                     if(domItem && domItem!='null')
                     {
                         var countdown=Helper.Date.countdown(domItem);
-                        $(timeleft.find('em')).text(countdown);
+                        $($(domItem).find('em')).text(countdown);
                     }
                 }
             }
@@ -865,8 +865,6 @@ var classMain = {
             classMain.pagePrams.isInit = -1;
         }
 
-        classMain.getStatistics();//更新统计数据
-
         //请求参数创建
         function requstPrams() {
             classMain.requstParams['navId'] = type ? parseInt(type) : classMain.requstParams['navId'];
@@ -895,6 +893,8 @@ var classMain = {
         }
 
         requstPrams();
+
+        classMain.getStatistics();//更新统计数据
 
         //查询数据
         var getNavListUrl = top.config.WebService()['orderSupplementary_Query'];
