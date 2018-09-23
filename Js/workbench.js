@@ -54,10 +54,10 @@ $(function () {
 });
 
 var classMain = {
-    getStatistics:function () {
+    getStatistics:function (startTime,endTime) {
       //获取统计
         var url=config.WebService()["orderSupplementaryCount_Query"];
-        Requst.ajaxGet(url,{},true,function (data) {
+        Requst.ajaxGet(url,{"startTime":startTime,"endTime":endTime},true,function (data) {
             if(data.code==200 && data.data.length)
             {
                 for(var i=0;i<data.data.length;i++)
@@ -894,7 +894,7 @@ var classMain = {
 
         requstPrams();
 
-        classMain.getStatistics();//更新统计数据
+        classMain.getStatistics(classMain.requstParams['startTime'],classMain.requstParams['endTime']);//更新统计数据
 
         //查询数据
         var getNavListUrl = top.config.WebService()['orderSupplementary_Query'];

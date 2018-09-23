@@ -283,9 +283,7 @@ var details = {
             $(".design-man").removeClass('hide');
             $(".for-design-box").html('');
             for (var i = 0; i < dataDetail.designInfo.length; i++) {
-                var commit_time = dataDetail.designInfo[i].commitTime.replace(/\-/g, "/");
-                commit_time = new Date(commit_time);
-                commit_time = commit_time.Format("yyyy-MM-dd hh:mm:ss");
+                var commit_time = dataDetail.designInfo[i].commitTime;
                 var design_memo = dataDetail.designInfo[i].designMemo || "";
                 var srcMan = [];//设计稿版本图片
                 var srcFile = [];//设计稿版本附件
@@ -399,13 +397,12 @@ var details = {
             }
             else
             {
-                $(".leav-title-right-text").html('版本<em id="interaction_ver">-</em>沟通中');
+                $(".leav-title-right-text").html('版本<em id="interaction_ver">'+dataDetail.designInfo[0].version+'</em>沟通中');
             }
             if (data.data && data.data.length > 0) {
-                $("#interaction_ver").text(data.data[data.data.length-1].version);//版本号沟通中
                 $('.leav-box .leav-content').html('');//清空留言区域
 
-                var messageVer=0;//留言版本
+                var messageVer=data.data[0].version;//留言版本
                 for (var i = 0; i < data.data.length; i++) {
                     var srcMan = [];//留言显示图片
                     var messageFile = [];//留言显示附件
@@ -457,14 +454,14 @@ var details = {
                     if (messageFile.length > 0) {
                         uploadfile.uploadFile('leav_file_' + i, 1, messageFile, false, "", "", true);//留言附件回显
                     }
-                    
-                    if(messageVer==0 && messageVer!=data.data[i].version)
+                    debugger
+                    if(i+1<data.data.length && messageVer==0 && messageVer!=data.data[i+1].version)
                     {
                         var line=$('<div class="history-line fl"><div><span class="left  fl"></span> <span class="title  fl"> 以上信息为设计前沟通 </span> <span class="right  fl"></span></div></div>');
                         plan.append(line);
                         messageVer=data.data[i].version;
                     }
-                    else if(messageVer!=data.data[i].version)
+                    else if(i+1<data.data.length && messageVer!=data.data[i+1].version)
                     {
                         var line=$('<div class="history-line fl"><div><span class="left  fl"></span> <span class="title  fl"> 版本 '+ data.data[i].version+' </span> <span class="right  fl"></span></div></div>');
                         plan.append(line);
