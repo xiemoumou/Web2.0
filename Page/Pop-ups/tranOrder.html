@@ -52,8 +52,14 @@
     var data=top.Cache["orderAdmin"];
     $(function () {
         status=Helper.getUrlParam("tabstatus");
+        var index=Helper.getUrlParam('index');
+        index=parseInt(index);
+        data=data[index];
+        var orgName="----";//原名称
+
         if(status=="3")//车间
         {
+            orgName=data.workshopname;
             $(".ord-label").text("源车间");
             $(".trans-name").text("接受转接的车间：");
             $("#select_name").text("请选择车间");
@@ -61,6 +67,7 @@
         }
         else if(status=="2")//方案师
         {
+            orgName=data.disignername;
             $(".ord-label").text("源方案师");
             $(".trans-name").text("接受转接的方案师：");
             $("#select_name").text("请选择方案师");
@@ -68,17 +75,13 @@
         }
         else if(status=="1")//客服
         {
+            orgName=data.servicername;
             $(".ord-label").text("源客服");
             $(".trans-name").text("接受转接的客服：");
             $("#select_name").text("请选择客服");
             $(".select-mag").text("请选择转接的客服");
         }
 
-        var index=Helper.getUrlParam('index');
-        index=parseInt(index);
-        data=data[index];
-
-        var orgName=data.workshopname||data.disignername||"----";//原名称
         $("#org_nikename").text(orgName);
         var account=data.mobilePhone||data.email;//账号
         $("#org_account").text(account);

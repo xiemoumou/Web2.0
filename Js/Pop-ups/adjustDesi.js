@@ -40,7 +40,7 @@ $(function () {
             }
             else
             {
-                top.Message.show("提示", data.message, MsgState.Warning, 2000);
+                top.Message.show("提示", data.message, MsgState.Warning, 2000,null,{"width":"400","height":"76"});
             }
         })
     });

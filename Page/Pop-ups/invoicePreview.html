@@ -214,7 +214,7 @@
                 var invoicetype = data.f_invoiceType || "";
                 var invoicetitle = data.f_invoiceTitle || "";
                 var detailsinvoice1 = data.f_detailsInvoice1 || "";
-                var taxrate = data.f_taxRate || "";
+                var taxrate = data.f_taxRate?data.f_taxRate:0;
                 var detailsvalue1 = data.f_detailsValue1 || "";
                 var amount = data.f_number || "";
                 var customerduty = data.f_taxIdentification || "";
@@ -241,7 +241,7 @@
                 }
                 $(".rise").text(invoicetitle);//抬头
                 $(".invoice-text").text(detailsinvoice1);//发票内容
-                $(".tax-text").text(taxrate);//税率
+                $(".tax-text").text(taxrate * 100);//税率
                 $(".money-text").text(detailsvalue1);//金额
                 $(".num-text").text(amount);//数量
                 $(".pay_taxes").text(customerduty);//纳税人识别号

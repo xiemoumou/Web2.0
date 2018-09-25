@@ -8,8 +8,8 @@
 // 系统配置
 var config = {
     Domain: {
-        //"systemApi": "http://192.168.1.50:91",//内网研发
-        "systemApi": "http://192.168.1.50:81",//内网测试
+        "systemApi": "http://192.168.1.50:91",//内网研发
+        //"systemApi": "http://192.168.1.50:81",//内网测试
         //"systemApi":"http://129.28.68.119:81",//公网
     },
     WebService: function () {
@@ -379,10 +379,16 @@ var Helper = {
             var minusDate = 1000 * 60 * 60 * 24;
             return new Date(nextMonthDayOne.getTime() - minusDate).Format("yyyy-MM-dd");
         },
-        getNdayDate: function (n,format) {
+        getNdayDate: function (n,format,from) {
             format=format?format:'yyyy-MM-dd hh:mm:ss';
-            //获取第N天的日期
             var date = new Date();
+            //获取第N天的日期
+            if(from && from.replace)
+            {
+                from=from.replace(/\-/g, "/");
+                date = new Date(from);
+            }
+
             //n代表天数,加号表示未来n天的此刻时间,减号表示过去n天的此刻时间
             var milliseconds = date.getTime() + 1000 * 60 * 60 * 24 * n;
             //getTime()方法返回Date对象的毫秒数,但是这个毫秒数不再是Date类型了,而是number类型,所以需要重新转换为Date对象,方便格式化
@@ -754,6 +760,18 @@ function ConvertIdToName(dataSource,idArray) {
     }
     return temp;
 }
+
+function ConvertIdToName_1(dataSource,id) {
+    for(var i=0;i<dataSource.length;i++)
+    {
+        if(id == dataSource[i].id)
+        {
+            return dataSource[i].name;
+        }
+    }
+    return "";
+}
+
 
 var OPER={
     checkOrder:function (customid,title) {

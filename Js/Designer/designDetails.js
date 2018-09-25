@@ -452,9 +452,10 @@ var details = {
                         uploadfile.uploadPhoto('leav_img_' + i, 3, srcMan, false);//留言显示图片
                     }
                     if (messageFile.length > 0) {
-                        uploadfile.uploadFile('leav_file_' + i, 1, messageFile, false, "", false, true);//留言附件回显
+                        uploadfile.uploadFile('leav_file_' + i, 1, messageFile, false, "", "", true);//留言附件回显
                     }
-                    if(i+1<data.data.length && messageVer==0 && messageVer!=data.data[i+1].version)
+
+                    if(i+1<data.data.length && messageVer==0 && messageVer!=data.data[i+1].version && data.data[i+1].version!=0)
                     {
                         var line=$('<div class="history-line fl"><div><span class="left  fl"></span> <span class="title  fl"> 以上信息为设计前沟通 </span> <span class="right  fl"></span></div></div>');
                         plan.append(line);

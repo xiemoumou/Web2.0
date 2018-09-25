@@ -85,6 +85,7 @@ var orderAdmin = {
                 "</div>");
             item.on('click', function () {
                 var index=$(this).attr("data-index");
+                debugger
                 top.Popup.open("转接订单",448,312,'./Pop-ups/tranOrder.html?tabstatus='+tabstatus+'&index='+index);
             });
             dataList.append(item);

@@ -69,11 +69,13 @@ var invoList={
                 {
                     var item=data[i];
                     var tr=$('<tr></tr>');
-                    var orderDatetime=item.sendtime?item.sendtime:'';
-                    tr.append($('<td style="min-width: 130px">'+orderDatetime+'</td>'));
-                    tr.append($('<td style="min-width: 102px;">'+item.orderid+'</td>'));
-                    tr.append($('<td><span class="text">'+item.invoiceTitle+'</span></td>'));
-                    if(state==2)
+                    var orderDatetime=item.sendTime?item.sendTime:'';
+                    tr.append($('<td style="width: 130px">'+orderDatetime+'</td>'));
+                    tr.append($('<td style="width: 102px;">'+item.orderid+'</td>'));
+                    tr.append($('<td style="width: 102px;"><span class="text">'+item.invoiceTitle+'</span></td>'));
+                    tr.append($('<td style="width: 102px;"><span class="text">'+item.wangid+'</span></td>'));
+                    tr.append($('<td style="width: 102px;"><span class="text">'+ConvertIdToName_1(top.SysParam.shop,item.shop)+'</span></td>'));
+                    if(state==1)
                     {
                         tr.append($('<td style="text-align: right; min-width: 180px;"><div class="sign"> </div> <div class="ticket-details"> <span></span> <p onclick="invoList.popDetail(\''+item.ordersummaryId+'\',\''+item.orderid+'\')">票据详情</p> </div></td>'));
                     }

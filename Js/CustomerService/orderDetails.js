@@ -171,10 +171,15 @@ var details = {
                     if (top.Cache.userInfo.roleType == 4) {
                         var manager = $('.item-head-left-manager');
                         manager.html('');
+
+                        var servicerNickName=dataDetail.servicerNickName?dataDetail.servicerNickName:"暂无";
+                        var produceNickName=dataDetail.produceNickName?dataDetail.produceNickName:"暂无";
+                        var designNickName=dataDetail.designNickName?dataDetail.designNickName:"暂无";
+
                         manager.append($('<div class="item-head-left-manager fl">' +
-                            '<span>客服ID：<em>' + dataDetail.servicerNickName + '</em></span>' +
-                            '<span>车间ID：<em>' + dataDetail.produceNickName + '</em></span>' +
-                            '<span style="border-right: none;">方案师ID：<em>' + dataDetail.designNickName + '</em></span>'));
+                            '<span>客服ID：<em>' + servicerNickName + '</em></span>' +
+                            '<span>车间ID：<em>' + produceNickName + '</em></span>' +
+                            '<span style="border-right: none;">方案师ID：<em>' + designNickName + '</em></span>'));
 
                         manager.removeClass('hide');
                     }
@@ -978,7 +983,7 @@ var details = {
             }
         }, null, true);
         uploadfile.uploadPhoto('leav_bottom_img', 3);//留言图片上传
-        uploadfile.uploadFile('leav_bottom_file', 1);//留言附件上传
+        uploadfile.uploadFile('leav_bottom_file', 1,null,true,null,false);//留言附件上传
     },//留言区域
     leavBtn: function () {
         //最新的一张设计稿

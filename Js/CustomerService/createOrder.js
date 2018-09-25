@@ -4,6 +4,7 @@
 var SysParam = top.SysParam;
 var customid = '';//定制号
 var operType = '';//操作类型
+var dataInfo=null;
 var createOrder = {
     init: function () {
         operType = Helper.getUrlParam('operType');//新建还是编辑
@@ -138,8 +139,6 @@ var createOrder = {
         },true);
     },
     initDropDownList: function () {//初始化下拉菜单
-        var shopDefault = getDefault(SysParam['shop']);
-        $(".ordersource").attr('data-val', shopDefault);
         $(".ordersource").DropDownList(SysParam['shop']);
         $(".ordertype").DropDownList([{"id": 0, "name": "新订单"}, {"id": 1, "name": "续订"}]);
 
@@ -500,6 +499,7 @@ var createOrder = {
         Requst.ajaxGet(config.WebService()['orderSummaryInfo_Query'], {'customId': customid}, false, function (data) {
             if (data.code == 200) {
                 var data = data.data;
+                dataInfo=data;
                 $('.orderId').text(data.orderid);
                 $('.wangwang .input-text').val(data.customerWang);
                 $('.ordersource').attr('data-val', data.shop);
@@ -515,7 +515,7 @@ var createOrder = {
                 $('.size-width .size-input').val(data.width);//宽
                 $('.size-height .size-input').val(data.height);//高
                 var userPeriod = data.userPeriod;//工期
-                userPeriod = top.Helper.Date.getNdayDate(userPeriod, 'yyyy-MM-dd');
+                userPeriod = top.Helper.Date.getNdayDate(userPeriod, 'yyyy-MM-dd',data.createTime);
                 $('#endlimit').val(userPeriod);
             }
         });
@@ -677,6 +677,12 @@ var createOrder = {
         //截止工期
         var endDay = $('.endDay');
         var sDate = top.Helper.Date.getDate('yyyy-MM-dd');
+        if(dataInfo)
+        {
+            sDate=top.Helper.Date.getTimestamp(dataInfo.createTime);
+            sDate = new Date(sDate);
+            sDate= sDate.Format("yyyy-MM-dd");
+        }
         var eDate = $("#endlimit").val();
 
         if ($.trim(eDate) == "") {
@@ -687,7 +693,7 @@ var createOrder = {
         var eArr = eDate.split("-");
         var sRDate = new Date(sArr[0], sArr[1], sArr[2]);
         var eRDate = new Date(eArr[0], eArr[1], eArr[2]);
-        resultObj.userPeriod = (eRDate - sRDate) / (24 * 60 * 60 * 1000) + 1;
+        resultObj.userPeriod = (eRDate - sRDate) / (24 * 60 * 60 * 1000);
 
         //参考图
         var ref_diagram = $('#reference_diagram .diagram-container .diagram');

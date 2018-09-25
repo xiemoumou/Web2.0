@@ -142,6 +142,9 @@ var classMain = {
             callback: function (currIndex) {
                 that.pagePrams.curIndex = currIndex;//分页保持
                 that.loadOverview(that.pagePrams.dataType, currIndex);
+
+                //滚动到页面顶部
+                $("#datalist").scrollTop(0);
             }
         });
     },
@@ -990,10 +993,14 @@ var classMain = {
                             }
 
                             if (roleType == 4) {
+                                var servicerNickName=item.servicerNickName?item.servicerNickName:"暂无";
+                                var produceNickName=item.produceNickName?item.produceNickName:"暂无";
+                                var designNickName=item.designNickName?item.designNickName:"暂无";
+
                                 itemHead.append($('<div class="item-head-left-manager fl">' +
-                                    '<span>客服ID：<em>' + item.servicerNickName + '</em></span>' +
-                                    '<span>车间ID：<em>' + item.produceNickName + '</em></span>' +
-                                    '<span style="border-right: none;">方案师ID：<em>' + item.designNickName + '</em></span>' +
+                                    '<span>客服ID：<em>' + servicerNickName + '</em></span>' +
+                                    '<span>车间ID：<em>' + produceNickName + '</em></span>' +
+                                    '<span style="border-right: none;">方案师ID：<em>' + designNickName + '</em></span>' +
                                     '</div>'));
                             }
 
