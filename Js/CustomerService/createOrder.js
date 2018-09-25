@@ -29,7 +29,7 @@ var createOrder = {
         var that = this;
         $("#js_close").on("click", function () {
             top.Popup.close('新建订单');
-            top.Popup.close('产品生产参数编辑');
+            top.Popup.close('参数编辑');
         });
 
         //截止工期时间时间初始化
@@ -740,7 +740,7 @@ var createOrder = {
                         }
                         //更新详情内容
                         top.Popup.close('新建订单');
-                        top.Popup.close('产品生产参数编辑');
+                        top.Popup.close('参数编辑');
                     });
                 }
                 else {

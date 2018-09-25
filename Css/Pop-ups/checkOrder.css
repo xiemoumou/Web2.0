@@ -97,31 +97,18 @@ body{
     float: left;
     width: 68px;
     height: 68px;
-    display: flex;
+    /*display: flex;*/
     margin-left: 10px;
     background-color: #fff;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*text-align: center;*/
     border: 1px solid #d5d5d5;
     border-radius: 4px;
 }
 .img-box img{
     max-width: 68px;
     max-height: 68px;
-}
-
-.zoon{
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-    top: 0;
-}
-.zoon:hover{
-    background: url(../../images/icon/server/fdj.png) no-repeat center center;
-    background-color: #4a4a4ab5;
-    border-radius: 4px;
 }
 
 .refe-img{
@@ -159,6 +146,7 @@ body{
 .address{
     color: #5D5D5D;
     padding-top: 2px;
+    right: 275px;
 }
 .collect-info{
     text-align: center;
@@ -183,4 +171,44 @@ body{
     width: 112px;
     height: 35px;
     display: inline-block;
+}
+
+/*参考图*/
+#details_diagram{
+    width: 250px;
+}
+
+#details_diagram .diagram{
+    width: 68px;
+    height: 68px;
+}
+
+#details_diagram .diagram img{
+    max-width: 68px;
+    max-height: 68px;
+}
+
+#details_diagram,#prod_refe,#designPhoto{
+    border: none;
+}
+
+#prod_refe .diagram{
+    width: 68px;
+    height: 68px;
+}
+
+#prod_refe .diagram img{
+    max-width: 68px;
+    max-height: 68px;
+}
+
+#designPhoto .diagram{
+    width: 240px;
+    height: 160px;
+}
+
+#designPhoto .diagram img{
+    max-width: 240px;
+    max-height: 160px;
+    border-radius: 0px;
 }

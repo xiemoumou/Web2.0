@@ -9,7 +9,7 @@
 var config = {
     Domain: {
         //"systemApi": "http://192.168.1.50:91",//内网研发
-        // "systemApi": "http://192.168.88.1:81",//内网测试
+        //"systemApi": "http://192.168.1.50:81",//内网测试
         "systemApi":"http://129.28.68.119:81",//公网
     },
     WebService: function () {

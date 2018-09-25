@@ -10,11 +10,12 @@
         versionDoc.attributes.src.value = versionDoc.attributes.src.value + "?v=" + random;
         document.write('<link href="../../Common/Css/base.css' + VER + '" rel="stylesheet" />');
         document.write('<link href="../../Css/Pop-ups/checkOrder.css' + VER + '" rel="stylesheet" />');
+        document.write('<link href="../../Common/Components/library.css' + VER + '" rel="stylesheet" />');
         document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery-1.11.0.min.js' + VER + '" ><\/script>');
     </script>
 </head>
 <body>
-<div class="container">
+<div class="container hide">
    <div class="check-content">
        <div class="product pad_top">
            <p>产品类型：<span class="type"></span></p>
@@ -77,32 +78,15 @@
        <div class="refe-img">
            <div class="clearfix">
                <span class="fl">参考图：</span>
-               <div class="img-box">
-                   <img id="refe-first" src="../../images/icon/nothing.png">
-                   <span class="zoon"></span>
-               </div>
-               <div class="img-box">
-                   <img id="refe-second" src="../../images/icon/nothing.png">
-                   <span class="zoon"></span>
-               </div>
-               <div class="img-box">
-                   <img id="refe-third" src="../../images/icon/nothing.png">
-                   <span class="zoon"></span>
-               </div>
-               <div>
+               <div id="details_diagram" class="img-box"> </div>
+               <div class="prod_refe hide">
                    <div class="sc">生产参考图：</div>
-                   <div class="img-box">
-                       <img id="refe-fourth" src="../../images/icon/nothing.png">
-                       <span class="zoon"></span>
-                   </div>
+                   <div id="prod_refe" class="img-box"></div>
                </div>
 
                <div>
                    <span class="design-text">设计图：</span>
-                   <div class="design-img-box">
-                       <img id="design-first" src="../../images/icon/nothing.png">
-                       <span class="zoon"></span>
-                   </div>
+                   <div id="designPhoto" class="design-img-box"> </div>
                </div>
            </div>
        </div>
@@ -134,8 +118,6 @@
 </div>
 <script>
     document.write('<script type="text/javascript" src="../../Common/Lib/jquery/jquery.cookie.js' + VER + '" ><\/script>');
-    document.write('<script type="text/javascript" src="../../Common/Lib/layer-v3.1.1/layer/layer.js' + VER + '" ><\/script>');
-    document.write('<script type="text/javascript" src="../../Common/Lib/viewer/viewer.min.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Js/global.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Common/Components/library.js' + VER + '" ><\/script>');
     document.write('<script type="text/javascript" src="../../Js/Pop-ups/checkOrder.js' + VER + '" ><\/script>');

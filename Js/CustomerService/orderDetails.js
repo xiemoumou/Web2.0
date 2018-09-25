@@ -399,7 +399,7 @@ var details = {
                     check.on('click', function () {
                         var customid = $(this).attr('data-customid');
                         var scrollH = top.Helper.getClientHeight();
-                        var popH = scrollH - 100 > 680 ? 680 : scrollH - 100;
+                        var popH = scrollH - 100 > 400 ? 400 : scrollH - 100;
                         top.Popup.open("核对订单", 818, popH, "./Pop-ups/checkOrder.html?customid=" + customid);
                     });
                     itemHead_r.append(check);
@@ -525,6 +525,7 @@ var details = {
                             });
                             operating.append(btn);
                         }
+
                         //定价
                         if (command.indexOf("PRICE") >= 0) {
                             var btn = $('<button data-inquiryStatus="' + item.inquiryStatus + '" data-userPeriod="' + item.userPeriod + '" data-prePrice="' + parseFloat(item.prePrice).formatMoney(2, "", ",", ".") + '" data-currentPeriod="' + item.currentPeriod + '" data-currentPrice="' + parseFloat(item.currentPrice).formatMoney(2, "", ",", ".") + '" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">定价</button>');
@@ -546,6 +547,7 @@ var details = {
                             });
                             operating.append(btn);
                         }
+
                         //确认支付
                         if (command.indexOf("PAYOFF") >= 0) {
                             var btn = $('<button data-inquiryStatus="' + item.inquiryStatus + '" data-finalPrice="' + parseFloat(item.finalPrice).formatMoney(2, "", ",", ".") + '" data-prePrice="' + parseFloat(item.prePrice).formatMoney(2, "", ",", ".") + '" data-currentPeriod="' + item.currentPeriod + '" data-currentPrice="' + parseFloat(item.currentPrice).formatMoney(2, "", ",", ".") + '" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">订单支付</button>');

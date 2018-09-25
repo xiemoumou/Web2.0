@@ -29,8 +29,6 @@ $(function () {
             $("#auto-btn").removeClass('BtnActive').addClass('auto-btn');
         }else{
             $("#auto-btn").removeClass('auto-btn').addClass('BtnActive');
-
-
         }
     });
 

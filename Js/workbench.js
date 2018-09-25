@@ -834,7 +834,7 @@ var classMain = {
         edit: function (customid) {
             var scrollH = top.Helper.getClientHeight();
             var popH = scrollH - 100 > 410 ? 410 : scrollH - 100;
-            Popup.open("产品生产参数编辑", 900, popH, "./CustomerService/createOrder.html?operType=edit&customid=" + customid);
+            Popup.open("参数编辑", 900, popH, "./CustomerService/createOrder.html?operType=edit&customid=" + customid);
         },
         buttonClick: {}
     },
@@ -998,59 +998,11 @@ var classMain = {
                             }
 
                             // 数据头右侧
-                            var check = $('<span data-customid="' + item.customid + '">核对订单</span>');
-                            check.on('click', function () {
-                                var customid = $(this).attr('data-customid');
-                                var scrollH = top.Helper.getClientHeight();
-                                var popH = scrollH - 100 > 680 ? 680 : scrollH - 100;
-                                top.Popup.open("核对订单",818,popH,"./Pop-ups/checkOrder.html?customid="+customid);
-                            });
-                            itemHead_r.append(check);
-
-                            var view = $('<span data-customid="' + item.customid + '">查看订单</span>');
-                            view.on('click', function () {
-                                var customid = $(this).attr('data-customid');
-                                that.addTab(customid, './CustomerService/orderDetails.html?customid=' + customid);
-                            });
-                            itemHead_r.append(view);
-                        }
-
-                        addHead();
-                        //添加更多按钮
-                        function addMore() {
-                            //更多操作列表
-                            var moreList = $('<div class="operlist" style="display: none;"><i class="arrow"></i></div>');
-                            //发票收据
-                            var moreItem_1 = $('<span data-customid="'+item.customid+'">发票/收据</span>');
-                            moreItem_1.on('click', function () {
-                                var customid = $(this).attr('data-customid');
-                                var scrollH = top.Helper.getClientHeight();
-                                var popH = scrollH - 100 > 680 ? 680 : scrollH - 100;
-                                top.Popup.open("发票/收据",818,popH,"./Pop-ups/invoice.html?customid="+customid);
-                            });
-                            moreList.append(moreItem_1);
-
-                            var moreItem_2 = $('<span data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">产品包装</span>');
-                            moreItem_2.on('click', function () {
-                                var orderid = $(this).attr('data-orderid');
-                                var customid=$(this).attr('data-customid');
-                                var scrollH = top.Helper.getClientHeight();
-                                var popH = scrollH - 100 > 510 ? 510 : scrollH - 100;
-                                top.Popup.open("产品包装",545, popH,"./Pop-ups/box.html?orderid="+orderid+"&customid="+customid);
-                            });
-                            moreList.append(moreItem_2);
-
-                            // var moreItem_3 = $('<span>订单备注</span>');
-                            // moreItem_3.on('click', function () {
-                            //     alert('弹出订单备注');
-                            // });
-                            // moreList.append(moreItem_3);
-
-                            var moreItem_4 = $('<span data-customid="'+item.customid+'" style="border-bottom: none;">删除订单</span>');
-                            moreItem_4.on('click', function () {
+                            var deleteOrder = $('<span data-customid="' + item.customid + '">删除</span>');
+                            deleteOrder.on('click', function () {
                                 var customid = $(this).attr('data-customid');
                                 Confirm("删除订单","您确定要删除该订单吗？",423,203,null,function () {
-                                   var url=config.WebService()['orderSummaryInfo_Update'];
+                                    var url=config.WebService()['orderSummaryInfo_Update'];
                                     top.Requst.ajaxPost(url,{"customid":customid},true,function (data) {
                                         if(data.code==200)
                                         {
@@ -1065,24 +1017,117 @@ var classMain = {
                                     })
                                 });
                             });
-                            moreList.append(moreItem_4);
+                            itemHead_r.append(deleteOrder);
 
-                            var more = $('<span title="更多操作"><i class="more-icon"></i></span>');
-                            more.on('click', function (e) {
-                                $('.operlist').slideUp();
-                                var dropList = $($(this).find('.operlist'));
-                                dropList.slideDown('fast');
-                                $(document).click(function () {
-                                    dropList.slideUp('fast');
-                                });
-                                //点击后自动关闭下拉
-                                $(dropList.find('span')).click(function (e) {
-                                    dropList.slideUp('fast');
-                                    e.stopPropagation();
-                                });
-                                e.stopPropagation();
+                            var invoice = $('<span data-customid="' + item.customid + '">发票/收据</span>');
+                            invoice.on('click', function () {
+                                var customid = $(this).attr('data-customid');
+                                var scrollH = top.Helper.getClientHeight();
+                                var popH = scrollH - 100 > 680 ? 680 : scrollH - 100;
+                                top.Popup.open("发票/收据",818,popH,"./Pop-ups/invoice.html?customid="+customid);
                             });
-                            more.append(moreList);
+                            itemHead_r.append(invoice);
+
+                            var box = $('<span data-orderid="' + item.orderid + '" data-customid="' + item.customid + '">产品包装</span>');
+                            box.on('click', function () {
+                                    var orderid = $(this).attr('data-orderid');
+                                    var customid=$(this).attr('data-customid');
+                                    var scrollH = top.Helper.getClientHeight();
+                                    var popH = scrollH - 100 > 510 ? 510 : scrollH - 100;
+                                    top.Popup.open("产品包装",545, popH,"./Pop-ups/box.html?orderid="+orderid+"&customid="+customid);
+                            });
+                            itemHead_r.append(box);
+
+                            var check = $('<span data-customid="' + item.customid + '">核对订单</span>');
+                            check.on('click', function () {
+                                var customid = $(this).attr('data-customid');
+                                var scrollH = top.Helper.getClientHeight();
+                                var popH = scrollH - 100 > 400 ? 400 : scrollH - 100;
+                                top.Popup.open("核对订单",818,popH,"./Pop-ups/checkOrder.html?customid="+customid);
+                            });
+                            itemHead_r.append(check);
+
+
+
+
+                            var view = $('<span data-customid="' + item.customid + '">查看订单</span>');
+                            view.on('click', function () {
+                                var customid = $(this).attr('data-customid');
+                                that.addTab(customid, './CustomerService/orderDetails.html?customid=' + customid);
+                            });
+                            itemHead_r.append(view);
+                        }
+
+                        addHead();
+                        //添加更多按钮
+                        function addMore() {
+                            //更多操作列表
+                            // var moreList = $('<div class="operlist" style="display: none;"><i class="arrow"></i></div>');
+                            // //发票收据
+                            // var moreItem_1 = $('<span data-customid="'+item.customid+'">发票/收据</span>');
+                            // moreItem_1.on('click', function () {
+                            //     var customid = $(this).attr('data-customid');
+                            //     var scrollH = top.Helper.getClientHeight();
+                            //     var popH = scrollH - 100 > 680 ? 680 : scrollH - 100;
+                            //     top.Popup.open("发票/收据",818,popH,"./Pop-ups/invoice.html?customid="+customid);
+                            // });
+                            // moreList.append(moreItem_1);
+                            //
+                            // var moreItem_2 = $('<span data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">产品包装</span>');
+                            // moreItem_2.on('click', function () {
+                            //     var orderid = $(this).attr('data-orderid');
+                            //     var customid=$(this).attr('data-customid');
+                            //     var scrollH = top.Helper.getClientHeight();
+                            //     var popH = scrollH - 100 > 510 ? 510 : scrollH - 100;
+                            //     top.Popup.open("产品包装",545, popH,"./Pop-ups/box.html?orderid="+orderid+"&customid="+customid);
+                            // });
+                            // moreList.append(moreItem_2);
+                            //
+                            // // var moreItem_3 = $('<span>订单备注</span>');
+                            // // moreItem_3.on('click', function () {
+                            // //     alert('弹出订单备注');
+                            // // });
+                            // // moreList.append(moreItem_3);
+                            //
+                            // var moreItem_4 = $('<span data-customid="'+item.customid+'" style="border-bottom: none;">删除订单</span>');
+                            // moreItem_4.on('click', function () {
+                            //     var customid = $(this).attr('data-customid');
+                            //     Confirm("删除订单","您确定要删除该订单吗？",423,203,null,function () {
+                            //        var url=config.WebService()['orderSummaryInfo_Update'];
+                            //         top.Requst.ajaxPost(url,{"customid":customid},true,function (data) {
+                            //             if(data.code==200)
+                            //             {
+                            //                 top.Message.show("提示",data.message,MsgState.Success,2000,function () {
+                            //                     classMain.loadOverview();
+                            //                 });
+                            //             }
+                            //             else
+                            //             {
+                            //                 top.Message.show("提示",data.message,MsgState.Warning,3000,null,{"width":435,"height":75});
+                            //             }
+                            //         })
+                            //     });
+                            // });
+                            // moreList.append(moreItem_4);
+
+                            var more = $('<span title="更多操作"></span>');
+                            
+                            //var more = $('<span title="更多操作"><i class="more-icon"></i></span>');
+                            // more.on('click', function (e) {
+                            //     $('.operlist').slideUp();
+                            //     var dropList = $($(this).find('.operlist'));
+                            //     dropList.slideDown('fast');
+                            //     $(document).click(function () {
+                            //         dropList.slideUp('fast');
+                            //     });
+                            //     //点击后自动关闭下拉
+                            //     $(dropList.find('span')).click(function (e) {
+                            //         dropList.slideUp('fast');
+                            //         e.stopPropagation();
+                            //     });
+                            //     e.stopPropagation();
+                            // });
+                            // more.append(moreList);
                             itemHead_r.append(more);
                         }
 
