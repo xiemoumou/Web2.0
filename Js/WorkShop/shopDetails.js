@@ -97,6 +97,7 @@ var details = {
 
                 //状态
                 function addStatus() {
+                    $('.orderstatus').html('');
                     var status = $('<span>' + item.produceMessage + '</span>');
                     $('.orderstatus').append(status);
                 }
@@ -107,6 +108,7 @@ var details = {
                 function operating() {
                     var command = item.command.split(',');
                     var operating = $('.operation');
+                    operating.html('');
                     //报价
                     if (command.indexOf("QUOTE") >= 0 && item.lastQuote == 0) {
                         var btn = $('<button class="btn" data-lastPeriod="' + item.lastPeriod + '" data-lastQuote="' + item.lastQuote + '" style="width: 76px; height: 23px;" data-inquiryRound="' + item.inquiryRound + '" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">报价</button>');

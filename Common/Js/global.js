@@ -9,8 +9,8 @@
 var config = {
     Domain: {
         //"systemApi": "http://192.168.1.50:91",//内网研发
-        //"systemApi": "http://192.168.1.50:81",//内网测试
-        "systemApi":"http://129.28.68.119:81",//公网
+        "systemApi": "http://192.168.1.50:81",//内网测试
+        //"systemApi":"http://129.28.68.119:81",//公网
     },
     WebService: function () {
         var that = this;
@@ -830,7 +830,7 @@ var OPER={
     orderPrice:function (customid,finalPrice) {
         top.Popup.open("订单支付", 407, 240, "./Pop-ups/orderPay.html?customid="+customid+"&finalPrice="+finalPrice);
     },
-    distributionProduction:function (customid) {
+    distributionProduction:function (customid,title,designPatternId,orderid,ordersummaryId,id) {
         //分配生产
         var url=config.WebService()['distribut_Production'];
         top.Requst.ajaxGet(url,{"customid":customid},true,function (data) {
@@ -846,12 +846,12 @@ var OPER={
             else if(data.code==3002)
             {
                 //设计稿未定稿,请先定稿
-                top.OPER.uploadDesign(customid);
+                top.OPER.uploadDesign(customid,title,designPatternId,orderid,ordersummaryId,id);
             }
             else
             {
                 //核对订单
-                top.OPER.checkOrder(customid,true);//第二个参数告诉核对订单页面分配生产
+                top.OPER.checkOrder(customid);//第二个参数告诉核对订单页面分配生产
             }
         });
     },

@@ -35,6 +35,9 @@ $(function () {
             if (data.code == 200) {
                 top.Message.show("提示", data.message, MsgState.Success, 2000, function () {
                     top.classMain.loadOverview(null, null, null, customid);
+                    if (top.document.getElementById("iframe_"+customid).contentWindow.details) {
+                        top.document.getElementById("iframe_"+customid).contentWindow.details.getData("base");
+                    }
                     if (data.data) {
                         var code = data.data;
                         top.Cache["train-data"] = code;

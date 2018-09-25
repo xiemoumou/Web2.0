@@ -409,6 +409,8 @@ body {
 .tab-container .float .title {
     display: inline-block;
     font-size: 12px;
+    width: 100px;
+    overflow: hidden;
 }
 
 /*关闭选项卡*/

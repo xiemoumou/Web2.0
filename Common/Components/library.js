@@ -757,6 +757,7 @@ var uploadfile = {
                     var progress = Accessory.find('.progress');
                     $(progress).addClass('hide');
                     Accessory.attr('data-complete', 'complete');
+                    $(Accessory.find('.download')).attr("data-download-url","http://"+data.url);
                 }, function (Accessory, data) {
                     //上传失败
                     var progress = Accessory.find('.progress');

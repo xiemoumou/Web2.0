@@ -106,12 +106,11 @@ var dist = {
                     }
 
                     top.Message.show("提示",data.message,MsgState.Success,2000,function () {
-                        if(operType=="distributionProduction")//分配生产
+                        /*if(operType=="distributionProduction")//分配生产
                         {
                             top.OPER.distributionProduction(customid);
                         }
-                        else if(operType=="invoce") //发票
-
+                        else*/ if(operType=="invoce") //发票
                         {
                             if (top.document.getElementById("layui-layer-iframe4").contentWindow.Invoice.Controller) {
                                 top.document.getElementById("layui-layer-iframe4").contentWindow.Invoice.Controller.saveAddress(name,mobilephone,postcode,province,city,county,address);

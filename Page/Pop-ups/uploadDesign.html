@@ -249,17 +249,15 @@
     var reviewData = null;//回显对象
     var ordersummaryId="";
     var orderid="";
-    var id="";
+    var id=0;
 
     $(function () {
         //初始化上传操作
         customid = Helper.getUrlParam("customid");
-        var designPatternId = Helper.getUrlParam("designPatternId") || 0;//设计方案ID
-        ordersummaryId = Helper.getUrlParam("ordersummaryId");
-        orderid = Helper.getUrlParam("orderid");
+        var designPatternId = parseInt(Helper.getUrlParam("designPatternId")) || 0;//设计方案ID
+        ordersummaryId = Helper.getUrlParam("ordersummaryId")||0;
+        orderid = Helper.getUrlParam("orderid")||"";
         id = Helper.getUrlParam("id")||0;
-
-
         title = Helper.getUrlParam('title', true);
 
         var designImage = [];//设计图
@@ -271,10 +269,10 @@
 
 
         //修正设计稿回显示
-        if (designPatternId && designPatternId != "undefined") {
+        if (designPatternId>=0 && designPatternId != "undefined") {
             var url = config.WebService()["orderDesignPatternById_Query"];
             top.Requst.ajaxGet(url, {"id": parseInt(designPatternId)}, false, function (data) {
-                if (data.code == 200) {
+                if (data.code == 200 && data.data.length>0) {
                     reviewData = data = data.data[0];
                     if (data.smallDesignImage1) {
                         designImage.push({
@@ -320,14 +318,14 @@
 
 
         $(".ok").on('click', function () {
-            var requstData = {"id":id || 0,
-                "version": reviewData.version || 0,
-                "isNew": reviewData.isNew||1,
-                "customid": reviewData.customid||customid,
-                "status": reviewData.status||5,
-                "ordersummaryId":reviewData.ordersummaryId || parseInt(ordersummaryId),
-                "designId":reviewData.designId || 0,
-                "orderid":reviewData.orderid || orderid,
+            var requstData = {
+                "version": reviewData&&reviewData.version?reviewData.version:0,
+                "isNew": reviewData&&reviewData.isNew?reviewData.isNew:1,
+                "customid": reviewData&&reviewData.customid?reviewData.customid:customid,
+                "status": reviewData&&reviewData.status?reviewData.status:5,
+                "ordersummaryId":reviewData&&reviewData.ordersummaryId?reviewData.ordersummaryId:parseInt(ordersummaryId),
+                "designId":reviewData&&reviewData.designId?reviewData.designId:0,
+                "orderid":reviewData&&reviewData.orderid?reviewData.orderid:orderid,
                 "id":parseInt(id)};//提交参数
 
             //设计图

@@ -5,24 +5,16 @@ $(function () {
     var url = config.WebService()['orderProductInfoImages_Query'];
     var photoArray = [];
     top.Requst.ajaxGet(url, {"customid": customid}, false, function (data) {
-        if (data.code == 200) {
-            if (data.data.smallReferenceImage1) {
-                photoArray.push({
-                    'thumbnail': "http://" + data.data.smallReferenceImage1,
-                    'orgSrc': "http://" + data.data.middleReferenceImage1
-                });
-            }
-            if (data.data.smallReferenceImage2) {
-                photoArray.push({
-                    'thumbnail': "http://" + data.data.smallReferenceImage2,
-                    'orgSrc': "http://" + data.data.middleReferenceImage2
-                });
-            }
-            if (data.data.smallReferenceImage3) {
-                photoArray.push({
-                    'thumbnail': "http://" + data.data.smallReferenceImage3,
-                    'orgSrc': "http://" + data.data.middleReferenceImage3
-                });
+        if (data.code == 200 && data.data.length>0) {
+            data=data.data[0];
+            for (var i = 1; i <=3; i++) {
+                if (data['middleReferenceImage' + i]) {
+                    var orgSrc = data['middleReferenceImage' + i];
+                    orgSrc = orgSrc.indexOf('http:') >= 0 ? orgSrc : "http://" + orgSrc;
+                    var thumbnail = data['smallReferenceImage' + i];
+                    thumbnail = thumbnail.indexOf('http:') >= 0 ? thumbnail : "http://" + thumbnail;
+                    photoArray.push({"orgSrc": orgSrc, "thumbnail": thumbnail});
+                }
             }
         }
         render();
@@ -60,6 +52,9 @@ $(function () {
                 top.Message.show("提示", data.message, MsgState.Success, 2000,function () {
                     if (top.classMain.loadOverview) {
                         top.classMain.loadOverview(null, null, null, customid);
+                    }
+                    if (top.document.getElementById("iframe_"+customid)) {
+                        top.document.getElementById("iframe_"+customid).contentWindow.details.getData("base");
                     }
                     top.Popup.close("查看成品图");
                     top.Popup.close("编辑成品图");

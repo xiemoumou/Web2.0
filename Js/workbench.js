@@ -1404,10 +1404,13 @@ var classMain = {
                             }
                             //分配生产
                             if (command.indexOf("SEND_PRODUCE")>=0) {
-                                var btn=$('<button data-inquiryStatus="'+item.inquiryStatus+'" data-finalPrice="'+parseFloat(item.finalPrice).formatMoney(2, "", ",", ".")+'" data-prePrice="'+parseFloat(item.prePrice).formatMoney(2, "", ",", ".")+'" data-currentPeriod="'+item.currentPeriod+'" data-currentPrice="'+parseFloat(item.currentPrice).formatMoney(2, "", ",", ".")+'" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 76px; height: 23px;">分配生产</button>');
+                                var btn=$('<button data-customid="' + item.customid + '" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" class="btn" style="width: 76px; height: 23px;">分配生产</button>');
                                 btn.on('click',function () {
+                                    var ordersummaryId = $(this).attr('data-ordersummaryId');
                                     var customid = $(this).attr('data-customid');
-                                    OPER.distributionProduction(customid);
+                                    var orderid = $(this).attr('data-orderid');
+                                    debugger
+                                    OPER.distributionProduction(customid,"补充设计稿",-1,orderid,ordersummaryId,0);
                                 });
                                 operating.append(btn);
                             }
@@ -1601,7 +1604,7 @@ var classMain = {
                                 });
                                 operating.append(btn);
                             }
-                            else if (command.indexOf("EDIT_ACC")>=0) {//修改设计
+                            if (command.indexOf("EDIT_DESIGN")>=0) {//修改设计
                                 var btn=$('<button class="btn" style="width: 76px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">修改设计</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
@@ -1611,7 +1614,7 @@ var classMain = {
                                 });
                                 operating.append(btn);
                             }
-                            else if (command.indexOf("COMMIT_DESIGN")>=0) {//提交设计
+                            if (command.indexOf("COMMIT_DESIGN")>=0) {//提交设计
                                 var btn=$('<button class="btn" style="width: 76px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">提交设计</button>');
                                 btn.on('click',function () {
                                     var customid = $(this).attr('data-customid');
@@ -1918,7 +1921,6 @@ var classMain = {
                             //上传成品图
                             if(item.produceStatus==3 || item.produceStatus==4)
                             {
-
                                 if (item.smallFinishedProductsImage1||item.smallFinishedProductsImage2||item.smallFinishedProductsImage3)
                                 {
                                     var btn=$('<button class="btn" style="width: 76px; height: 23px;" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '">编辑成品图</button>');
@@ -2016,6 +2018,7 @@ var setPopSize = function (width, height) {
     var iframe = $(".layui-layer-iframe");
     iframe.css("height", height + 73 + "px");
     iframe.find('iframe').css("height", height + 28 + "px");
+    $(".layui-layer-iframe").css('top',"50px");
 }
 
 // 设置主界面高度

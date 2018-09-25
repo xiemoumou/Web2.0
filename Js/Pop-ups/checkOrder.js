@@ -6,11 +6,6 @@ $(function () {
     customid=Helper.getUrlParam("customid",true);
     checkOrder.getData();
 
-    $(".see").on('click',function () {//查看发票
-        $(".invoice-text").removeClass("acvive_none");
-        $(this).addClass("acvive_none");
-    });
-
     //分配生产
     var allocationProduce= Helper.getUrlParam("allocationProduce",true);
     if(allocationProduce)
@@ -49,6 +44,7 @@ var checkOrder = {
                     }
                     $(".box-text").text(boxData);//包装详情
                 }
+
                 $(".check-length").text(data.size);//产品尺寸
                 $(".parts").text(data.accessories);//配件名称
                 $(".deliver-time").text(data.lastestDate);//最迟发货时间
@@ -59,16 +55,27 @@ var checkOrder = {
                 $(".collect-user-text").text(data.name);//收件人
                 $(".collect-phone-text").text(data.mobilephone);//收件人电话
                 $(".collect-code-text").text(data.postcode);//邮编
-                $(".invoice-money-text").text(data.detailsValue1);//发票金额
-                $(".invoice-tax-text").text(data.taxRate);//税率
+                var invoiceMoney=data.detailsValue1?data.detailsValue1.formatMoney(2, "", ",", "."):"0.00";
+                $(".invoice-money-text").text(invoiceMoney);//发票金额
+                var taxRate=data.taxRate?data.taxRate:0;
+                $(".invoice-tax-text").text(taxRate*100);//税率
                 $(".invoice-title-text").text(data.invoiceTitle);//抬头
                 $(".texture").text(data.productDescription);//材质
                 $(".type").text(data.goodsClass);//类型
-
-
-
-                $(".design-img-box img").attr('src',(data.f_middleDesignImage1==''?imgsrc:('http://' + data.f_middleDesignImage1)));//设计图
                 $(".address-text").text(data.address);//详细地址
+
+                var invoiceTypeVal=data.invoice_type?data.invoice_type:0;
+                var invoiceType=["不开发票","增值税普通发票","增值税专用发票","收据"];
+                $(".invoice").text(invoiceType[invoiceTypeVal]);
+
+                if(invoiceTypeVal!=0)
+                {
+                    $(".see").removeClass('hide');
+                    $(".see").on('click',function () {//查看发票
+                        $(".invoice-text").removeClass("acvive_none");
+                        $(this).addClass("acvive_none");
+                    });
+                }
 
                 //参考图
                 var arrayPhoto=[];
@@ -122,7 +129,6 @@ var checkOrder = {
                 }
 
                 $(".container").removeClass("hide");
-
                 var docHeight= $(".check-content").height();
                 top.setPopSize(0,docHeight);
             }

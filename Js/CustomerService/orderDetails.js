@@ -505,7 +505,7 @@ var details = {
                         var command = item.command.split(',');
                         // 发起询价
                         if (command.indexOf("INQUIRY") >= 0) {
-                            var btn = $('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">发起询价</button>');
+                            var btn = $('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 76px; height: 23px;">发起询价</button>');
                             btn.on('click', function () {
                                 var customid = $(this).attr('data-customid');
                                 OPER.sendInquiry(customid);//发起询价
@@ -515,7 +515,7 @@ var details = {
 
                         //分配设计
                         if (command.indexOf("SEND_DESIGN") >= 0) {
-                            var btn = $('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配设计</button>');
+                            var btn = $('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 76px; height: 23px;">分配设计</button>');
                             btn.on('click', function () {
                                 var customid = $(this).attr('data-customid');
                                 var orderid = $(this).attr('data-orderid');
@@ -528,7 +528,7 @@ var details = {
 
                         //定价
                         if (command.indexOf("PRICE") >= 0) {
-                            var btn = $('<button data-inquiryStatus="' + item.inquiryStatus + '" data-userPeriod="' + item.userPeriod + '" data-prePrice="' + parseFloat(item.prePrice).formatMoney(2, "", ",", ".") + '" data-currentPeriod="' + item.currentPeriod + '" data-currentPrice="' + parseFloat(item.currentPrice).formatMoney(2, "", ",", ".") + '" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">定价</button>');
+                            var btn = $('<button data-inquiryStatus="' + item.inquiryStatus + '" data-userPeriod="' + item.userPeriod + '" data-prePrice="' + parseFloat(item.prePrice).formatMoney(2, "", ",", ".") + '" data-currentPeriod="' + item.currentPeriod + '" data-currentPrice="' + parseFloat(item.currentPrice).formatMoney(2, "", ",", ".") + '" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 76px; height: 23px;">定价</button>');
                             btn.on('click', function () {
                                 var customid = $(this).attr('data-customid');
                                 var dataUserPeriod = $(this).attr('data-userPeriod');//客户要求工期
@@ -550,7 +550,7 @@ var details = {
 
                         //确认支付
                         if (command.indexOf("PAYOFF") >= 0) {
-                            var btn = $('<button data-inquiryStatus="' + item.inquiryStatus + '" data-finalPrice="' + parseFloat(item.finalPrice).formatMoney(2, "", ",", ".") + '" data-prePrice="' + parseFloat(item.prePrice).formatMoney(2, "", ",", ".") + '" data-currentPeriod="' + item.currentPeriod + '" data-currentPrice="' + parseFloat(item.currentPrice).formatMoney(2, "", ",", ".") + '" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">订单支付</button>');
+                            var btn = $('<button data-inquiryStatus="' + item.inquiryStatus + '" data-finalPrice="' + parseFloat(item.finalPrice).formatMoney(2, "", ",", ".") + '" data-prePrice="' + parseFloat(item.prePrice).formatMoney(2, "", ",", ".") + '" data-currentPeriod="' + item.currentPeriod + '" data-currentPrice="' + parseFloat(item.currentPrice).formatMoney(2, "", ",", ".") + '" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 76px; height: 23px;">订单支付</button>');
                             btn.on('click', function () {
                                 var customid = $(this).attr('data-customid');
                                 var finalPrice = $(this).attr('data-finalPrice');//定价金额
@@ -560,16 +560,19 @@ var details = {
                         }
                         //分配生产
                         if (command.indexOf("SEND_PRODUCE") >= 0) {
-                            var btn = $('<button data-inquiryStatus="' + item.inquiryStatus + '" data-finalPrice="' + parseFloat(item.finalPrice).formatMoney(2, "", ",", ".") + '" data-prePrice="' + parseFloat(item.prePrice).formatMoney(2, "", ",", ".") + '" data-currentPeriod="' + item.currentPeriod + '" data-currentPrice="' + parseFloat(item.currentPrice).formatMoney(2, "", ",", ".") + '" class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">分配生产</button>');
-                            btn.on('click', function () {
+                            var btn=$('<button data-customid="' + item.customid + '" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" class="btn" style="width: 76px; height: 23px;">分配生产</button>');
+                            btn.on('click',function () {
+                                var ordersummaryId = $(this).attr('data-ordersummaryId');
                                 var customid = $(this).attr('data-customid');
-                                OPER.distributionProduction(customid);
+                                var orderid = $(this).attr('data-orderid');
+                                debugger
+                                OPER.distributionProduction(customid,"补充设计稿",-1,orderid,ordersummaryId,0);
                             });
                             operating.append(btn);
                         }
                         //查看物流
                         if (item.produceStatus == 4) {
-                            var btn = $('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">查看物流</button>');
+                            var btn = $('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 76px; height: 23px;">查看物流</button>');
                             btn.on('click', function () {
                                 var customid = $(this).attr('data-customid');
                                 var orderId = $(this).attr('data-orderid');
@@ -580,7 +583,7 @@ var details = {
 
                         //查看成品
                         if (item.smallFinishedProductsImage1 || item.smallFinishedProductsImage2 || item.smallFinishedProductsImage3) {
-                            var btn = $('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">查看成品</button>');
+                            var btn = $('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 76px; height: 23px;">查看成品</button>');
                             btn.on('click', function () {
                                 var customid = $(this).attr('data-customid');
                                 OPER.productPicture(customid, 'prev');
@@ -590,7 +593,7 @@ var details = {
 
                         //确认收货
                         if (item.produceStatus == 4) {
-                            var btn = $('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 66px; height: 23px;">确认收货</button>');
+                            var btn = $('<button class="btn" data-orderid="' + item.orderid + '" data-ordersummaryId="' + item.id + '" data-customid="' + item.customid + '" style="width: 76px; height: 23px;">确认收货</button>');
                             btn.on('click', function () {
                                 var customid = $(this).attr('data-customid');
                                 var url = config.WebService()["orderLogisticsStatus_Update"];
